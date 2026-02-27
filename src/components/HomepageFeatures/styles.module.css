@@ -1,0 +1,38 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.sectionHeading {
+  margin-bottom: 0.5rem;
+}
+
+.sectionSub {
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+.featureCard {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  transition: background 0.2s;
+  margin-bottom: 1rem;
+}
+.featureCard:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+.featureTitle {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.featureDesc {
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}

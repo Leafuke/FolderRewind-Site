@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Changelog",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "FolderRewind version updates and project announcements",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "All Versions",
+    "description": "The label for the left sidebar"
+  }
+}

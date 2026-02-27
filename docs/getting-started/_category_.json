@@ -1,0 +1,8 @@
+{
+  "label": "开始使用",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "从安装到首次备份与还原，快速上手 FolderRewind。"
+  }
+}

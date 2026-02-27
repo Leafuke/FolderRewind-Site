@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.开始使用": {
+    "message": "Getting Started",
+    "description": "The label for category '开始使用' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.使用指南": {
+    "message": "Guides",
+    "description": "The label for category '使用指南' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.插件生态": {
+    "message": "Plugins",
+    "description": "The label for category '插件生态' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.插件开发": {
+    "message": "Plugin Development",
+    "description": "The label for category '插件开发' in sidebar 'docs'"
+  }
+}

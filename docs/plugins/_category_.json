@@ -1,0 +1,8 @@
+{
+  "label": "插件生态",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "了解 FolderRewind 的插件系统，使用和开发插件。"
+  }
+}

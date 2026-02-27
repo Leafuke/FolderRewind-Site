@@ -1,0 +1,46 @@
+{
+  "link.title.文档": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=文档 in the footer"
+  },
+  "link.title.社区": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=社区 in the footer"
+  },
+  "link.title.下载": {
+    "message": "Download",
+    "description": "The title of the footer links column with title=下载 in the footer"
+  },
+  "link.item.label.快速开始": {
+    "message": "Quick Start",
+    "description": "The label of footer link with label=快速开始 linking to /docs/intro"
+  },
+  "link.item.label.Minecraft 专题": {
+    "message": "Minecraft Guide",
+    "description": "The label of footer link with label=Minecraft 专题 linking to /docs/guides/minecraft"
+  },
+  "link.item.label.插件开发": {
+    "message": "Plugin Development",
+    "description": "The label of footer link with label=插件开发 linking to /docs/plugins/developing/quick-start"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "GitHub Discussions",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/Leafuke/FolderRewind/discussions"
+  },
+  "link.item.label.GitHub Issues": {
+    "message": "GitHub Issues",
+    "description": "The label of footer link with label=GitHub Issues linking to https://github.com/Leafuke/FolderRewind/issues"
+  },
+  "link.item.label.Microsoft Store": {
+    "message": "Microsoft Store",
+    "description": "The label of footer link with label=Microsoft Store linking to https://apps.microsoft.com/detail/9nwsdgxdqws4"
+  },
+  "link.item.label.GitHub Releases": {
+    "message": "GitHub Releases",
+    "description": "The label of footer link with label=GitHub Releases linking to https://github.com/Leafuke/FolderRewind/releases"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 Leafuke. Built with Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

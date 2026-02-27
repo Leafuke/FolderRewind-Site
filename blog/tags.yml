@@ -1,0 +1,14 @@
+release:
+  label: 版本发布
+  permalink: /release
+  description: FolderRewind 版本更新日志
+
+plugin:
+  label: 插件
+  permalink: /plugin
+  description: 插件相关更新
+
+announcement:
+  label: 公告
+  permalink: /announcement
+  description: 项目公告
