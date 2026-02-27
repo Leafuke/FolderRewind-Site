@@ -11,11 +11,11 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://folderrewind.pages.dev',
+  url: 'https://folderrewind.top',
   baseUrl: '/',
 
   organizationName: 'Leafuke',
-  projectName: 'FolderRewind',
+  projectName: 'FolderRewind-Site',
 
   onBrokenLinks: 'throw',
 
@@ -90,7 +90,7 @@ const config: Config = {
         {to: '/download', label: '下载', position: 'left'},
         {to: '/blog', label: '更新日志', position: 'left'},
         {
-          href: 'https://github.com/Leafuke/FolderRewind',
+          href: 'https://github.com/Leafuke/FolderRewind-Site',
           label: 'GitHub',
           position: 'right',
         },
