@@ -17,9 +17,14 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: '使用指南',
       items: [
-        'guides/minecraft',
         'guides/backup-modes',
         'guides/automation',
+        'guides/encryption',
+        'guides/filters',
+        'guides/history-timeline',
+        'guides/mini-window',
+        'guides/data-migration',
+        'guides/minecraft',
       ],
     },
     {
