@@ -81,7 +81,7 @@ export default function Download(): ReactNode {
             <div className={styles.sysReqCard}>
               <div className={styles.sysReqIcon}><FaHardDrive /></div>
               <div className={styles.sysReqLabel}><Translate id="download.sysreq.disk">磁盘空间</Translate></div>
-              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">约 50 MB（不含备份数据）</Translate></div>
+              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">约 180 MB（不含备份数据）</Translate></div>
             </div>
           </div>
         </section>
