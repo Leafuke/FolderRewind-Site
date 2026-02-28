@@ -18,5 +18,9 @@
   "sidebar.docs.category.插件开发": {
     "message": "Plugin Development",
     "description": "The label for category '插件开发' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Minecraft 专题": {
+    "message": "Minecraft Guide",
+    "description": "The label for category 'Minecraft 专题' in sidebar 'docs'"
   }
 }

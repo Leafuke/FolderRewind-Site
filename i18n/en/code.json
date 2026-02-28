@@ -375,7 +375,7 @@
     "message": "Disk Space"
   },
   "download.sysreq.disk.value": {
-    "message": "~50 MB (excluding backup data)"
+    "message": "About 180 MB (excluding backup data)"
   },
   "download.plugin.heading": {
     "message": "Official Plugins"
@@ -516,7 +516,7 @@
     "message": "Three Backup Modes"
   },
   "features.modes.desc": {
-    "message": "Full, incremental, and differential backups for every scenario."
+    "message": "Full, smart incremental, and overwrite backups for different scenarios."
   },
   "features.automation.title": {
     "message": "Automation"
