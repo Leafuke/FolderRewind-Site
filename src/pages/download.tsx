@@ -106,7 +106,7 @@ export default function Download(): ReactNode {
               <span style={{margin: '0 0.5rem'}} />
               <Link
                 className="button button--outline button--secondary"
-                to="/docs/guides/minecraft">
+                to="/docs/guides/minecraft/overview">
                 <Translate id="download.plugin.docsBtn">查看文档</Translate> <FaArrowRight style={{marginLeft: '0.3rem', fontSize: '0.75em'}} />
               </Link>
             </div>

@@ -85,7 +85,7 @@ const config: Config = {
           position: 'left',
           label: '文档',
         },
-        {to: '/docs/guides/minecraft', label: 'Minecraft', position: 'left'},
+        {to: '/docs/guides/minecraft/overview', label: 'Minecraft', position: 'left'},
         {to: '/docs/plugins/overview', label: '插件', position: 'left'},
         {to: '/download', label: '下载', position: 'left'},
         {to: '/blog', label: '更新日志', position: 'left'},
@@ -112,7 +112,7 @@ const config: Config = {
             },
             {
               label: 'Minecraft 专题',
-              to: '/docs/guides/minecraft',
+              to: '/docs/guides/minecraft/overview',
             },
             {
               label: '插件开发',

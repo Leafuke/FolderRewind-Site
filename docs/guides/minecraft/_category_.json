@@ -1,0 +1,8 @@
+{
+  "label": "Minecraft 专题",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "围绕 MineRewind 的安装、配置、热备份与热还原实战指南。"
+  }
+}

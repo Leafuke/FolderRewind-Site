@@ -24,7 +24,18 @@ const sidebars: SidebarsConfig = {
         'guides/history-timeline',
         'guides/mini-window',
         'guides/data-migration',
-        'guides/minecraft',
+        {
+          type: 'category',
+          label: 'Minecraft 专题',
+          items: [
+            'guides/minecraft/overview',
+            'guides/minecraft/quick-start',
+            'guides/minecraft/hot-backup',
+            'guides/minecraft/hot-restore',
+            'guides/minecraft/knotlink-mod',
+            'guides/minecraft/troubleshooting',
+          ],
+        },
       ],
     },
     {
@@ -32,11 +43,19 @@ const sidebars: SidebarsConfig = {
       label: '插件生态',
       items: [
         'plugins/overview',
+        'plugins/using-plugins',
+        'plugins/knotlink',
         {
           type: 'category',
           label: '插件开发',
           items: [
             'plugins/developing/quick-start',
+            'plugins/developing/plugin-api',
+            'plugins/developing/hotkey-api',
+            'plugins/developing/knotlink-api',
+            'plugins/developing/settings-schema',
+            'plugins/developing/packaging',
+            'plugins/developing/auto-update',
           ],
         },
       ],

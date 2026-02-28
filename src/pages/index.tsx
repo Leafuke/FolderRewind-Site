@@ -89,7 +89,7 @@ function useSegments(): Segment[] {
         translate({id: 'homepage.segment.gamer.bullet2', message: '存档自动发现'}),
         translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 插件'}),
       ],
-      link: '/docs/guides/minecraft',
+      link: '/docs/guides/minecraft/overview',
       linkText: translate({id: 'homepage.segment.gamer.link', message: 'MC 专题'}),
     },
     {

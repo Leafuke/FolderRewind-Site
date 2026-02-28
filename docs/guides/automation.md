@@ -109,4 +109,4 @@ FolderRewind 可以为每个配置独立开启自动备份，支持：
 ## 相关链接
 
 - [备份模式详解](./backup-modes) — 选择合适的备份方式
-- [Minecraft 专题](./minecraft) — MC 场景推荐设置
+- [Minecraft 专题](./minecraft/overview) — MC 场景推荐设置
