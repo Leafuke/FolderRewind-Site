@@ -46,6 +46,17 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 - Use notes like "change purpose + date" for better traceability.
 - Run "Clear invalid entries" periodically to remove entries whose archives no longer exist.
 
+## Rebuild History (v1.4.2)
+
+If history records are accidentally removed, migration is incomplete, or only backup archives remain, you can use **Rebuild History** to regenerate history entries from backup files.
+
+Recommended prerequisites:
+
+- Keep standard filename format (`[Full/Smart/Overwrite][timestamp]...`)
+- Keep directory layout as `DestinationPath/<folder-name>/`
+
+See: [Backup File Specification](./backup-file-spec)
+
 ## FAQ
 
 ### "View" says file not found
@@ -60,3 +71,4 @@ Verify restore point and restore mode first, then check restore whitelist settin
 
 - [First Restore](../getting-started/first-restore)
 - [Filter Rules](./filters)
+- [Backup File Specification](./backup-file-spec)

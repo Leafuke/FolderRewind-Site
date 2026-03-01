@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
       label: '使用指南',
       items: [
         'guides/backup-modes',
+        'guides/backup-file-spec',
         'guides/automation',
         'guides/encryption',
         'guides/filters',
