@@ -10,6 +10,11 @@ MineRewind is an official FolderRewind plugin that provides **backup and restore
 
 This page focuses on real-world capability boundaries based on current plugin implementation.
 
+MineRewind works best with at least one integration mod or plugin that supports the hot backup/restore coordination and commands.
+
+MineBackup-Mod：https://modrinth.com/mod/minebackup
+MineBackup-Plugin：https://modrinth.com/plugin/minebackupplugin
+
 ## Who should read this
 
 - Long-term survival players (world corruption, misoperations, mod conflicts)
