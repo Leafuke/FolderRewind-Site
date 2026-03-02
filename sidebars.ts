@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
           label: 'Minecraft 专题',
           items: [
             'guides/minecraft/overview',
+            'guides/minecraft/minebackup-mod',
             'guides/minecraft/quick-start',
             'guides/minecraft/hot-backup',
             'guides/minecraft/hot-restore',

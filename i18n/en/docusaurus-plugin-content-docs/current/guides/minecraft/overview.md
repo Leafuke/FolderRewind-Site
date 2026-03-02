@@ -15,6 +15,10 @@ MineRewind works best with at least one integration mod or plugin that supports 
 MineBackup-Mod：https://modrinth.com/mod/minebackup  
 MineBackup-Plugin：https://modrinth.com/plugin/minebackupplugin
 
+If you want a focused guide for the Minecraft-side integration mod itself (prerequisites, full commands, hot restore rejoin chain, and operational boundaries), continue with:
+
+- [MineBackup Integration Mod Deep Dive](./minebackup-mod)
+
 ## Who should read this
 
 - Long-term survival players (world corruption, misoperations, mod conflicts)
@@ -92,6 +96,7 @@ Useful when you want to roll back world building progress while trying to keep p
 - New users: [Minecraft Quick Start](./quick-start)
 - Backup details: [Hot Backup Mechanism](./hot-backup)
 - Restore details: [Hot Restore Mechanism](./hot-restore)
+- MineBackup runtime guide: [MineBackup Integration Mod Deep Dive](./minebackup-mod)
 - Integration details: [KnotLink and Integration Mod](./knotlink-mod)
 - Issues first: [Troubleshooting](./troubleshooting)
 - Protocol side: [KnotLink Protocol and Integration](../../plugins/knotlink)

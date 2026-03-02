@@ -8,6 +8,8 @@ description: Commands, events, and compatibility points between MineRewind and e
 
 MineRewind's hot backup/restore depends on KnotLink transport plus an integration mod.
 
+If you want the user-facing installation and command walkthrough for the MineBackup mod first, read [MineBackup Integration Mod Deep Dive](./minebackup-mod). This page focuses on protocol commands and event-level integration.
+
 ## Source mapping
 
 | Capability | Core methods | Location |
@@ -109,4 +111,5 @@ OK:Handshake received. Version 1.2.0 (compatible)
 
 - [Hot Backup Mechanism](./hot-backup)
 - [Hot Restore Mechanism](./hot-restore)
+- [MineBackup Integration Mod Deep Dive](./minebackup-mod)
 - [KnotLink Protocol and Integration](../../plugins/knotlink)
