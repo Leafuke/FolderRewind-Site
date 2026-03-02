@@ -12,7 +12,7 @@ This page focuses on real-world capability boundaries based on current plugin im
 
 MineRewind works best with at least one integration mod or plugin that supports the hot backup/restore coordination and commands.
 
-MineBackup-Mod：https://modrinth.com/mod/minebackup
+MineBackup-Mod：https://modrinth.com/mod/minebackup  
 MineBackup-Plugin：https://modrinth.com/plugin/minebackupplugin
 
 ## Who should read this

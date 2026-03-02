@@ -20,8 +20,8 @@ const config: Config = {
   onBrokenLinks: 'throw',
 
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'zh-Hans'],
     localeConfigs: {
       'zh-Hans': {
         label: '中文',
