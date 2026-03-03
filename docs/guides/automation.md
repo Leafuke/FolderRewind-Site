@@ -26,6 +26,8 @@ FolderRewind 可以为每个配置独立开启自动备份，支持：
 3. 打开 **自动化** 选项卡。
 4. 开启 **启用自动备份**。
 
+![自动化选项卡中的启用自动备份开关](/img/docs/guides/automation-enable-auto-backup.png)
+
 ## 自动化方式详解
 
 ### 间隔备份

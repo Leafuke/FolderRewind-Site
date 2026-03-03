@@ -60,6 +60,8 @@ description: 创建配置并完成第一次备份
 2. 检查是否出现新的历史条目（含时间、类型、大小）。
 3. 可点击“查看”按钮在资源管理器中定位备份文件。
 
+![历史版本中的最新条目与查看按钮](/img/docs/getting-started/history-latest-entry-and-view-button.png)
+
 ## 可选：首次备份前的建议设置
 
 在“配置设置”中可先做两项：

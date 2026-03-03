@@ -8,6 +8,8 @@ description: 基于 MineRewind 的 Minecraft 存档保护方案全景介绍
 
 MineRewind 是 FolderRewind 官方插件，面向 Minecraft 场景提供“可运行中的备份与还原”能力。
 
+![FolderRewind 与 MineRewind 架构关系图](/img/docs/guides/minecraft/folderrewind-minerewind-architecture.png)
+
 本文基于当前插件源码能力整理，重点覆盖你在实战中真正会用到的功能边界。
 
 需要添加插件 MineRewind 以及至少一个联动模组或者联动插件以获得最优效果。
@@ -33,9 +35,14 @@ MineBackup-Plugin：https://modrinth.com/plugin/minebackupplugin
 
 - `.minecraft/saves/*`
 - `.minecraft/versions/<version>/saves/*`
+- `versions/<version>/saves/*`
+- `<version>/saves/*`
+- `saves/*`
 - 对应版本下的 `mods` 文件夹可一并纳入备份
 
 插件将配置类型标记为 `Minecraft Saves`，并自动补充必要过滤规则（如 `session.lock`）。
+
+![扫描 .minecraft 后自动发现世界并生成配置](/img/docs/guides/minecraft/auto-scan-worlds-result.png)
 
 ## 2) 热备份协同
 

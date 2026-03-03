@@ -36,6 +36,8 @@ FolderRewind 基于 7-Zip 引擎提供三种核心备份模式：**全量**、**
 	- 覆写备份（更新最近的备份）
 4. 点击保存并执行一次手动备份验证。
 
+![备份模式下拉框三种选项](/img/docs/guides/backup-mode-dropdown-options.png)
+
 ## 选择建议
 
 - **Minecraft 存档：** 智能增量（高频、体量大时更省空间）

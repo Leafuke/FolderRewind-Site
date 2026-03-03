@@ -17,6 +17,8 @@ FolderRewind 支持在设置页导入导出两类数据：
 2. 找到 **数据迁移** 区块。
 3. 按需选择导出或导入。
 
+![数据迁移区域中的导出与导入按钮](/img/docs/guides/data-migration-import-export.png)
+
 ## 配置迁移
 
 ### 导出配置

@@ -120,7 +120,7 @@ Handshake stage:
 
 ### Scenario 1: Validate the shortest working chain
 
-Goal: verify MineBackup <-> backend communication works.
+Goal: verify MineBackup ↔ backend communication works.
 
 Steps:
 
