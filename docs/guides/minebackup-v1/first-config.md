@@ -10,6 +10,79 @@ MineBackup 支持多配置并行。每个配置可理解为一套独立规则集
 
 如果你同时管理多个启动器或多个存档根目录，建议从第一套配置开始就保持“一个配置只对应一类世界”的习惯。
 
+## 引导式配置创建流程
+
+当您第一次打开 MineBackup.exe 时，一个友好的设置向导会迎接您。这个向导存在的唯一目的，就是用最简单的方式，帮助您完成最基础的设置，让程序立刻就能投入工作。
+
+欢迎与介绍
+向导的第一个页面会简单介绍它的作用。您只需轻松地点击 开始配置 (Start Configuration) 按钮，即可进入下一步。
+
+### 欢迎与介绍
+
+向导的第一个页面会简单介绍它的作用。您只需点击 `开始配置 (Start Configuration)` 按钮即可进入下一步。
+
+### 第一步：定位游戏存档
+
+这是最关键的一步：告诉 MineBackup 您的存档都放在哪里。
+
+![存档路径演示](/img/docs/guides/minebackup-v1/where-folder-saves.gif)
+
+- “存档根目录” 是指包含您所有世界文件夹的父目录。
+
+- 常见示例：
+  - Java 版：通常位于 `%APPDATA%\\.minecraft\\saves`，可写为示例路径：
+
+```
+C:\\Users\\<用户名>\\AppData\\Roaming\\.minecraft\\saves
+```
+
+  - 基岩版（Windows 10/11）：存档位于系统包路径下，例如：
+
+```
+C:\\Users\\<用户名>\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds
+```
+  它们的名称就没那么规律了~不过别担心，MineBackup会自动识别！
+
+![基岩版存档名称演示](/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg)
+
+如何填写：
+
+- 自动选择（推荐）：使用 `自动选择 Java 版 存档路径` 或 `自动选择 基岩版 存档路径` 按钮，程序会自动填入默认路径。
+- 手动选择：若使用第三方启动器或备份其它游戏（如泰拉瑞亚），请点击 `选择文件夹... (Select Folder...)`，在弹窗中选中包含目标世界的父文件夹。
+
+示例：
+
+- 若要备份桌面上的两个文件夹 “工作资料” 与 “学习资料”，请选择它们的父目录，例如：
+
+```
+C:\\Users\\<用户名>\\Desktop
+```
+
+- 若使用 PCL2 等启动器，可通过启动器的“打开存档文件夹”复制路径并粘贴到向导中。
+
+![PCL2寻存档](/img/docs/guides/minebackup-v1/pcl-to-find.gif)
+
+### 第二步：指定备份仓库
+
+选择一个用于存放所有备份压缩包的目录：
+
+- 点击 `选择文件夹... (Select Folder...)` 并选择一个磁盘空间充足且可靠的位置。
+- 强烈建议不要将备份目录设置在与存档相同的磁盘分区，优先使用另一块物理盘或外置硬盘，以降低硬盘故障导致的数据丢失风险。
+- 示例：`D:\\MC备份\\1.20.1`，MineBackup 会在该目录下按世界自动建立子目录来区分不同世界。
+
+### 第三步：配置压缩工具
+
+MineBackup 使用 `7z.exe` 进行压缩：
+
+- 内置优先：程序通常会自动使用内置的 `7z.exe` 并提示“已自动使用内置的压缩程序... (Now using the built-in compression program!)”。
+- 备用查找：若内置不可用，程序会尝试从系统注册表中寻找已安装的 7-Zip。
+- 手动指定：若需使用特定版本，可点击 `选择 7z.exe... (Select 7z.exe...)` 手动指定可执行文件路径。
+
+### 完成配置
+
+所有信息填写无误后，点击 `完成配置 (Finish Configuration)`。向导窗口将关闭，MineBackup 主界面会打开并自动扫描您指定的 `saveRoot`，将找到的世界列出供您管理。您的存档保护之旅，从此开始！
+
+
 ## 配置中最关键的字段
 
 - `saveRoot`：世界根目录
