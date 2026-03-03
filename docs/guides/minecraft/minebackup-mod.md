@@ -8,6 +8,12 @@ description: 从安装前置到完整命令参考，系统理解 MineBackup 与 
 
 MineBackup 是 Minecraft 侧的联动模组，负责把游戏内状态（保存、退出、重进）与 FolderRewind / MineRewind 的备份还原流程连接起来。
 
+:::tip 想看一代主程序完整说明？
+如果你需要的是 **MineBackup（一代时光机主程序）** 的完整使用手册（安装、配置、备份、还原、自动化、高级功能），请前往：
+
+- [一代时光机总览（MineBackup）](../minebackup-v1/overview)
+:::
+
 你可以把它理解为“游戏进程内代理层”：
 
 - MineRewind 负责 FolderRewind 插件侧能力（配置发现、备份/还原编排）

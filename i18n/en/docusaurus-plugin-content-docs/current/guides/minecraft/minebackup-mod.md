@@ -8,6 +8,12 @@ description: Understand how MineBackup works with FolderRewind/MineRewind from p
 
 MineBackup is the Minecraft-side integration mod that connects in-game runtime actions (save, exit, rejoin) with FolderRewind / MineRewind backup and restore flows.
 
+:::tip Looking for MineBackup (Gen 1 host app) full manual?
+The dedicated **MineBackup v1** documentation section is now available (Chinese-first release):
+
+- [MineBackup v1 Overview](/docs/guides/minebackup-v1/overview)
+:::
+
 You can treat it as an in-process coordination layer:
 
 - MineRewind handles FolderRewind plugin-side orchestration (discovery, backup/restore coordination)
