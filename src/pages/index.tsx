@@ -66,6 +66,79 @@ function HomepageHero() {
   );
 }
 
+/* ── 版本提醒 ────────────────────────────────────────── */
+function ReleaseNotice() {
+  return (
+    <section className={styles.noticeSection}>
+      <div className="container">
+        <div className={styles.noticeGrid}>
+          <div className={styles.noticeLeadCard}>
+            <p className={styles.noticeEyebrow}>
+              <Translate id="homepage.notice.eyebrow">v1.5.0 重要提醒</Translate>
+            </p>
+            <Heading as="h2" className={styles.noticeTitle}>
+              <Translate id="homepage.notice.title">升级前先测试，不要直接投入生产</Translate>
+            </Heading>
+            <p className={styles.noticeText}>
+              <Translate id="homepage.notice.desc">
+                本版本重构了增量备份与还原逻辑，并新增安全还原机制。对于从旧版本升级的配置，无法 100% 保证行为与此前完全一致；在正式使用前，请先做几轮备份与还原演练。
+              </Translate>
+            </p>
+
+            <ul className={styles.noticeList}>
+              <li>
+                <FaCircleCheck className={styles.checkIcon} />
+                <Translate id="homepage.notice.point1">先在测试目录、测试项目或测试存档中验证备份链与还原结果。</Translate>
+              </li>
+              <li>
+                <FaCircleCheck className={styles.checkIcon} />
+                <Translate id="homepage.notice.point2">Clean 模式可配合安全还原，在异常时自动回滚到初始状态。</Translate>
+              </li>
+              <li>
+                <FaCircleCheck className={styles.checkIcon} />
+                <Translate id="homepage.notice.point3">升级旧配置后，建议立即执行一次手动完整备份作为新的验证基线。</Translate>
+              </li>
+            </ul>
+
+            <div className={styles.noticeLinks}>
+              <Link className={clsx('button button--primary', styles.btnPrimary)} to="/blog/v1.5.0-release">
+                <Translate id="homepage.notice.changelogBtn">查看 v1.5.0 更新日志</Translate>
+              </Link>
+              <Link className={clsx('button button--outline button--primary', styles.btnOutline)} to="/docs/guides/backup-modes">
+                <Translate id="homepage.notice.docsBtn">查看备份与还原说明</Translate>
+                <FaArrowRight style={{marginLeft: '0.4rem', fontSize: '0.8em'}} />
+              </Link>
+            </div>
+          </div>
+
+          <div className={styles.noticeSideCard}>
+            <Heading as="h3" className={styles.noticeSideTitle}>
+              <Translate id="homepage.notice.install.title">安装建议</Translate>
+            </Heading>
+            <ul className={styles.noticeList}>
+              <li>
+                <FaWindows className={styles.checkIcon} />
+                <Translate id="homepage.notice.install.point1">建议优先通过 Microsoft Store 下载，后续升级更省心。</Translate>
+              </li>
+              <li>
+                <FaCircleCheck className={styles.checkIcon} />
+                <Translate id="homepage.notice.install.point2">请勿同时安装商店版与当前页面提供的离线版。</Translate>
+              </li>
+            </ul>
+
+            <div className={styles.noticeLinks}>
+              <Link className={clsx('button button--outline button--primary', styles.btnOutline)} to="/download">
+                <Translate id="homepage.notice.install.btn">查看下载方式</Translate>
+                <FaArrowRight style={{marginLeft: '0.4rem', fontSize: '0.8em'}} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── 用户分层 ──────────────────────────────────────── */
 type Segment = {
   icon: ReactNode;
@@ -83,11 +156,11 @@ function useSegments(): Segment[] {
       icon: <FaGamepad />,
       iconClass: 'segment-icon-wrap--gamer',
       title: translate({id: 'homepage.segment.gamer.title', message: '游戏玩家'}),
-      desc: translate({id: 'homepage.segment.gamer.desc', message: 'Minecraft 存档再也不怕丢'}),
+      desc: translate({id: 'homepage.segment.gamer.desc', message: '面向 Minecraft 的热备份与热还原场景'}),
       bullets: [
-        translate({id: 'homepage.segment.gamer.bullet1', message: '一键热备份'}),
+        translate({id: 'homepage.segment.gamer.bullet1', message: '热备份 / 热还原'}),
         translate({id: 'homepage.segment.gamer.bullet2', message: '存档自动发现'}),
-        translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 插件'}),
+        translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 与 KnotLink'}),
       ],
       link: '/docs/guides/minecraft/overview',
       linkText: translate({id: 'homepage.segment.gamer.link', message: 'MC 专题'}),
@@ -96,11 +169,11 @@ function useSegments(): Segment[] {
       icon: <FaFolderOpen />,
       iconClass: 'segment-icon-wrap--files',
       title: translate({id: 'homepage.segment.files.title', message: '文件管理者'}),
-      desc: translate({id: 'homepage.segment.files.desc', message: '重要文件定时加密备份'}),
+      desc: translate({id: 'homepage.segment.files.desc', message: '重要文件的版本化备份与安全回滚'}),
       bullets: [
-        translate({id: 'homepage.segment.files.bullet1', message: '7z 增量压缩'}),
-        translate({id: 'homepage.segment.files.bullet2', message: '定时 / 间隔自动备份'}),
-        translate({id: 'homepage.segment.files.bullet3', message: '历史时间轴还原'}),
+        translate({id: 'homepage.segment.files.bullet1', message: '改进的智能增量链'}),
+        translate({id: 'homepage.segment.files.bullet2', message: '安全还原与回滚'}),
+        translate({id: 'homepage.segment.files.bullet3', message: '云同步与历史管理'}),
       ],
       link: '/docs/intro',
       linkText: translate({id: 'homepage.segment.files.link', message: '了解更多'}),
@@ -109,11 +182,11 @@ function useSegments(): Segment[] {
       icon: <FaPuzzlePiece />,
       iconClass: 'segment-icon-wrap--dev',
       title: translate({id: 'homepage.segment.dev.title', message: '插件开发者'}),
-      desc: translate({id: 'homepage.segment.dev.desc', message: '扩展 FolderRewind 的能力'}),
+      desc: translate({id: 'homepage.segment.dev.desc', message: '扩展 FolderRewind 的备份与还原能力'}),
       bullets: [
         'Plugin SDK',
         'KnotLink IPC',
-        translate({id: 'homepage.segment.dev.bullet3', message: '自动更新分发'}),
+        translate({id: 'homepage.segment.dev.bullet3', message: '完整接管还原逻辑'}),
       ],
       link: '/docs/plugins/developing/quick-start',
       linkText: translate({id: 'homepage.segment.dev.link', message: '开发文档'}),
@@ -164,9 +237,9 @@ function HomepageSegments() {
 /* ── 3 步快速上手 ──────────────────────────────────── */
 function HomepageQuickDemo() {
   const steps = [
-    {num: 1, title: translate({id: 'homepage.steps.1.title', message: '安装'}), desc: translate({id: 'homepage.steps.1.desc', message: '从 Microsoft Store 一键安装，或使用侧载方式'})},
+    {num: 1, title: translate({id: 'homepage.steps.1.title', message: '安装'}), desc: translate({id: 'homepage.steps.1.desc', message: '优先使用 Microsoft Store，避免双版本混装'})},
     {num: 2, title: translate({id: 'homepage.steps.2.title', message: '添加文件夹'}), desc: translate({id: 'homepage.steps.2.desc', message: '创建配置，添加需要保护的文件夹'})},
-    {num: 3, title: translate({id: 'homepage.steps.3.title', message: '一键备份'}), desc: translate({id: 'homepage.steps.3.desc', message: '点击「立即备份」或设置自动化任务'})},
+    {num: 3, title: translate({id: 'homepage.steps.3.title', message: '验证'}), desc: translate({id: 'homepage.steps.3.desc', message: '先跑一轮测试备份与还原，再开启自动化'})},
   ];
   return (
     <section className={styles.quickDemo}>
@@ -233,9 +306,10 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={translate({id: 'homepage.layout.title', message: '首页'})}
-      description={translate({id: 'homepage.layout.description', message: 'FolderRewind — 为 Minecraft 玩家和所有人打造的智能文件夹备份工具'})}>
+      description={translate({id: 'homepage.layout.description', message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具'})}>
       <HomepageHero />
       <main>
+        <ReleaseNotice />
         <HomepageSegments />
         <HomepageFeatures />
         <HomepageQuickDemo />

@@ -48,6 +48,7 @@ return command.ToUpperInvariant() switch
 ## MineRewind 命令示例
 
 - `BACKUP_CURRENT`
+- `BACKUP <config_id> <folder_index|folder_name> [comment] [FORCE_FULL]`
 - `RESTORE_CURRENT_LATEST`
 - `LIST_BACKUPS_CURRENT`
 - `RESTORE_CURRENT <backup_file>`
@@ -83,6 +84,28 @@ RESTORE_CURRENT save_002.7z
 ```text
 OK:Hot restore triggered for 'WorldName' with backup 'save_002.7z'
 ```
+
+### 强制执行一次完整备份
+
+当配置当前处于智能增量模式，但你希望通过远程命令临时执行一次 Full 备份时，可在 `BACKUP` 命令末尾追加 `FORCE_FULL`：
+
+请求：
+
+```text
+BACKUP demo_config 0 手动校验 FORCE_FULL
+```
+
+响应：
+
+```text
+OK:Backup task queued
+```
+
+说明：
+
+- `FORCE_FULL` 会绕过当前配置的备份模式，仅对本次远程触发生效。
+- 建议在升级旧配置、准备重要里程碑或怀疑增量链异常时使用。
+- 不要把长时间运行的完整备份放在高频请求路径里。
 
 ## 设计建议
 

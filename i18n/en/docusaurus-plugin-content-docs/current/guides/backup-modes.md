@@ -8,10 +8,14 @@ description: Learn about the three backup modes in FolderRewind
 
 FolderRewind provides multiple backup methods powered by the 7-Zip engine, designed for different scenarios.
 
+:::caution v1.5.0 compatibility note
+This release changes how incremental backup and restore work. If you upgraded from an older version, revalidate backup chains and restore results with test data before using them in production.
+:::
+
 ## Quick recommendation
 
 - Beginner default: **Full Backup** + enable "Skip when no changes"
-- Frequent daily use: **Smart Incremental** (faster and smaller)
+- Frequent daily use: **Smart Incremental** + **chain limit** + **safe delete**
 - Temporary rolling state: **Overwrite** (keep only the latest archive)
 
 ## Mode comparison
@@ -19,11 +23,13 @@ FolderRewind provides multiple backup methods powered by the 7-Zip engine, desig
 | Mode | Description | Advantage | Best for |
 |------|-------------|-----------|----------|
 | **Full** | Creates a complete new archive every time | Simple and stable restore | Beginners, milestones |
-| **Smart Incremental** | Packs only changed files and builds an incremental chain | Faster, saves space | Large folders with frequent backups |
+| **Smart Incremental** | Packs only changed files and builds an improved incremental chain | Faster, saves space | Large folders with frequent backups |
 | **Overwrite** | Updates the latest archive instead of creating many history files | Minimal storage, simple workflow | Temporary sync or cache-like folders |
 
 :::note Note
 "Smart Incremental" in product wording corresponds to Incremental/Smart behavior in code.
+
+In v1.5.0, chain generation, truncation, and restore behavior have changed, so upgraded configs should be revalidated once.
 :::
 
 ## How to configure
@@ -51,6 +57,7 @@ In **Config Settings → Backup Policy**, also check:
 - **Keep latest backup count** (`0` means unlimited)
 - **Smart chain length limit** (only for Smart Incremental)
 - **Safe delete** (helps avoid broken restore chains during cleanup)
+- **Remote forced full backup** (temporarily bypass the current mode and run one Full backup in automation/integration scenarios)
 
 ## Compression and performance
 
@@ -63,8 +70,8 @@ FolderRewind supports 7z/zip compression with tunable level, method, and threads
 ## Starter presets
 
 - General office files: Full + skip-no-change + keep 30
-- Dev projects: Smart Incremental + chain limit 20 + keep 60
-- Large game saves: Smart Incremental + skip-no-change + automation
+- Dev projects: Smart Incremental + chain limit 20 + safe delete + keep 60
+- Large game saves: Smart Incremental + skip-no-change + automation + periodic restore validation
 
 ## Related links
 

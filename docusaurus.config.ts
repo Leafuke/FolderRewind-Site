@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'FolderRewind - 存档时光机',
-  tagline: '再也不怕存档丢失',
+  tagline: '面向重要文件、项目资料与游戏存档的现代备份工具',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -20,8 +20,8 @@ const config: Config = {
   onBrokenLinks: 'throw',
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh-Hans'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
     localeConfigs: {
       'zh-Hans': {
         label: '中文',

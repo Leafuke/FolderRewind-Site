@@ -336,13 +336,28 @@
     "message": "Download FolderRewind"
   },
   "download.subheading": {
-    "message": "Choose your preferred installation method"
+    "message": "Use Microsoft Store first, and test v1.5.0 before production"
+  },
+  "download.notice.title": {
+    "message": "v1.5.0 installation and upgrade notice"
+  },
+  "download.notice.desc": {
+    "message": "This release introduces breaking changes to backup and restore logic. If you are upgrading from an older version, validate the result in a test folder, test project, or test save before using it in production."
+  },
+  "download.notice.point1": {
+    "message": "Microsoft Store is recommended first for smoother upgrades."
+  },
+  "download.notice.point2": {
+    "message": "Do not install the Store version and the offline package side by side."
+  },
+  "download.notice.point3": {
+    "message": "If sideloading is required, run at least one full backup-and-restore test immediately after install."
   },
   "download.badge.recommended": {
     "message": "Recommended"
   },
   "download.store.desc": {
-    "message": "Auto-update, sandboxed security, one-click install."
+    "message": "Auto updates, simpler installation, and the recommended long-term option for v1.5.0+."
   },
   "download.store.btn": {
     "message": "Open Microsoft Store"
@@ -351,7 +366,7 @@
     "message": "Sideload"
   },
   "download.github.desc": {
-    "message": "Download the package and install via PowerShell script."
+    "message": "For environments where Store is unavailable. Install via PowerShell and do not keep it alongside the Store version."
   },
   "download.github.btn": {
     "message": "Go to GitHub Releases"
@@ -393,10 +408,10 @@
     "message": "FolderRewind"
   },
   "homepage.hero.subtitle.line1": {
-    "message": "Smart backup tool built for Minecraft players"
+    "message": "Modern versioned backup for important files, projects, and game saves"
   },
   "homepage.hero.subtitle.line2": {
-    "message": "Also works for all your precious files"
+    "message": "Now with safer restore, better incremental chains, and plugin extensibility"
   },
   "homepage.hero.storeBtn": {
     "message": "Get from Microsoft Store"
@@ -407,20 +422,56 @@
   "homepage.hero.trust.openSource": {
     "message": "Free & Open Source"
   },
+  "homepage.notice.eyebrow": {
+    "message": "Important for v1.5.0"
+  },
+  "homepage.notice.title": {
+    "message": "Test first before using it in production"
+  },
+  "homepage.notice.desc": {
+    "message": "This release redesigns incremental backup and restore logic and adds safe restore. For upgraded configs, behavior cannot be guaranteed to match older versions 100%, so run several backup-and-restore drills first."
+  },
+  "homepage.notice.point1": {
+    "message": "Validate backup chains and restore results in a test folder, test project, or test save first."
+  },
+  "homepage.notice.point2": {
+    "message": "In Clean mode, safe restore can create a rollback snapshot before changing the target directory."
+  },
+  "homepage.notice.point3": {
+    "message": "After upgrading old configs, create a manual full backup as your new validation baseline."
+  },
+  "homepage.notice.changelogBtn": {
+    "message": "Read the v1.5.0 changelog"
+  },
+  "homepage.notice.docsBtn": {
+    "message": "Read backup and restore docs"
+  },
+  "homepage.notice.install.title": {
+    "message": "Installation advice"
+  },
+  "homepage.notice.install.point1": {
+    "message": "Microsoft Store is the preferred download channel for ongoing updates."
+  },
+  "homepage.notice.install.point2": {
+    "message": "Do not install the Store version and the offline package at the same time."
+  },
+  "homepage.notice.install.btn": {
+    "message": "See download options"
+  },
   "homepage.segment.gamer.title": {
     "message": "Gamers"
   },
   "homepage.segment.gamer.desc": {
-    "message": "Never lose your Minecraft saves again"
+    "message": "Built for Minecraft hot backup and hot restore scenarios"
   },
   "homepage.segment.gamer.bullet1": {
-    "message": "One-click hot backup"
+    "message": "Hot backup / hot restore"
   },
   "homepage.segment.gamer.bullet2": {
     "message": "Auto-discover saves"
   },
   "homepage.segment.gamer.bullet3": {
-    "message": "MineRewind plugin"
+    "message": "MineRewind and KnotLink"
   },
   "homepage.segment.gamer.link": {
     "message": "MC Guide"
@@ -429,16 +480,16 @@
     "message": "File Managers"
   },
   "homepage.segment.files.desc": {
-    "message": "Encrypted scheduled backup for important files"
+    "message": "Versioned backups and safer rollback for important files"
   },
   "homepage.segment.files.bullet1": {
-    "message": "7z incremental compression"
+    "message": "Improved smart incremental chains"
   },
   "homepage.segment.files.bullet2": {
-    "message": "Scheduled / interval auto-backup"
+    "message": "Safe restore and rollback"
   },
   "homepage.segment.files.bullet3": {
-    "message": "History timeline restore"
+    "message": "Cloud sync and history management"
   },
   "homepage.segment.files.link": {
     "message": "Learn More"
@@ -447,10 +498,10 @@
     "message": "Plugin Developers"
   },
   "homepage.segment.dev.desc": {
-    "message": "Extend FolderRewind's capabilities"
+    "message": "Extend FolderRewind's backup and restore capabilities"
   },
   "homepage.segment.dev.bullet3": {
-    "message": "Auto-update distribution"
+    "message": "Full restore takeover"
   },
   "homepage.segment.dev.link": {
     "message": "Dev Docs"
@@ -465,7 +516,7 @@
     "message": "Install"
   },
   "homepage.steps.1.desc": {
-    "message": "One-click install from Microsoft Store, or sideload"
+    "message": "Use Microsoft Store first to avoid running two install channels side by side"
   },
   "homepage.steps.2.title": {
     "message": "Add Folders"
@@ -474,10 +525,10 @@
     "message": "Create a config and add folders to protect"
   },
   "homepage.steps.3.title": {
-    "message": "Backup"
+    "message": "Validate"
   },
   "homepage.steps.3.desc": {
-    "message": "Click 'Backup Now' or set up automation"
+    "message": "Run at least one backup-and-restore test before enabling automation"
   },
   "homepage.quickdemo.heading": {
     "message": "Get started in 3 steps"
@@ -504,7 +555,7 @@
     "message": "Home"
   },
   "homepage.layout.description": {
-    "message": "FolderRewind \u2014 Smart folder backup tool for Minecraft players and everyone"
+    "message": "FolderRewind \u2014 Modern backup tool for important files, projects, and game saves"
   },
   "features.7zip.title": {
     "message": "7-Zip Compression Engine"
@@ -513,16 +564,16 @@
     "message": "High-performance compression in 7z format \u2014 save disk space with faster backups."
   },
   "features.modes.title": {
-    "message": "Three Backup Modes"
+    "message": "Improved smart incremental"
   },
   "features.modes.desc": {
-    "message": "Full, smart incremental, and overwrite backups for different scenarios."
+    "message": "v1.5.0 redesigns incremental chain behavior and supports chain truncation for more stable restores."
   },
   "features.automation.title": {
-    "message": "Automation"
+    "message": "Automation and remote commands"
   },
   "features.automation.desc": {
-    "message": "Interval, scheduled, or on-startup backups \u2014 set once, run forever."
+    "message": "Use interval, scheduled, or on-startup tasks, and trigger forced full backups through remote commands."
   },
   "features.encryption.title": {
     "message": "Encrypted Backups"
@@ -531,16 +582,16 @@
     "message": "AES-256 encryption keeps your sensitive data secure."
   },
   "features.timeline.title": {
-    "message": "History Timeline"
+    "message": "History timeline and safe delete"
   },
   "features.timeline.desc": {
-    "message": "Browse backup history visually and rewind folders to any point in time."
+    "message": "Inspect, mark, rebuild, and delete history while reducing the risk of breaking incremental chains."
   },
   "features.plugins.title": {
     "message": "Plugin System"
   },
   "features.plugins.desc": {
-    "message": "Extend features with plugins \u2014 MineRewind is optimized for Minecraft."
+    "message": "Plugins can deeply participate in backup and restore, and may fully take over restore logic for specific scenarios."
   },
   "features.miniwindow.title": {
     "message": "Mini Window"
@@ -549,21 +600,21 @@
     "message": "Monitor and instantly backup via the mini floating window while gaming or working."
   },
   "features.knotlink.title": {
-    "message": "KnotLink IPC"
+    "message": "Cloud sync and external tools"
   },
   "features.knotlink.desc": {
-    "message": "Inter-process communication protocol for third-party tool integration."
+    "message": "Invoke rclone or other third-party tools to sync backups to cloud or external storage."
   },
   "features.i18n.title": {
-    "message": "Bilingual"
+    "message": "Safe restore"
   },
   "features.i18n.desc": {
-    "message": "Built-in Chinese & English UI, auto-switches with system language."
+    "message": "In Clean mode, create a safety snapshot first and automatically roll back if restore fails."
   },
   "features.heading": {
     "message": "Core Features"
   },
   "features.subheading": {
-    "message": "FolderRewind provides comprehensive protection for your files"
+    "message": "From backup and sync to rollback, FolderRewind covers the whole safety chain"
   }
 }

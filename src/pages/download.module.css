@@ -16,6 +16,48 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
+.noticeSection {
+  margin: 0 auto 2rem;
+  max-width: 980px;
+}
+
+.noticeBox {
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.75) 0%, rgba(255, 237, 213, 0.75) 100%);
+}
+
+[data-theme='dark'] .noticeBox {
+  border-color: rgba(251, 191, 36, 0.28);
+  background: linear-gradient(135deg, rgba(120, 53, 15, 0.42) 0%, rgba(124, 45, 18, 0.3) 100%);
+}
+
+.noticeTitle {
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+}
+
+.noticeText {
+  margin: 0;
+  color: var(--ifm-color-emphasis-800);
+  line-height: 1.7;
+}
+
+[data-theme='dark'] .noticeText {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.noticeList {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.noticeList li + li {
+  margin-top: 0.5rem;
+}
+
 .cardTitle {
   font-size: 1.3rem;
   margin-bottom: 0.25rem;
@@ -105,6 +147,10 @@
 @media screen and (max-width: 768px) {
   .sysReqGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .noticeBox {
+    padding: 1.25rem;
   }
 }
 

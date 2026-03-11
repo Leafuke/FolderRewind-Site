@@ -8,6 +8,12 @@ description: How to install FolderRewind
 
 FolderRewind supports two installation methods: Microsoft Store (recommended) and sideloading.
 
+:::caution v1.5.0 upgrade notice
+This release introduces breaking changes to backup and restore logic. If you are upgrading from an older version, run several backup-and-restore tests before using it in production.
+
+Also, **do not install the Store version and the offline package side by side**. It makes troubleshooting and version tracking unnecessarily confusing.
+:::
+
 ## Method 1: Microsoft Store (Recommended)
 
 1. Open the link below, or search for "FolderRewind" in Microsoft Store:
@@ -23,7 +29,7 @@ FolderRewind supports two installation methods: Microsoft Store (recommended) an
 
 ## Method 2: Sideload Installation
 
-Best for users who cannot access Microsoft Store.
+Best for users who cannot access Microsoft Store. If you already have the Store version installed, do not keep the sideloaded package alongside it.
 
 ### Prerequisites
 
@@ -40,7 +46,7 @@ Best for users who cannot access Microsoft Store.
 5. Launch FolderRewind from the Start menu
 
 :::tip First launch suggestion
-After your first launch, create a test config and run one backup to confirm the target path is writable.
+After your first launch, create a test config, run one backup, and then perform one restore validation to confirm both the target path and the restore result are correct.
 :::
 
 ## System Requirements
@@ -56,9 +62,10 @@ After your first launch, create a test config and run one backup to confirm the 
 
 1. Open the app and confirm the config card area loads.
 2. Click **New Config** and confirm the dialog opens.
-3. Return to the main page and confirm no error is shown.
+3. Create a test config and complete one manual backup.
+4. Perform one restore validation in a test directory and confirm the result is correct.
 
-If all checks pass, continue to the first backup tutorial.
+If all checks pass, continue with your real config and automation setup.
 
 ## Next Step
 

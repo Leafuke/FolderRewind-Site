@@ -17,6 +17,18 @@ Windows 10 1809 (17763) and above, including Windows 11. Supports x64 and ARM64 
 - **Store install (recommended):** auto-updates, sandboxed security, one-click install.
 - **Sideload install:** requires Developer Mode; useful when Store is unavailable.
 
+Do **not** install the Store version and the offline package side by side. If you need to switch channels, uninstall first or at least make sure you clearly know which build you are actually running.
+
+### What should I watch out for when upgrading to v1.5.0 from an older version?
+
+This release introduces breaking changes to backup and restore logic, so upgraded behavior cannot be guaranteed to match older versions 100%.
+
+Recommended flow:
+
+1. Pick a test folder or test save.
+2. Run several backup-and-restore rounds.
+3. Move production data only after the result matches your expectation.
+
 ### What should I do if the app won't launch after installation?
 
 1. Confirm your OS version meets minimum requirements.
@@ -47,6 +59,10 @@ With MineRewind, Minecraft hot backup is supported while the game is running. Fo
 
 Yes. Backups run in the background.
 
+### Can FolderRewind sync backups to the cloud?
+
+Yes. Current versions can invoke **rclone** and other third-party tools to sync backup directories to cloud or external storage.
+
 ### Why did auto backup stop unexpectedly?
 
 You may have enabled "Stop auto tasks after repeated no-change detections". When the threshold is reached, auto backup is disabled and needs to be enabled again manually.
@@ -57,10 +73,10 @@ You may have enabled "Stop auto tasks after repeated no-change detections". When
 
 Two primary modes are available:
 
-- **Clean Restore:** clean target first, then restore (recommended)
+- **Clean Restore:** clean target first, then restore (recommended). If Safe Restore is enabled, it can roll back automatically on failure.
 - **Overwrite Restore:** overwrite same-name files, may keep old files
 
-For important directories, enable "Auto backup before restore".
+For important directories, enable both "Auto backup before restore" and "Safe Restore".
 
 ### Can I restore only selected files?
 
@@ -73,6 +89,10 @@ That config is encrypted. Password verification is required before restore.
 ### Why does history show an entry but "View" can't find the backup file?
 
 The archive was likely moved or deleted manually. Use "Clear invalid entries" on the history page.
+
+### Why can deleting history be slower now?
+
+If **Safe Delete** is enabled, FolderRewind will repair chain continuity before removing a backup from an incremental chain. That extra safety work takes more time than direct deletion.
 
 ## Data migration
 

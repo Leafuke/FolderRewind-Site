@@ -10,8 +10,8 @@ import {
   FaTimeline,
   FaPuzzlePiece,
   FaWindowRestore,
-  FaLink,
-  FaGlobe,
+  FaCloudArrowUp,
+  FaShieldHalved,
 } from 'react-icons/fa6';
 import styles from './styles.module.css';
 
@@ -30,13 +30,13 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaArrowsRotate />,
-      title: translate({id: 'features.modes.title', message: '三种备份模式'}),
-      description: translate({id: 'features.modes.desc', message: '完整备份、增量备份与差异备份，灵活应对不同场景。'}),
+      title: translate({id: 'features.modes.title', message: '改进的智能增量'}),
+      description: translate({id: 'features.modes.desc', message: 'v1.5.0 重构增量链逻辑，并支持链长截断，减少旧链问题。'}),
     },
     {
       icon: <FaClock />,
-      title: translate({id: 'features.automation.title', message: '自动化调度'}),
-      description: translate({id: 'features.automation.desc', message: '间隔备份、定时备份、启动时备份——设置一次，永久运行。'}),
+      title: translate({id: 'features.automation.title', message: '自动化与远程命令'}),
+      description: translate({id: 'features.automation.desc', message: '支持间隔、定时、启动时任务，也能通过远程命令触发强制完整备份。'}),
     },
     {
       icon: <FaLock />,
@@ -44,14 +44,19 @@ function useFeatureList(): FeatureItem[] {
       description: translate({id: 'features.encryption.desc', message: '使用 AES-256 加密备份文件，确保敏感数据安全。'}),
     },
     {
+      icon: <FaShieldHalved />,
+      title: translate({id: 'features.i18n.title', message: '安全还原'}),
+      description: translate({id: 'features.i18n.desc', message: 'Clean 模式下先创建安全快照，若还原异常可自动回滚到初始状态。'}),
+    },
+    {
       icon: <FaTimeline />,
-      title: translate({id: 'features.timeline.title', message: '历史时间轴'}),
-      description: translate({id: 'features.timeline.desc', message: '直观浏览备份历史，一键将文件夹回溯到任意时间点。'}),
+      title: translate({id: 'features.timeline.title', message: '历史时间轴与安全删除'}),
+      description: translate({id: 'features.timeline.desc', message: '查看、标记、重建与删除历史；在增量模式下尽量避免链断裂。'}),
     },
     {
       icon: <FaPuzzlePiece />,
       title: translate({id: 'features.plugins.title', message: '插件系统'}),
-      description: translate({id: 'features.plugins.desc', message: '通过插件扩展功能——MineRewind 为 Minecraft 深度优化。'}),
+      description: translate({id: 'features.plugins.desc', message: '插件可深度介入备份与还原，特定场景下还可完全接管还原逻辑。'}),
     },
     {
       icon: <FaWindowRestore />,
@@ -59,14 +64,9 @@ function useFeatureList(): FeatureItem[] {
       description: translate({id: 'features.miniwindow.desc', message: '在游戏或工作中通过迷你窗口随时监控与即时备份。'}),
     },
     {
-      icon: <FaLink />,
-      title: translate({id: 'features.knotlink.title', message: 'KnotLink IPC'}),
-      description: translate({id: 'features.knotlink.desc', message: '进程间通信协议，让第三方工具与 FolderRewind 联动。'}),
-    },
-    {
-      icon: <FaGlobe />,
-      title: translate({id: 'features.i18n.title', message: '中英双语'}),
-      description: translate({id: 'features.i18n.desc', message: '内置中英文界面，跟随系统语言自动切换。'}),
+      icon: <FaCloudArrowUp />,
+      title: translate({id: 'features.knotlink.title', message: '云同步与外部工具'}),
+      description: translate({id: 'features.knotlink.desc', message: '支持调用 rclone 等第三方工具，将备份同步到云端或其他存储。'}),
     },
   ];
 }
@@ -92,7 +92,7 @@ export default function HomepageFeatures(): ReactNode {
           <Translate id="features.heading">核心功能</Translate>
         </Heading>
         <p className={clsx('text--center', styles.sectionSub)}>
-          <Translate id="features.subheading">FolderRewind 为你的文件提供全方位保护</Translate>
+          <Translate id="features.subheading">FolderRewind 覆盖从备份、同步到安全回滚的完整链路</Translate>
         </p>
         <div className="row">
           {FeatureList.map((props, idx) => (

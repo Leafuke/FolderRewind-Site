@@ -18,8 +18,24 @@ export default function Download(): ReactNode {
           <Translate id="download.heading">下载 FolderRewind</Translate>
         </Heading>
         <p className="text--center text--lg margin-bottom--lg" style={{color: 'var(--ifm-color-emphasis-700)'}}>
-          <Translate id="download.subheading">选择最适合你的安装方式</Translate>
+          <Translate id="download.subheading">优先使用商店版；升级到 v1.5.0 前请先做测试</Translate>
         </p>
+
+        <section className={styles.noticeSection}>
+          <div className={styles.noticeBox}>
+            <Heading as="h2" className={styles.noticeTitle}>
+              <Translate id="download.notice.title">v1.5.0 安装与升级提醒</Translate>
+            </Heading>
+            <p className={styles.noticeText}>
+              <Translate id="download.notice.desc">本版本的备份与还原逻辑发生了破坏性变更。对于旧版本升级场景，请先在测试目录、测试项目或测试存档中验证结果，再投入生产使用。</Translate>
+            </p>
+            <ul className={styles.noticeList}>
+              <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
+              <li><Translate id="download.notice.point2">请勿同时安装商店版与当前页面下载的离线版。</Translate></li>
+              <li><Translate id="download.notice.point3">若必须侧载，请安装后立即做一轮完整备份与还原测试。</Translate></li>
+            </ul>
+          </div>
+        </section>
 
         <div className="row" style={{justifyContent: 'center'}}>
           {/* Microsoft Store */}
@@ -30,7 +46,7 @@ export default function Download(): ReactNode {
               </div>
               <Heading as="h2" className={styles.cardTitle}>Microsoft Store</Heading>
               <span className={styles.badge}><Translate id="download.badge.recommended">推荐</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新，安全沙箱运行，一键安装。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新、安装简单，也更适合作为 v1.5.0 之后的长期安装方式。</Translate></p>
               <Link className="button button--primary button--lg" href={STORE_URL}>
                 <FaWindows style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
                 <Translate id="download.store.btn">打开 Microsoft Store</Translate>
@@ -46,7 +62,7 @@ export default function Download(): ReactNode {
               </div>
               <Heading as="h2" className={styles.cardTitle}>GitHub Release</Heading>
               <span className={styles.badgeAlt}><Translate id="download.badge.sideload">侧载</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.github.desc">下载压缩包并使用 PowerShell 脚本安装。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.github.desc">适合无法使用商店的环境。下载后通过 PowerShell 脚本安装，且不要与商店版并存。</Translate></p>
               <Link
                 className="button button--outline button--primary button--lg"
                 href={GITHUB_RELEASE_URL}>

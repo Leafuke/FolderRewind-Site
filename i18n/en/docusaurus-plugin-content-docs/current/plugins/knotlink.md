@@ -12,7 +12,7 @@ KnotLink is the bridge between FolderRewind and external programs (such as game 
 
 - Notify external program to save before backup
 - Notify external program to reload state after restore
-- Accept external commands to trigger backup or restore
+- Accept external commands to trigger backup or restore, and force a Full backup when needed
 
 ## Plugin integration points
 
@@ -23,6 +23,7 @@ KnotLink is the bridge between FolderRewind and external programs (such as game 
 ## Example commands in MineRewind
 
 - `BACKUP_CURRENT`
+- `BACKUP <config_id> <folder_index|folder_name> [comment] [FORCE_FULL]`
 - `RESTORE_CURRENT_LATEST`
 - `LIST_BACKUPS_CURRENT`
 - `RESTORE_CURRENT`

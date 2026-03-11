@@ -48,6 +48,7 @@ Recommended format:
 ## MineRewind command examples
 
 - `BACKUP_CURRENT`
+- `BACKUP <config_id> <folder_index|folder_name> [comment] [FORCE_FULL]`
 - `RESTORE_CURRENT_LATEST`
 - `LIST_BACKUPS_CURRENT`
 - `RESTORE_CURRENT <backup_file>`
@@ -83,6 +84,28 @@ Response:
 ```text
 OK:Hot restore triggered for 'WorldName' with backup 'save_002.7z'
 ```
+
+### Force one full backup
+
+If the config is currently using Smart Incremental mode but you need a one-off Full backup through remote control, append `FORCE_FULL` to the `BACKUP` command:
+
+Request:
+
+```text
+BACKUP demo_config 0 manual verification FORCE_FULL
+```
+
+Response:
+
+```text
+OK:Backup task queued
+```
+
+Notes:
+
+- `FORCE_FULL` bypasses the current backup mode only for this one remote invocation.
+- It is useful after upgrading old configs, before important milestones, or when you suspect chain issues.
+- Do not put long-running Full backups on high-frequency request paths.
 
 ## Design advice
 

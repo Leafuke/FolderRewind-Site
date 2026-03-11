@@ -12,7 +12,7 @@ KnotLink 是 FolderRewind 与外部程序（如游戏模组、脚本工具）通
 
 - 在备份前通知外部程序执行保存动作。
 - 在还原后通知外部程序重新加载状态。
-- 接收外部命令触发备份或还原任务。
+- 接收外部命令触发备份或还原任务，并在需要时强制执行完整备份。
 
 ## 在插件中的接入点
 
@@ -23,6 +23,7 @@ KnotLink 是 FolderRewind 与外部程序（如游戏模组、脚本工具）通
 ## MineRewind 实战中的命令示例
 
 - `BACKUP_CURRENT`
+- `BACKUP <config_id> <folder_index|folder_name> [comment] [FORCE_FULL]`
 - `RESTORE_CURRENT_LATEST`
 - `LIST_BACKUPS_CURRENT`
 - `RESTORE_CURRENT`

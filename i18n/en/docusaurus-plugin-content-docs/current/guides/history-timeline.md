@@ -44,7 +44,18 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 
 - Star key milestone backups to prevent accidental cleanup.
 - Use notes like "change purpose + date" for better traceability.
+- Prefer deleting history entries inside FolderRewind instead of manually deleting incremental archives in File Explorer.
 - Run "Clear invalid entries" periodically to remove entries whose archives no longer exist.
+
+## Safe Delete (v1.5.0)
+
+When you delete a backup that belongs to a smart incremental chain, FolderRewind can enable **Safe Delete** to merge required content into the successor backup before removing the current one, reducing the chance of a broken restore chain.
+
+Recommendations:
+
+- Keep **Safe Delete** enabled for long-lived Smart Incremental configs.
+- Verify restore results before deleting key milestones.
+- For bulk cleanup, prefer the app workflow instead of deleting archives manually.
 
 ## Rebuild History (v1.4.2)
 
@@ -65,7 +76,7 @@ History entry still exists, but archive was moved or deleted. Run "Clear invalid
 
 ### Restore result is not expected
 
-Verify restore point and restore mode first, then check restore whitelist settings.
+Verify restore point and restore mode first, then check restore whitelist settings. If the config was upgraded from an older version, go back to test data and validate the chain again.
 
 ## Related links
 
