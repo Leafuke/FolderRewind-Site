@@ -66,79 +66,6 @@ function HomepageHero() {
   );
 }
 
-/* ── 版本提醒 ────────────────────────────────────────── */
-function ReleaseNotice() {
-  return (
-    <section className={styles.noticeSection}>
-      <div className="container">
-        <div className={styles.noticeGrid}>
-          <div className={styles.noticeLeadCard}>
-            <p className={styles.noticeEyebrow}>
-              <Translate id="homepage.notice.eyebrow">v1.5.0 重要提醒</Translate>
-            </p>
-            <Heading as="h2" className={styles.noticeTitle}>
-              <Translate id="homepage.notice.title">升级前先测试，不要直接投入生产</Translate>
-            </Heading>
-            <p className={styles.noticeText}>
-              <Translate id="homepage.notice.desc">
-                本版本重构了增量备份与还原逻辑，并新增安全还原机制。对于从旧版本升级的配置，无法 100% 保证行为与此前完全一致；在正式使用前，请先做几轮备份与还原演练。
-              </Translate>
-            </p>
-
-            <ul className={styles.noticeList}>
-              <li>
-                <FaCircleCheck className={styles.checkIcon} />
-                <Translate id="homepage.notice.point1">先在测试目录、测试项目或测试存档中验证备份链与还原结果。</Translate>
-              </li>
-              <li>
-                <FaCircleCheck className={styles.checkIcon} />
-                <Translate id="homepage.notice.point2">Clean 模式可配合安全还原，在异常时自动回滚到初始状态。</Translate>
-              </li>
-              <li>
-                <FaCircleCheck className={styles.checkIcon} />
-                <Translate id="homepage.notice.point3">升级旧配置后，建议立即执行一次手动完整备份作为新的验证基线。</Translate>
-              </li>
-            </ul>
-
-            <div className={styles.noticeLinks}>
-              <Link className={clsx('button button--primary', styles.btnPrimary)} to="/blog/v1.5.0-release">
-                <Translate id="homepage.notice.changelogBtn">查看 v1.5.0 更新日志</Translate>
-              </Link>
-              <Link className={clsx('button button--outline button--primary', styles.btnOutline)} to="/docs/guides/backup-modes">
-                <Translate id="homepage.notice.docsBtn">查看备份与还原说明</Translate>
-                <FaArrowRight style={{marginLeft: '0.4rem', fontSize: '0.8em'}} />
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.noticeSideCard}>
-            <Heading as="h3" className={styles.noticeSideTitle}>
-              <Translate id="homepage.notice.install.title">安装建议</Translate>
-            </Heading>
-            <ul className={styles.noticeList}>
-              <li>
-                <FaWindows className={styles.checkIcon} />
-                <Translate id="homepage.notice.install.point1">建议优先通过 Microsoft Store 下载，后续升级更省心。</Translate>
-              </li>
-              <li>
-                <FaCircleCheck className={styles.checkIcon} />
-                <Translate id="homepage.notice.install.point2">请勿同时安装商店版与当前页面提供的离线版。</Translate>
-              </li>
-            </ul>
-
-            <div className={styles.noticeLinks}>
-              <Link className={clsx('button button--outline button--primary', styles.btnOutline)} to="/download">
-                <Translate id="homepage.notice.install.btn">查看下载方式</Translate>
-                <FaArrowRight style={{marginLeft: '0.4rem', fontSize: '0.8em'}} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ── 用户分层 ──────────────────────────────────────── */
 type Segment = {
   icon: ReactNode;
@@ -309,7 +236,6 @@ export default function Home(): ReactNode {
       description={translate({id: 'homepage.layout.description', message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具'})}>
       <HomepageHero />
       <main>
-        <ReleaseNotice />
         <HomepageSegments />
         <HomepageFeatures />
         <HomepageQuickDemo />

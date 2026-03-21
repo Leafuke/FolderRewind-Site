@@ -1,78 +1,85 @@
 ---
 sidebar_position: 2
 title: First Backup
-description: Complete your first folder backup
+description: Create a config and complete your first backup
 ---
 
 # First Backup
 
-This tutorial walks you through creating a config, adding folders, and finishing your first backup.
+This guide walks through your first verifiable backup workflow. Starting with v1.6.0, you can either create a config manually or create one directly from a template.
 
-## Prerequisite
+## Before you start
 
-- You have completed [Installation](./installation)
+- You have completed [installation](./installation)
+- You know where the backup destination should be
+- You are willing to test the workflow on non-critical data first
 
-## Overview
+## Path A: Create a config manually
 
-1. Create a config
-2. Add folders to protect
-3. Run backup (single folder or all folders)
-4. Verify the backup in history
+1. Click **New Config** on the home page
+2. Choose a config type
+3. Enter a config name
+4. Open the config management page
+5. Click **Add Folder** and choose the folder you want to protect
 
-## 1) Create a config
+This is the best path if you want to understand the product structure first.
 
-1. On the home page, click **New Config**.
-2. Choose a config type:
-	- **Default**: General use (recommended for beginners)
-	- **Encrypted**: Encrypted config (password required during restore)
-	- Other plugin types: Provided by enabled plugins (for example, Minecraft-related types)
-3. Enter a config name.
-4. Confirm and open the generated config card to enter the **Management** page.
+## Path B: Create a config from a template
 
-:::tip About plugin types
-Config types are dynamically extended by plugins. Without plugins, you'll usually only see Default and Encrypted.
-:::
+If you already have reusable rules, or an official template matches your scenario, use this flow:
 
-## 2) Add folders
+1. Click **Create from Template** on the home page
+2. Pick a local template, or search and import an official one first
+3. Confirm the suggested config type
+4. Review the auto-discovered source folders
+5. Select the folders you actually want to include
+6. Create the config
 
-On the **Management** page, click **Add Folder**. You can choose:
+Templates work especially well when:
 
-- **Select a single folder** (most common)
-- **Batch import subfolders** (imports all first-level subfolders under a selected directory)
-- **Scan (plugin auto-discovery)** (plugins discover manageable folders from known structures)
+- you use the same backup policy on multiple devices
+- you want to clone the same strategy across multiple projects
+- you rely on plugins or known directory structures
 
-After adding folders, they appear in the list and are usually marked as "Never backed up" at first.
+## Run your first backup
 
-> **Tip:** A folder is the smallest management unit. One config can contain multiple folders that share the same backup rules.
+On the config management page, you can:
 
-## 3) Run your first backup
+- click **Backup All**
+- or select one folder and click **Backup This Folder**
 
-Choose one:
+After it finishes, open the history view and confirm that a new backup entry was created.
 
-- **Backup All**: runs backup for all folders in the current config.
-- **Backup This Folder**: select one folder and back up only that folder (you can add a backup note).
+## Validate immediately
 
-You can monitor progress on the task page. After completion, a history record is created.
+After the first backup, do at least one of these:
 
-## 4) Verify the result
+### Option A: Manual restore test
 
-1. Select a folder on the management page and click **History Versions**.
-2. Check whether a new history entry appears (time, type, size).
-3. Click **View** to locate the backup file in File Explorer.
+1. Prepare a test restore directory
+2. Pick the backup entry you just created
+3. Run a test restore
+4. Verify that the restored content matches expectations
 
-## Optional: recommended settings before your first backup
+### Option B: Run automatic core validation
 
-In **Config Settings**, consider:
+If you want more than a single-config check, go to Settings and run **Automatic Core Feature Validation**. It covers more important scenarios before you enable long-running automation.
 
-- **Backup Mode**: Full / Smart Incremental / Overwrite
-- **Skip backup when no changes**: avoids unnecessary archives
+## Template-related next steps
 
-## FAQ
+If this config becomes stable, you can:
 
-- No history after backup? Confirm your target path is configured and writable.
-- Plugin scan found nothing? Confirm the plugin is enabled and the selected path matches the plugin's supported structure.
+- save it as a template in config settings
+- export the template to a file
+- browse and import official templates
 
-## Next Steps
+See:
 
-- [First Restore](./first-restore) — Restore files from backup history
-- [Automation](../guides/automation) — Configure scheduled automatic backups
+- [Templates: Create and Use](../guides/templates)
+- [Templates: Share and Import](../guides/template-sharing)
+
+## Next step
+
+- [First Restore](./first-restore)
+- [Automation](../guides/automation)
+- [Templates: Create and Use](../guides/templates)

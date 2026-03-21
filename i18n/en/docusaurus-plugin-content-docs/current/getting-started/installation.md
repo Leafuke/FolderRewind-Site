@@ -1,72 +1,91 @@
 ---
 sidebar_position: 1
 title: Installation Guide
-description: How to install FolderRewind
+description: Install and launch FolderRewind
 ---
 
 # Installation Guide
 
-FolderRewind supports two installation methods: Microsoft Store (recommended) and sideloading.
+FolderRewind supports two installation methods: **Microsoft Store** and **side-loading**.
 
-:::caution v1.5.0 upgrade notice
-This release introduces breaking changes to backup and restore logic. If you are upgrading from an older version, run several backup-and-restore tests before using it in production.
-
-Also, **do not install the Store version and the offline package side by side**. It makes troubleshooting and version tracking unnecessarily confusing.
+:::tip Recommended
+Use the Microsoft Store version whenever possible. It is easier to maintain and less likely to cause version conflicts.
 :::
 
-## Method 1: Microsoft Store (Recommended)
+## Option 1: Microsoft Store
 
-1. Open the link below, or search for "FolderRewind" in Microsoft Store:
+1. Open the [Microsoft Store page](https://apps.microsoft.com/detail/9nwsdgxdqws4)
+2. Click install
+3. Launch FolderRewind from the Start menu after installation
 
-	 <a href="https://apps.microsoft.com/detail/9nwsdgxdqws4" target="_blank">
-		 👉 Install from Microsoft Store
-	 </a>
+> Do not install the Store version and the offline side-loaded package side by side.
 
-2. Click **Get / Install**.
-3. Launch FolderRewind from the Start menu after installation.
+## Option 2: Side-loading
 
-> **Advantages:** Auto-updates, sandboxed security, and one-click install.
-
-## Method 2: Sideload Installation
-
-Best for users who cannot access Microsoft Store. If you already have the Store version installed, do not keep the sideloaded package alongside it.
+This is for users who cannot access Microsoft Store or prefer offline packages.
 
 ### Prerequisites
 
-1. Open **Settings** → **System** → **For developers**.
-2. Enable **Developer Mode**.
-3. Scroll down, expand the **PowerShell** section, and enable the execution policy option.
+1. Open Windows Settings
+2. Go to **System > For Developers**
+3. Enable **Developer Mode**
+4. Allow PowerShell script execution
 
-### Installation Steps
+### Installation steps
 
-1. Go to [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
-2. In the latest release **Assets**, find the package named `FolderRewind_{version}_{platform}.7z`
-3. Download and extract it
-4. Right-click `install.ps1` and choose **Run with PowerShell**
-5. Launch FolderRewind from the Start menu
+1. Open [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
+2. Download the latest package
+3. Extract the archive
+4. Right-click `install.ps1` and run it with PowerShell
+5. Launch FolderRewind after installation
 
-:::tip First launch suggestion
-After your first launch, create a test config, run one backup, and then perform one restore validation to confirm both the target path and the restore result are correct.
-:::
+## New in side-loaded v1.6.0
 
-## System Requirements
+### GitHub mirror source
+
+Starting with v1.6.0, side-loaded builds can switch the preferred **GitHub source / mirror source** in Settings.
+
+This affects:
+
+- app update checks and downloads
+- online template index retrieval
+- template file downloads
+
+Microsoft Store updates are not affected by this setting.
+
+If the official GitHub source is slow in your network environment, switch to a mirror or provide a custom mirror URL.
+
+### Better side-loaded update flow
+
+v1.6.0 also improves the side-loaded update experience, especially when a source is slow or temporarily unavailable.
+
+## What to do right after installation
+
+### 1. Create a test config first
+
+Use a test folder and run one end-to-end backup flow before protecting important data.
+
+### 2. Run automatic core validation
+
+Open **Settings** and run **Automatic Core Feature Validation**. It checks key workflows on the current machine, including:
+
+- backup
+- restore
+- safe delete
+- keep-count cleanup
+- shared-lock file handling
+
+If this is your first run after upgrading to v1.6.0, it is strongly recommended.
+
+## System requirements
 
 | Item | Requirement |
-|------|-------------|
-| OS | Windows 10 1809 (17763) or later / Windows 11 |
+| --- | --- |
+| OS | Windows 10 1809 or later / Windows 11 |
 | Architecture | x64 / ARM64 |
-| Runtime | .NET 10 (bundled in app) |
-| Disk Space | About 180 MB (excluding backup data) |
+| Runtime | .NET 10 (bundled with the app) |
+| Disk space | About 180 MB, excluding backup data |
 
-## Quick Health Check (1 minute)
-
-1. Open the app and confirm the config card area loads.
-2. Click **New Config** and confirm the dialog opens.
-3. Create a test config and complete one manual backup.
-4. Perform one restore validation in a test directory and confirm the result is correct.
-
-If all checks pass, continue with your real config and automation setup.
-
-## Next Step
+## Next step
 
 Continue with [First Backup](./first-backup).

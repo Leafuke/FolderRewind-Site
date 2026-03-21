@@ -422,42 +422,6 @@
   "homepage.hero.trust.openSource": {
     "message": "Free & Open Source"
   },
-  "homepage.notice.eyebrow": {
-    "message": "Important for v1.5.0"
-  },
-  "homepage.notice.title": {
-    "message": "Test first before using it in production"
-  },
-  "homepage.notice.desc": {
-    "message": "This release redesigns incremental backup and restore logic and adds safe restore. For upgraded configs, behavior cannot be guaranteed to match older versions 100%, so run several backup-and-restore drills first."
-  },
-  "homepage.notice.point1": {
-    "message": "Validate backup chains and restore results in a test folder, test project, or test save first."
-  },
-  "homepage.notice.point2": {
-    "message": "In Clean mode, safe restore can create a rollback snapshot before changing the target directory."
-  },
-  "homepage.notice.point3": {
-    "message": "After upgrading old configs, create a manual full backup as your new validation baseline."
-  },
-  "homepage.notice.changelogBtn": {
-    "message": "Read the v1.5.0 changelog"
-  },
-  "homepage.notice.docsBtn": {
-    "message": "Read backup and restore docs"
-  },
-  "homepage.notice.install.title": {
-    "message": "Installation advice"
-  },
-  "homepage.notice.install.point1": {
-    "message": "Microsoft Store is the preferred download channel for ongoing updates."
-  },
-  "homepage.notice.install.point2": {
-    "message": "Do not install the Store version and the offline package at the same time."
-  },
-  "homepage.notice.install.btn": {
-    "message": "See download options"
-  },
   "homepage.segment.gamer.title": {
     "message": "Gamers"
   },

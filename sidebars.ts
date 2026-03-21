@@ -19,6 +19,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'guides/backup-modes',
         'guides/backup-file-spec',
+        'guides/templates',
+        'guides/template-sharing',
         'guides/automation',
         'guides/encryption',
         'guides/filters',
