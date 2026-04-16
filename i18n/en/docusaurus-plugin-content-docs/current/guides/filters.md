@@ -23,6 +23,8 @@ FolderRewind has two filter groups:
 
 Blacklist rules apply during file scan. Common use cases include cache, logs, and temporary files.
 
+In v1.6.1, matching behavior for blacklist/whitelist was tightened to reduce overly broad matches. Prefer writing more precise rules.
+
 ### Supported matching methods
 
 - Exact filename match (for example `latest.log`)
@@ -41,6 +43,8 @@ Blacklist rules apply during file scan. Common use cases include cache, logs, an
 During **Clean Restore**, FolderRewind cleans the target directory first.
 Items in whitelist are preserved during cleanup.
 
+v1.6.1 also fixes the issue where full-path whitelist entries could fail to apply. Full-path rules are now reliable for precise preservation.
+
 ### Typical use cases
 
 - Preserve local config files
@@ -57,6 +61,8 @@ Items in whitelist are preserved during cleanup.
 - Run one manual backup and verify results after adding rules.
 - Start with precise rules, then broaden if needed.
 - Validate regex on a small scope before production use.
+- Avoid a single broad rule that effectively covers an entire parent directory.
+- For critical preserved items, prefer full-path rules to reduce ambiguity.
 
 ## FAQ
 

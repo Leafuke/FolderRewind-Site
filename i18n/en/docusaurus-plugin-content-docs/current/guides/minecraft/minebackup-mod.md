@@ -104,6 +104,8 @@ Handshake stage:
 
 ## 4) Full command reference (`/mb`)
 
+> In v1.7.0, the `LIST_WORLDS` remote command parsing issue has been fixed. If this command was unstable in older versions, upgrade and retest.
+
 | Category | Command | Description |
 |---|---|---|
 | Local save | `/mb save` | Immediately saves all loaded dimensions on current server |

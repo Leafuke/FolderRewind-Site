@@ -19,7 +19,7 @@ Windows 10 1809 (17763) and above, including Windows 11. Supports x64 and ARM64 
 
 Do **not** install the Store version and the offline package side by side. If you need to switch channels, uninstall first or at least make sure you clearly know which build you are actually running.
 
-### What should I watch out for when upgrading to v1.5.0 from an older version?
+### What should I watch out for when upgrading from an older version?
 
 This release introduces breaking changes to backup and restore logic, so upgraded behavior cannot be guaranteed to match older versions 100%.
 
@@ -61,7 +61,19 @@ Yes. Backups run in the background.
 
 ### Can FolderRewind sync backups to the cloud?
 
-Yes. Current versions can invoke **rclone** and other third-party tools to sync backup directories to cloud or external storage.
+Yes. Since v1.7.0, cloud-archive workflow support is complete. The recommended path is syncing backup directories to OneDrive (or other cloud storage) via **rclone**.
+
+Main entry points are:
+
+- enable post-backup auto cloud upload in Config Settings
+- use "Sync this config from cloud" for config-level sync
+- use per-item upload/download actions in History page
+
+Note: history-page manual upload/download is available in rclone mode only.
+
+Start here:
+
+- [Cloud Archive Guide](./guides/cloud-archive)
 
 ### Why did auto backup stop unexpectedly?
 

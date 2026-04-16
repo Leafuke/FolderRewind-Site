@@ -336,13 +336,13 @@
     "message": "Download FolderRewind"
   },
   "download.subheading": {
-    "message": "Use Microsoft Store first, and test v1.5.0 before production"
+    "message": "Use Microsoft Store first, then run a test before production"
   },
   "download.notice.title": {
-    "message": "v1.5.0 installation and upgrade notice"
+    "message": "Installation and upgrade notice"
   },
   "download.notice.desc": {
-    "message": "This release introduces breaking changes to backup and restore logic. If you are upgrading from an older version, validate the result in a test folder, test project, or test save before using it in production."
+    "message": "Version upgrades may adjust backup and restore behavior details. If you are upgrading from an older version, validate the result in a test folder, test project, or test save before using it in production."
   },
   "download.notice.point1": {
     "message": "Microsoft Store is recommended first for smoother upgrades."
@@ -357,7 +357,7 @@
     "message": "Recommended"
   },
   "download.store.desc": {
-    "message": "Auto updates, simpler installation, and the recommended long-term option for v1.5.0+."
+    "message": "Auto updates, simpler installation, and the recommended long-term installation option."
   },
   "download.store.btn": {
     "message": "Open Microsoft Store"

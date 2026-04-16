@@ -8,8 +8,8 @@ description: Restore your files from a backup
 
 Learn how to restore a folder to any historical state.
 
-:::caution v1.5.0 upgrade notice
-This release redesigns incremental backup and restore logic. For configs upgraded from older versions, validate restore results in a test directory first.
+:::caution Upgrade notice
+For configs upgraded from older versions, validate restore results in a test directory first.
 :::
 
 ## Steps

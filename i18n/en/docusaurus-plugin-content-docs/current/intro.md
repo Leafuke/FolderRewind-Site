@@ -12,7 +12,7 @@ Welcome to **FolderRewind (Backup Time Machine)**. It is a modern backup tool fo
 The current English documentation is AI-translated and may contain inaccuracies. Please double-check key details before applying them in production.
 :::
 
-:::caution v1.6.0 upgrade notice
+:::caution Upgrade recommendation
 If you are upgrading from an older version, run several backup-and-restore drills in a test directory before relying on the new version in production.
 :::
 
@@ -25,6 +25,8 @@ FolderRewind can help you:
 - use **automatic core feature validation** to verify that backup, restore, safe delete, and related workflows work correctly on the current machine
 - create and reuse **config templates** that preserve backup policy, filters, and path rules
 - use **template sharing, importing, and official template search** to deploy the same setup across devices or users
+- use **cloud archive workflow (rclone)** to sync local backup directories to OneDrive or other cloud storage
+- use **settings search and runtime status display** to find options faster and understand current app state
 - configure a **GitHub mirror source** for side-loaded builds to improve update checks and online template access
 - extend the app through the **plugin system**, especially for scenarios like Minecraft
 
@@ -59,7 +61,23 @@ After opening the config management page:
 
 This helps catch environment, path, permission, or toolchain issues early.
 
-## Important new capabilities in v1.6.0
+## Recent capabilities worth attention
+
+### v1.7.0: cloud archive and automation upgrades
+
+v1.7.0 focuses on long-running and multi-device workflows:
+
+- complete cloud archive workflow support (recommended with rclone)
+- auto backup can target selected items instead of always running full-config scope
+- condition-based backup mode (for example, trigger backup after game exit)
+- expanded template path-rule coverage
+- settings page search and runtime status display
+
+If you plan to enable cloud sync, start here:
+
+- [Cloud Archive Guide](./guides/cloud-archive)
+
+### v1.6.0: template workflow
 
 ### Template workflow
 
@@ -74,7 +92,7 @@ v1.6.0 adds a complete template workflow:
 
 If you maintain multiple similar configs, this can remove a lot of repeated setup work.
 
-### Automatic core feature validation
+### v1.6.0: automatic core feature validation
 
 Settings now includes **Automatic Core Feature Validation**. It creates a temporary workspace and validates:
 
@@ -96,3 +114,4 @@ This is especially useful after upgrading, changing machines, or before enabling
 - [Templates: Create and Use](./guides/templates)
 - [Templates: Share and Import](./guides/template-sharing)
 - [Automation](./guides/automation)
+- [Cloud Archive Guide](./guides/cloud-archive)

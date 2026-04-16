@@ -22,6 +22,8 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 - Edit notes
 - Locate backup file in File Explorer
 - Restore or delete history entries
+- Upload a single history entry to cloud
+- Download a single history entry from cloud back to local backup storage
 
 ## Filtering and visualization
 
@@ -47,7 +49,28 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 - Prefer deleting history entries inside FolderRewind instead of manually deleting incremental archives in File Explorer.
 - Run "Clear invalid entries" periodically to remove entries whose archives no longer exist.
 
-## Safe Delete (v1.5.0)
+## Cloud copy operations
+
+Each history row exposes two cloud actions:
+
+- Upload to cloud
+- Download from cloud
+
+Behavior summary:
+
+- Upload is enabled only when the local archive exists.
+- Download is enabled only when the entry has cloud-copy metadata.
+- A cloud icon indicates cloud copy availability; "cloud only" means local archive is missing but cloud copy exists.
+- In legacy custom-command mode, history-page cloud actions are unavailable (rclone mode only).
+
+Recommended sequence:
+
+1. For cloud-only entries, download from cloud first.
+2. Restore after local archive is available.
+
+If metadata is reported as partial, archive transfer may still have succeeded. Usually it means archive is present while metadata is incomplete.
+
+## Safe Delete
 
 When you delete a backup that belongs to a smart incremental chain, FolderRewind can enable **Safe Delete** to merge required content into the successor backup before removing the current one, reducing the chance of a broken restore chain.
 
@@ -57,7 +80,7 @@ Recommendations:
 - Verify restore results before deleting key milestones.
 - For bulk cleanup, prefer the app workflow instead of deleting archives manually.
 
-## Rebuild History (v1.4.2)
+## Rebuild History
 
 If history records are accidentally removed, migration is incomplete, or only backup archives remain, you can use **Rebuild History** to regenerate history entries from backup files.
 
@@ -83,3 +106,4 @@ Verify restore point and restore mode first, then check restore whitelist settin
 - [First Restore](../getting-started/first-restore)
 - [Filter Rules](./filters)
 - [Backup File Specification](./backup-file-spec)
+- [Cloud Archive Guide](./cloud-archive)

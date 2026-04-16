@@ -8,8 +8,8 @@ description: Learn about the three backup modes in FolderRewind
 
 FolderRewind provides multiple backup methods powered by the 7-Zip engine, designed for different scenarios.
 
-:::caution v1.5.0 compatibility note
-This release changes how incremental backup and restore work. If you upgraded from an older version, revalidate backup chains and restore results with test data before using them in production.
+:::caution Upgrade compatibility note
+If you upgraded from an older version, revalidate backup chains and restore results with test data before using them in production.
 :::
 
 ## Quick recommendation
@@ -29,7 +29,7 @@ This release changes how incremental backup and restore work. If you upgraded fr
 :::note Note
 "Smart Incremental" in product wording corresponds to Incremental/Smart behavior in code.
 
-In v1.5.0, chain generation, truncation, and restore behavior have changed, so upgraded configs should be revalidated once.
+Across major updates, chain generation, truncation, and restore behavior may change, so upgraded configs should always be revalidated once.
 :::
 
 ## How to configure

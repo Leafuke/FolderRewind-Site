@@ -55,7 +55,16 @@ Template path rules try to locate matching folders on the current machine, for e
 - fixed project structures under user folders
 - paths that contain specific marker files or subdirectories
 
+Starting in v1.7.0, template path rules support broader combinations, such as:
+
+- fixed path + optional child path
+- marker-file detection (match only when specific files exist)
+- ordered fallback matching (precise rules first, broad rules later)
+- compatibility rules for different machine directory layouts
+
 FolderRewind does not silently add those folders. It presents them as candidates for confirmation first, which is much safer.
+
+> Put precise rules first and fallback rules later to reduce false-positive matches.
 
 ## Templates and plugins
 
@@ -95,6 +104,12 @@ If you plan to deploy automation on multiple devices, build the template first, 
 ### Re-check templates after major upgrades
 
 If a release changes assumptions around retention, filters, or backup behavior, review your templates before reusing them at scale.
+
+For v1.7.0, also review:
+
+- whether path-rule matches still align with expectation
+- whether selected auto-backup targets should be narrowed
+- whether condition-based backup triggers should be added
 
 ## Related links
 

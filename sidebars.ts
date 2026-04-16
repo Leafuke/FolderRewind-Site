@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         'guides/templates',
         'guides/template-sharing',
         'guides/automation',
+        'guides/cloud-archive',
         'guides/encryption',
         'guides/filters',
         'guides/history-timeline',

@@ -18,16 +18,16 @@ export default function Download(): ReactNode {
           <Translate id="download.heading">下载 FolderRewind</Translate>
         </Heading>
         <p className="text--center text--lg margin-bottom--lg" style={{color: 'var(--ifm-color-emphasis-700)'}}>
-          <Translate id="download.subheading">优先使用商店版；升级到 v1.5.0 前请先做测试</Translate>
+          <Translate id="download.subheading">优先使用商店版；升级后先做测试再上生产</Translate>
         </p>
 
         <section className={styles.noticeSection}>
           <div className={styles.noticeBox}>
             <Heading as="h2" className={styles.noticeTitle}>
-              <Translate id="download.notice.title">v1.5.0 安装与升级提醒</Translate>
+              <Translate id="download.notice.title">安装与升级提醒</Translate>
             </Heading>
             <p className={styles.noticeText}>
-              <Translate id="download.notice.desc">本版本的备份与还原逻辑发生了破坏性变更。对于旧版本升级场景，请先在测试目录、测试项目或测试存档中验证结果，再投入生产使用。</Translate>
+              <Translate id="download.notice.desc">版本升级可能会调整备份与还原的细节行为。对于旧版本升级场景，请先在测试目录、测试项目或测试存档中验证结果，再投入生产使用。</Translate>
             </p>
             <ul className={styles.noticeList}>
               <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
@@ -46,7 +46,7 @@ export default function Download(): ReactNode {
               </div>
               <Heading as="h2" className={styles.cardTitle}>Microsoft Store</Heading>
               <span className={styles.badge}><Translate id="download.badge.recommended">推荐</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新、安装简单，也更适合作为 v1.5.0 之后的长期安装方式。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新、安装简单，也更适合作为长期安装方式。</Translate></p>
               <Link className="button button--primary button--lg" href={STORE_URL}>
                 <FaWindows style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
                 <Translate id="download.store.btn">打开 Microsoft Store</Translate>
@@ -97,7 +97,7 @@ export default function Download(): ReactNode {
             <div className={styles.sysReqCard}>
               <div className={styles.sysReqIcon}><FaHardDrive /></div>
               <div className={styles.sysReqLabel}><Translate id="download.sysreq.disk">磁盘空间</Translate></div>
-              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">约 180 MB（不含备份数据）</Translate></div>
+              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">约 80 MB（不含备份数据）</Translate></div>
             </div>
           </div>
         </section>
