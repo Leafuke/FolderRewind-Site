@@ -4,40 +4,86 @@ title: 云存档功能介绍
 description: 基于源码行为的云存档实战指南（设置页、配置页、历史页）
 ---
 
-本页内容部分由AI自动生成，难免有不准确或过时的地方，请以实际软件行为为准，并欢迎提交 PR 纠正。
-
 # 云存档功能介绍
 
-这份文档不是“泛泛而谈的 rclone 教程”，而是按 FolderRewind 当前源码行为整理的实战说明。
+FolderRewind 的云存档功能是基于 rclone 这一成熟的命令行云同步工具实现的。它不是简单地把备份文件上传到云盘，而是提供了一套完整的云存档工作流，支持自动上传、按需同步、历史记录联动等能力。
+Rclone 支持多种云存储服务，包括 OneDrive、Google Drive、Dropbox 等，但如果你希望使用百度网盘、阿里云盘等国内服务，可以配合 OpenList 等工具来实现。
 
-重点覆盖三条真实链路：
+- [BiliBili视频讲解](https://www.bilibili.com/video/BV1o2dWBeE3y)
 
-- 配置设置页（云页）如何配置与执行
-- 配置级“从云同步此配置”对话框怎么工作
-- 历史记录页里的云上传/云下载按钮如何生效
+## 一、下载 Rclone 并添加到 FolderRewind 的环境中
 
-从 v1.7.0 开始，FolderRewind 的云存档能力已经形成完整闭环：
+在 [Rclone 官网](https://rclone.org/downloads/) 下载适合你系统的版本（Windows 用户通常选择 amd64 版本）。下载后将 `rclone.exe` 解压放到一个固定的目录下，例如 `C:\Tools\rclone\`，并建议将该目录加入系统 PATH 以便在命令行中直接使用 `rclone` 命令。
 
-- 备份完成后自动云上传（可选）
-- 历史页对单条历史做上传/下载（手动）
-- 配置级“先分析再同步”拉取流程（可同步历史，或历史+备份）
+完成安装后，你需要在 FolderRewind 的设置页中配置 rclone 的路径:
 
-## 一、先建立正确心智模型
+- 设置页 -> 工具与依赖 -> 运行环境 -> rclone 路径 ，你可以在此处设置 **全局** rclone 路径，这样在配置页里就可以直接使用云功能而不需要每次都指定 rclone 的位置。
+- 配置管理页 ->  配置设置 -> 云  -> 程序路径，如果你想为某个特定配置使用不同版本的 rclone，可以在这里覆盖全局设置。
 
-FolderRewind 的云存档不是“把业务逻辑搬到云盘执行”，而是两层分工：
+## 二、配置 rclone 连接你的云存储服务
 
-1. **FolderRewind**：负责在本地生成可还原的备份链
-2. **rclone**：负责执行实际的云端传输命令
+虽然FR会帮你完成大部分工作，但是第一步的初始配置还是要你自己来的。Rclone是命令行工具。以下列举几种常见云服务的配置方式：
 
-所以云端是“冗余层”，不是主备份引擎本身。
+打开你解压到的那个文件夹如下，在文件夹地址栏输入 cmd 然后回车。
 
-建议顺序永远是：
+![在文件夹地址栏输入 cmd 打开命令行](/img/docs/guides/cloud-archive-rclone-folder-cmd.png)
 
-1. 先把本地备份/还原链路跑通
-2. 再启用云上传
-3. 最后再做跨设备验证
+然后输入 rclone config 回车。输入 n 回车。输入一个英文名称如下图。回车。
 
-## 二、云端数据结构（非常关键）
+![rclone config 新建远端配置](/img/docs/guides/cloud-archive-rclone-config-new-remote.png)
+
+选择一个数字，回车。这里有67种选择，包含了 OneDrive、DropBox等网盘。
+
+1. OneDrive (个人)
+
+选择 OneDrive 选项（在我这个版本中是41）回车。然后继续回车（`client_id`使用默认值）继续回车（`client_secret`使用默认值）。输入1然后回车。继续回车（默认值）。输入n回车。输入y回车——
+
+![OneDrive 配置过程中的关键选项](/img/docs/guides/cloud-archive-onedrive-config-steps.png)
+
+最后这一个回车会打开你的浏览器，让你登录微软账号。
+
+咋们继续。。1回车、2回车、y回车、y回车。好了，结束了。
+
+![OneDrive 远端配置完成确认界面](/img/docs/guides/cloud-archive-onedrive-finish.png)
+
+2. 百度网盘
+
+Rclone 官方不直接支持百度网盘，但你可以使用 OpenList 这样的工具来桥接。首先在 OpenList 中配置好你的百度网盘账号，然后在 rclone 中选择 WebDAV 选项，填写 OpenList 提供的 WebDAV URL、用户名和密码即可连接到你的百度网盘。以下是具体步骤：
+- [OpenList官方文档](https://doc.oplist.org.cn/)
+
+- 下载并安装 OpenList：
+  - GitHub：https://github.com/OpenListTeam/OpenList/releases
+  - 选择适合你系统的版本（Windows用户一般选择`openlist-windows-amd64.zip`
+）下载并安装。
+
+- 在 OpenList 中配置好你的百度网盘账号
+
+打开你解压到的那个文件夹，在文件夹地址栏输入 cmd 然后回车。
+输入 openlist server 回车。会显示 WebDAV 的访问地址、用户名和密码。
+
+![OpenList 启动后显示 WebDAV 地址与账号信息](/img/docs/guides/cloud-archive-openlist-server-webdav.png)
+
+打开浏览器，在地址栏输入 `localhost:5244` 回车，输入你在刚才看到的用户名admin和密码登录。
+点击管理 -> 添加存储 -> 选择百度网盘 -> 挂载路径填写 `/baidu` -> 打开[OpenList Token 获取工具](https://api.oplist.org/) -> 选择百度网盘验证登录 -> 勾选使用 OpenList 提供的参数 -> 点击获取token -> 复制获取到的刷新令牌 -> 粘贴到 OpenList 的配置页（刷新令牌） -> 点击保存。
+
+![OpenList 中添加百度网盘存储配置](/img/docs/guides/cloud-archive-openlist-baidu-storage-config.png)
+![OpenList Token 获取结果示例](/img/docs/guides/cloud-archive-openlist-token-result.png)
+
+- 在 rclone 中配置 WebDAV 连接 OpenList
+
+在 rclon 中继续配置。承接上文，选择 `WebDAV` 选项（在我这个版本中是 `62`）回车。
+输入 `http://localhost:5244/dav`）回车，输入 OpenList 提供的用户名（例如 `admin`）回车，输入y回车，输入 OpenList 提供的密码回车。直接回车默认。输入 `n` 回车，输入 `y` 回车。
+
+
+## 三、配置 FolderRewind 使用某个 rclone 的配置
+
+回到 FolderRewind 的设置页，配置默认远端基路径或者配置页的独立设置。远端基路径。
+
+默认值为 `remote:FolderRewind`，其中 `remote` 是你在 rclone config 中设置的远程名称（例如 `fr_onedrive`）。你可以根据需要修改这个路径，例如 `fr_onedrive:FolderRewind`。这样，当你在 FolderRewind 中使用云功能时，它会将备份文件上传到 `fr_onedrive` 这个远程的 `FolderRewind` 目录下。  
+如果是利用 OpenList 的网盘，远端基路径中间需要额外多一项挂载路径，如本例中可以写 `fr_baidu:/baidu/FolderRewind`，这样 FolderRewind 就会把备份文件上传到 OpenList 挂载的百度网盘目录下的 `FolderRewind` 文件夹中。
+
+
+## 四、云端数据结构
 
 默认建议远端基路径形态：
 
@@ -63,74 +109,7 @@ remote:FolderRewind
 - 归档包和 metadata 会分别同步
 - `history.json` 在远端基路径根下，用于跨设备历史分析与导入
 - metadata 不完整时，程序仍优先处理归档包，并给出“metadata 未完整同步”的警告
-
-## 三、rclone 初始配置（以 OneDrive 为例）
-
-下面只讲你需要的初始配置流程：`rclone config`。
-
-### 1) 下载与安装
-
-- 下载地址：https://rclone.org/downloads/
-- Windows 常用版本：amd64
-- 将 `rclone.exe` 放到固定目录（例如 `C:\Tools\rclone\`）
-- 建议加入 PATH
-
-验证：
-
-```powershell
-rclone version
-```
-
-### 2) 执行 rclone config
-
-```powershell
-rclone config
-```
-
-典型流程（OneDrive）：
-
-1. `n` 新建 remote
-2. 命名（示例：`fr_onedrive`）
-3. 选择存储类型 OneDrive
-4. Client ID/Secret 留空走默认（普通用户即可）
-5. advanced config 先选 `n`
-6. 浏览器授权登录微软账号
-7. 选择 drive 类型（个人版/商业版）和目标 drive
-8. `y` 保存，`q` 退出
-
-验证 remote：
-
-```powershell
-rclone lsd fr_onedrive:
-```
-
-### 3) 在 FR 中建议使用的远端基路径
-
-完成 OneDrive remote 后，FR 里推荐填写：
-
-```text
-fr_onedrive:FolderRewind
-```
-
-这样 FR 在不同页面都能复用同一基路径语义。
-
-## 四、设置页（全局）先配好两项
-
-路径：设置页 -> 工具与依赖 -> 运行环境
-
-### 1) rclone 路径
-
-- 字段：`rclone 路径`
-- 作用：云导入/导出与未单独指定程序路径的配置，会优先使用这里的全局 rclone
-
-### 2) 默认远端基路径
-
-- 字段：`默认远端基路径`
-- 作用：
-	- 新建配置时的云端默认路径
-	- 设置页“导入/导出到云端”弹窗的默认值
-
-建议把这两项先配好，再进入配置页做细化。
+- 这个结构和 FR 本地备份库的结构是一致的，便于理解和排查
 
 ## 五、配置设置页（云页）逐项说明
 
