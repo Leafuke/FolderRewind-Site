@@ -76,6 +76,7 @@ const sidebars: SidebarsConfig = {
           label: '插件开发',
           items: [
             'plugins/developing/quick-start',
+            'plugins/developing/tutorial',
             'plugins/developing/plugin-api',
             'plugins/developing/hotkey-api',
             'plugins/developing/knotlink-api',
