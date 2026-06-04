@@ -6,10 +6,10 @@ description: Get started with FolderRewind in 5 minutes
 
 # Quick Start
 
-Welcome to **FolderRewind (Backup Time Machine)**. It is a modern backup tool for important files, project data, and game saves, and also the successor to MineBackup.
+Welcome to **FolderRewind** — a modern backup tool for important files, project data, and game saves. FolderRewind is the successor to MineBackup.
 
-:::caution About the English docs
-The current English documentation is AI-translated and may contain inaccuracies. Please double-check key details before applying them in production.
+:::caution Note
+English is a secondary language for this project — if you spot inaccuracies, contributions are welcome.
 :::
 
 :::caution Upgrade recommendation
@@ -76,8 +76,6 @@ v1.7.0 focuses on long-running and multi-device workflows:
 If you plan to enable cloud sync, start here:
 
 - [Cloud Archive Guide](./guides/cloud-archive)
-
-### v1.6.0: template workflow
 
 ### Template workflow
 
