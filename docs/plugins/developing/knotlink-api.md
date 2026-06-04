@@ -1,124 +1,209 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: KnotLink Command API
-description: IFolderRewindKnotLinkCommandHandler 接口与命令处理模式
+description: IFolderRewindKnotLinkCommandHandler 与参数化命令接口说明
 ---
 
 # KnotLink Command API
 
-实现 `IFolderRewindKnotLinkCommandHandler` 后，插件可扩展 Host 可识别的 KnotLink 命令。
+实现 `IFolderRewindKnotLinkCommandHandler` 后，插件可扩展 FolderRewind 的 KnotLink 命令集。外部工具（游戏模组、脚本、远程控制面板）可通过 TCP 协议向 FolderRewind 发送命令。
 
-## 接口
+## 接口定义
 
-- `GetKnotLinkCommandDefinitions()`：声明命令名与说明
-- `TryHandleKnotLinkCommandAsync(...)`：按命令分发处理
-
-## 推荐分发结构
-
-建议用 `switch`（或映射表）按命令大写分发：
+### 基础命令接口
 
 ```csharp
-return command.ToUpperInvariant() switch
+public interface IFolderRewindKnotLinkCommandHandler
 {
-	"PING" => HandlePingAsync(args, hostContext),
-	"BACKUP_CURRENT" => HandleBackupAsync(args, settingsValues, hostContext),
-	_ => Task.FromResult<string?>(null)
-};
+    IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions();
+
+    Task<string?> TryHandleKnotLinkCommandAsync(
+        string command,
+        string args,
+        string rawCommand,
+        IReadOnlyDictionary<string, string> settingsValues,
+        PluginHostContext hostContext);
+}
 ```
 
-返回 `null` 代表“本插件不处理该命令”，Host 可继续尝试其他处理者。
+### 参数化命令接口（新版）
 
-## 返回约定
+```csharp
+public interface IFolderRewindParameterizedKnotLinkCommandHandler
+{
+    Task<PluginParameterizedKnotLinkCommandResult?> TryHandleParameterizedKnotLinkCommandAsync(
+        KnotLinkCommandRequest request,
+        IReadOnlyDictionary<string, string> settingsValues,
+        PluginHostContext hostContext);
+}
+```
 
-- 返回 `null`：表示不处理该命令
-- 返回字符串：表示已处理并作为响应返回
+参数化接口支持结构化请求参数，适合需要复杂输入的命令。两个接口可以同时实现，Host 优先调用参数化版本。
 
-建议使用统一格式：
+## 数据类型
+
+### PluginKnotLinkCommandDefinition
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `Command` | `string` | 命令名（不区分大小写），如 `"BACKUP_CURRENT"` |
+| `Description` | `string?` | 命令说明（用于文档或未来 UI 展示） |
+
+### PluginParameterizedKnotLinkCommandResult
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `Handled` | `bool` | 插件是否已处理此命令 |
+| `Response` | `string?` | 返回给调用方的响应文本。为空时 Host 补成 `"OK:"` |
+
+静态属性 `NotHandled` 返回 `{ Handled = false, Response = null }`。
+
+## 推荐分发模式
+
+```csharp
+public Task<string?> TryHandleKnotLinkCommandAsync(
+    string command, string args, string rawCommand,
+    IReadOnlyDictionary<string, string> settingsValues,
+    PluginHostContext hostContext)
+{
+    return command.ToUpperInvariant() switch
+    {
+        "MY_BACKUP" => HandleBackupAsync(args, hostContext),
+        "MY_RESTORE" => HandleRestoreAsync(args, hostContext),
+        "MY_LIST" => HandleListAsync(hostContext),
+        _ => Task.FromResult<string?>(null) // null = 不处理
+    };
+}
+```
+
+## 返回值约定
+
+- 返回 `null`：本插件不处理此命令，Host 继续尝试其他处理者
+- 返回字符串：已处理，作为响应返回
+
+建议统一格式：
 
 - 成功：`OK:<message>`
 - 失败：`ERROR:<reason>`
 
-## 命令实现建议
+## 完整示例
 
-- 快速返回：耗时操作放入后台任务
-- 参数校验：缺少参数时直接返回 `ERROR:Missing ...`
-- 幂等与状态：避免重复触发同一长流程
-- 可观测性：对关键路径写日志并广播状态事件
+```csharp
+public class MyPlugin : IFolderRewindPlugin, IFolderRewindKnotLinkCommandHandler
+{
+    private PluginHostContext? _hostContext;
 
-## MineRewind 命令示例
+    public void SetHostContext(PluginHostContext hostContext)
+    {
+        _hostContext = hostContext;
+    }
 
-- `BACKUP_CURRENT`
-- `BACKUP <config_id> <folder_index|folder_name> [comment] [FORCE_FULL]`
-- `RESTORE_CURRENT_LATEST`
-- `LIST_BACKUPS_CURRENT`
-- `RESTORE_CURRENT <backup_file>`
+    public IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions()
+    {
+        return new List<PluginKnotLinkCommandDefinition>
+        {
+            new() { Command = "MY_BACKUP", Description = "触发备份" },
+            new() { Command = "MY_LIST", Description = "列出备份" }
+        };
+    }
 
-这些命令配合 KnotLink 广播实现“保存-退出-还原-重进”链路。
+    public Task<string?> TryHandleKnotLinkCommandAsync(
+        string command, string args, string rawCommand,
+        IReadOnlyDictionary<string, string> settingsValues,
+        PluginHostContext hostContext)
+    {
+        return command.ToUpperInvariant() switch
+        {
+            "MY_BACKUP" => HandleBackupAsync(args, hostContext),
+            "MY_LIST" => HandleListAsync(hostContext),
+            _ => Task.FromResult<string?>(null)
+        };
+    }
 
-## 请求/响应示例
+    private Task<string?> HandleBackupAsync(string args, PluginHostContext hostContext)
+    {
+        try
+        {
+            // 耗时操作放入后台，立即返回
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    // ... 执行备份 ...
+                    hostContext.LogInfo("备份完成");
+                    hostContext.BroadcastEvent("event=my_backup_complete;status=success");
+                }
+                catch (Exception ex)
+                {
+                    hostContext.LogError($"备份失败: {ex.Message}");
+                }
+            });
 
-### 列出当前活跃世界备份
+            return Task.FromResult<string?>("OK:Backup started");
+        }
+        catch (Exception ex)
+        {
+            return Task.FromResult<string?>($"ERROR:{ex.Message}");
+        }
+    }
 
-请求：
-
-```text
-LIST_BACKUPS_CURRENT
+    private Task<string?> HandleListAsync(PluginHostContext hostContext)
+    {
+        // 快速操作可同步返回
+        var backups = new[] { "backup_001.7z", "backup_002.7z" };
+        return Task.FromResult<string?>($"OK:{string.Join(';', backups)}");
+    }
+}
 ```
 
-响应：
+## MineRewind 命令参考
+
+MineRewind 实现了以下命令：
+
+| 命令 | 说明 |
+|------|------|
+| `BACKUP_CURRENT` | 备份当前活跃的 Minecraft 世界 |
+| `RESTORE_CURRENT_LATEST` | 热还原当前世界到最新备份 |
+| `LIST_BACKUPS_CURRENT` | 列出当前世界的所有备份 |
+| `RESTORE_CURRENT <file>` | 热还原当前世界到指定备份 |
+| `RESTORE_CURRENT_WITH_DATA [file]` | 热还原并保留玩家数据 |
+
+以及模组内部信号：`HANDSHAKE_RESPONSE`、`WORLD_SAVED`、`WORLD_SAVE_AND_EXIT_COMPLETE`、`REJOIN_RESULT`。
+
+### 请求/响应示例
+
+**列出备份：**
 
 ```text
-OK:save_001.7z;save_002.7z
+> LIST_BACKUPS_CURRENT
+< OK:save_001.7z;save_002.7z
 ```
 
-### 指定备份热还原
-
-请求：
+**指定备份热还原：**
 
 ```text
-RESTORE_CURRENT save_002.7z
+> RESTORE_CURRENT save_002.7z
+< OK:Hot restore triggered for 'WorldName' with backup 'save_002.7z'
 ```
 
-响应：
+**强制完整备份：**
 
 ```text
-OK:Hot restore triggered for 'WorldName' with backup 'save_002.7z'
+> BACKUP demo_config 0 手动校验 FORCE_FULL
+< OK:Backup task queued
 ```
 
-### 强制执行一次完整备份
-
-当配置当前处于智能增量模式，但你希望通过远程命令临时执行一次 Full 备份时，可在 `BACKUP` 命令末尾追加 `FORCE_FULL`：
-
-请求：
-
-```text
-BACKUP demo_config 0 手动校验 FORCE_FULL
-```
-
-响应：
-
-```text
-OK:Backup task queued
-```
-
-说明：
-
-- `FORCE_FULL` 会绕过当前配置的备份模式，仅对本次远程触发生效。
-- 建议在升级旧配置、准备重要里程碑或怀疑增量链异常时使用。
-- 不要把长时间运行的完整备份放在高频请求路径里。
+参见 `MinecraftSavesPlugin.KnotLink.cs` 获取完整实现。
 
 ## 设计建议
 
-- 快速返回，耗时任务丢到后台执行
-- 命令参数要先校验再执行
-- 给关键路径打日志并广播状态事件
-
-## 与专题文档联动
-
-- 使用视角：见 [KnotLink 与联动模组](../../guides/minecraft/knotlink-mod)
-- 运行链路：见 [热还原机制详解](../../guides/minecraft/hot-restore)
+- **快速返回**：耗时操作放入 `Task.Run`，立即返回 `OK:` 接受请求
+- **参数校验**：缺少参数时返回 `ERROR:Missing ...`
+- **幂等与状态**：避免重复触发同一长流程
+- **可观观测性**：对关键路径写日志并广播状态事件
 
 ## 相关链接
 
 - [KnotLink 协议与联动](../knotlink)
 - [Plugin API 参考](./plugin-api)
+- [实战教程](./tutorial)
