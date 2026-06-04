@@ -10,13 +10,13 @@ This page is for everyday users who want stable plugin usage.
 
 ## Installation methods
 
-## 1) Install from plugin marketplace
+### 1) Install from plugin marketplace
 
 1. Open **Plugin Management** in FolderRewind.
 2. Select the target plugin and install.
 3. Restart the app when prompted.
 
-## 2) Local ZIP install
+### 2) Local ZIP install
 
 1. Download plugin package (usually `.zip`).
 2. In Plugin Management, choose **Local Install**.
@@ -40,12 +40,12 @@ This page is for everyday users who want stable plugin usage.
 ### Installation failed
 
 - Check ZIP structure (top folder + `manifest.json`).
-- Check whether plugin `MinHostVersion` is higher than current host version.
+- Check whether the plugin's `MinHostVersion` exceeds the current host version.
 
 ### Plugin installed but feature is missing
 
 - Confirm plugin is enabled.
-- Confirm prerequisite conditions are met (for example MineRewind requires recognizable Minecraft directory structure).
+- Confirm prerequisites are met (for example MineRewind requires a recognizable Minecraft directory structure).
 
 ## Related links
 

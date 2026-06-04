@@ -16,7 +16,7 @@ Plugins declare settings through `GetSettingsDefinitions()`. Host renders UI, pe
 
 ## Practical recommendations
 
-- Parse bool values robustly for `true/false/1/0`
+- Parse boolean values robustly, accepting `true`, `false`, `1`, and `0`
 - Add min/max boundary checks for numeric settings
 - Validate path accessibility for path settings
 

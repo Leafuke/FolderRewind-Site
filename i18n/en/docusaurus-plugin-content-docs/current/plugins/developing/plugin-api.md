@@ -6,7 +6,7 @@ description: Full IFolderRewindPlugin interface reference, call sequence, and pr
 
 # Plugin API Reference
 
-This page is based on the current implementation of `Reference/FolderRewind/FolderRewind/Services/Plugins/IFolderRewindPlugin.cs` and is intended to help you ship usable plugins quickly.
+This page is a reference for `IFolderRewindPlugin` and is intended to help you ship usable plugins quickly.
 
 ## Interface role
 
@@ -55,7 +55,7 @@ public class MyPlugin : IFolderRewindPlugin
 
 ## `Manifest`
 
-Used by UI, logs, and compatibility checks. Fill at least:
+Used by UI, logs, and compatibility checks. At minimum, fill in:
 
 - `Id`: globally unique (reverse-domain style recommended)
 - `Version`: semantic version
@@ -154,7 +154,7 @@ Batch-create `BackupConfig` items. On handled success, return:
 
 ## Full takeover (advanced)
 
-When these return `true`, host bypasses built-in engine:
+When either returns `true`, the host bypasses the built-in engine:
 
 - `WantsToHandleBackup(config)`
 - `WantsToHandleRestore(config)`
