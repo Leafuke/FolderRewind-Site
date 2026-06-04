@@ -78,6 +78,7 @@ Plugins can use GitHub Releases for update checks and delivery.
 ## References
 
 - [Plugin System Overview](../overview)
-- [MineRewind source](https://github.com/Leafuke/FolderRewind)
+- [Tutorial: Building a Game Save Backup Plugin](./tutorial) — build a complete plugin step by step
+- [MineRewind source](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft)
 
-> More detailed API docs (Plugin API, Hotkey API, KnotLink API, etc.) are provided in this docs section.
+> More detailed API docs (Plugin API, Hotkey API, KnotLink API, etc.) are provided in the docs below.
