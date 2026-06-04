@@ -86,7 +86,7 @@ Typical example:
 
 - auto backup after game exit
 
-Best practice is combining condition mode with interval/schedule:
+Best practice is to combine condition mode with interval/schedule:
 
 - condition mode captures critical moments
 - interval/schedule mode acts as periodic safety net

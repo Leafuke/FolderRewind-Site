@@ -12,8 +12,8 @@ This page focuses on real-world capability boundaries based on current plugin im
 
 MineRewind works best with at least one integration mod or plugin that supports the hot backup/restore coordination and commands.
 
-MineBackup-Mod：https://modrinth.com/mod/minebackup  
-MineBackup-Plugin：https://modrinth.com/plugin/minebackupplugin
+- [MineBackup-Mod](https://modrinth.com/mod/minebackup)
+- [MineBackup-Plugin](https://modrinth.com/plugin/minebackupplugin)
 
 If you want a focused guide for the Minecraft-side integration mod itself (prerequisites, full commands, hot restore rejoin chain, and operational boundaries), continue with:
 
