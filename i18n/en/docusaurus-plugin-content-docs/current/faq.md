@@ -73,7 +73,7 @@ Note: history-page manual upload/download is available in rclone mode only.
 
 Start here:
 
-- [Cloud Archive Guide](../guides/cloud-archive)
+- [Cloud Archive Guide](./guides/cloud-archive)
 
 ### Why did auto backup stop unexpectedly?
 
@@ -135,7 +135,7 @@ Yes. MineRewind is an official free open-source plugin.
 
 ### How can I develop my own plugin?
 
-See [Plugin Development Quick Start](../plugins/developing/quick-start).
+See [Plugin Development Quick Start](/docs/plugins/developing/quick-start).
 
 ## Feedback and community
 

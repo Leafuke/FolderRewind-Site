@@ -282,4 +282,4 @@ Recommended sequence:
 - [History Timeline](./history-timeline)
 - [Backup File Specification](./backup-file-spec)
 - [Data Migration](./data-migration)
-- [FolderRewind v1.7.0 Release](/en/blog/v1.7.0-release)
+- [FolderRewind v1.7.0 Release](/blog/v1.7.0-release)
