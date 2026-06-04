@@ -1,0 +1,8 @@
+{
+  "label": "MineBackup (Legacy)",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Complete guide for MineBackup (first-generation FolderRewind): installation, configuration, backup, restore, automation, and advanced features."
+  }
+}

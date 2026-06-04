@@ -1,0 +1,8 @@
+{
+  "label": "Architecture",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "FolderRewind project architecture — MVVM patterns, services, data models, and plugin system."
+  }
+}

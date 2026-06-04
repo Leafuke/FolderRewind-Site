@@ -26,5 +26,9 @@
   "sidebar.docs.category.插件开发": {
     "message": "Plugin Development",
     "description": "The label for category '插件开发' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.项目架构": {
+    "message": "Architecture",
+    "description": "The label for category '项目架构' in sidebar 'docs'"
   }
 }

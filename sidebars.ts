@@ -87,6 +87,21 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: '项目架构',
+      collapsed: true,
+      items: [
+        'architecture/index',
+        'architecture/directory-structure',
+        'architecture/patterns',
+        'architecture/namespaces',
+        'architecture/services',
+        'architecture/plugin-system',
+        'architecture/data-models',
+        'architecture/views',
+      ],
+    },
     'faq',
   ],
 };
