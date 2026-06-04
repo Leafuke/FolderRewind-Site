@@ -10,6 +10,12 @@ description: 插件接口、生命周期与 KnotLink 协议
 
 插件系统围绕 `IFolderRewindPlugin` 核心接口构建，辅以可选的扩展接口：
 
+- **`IFolderRewindBackupFilterProvider`** — 让插件为单次备份贡献过滤规则（白名单/黑名单）。Host 会克隆配置后应用这些规则，不会污染用户保存的配置。
+- **`IFolderRewindBackupScopeProvider`** — 让插件按配置声明新的"备份范围/过滤策略"（如 Minecraft 指定区域），并在备份时转化为 Host 可执行的过滤规则。参数由 Host 动态渲染并保存在 `BackupConfig` 中。
+- **`IFolderRewindHotkeyProvider`** — 自定义快捷键。
+- **`IFolderRewindKnotLinkCommandHandler`** — 扩展 FolderRewind 的 KnotLink 指令集。
+- **`IFolderRewindParameterizedKnotLinkCommandHandler`** — 参与新版参数化 KnotLink 指令，与旧接口并存，避免旧插件因 Host 升级而必须重编译。
+
 ```mermaid
 graph TB
     IFolderRewindPlugin["IFolderRewindPlugin<br/>核心接口"]
@@ -17,22 +23,24 @@ graph TB
     IScopeProvider["IFolderRewindBackupScopeProvider<br/>备份范围发现"]
     IHotkeyProvider["IFolderRewindHotkeyProvider<br/>自定义快捷键"]
     IKnotLinkHandler["IFolderRewindKnotLinkCommandHandler<br/>KnotLink 命令处理"]
+    IParameterizedKnotLinkHandler["IFolderRewindParameterizedKnotLinkCommandHandler<br/>参数化 KnotLink 命令处理"]
 
     IFolderRewindPlugin -.->|可选实现| IFilterProvider
     IFolderRewindPlugin -.->|可选实现| IScopeProvider
     IFolderRewindPlugin -.->|可选实现| IHotkeyProvider
     IFolderRewindPlugin -.->|可选实现| IKnotLinkHandler
+    IFolderRewindPlugin -.->|可选实现| IParameterizedKnotLinkHandler
 ```
 
 ### 核心接口 `IFolderRewindPlugin`
 
 插件必须实现的核心接口，定义：
 
-- **生命周期钩子**：`InitializeAsync()` / `UnloadAsync()`
-- **备份/还原钩子**：`OnBeforeBackupAsync()` / `OnAfterBackupAsync()` / `OnBeforeRestoreAsync()` / `OnAfterRestoreAsync()`
-- **完全接管**：`CanTakeOverBackup()` / `TakeOverBackupAsync()` — 插件可完全接管特定配置的备份/还原流程
-- **配置类型发现**：`GetCustomConfigTypes()` — 注册自定义配置类型
-- **设置页贡献**：`GetSettingsSections()` — 在设置中展示插件自己的配置界面
+- **生命周期钩子**：`Initialize(settingsValues)` — 由 Host 在插件启用时调用一次（卸载由 Host 侧管理，插件不实现卸载方法）
+- **备份/还原钩子**：`OnBeforeBackupFolder()` / `OnAfterBackupFolder()` / `OnBeforeRestoreFolder()` / `OnAfterRestoreFolder()`
+- **完全接管**：`WantsToHandleBackup()` / `PerformBackupAsync()` / `WantsToHandleRestore()` / `PerformRestoreAsync()` — 插件可完全接管特定配置的备份/还原流程
+- **配置类型发现**：`GetSupportedConfigTypes()` — 返回此插件支持的配置类型列表
+- **设置页贡献**：`GetSettingsDefinitions()` — 定义插件可选设置，Host 保存用户填写的值
 
 ## 生命周期
 
