@@ -29,15 +29,21 @@ This is for users who cannot access Microsoft Store or prefer offline packages.
 1. Open Windows Settings
 2. Go to **System > For Developers**
 3. Enable **Developer Mode**
-4. Allow PowerShell script execution
+4. Confirm PowerShell allows script execution (required for the install script)
 
 ### Installation steps
 
 1. Open [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
-2. Download the latest package
-3. Extract the archive
-4. Right-click `install.ps1` and run it with PowerShell
-5. Launch FolderRewind after installation
+2. Download the latest package (filename format: `FolderRewind_{version}_{platform}.7z`, e.g. `FolderRewind_1.7.0_x64.7z`)
+3. Extract the archive to any directory
+4. In the extracted directory, right-click `install.ps1` and select **Run with PowerShell**
+   - If you see a prompt saying execution policy is blocked, open a PowerShell terminal and run:
+     ```powershell
+     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+     .\install.ps1
+     ```
+5. Wait for the installation to complete (the script automatically registers the certificate and installs the MSIX package)
+6. Launch FolderRewind from the Start menu
 
 ## New in side-loaded v1.6.0
 
@@ -59,11 +65,24 @@ If the official GitHub source is slow in your network environment, switch to a m
 
 v1.6.0 also improves the side-loaded update experience, especially when a source is slow or temporarily unavailable.
 
+## Common installation issues
+
+### Running install.ps1 shows "Cannot load file because running scripts is disabled on this system"
+
+Run the following command in PowerShell, then re-run the install script:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+.\install.ps1
+```
+
+This setting only applies to the current PowerShell session and does not affect the system-wide policy.
+
 ## What to do right after installation
 
 ### 1. Create a test config first
 
-Use a test folder and run one end-to-end backup flow before protecting important data.
+Use a test folder and run one end-to-end backup flow before protecting important data. Confirm the backup destination is writable, the interface works normally, and history records are generated.
 
 ### 2. Run automatic core validation
 
@@ -84,7 +103,7 @@ If this is your first run after upgrading to v1.6.0, it is strongly recommended.
 | OS | Windows 10 1809 or later / Windows 11 |
 | Architecture | x64 / ARM64 |
 | Runtime | .NET 10 (bundled with the app) |
-| Disk space | About 180 MB, excluding backup data |
+| Disk space | About 80 MB, excluding backup data |
 
 ## Next step
 
