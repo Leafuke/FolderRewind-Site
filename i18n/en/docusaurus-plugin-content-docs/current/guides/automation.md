@@ -9,7 +9,7 @@ description: Configure interval, schedule, selected targets, and condition-based
 FolderRewind supports multiple automation modes for each config:
 
 - interval mode
-- schedule mode
+- schedule mode (by month/day/hour/minute entries)
 - on-startup trigger
 - selected backup targets
 - condition-based backup mode
@@ -27,6 +27,10 @@ FolderRewind supports multiple automation modes for each config:
 2. Click **Config Settings**.
 3. Open the **Automation** tab.
 4. Enable **Auto Backup**.
+
+![Auto Backup toggle in the Automation tab](/img/docs/guides/automation-enable-auto-backup.png)
+
+![Full view of the Automation tab in Config Settings](/img/docs/guides/config-dialog-automation-tab.png)
 
 ## Automation modes
 
@@ -47,6 +51,12 @@ Each entry can set:
 - Month (or "Every month")
 - Day (or "Every day")
 - Hour and minute
+
+**Special values:**
+- Month set to `0` (or "Every month"): runs every month
+- Day set to `0` (or "Every day"): runs every day
+
+The system checks every 60 seconds whether any schedule entry should trigger.
 
 Examples:
 
@@ -82,14 +92,31 @@ This reduces task pressure and makes troubleshooting easier.
 
 Condition mode triggers backups when specific conditions are met, instead of relying only on fixed intervals.
 
-Typical example:
+Typical examples:
 
 - auto backup after game exit
+- trigger backup after a critical process finishes
 
 Best practice is to combine condition mode with interval/schedule:
 
 - condition mode captures critical moments
 - interval/schedule mode acts as periodic safety net
+
+If you are a Minecraft user, consider setting "trigger after exiting world" as the top priority condition.
+
+**Trigger mechanism details:**
+
+Condition-based backup works by monitoring a file's lock state. The system checks the target file's status every **10 seconds**:
+- When a file transitions from "locked" to "unlocked", one auto backup is triggered
+- If the file remains unlocked, it will not trigger repeatedly
+
+**Configuration:**
+- **Condition type** (`ConditionType`): currently supports `FileUnlocked` (triggers when file is unlocked)
+- **Monitor file path** (`ConditionRelativePath`): the path of the file to monitor, relative to the source folder
+
+**Typical configuration example (Minecraft saves):**
+- Condition type: FileUnlocked
+- Monitor file path: `level.dat` (Minecraft locks this file while the game is running and releases it on exit)
 
 ## Stop after repeated no-change runs
 

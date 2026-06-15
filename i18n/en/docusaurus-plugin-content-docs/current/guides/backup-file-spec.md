@@ -34,6 +34,20 @@ Examples:
 - `[` and `]` are removed from comments to avoid parsing conflicts.
 - Avoid manually renaming generated backup files if you want stable history rebuilding.
 
+### Source code parsing regex
+
+HistoryService uses the following regex to parse backup filenames:
+
+```
+^\[(Full|Smart|Overwrite)\]\[(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\](.+?)(?:\s\[(.+?)\])?\.(7z|zip)$
+```
+
+This means:
+- The type prefix must be one of `[Full]`, `[Smart]`, or `[Overwrite]`
+- The timestamp format is strictly `yyyy-MM-dd_HH-mm-ss`
+- The comment part is optional; if present, it is wrapped in square brackets
+- The extension must be `7z` or `zip`
+
 ## Backup storage structure
 
 Each config uses its `DestinationPath` as the backup root and stores archives by managed folder name.
@@ -49,10 +63,20 @@ DestinationPath/
       └─ metadata.json
 ```
 
+![Backup directory structure example](/img/docs/guides/backup-directory-structure.png)
+
 Notes:
 
 - `DestinationPath/<FolderDisplayName>/`: actual backup archive directory.
 - `DestinationPath/_metadata/<FolderDisplayName>/metadata.json`: smart-incremental chain metadata.
+
+### metadata.json version
+
+The current version is v3.0 (`BackupMetadataState`), which contains:
+- `FileStates`: a dictionary recording each file's Size, LastWriteTimeUtc, and Hash
+- `BackupRecords`: a list of backup records, each containing the added/modified/deleted file list for that backup
+
+Smart incremental backups rely on this file to determine which files have changed.
 
 ## Default destination path
 
@@ -78,6 +102,16 @@ Rebuild History depends on existing backup files. For more accurate rebuild resu
 - Auto-pruning skips backup files marked as important.
 
 So for long-term retention, mark milestone backups as important.
+
+## Auto-cleanup and safe delete
+
+When **Keep latest backup count** (`KeepCount`) is set to a value greater than 0, the system automatically cleans up old backups that exceed the limit after each backup.
+
+Cleanup behavior interacts with **Safe Delete** (`SafeDeleteEnabled`):
+- **Safe Delete off**: old backup files and their history entries are deleted directly.
+- **Safe Delete on**: if the backup to be deleted is part of a smart incremental chain, the system first merges its content into the successor backup before deleting, avoiding chain breakage that would make subsequent backups unrestorable.
+
+Recommendation: keep Safe Delete enabled for configs using smart incremental mode.
 
 ## Remote command (KnotLink)
 

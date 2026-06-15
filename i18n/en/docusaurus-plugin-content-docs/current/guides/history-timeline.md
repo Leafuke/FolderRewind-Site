@@ -14,6 +14,37 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 2. Select a folder.
 3. Click **History Versions**.
 
+## Page layout
+
+The History Timeline uses a visual layout similar to a Git commit log:
+
+![Full view of the History Timeline page](/img/docs/getting-started/history-timeline-page.png)
+
+**Three-column layout:**
+
+| Column | Content | Description |
+|--------|---------|-------------|
+| Left | Time display | Backup date and time |
+| Center | Vertical line + dot nodes | Connecting lines represent time continuity; dot color indicates status |
+| Right | Info card | Backup type, file size, notes, and action buttons |
+
+**Node color meanings:**
+
+| Color | Status | Description |
+|-------|--------|-------------|
+| Blue | Normal | Local backup file exists and is intact |
+| Light blue | Cloud only | Local file is missing, but a cloud copy exists |
+| Orange-red | Missing | Backup file has been lost or deleted |
+| Gold | Important | Marked as "Important" by the user (starred) |
+
+**Info card action buttons:**
+- Star: mark/unmark as important
+- View: locate backup file in File Explorer
+- Edit notes: modify backup notes
+- Upload/Download: cloud operations
+- Restore: recover files from this backup
+- Delete: delete this backup record and/or file
+
 ## What you can do
 
 - View time, type, notes, and file size per entry
@@ -26,6 +57,12 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 - Download a single history entry from cloud back to local backup storage
 
 ## Filtering and visualization
+
+The filter bar at the top of the page provides the following controls:
+- **Config selector**: dropdown to switch between different configs
+- **Folder selector**: dropdown to switch between folders under the same config
+- **Note search**: input field to filter backup records by keyword
+- **Status color toggle**: toggle whether to display different colors by status
 
 - Switch history scope by config and folder
 - Filter results by note keywords

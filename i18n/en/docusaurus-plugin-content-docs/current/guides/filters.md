@@ -19,6 +19,33 @@ FolderRewind has two filter groups:
    - **Blacklist** in the **Filters** section
    - **Restore Whitelist** in the **Restore Policy** section
 
+![Filters tab in Config Settings](/img/docs/guides/config-dialog-filter-tab.png)
+
+## Three filter lists
+
+FolderRewind has three independent filter lists, each active at a different stage:
+
+| List | Config location | Active stage | Purpose |
+|------|----------------|--------------|---------|
+| **Blacklist** | Filters -> Blacklist | During backup | Exclude matched files/folders |
+| **Backup Whitelist** | Filters -> Whitelist | During backup (whitelist mode only) | Include only matched files/folders |
+| **Restore Whitelist** | Restore Policy -> Restore Whitelist | During Clean restore | Preserve matched items during target directory cleanup |
+
+Note: Blacklist and Backup Whitelist are mutually exclusive (switched via filter mode). Restore Whitelist is independent and can be configured in either backup filter mode.
+
+## Backup filter mode
+
+FolderRewind supports two backup filter modes, switched in **Config Settings -> Filters**:
+
+| Mode | Description | Best for |
+|------|-------------|----------|
+| **Blacklist mode** (default) | Exclude matched files, back up everything else | Most scenarios; exclude cache/logs/temp files |
+| **Whitelist mode** | Back up only matched files, exclude everything else | When you only want to back up specific file types |
+
+:::tip Choosing advice
+Use blacklist mode if you only want to exclude a few files. Use whitelist mode if you only want to back up a few specific files.
+:::
+
 ## Blacklist (backup stage)
 
 Blacklist rules apply during file scan. Common use cases include cache, logs, and temporary files.
@@ -37,6 +64,21 @@ In v1.6.1, matching behavior for blacklist/whitelist was tightened to reduce ove
 - `*.tmp`
 - `cache`
 - `regex:^logs/.*\\.txt$`
+
+## Whitelist mode examples
+
+After switching to whitelist mode, only files matching the rules will be backed up.
+
+**Typical use cases:**
+- Back up only save data: `*.dat`, `*.json`
+- Back up only specific directories: `saves`, `worlds`
+- Back up only config files: `*.yml`, `*.yaml`, `*.toml`
+
+**Example rules:**
+- `*.dat`
+- `*.json`
+- `saves`
+- `regex:^saves/[^/]+/level\.dat$`
 
 ## Restore Whitelist (Clean restore stage)
 

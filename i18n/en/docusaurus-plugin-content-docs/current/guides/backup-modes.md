@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: Backup Modes
-description: Learn about the three backup modes in FolderRewind
+description: Differences and choices among Full, Smart Incremental, and Overwrite modes
 ---
 
 # Backup Modes
 
-FolderRewind provides multiple backup methods powered by the 7-Zip engine, designed for different scenarios.
+FolderRewind provides three core backup modes powered by the 7-Zip engine: **Full**, **Smart Incremental**, and **Overwrite**.
 
 :::caution Upgrade compatibility note
 If you upgraded from an older version, revalidate backup chains and restore results with test data before using them in production.
@@ -42,30 +42,45 @@ Across major updates, chain generation, truncation, and restore behavior may cha
 	- Overwrite backup (update latest backup)
 4. Save and run one manual backup for validation.
 
+![Backup mode dropdown with three options](/img/docs/guides/backup-mode-dropdown-options.png)
+
+![Backup Policy tab in Config Settings](/img/docs/guides/config-dialog-backup-tab.png)
+
 ## Choosing tips
 
-- **Minecraft saves:** Smart Incremental
+- **Minecraft saves:** Smart Incremental (saves more space for large, frequently backed up folders)
 - **Work docs/projects:** Smart Incremental or Full (based on disk and restore preference)
 - **Important archives:** Full + encrypted config
 - **Temporary/cache folders:** Overwrite
 
 ## Key settings strongly related to mode
 
-In **Config Settings → Backup Policy**, also check:
+In **Config Settings -> Backup Policy**, also check:
 
-- **Skip backup when no changes**
-- **Keep latest backup count** (`0` means unlimited)
-- **Smart chain length limit** (only for Smart Incremental)
-- **Safe delete** (helps avoid broken restore chains during cleanup)
-- **Remote forced full backup** (temporarily bypass the current mode and run one Full backup in automation/integration scenarios)
+- **Skip backup when no changes**: avoids creating meaningless backups.
+- **Keep latest backup count**: `0` means unlimited.
+- **Smart chain length limit**: only applies to Smart Incremental; triggers a Full backup to truncate the chain when the threshold is reached.
+
+**Chain truncation behavior:**
+
+When the number of backups in a smart incremental chain reaches `MaxSmartBackupsPerFull` (default 5), the next backup automatically switches to Full, creating a new baseline. The old chain is not deleted, but new backups no longer depend on it.
+
+Benefits:
+- Controls the length of the restore chain, avoiding the need to merge too many incremental packages during restore
+- Limits the blast radius if an incremental chain breaks
+
+- **Safe delete**: helps avoid broken restore chains during cleanup of incremental archives.
+- **Remote forced full backup**: in automation/integration scenarios, you can temporarily bypass the current mode and run one Full backup via a remote command.
 
 ## Compression and performance
 
 FolderRewind supports 7z/zip compression with tunable level, method, and threads:
 
-- Higher compression level = smaller size but slower speed
-- CPU threads: `0` means automatic
-- File-type rules: use lower compression for already-compressed files like `*.zip`/`*.mp4`
+- **Compression level**: higher = smaller size but slower speed.
+- **CPU threads**: `0` means automatic; limit threads if performance is insufficient.
+- **File-type rules**: use lower compression for already-compressed files like `*.zip`/`*.mp4` to reduce processing time.
+  - Note: enabling file-type rules automatically disables 7z **solid compression**, because solid compression requires all files to use the same compression settings, while file-type rules allow different levels for different files.
+- **Low-priority compression**: enabling `RunCompressionAtLowPriority` lowers the CPU priority of the compression process, so it does not interfere with other tasks running during backup.
 
 ## Starter presets
 
