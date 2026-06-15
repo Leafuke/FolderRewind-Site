@@ -29,15 +29,21 @@ FolderRewind 支持两种安装方式：**Microsoft Store** 和 **侧载安装**
 1. 打开 Windows 设置
 2. 进入 **系统 > 开发者选项**
 3. 启用 **开发人员模式**
-4. 在 PowerShell 相关选项中允许脚本执行
+4. 确认 PowerShell 允许执行脚本（安装脚本需要）
 
 ### 安装步骤
 
 1. 打开 [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
-2. 下载最新版本的安装包
-3. 解压压缩包
-4. 右键运行目录中的 `install.ps1`
-5. 安装完成后启动 FolderRewind
+2. 下载最新版本的安装包（文件名格式：`FolderRewind_{版本}_{平台}.7z`，如 `FolderRewind_1.7.0_x64.7z`）
+3. 解压压缩包到任意目录
+4. 在解压目录中，右键 `install.ps1` → **使用 PowerShell 运行**
+   - 如果提示执行策略被阻止，打开 PowerShell 终端，执行：
+     ```powershell
+     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+     .\install.ps1
+     ```
+5. 等待安装完成（脚本会自动注册证书并安装 MSIX 包）
+6. 从开始菜单启动 FolderRewind
 
 ## 侧载版 1.6.0 新增体验
 
@@ -58,6 +64,19 @@ FolderRewind 支持两种安装方式：**Microsoft Store** 和 **侧载安装**
 ### 侧载更新体验优化
 
 v1.6.0 还优化了侧载版本的更新流程，减少下载源不可用或切换源时带来的干扰。对于经常手动升级的用户，这会更友好。
+
+## 常见安装问题
+
+### 运行 install.ps1 提示"无法加载文件，因为在此系统上禁止运行脚本"
+
+在 PowerShell 中执行以下命令，然后重新运行安装脚本：
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+.\install.ps1
+```
+
+此设置仅对当前 PowerShell 会话生效，不会影响系统全局策略。
 
 ## 安装后建议立刻做的事
 
