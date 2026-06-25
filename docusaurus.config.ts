@@ -90,7 +90,7 @@ const config: Config = {
         {to: '/download', label: '下载', position: 'left'},
         {to: '/blog', label: '更新日志', position: 'left'},
         {
-          href: 'https://github.com/Leafuke/FolderRewind-Site',
+          href: 'https://github.com/Leafuke/FolderRewind',
           label: 'GitHub',
           position: 'right',
         },

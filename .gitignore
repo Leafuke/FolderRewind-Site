@@ -22,3 +22,5 @@ yarn-error.log*
 /ori.png
 /Reference
 *.txt
+
+/docs/superpowers
