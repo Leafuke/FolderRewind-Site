@@ -63,4 +63,3 @@ FolderRewind organizes its business logic through static service classes. The fo
 | `I18n` | `Services/I18n.cs` | Internationalization helper, wraps `ResourceLoader` string lookup and formatting, supports `PickBest()` multilingual dictionary |
 | `TemplateService` | `Services/TemplateService.cs` | Configuration template creation, export, import, and community sharing |
 | `MainWindowService` | `Services/MainWindowService.cs` | Main window reference management and sponsor edition window lifecycle |
-| `MemoryTelemetryService` | `Services/Diagnostics/MemoryTelemetryService.cs` | Performance monitoring and memory diagnostics |

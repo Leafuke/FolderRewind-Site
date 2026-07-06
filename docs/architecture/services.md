@@ -63,4 +63,3 @@ FolderRewind 的业务逻辑通过静态服务类组织。以下按功能域分�
 | `I18n` | `Services/I18n.cs` | 国际化辅助，封装 `ResourceLoader` 的字符串查找与格式化，支持 `PickBest()` 多语言字典 |
 | `TemplateService` | `Services/TemplateService.cs` | 配置模板的创建、导出、导入和社区分享 |
 | `MainWindowService` | `Services/MainWindowService.cs` | 主窗口引用管理与赞助版窗口生命周期 |
-| `MemoryTelemetryService` | `Services/Diagnostics/MemoryTelemetryService.cs` | 性能监控与内存诊断 |

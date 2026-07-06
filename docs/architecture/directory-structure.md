@@ -90,8 +90,6 @@ FolderRewind/
 │   │   ├── OpenSocketResponser.cs
 │   │   ├── TcpClient.cs
 │   │   └── KnotLinkCommandParser.cs
-│   └── Diagnostics/                     # 诊断
-│       └── MemoryTelemetryService.cs
 ├── ViewModels/                          # 页面级 ViewModel
 │   └── ViewModelBase.cs                 # 基类（ObservableObject + UI 调度）
 ├── Views/                               # XAML 页面与对话框

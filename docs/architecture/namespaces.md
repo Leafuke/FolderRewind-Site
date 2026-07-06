@@ -16,7 +16,6 @@ description: 各命名空间职责与关键类速查
 | `FolderRewind.Services.Plugins` | 插件接口与管理 | `IFolderRewindPlugin`, `PluginService`, `IFolderRewindBackupFilterProvider`, `IFolderRewindBackupScopeProvider`, `IFolderRewindHotkeyProvider`, `IFolderRewindKnotLinkCommandHandler` | `Services/Plugins/` |
 | `FolderRewind.Services.Hotkeys` | 快捷键管理 | `HotkeyManager`, `HotkeyParser`, `NativeHotkeyService`, `HotkeyGesture`, `HotkeyDefinition` | `Services/Hotkeys/` |
 | `FolderRewind.Services.KnotLink` | KnotLink 协议实现 | `SignalSender`, `SignalSubscriber`, `OpenSocketQuerier`, `OpenSocketResponser`, `TcpClient`, `KnotLinkCommandParser` | `Services/KnotLink/` |
-| `FolderRewind.Services.Diagnostics` | 性能诊断 | `MemoryTelemetryService` | `Services/Diagnostics/` |
 | `FolderRewind.ViewModels` | 页面级 ViewModel | `ViewModelBase`（基类），各页面 ViewModel | `ViewModels/` |
 | `FolderRewind.Views` | XAML 页面与对话框 | `ShellPage`, `HomePage`, `SettingsPage`, `ConfigSettingsDialog` 等 | `Views/` |
 | `FolderRewind.Converters` | XAML 值转换器 | `BoolToVisibility`, `BoolToColor`, `StringToBitmap` 等 | `Converters/` |
