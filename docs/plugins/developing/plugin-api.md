@@ -268,6 +268,47 @@ PluginCreateConfigResult TryCreateConfigs(
 
 一键批量创建 `BackupConfig`。返回 `Handled = true` 时 Host 使用 `CreatedConfigs`。
 
+## Folder Details Extension
+
+插件可以按需实现 `IFolderRewindFolderDetailsProvider`，向管理器的文件夹详情对话框追加只读键值分区。
+
+```csharp
+public interface IFolderRewindFolderDetailsProvider
+{
+    Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
+        BackupConfig config,
+        ManagedFolder folder,
+        IReadOnlyDictionary<string, string> settingsValues,
+        CancellationToken cancellationToken);
+}
+```
+
+- Host 负责所有 UI 渲染，插件只返回数据，不提供自定义控件
+- 建议返回稳定、可读的键值信息，例如游戏版本、存档格式、插件检测状态
+- 单个插件抛出异常时 Host 会记录日志并继续显示其他插件与内置详情
+
+```csharp
+public Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
+    BackupConfig config,
+    ManagedFolder folder,
+    IReadOnlyDictionary<string, string> settingsValues,
+    CancellationToken cancellationToken)
+{
+    return Task.FromResult<IReadOnlyList<FolderDetailsSection>>(
+    [
+        new FolderDetailsSection
+        {
+            Title = "World metadata",
+            Items =
+            {
+                new FolderDetailsItem { Label = "Save version", Value = "1.21.1" },
+                new FolderDetailsItem { Label = "Last scan", Value = DateTimeOffset.Now.ToString("u") }
+            }
+        }
+    ]);
+}
+```
+
 ## 完整接管（高级）
 
 当以下方法返回 `true` 时，Host 跳过内置引擎，完全由插件处理：
