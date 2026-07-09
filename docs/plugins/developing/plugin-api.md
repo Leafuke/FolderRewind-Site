@@ -309,6 +309,60 @@ public Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
 }
 ```
 
+## Config Augmentation Extension
+
+插件可以按需实现 `IFolderRewindConfigAugmenter`，让 Host 在启动后或设置重新启用后，自动补全已有配置中的文件夹。
+
+```csharp
+public interface IFolderRewindConfigAugmenter
+{
+    PluginConfigAugmentationResult AugmentConfigs(
+        PluginConfigAugmentationRequest request,
+        IReadOnlyDictionary<string, string> settingsValues);
+
+    bool ShouldAugmentAfterSettingsChange(
+        IReadOnlyDictionary<string, string> previousSettings,
+        IReadOnlyDictionary<string, string> currentSettings)
+        => false;
+}
+```
+
+- `request.Configs` 是当前已有配置快照，插件应只返回“建议追加哪些文件夹”，不要直接修改 `ConfigService.CurrentConfig`
+- Host 负责去重、显示名冲突过滤、保存配置与通知用户
+- `ShouldAugmentAfterSettingsChange(...)` 用于声明“从关闭切到开启后是否要立即补扫一次”
+
+```csharp
+public PluginConfigAugmentationResult AugmentConfigs(
+    PluginConfigAugmentationRequest request,
+    IReadOnlyDictionary<string, string> settingsValues)
+{
+    if (!settingsValues.TryGetValue("AutoDiscover", out var enabled) || enabled != "true")
+    {
+        return new PluginConfigAugmentationResult { Handled = false };
+    }
+
+    return new PluginConfigAugmentationResult
+    {
+        Handled = true,
+        Items =
+        [
+            new PluginConfigAugmentationItem
+            {
+                ConfigId = request.Configs[0].Id,
+                FoldersToAdd =
+                [
+                    new ManagedFolder
+                    {
+                        Path = @"D:\Demo\Saves\WorldB",
+                        DisplayName = "WorldB"
+                    }
+                ]
+            }
+        ]
+    };
+}
+```
+
 ## 完整接管（高级）
 
 当以下方法返回 `true` 时，Host 跳过内置引擎，完全由插件处理：

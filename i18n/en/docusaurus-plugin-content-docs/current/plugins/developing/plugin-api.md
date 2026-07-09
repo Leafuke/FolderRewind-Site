@@ -152,6 +152,28 @@ Batch-create `BackupConfig` items. On handled success, return:
 - `CreatedConfigs = [...]`
 - optional `Message`
 
+## Config Augmentation Extension
+
+Plugins can optionally implement `IFolderRewindConfigAugmenter` so the host can auto-augment existing configs after startup or after a setting is re-enabled.
+
+```csharp
+public interface IFolderRewindConfigAugmenter
+{
+    PluginConfigAugmentationResult AugmentConfigs(
+        PluginConfigAugmentationRequest request,
+        IReadOnlyDictionary<string, string> settingsValues);
+
+    bool ShouldAugmentAfterSettingsChange(
+        IReadOnlyDictionary<string, string> previousSettings,
+        IReadOnlyDictionary<string, string> currentSettings)
+        => false;
+}
+```
+
+- `request.Configs` is a snapshot of the current configs; plugins should return additive folder suggestions instead of mutating `ConfigService.CurrentConfig`
+- The host owns deduplication, display-name conflict filtering, config saves, and notifications
+- `ShouldAugmentAfterSettingsChange(...)` lets a plugin opt into an immediate re-scan after a user flips a setting from off to on
+
 ## Full takeover (advanced)
 
 When either returns `true`, the host bypasses the built-in engine:
