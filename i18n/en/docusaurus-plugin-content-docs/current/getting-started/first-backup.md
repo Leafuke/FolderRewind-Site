@@ -101,5 +101,7 @@ If this config becomes stable:
 ## Next step
 
 - [First Restore](./first-restore)
+- [Backup Modes and Performance Presets](../guides/backup-modes)
+- [Minecraft Selected-Region Backup](../guides/minecraft/selected-region-backup)
 - [Automation](../guides/automation)
 - [Templates: Create and Use](../guides/templates)

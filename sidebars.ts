@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'guides/backup-modes',
         'guides/backup-file-spec',
+        'guides/folder-management',
         'guides/templates',
         'guides/template-sharing',
         'guides/automation',
@@ -36,6 +37,7 @@ const sidebars: SidebarsConfig = {
             'guides/minecraft/overview',
             'guides/minecraft/minebackup-mod',
             'guides/minecraft/quick-start',
+            'guides/minecraft/selected-region-backup',
             'guides/minecraft/hot-backup',
             'guides/minecraft/hot-restore',
             'guides/minecraft/knotlink-mod',

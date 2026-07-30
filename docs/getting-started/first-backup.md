@@ -101,5 +101,7 @@ description: 创建配置并完成第一次备份
 ## 下一步
 
 - [首次还原](./first-restore)
+- [备份模式与性能预设](../guides/backup-modes)
+- [Minecraft 指定区域备份](../guides/minecraft/selected-region-backup)
 - [自动化任务](../guides/automation)
 - [模板：创建与使用](../guides/templates)

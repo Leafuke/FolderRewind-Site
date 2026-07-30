@@ -138,9 +138,12 @@ History entry still exists, but archive was moved or deleted. Run "Clear invalid
 
 Verify restore point and restore mode first, then check restore whitelist settings. If the config was upgraded from an older version, go back to test data and validate the chain again.
 
+After a folder rename, old history keeps the local or remote identity saved when each record was created. See [Folder Management and Rename](./folder-management).
+
 ## Related links
 
 - [First Restore](../getting-started/first-restore)
 - [Filter Rules](./filters)
 - [Backup File Specification](./backup-file-spec)
 - [Cloud Archive Guide](./cloud-archive)
+- [Folder Management and Rename](./folder-management)

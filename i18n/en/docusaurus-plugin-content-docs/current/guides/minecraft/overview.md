@@ -89,11 +89,13 @@ Useful when you want to roll back world building progress while trying to keep p
 
 - Hot restore depends on mod status; timeout cancels the flow
 - Specified-backup restore requires actual file existence
+- Selected-region backups are partial, so normal and hot restore are both forced to Overwrite
 - Always run a manual drill before relying on automation
 
 ## Next steps
 
 - New users: [Minecraft Quick Start](./quick-start)
+- Protect very large worlds by range: [Selected-Region Backup](./selected-region-backup)
 - Backup details: [Hot Backup Mechanism](./hot-backup)
 - Restore details: [Hot Restore Mechanism](./hot-restore)
 - MineBackup runtime guide: [MineBackup Integration Mod Deep Dive](./minebackup-mod)

@@ -120,7 +120,10 @@ Confirm:
 
 Check restore mode first. Only Clean restore runs "cleanup + whitelist preserve" logic.
 
+Partial backups such as selected-region scope are forced to Overwrite because Clean would delete files absent from the backup. See [Minecraft Selected-Region Backup](./minecraft/selected-region-backup).
+
 ## Related links
 
 - [First Restore](../getting-started/first-restore)
 - [Backup Modes](./backup-modes)
+- [Minecraft Selected-Region Backup](./minecraft/selected-region-backup)

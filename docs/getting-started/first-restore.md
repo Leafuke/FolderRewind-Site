@@ -74,6 +74,10 @@ description: 从历史版本安全恢复文件夹
 - 如果不确定，建议先在配置设置中开启 **还原前自动备份** 和 **安全还原**。
 :::
 
+:::warning 部分备份例外
+[Minecraft 指定区域备份](../guides/minecraft/selected-region-backup) 不包含完整源目录，因此普通还原与热还原都强制使用 **Overwrite（覆写）**，不能使用会清空未备份文件的 Clean 模式。
+:::
+
 ## 步骤 5：验证还原结果
 
 打开目标目录，检查文件是否已恢复到预期状态。
@@ -101,3 +105,4 @@ description: 从历史版本安全恢复文件夹
 
 - [备份模式详解](../guides/backup-modes) — 了解不同备份策略
 - [Minecraft 专题](../guides/minecraft/overview) — MC 玩家的场景化还原指南
+- [Minecraft 指定区域备份](../guides/minecraft/selected-region-backup) — 部分备份的强制覆写规则

@@ -82,6 +82,44 @@ FolderRewind supports 7z/zip compression with tunable level, method, and threads
   - Note: enabling file-type rules automatically disables 7z **solid compression**, because solid compression requires all files to use the same compression settings, while file-type rules allow different levels for different files.
 - **Low-priority compression**: enabling `RunCompressionAtLowPriority` lowers the CPU priority of the compression process, so it does not interfere with other tasks running during backup.
 
+### Performance presets (1.8)
+
+Each performance preset controls both compression thread count and process priority:
+
+| Preset | CPU threads | Low priority | Best for |
+|--------|-------------|--------------|----------|
+| **Automatic** | `0`, decided by 7-Zip | No | Default choice, prioritizing completion speed |
+| **Light** | Half of logical processors, minimum 1 | Yes | Continuing normal work during backup |
+| **Very Light** | At most 2, minimum 1 | Yes | Foreground apps or games sensitive to responsiveness |
+| **Custom** | Keeps the manual value | Keeps the manual value | Dedicated configurations that have been benchmarked |
+
+The effective thread count for Light depends on the processor. After changing a preset, save the configuration and use a real backup to observe duration, CPU load, and archive size.
+
+### Additional 7-Zip arguments
+
+FolderRewind 1.8 accepts additional 7-Zip arguments for advanced scenarios. They apply **only when creating or updating backup archives**. They are not passed to test, list, extract, or restore operations.
+
+To preserve FolderRewind's control over the command and its output, these categories are rejected:
+
+- Bare operation commands such as `a` and `u`.
+- External list files such as `@listfile`.
+- Arguments that change the operation, archive format, or core compression settings, including `-t`, `-mx`, `-m0`, and `-mmt`.
+- Password, header encryption, output-directory, and confirmation controls such as `-p`, `-mhe`, `-o`, and `-y`.
+- Arguments that change progress output, include/exclude rules, or input sources, such as `-bsp`, `-x`, and `-i`.
+- Unclosed quotes or any input that cannot be parsed reliably.
+
+Arguments are validated when the configuration is saved and again before backup execution. Invalid input rejects the operation instead of running with a partial argument set. Do not paste command lines from an untrusted source. Test archive creation and restore against disposable data after every change.
+
+## Restore rules for partial backups
+
+When the backup scope is smaller than the complete source directory, the archive cannot rebuild that directory safely after clearing it. For example, with [Minecraft Selected-Region Backup](./minecraft/selected-region-backup):
+
+- Normal restore and hot restore are forced to **Overwrite**.
+- **Clean** is disabled to avoid deleting files that were never backed up.
+- Packaged files are written back, but content outside the archive is not rewound to the same point in time.
+
+Before enabling any partial backup for production data, use a copy to verify the file manifest, overwrite behavior, and application-level consistency. A partial backup reduces the protected scope; it is not a complete disaster-recovery plan.
+
 ## Starter presets
 
 - General office files: Full + skip-no-change + keep 30
@@ -92,3 +130,4 @@ FolderRewind supports 7z/zip compression with tunable level, method, and threads
 
 - [First Backup](../getting-started/first-backup)
 - [Automation](./automation)
+- [Minecraft Selected-Region Backup](./minecraft/selected-region-backup)

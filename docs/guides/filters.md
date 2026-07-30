@@ -120,7 +120,10 @@ v1.6.1 同时修复了“白名单使用完整路径时不生效”的问题。�
 
 先检查是否使用了 Overwrite 还原；只有 Clean 还原才会执行“清理 + 白名单保留”逻辑。
 
+指定区域等部分备份会强制使用 Overwrite，因为 Clean 会删除未包含在备份中的文件。详见 [Minecraft 指定区域备份](./minecraft/selected-region-backup)。
+
 ## 相关链接
 
 - [首次还原](../getting-started/first-restore)
 - [备份模式详解](./backup-modes)
+- [Minecraft 指定区域备份](./minecraft/selected-region-backup)
