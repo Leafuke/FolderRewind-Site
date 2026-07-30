@@ -12,16 +12,17 @@ description: Frequently asked questions about FolderRewind
 
 Windows 10 1809 (17763) and above, including Windows 11. Supports x64 and ARM64 architectures.
 
-### What's the difference between Microsoft Store install and sideload install?
+### What's the difference between Microsoft Store, MSI, and MSIX?
 
-- **Store install (recommended):** auto-updates, sandboxed security, one-click install.
-- **Sideload install:** requires Developer Mode; useful when Store is unavailable.
+- **Store (recommended):** one-click installation with Store-managed updates.
+- **MSI:** run the installer directly with no Developer Mode requirement; this distribution format is still under testing.
+- **MSIX (`.7z`):** extract and run `install.ps1`; requires Developer Mode and is closest to the Store build.
 
-Do **not** install the Store version and the offline package side by side. If you need to switch channels, uninstall first or at least make sure you clearly know which build you are actually running.
+Do not install or run the three channels side by side. MSI and MSIX/Store use separate data directories and do not migrate configs or plugins automatically. See [Installation Guide](./getting-started/installation).
 
 ### What should I watch out for when upgrading from an older version?
 
-This release introduces breaking changes to backup and restore logic, so upgraded behavior cannot be guaranteed to match older versions 100%.
+v1.8 supports a direct upgrade from v1.7.4. Earlier releases should run v1.7.4 first to complete legacy config migration. Backup and restore behavior must still be retested after upgrading.
 
 Recommended flow:
 
@@ -29,12 +30,19 @@ Recommended flow:
 2. Run several backup-and-restore rounds.
 3. Move production data only after the result matches your expectation.
 
+See [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade) for the complete checklist.
+
 ### What should I do if the app won't launch after installation?
 
+If you are using v1.8.0 and the old config contains `zh_CN` or `en_US`, upgrade to v1.8.1. If you cannot upgrade first, back up `config.json` and change only `GlobalSettings.Language` to `system`, `zh-CN`, or `en-US`. Do not delete the entire config.
+
+For other cases:
+
 1. Confirm your OS version meets minimum requirements.
-2. Reinstall the latest version (Store or Release package).
+2. Reinstall the latest version without mixing channels.
 3. Check whether security software blocked the app.
-4. Search or report in [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues).
+4. Follow [Startup recovery](./getting-started/v1-8-upgrade#if-v180-cannot-start).
+5. Search or report in [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues).
 
 ## Backup
 

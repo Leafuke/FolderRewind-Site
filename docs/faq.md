@@ -12,16 +12,17 @@ description: FolderRewind 常见问题与解答
 
 Windows 10 1809 (17763) 及以上版本，包括 Windows 11。支持 x64 和 ARM64 架构。
 
-### Microsoft Store 安装和侧载安装有什么区别？
+### Microsoft Store、MSI 和 MSIX 有什么区别？
 
-- **Store 安装（推荐）：** 自动更新，安全沙箱运行，一键安装。
-- **侧载安装：** 需要手动启用开发者模式，适合无法访问 Store 的用户。
+- **Store（推荐）：** 一键安装，由商店负责更新。
+- **MSI：** 双击安装，不要求开发人员模式；当前分发格式仍在测试中。
+- **MSIX (`.7z`)：** 解压后运行 `install.ps1`，需要开发人员模式，体验最接近 Store 版。
 
-**请勿同时安装商店版与离线版**。如果要改用另一种安装方式，先卸载或至少确保自己清楚当前实际运行的是哪一套安装。
+三种渠道不应同时安装或运行。MSI 与 MSIX/Store 使用不同数据目录，也不会自动迁移配置和插件。详见 [安装指南](./getting-started/installation)。
 
 ### 从旧版本升级要注意什么？
 
-当前版本的备份与还原逻辑发生了破坏性更改，因此不能 100% 保证旧版本升级后的行为与之前完全一致。
+v1.8 支持从 v1.7.4 直接升级；更早版本应先运行 v1.7.4 完成旧配置迁移。升级后的备份与还原行为仍需重新验证。
 
 建议流程：
 
@@ -29,12 +30,19 @@ Windows 10 1809 (17763) 及以上版本，包括 Windows 11。支持 x64 和 ARM
 2. 执行几轮备份与还原。
 3. 确认结果符合预期后，再把正式数据迁移到新逻辑上。
 
+完整检查项见 [1.8 升级与启动故障恢复](./getting-started/v1-8-upgrade)。
+
 ### 安装后无法启动怎么办？
 
-1. 确认系统版本满足最低要求
-2. 重新安装最新版本（Store 或 Release）
-3. 检查是否被安全软件拦截
-4. 前往 [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues) 搜索或提交问题
+如果使用 1.8.0 且旧配置中包含 `zh_CN` 或 `en_US`，请升级到 1.8.1。无法先升级时，备份 `config.json` 后只把 `GlobalSettings.Language` 改为 `system`、`zh-CN` 或 `en-US`；不要删除整个配置。
+
+其他情况：
+
+1. 确认系统版本满足最低要求。
+2. 重新安装最新版本，但不要混装不同渠道。
+3. 检查是否被安全软件拦截。
+4. 按 [启动故障恢复步骤](./getting-started/v1-8-upgrade#180-无法启动时) 检查配置。
+5. 前往 [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues) 搜索或提交问题。
 
 ## 备份相关
 

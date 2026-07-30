@@ -5,6 +5,10 @@
   text-align: center;
   margin-bottom: 1.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
+  height: calc(100% - 1.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .downloadCard:hover {
@@ -58,6 +62,26 @@
   margin-top: 0.5rem;
 }
 
+.noticeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.channelGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+.channelColumn {
+  min-width: 0;
+}
+
 .cardTitle {
   font-size: 1.3rem;
   margin-bottom: 0.25rem;
@@ -67,6 +91,7 @@
   color: var(--ifm-color-emphasis-700);
   font-size: 0.95rem;
   margin-bottom: 1.25rem;
+  flex: 1;
 }
 
 .badge {
@@ -89,6 +114,13 @@
   font-size: 0.78rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+}
+
+.architectureHint {
+  color: var(--ifm-color-emphasis-700);
+  margin: 0.25rem auto 0;
+  max-width: 900px;
+  text-align: center;
 }
 
 .sysReqGrid {
@@ -145,12 +177,22 @@
 }
 
 @media screen and (max-width: 768px) {
+  .channelGrid {
+    grid-template-columns: 1fr;
+  }
+
   .sysReqGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .noticeBox {
     padding: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 996px) {
+  .channelGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

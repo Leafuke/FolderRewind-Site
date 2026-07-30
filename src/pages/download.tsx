@@ -3,12 +3,25 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
-import {FaWindows, FaGithub, FaGamepad, FaArrowRight, FaDesktop, FaMicrochip, FaCode, FaHardDrive} from 'react-icons/fa6';
+import {
+  FaWindows,
+  FaGithub,
+  FaGamepad,
+  FaArrowRight,
+  FaDesktop,
+  FaMicrochip,
+  FaCode,
+  FaHardDrive,
+  FaBoxOpen,
+  FaTerminal,
+} from 'react-icons/fa6';
 
 import styles from './download.module.css';
 
 const STORE_URL = 'https://apps.microsoft.com/detail/9nwsdgxdqws4';
-const GITHUB_RELEASE_URL = 'https://github.com/Leafuke/FolderRewind/releases';
+const GITHUB_LATEST_RELEASE_URL = 'https://github.com/Leafuke/FolderRewind/releases/latest';
+const MINEREWIND_LATEST_RELEASE_URL =
+  'https://github.com/Leafuke/FolderRewind-Plugin-Minecraft/releases/latest';
 
 export default function Download(): ReactNode {
   return (
@@ -31,15 +44,19 @@ export default function Download(): ReactNode {
             </p>
             <ul className={styles.noticeList}>
               <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
-              <li><Translate id="download.notice.point2">请勿同时安装商店版与当前页面下载的离线版。</Translate></li>
-              <li><Translate id="download.notice.point3">若必须侧载，请安装后立即做一轮完整备份与还原测试。</Translate></li>
+              <li><Translate id="download.notice.point2">请勿同时安装 Store、MSI 与 MSIX 版本。</Translate></li>
+              <li><Translate id="download.notice.point3">切换安装渠道不会自动迁移配置或插件，请先备份数据。</Translate></li>
             </ul>
+            <Link className={styles.noticeLink} to="/docs/getting-started/v1-8-upgrade">
+              <Translate id="download.notice.upgradeLink">查看 1.8 升级与启动故障恢复指南</Translate>
+              <FaArrowRight aria-hidden="true" />
+            </Link>
           </div>
         </section>
 
-        <div className="row" style={{justifyContent: 'center'}}>
+        <div className={styles.channelGrid}>
           {/* Microsoft Store */}
-          <div className="col col--5">
+          <div className={styles.channelColumn}>
             <div className={styles.downloadCard}>
               <div className="download-icon-wrap download-icon-wrap--store">
                 <FaWindows />
@@ -54,24 +71,46 @@ export default function Download(): ReactNode {
             </div>
           </div>
 
-          {/* GitHub Release */}
-          <div className="col col--5">
+          {/* MSI */}
+          <div className={styles.channelColumn}>
             <div className={styles.downloadCard}>
               <div className="download-icon-wrap download-icon-wrap--github">
-                <FaGithub />
+                <FaBoxOpen />
               </div>
-              <Heading as="h2" className={styles.cardTitle}>GitHub Release</Heading>
-              <span className={styles.badgeAlt}><Translate id="download.badge.sideload">侧载</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.github.desc">适合无法使用商店的环境。下载后通过 PowerShell 脚本安装，且不要与商店版并存。</Translate></p>
+              <Heading as="h2" className={styles.cardTitle}>MSI</Heading>
+              <span className={styles.badgeAlt}><Translate id="download.badge.msi">普通侧载</Translate></span>
+              <p className={styles.cardDesc}><Translate id="download.msi.desc">双击安装，无需开发人员模式；该分发格式仍在测试中，请核对同名 .sha256 文件。</Translate></p>
               <Link
                 className="button button--outline button--primary button--lg"
-                href={GITHUB_RELEASE_URL}>
-                <FaGithub style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                <Translate id="download.github.btn">前往 GitHub Releases</Translate>
+                href={GITHUB_LATEST_RELEASE_URL}>
+                <FaBoxOpen style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
+                <Translate id="download.msi.btn">获取最新 MSI</Translate>
+              </Link>
+            </div>
+          </div>
+
+          {/* MSIX */}
+          <div className={styles.channelColumn}>
+            <div className={styles.downloadCard}>
+              <div className="download-icon-wrap download-icon-wrap--github">
+                <FaTerminal />
+              </div>
+              <Heading as="h2" className={styles.cardTitle}>MSIX (.7z)</Heading>
+              <span className={styles.badgeAlt}><Translate id="download.badge.msix">高级侧载</Translate></span>
+              <p className={styles.cardDesc}><Translate id="download.msix.desc">体验最接近 Store 版；需解压 .7z、启用开发人员模式并运行 install.ps1。</Translate></p>
+              <Link
+                className="button button--outline button--primary button--lg"
+                href={GITHUB_LATEST_RELEASE_URL}>
+                <FaTerminal style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
+                <Translate id="download.msix.btn">获取最新 MSIX 包</Translate>
               </Link>
             </div>
           </div>
         </div>
+
+        <p className={styles.architectureHint}>
+          <Translate id="download.archHint">大多数 Intel/AMD 电脑请选择 x64；仅 Windows on ARM 设备选择 ARM64。</Translate>
+        </p>
 
         {/* 系统要求 */}
         <section className="margin-top--xl">
@@ -112,11 +151,11 @@ export default function Download(): ReactNode {
               <div className="download-icon-wrap download-icon-wrap--store" style={{background: 'rgba(46,204,113,0.1)', color: '#27ae60'}}>
                 <FaGamepad />
               </div>
-              <Heading as="h3">MineRewind v1.4.0</Heading>
+              <Heading as="h3">MineRewind</Heading>
               <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">Minecraft 存档增强插件 —— 自动发现存档、热备份、版本识别。</Translate></p>
               <Link
                 className="button button--outline button--primary"
-                href={GITHUB_RELEASE_URL}>
+                href={MINEREWIND_LATEST_RELEASE_URL}>
                 <Translate id="download.plugin.downloadBtn">前往下载</Translate>
               </Link>
               <span style={{margin: '0 0.5rem'}} />

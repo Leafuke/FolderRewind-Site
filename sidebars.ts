@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'getting-started/installation',
+        'getting-started/v1-8-upgrade',
         'getting-started/first-backup',
         'getting-started/first-restore',
       ],

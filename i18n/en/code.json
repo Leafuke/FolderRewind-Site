@@ -348,10 +348,13 @@
     "message": "Microsoft Store is recommended first for smoother upgrades."
   },
   "download.notice.point2": {
-    "message": "Do not install the Store version and the offline package side by side."
+    "message": "Do not install the Store, MSI, and MSIX versions side by side."
   },
   "download.notice.point3": {
-    "message": "If sideloading is required, run at least one full backup-and-restore test immediately after install."
+    "message": "Switching installation channels does not migrate configs or plugins automatically; back up your data first."
+  },
+  "download.notice.upgradeLink": {
+    "message": "Read the v1.8 upgrade and startup recovery guide"
   },
   "download.badge.recommended": {
     "message": "Recommended"
@@ -362,14 +365,26 @@
   "download.store.btn": {
     "message": "Open Microsoft Store"
   },
-  "download.badge.sideload": {
-    "message": "Sideload"
+  "download.badge.msi": {
+    "message": "Standard sideload"
   },
-  "download.github.desc": {
-    "message": "For environments where Store is unavailable. Install via PowerShell and do not keep it alongside the Store version."
+  "download.msi.desc": {
+    "message": "Run the installer directly with no Developer Mode requirement. This distribution format is still under testing; verify the matching .sha256 file."
   },
-  "download.github.btn": {
-    "message": "Go to GitHub Releases"
+  "download.msi.btn": {
+    "message": "Get the latest MSI"
+  },
+  "download.badge.msix": {
+    "message": "Advanced sideload"
+  },
+  "download.msix.desc": {
+    "message": "Closest to the Store build. Extract the .7z package, enable Developer Mode, and run install.ps1."
+  },
+  "download.msix.btn": {
+    "message": "Get the latest MSIX package"
+  },
+  "download.archHint": {
+    "message": "Choose x64 for most Intel/AMD PCs. Choose ARM64 only for Windows on Arm devices."
   },
   "download.sysreq.heading": {
     "message": "System Requirements"
@@ -390,7 +405,7 @@
     "message": "Disk Space"
   },
   "download.sysreq.disk.value": {
-    "message": "About 180 MB (excluding backup data)"
+    "message": "About 80 MB (excluding backup data)"
   },
   "download.plugin.heading": {
     "message": "Official Plugins"

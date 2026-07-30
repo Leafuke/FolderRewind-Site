@@ -13,7 +13,7 @@ English is a secondary language for this project — if you spot inaccuracies, c
 :::
 
 :::caution Upgrade recommendation
-If you are upgrading from an older version, run several backup-and-restore drills in a test directory before relying on the new version in production.
+If you are upgrading from an older version, read [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade) and run several backup-and-restore drills in a test directory before relying on the new version in production.
 :::
 
 ## What FolderRewind now helps with

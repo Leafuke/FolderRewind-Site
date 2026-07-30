@@ -1,100 +1,101 @@
 ---
 sidebar_position: 1
 title: Installation Guide
-description: Install and launch FolderRewind
+description: Choose the Store, MSI, or MSIX installation channel
 ---
 
 # Installation Guide
 
-FolderRewind supports two installation methods: **Microsoft Store** and **side-loading**.
+FolderRewind is distributed through three channels: **Microsoft Store**, **MSI**, and an **MSIX sideload package**.
 
 :::tip Recommended
-Use the Microsoft Store version whenever possible. It is easier to maintain and less likely to cause version conflicts.
+Use Microsoft Store whenever it is available. Installation is simple and the Store manages later updates.
 :::
+
+:::warning Do not mix channels
+Do not install or run the Store, MSI, and MSIX versions side by side. MSI and MSIX/Store use different data directories, and switching channels does not migrate configs, history, or plugins automatically.
+:::
+
+## Choose a channel
+
+| Channel | Best for | Installation | Important note |
+| --- | --- | --- | --- |
+| Microsoft Store | Most users | One-click Store install | Recommended and easiest to keep updated |
+| MSI | General users who cannot use Store | Run the `.msi` | This distribution format is still under testing; the installer is not signed with a trusted Authenticode certificate |
+| MSIX (`.7z`) | Users comfortable with Developer Mode and PowerShell | Extract and run `install.ps1` | Requires Developer Mode; closest to the Store build |
+
+Choose **x64** for most Intel/AMD Windows devices. Choose **ARM64** only for Windows on Arm.
 
 ## Option 1: Microsoft Store
 
-1. Open the [Microsoft Store page](https://apps.microsoft.com/detail/9nwsdgxdqws4)
-2. Click install
-3. Launch FolderRewind from the Start menu after installation
+1. Open the [Microsoft Store page](https://apps.microsoft.com/detail/9nwsdgxdqws4).
+2. Select Install.
+3. Launch FolderRewind from the Start menu.
 
-> Do not install the Store version and the offline side-loaded package side by side.
+## Option 2: MSI
 
-## Option 2: Side-loading
+1. Open the [latest GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest).
+2. Download the `.msi` for your architecture and the matching `.msi.sha256` file.
+3. In the download directory, run the command below and compare the output with the value in the `.sha256` file:
 
-This is for users who cannot access Microsoft Store or prefer offline packages.
+   ```powershell
+   Get-FileHash .\FolderRewind_*.msi -Algorithm SHA256
+   ```
 
-### Prerequisites
+4. Run the MSI and complete the wizard. It installs to `%LOCALAPPDATA%\Programs\FolderRewind` by default, with an option to choose another local directory.
 
-1. Open Windows Settings
-2. Go to **System > For Developers**
-3. Enable **Developer Mode**
-4. Confirm PowerShell allows script execution (required for the install script)
+MSI does not require Developer Mode or manual certificate import. Because the installer is not yet signed with a Windows-trusted Authenticode certificate, Windows may show an unknown-publisher or SmartScreen warning. Download only from the official Release and verify the hash first.
 
-### Installation steps
+## Option 3: MSIX sideload package
 
-1. Open [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
-2. Download the latest package (filename format: `FolderRewind_{version}_{platform}.7z`, e.g. `FolderRewind_1.7.0_x64.7z`)
-3. Extract the archive to any directory
-4. In the extracted directory, right-click `install.ps1` and select **Run with PowerShell**
-   - If you see a prompt saying execution policy is blocked, open a PowerShell terminal and run:
-     ```powershell
-     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-     .\install.ps1
-     ```
-5. Wait for the installation to complete (the script automatically registers the certificate and installs the MSIX package)
-6. Launch FolderRewind from the Start menu
+1. Open **Windows Settings > System > For Developers** and enable **Developer Mode**.
+2. Open the [latest GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest).
+3. Download the `.7z` for your architecture and the matching `.7z.sha256` file.
+4. Verify the download:
 
-## New in side-loaded v1.6.0
+   ```powershell
+   Get-FileHash .\FolderRewind_*.7z -Algorithm SHA256
+   ```
 
-### GitHub mirror source
+5. Extract the `.7z`, then run the following commands in the extracted directory:
 
-Starting with v1.6.0, side-loaded builds can switch the preferred **GitHub source / mirror source** in Settings.
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+   .\install.ps1
+   ```
 
-This affects:
+6. Wait for the script to register the certificate and install the MSIX package, then launch FolderRewind from the Start menu.
 
-- app update checks and downloads
-- online template index retrieval
-- template file downloads
+`Set-ExecutionPolicy` applies only to the current PowerShell session and does not change the system-wide policy.
 
-Microsoft Store updates are not affected by this setting.
+## Data directories and channel switching
 
-If the official GitHub source is slow in your network environment, switch to a mirror or provide a custom mirror URL.
+| Channel | Config and history directory |
+| --- | --- |
+| Store / MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| MSI | `%LOCALAPPDATA%\FolderRewind` |
 
-### Better side-loaded update flow
+The directory contains `config.json`, `history.json`, and `plugins`. Before switching channels:
 
-v1.6.0 also improves the side-loaded update experience, especially when a source is slow or temporarily unavailable.
+1. Exit FolderRewind completely.
+2. Back up the entire `FolderRewind` data directory for the current channel.
+3. Uninstall the old channel.
+4. Install the new channel, then import or copy only data you have reviewed by following the [Data Migration Guide](../guides/data-migration).
 
-## Common installation issues
+Do not allow two installations to operate on the same active backup workflow.
 
-### Running install.ps1 shows "Cannot load file because running scripts is disabled on this system"
+## Upgrading from an older release
 
-Run the following command in PowerShell, then re-run the install script:
+Before upgrading to 1.8, read [v1.8 Upgrade and Startup Recovery](./v1-8-upgrade). Complete at least one backup-and-restore test with non-production data before protecting important files.
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-.\install.ps1
-```
+If v1.8.0 cannot start because of a legacy language value, do not delete `config.json`. Upgrade to v1.8.1 or change only `GlobalSettings.Language` as described in the recovery guide.
 
-This setting only applies to the current PowerShell session and does not affect the system-wide policy.
+## Validate immediately after installation
 
-## What to do right after installation
-
-### 1. Create a test config first
-
-Use a test folder and run one end-to-end backup flow before protecting important data. Confirm the backup destination is writable, the interface works normally, and history records are generated.
-
-### 2. Run automatic core validation
-
-Open **Settings** and run **Automatic Core Feature Validation**. It checks key workflows on the current machine, including:
-
-- backup
-- restore
-- safe delete
-- keep-count cleanup
-- shared-lock file handling
-
-If this is your first run after upgrading to v1.6.0, it is strongly recommended.
+1. Create a config that uses a test directory.
+2. Complete one manual backup and one test restore.
+3. Run **Automatic Core Feature Validation** in Settings.
+4. Confirm the destination is writable and history is generated before enabling automation.
 
 ## System requirements
 
@@ -102,9 +103,11 @@ If this is your first run after upgrading to v1.6.0, it is strongly recommended.
 | --- | --- |
 | OS | Windows 10 1809 or later / Windows 11 |
 | Architecture | x64 / ARM64 |
-| Runtime | .NET 10 (bundled with the app) |
+| Runtime | .NET 10 (bundled) |
 | Disk space | About 80 MB, excluding backup data |
 
-## Next step
+## Next steps
 
-Continue with [First Backup](./first-backup).
+- [v1.8 Upgrade and Startup Recovery](./v1-8-upgrade)
+- [First Backup](./first-backup)
+- [First Restore](./first-restore)

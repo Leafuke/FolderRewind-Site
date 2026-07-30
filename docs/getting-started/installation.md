@@ -1,100 +1,101 @@
 ---
 sidebar_position: 1
 title: 安装指南
-description: 安装并启动 FolderRewind
+description: 选择 Store、MSI 或 MSIX 安装 FolderRewind
 ---
 
 # 安装指南
 
-FolderRewind 支持两种安装方式：**Microsoft Store** 和 **侧载安装**。
+FolderRewind 提供三种安装渠道：**Microsoft Store**、**MSI** 和 **MSIX 侧载包**。
 
-:::tip 推荐做法
-能使用 Microsoft Store 时，优先使用商店版。它更新更省心，也更不容易出现多版本并存问题。
+:::tip 推荐
+能使用 Microsoft Store 时，优先选择商店版。它安装简单，并由商店负责后续更新。
 :::
+
+:::warning 不要混装
+Store、MSI 与 MSIX 版本不应同时安装或运行。MSI 与 MSIX/Store 使用不同的数据目录，切换渠道不会自动迁移配置、历史或插件。
+:::
+
+## 先选安装渠道
+
+| 渠道 | 适合谁 | 安装方式 | 注意事项 |
+| --- | --- | --- | --- |
+| Microsoft Store | 大多数用户 | 商店一键安装 | 推荐，更新最省心 |
+| MSI | 无法使用 Store 的普通用户 | 双击 `.msi` | 分发格式仍在测试；安装包未使用受信任的 Authenticode 证书 |
+| MSIX (`.7z`) | 熟悉开发人员模式和 PowerShell 的用户 | 解压后运行 `install.ps1` | 需要开发人员模式，体验最接近 Store 版 |
+
+大多数 Intel/AMD Windows 设备选择 **x64**；只有 Windows on ARM 设备选择 **ARM64**。
 
 ## 方式一：Microsoft Store
 
-1. 打开 [Microsoft Store 下载页](https://apps.microsoft.com/detail/9nwsdgxdqws4)
-2. 点击安装
-3. 安装完成后，从开始菜单启动 FolderRewind
+1. 打开 [Microsoft Store 下载页](https://apps.microsoft.com/detail/9nwsdgxdqws4)。
+2. 点击安装。
+3. 安装完成后，从开始菜单启动 FolderRewind。
 
-> 请不要和离线侧载版同时安装。
+## 方式二：MSI
 
-## 方式二：侧载安装
+1. 打开 [最新 GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest)。
+2. 下载架构匹配的 `.msi` 和同名 `.msi.sha256` 文件。
+3. 在下载目录运行以下命令，并将输出与 `.sha256` 文件中的值比较：
 
-适用于无法访问 Microsoft Store，或需要使用离线包的场景。
+   ```powershell
+   Get-FileHash .\FolderRewind_*.msi -Algorithm SHA256
+   ```
 
-### 前置设置
+4. 双击 MSI 并完成安装。默认安装到 `%LOCALAPPDATA%\Programs\FolderRewind`，也可以在向导中选择其他本地目录。
 
-1. 打开 Windows 设置
-2. 进入 **系统 > 开发者选项**
-3. 启用 **开发人员模式**
-4. 确认 PowerShell 允许执行脚本（安装脚本需要）
+MSI 不要求开发人员模式或手动导入证书。由于安装包尚未使用 Windows 信任的 Authenticode 证书，Windows 可能显示“未知发布者”或 SmartScreen 提示。只应从官方 Release 下载并先校验哈希。
 
-### 安装步骤
+## 方式三：MSIX 侧载包
 
-1. 打开 [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)
-2. 下载最新版本的安装包（文件名格式：`FolderRewind_{版本}_{平台}.7z`，如 `FolderRewind_1.7.0_x64.7z`）
-3. 解压压缩包到任意目录
-4. 在解压目录中，右键 `install.ps1` → **使用 PowerShell 运行**
-   - 如果提示执行策略被阻止，打开 PowerShell 终端，执行：
-     ```powershell
-     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-     .\install.ps1
-     ```
-5. 等待安装完成（脚本会自动注册证书并安装 MSIX 包）
-6. 从开始菜单启动 FolderRewind
+1. 打开 **Windows 设置 > 系统 > 开发者选项**，启用 **开发人员模式**。
+2. 打开 [最新 GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest)。
+3. 下载架构匹配的 `.7z` 和同名 `.7z.sha256` 文件。
+4. 校验下载文件：
 
-## 侧载版 1.6.0 新增体验
+   ```powershell
+   Get-FileHash .\FolderRewind_*.7z -Algorithm SHA256
+   ```
 
-### GitHub 镜像源
+5. 解压 `.7z`，在解压目录中运行：
 
-从 v1.6.0 开始，侧载版本可以在设置页切换 **GitHub 更新源 / 镜像源**。
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+   .\install.ps1
+   ```
 
-这个设置会影响：
+6. 等待脚本注册证书并安装 MSIX 包，然后从开始菜单启动 FolderRewind。
 
-- 应用更新检查与下载
-- 在线模板列表获取
-- 模板文件下载
+`Set-ExecutionPolicy` 只影响当前 PowerShell 会话，不会修改系统全局策略。
 
-商店版更新不受该设置影响。
+## 数据目录与切换渠道
 
-如果你的网络环境访问官方 GitHub 较慢，可以在设置页选择镜像源，必要时也可以填写自定义镜像地址。
+| 渠道 | 配置与历史目录 |
+| --- | --- |
+| Store / MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| MSI | `%LOCALAPPDATA%\FolderRewind` |
 
-### 侧载更新体验优化
+目录中包含 `config.json`、`history.json` 和 `plugins`。切换渠道前：
 
-v1.6.0 还优化了侧载版本的更新流程，减少下载源不可用或切换源时带来的干扰。对于经常手动升级的用户，这会更友好。
+1. 完全退出 FolderRewind。
+2. 备份当前渠道的整个 `FolderRewind` 数据目录。
+3. 卸载旧渠道。
+4. 安装新渠道后，再按 [数据迁移指南](../guides/data-migration) 导入或复制经过确认的数据。
 
-## 常见安装问题
+不要让两套安装共用同一个运行中的备份任务。
 
-### 运行 install.ps1 提示"无法加载文件，因为在此系统上禁止运行脚本"
+## 从旧版本升级
 
-在 PowerShell 中执行以下命令，然后重新运行安装脚本：
+升级 1.8 前请阅读 [1.8 升级与启动故障恢复](./v1-8-upgrade)。至少使用测试目录完成一次备份与还原，再把新版本用于重要数据。
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-.\install.ps1
-```
+如果 1.8.0 因旧语言配置无法启动，不要删除 `config.json`；升级到 1.8.1，或按恢复指南只修正 `GlobalSettings.Language`。
 
-此设置仅对当前 PowerShell 会话生效，不会影响系统全局策略。
+## 安装后立即验证
 
-## 安装后建议立刻做的事
-
-### 1. 先创建一个测试配置
-
-用测试目录跑一次完整流程，确认目标备份路径可写、界面正常、历史记录能生成。
-
-### 2. 运行核心功能自动校验
-
-在 **设置页** 中可以找到 **核心功能自动校验**。它会自动验证当前机器上的关键流程是否可用，包括：
-
-- 备份
-- 还原
-- 安全删除
-- 数量限制清理
-- 共享锁文件处理
-
-如果你是升级到 v1.6.0 后首次使用，强烈建议执行一次。
+1. 创建一个使用测试目录的配置。
+2. 完成一次手动备份和一次测试还原。
+3. 在设置页运行 **核心功能自动校验**。
+4. 确认目标备份路径可写、历史记录正常生成，再启用自动化。
 
 ## 系统要求
 
@@ -107,4 +108,6 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 ## 下一步
 
-安装完成后，继续阅读 [首次备份](./first-backup)。
+- [1.8 升级与启动故障恢复](./v1-8-upgrade)
+- [首次备份](./first-backup)
+- [首次还原](./first-restore)
