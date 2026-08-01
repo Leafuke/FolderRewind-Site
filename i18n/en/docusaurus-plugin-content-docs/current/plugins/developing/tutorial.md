@@ -17,7 +17,7 @@ In this tutorial, we will build a plugin called **GameRewind** from scratch. It 
 
 After completion, you will have mastered all core capabilities of FolderRewind plugin development.
 
-:::prerequisites
+:::info Prerequisites
 - Completed the environment setup in [Plugin Development Quick Start](./quick-start)
 - Familiar with basic C# syntax
 :::

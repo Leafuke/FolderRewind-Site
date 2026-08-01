@@ -30,6 +30,8 @@ FolderRewind organizes its business logic through static service classes. The fo
 |---|---|---|
 | `PluginService` | `Services/Plugins/PluginService.cs` | Plugin lifecycle: scanning, installation (zip), uninstallation, loading (AssemblyLoadContext), enable/disable, version checking, settings persistence |
 | `KnotLinkService` | `Services/KnotLinkService.cs` | KnotLink remote command/event protocol, allows external tools to trigger backup/restore via TCP |
+| `FolderRenameService` | `Services/FolderRenameService.cs` | Previews and transactionally migrates source, local backup, metadata, config references, automation targets, and history identity, with rollback attempts |
+| `SevenZipAdditionalArguments` | `Services/SevenZipAdditionalArguments.cs` | Validates advanced 7-Zip arguments used only for backup creation/update and rejects protected switches |
 
 ## UI Helpers
 

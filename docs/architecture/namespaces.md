@@ -13,7 +13,7 @@ description: 各命名空间职责与关键类速查
 | `FolderRewind` | 应用入口与窗口 | `App`, `MainWindow`, `AppConstants` | 根目录 |
 | `FolderRewind.Models` | 数据模型定义 | `AppConfig`, `BackupConfig`, `ManagedFolder`, `ArchiveSettings`, `AutomationSettings`, `FilterSettings`, `HistoryItem`, `BackupTask` | `Models/` |
 | `FolderRewind.Services` | 业务逻辑（静态服务） | `ConfigService`, `BackupService`, `HistoryService`, `AutomationService`, `NavigationService`, `ThemeService`, `NotificationService`, `I18n` | `Services/` |
-| `FolderRewind.Services.Plugins` | 插件接口与管理 | `IFolderRewindPlugin`, `PluginService`, `IFolderRewindBackupFilterProvider`, `IFolderRewindBackupScopeProvider`, `IFolderRewindHotkeyProvider`, `IFolderRewindKnotLinkCommandHandler` | `Services/Plugins/` |
+| `FolderRewind.Services.Plugins` | 插件接口与管理 | `IFolderRewindPlugin`, `PluginService`, `IFolderRewindBackupFilterProvider`, `IFolderRewindBackupScopeProvider`, `IFolderRewindBackupPreparationProvider`, `IFolderRewindFolderDetailsProvider`, `IFolderRewindRestoreInterceptor`, `IFolderRewindConfigAugmenter`, `IFolderRewindParameterizedKnotLinkCommandHandler`, `IFolderRewindKnotLinkCapabilityProvider` | `Services/Plugins/` |
 | `FolderRewind.Services.Hotkeys` | 快捷键管理 | `HotkeyManager`, `HotkeyParser`, `NativeHotkeyService`, `HotkeyGesture`, `HotkeyDefinition` | `Services/Hotkeys/` |
 | `FolderRewind.Services.KnotLink` | KnotLink 协议实现 | `SignalSender`, `SignalSubscriber`, `OpenSocketQuerier`, `OpenSocketResponser`, `TcpClient`, `KnotLinkCommandParser` | `Services/KnotLink/` |
 | `FolderRewind.ViewModels` | 页面级 ViewModel | `ViewModelBase`（基类），各页面 ViewModel | `ViewModels/` |

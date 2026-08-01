@@ -76,7 +76,8 @@ FolderRewind/
 │   │   ├── IFolderRewindBackupFilterProvider.cs
 │   │   ├── IFolderRewindBackupScopeProvider.cs
 │   │   ├── IFolderRewindHotkeyProvider.cs
-│   │   └── IFolderRewindKnotLinkCommandHandler.cs
+│   │   ├── IFolderRewindParameterizedKnotLinkCommandHandler.cs
+│   │   └── IFolderRewindKnotLinkCapabilityProvider.cs
 │   ├── Hotkeys/                         # 快捷键子系统
 │   │   ├── HotkeyManager.cs
 │   │   ├── HotkeyParser.cs
@@ -89,7 +90,9 @@ FolderRewind/
 │   │   ├── OpenSocketQuerier.cs
 │   │   ├── OpenSocketResponser.cs
 │   │   ├── TcpClient.cs
-│   │   └── KnotLinkCommandParser.cs
+│   │   ├── KnotLinkCommandParser.cs
+│   │   ├── KnotLinkCommandRequest.cs
+│   │   └── KnotLinkKeyValueCodec.cs
 ├── ViewModels/                          # 页面级 ViewModel
 │   └── ViewModelBase.cs                 # 基类（ObservableObject + UI 调度）
 ├── Views/                               # XAML 页面与对话框

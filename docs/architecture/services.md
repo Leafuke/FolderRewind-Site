@@ -30,6 +30,8 @@ FolderRewind 的业务逻辑通过静态服务类组织。以下按功能域分�
 |---|---|---|
 | `PluginService` | `Services/Plugins/PluginService.cs` | 插件生命周期：扫描、安装（zip）、卸载、加载（AssemblyLoadContext）、启用/禁用、版本检查、设置持久化 |
 | `KnotLinkService` | `Services/KnotLinkService.cs` | KnotLink 远程命令/事件协议，允许外部工具通过 TCP 触发备份/还原 |
+| `FolderRenameService` | `Services/FolderRenameService.cs` | 预览并事务化迁移源目录、本地备份、元数据、配置引用、自动化目标和历史身份，失败时尝试回滚 |
+| `SevenZipAdditionalArguments` | `Services/SevenZipAdditionalArguments.cs` | 校验仅用于备份创建/更新的高级 7-Zip 参数，拒绝受保护开关 |
 
 ## UI 辅助
 

@@ -62,7 +62,7 @@ dotnet new classlib -n MyFirstPlugin -f net10.0
     <!-- 引用 FolderRewind 的插件接口程序集 -->
     <!-- 路径根据你的 FolderRewind 安装目录调整 -->
     <Reference Include="FolderRewind">
-      <HintPath>..\..\FolderRewind\FolderRewind\bin\Release\net10.0-windows10.0.26100.0\FolderRewind.dll</HintPath>
+      <HintPath>..\..\FolderRewind\FolderRewind\bin\Release\net10.0-windows10.0.19041.0\FolderRewind.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
@@ -80,7 +80,8 @@ dotnet new classlib -n MyFirstPlugin -f net10.0
   "Author": "YourName",
   "Description": "我的第一个 FolderRewind 插件",
   "EntryAssembly": "MyFirstPlugin.dll",
-  "EntryType": "MyFirstPlugin.MyPlugin"
+  "EntryType": "MyFirstPlugin.MyPlugin",
+  "MinHostVersion": "1.8.0"
 }
 ```
 

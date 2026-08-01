@@ -12,7 +12,7 @@ description: FolderRewind project tech stack and architecture bird's-eye view
 
 | Category | Technology | Version |
 |---|---|---|
-| Framework | .NET + Windows App SDK | .NET 10 / WinAppSDK 2.1.3 |
+| Framework | .NET + Windows App SDK | .NET 10 / Windows App SDK 2.3.1 |
 | UI | WinUI 3 | — |
 | MVVM | CommunityToolkit.Mvvm | 8.4.2 |
 | Compression Engine | 7-Zip (7za.exe) | Bundled |

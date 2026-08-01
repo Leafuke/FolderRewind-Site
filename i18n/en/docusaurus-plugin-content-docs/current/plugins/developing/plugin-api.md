@@ -1,212 +1,185 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Plugin API Reference
-description: Full IFolderRewindPlugin interface reference, call sequence, and practical guidance
+description: FolderRewind 1.8 plugin interfaces, lifecycle, and extension points
 ---
 
 # Plugin API Reference
 
-This page is a reference for `IFolderRewindPlugin` and is intended to help you ship usable plugins quickly.
+This page follows the current `Services/Plugins/` source. A plugin using the interfaces introduced in 1.8 should declare `MinHostVersion: "1.8.0"` in `manifest.json`; use `1.8.1` when it also depends on the 1.8.1 fixes.
 
-## Interface role
+## Core interface and lifecycle
 
-`IFolderRewindPlugin` is the main plugin entry for:
-
-- Plugin metadata and setting definitions
-- Lifecycle initialization
-- Backup/restore hooks
-- Config type discovery and batch creation
-- (Optional) complete takeover of backup/restore
-
-## Minimal implementation
+Every plugin implements `IFolderRewindPlugin`:
 
 ```csharp
-public class MyPlugin : IFolderRewindPlugin
+public interface IFolderRewindPlugin
 {
-    public PluginInstallManifest Manifest { get; } = new()
-    {
-        Id = "com.example.myplugin",
-        Name = "MyPlugin",
-        Version = "1.0.0",
-        Author = "You",
-        Description = "My first plugin"
-    };
+    PluginInstallManifest Manifest { get; }
+    IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions();
+    void Initialize(IReadOnlyDictionary<string, string> settingsValues);
+    void SetHostContext(PluginHostContext hostContext) { }
 
-    public IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions()
-        => new List<PluginSettingDefinition>();
-
-    public void Initialize(IReadOnlyDictionary<string, string> settingsValues) { }
-
-    public string? OnBeforeBackupFolder(BackupConfig config, ManagedFolder folder,
-        IReadOnlyDictionary<string, string> settingsValues)
-        => null;
-
-    public void OnAfterBackupFolder(BackupConfig config, ManagedFolder folder,
-        bool success, string? generatedArchiveFileName,
-        IReadOnlyDictionary<string, string> settingsValues) { }
-
-    public IReadOnlyList<ManagedFolder> TryDiscoverManagedFolders(string selectedRootPath,
-        IReadOnlyDictionary<string, string> settingsValues)
-        => new List<ManagedFolder>();
-}
-```
-
-## Member details
-
-## `Manifest`
-
-Used by UI, logs, and compatibility checks. At minimum, fill in:
-
-- `Id`: globally unique (reverse-domain style recommended)
-- `Version`: semantic version
-- `EntryAssembly`, `EntryType`: must match `manifest.json`
-- `MinHostVersion`: minimum host version
-
-## `GetSettingsDefinitions()`
-
-Returns plugin setting definitions. Host stores user values and sends them back via `settingsValues`.
-
-Practical advice:
-
-- Keep key names stable after release
-- Use string `"true"` / `"false"` for boolean defaults
-- Describe purpose and side effects clearly
-
-## `Initialize(settingsValues)`
-
-Called once when plugin is enabled. Typical uses:
-
-- Read/cache settings
-- Warm up state
-- One-time correction for historical configs
-
-MineRewind reads `EnableHotBackup` and `PreservePlayerData` here and fixes related filters.
-
-## `SetHostContext(hostContext)` (optional)
-
-After host context injection, plugin can actively:
-
-- `BroadcastEvent`
-- `QueryKnotLinkAsync`
-- `SubscribeSignal`
-- `LogInfo/LogWarning/LogError`
-
-## Backup hooks
-
-### `OnBeforeBackupFolder(...)`
-
-- Return `null`: use original source path
-- Return new path: host uses returned path as backup source
-
-Typical uses:
-
-- Snapshot-directory replacement
-- Notify external program to flush data before backup
-
-### `OnBeforeBackupFolderAsync(...)`
-
-Host prefers async version (default falls back to sync version).
-
-Best for:
-
-- KnotLink interaction via `PluginHostContext`
-- Short async I/O tasks
-
-### `OnAfterBackupFolder(...)`
-
-For post actions:
-
-- Clean temporary snapshots
-- Write extra metadata
-- Log backup results
-
-## Restore hooks
-
-### `OnBeforeRestoreFolder(...)`
-
-Can return any state object (`object`) and pass it to post-restore hook.
-
-MineRewind uses it to capture player data snapshots before restore.
-
-### `OnAfterRestoreFolder(...)`
-
-Receives pre-restore state for write-back and post-processing.
-
-MineRewind writes preserved player data back to `level.dat` here.
-
-## Config types and discovery
-
-### `GetSupportedConfigTypes()` + `CanHandleConfigType(...)`
-
-Define plugin-specific config types. MineRewind returns `Minecraft Saves`.
-
-### `TryDiscoverManagedFolders(...)`
-
-Given a selected path, plugin can auto-discover manageable folders.
-
-### `TryCreateConfigs(...)`
-
-Batch-create `BackupConfig` items. On handled success, return:
-
-- `Handled = true`
-- `CreatedConfigs = [...]`
-- optional `Message`
-
-## Config Augmentation Extension
-
-Plugins can optionally implement `IFolderRewindConfigAugmenter` so the host can auto-augment existing configs after startup or after a setting is re-enabled.
-
-```csharp
-public interface IFolderRewindConfigAugmenter
-{
-    PluginConfigAugmentationResult AugmentConfigs(
-        PluginConfigAugmentationRequest request,
+    string? OnBeforeBackupFolder(BackupConfig config, ManagedFolder folder,
         IReadOnlyDictionary<string, string> settingsValues);
-
-    bool ShouldAugmentAfterSettingsChange(
-        IReadOnlyDictionary<string, string> previousSettings,
-        IReadOnlyDictionary<string, string> currentSettings)
-        => false;
+    void OnAfterBackupFolder(BackupConfig config, ManagedFolder folder, bool success,
+        string? generatedArchiveFileName,
+        IReadOnlyDictionary<string, string> settingsValues);
+    object? OnBeforeRestoreFolder(BackupConfig config, ManagedFolder folder,
+        string archiveFileName, IReadOnlyDictionary<string, string> settingsValues) => null;
+    void OnAfterRestoreFolder(BackupConfig config, ManagedFolder folder, bool success,
+        string archiveFileName, object? state,
+        IReadOnlyDictionary<string, string> settingsValues) { }
 }
 ```
 
-- `request.Configs` is a snapshot of the current configs; plugins should return additive folder suggestions instead of mutating `ConfigService.CurrentConfig`
-- The host owns deduplication, display-name conflict filtering, config saves, and notifications
-- `ShouldAugmentAfterSettingsChange(...)` lets a plugin opt into an immediate re-scan after a user flips a setting from off to on
+Configuration discovery and full takeover members have default implementations: `GetSupportedConfigTypes`, `CanHandleConfigType`, `TryDiscoverManagedFolders`, `TryCreateConfigs`, `WantsToHandleBackup`, `PerformBackupAsync`, `WantsToHandleRestore`, and `PerformRestoreAsync`.
 
-## Full takeover (advanced)
+The usual call order is:
 
-When either returns `true`, the host bypasses the built-in engine:
+```text
+load manifest → Initialize → SetHostContext
+discover/create config → backup hook or full takeover → after-backup hook
+restore hook/interceptor → standard restore or full takeover → after-restore hook
+```
 
-- `WantsToHandleBackup(config)`
-- `WantsToHandleRestore(config)`
+## Manifest and target framework
 
-Then host calls:
+```json
+{
+  "Id": "com.example.myplugin",
+  "Name": "MyPlugin",
+  "Version": "1.0.0",
+  "EntryAssembly": "MyPlugin.dll",
+  "EntryType": "MyPlugin.MyPlugin",
+  "MinHostVersion": "1.8.0"
+}
+```
 
-- `PerformBackupAsync(...)` -> `PluginBackupResult`
-- `PerformRestoreAsync(...)` -> `PluginRestoreResult`
+The application target framework is `net10.0-windows10.0.19041.0`. Plugin projects should use a compatible .NET 10 Windows target and reference the interface assembly from the actual installation/build output; do not copy a target path from older site content.
 
-Use this when you need custom archive formats, remote storage, or special verification.
+## Backup filters and scopes
 
-## Simplified call sequence
+### `IFolderRewindBackupFilterProvider`
 
-1. Enable plugin -> `Initialize`
-2. Config creation stage -> `TryDiscoverManagedFolders` / `TryCreateConfigs`
-3. Backup stage
-   - If takeover: `PerformBackupAsync`
-   - Otherwise: `OnBefore...` -> built-in backup -> `OnAfter...`
-4. Restore stage is similar
+```csharp
+PluginBackupFilterContribution? GetBackupFilterContribution(
+    BackupConfig config,
+    ManagedFolder folder,
+    IReadOnlyDictionary<string, string> settingsValues);
+```
 
-## Common pitfalls
+The contribution applies to one backup invocation. The Host clones the effective config and does not mutate the saved whitelist/blacklist.
 
-- Blocking too long in hooks
-- Unhandled exceptions affecting user experience
-- Non-robust `settingsValues` parsing
-- Too-wide version compatibility declaration
+### `IFolderRewindBackupScopeProvider`
+
+```csharp
+IReadOnlyList<PluginBackupScopeDefinition> GetBackupScopeDefinitions(
+    BackupConfig config,
+    IReadOnlyDictionary<string, string> settingsValues);
+
+PluginBackupScopeResolution ResolveBackupScope(
+    BackupConfig config,
+    ManagedFolder folder,
+    PluginBackupScopeContext scope,
+    IReadOnlyDictionary<string, string> settingsValues);
+```
+
+`PluginBackupScopeDefinition` supplies an ID, display name, description, and parameter definitions. `PluginBackupScopeContext` carries the selected `ScopeId` and parameters. A resolution is `Applied`, `NotApplicable`, or `Invalid`, and can merge rules with `Append` or `Replace`. Selected-region backup uses `Replace`, so its calculated scope replaces the regular whitelist.
+
+## Backup preparation and folder details
+
+### `IFolderRewindBackupPreparationProvider`
+
+```csharp
+string? OnBeforeBackupFolder(
+    BackupConfig config,
+    ManagedFolder folder,
+    BackupInvocationOptions invocationOptions,
+    IReadOnlyDictionary<string, string> settingsValues);
+```
+
+This interface can inspect trigger source and consistency preferences. If it is not implemented, the core `OnBeforeBackupFolder` hook still runs.
+
+### `IFolderRewindFolderDetailsProvider`
+
+```csharp
+Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
+    BackupConfig config,
+    ManagedFolder folder,
+    IReadOnlyDictionary<string, string> settingsValues,
+    CancellationToken cancellationToken);
+```
+
+Plugins return read-only key/value data; the Host renders the details dialog. An exception from one provider does not prevent other details from rendering.
+
+## Restore interception and config augmentation
+
+### `IFolderRewindRestoreInterceptor`
+
+```csharp
+Task<PluginRestoreInterceptionResult> TryInterceptRestoreAsync(
+    BackupConfig config,
+    ManagedFolder folder,
+    string archiveFileName,
+    IReadOnlyDictionary<string, string> settingsValues,
+    CancellationToken cancellationToken);
+```
+
+Return `Continue` to let the Host proceed, `Handled` when the plugin completed the request, or `Blocked` to reject it. Use `PluginRestoreInterceptionResult.Continue/Handled/Blocked(...)`.
+
+### `IFolderRewindConfigAugmenter`
+
+```csharp
+PluginConfigAugmentationResult AugmentConfigs(
+    PluginConfigAugmentationRequest request,
+    IReadOnlyDictionary<string, string> settingsValues);
+
+bool ShouldAugmentAfterSettingsChange(
+    IReadOnlyDictionary<string, string> previousSettings,
+    IReadOnlyDictionary<string, string> currentSettings) => false;
+```
+
+Return folders to suggest adding. The Host deduplicates, filters conflicts, saves, and notifies the user. Do not mutate `ConfigService.CurrentConfig` directly.
+
+## KnotLink and hotkeys
+
+- `IFolderRewindParameterizedKnotLinkCommandHandler` implements `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`; see [KnotLink Command API](./knotlink-api).
+- `IFolderRewindKnotLinkCapabilityProvider` implements `GetKnotLinkCapabilities()` and publishes discoverable commands and signals.
+- `IFolderRewindHotkeyProvider` implements `GetHotkeyDefinitions()` and `OnHotkeyInvokedAsync(...)` for global or in-app hotkeys.
+
+`PluginHostContext` exposes the plugin ID, KnotLink state, event broadcasting, query/send operations, signal subscriptions, and logging. KnotLink payloads must follow strict key-value protocol v2.
+
+## Full backup/restore takeover
+
+Return `WantsToHandleBackup/Restore = true` only when the plugin owns a genuinely different archive format or workflow, then implement:
+
+```csharp
+Task<PluginBackupResult> PerformBackupAsync(
+    BackupConfig config, ManagedFolder folder, string comment,
+    IReadOnlyDictionary<string, string> settingsValues,
+    Action<double, string>? progressCallback = null);
+
+Task<PluginRestoreResult> PerformRestoreAsync(
+    BackupConfig config, ManagedFolder folder, string archiveFileName,
+    IReadOnlyDictionary<string, string> settingsValues,
+    Action<double, string>? progressCallback = null);
+```
+
+`PluginBackupResult` has `Success`, `GeneratedFileName`, and `Message`; `PluginRestoreResult` has `Success` and `Message`. Prefer hooks and extension interfaces for ordinary plugins so Host history, cleanup, and safety policy remain active.
+
+## Exceptions, threads, and compatibility
+
+- Plugins run in the Host process; catch expected exceptions in hooks, handlers, and detail providers.
+- Do not perform long I/O on the UI thread; use async APIs and honor `CancellationToken`.
+- Do not cache internal models across versions or mutate Host service state directly.
+- New interfaces require 1.8.0. The current MineRewind manifest uses `MinHostVersion: 1.8.1`; set the minimum to the actual API you require.
+- A ZIP root must contain `manifest.json` and the entry assembly, with dependencies beside it.
 
 ## Related links
 
 - [Plugin Development Quick Start](./quick-start)
-- [Hotkey API](./hotkey-api)
+- [Tutorial](./tutorial)
 - [KnotLink Command API](./knotlink-api)
-- [Minecraft Guide Overview](../../guides/minecraft/overview)
+- [Packaging and Publishing](./packaging)
+- [Architecture: Plugin System](../../architecture/plugin-system)

@@ -1,90 +1,64 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Plugin System
-description: Plugin interfaces, lifecycle, and the KnotLink protocol
+description: FolderRewind 1.8 plugin interfaces, lifecycle, and parameterized KnotLink protocol
 ---
 
 # Plugin System
 
-## Interface Hierarchy
+FolderRewind 1.8 combines a core lifecycle interface with capability-specific optional interfaces. Plugins run in the Host process and load through an isolated collectible `AssemblyLoadContext`; plugins still own their exception and threading discipline.
 
-The plugin system is built around the core `IFolderRewindPlugin` interface, supplemented by optional extension interfaces:
+## Interface map
 
-- **`IFolderRewindBackupFilterProvider`** — Allows a plugin to contribute filtering rules (whitelist/blacklist) for a single backup run. The host clones the config before applying these rules, so the user's saved configuration is never polluted.
-- **`IFolderRewindBackupScopeProvider`** — Allows a plugin to declare new "backup scope / filter strategies" (e.g. a Minecraft region), which are converted into host-executable filter rules at backup time. Parameters are dynamically rendered by the host and stored in `BackupConfig`.
-- **`IFolderRewindHotkeyProvider`** — Custom hotkeys.
-- **`IFolderRewindKnotLinkCommandHandler`** — Extends FolderRewind's KnotLink command set.
-- **`IFolderRewindParameterizedKnotLinkCommandHandler`** — Participates in the new parameterized KnotLink commands, coexisting with the legacy interface so that older plugins do not need to recompile when the host upgrades.
-
-```mermaid
-graph TB
-    IFolderRewindPlugin["IFolderRewindPlugin<br/>Core Interface"]
-    IFilterProvider["IFolderRewindBackupFilterProvider<br/>Backup Filter Rules"]
-    IScopeProvider["IFolderRewindBackupScopeProvider<br/>Backup Scope Discovery"]
-    IHotkeyProvider["IFolderRewindHotkeyProvider<br/>Custom Hotkeys"]
-    IKnotLinkHandler["IFolderRewindKnotLinkCommandHandler<br/>KnotLink Command Handling"]
-    IParameterizedKnotLinkHandler["IFolderRewindParameterizedKnotLinkCommandHandler<br/>Parameterized KnotLink Command Handling"]
-
-    IFolderRewindPlugin -.->|Optional Implementation| IFilterProvider
-    IFolderRewindPlugin -.->|Optional Implementation| IScopeProvider
-    IFolderRewindPlugin -.->|Optional Implementation| IHotkeyProvider
-    IFolderRewindPlugin -.->|Optional Implementation| IKnotLinkHandler
-    IFolderRewindPlugin -.->|Optional Implementation| IParameterizedKnotLinkHandler
-```
-
-### Core Interface `IFolderRewindPlugin`
-
-The core interface every plugin must implement, defining:
-
-- **Lifecycle hooks**: `Initialize(settingsValues)` — called once by the host when the plugin is enabled (unloading is managed by the host; plugins do not implement an unload method)
-- **Backup/restore hooks**: `OnBeforeBackupFolder()` / `OnAfterBackupFolder()` / `OnBeforeRestoreFolder()` / `OnAfterRestoreFolder()`
-- **Full takeover**: `WantsToHandleBackup()` / `PerformBackupAsync()` / `WantsToHandleRestore()` / `PerformRestoreAsync()` — a plugin can fully take over the backup/restore flow for a specific configuration
-- **Config type discovery**: `GetSupportedConfigTypes()` — returns the list of configuration types this plugin supports
-- **Settings page contribution**: `GetSettingsDefinitions()` — defines optional plugin settings; the host persists the values entered by the user
+| Interface | Responsibility |
+|-----------|----------------|
+| `IFolderRewindPlugin` | Manifest, settings, initialization, backup/restore hooks, discovery, and optional full takeover |
+| `IFolderRewindBackupFilterProvider` | Add rules for one backup |
+| `IFolderRewindBackupScopeProvider` | Declare and resolve configuration-level scopes |
+| `IFolderRewindBackupPreparationProvider` | Inspect trigger source and consistency preferences |
+| `IFolderRewindFolderDetailsProvider` | Supply read-only key/value sections to folder details |
+| `IFolderRewindRestoreInterceptor` | Continue, handle, or block a restore before a task is created |
+| `IFolderRewindConfigAugmenter` | Suggest discovered folders for an existing config |
+| `IFolderRewindParameterizedKnotLinkCommandHandler` | Handle strict key-value KnotLink v2 requests |
+| `IFolderRewindKnotLinkCapabilityProvider` | Publish discoverable KnotLink commands/signals |
+| `IFolderRewindHotkeyProvider` | Register global or in-app hotkeys |
 
 ## Lifecycle
 
-```mermaid
-graph LR
-    Scan["Scan Plugin Directory"] --> Install["Install (from zip)"]
-    Install --> Load["Load (AssemblyLoadContext)"]
-    Load --> Enable["Enable"]
-    Enable --> Run["Running (Hook Calls)"]
-    Run --> Disable["Disable"]
-    Disable --> Unload["Unload"]
-    Unload --> Uninstall["Uninstall & Delete"]
-```
+Scan the plugin directory → read the manifest and check MinHostVersion → load through an isolated AssemblyLoadContext → Initialize → SetHostContext → register extensions → call backup/restore interfaces per task → disable, unload, or update.
 
-- **Scan**: `PluginService` scans the plugin directory on startup
-- **Install**: Supports installation from a zip package, automatically extracted to the plugin directory
-- **Load**: Uses `AssemblyLoadContext` for isolated plugin loading
-- **Enable / Disable**: Runtime toggle, no application restart required
-- **Version checking**: Plugin update checks via GitHub Release
-- **Settings persistence**: Plugin settings are persisted and managed by the host application
+Example plugins using new 1.8 interfaces should declare `MinHostVersion: "1.8.0"`. Current MineRewind uses `1.8.1` because it depends on that release's fixes.
 
-## Plugin Isolation
+## Backup and restore extensions
 
-Implemented using .NET's `AssemblyLoadContext`:
+- Filters and scope resolutions create an effective per-invocation config; the Host does not modify the saved source config.
+- Selected-region scopes can use PluginBackupRuleMergeMode.Replace to replace the regular whitelist and return Invalid for unsafe parameters.
+- IFolderRewindBackupPreparationProvider can inspect BackupInvocationOptions; without it, the core OnBeforeBackupFolder still runs.
+- Detail providers return data only; the Host owns rendering.
+- Restore interceptors return Continue, Handled, or Blocked before side effects.
+- Config augmenters return suggestions; the Host deduplicates, handles conflicts, and saves.
 
-- Each plugin is loaded in its own AssemblyLoadContext
-- Plugin dependencies do not conflict with the host or other plugins
-- Loaded assemblies can be released when a plugin is unloaded (supports hot-update scenarios)
+## KnotLink subsystem
 
-## KnotLink Protocol
+KnotLinkService provides transport through Server v3, while FolderRewind uses strict parameterized protocol v2:
 
-KnotLink is a TCP-based remote command/event protocol, inherited from MineBackup:
+- KnotLinkCommandParser checks for cmd= and parses fields.
+- KnotLinkCommandRequest exposes string, boolean, and list accessors.
+- KnotLinkKeyValueCodec validates keys and performs RFC 3986 percent-encoding.
+- IFolderRewindParameterizedKnotLinkCommandHandler runs plugin handlers before built-in commands.
+- IFolderRewindKnotLinkCapabilityProvider merges plugin commands and signals into GET_CAPABILITIES.
 
-- **Signal Sender** (`SignalSender`): sends backup/restore event notifications to external tools
-- **Signal Subscriber** (`SignalSubscriber`): listens for commands from external tools
-- **Command Parser** (`KnotLinkCommandParser`): parses TCP messages into structured commands
-- **TCP Communication** (`TcpClient`, `OpenSocketQuerier`, `OpenSocketResponser`): low-level network communication
+The removed space-delimited commands and legacy handler do not coexist with the new API. See [KnotLink Command Reference](../plugins/knotlink-commands).
 
-Typical scenario: a Minecraft mod triggers a hot backup / hot restore while the game is running.
+## Layout and isolation
 
-## Reference Plugin: MineRewind
+- Interfaces live in FolderRewind/Services/Plugins/; PluginService discovers and dispatches them.
+- KnotLink protocol helpers live in FolderRewind/Services/KnotLink/.
+- Plugins may ship dependency DLLs; PluginLoadContext resolves dependencies from the plugin directory first.
+- A plugin root must contain manifest.json and its entry assembly, packaged as ZIP.
 
-`FolderRewind-Plugin-Minecraft/MineRewind/` is the official Minecraft save management plugin and serves as a reference implementation for plugin development:
+## Related links
 
-- Implements the full takeover capability of `IFolderRewindPlugin`
-- Handles Minecraft-specific backup/restore logic
-- Integrates KnotLink command handling
+- [Plugin API Reference](../plugins/developing/plugin-api)
+- [KnotLink Command API](../plugins/developing/knotlink-api)
+- [Plugin Development Quick Start](../plugins/developing/quick-start)

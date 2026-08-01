@@ -12,7 +12,7 @@ description: FolderRewind 项目技术栈与架构鸟瞰
 
 | 类别 | 技术 | 版本 |
 |---|---|---|
-| 框架 | .NET + Windows App SDK | .NET 10 / WinAppSDK 2.1.3 |
+| 框架 | .NET + Windows App SDK | .NET 10 / Windows App SDK 2.3.1 |
 | UI | WinUI 3 | — |
 | MVVM | CommunityToolkit.Mvvm | 8.4.2 |
 | 压缩引擎 | 7-Zip（7za.exe） | 捆绑 |
