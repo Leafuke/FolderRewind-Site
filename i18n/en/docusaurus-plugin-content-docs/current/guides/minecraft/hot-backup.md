@@ -23,7 +23,7 @@ This page targets advanced MineRewind users and explains when hot backup is trig
 
 - Regular backup flow (world file is occupied before backup)
 - Global hotkey `Alt+Ctrl+S`
-- KnotLink command `BACKUP_CURRENT`
+- KnotLink v2 request `cmd=BACKUP;current_save=true;...`
 
 ## Trigger conditions
 
@@ -75,7 +75,7 @@ Hot coordination is best-effort and does not block backup forever.
 ### Request
 
 ```text
-BACKUP_CURRENT QuickSave
+cmd=BACKUP;current_save=true;comment=QuickSave;from=minebackup.mod;request_id=hot-backup-001
 ```
 
 ### Typical response

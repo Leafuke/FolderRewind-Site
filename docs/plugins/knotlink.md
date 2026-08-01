@@ -1,65 +1,93 @@
 ---
 sidebar_position: 3
 title: KnotLink 协议与联动
-description: 了解 FolderRewind 与外部程序通过 KnotLink 的通信方式
+description: 了解 KnotLink Server v3、FolderRewind 参数化协议 v2 与外部联动方式
 ---
 
 # KnotLink 协议与联动
 
-KnotLink 是 FolderRewind 与外部程序（如游戏模组、脚本工具）通信的桥梁，基于 TCP 协议。
+KnotLink 是 FolderRewind 与游戏模组、脚本和控制面板之间的通信通道。FolderRewind 1.8 采用全新的远程指令模式，并要求 **KnotLink Server v3**。
 
-## 典型用途
+## 两个版本号不要混淆
 
-- 在备份前通知外部程序执行保存动作
-- 在还原后通知外部程序重新加载状态
-- 接收外部命令触发备份或还原任务
-- 查询当前备份状态和历史
-
-## 在插件中的接入点
-
-### PluginHostContext API
-
-通过 `SetHostContext` 注入的 `PluginHostContext` 提供以下通信方法：
-
-| 方法 | 用途 |
+| 名称 | 含义 |
 |------|------|
-| `BroadcastEvent(eventData)` | 向所有订阅者广播事件 |
-| `BroadcastEventAsync(eventData)` | 异步广播事件 |
-| `QueryKnotLinkAsync(question, timeoutMs)` | 发送请求并等待响应 |
-| `SubscribeSignal(signalId, onSignal)` | 订阅指定信号通道 |
-| `SendKnotLinkCommand(message)` | 发送命令（异步执行，不等待响应） |
+| **KnotLink Server v3** | 提供 TCP/OpenSocket、查询和信号传输的外部服务端版本 |
+| **FolderRewind 参数化协议 v2** | FolderRewind 在 KnotLink 负载中使用的严格 `key=value` 指令格式 |
 
-状态检查：
+Server v3 是传输服务版本，参数化协议 v2 是 FolderRewind 的消息格式。升级其中一个并不代表另一个也已兼容；1.8 联动环境应同时满足两项要求。
 
-| 属性 | 说明 |
-|------|------|
-| `IsKnotLinkAvailable` | KnotLink 整体是否可用 |
-| `IsKnotLinkSenderReady` | 发送器是否就绪 |
-| `IsKnotLinkResponserReady` | 响应器是否就绪 |
+:::warning v1 指令已移除
+FolderRewind 1.8 不再解析空格分隔的旧指令。调用方必须发送包含 `cmd=` 的严格键值对负载。
+:::
 
-### 命令扩展接口
+## 协议格式
 
-- `IFolderRewindKnotLinkCommandHandler` — 扩展可识别的基础命令
-- `IFolderRewindParameterizedKnotLinkCommandHandler` — 扩展参数化命令
+请求、响应和事件都使用分号分隔字段：
 
-## MineRewind 实战中的命令
+```text
+cmd=BACKUP;config_id=demo;folder=0;comment=Before%20upgrade;from=panel;request_id=req-001
+```
 
-| 命令 | 说明 |
-|------|------|
-| `BACKUP_CURRENT` | 备份当前活跃的 Minecraft 世界 |
-| `BACKUP <config_id> <folder> [comment] [FORCE_FULL]` | 指定配置和文件夹备份 |
-| `RESTORE_CURRENT_LATEST` | 热还原当前世界到最新备份 |
-| `RESTORE_CURRENT <backup_file>` | 热还原到指定备份 |
-| `RESTORE_CURRENT_WITH_DATA [file]` | 热还原并保留玩家数据 |
-| `LIST_BACKUPS_CURRENT` | 列出当前世界的所有备份 |
+规则如下：
 
-这些命令配合 KnotLink 事件广播实现「保存-退出-还原-重进」完整链路。
+- 键只允许 ASCII 字母、数字和下划线，内部按小写处理。
+- 每段必须恰好包含一个 `=`；空段、重复键和无效转义会拒绝整个请求。
+- 值采用 RFC 3986 percent-encoding。空格写为 `%20`，分号写为 `%3B`，等号写为 `%3D`，`%` 写为 `%25`。
+- 列表使用逗号分隔；列表中的每一项单独编码。
+- `BACKUP`、`RESTORE`、`BACKUP_ALL`、`AUTO_BACKUP`、`STOP_AUTO_BACKUP` 和 `MARK_IMPORTANT` 必须带 `from` 与唯一的 `request_id`。
 
-插件实现细节见 [KnotLink Command API](./developing/knotlink-api)。
+典型响应：
+
+```text
+status=ok;from=panel;request_id=req-001;message=Backup%20task%20queued
+```
+
+错误响应使用 `status=error`，并在 `message` 中提供原因。
+
+## 先发现能力，再发送命令
+
+客户端应先发送：
+
+```text
+cmd=GET_CAPABILITIES
+```
+
+响应中的 `func_list` 是 percent-encoded JSON，包含当前 Host 内置命令、插件贡献的命令和信号。仓库中的 `funcList.json` 是内置命令事实基线；运行时清单可能因已启用插件而扩展。
+
+完整字段见 [KnotLink 命令参考](./knotlink-commands)。
+
+## 生命周期信号
+
+带会话元数据的长操作会用同一个 `request_id` 广播生命周期：
+
+```text
+command_accepted → command_started → command_progress → command_completed
+                                      ↘ command_failed / command_error
+```
+
+备份、还原和自动备份还会广播各自的业务信号。调用方应以 `request_id` 关联响应和事件，不要只根据到达顺序判断一次操作。
+
+## 插件接入
+
+插件通过以下 1.8 接口参与协议：
+
+- `IFolderRewindParameterizedKnotLinkCommandHandler`：读取 `KnotLinkCommandRequest` 并处理参数化命令。
+- `IFolderRewindKnotLinkCapabilityProvider`：把命令和信号定义加入运行时 `func_list`。
+- `PluginHostContext`：查询 KnotLink 状态、广播事件、发送命令或执行请求/响应查询。
+
+开发细节见 [KnotLink Command API](./developing/knotlink-api)。
+
+## 安全建议
+
+- 只在受信任网络和受控端口上运行 KnotLink Server。
+- 为每个改变状态的请求生成新的 `request_id`，并在调用方做幂等去重。
+- 在实际目录上执行远程还原前，先用测试配置演练完整事件链。
+- 不要把 percent-decoding 后的内容直接拼接到 Shell 命令。
 
 ## 相关链接
 
+- [KnotLink 命令参考](./knotlink-commands)
 - [KnotLink Command API](./developing/knotlink-api)
-- [Plugin API 参考](./developing/plugin-api)
-- [实战教程](./developing/tutorial)
-- [Minecraft 专题总览](../guides/minecraft/overview)
+- [Minecraft 与联动模组](../guides/minecraft/knotlink-mod)
+- [1.8 升级与恢复](../getting-started/v1-8-upgrade)

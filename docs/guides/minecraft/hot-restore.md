@@ -22,9 +22,9 @@ description: MineRewind 的保存-退出-还原-重进流程与超时策略
 ## 两种触发方式
 
 - 热键触发：`Alt+Ctrl+Z`
-- KnotLink 命令触发：
-  - `RESTORE_CURRENT_LATEST`
-  - `RESTORE_CURRENT <backup_file>`
+- KnotLink v2 命令触发：
+  - `cmd=RESTORE;current_save=true;...`（`file` 为空表示最新备份）
+  - 增加 `file=<encoded backup filename>` 选择指定备份
 
 ## 执行前提
 
@@ -92,7 +92,7 @@ TriggerHotRestoreAsync
 请求：
 
 ```text
-RESTORE_CURRENT_LATEST
+cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=hot-restore-001
 ```
 
 响应：
@@ -106,7 +106,7 @@ OK:Hot restore triggered for 'WorldName'
 请求：
 
 ```text
-RESTORE_CURRENT backup_2026-02-28_18-30-01.7z
+cmd=RESTORE;current_save=true;file=backup_2026-02-28_18-30-01.7z;from=minebackup.mod;request_id=hot-restore-002
 ```
 
 响应：
@@ -118,7 +118,7 @@ OK:Hot restore triggered for 'WorldName' with backup 'backup_2026-02-28_18-30-01
 ## 安全建议
 
 - 首次启用热还原时，先在测试世界演练
-- 使用指定备份还原前，先通过 `LIST_BACKUPS_CURRENT` 确认文件名
+- 使用指定备份还原前，先通过 `cmd=LIST_BACKUPS;current_save=true` 确认文件名
 - 热还原失败时优先改用常规还原路径，避免连续重复触发
 - 若你需要保留玩家状态，先开启 `PreservePlayerData` 再测试
 

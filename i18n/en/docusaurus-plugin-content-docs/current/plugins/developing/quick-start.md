@@ -22,7 +22,7 @@ FolderRewind plugins are built on .NET and mainly use these interfaces:
 |------|------|
 | `IFolderRewindPlugin` | Main entry for lifecycle and core functionality |
 | `IFolderRewindHotkeyProvider` | Register custom global hotkeys |
-| `IFolderRewindKnotLinkCommandHandler` | Handle KnotLink IPC commands |
+| `IFolderRewindKnotLinkCapabilityProvider` | Publish discoverable KnotLink commands and signals |
 
 ## Development workflow
 

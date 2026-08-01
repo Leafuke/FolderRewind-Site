@@ -74,12 +74,12 @@ MineRewind 支持“当前活跃世界”的热还原流程：
 
 ## 5) KnotLink 命令扩展
 
-插件已扩展以下命令：
+插件通过参数化协议 v2 扩展 Host 命令：
 
-- `BACKUP_CURRENT`
-- `RESTORE_CURRENT_LATEST`
-- `LIST_BACKUPS_CURRENT`
-- `RESTORE_CURRENT <backup_file>`
+- `cmd=BACKUP;current_save=true;...`
+- `cmd=RESTORE;current_save=true;...`
+- `cmd=LIST_BACKUPS;current_save=true`
+- `preserve_player_data=true` 可作为还原覆盖参数
 
 ## 6) 可选的玩家数据保留
 

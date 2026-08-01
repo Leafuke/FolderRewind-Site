@@ -22,8 +22,8 @@ FolderRewind 插件基于 .NET 类库构建，通过接口与宿主交互。每�
 |------|:----:|------|
 | `IFolderRewindPlugin` | ✅ | 插件主入口：生命周期、备份/还原钩子、配置发现 |
 | `IFolderRewindHotkeyProvider` | — | 注册自定义快捷键（全局或应用内） |
-| `IFolderRewindKnotLinkCommandHandler` | — | 扩展 KnotLink IPC 命令集 |
 | `IFolderRewindParameterizedKnotLinkCommandHandler` | — | 新版参数化 KnotLink 命令 |
+| `IFolderRewindKnotLinkCapabilityProvider` | — | 发布可发现的命令与信号 |
 | `IFolderRewindBackupScopeProvider` | — | 定义备份范围/过滤策略（如按区域备份） |
 
 插件运行在宿主进程中，但通过 `AssemblyLoadContext` 实现依赖隔离，互不干扰。

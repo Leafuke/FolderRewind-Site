@@ -1,209 +1,158 @@
 ---
 sidebar_position: 5
 title: KnotLink Command API
-description: IFolderRewindKnotLinkCommandHandler 与参数化命令接口说明
+description: 使用 FolderRewind 1.8 参数化命令处理器与能力提供器
 ---
 
 # KnotLink Command API
 
-实现 `IFolderRewindKnotLinkCommandHandler` 后，插件可扩展 FolderRewind 的 KnotLink 命令集。外部工具（游戏模组、脚本、远程控制面板）可通过 TCP 协议向 FolderRewind 发送命令。
+FolderRewind 1.8 插件使用参数化协议 v2。实现 `IFolderRewindParameterizedKnotLinkCommandHandler` 处理命令，实现 `IFolderRewindKnotLinkCapabilityProvider` 让客户端通过 `GET_CAPABILITIES` 发现命令和信号。
 
-## 接口定义
+使用这些接口的插件应在 `manifest.json` 中设置：
 
-### 基础命令接口
-
-```csharp
-public interface IFolderRewindKnotLinkCommandHandler
+```json
 {
-    IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions();
-
-    Task<string?> TryHandleKnotLinkCommandAsync(
-        string command,
-        string args,
-        string rawCommand,
-        IReadOnlyDictionary<string, string> settingsValues,
-        PluginHostContext hostContext);
+  "MinHostVersion": "1.8.0"
 }
 ```
 
-### 参数化命令接口（新版）
+## 参数化命令处理器
 
 ```csharp
 public interface IFolderRewindParameterizedKnotLinkCommandHandler
 {
-    Task<PluginParameterizedKnotLinkCommandResult?> TryHandleParameterizedKnotLinkCommandAsync(
-        KnotLinkCommandRequest request,
-        IReadOnlyDictionary<string, string> settingsValues,
-        PluginHostContext hostContext);
+    Task<PluginParameterizedKnotLinkCommandResult?>
+        TryHandleParameterizedKnotLinkCommandAsync(
+            KnotLinkCommandRequest request,
+            IReadOnlyDictionary<string, string> settingsValues,
+            PluginHostContext hostContext);
 }
 ```
 
-参数化接口支持结构化请求参数，适合需要复杂输入的命令。两个接口可以同时实现，Host 优先调用参数化版本。
+Host 会先完成严格 v2 解析和会话元数据校验，再把请求交给插件。除 `GET_CAPABILITIES` 和 `PING` 外，插件处理器先于内置命令运行；插件只应接管自己明确支持的字段组合。
 
-## 数据类型
+## `KnotLinkCommandRequest`
 
-### PluginKnotLinkCommandDefinition
+| 成员 | 说明 |
+|------|------|
+| `Command` | 已转为大写的 `cmd` 值 |
+| `RawPayload` | 原始 v2 负载，仅用于诊断，不要再次自行拆分 |
+| `Options` | 已 percent-decoding、键不区分大小写的只读字典 |
+| `HasOption(key)` | 判断字段是否出现 |
+| `GetString` / `GetStringOrDefault` | 读取字符串 |
+| `GetBool` / `GetBoolOrDefault` | 读取 `true/false`、`1/0`、`yes/no`、`on/off` 等布尔形式 |
+| `GetList` | 读取逗号分隔且逐项 percent-encoded 的列表 |
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `Command` | `string` | 命令名（不区分大小写），如 `"BACKUP_CURRENT"` |
-| `Description` | `string?` | 命令说明（用于文档或未来 UI 展示） |
+优先使用这些访问器，不要从 `RawPayload` 重复实现协议解析器。
 
-### PluginParameterizedKnotLinkCommandResult
-
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `Handled` | `bool` | 插件是否已处理此命令 |
-| `Response` | `string?` | 返回给调用方的响应文本。为空时 Host 补成 `"OK:"` |
-
-静态属性 `NotHandled` 返回 `{ Handled = false, Response = null }`。
-
-## 推荐分发模式
+## 处理结果
 
 ```csharp
-public Task<string?> TryHandleKnotLinkCommandAsync(
-    string command, string args, string rawCommand,
-    IReadOnlyDictionary<string, string> settingsValues,
-    PluginHostContext hostContext)
+return new PluginParameterizedKnotLinkCommandResult
 {
-    return command.ToUpperInvariant() switch
+    Handled = true,
+    Response = "status=ok;message=Queued"
+};
+```
+
+| 返回值 | Host 行为 |
+|--------|-----------|
+| `null` 或 `NotHandled` | 继续尝试其他插件或内置命令 |
+| `Handled = true`，`Response = null` | 补全为成功响应 |
+| `Handled = true`，严格 `status=...` 响应 | 校验并规范化后返回 |
+| `OK:...` / `ERROR:...` | 转换为 v2 `status=ok/error` 响应 |
+
+新代码建议直接返回严格 v2 字段，并对所有动态值使用 `KnotLinkProtocolFormatter.EncodeValue` 或 Host 提供的编码能力。
+
+## 最小处理器示例
+
+```csharp
+using FolderRewind.Services.KnotLink;
+using FolderRewind.Services.Plugins;
+
+public sealed class ExamplePlugin :
+    IFolderRewindPlugin,
+    IFolderRewindParameterizedKnotLinkCommandHandler
+{
+    public Task<PluginParameterizedKnotLinkCommandResult?>
+        TryHandleParameterizedKnotLinkCommandAsync(
+            KnotLinkCommandRequest request,
+            IReadOnlyDictionary<string, string> settingsValues,
+            PluginHostContext hostContext)
     {
-        "MY_BACKUP" => HandleBackupAsync(args, hostContext),
-        "MY_RESTORE" => HandleRestoreAsync(args, hostContext),
-        "MY_LIST" => HandleListAsync(hostContext),
-        _ => Task.FromResult<string?>(null) // null = 不处理
+        if (request.Command != "EXAMPLE_ECHO")
+        {
+            return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(
+                PluginParameterizedKnotLinkCommandResult.NotHandled);
+        }
+
+        var text = request.GetStringOrDefault("text");
+        var encoded = KnotLinkProtocolFormatter.EncodeValue(text);
+        hostContext.LogInfo($"EXAMPLE_ECHO handled: {text}");
+
+        return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(
+            new()
+            {
+                Handled = true,
+                Response = $"status=ok;data={encoded}"
+            });
+    }
+}
+```
+
+耗时操作应先完成参数和状态校验，再排入后台，并立即返回“已接受”。后续进度和结果通过带同一 `request_id` 的信号广播。
+
+## 声明运行时能力
+
+```csharp
+public PluginKnotLinkCapabilityContribution GetKnotLinkCapabilities()
+{
+    return new()
+    {
+        OpenSocket = new[]
+        {
+            new PluginKnotLinkOpenSocketCapability
+            {
+                Name = "example_echo",
+                Description = "Return the supplied text.",
+                Args = new Dictionary<string, KnotLinkFuncArgument>
+                {
+                    ["cmd"] = KnotLinkFuncListService.Static(
+                        "EXAMPLE_ECHO", "Operation command."),
+                    ["text"] = KnotLinkFuncListService.Input(
+                        "Text to return.", "hello")
+                },
+                Returns = KnotLinkFuncListService.StatusReturns("data")
+            }
+        }
     };
 }
 ```
 
-## 返回值约定
+能力名称应稳定且唯一，参数定义必须与处理器实际接受的字段一致。Host 会把插件贡献合并进 `GET_CAPABILITIES` 的 `func_list`。
 
-- 返回 `null`：本插件不处理此命令，Host 继续尝试其他处理者
-- 返回字符串：已处理，作为响应返回
+## MineRewind 的 v2 扩展方式
 
-建议统一格式：
+MineRewind 不再创建另一套空格命令。它扩展内置命令的参数：
 
-- 成功：`OK:<message>`
-- 失败：`ERROR:<reason>`
+- `cmd=BACKUP;current_save=true;...`：备份当前活跃世界。
+- `cmd=LIST_BACKUPS;current_save=true`：列出当前世界备份。
+- `cmd=RESTORE;current_save=true;...`：还原当前世界；`file` 为空时使用最新备份。
+- `preserve_player_data=true`：在当前世界还原中保留受支持的玩家数据。
 
-## 完整示例
+这些能力由插件的 `IFolderRewindKnotLinkCapabilityProvider` 加入运行时清单。客户端应查询能力，而不是假定 MineRewind 已安装。
 
-```csharp
-public class MyPlugin : IFolderRewindPlugin, IFolderRewindKnotLinkCommandHandler
-{
-    private PluginHostContext? _hostContext;
+## 设计检查
 
-    public void SetHostContext(PluginHostContext hostContext)
-    {
-        _hostContext = hostContext;
-    }
-
-    public IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions()
-    {
-        return new List<PluginKnotLinkCommandDefinition>
-        {
-            new() { Command = "MY_BACKUP", Description = "触发备份" },
-            new() { Command = "MY_LIST", Description = "列出备份" }
-        };
-    }
-
-    public Task<string?> TryHandleKnotLinkCommandAsync(
-        string command, string args, string rawCommand,
-        IReadOnlyDictionary<string, string> settingsValues,
-        PluginHostContext hostContext)
-    {
-        return command.ToUpperInvariant() switch
-        {
-            "MY_BACKUP" => HandleBackupAsync(args, hostContext),
-            "MY_LIST" => HandleListAsync(hostContext),
-            _ => Task.FromResult<string?>(null)
-        };
-    }
-
-    private Task<string?> HandleBackupAsync(string args, PluginHostContext hostContext)
-    {
-        try
-        {
-            // 耗时操作放入后台，立即返回
-            _ = Task.Run(async () =>
-            {
-                try
-                {
-                    // ... 执行备份 ...
-                    hostContext.LogInfo("备份完成");
-                    hostContext.BroadcastEvent("event=my_backup_complete;status=success");
-                }
-                catch (Exception ex)
-                {
-                    hostContext.LogError($"备份失败: {ex.Message}");
-                }
-            });
-
-            return Task.FromResult<string?>("OK:Backup started");
-        }
-        catch (Exception ex)
-        {
-            return Task.FromResult<string?>($"ERROR:{ex.Message}");
-        }
-    }
-
-    private Task<string?> HandleListAsync(PluginHostContext hostContext)
-    {
-        // 快速操作可同步返回
-        var backups = new[] { "backup_001.7z", "backup_002.7z" };
-        return Task.FromResult<string?>($"OK:{string.Join(';', backups)}");
-    }
-}
-```
-
-## MineRewind 命令参考
-
-MineRewind 实现了以下命令：
-
-| 命令 | 说明 |
-|------|------|
-| `BACKUP_CURRENT` | 备份当前活跃的 Minecraft 世界 |
-| `RESTORE_CURRENT_LATEST` | 热还原当前世界到最新备份 |
-| `LIST_BACKUPS_CURRENT` | 列出当前世界的所有备份 |
-| `RESTORE_CURRENT <file>` | 热还原当前世界到指定备份 |
-| `RESTORE_CURRENT_WITH_DATA [file]` | 热还原并保留玩家数据 |
-
-以及模组内部信号：`HANDSHAKE_RESPONSE`、`WORLD_SAVED`、`WORLD_SAVE_AND_EXIT_COMPLETE`、`REJOIN_RESULT`。
-
-### 请求/响应示例
-
-**列出备份：**
-
-```text
-> LIST_BACKUPS_CURRENT
-< OK:save_001.7z;save_002.7z
-```
-
-**指定备份热还原：**
-
-```text
-> RESTORE_CURRENT save_002.7z
-< OK:Hot restore triggered for 'WorldName' with backup 'save_002.7z'
-```
-
-**强制完整备份：**
-
-```text
-> BACKUP demo_config 0 手动校验 FORCE_FULL
-< OK:Backup task queued
-```
-
-参见 `MinecraftSavesPlugin.KnotLink.cs` 获取完整实现。
-
-## 设计建议
-
-- **快速返回**：耗时操作放入 `Task.Run`，立即返回 `OK:` 接受请求
-- **参数校验**：缺少参数时返回 `ERROR:Missing ...`
-- **幂等与状态**：避免重复触发同一长流程
-- **可观观测性**：对关键路径写日志并广播状态事件
+- 对未知命令或不属于插件的参数组合返回 `NotHandled`。
+- 不在日志中记录密码、令牌或未经筛选的完整负载。
+- 使用 `request_id` 关联长任务，并防止同一请求重复执行。
+- 返回前对动态字段 percent-encode。
+- 插件升级后用 `GET_CAPABILITIES` 检查声明与实现是否一致。
 
 ## 相关链接
 
 - [KnotLink 协议与联动](../knotlink)
+- [KnotLink 命令参考](../knotlink-commands)
 - [Plugin API 参考](./plugin-api)
-- [实战教程](./tutorial)
+- [Minecraft 与联动模组](../../guides/minecraft/knotlink-mod)

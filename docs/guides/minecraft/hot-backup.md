@@ -25,7 +25,7 @@ description: MineRewind 如何在游戏运行中安全触发备份
 
 - 普通备份流程（备份前检测到世界文件被占用）
 - 全局热键 `Alt+Ctrl+S`
-- KnotLink 命令 `BACKUP_CURRENT`
+- KnotLink v2 请求 `cmd=BACKUP;current_save=true;...`
 
 ## 触发条件
 
@@ -77,7 +77,7 @@ Host backup start
 ### 请求
 
 ```text
-BACKUP_CURRENT QuickSave
+cmd=BACKUP;current_save=true;comment=QuickSave;from=minebackup.mod;request_id=hot-backup-001
 ```
 
 ### 典型响应

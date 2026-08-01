@@ -67,12 +67,12 @@ You can remap these in host settings.
 
 ## 5) KnotLink command extensions
 
-Supported commands:
+MineRewind extends Host commands through parameterized protocol v2:
 
-- `BACKUP_CURRENT`
-- `RESTORE_CURRENT_LATEST`
-- `LIST_BACKUPS_CURRENT`
-- `RESTORE_CURRENT <backup_file>`
+- `cmd=BACKUP;current_save=true;...`
+- `cmd=RESTORE;current_save=true;...`
+- `cmd=LIST_BACKUPS;current_save=true`
+- `preserve_player_data=true` as a restore override
 
 ## 6) Optional player data preservation
 

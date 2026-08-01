@@ -27,7 +27,7 @@ Any failed step can make hot backup/hot restore look like "no action" or "fallba
 | Saves not discovered | `TryDiscoverManagedFolders(...)` |
 | Hot backup not coordinated | pre-return conditions in `OnBeforeBackupFolder(...)` |
 | Hot restore ignored | non-reentrancy state machine in `TriggerHotRestoreAsync(...)` |
-| Specified backup restore failed | `RESTORE_CURRENT` args and file existence check |
+| Specified backup restore failed | `cmd=RESTORE` `file` field and file existence check |
 | Player data not preserved | `OnBeforeRestoreFolder` / `OnAfterRestoreFolder` |
 
 ## Symptom 1: saves are not discovered
@@ -57,7 +57,7 @@ Fix steps:
 
 1. Confirm `EnableHotBackup = true`.
 2. Verify integration mod and KnotLink availability.
-3. Test forced path via `BACKUP_CURRENT`.
+3. Test the forced path via `cmd=BACKUP;current_save=true;...`.
 
 ## Symptom 3: hot restore is cancelled midway
 
@@ -71,7 +71,7 @@ Note: hot restore has staged timeouts (commonly 10s/15s/30s).
 
 Fix steps:
 
-1. Run `LIST_BACKUPS_CURRENT` to confirm backup existence.
+1. Run `cmd=LIST_BACKUPS;current_save=true` to confirm backup existence.
 2. Verify mod/service status and retry.
 3. Use regular restore flow if issue persists.
 
@@ -79,13 +79,13 @@ Fix steps:
 
 Possible causes:
 
-- Typo in `RESTORE_CURRENT <backup_file>` filename
+- Typo in the `cmd=RESTORE` `file` field
 - Backup file moved or deleted
 
 Fix steps:
 
-1. List backups and copy exact filename.
-2. Retry specified restore command.
+1. List backups and copy the exact filename.
+2. Percent-encode the filename and retry the specified restore request.
 
 ## Symptom 5: player state is abnormal after restore
 
@@ -102,10 +102,10 @@ Fix steps:
 ## Diagnostic command template
 
 ```text
-1) BACKUP_CURRENT
-2) LIST_BACKUPS_CURRENT
-3) RESTORE_CURRENT_LATEST
-4) RESTORE_CURRENT <from step2>
+1) cmd=BACKUP;current_save=true;from=minebackup.mod;request_id=diag-001
+2) cmd=LIST_BACKUPS;current_save=true
+3) cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=diag-002
+4) cmd=RESTORE;current_save=true;file=<encoded from step 2>;from=minebackup.mod;request_id=diag-003
 ```
 
 If step 1 fails, prioritize active-world detection and integration availability.

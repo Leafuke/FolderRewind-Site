@@ -44,7 +44,8 @@ FolderRewind provides these extension interfaces:
 
 - `IFolderRewindPlugin` — Main plugin interface
 - `IFolderRewindHotkeyProvider` — Hotkey extension interface
-- `IFolderRewindKnotLinkCommandHandler` — KnotLink command interface
+- `IFolderRewindParameterizedKnotLinkCommandHandler` — parameterized KnotLink command handler
+- `IFolderRewindKnotLinkCapabilityProvider` — discoverable command and signal manifest
 
 ## Related links
 

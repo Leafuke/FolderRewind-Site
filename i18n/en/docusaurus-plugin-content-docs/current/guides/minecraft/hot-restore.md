@@ -22,9 +22,9 @@ Hot restore targets the **currently active world**, combining the usual "save ->
 ## Trigger methods
 
 - Hotkey: `Alt+Ctrl+Z`
-- KnotLink commands:
-  - `RESTORE_CURRENT_LATEST`
-  - `RESTORE_CURRENT <backup_file>`
+- KnotLink v2 commands:
+  - `cmd=RESTORE;current_save=true;...` (an empty `file` selects the latest backup)
+  - Add `file=<encoded backup filename>` for a specified backup
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ If early steps fail (handshake, file release, missing backup file), flow ends ea
 Request:
 
 ```text
-RESTORE_CURRENT_LATEST
+cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=hot-restore-001
 ```
 
 Response:
@@ -102,7 +102,7 @@ OK:Hot restore triggered for 'WorldName'
 Request:
 
 ```text
-RESTORE_CURRENT backup_2026-02-28_18-30-01.7z
+cmd=RESTORE;current_save=true;file=backup_2026-02-28_18-30-01.7z;from=minebackup.mod;request_id=hot-restore-002
 ```
 
 Response:
@@ -114,7 +114,7 @@ OK:Hot restore triggered for 'WorldName' with backup 'backup_2026-02-28_18-30-01
 ## Safety recommendations
 
 - Run your first hot restore on a test world
-- Before specified restore, run `LIST_BACKUPS_CURRENT` to verify exact filename
+- Before specified restore, run `cmd=LIST_BACKUPS;current_save=true` to verify the exact filename
 - If hot restore keeps failing, use regular restore path first
 - Enable `PreservePlayerData` before testing player-state retention
 

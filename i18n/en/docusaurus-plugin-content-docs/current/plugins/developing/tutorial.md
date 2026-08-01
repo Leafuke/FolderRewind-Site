@@ -493,128 +493,60 @@ public class GameRewindPlugin : IFolderRewindPlugin, IFolderRewindBackupFilterPr
 
 > **MineRewind comparison:** MineRewind registers two global hotkeys: `Alt+Ctrl+S` (backup) and `Alt+Ctrl+Z` (restore). The hotkey callbacks automatically detect the currently active Minecraft world. See `MinecraftSavesPlugin.Hotkeys.cs`.
 
-## 6. KnotLink Remote Commands
+## 6. Parameterized KnotLink commands
 
-Implement `IFolderRewindKnotLinkCommandHandler` to extend FolderRewind's remote command set. External tools (such as game mods, scripts) can send commands via the KnotLink TCP protocol.
+1.8 plugins use `IFolderRewindParameterizedKnotLinkCommandHandler` for strict key-value protocol v2 and `IFolderRewindKnotLinkCapabilityProvider` for discoverable capabilities. Do not reimplement the removed space-delimited command parser.
 
 ```csharp
-public class GameRewindPlugin : IFolderRewindPlugin, IFolderRewindBackupFilterProvider,
-    IFolderRewindHotkeyProvider, IFolderRewindKnotLinkCommandHandler
+public sealed class GameRewindPlugin :
+    IFolderRewindPlugin,
+    IFolderRewindParameterizedKnotLinkCommandHandler,
+    IFolderRewindKnotLinkCapabilityProvider
 {
-    // ... previous code ...
-
-    private PluginHostContext? _hostContext;
-
-    public void SetHostContext(PluginHostContext hostContext)
+    public Task<PluginParameterizedKnotLinkCommandResult?>
+        TryHandleParameterizedKnotLinkCommandAsync(
+            KnotLinkCommandRequest request,
+            IReadOnlyDictionary<string, string> settingsValues,
+            PluginHostContext hostContext)
     {
-        _hostContext = hostContext;
+        if (request.Command != "GAME_BACKUP")
+        {
+            return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(
+                PluginParameterizedKnotLinkCommandResult.NotHandled);
+        }
+
+        var comment = request.GetStringOrDefault("comment", "Manual");
+        hostContext.LogInfo($"Queued game backup: {comment}");
+        return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(new()
+        {
+            Handled = true,
+            Response = "status=ok;message=Backup%20queued"
+        });
     }
 
-    public IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions()
+    public PluginKnotLinkCapabilityContribution GetKnotLinkCapabilities() => new()
     {
-        return new List<PluginKnotLinkCommandDefinition>
+        OpenSocket = new[]
         {
-            new() { Command = "GAME_BACKUP", Description = "Backup the currently active game save" },
-            new() { Command = "GAME_RESTORE_LATEST", Description = "Restore the most recent game save backup" },
-            new() { Command = "GAME_LIST_BACKUPS", Description = "List all game save backups" }
-        };
-    }
-
-    public Task<string?> TryHandleKnotLinkCommandAsync(
-        string command,
-        string args,
-        string rawCommand,
-        IReadOnlyDictionary<string, string> settingsValues,
-        PluginHostContext hostContext)
-    {
-        return command.ToUpperInvariant() switch
-        {
-            "GAME_BACKUP" => HandleGameBackupAsync(args, hostContext),
-            "GAME_RESTORE_LATEST" => HandleGameRestoreLatestAsync(hostContext),
-            "GAME_LIST_BACKUPS" => HandleGameListBackupsAsync(hostContext),
-            _ => Task.FromResult<string?>(null) // null = this command is not handled
-        };
-    }
-
-    private Task<string?> HandleGameBackupAsync(string args, PluginHostContext hostContext)
-    {
-        try
-        {
-            // Execute backup asynchronously, return OK immediately
-            _ = Task.Run(async () =>
+            new PluginKnotLinkOpenSocketCapability
             {
-                try
+                Name = "game_backup",
+                Description = "Queue a game backup.",
+                Args = new Dictionary<string, KnotLinkFuncArgument>
                 {
-                    // ... backup logic ...
-                    hostContext.LogInfo("Remote backup completed");
-                    hostContext.BroadcastEvent("event=game_backup_complete;status=success");
-                }
-                catch (Exception ex)
-                {
-                    hostContext.LogError($"Remote backup failed: {ex.Message}");
-                }
-            });
-
-            return Task.FromResult<string?>("OK:Backup started");
+                    ["cmd"] = KnotLinkFuncListService.Static("GAME_BACKUP", "Operation command."),
+                    ["comment"] = KnotLinkFuncListService.Input("Optional comment.", "Manual")
+                },
+                Returns = KnotLinkFuncListService.StatusReturns("message")
+            }
         }
-        catch (Exception ex)
-        {
-            return Task.FromResult<string?>($"ERROR:{ex.Message}");
-        }
-    }
-
-    private Task<string?> HandleGameRestoreLatestAsync(PluginHostContext hostContext)
-    {
-        try
-        {
-            _ = Task.Run(async () =>
-            {
-                try
-                {
-                    // ... restore logic ...
-                    hostContext.LogInfo("Remote restore completed");
-                    hostContext.BroadcastEvent("event=game_restore_complete;status=success");
-                }
-                catch (Exception ex)
-                {
-                    hostContext.LogError($"Remote restore failed: {ex.Message}");
-                }
-            });
-
-            return Task.FromResult<string?>("OK:Restore started");
-        }
-        catch (Exception ex)
-        {
-            return Task.FromResult<string?>($"ERROR:{ex.Message}");
-        }
-    }
-
-    private Task<string?> HandleGameListBackupsAsync(PluginHostContext hostContext)
-    {
-        // Quick operations can return synchronously
-        var backups = new[] { "backup_001.7z", "backup_002.7z" };
-        return Task.FromResult<string?>($"OK:{string.Join(';', backups)}");
-    }
+    };
 }
 ```
 
-**Return value conventions:**
-- Return `null`: This plugin does not handle this command; the Host continues to try other handlers
-- Return `"OK:..."`: Command accepted
-- Return `"ERROR:..."`: Command failed
+Returning `NotHandled` lets another plugin or the Host handle the request. Long tasks should return an accepted response quickly, then report progress and completion through lifecycle signals carrying the same `request_id`. Percent-encode every dynamic field.
 
-**PluginHostContext common APIs:**
-
-| Method | Purpose |
-|------|------|
-| `LogInfo(message)` | Log an info message |
-| `LogWarning(message)` | Log a warning message |
-| `LogError(message, ex?)` | Log an error message |
-| `BroadcastEvent(eventData)` | Broadcast a KnotLink event |
-| `QueryKnotLinkAsync(question, timeoutMs)` | Request-response style query |
-| `SubscribeSignal(signalId, onSignal)` | Subscribe to a signal channel |
-
-> **MineRewind comparison:** MineRewind implements commands such as `BACKUP_CURRENT`, `RESTORE_CURRENT_LATEST`, `LIST_BACKUPS_CURRENT`, `RESTORE_CURRENT`, and `RESTORE_CURRENT_WITH_DATA`, and handles handshakes and status signals from the Minecraft companion mod. See `MinecraftSavesPlugin.KnotLink.cs`.
+MineRewind uses the same mechanism to extend `cmd=BACKUP;current_save=true`, `cmd=LIST_BACKUPS;current_save=true`, and `cmd=RESTORE;current_save=true`. See [KnotLink Command Reference](../knotlink-commands) for fields and lifecycle details.
 
 ## 7. Packaging & Publishing
 
@@ -656,7 +588,8 @@ The complete GameRewind plugin source code includes the following members:
 - `IFolderRewindPlugin` -- Core interface (Manifest, settings, initialization, backup/restore hooks, config discovery)
 - `IFolderRewindBackupFilterProvider` -- Backup filtering (exclude cache files)
 - `IFolderRewindHotkeyProvider` -- Hotkeys (Ctrl+Shift+B/R)
-- `IFolderRewindKnotLinkCommandHandler` -- Remote commands (GAME_BACKUP, etc.)
+- `IFolderRewindParameterizedKnotLinkCommandHandler` -- Parameterized remote commands
+- `IFolderRewindKnotLinkCapabilityProvider` -- Command and signal capability declarations
 
 The code snippets from each section above combine into a complete, runnable plugin. It is recommended to implement them step by step in order, packaging and testing after each step.
 

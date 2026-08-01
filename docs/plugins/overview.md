@@ -24,7 +24,7 @@ FolderRewind 内置了完整的插件系统，允许开发者为特定场景扩�
 
 ## 官方插件
 
-### MineRewind v1.7.0
+### MineRewind
 
 专为 Minecraft 打造的存档增强插件。
 
@@ -32,7 +32,7 @@ FolderRewind 内置了完整的插件系统，允许开发者为特定场景扩�
 - 游戏运行中热备份（与联动模组协调）
 - 热还原（不退出游戏的快速还原）
 - 全局快捷键（`Alt+Ctrl+S` 备份、`Alt+Ctrl+Z` 还原）
-- KnotLink 远程命令（`BACKUP_CURRENT`、`RESTORE_CURRENT` 等）
+- KnotLink 参数化协议 v2 命令（通过 `current_save=true` 扩展 Host 命令）
 - 按区域选择性备份
 
 👉 [Minecraft 专题](../guides/minecraft/overview) | [下载页](/download)
@@ -63,8 +63,8 @@ FolderRewind 提供了以下开发接口：
 |------|------|
 | `IFolderRewindPlugin` | 插件主入口（必选） |
 | `IFolderRewindHotkeyProvider` | 快捷键扩展 |
-| `IFolderRewindKnotLinkCommandHandler` | KnotLink 命令扩展 |
 | `IFolderRewindParameterizedKnotLinkCommandHandler` | 参数化 KnotLink 命令 |
+| `IFolderRewindKnotLinkCapabilityProvider` | 发布可发现的命令和信号 |
 | `IFolderRewindBackupScopeProvider` | 备份范围策略 |
 | `IFolderRewindBackupFilterProvider` | 备份过滤规则 |
 

@@ -74,6 +74,7 @@ const sidebars: SidebarsConfig = {
         'plugins/overview',
         'plugins/using-plugins',
         'plugins/knotlink',
+        'plugins/knotlink-commands',
         {
           type: 'category',
           label: '插件开发',

@@ -27,7 +27,7 @@ description: MineRewind 常见异常现象、原因与处理步骤
 | 扫描不到存档 | `TryDiscoverManagedFolders(...)` |
 | 热备份不协同 | `OnBeforeBackupFolder(...)` 的前置返回条件 |
 | 热还原被忽略 | `TriggerHotRestoreAsync(...)` 的状态机防重入 |
-| 指定备份失败 | `RESTORE_CURRENT` 参数与文件存在性检查 |
+| 指定备份失败 | `cmd=RESTORE` 的 `file` 参数与文件存在性检查 |
 | 玩家数据没保留 | `OnBeforeRestoreFolder` / `OnAfterRestoreFolder` |
 
 ## 现象 1：扫描不到存档
@@ -57,7 +57,7 @@ description: MineRewind 常见异常现象、原因与处理步骤
 
 1. 在插件设置确认 `EnableHotBackup = true`。
 2. 检查联动模组是否在线且 KnotLink 可用。
-3. 通过 `BACKUP_CURRENT` 再测试一次强制协同链路。
+3. 通过 `cmd=BACKUP;current_save=true;...` 再测试一次强制协同链路。
 
 ## 现象 3：热还原中途取消
 
@@ -71,7 +71,7 @@ description: MineRewind 常见异常现象、原因与处理步骤
 
 处理步骤：
 
-1. 先执行 `LIST_BACKUPS_CURRENT` 确认备份存在。
+1. 先执行 `cmd=LIST_BACKUPS;current_save=true` 确认备份存在。
 2. 检查模组与服务状态后重试。
 3. 若仍失败，改用常规还原流程。
 
@@ -79,7 +79,7 @@ description: MineRewind 常见异常现象、原因与处理步骤
 
 可能原因：
 
-- `RESTORE_CURRENT <backup_file>` 中文件名拼写错误
+- `cmd=RESTORE` 的 `file` 中文件名拼写错误
 - 备份文件已被移动或删除
 
 补充说明：插件会先拼接目标路径并做文件存在性检查，不存在会直接失败。
@@ -87,7 +87,7 @@ description: MineRewind 常见异常现象、原因与处理步骤
 处理步骤：
 
 1. 先列出备份文件并复制精确文件名。
-2. 再执行指定还原命令。
+2. 对文件名进行 percent-encode，再执行指定还原请求。
 
 ## 现象 5：还原后玩家状态异常
 
@@ -106,10 +106,10 @@ description: MineRewind 常见异常现象、原因与处理步骤
 ## 命令诊断模板（可直接复用）
 
 ```text
-1) BACKUP_CURRENT
-2) LIST_BACKUPS_CURRENT
-3) RESTORE_CURRENT_LATEST
-4) RESTORE_CURRENT <from step2>
+1) cmd=BACKUP;current_save=true;from=minebackup.mod;request_id=diag-001
+2) cmd=LIST_BACKUPS;current_save=true
+3) cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=diag-002
+4) cmd=RESTORE;current_save=true;file=<encoded from step 2>;from=minebackup.mod;request_id=diag-003
 ```
 
 若第 1 步就失败，优先排查“活跃世界识别与联动可用性”；若第 3/4 步失败，优先排查“还原前置条件与备份文件存在性”。

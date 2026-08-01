@@ -493,128 +493,60 @@ public class GameRewindPlugin : IFolderRewindPlugin, IFolderRewindBackupFilterPr
 
 > **MineRewind 对比：** MineRewind 注册了 `Alt+Ctrl+S`（备份）和 `Alt+Ctrl+Z`（还原）两个全局热键。热键回调中会自动检测当前活跃的 Minecraft 世界。参见 `MinecraftSavesPlugin.Hotkeys.cs`。
 
-## 6. KnotLink 远程命令
+## 6. KnotLink 参数化命令
 
-实现 `IFolderRewindKnotLinkCommandHandler` 来扩展 FolderRewind 的远程命令集。外部工具（如游戏模组、脚本）可以通过 KnotLink TCP 协议发送命令。
+1.8 插件使用 `IFolderRewindParameterizedKnotLinkCommandHandler` 处理严格键值对协议 v2，并用 `IFolderRewindKnotLinkCapabilityProvider` 声明可发现的能力。不要重新实现旧的空格命令解析器。
 
 ```csharp
-public class GameRewindPlugin : IFolderRewindPlugin, IFolderRewindBackupFilterProvider,
-    IFolderRewindHotkeyProvider, IFolderRewindKnotLinkCommandHandler
+public sealed class GameRewindPlugin :
+    IFolderRewindPlugin,
+    IFolderRewindParameterizedKnotLinkCommandHandler,
+    IFolderRewindKnotLinkCapabilityProvider
 {
-    // ... 之前的代码 ...
-
-    private PluginHostContext? _hostContext;
-
-    public void SetHostContext(PluginHostContext hostContext)
+    public Task<PluginParameterizedKnotLinkCommandResult?>
+        TryHandleParameterizedKnotLinkCommandAsync(
+            KnotLinkCommandRequest request,
+            IReadOnlyDictionary<string, string> settingsValues,
+            PluginHostContext hostContext)
     {
-        _hostContext = hostContext;
+        if (request.Command != "GAME_BACKUP")
+        {
+            return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(
+                PluginParameterizedKnotLinkCommandResult.NotHandled);
+        }
+
+        var comment = request.GetStringOrDefault("comment", "Manual");
+        hostContext.LogInfo($"Queued game backup: {comment}");
+        return Task.FromResult<PluginParameterizedKnotLinkCommandResult?>(new()
+        {
+            Handled = true,
+            Response = "status=ok;message=Backup%20queued"
+        });
     }
 
-    public IReadOnlyList<PluginKnotLinkCommandDefinition> GetKnotLinkCommandDefinitions()
+    public PluginKnotLinkCapabilityContribution GetKnotLinkCapabilities() => new()
     {
-        return new List<PluginKnotLinkCommandDefinition>
+        OpenSocket = new[]
         {
-            new() { Command = "GAME_BACKUP", Description = "备份当前活跃游戏存档" },
-            new() { Command = "GAME_RESTORE_LATEST", Description = "还原最近的游戏存档备份" },
-            new() { Command = "GAME_LIST_BACKUPS", Description = "列出所有游戏存档备份" }
-        };
-    }
-
-    public Task<string?> TryHandleKnotLinkCommandAsync(
-        string command,
-        string args,
-        string rawCommand,
-        IReadOnlyDictionary<string, string> settingsValues,
-        PluginHostContext hostContext)
-    {
-        return command.ToUpperInvariant() switch
-        {
-            "GAME_BACKUP" => HandleGameBackupAsync(args, hostContext),
-            "GAME_RESTORE_LATEST" => HandleGameRestoreLatestAsync(hostContext),
-            "GAME_LIST_BACKUPS" => HandleGameListBackupsAsync(hostContext),
-            _ => Task.FromResult<string?>(null) // null = 不处理此命令
-        };
-    }
-
-    private Task<string?> HandleGameBackupAsync(string args, PluginHostContext hostContext)
-    {
-        try
-        {
-            // 异步执行备份，立即返回 OK
-            _ = Task.Run(async () =>
+            new PluginKnotLinkOpenSocketCapability
             {
-                try
+                Name = "game_backup",
+                Description = "Queue a game backup.",
+                Args = new Dictionary<string, KnotLinkFuncArgument>
                 {
-                    // ... 备份逻辑 ...
-                    hostContext.LogInfo("远程备份完成");
-                    hostContext.BroadcastEvent("event=game_backup_complete;status=success");
-                }
-                catch (Exception ex)
-                {
-                    hostContext.LogError($"远程备份失败: {ex.Message}");
-                }
-            });
-
-            return Task.FromResult<string?>("OK:Backup started");
+                    ["cmd"] = KnotLinkFuncListService.Static("GAME_BACKUP", "Operation command."),
+                    ["comment"] = KnotLinkFuncListService.Input("Optional comment.", "Manual")
+                },
+                Returns = KnotLinkFuncListService.StatusReturns("message")
+            }
         }
-        catch (Exception ex)
-        {
-            return Task.FromResult<string?>($"ERROR:{ex.Message}");
-        }
-    }
-
-    private Task<string?> HandleGameRestoreLatestAsync(PluginHostContext hostContext)
-    {
-        try
-        {
-            _ = Task.Run(async () =>
-            {
-                try
-                {
-                    // ... 还原逻辑 ...
-                    hostContext.LogInfo("远程还原完成");
-                    hostContext.BroadcastEvent("event=game_restore_complete;status=success");
-                }
-                catch (Exception ex)
-                {
-                    hostContext.LogError($"远程还原失败: {ex.Message}");
-                }
-            });
-
-            return Task.FromResult<string?>("OK:Restore started");
-        }
-        catch (Exception ex)
-        {
-            return Task.FromResult<string?>($"ERROR:{ex.Message}");
-        }
-    }
-
-    private Task<string?> HandleGameListBackupsAsync(PluginHostContext hostContext)
-    {
-        // 快速操作可同步返回
-        var backups = new[] { "backup_001.7z", "backup_002.7z" };
-        return Task.FromResult<string?>($"OK:{string.Join(';', backups)}");
-    }
+    };
 }
 ```
 
-**返回值约定：**
-- 返回 `null`：本插件不处理此命令，Host 继续尝试其他处理者
-- 返回 `"OK:..."` ：命令已接受
-- 返回 `"ERROR:..."`：命令失败
+返回 `NotHandled` 表示继续尝试其他插件或 Host 内置命令。长任务应快速返回“已接受”，并通过带同一 `request_id` 的生命周期信号报告进度和最终结果。所有动态字段都必须 percent-encode。
 
-**PluginHostContext 常用 API：**
-
-| 方法 | 用途 |
-|------|------|
-| `LogInfo(message)` | 记录信息日志 |
-| `LogWarning(message)` | 记录警告日志 |
-| `LogError(message, ex?)` | 记录错误日志 |
-| `BroadcastEvent(eventData)` | 广播 KnotLink 事件 |
-| `QueryKnotLinkAsync(question, timeoutMs)` | 请求-响应式查询 |
-| `SubscribeSignal(signalId, onSignal)` | 订阅信号通道 |
-
-> **MineRewind 对比：** MineRewind 实现了 `BACKUP_CURRENT`、`RESTORE_CURRENT_LATEST`、`LIST_BACKUPS_CURRENT`、`RESTORE_CURRENT`、`RESTORE_CURRENT_WITH_DATA` 等命令，并处理来自 Minecraft 联动模组的握手和状态信号。参见 `MinecraftSavesPlugin.KnotLink.cs`。
+MineRewind 使用同一机制扩展 `cmd=BACKUP;current_save=true`、`cmd=LIST_BACKUPS;current_save=true` 和 `cmd=RESTORE;current_save=true`。完整字段和生命周期见 [KnotLink 命令参考](../knotlink-commands)。
 
 ## 7. 打包与发布
 
@@ -656,7 +588,8 @@ GameRewind.zip
 - `IFolderRewindPlugin` — 核心接口（Manifest、设置、初始化、备份/还原钩子、配置发现）
 - `IFolderRewindBackupFilterProvider` — 备份过滤（排除缓存文件）
 - `IFolderRewindHotkeyProvider` — 快捷键（Ctrl+Shift+B/R）
-- `IFolderRewindKnotLinkCommandHandler` — 远程命令（GAME_BACKUP 等）
+- `IFolderRewindParameterizedKnotLinkCommandHandler` — 参数化远程命令
+- `IFolderRewindKnotLinkCapabilityProvider` — 命令与信号能力声明
 
 以上各节的代码片段组合在一起就是一个完整可运行的插件。建议按顺序逐步实现，每完成一步就打包测试。
 
