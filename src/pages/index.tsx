@@ -31,9 +31,9 @@ function HomepageHero() {
               <Translate id="homepage.hero.title">存档时光机</Translate>
             </Heading>
             <p className={styles.heroSubtitle}>
-              <Translate id="homepage.hero.subtitle.line1">为 Minecraft 玩家打造的智能备份工具</Translate>
+              <Translate id="homepage.hero.subtitle.line1">为重要文件、项目资料与游戏存档提供安全备份</Translate>
               <br />
-              <Translate id="homepage.hero.subtitle.line2">也适用于一切珍贵文件</Translate>
+              <Translate id="homepage.hero.subtitle.line2">支持区域范围、文件夹重命名、性能控制和远程指令</Translate>
             </p>
 
             <div className={styles.buttons}>
@@ -83,11 +83,11 @@ function useSegments(): Segment[] {
       icon: <FaGamepad />,
       iconClass: 'segment-icon-wrap--gamer',
       title: translate({id: 'homepage.segment.gamer.title', message: '游戏玩家'}),
-      desc: translate({id: 'homepage.segment.gamer.desc', message: '面向 Minecraft 的热备份与热还原场景'}),
+      desc: translate({id: 'homepage.segment.gamer.desc', message: '为 Minecraft 存档提供可验证的安全备份与还原'}),
       bullets: [
-        translate({id: 'homepage.segment.gamer.bullet1', message: '热备份 / 热还原'}),
-        translate({id: 'homepage.segment.gamer.bullet2', message: '存档自动发现'}),
-        translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 与 KnotLink'}),
+        translate({id: 'homepage.segment.gamer.bullet1', message: '区域范围备份与安全部分还原'}),
+        translate({id: 'homepage.segment.gamer.bullet2', message: '热备份 / 热还原与存档自动发现'}),
+        translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 与 KnotLink Server v3'}),
       ],
       link: '/docs/guides/minecraft/overview',
       linkText: translate({id: 'homepage.segment.gamer.link', message: 'MC 专题'}),
@@ -96,11 +96,11 @@ function useSegments(): Segment[] {
       icon: <FaFolderOpen />,
       iconClass: 'segment-icon-wrap--files',
       title: translate({id: 'homepage.segment.files.title', message: '文件管理者'}),
-      desc: translate({id: 'homepage.segment.files.desc', message: '重要文件的版本化备份与安全回滚'}),
+      desc: translate({id: 'homepage.segment.files.desc', message: '让重要文件拥有清晰的版本、迁移和回滚路径'}),
       bullets: [
-        translate({id: 'homepage.segment.files.bullet1', message: '改进的智能增量链'}),
-        translate({id: 'homepage.segment.files.bullet2', message: '安全还原与回滚'}),
-        translate({id: 'homepage.segment.files.bullet3', message: '云同步与历史管理'}),
+        translate({id: 'homepage.segment.files.bullet1', message: '全量 / 智能增量 / 覆写策略'}),
+        translate({id: 'homepage.segment.files.bullet2', message: '文件夹重命名与历史身份迁移'}),
+        translate({id: 'homepage.segment.files.bullet3', message: '云同步与安全还原'}),
       ],
       link: '/docs/intro',
       linkText: translate({id: 'homepage.segment.files.link', message: '了解更多'}),
@@ -109,11 +109,11 @@ function useSegments(): Segment[] {
       icon: <FaPuzzlePiece />,
       iconClass: 'segment-icon-wrap--dev',
       title: translate({id: 'homepage.segment.dev.title', message: '插件开发者'}),
-      desc: translate({id: 'homepage.segment.dev.desc', message: '扩展 FolderRewind 的备份与还原能力'}),
+      desc: translate({id: 'homepage.segment.dev.desc', message: '用 1.8 API 把应用、游戏和自动化接入备份链路'}),
       bullets: [
-        'Plugin SDK',
-        'KnotLink IPC',
-        translate({id: 'homepage.segment.dev.bullet3', message: '完整接管还原逻辑'}),
+        translate({id: 'homepage.segment.dev.bullet1', message: '1.8 Plugin API'}),
+        translate({id: 'homepage.segment.dev.bullet2', message: 'KnotLink 协议 v2 / Server v3'}),
+        translate({id: 'homepage.segment.dev.bullet3', message: '备份范围与还原拦截'}),
       ],
       link: '/docs/plugins/developing/quick-start',
       linkText: translate({id: 'homepage.segment.dev.link', message: '开发文档'}),

@@ -67,7 +67,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/og-image.png',
+    image: 'img/ori.png',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,

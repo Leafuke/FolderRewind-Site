@@ -67,6 +67,10 @@ FolderRewind 提供了以下开发接口：
 | `IFolderRewindKnotLinkCapabilityProvider` | 发布可发现的命令和信号 |
 | `IFolderRewindBackupScopeProvider` | 备份范围策略 |
 | `IFolderRewindBackupFilterProvider` | 备份过滤规则 |
+| `IFolderRewindBackupPreparationProvider` | 备份前准备与校验 |
+| `IFolderRewindFolderDetailsProvider` | 文件夹显示与身份详情 |
+| `IFolderRewindRestoreInterceptor` | 还原校验与拦截 |
+| `IFolderRewindConfigAugmenter` | 插件配置字段补全 |
 
 ## 相关链接
 

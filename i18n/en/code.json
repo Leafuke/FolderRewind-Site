@@ -423,10 +423,10 @@
     "message": "FolderRewind"
   },
   "homepage.hero.subtitle.line1": {
-    "message": "Modern versioned backup for important files, projects, and game saves"
+    "message": "Safe backups for important files, project data, and game saves"
   },
   "homepage.hero.subtitle.line2": {
-    "message": "Now with safer restore, better incremental chains, and plugin extensibility"
+    "message": "Selected regions, folder renames, performance controls, and remote commands"
   },
   "homepage.hero.storeBtn": {
     "message": "Get from Microsoft Store"
@@ -441,16 +441,16 @@
     "message": "Gamers"
   },
   "homepage.segment.gamer.desc": {
-    "message": "Built for Minecraft hot backup and hot restore scenarios"
+    "message": "Verifiable backup and restore for Minecraft saves"
   },
   "homepage.segment.gamer.bullet1": {
-    "message": "Hot backup / hot restore"
+    "message": "Selected-region backup and safe partial restore"
   },
   "homepage.segment.gamer.bullet2": {
-    "message": "Auto-discover saves"
+    "message": "Hot backup / hot restore and save discovery"
   },
   "homepage.segment.gamer.bullet3": {
-    "message": "MineRewind and KnotLink"
+    "message": "MineRewind and KnotLink Server v3"
   },
   "homepage.segment.gamer.link": {
     "message": "MC Guide"
@@ -459,16 +459,16 @@
     "message": "File Managers"
   },
   "homepage.segment.files.desc": {
-    "message": "Versioned backups and safer rollback for important files"
+    "message": "Clear versioning, migration, and rollback paths for important files"
   },
   "homepage.segment.files.bullet1": {
-    "message": "Improved smart incremental chains"
+    "message": "Full / smart incremental / overwrite strategies"
   },
   "homepage.segment.files.bullet2": {
-    "message": "Safe restore and rollback"
+    "message": "Folder rename and history identity migration"
   },
   "homepage.segment.files.bullet3": {
-    "message": "Cloud sync and history management"
+    "message": "Cloud sync and safe restore"
   },
   "homepage.segment.files.link": {
     "message": "Learn More"
@@ -477,10 +477,16 @@
     "message": "Plugin Developers"
   },
   "homepage.segment.dev.desc": {
-    "message": "Extend FolderRewind's backup and restore capabilities"
+    "message": "Connect apps, games, and automation to the backup pipeline with the 1.8 API"
+  },
+  "homepage.segment.dev.bullet1": {
+    "message": "1.8 Plugin API"
+  },
+  "homepage.segment.dev.bullet2": {
+    "message": "KnotLink protocol v2 / Server v3"
   },
   "homepage.segment.dev.bullet3": {
-    "message": "Full restore takeover"
+    "message": "Backup scopes and restore interceptors"
   },
   "homepage.segment.dev.link": {
     "message": "Dev Docs"
@@ -522,7 +528,7 @@
     "message": "Ready to protect your files?"
   },
   "homepage.cta.desc": {
-    "message": "Free download \u2014 start using Backup Time Machine now"
+    "message": "Free download \u2014 start protecting your files with FolderRewind"
   },
   "homepage.cta.downloadBtn": {
     "message": "Download Now"
@@ -542,17 +548,26 @@
   "features.7zip.desc": {
     "message": "High-performance compression in 7z format \u2014 save disk space with faster backups."
   },
+  "features.7zip.link": {
+    "message": "Explore backup modes"
+  },
   "features.modes.title": {
-    "message": "Improved smart incremental"
+    "message": "Full, incremental, and overwrite"
   },
   "features.modes.desc": {
-    "message": "v1.5.0 redesigns incremental chain behavior and supports chain truncation for more stable restores."
+    "message": "Choose full, smart incremental, lightweight, or overwrite strategies and control chain length."
+  },
+  "features.modes.link": {
+    "message": "Learn backup modes"
   },
   "features.automation.title": {
     "message": "Automation and remote commands"
   },
   "features.automation.desc": {
-    "message": "Use interval, scheduled, or on-startup tasks, and trigger forced full backups through remote commands."
+    "message": "Use interval, scheduled, or condition-based tasks and trigger remote operations through KnotLink's parameterized protocol."
+  },
+  "features.automation.link": {
+    "message": "Read automation guide"
   },
   "features.encryption.title": {
     "message": "Encrypted Backups"
@@ -560,17 +575,26 @@
   "features.encryption.desc": {
     "message": "AES-256 encryption keeps your sensitive data secure."
   },
+  "features.encryption.link": {
+    "message": "Read encryption guide"
+  },
   "features.timeline.title": {
     "message": "History timeline and safe delete"
   },
   "features.timeline.desc": {
     "message": "Inspect, mark, rebuild, and delete history while reducing the risk of breaking incremental chains."
   },
+  "features.timeline.link": {
+    "message": "Read history guide"
+  },
   "features.plugins.title": {
     "message": "Plugin System"
   },
   "features.plugins.desc": {
-    "message": "Plugins can deeply participate in backup and restore, and may fully take over restore logic for specific scenarios."
+    "message": "Extend backup scopes, KnotLink commands, restore interception, and configuration fields."
+  },
+  "features.plugins.link": {
+    "message": "Read plugin docs"
   },
   "features.miniwindow.title": {
     "message": "Mini Window"
@@ -578,17 +602,26 @@
   "features.miniwindow.desc": {
     "message": "Monitor and instantly backup via the mini floating window while gaming or working."
   },
+  "features.miniwindow.link": {
+    "message": "Read mini-window guide"
+  },
   "features.knotlink.title": {
     "message": "Cloud sync and external tools"
   },
   "features.knotlink.desc": {
     "message": "Invoke rclone or other third-party tools to sync backups to cloud or external storage."
   },
+  "features.knotlink.link": {
+    "message": "Read cloud archive guide"
+  },
   "features.i18n.title": {
     "message": "Safe restore"
   },
   "features.i18n.desc": {
-    "message": "In Clean mode, create a safety snapshot first and automatically roll back if restore fails."
+    "message": "Clean mode creates a safety snapshot; partial-backup restores force Overwrite and never clear unbacked files."
+  },
+  "features.i18n.link": {
+    "message": "Read restore guide"
   },
   "features.heading": {
     "message": "Core Features"

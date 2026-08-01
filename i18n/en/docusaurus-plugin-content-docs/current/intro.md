@@ -61,48 +61,18 @@ After opening the config management page:
 
 This helps catch environment, path, permission, or toolchain issues early.
 
-## Recent capabilities worth attention
+## Recent capabilities
 
-### v1.7.0: cloud archive and automation upgrades
+The FolderRewind 1.8 series brings backup control, migration, and remote integration into one safety chain:
 
-v1.7.0 focuses on long-running and multi-device workflows:
+- **Selected-region backup**: Minecraft users can choose `x1,z1,x2,z2` regions; restores force Overwrite.
+- **Folder rename**: migrate local folders, history identities, config references, and automation targets, with rollback attempts on failure.
+- **Performance presets and advanced parameters**: balance speed, thread count, and priority with automatic, lightweight, extra-light, or custom policies.
+- **KnotLink Server v3 and parameterized protocol v2**: let tools and plugins discover commands and coordinate backup workflows safely.
+- **Safer restore**: validate the backup first, then choose Clean or Overwrite according to normal or partial-backup rules without clearing unbacked data.
 
-- complete cloud archive workflow support (recommended with rclone)
-- auto backup can target selected items instead of always running full-config scope
-- condition-based backup mode (for example, trigger backup after game exit)
-- expanded template path-rule coverage
-- settings page search and runtime status display
-
-If you plan to enable cloud sync, start here:
-
-- [Cloud Archive Guide](./guides/cloud-archive)
-
-### Template workflow
-
-v1.6.0 adds a complete template workflow:
-
-- save a config as a template
-- create a config from a template
-- export a template to a file
-- import a shared template
-- search and import official templates
-- prepare a template share package or submit directly to GitHub
-
-If you maintain multiple similar configs, this can remove a lot of repeated setup work.
-
-### v1.6.0: automatic core feature validation
-
-Settings now includes **Automatic Core Feature Validation**. It creates a temporary workspace and validates:
-
-- initial full backup
-- no-change skip
-- smart incremental backup
-- shared-lock backup
-- clean restore and overwrite restore
-- safe delete
-- keep-count pruning
-
-This is especially useful after upgrading, changing machines, or before enabling unattended automation.
+Before upgrading an older release or switching install channels, read [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade).
+Minecraft users can start with the [Selected-region Backup Guide](./guides/minecraft/selected-region-backup) and [Folder Rename Guide](./guides/folder-management).
 
 ## Next steps
 
