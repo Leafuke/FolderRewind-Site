@@ -36,6 +36,15 @@ const sidebars: SidebarsConfig = {
           items: [
             'guides/minecraft/overview',
             'guides/minecraft/minebackup-mod',
+            {
+              type: 'category',
+              label: '联动组件 / Integration Components',
+              items: [
+                'guides/minecraft/minebackup-plugin',
+                'guides/minecraft/death-rewind',
+                'guides/minecraft/just-enough-accidents',
+              ],
+            },
             'guides/minecraft/quick-start',
             'guides/minecraft/selected-region-backup',
             'guides/minecraft/hot-backup',

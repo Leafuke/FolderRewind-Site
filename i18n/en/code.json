@@ -628,5 +628,53 @@
   },
   "features.subheading": {
     "message": "From backup and sync to rollback, FolderRewind covers the whole safety chain"
+  },
+  "minecraft.ecosystem.heading": {
+    "message": "Minecraft integration ecosystem"
+  },
+  "minecraft-ecosystem-heading": {
+    "message": "Minecraft integration ecosystem"
+  },
+  "minecraft.ecosystem.intro": {
+    "message": "Choose a component by runtime scenario, then read its installation steps, compatibility matrix, and safety boundaries."
+  },
+  "minecraft.ecosystem.minebackupMod.title": {
+    "message": "MineBackup-Mod"
+  },
+  "minecraft.ecosystem.minebackupMod.description": {
+    "message": "The in-game integration mod coordinates saves, exits, hot backup, hot restore, and automatic rejoin."
+  },
+  "minecraft.ecosystem.minebackupMod.audience": {
+    "message": "Fabric / Forge / NeoForge modded servers"
+  },
+  "minecraft.ecosystem.minebackupPlugin.title": {
+    "message": "MineBackupPlugin"
+  },
+  "minecraft.ecosystem.minebackupPlugin.description": {
+    "message": "A Spigot/Paper server plugin that safely hands world restore over to a Sidecar process."
+  },
+  "minecraft.ecosystem.minebackupPlugin.audience": {
+    "message": "Spigot / Paper dedicated servers"
+  },
+  "minecraft.ecosystem.deathRewind.title": {
+    "message": "Death Rewind"
+  },
+  "minecraft.ecosystem.deathRewind.description": {
+    "message": "Creates periodic checkpoints and restores the latest archive from the singleplayer death screen."
+  },
+  "minecraft.ecosystem.deathRewind.audience": {
+    "message": "Fabric singleplayer worlds / LAN hosts"
+  },
+  "minecraft.ecosystem.jea.title": {
+    "message": "Just Enough Accidents"
+  },
+  "minecraft.ecosystem.jea.description": {
+    "message": "Detects high-risk states and creates a world snapshot that can be used to recover from an accident."
+  },
+  "minecraft.ecosystem.jea.audience": {
+    "message": "Fabric / NeoForge / Forge singleplayer or LAN worlds"
+  },
+  "minecraft.ecosystem.readMore": {
+    "message": "Read component guide →"
   }
 }
