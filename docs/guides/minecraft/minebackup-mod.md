@@ -1,245 +1,128 @@
 ---
 sidebar_position: 2
-title: MineBackup 联动模组详解
-description: 从安装前置到完整命令参考，系统理解 MineBackup 与 FolderRewind/MineRewind 的联动方式
+title: MineBackup-Mod（模组化服务端联动）
+description: 当前 MineBackup-Mod 的安装、命令、热备份、热还原与专用服务端 Sidecar 说明
 ---
 
-# MineBackup 联动模组详解
+# MineBackup-Mod（模组化服务端联动）
 
-MineBackup 是 Minecraft 侧的联动模组，负责把游戏内状态（保存、退出、重进）与 FolderRewind / MineRewind 的备份还原流程连接起来。
+MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRewind 与游戏运行时。它负责游戏内命令、世界保存、热备份前协同、热还原前退出，以及还原后的自动重进。
 
-:::tip 想看一代主程序完整说明？
-如果你需要的是 **MineBackup（一代时光机主程序）** 的完整使用手册（安装、配置、备份、还原、自动化、高级功能），请前往：
+它不能单独运行：必须同时运行一个主程序，并通过 KnotLink 建立通信。
 
-- [一代时光机总览（MineBackup）](../minebackup-v1/overview)
-:::
+## 它和其他组件如何分工
 
-你可以把它理解为“游戏进程内代理层”：
+- **MineBackup / FolderRewind**：保存归档、读取归档并执行实际备份/还原。
+- **MineRewind**：FolderRewind 的 Minecraft 专用扩展，负责存档发现、配置创建和当前世界热流程。
+- **MineBackup-Mod**：模组化服务端中的游戏内桥梁，负责保存、退出和重进。
+- **MineBackupPlugin**：Spigot/Paper 服务端的替代联动实现，不需要与本模组同时安装在同一类服务端上。
+- **Death Rewind**：在 MineBackup API v2 之上提供定时检查点和死亡界面回溯。
+- **Just Enough Accidents**：在 MineBackup API v2 之上提供事故检测和现场快照。
+- **KnotLink**：在主程序、Minecraft 扩展和游戏侧组件之间传输命令与状态。
 
-- MineRewind 负责 FolderRewind 插件侧能力（配置发现、备份/还原编排）
-- MineBackup 负责 Minecraft 运行时协同（热备份前保存、热还原前退出、还原后重进）
-- KnotLink 负责两者之间的命令和事件传输
+## 支持范围
 
----
+| 加载器 | Minecraft 版本 | 映射/运行说明 |
+| --- | --- | --- |
+| Fabric | 1.21 | Yarn |
+| Fabric | 1.21.9～1.21.11 | Mojang |
+| Fabric | 26.1～26.1.2 | 官方映射 |
+| Fabric | 26.2 | 官方映射 |
+| NeoForge | 1.21 | Parchment |
+| NeoForge | 26.1～26.1.2 | 官方映射 |
+| Forge | 1.20～1.20.4 | 官方映射 |
 
-## 一、适用场景与能力边界
+版本号和 JAR 下载以 [MineBackup-Mod Releases](https://github.com/Leafuke/MineBackup/releases) 或对应模组发布页为准。Windows 用户通常使用 [FolderRewind](https://apps.microsoft.com/detail/9nwsdgxdqws4) + [MineRewind](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft/releases)；其他平台也可以使用 [MineBackup 主程序](https://github.com/Leafuke/MineBackup/releases)。
 
-适合以下用户：
+## 安装前置
 
-- 单人生存长线玩家（担心崩档、误操作、回档后快速继续）
-- 小型服主或整合包测试者（需要频繁回溯）
-- 希望把“备份操作”从手动复制文件升级为标准化流程的用户
+1. 安装 MineBackup，或安装 FolderRewind 与 MineRewind。
+2. 安装 [KnotLink 服务端](https://github.com/KnotLink-Protocol/KnotLinkService/releases)。Windows 上需要让它提供本机通信端点 `127.0.0.1:6372/6376`；Linux/macOS 的通信方式以对应发布说明为准。
+3. 下载与你的加载器、Minecraft 版本匹配的 MineBackup-Mod JAR。
+4. 单人/LAN 场景放入客户端 `mods`；专用模组化服务端场景放入服务端 `mods`，客户端是否安装取决于你要使用的客户端功能。
+5. 同时启动主程序和 Minecraft，再先完成一次测试备份。
 
-MineBackup 的核心价值在于两点：
+如果运行的是 Spigot/Paper，而不是模组化服务端，请改用 [MineBackupPlugin（Spigot/Paper 联动插件）](./minebackup-plugin)。
 
-1. **热备份协同**：在主程序发起备份时，先在游戏内触发完整保存，尽量减少运行中备份不一致。
-2. **热还原协同**：在主程序发起还原时，模组保存并退出当前世界，待还原完成后自动重进并回传结果。
+## 游戏内命令
 
-你仍然要理解一个现实边界：
+所有命令都需要权限：专用服务器通常要求 OP；单人世界由世界所有者使用。
 
-- 它不是“永不失败”的魔法层，链路超时、权限不足、外部程序未响应都会中断流程。
-- 因此强烈建议先在测试世界演练至少一次完整热还原。
+| 命令 | 参数 | 说明 |
+| --- | --- | --- |
+| `/mb save` | 无 | 保存全部玩家和全部已加载世界，效果接近 `/save-all` |
+| `/mb backup` | `[注释]` | 备份当前世界，可附加注释 |
+| `/mb restore` | `[文件名]` | 还原当前世界；省略文件名时使用最新归档 |
+| `/mb confirm` | 无 | 立即确认倒计时中的还原 |
+| `/mb stop` | 无 | 取消尚未提交的还原倒计时 |
+| `/mb list backups` | `[current [页码]]` | 显示当前世界可交互的分页归档列表 |
+| `/mb list configs` | 无 | 列出主程序配置及 ID |
+| `/mb list folders` | `<config_id>` | 列出配置中的文件夹 |
+| `/mb list backups` | `<config_id> <folder>` | 列出指定目标归档 |
+| `/mb target backup` | `<config_id> <folder> [注释]` | 备份非当前世界目标 |
+| `/mb target restore` | `<config_id> <folder> <文件名>` | 单机/LAN 下还原非当前世界目标 |
+| `/mb auto start` | `<分钟>` | 启动当前世界定时备份 |
+| `/mb auto stop` | 无 | 停止当前世界定时备份 |
+| `/mb help` | `[指令]` | 显示帮助和示例 |
 
----
+`/mb list backups` 的当前世界列表包含时间、注释和可点击的 `[还原]` 按钮。所有目标还原都受当前操作门和权限约束；专用服务器不会接受任意目标还原。
 
-## 二、安装与前置条件
+## 热备份流程
 
-## 1) 环境前置
+当主程序需要在世界仍运行时备份，模组会：
 
-根据模组声明与现有联动设计，建议满足：
+1. 接收热备份请求。
+2. 执行完整世界保存。
+3. 在备份窗口内冻结自动保存。
+4. 回传世界已经保存的信号。
+5. 让主程序执行备份。
+6. 备份完成后解除冻结。
 
-- [KnotLink 服务端](https://github.com/hxh230802/KnotLink/releases)
-- FolderRewind 主程序 + MineRewind 插件
-- MineBackup 主程序
+冻结有超时保护；但它仍是尽力而为的协同层，不代表任何外部程序、权限或通信故障都能自动修复。
 
-> 后两项二选一即可
+## 热还原流程
 
-## 2) 安装顺序建议
+当前世界热还原会经历：
 
-1. 先安装并可正常运行 FolderRewind。
-2. 在 FolderRewind 中安装 MineRewind 插件。
-3. 在 Minecraft 端安装 MineBackup 模组。
-4. 启动后先做一次最短链路验证（见下文“场景 1”）。
+1. 握手和最低版本检查。
+2. 保存并退出当前世界/会话。
+3. 等待世界文件释放。
+4. 还原最新归档或指定归档。
+5. 接收还原终态。
+6. 自动重进或返回重进结果。
 
-## 3) 权限模型
+本流程会改变正在使用的世界。首次使用时必须在测试世界完成一次完整“备份—还原—重进”演练，并保留一份可独立还原的完整归档。
 
-- **单人游戏**：可直接使用 `/mb` 命令。
-- **专用服务器**：通常要求 OP 管理权限（命令权限检查为 moderator 级）。
+## 专用服务端 Sidecar 还原
 
----
+当前模组化专用服务端还原由内置纯 JDK Sidecar 负责安全交接，不需要额外安装 MineBackupPlugin。默认配置如下：
 
-## 三、联动流程（你需要知道的关键链路）
-
-## 1) 热备份链路
-
-主程序触发热备份请求后，MineBackup 会：
-
-1. 接收 `pre_hot_backup` 事件
-2. 触发世界完整保存
-3. 冻结自动保存（避免备份窗口内写入干扰）
-4. 回传 `WORLD_SAVED`
-5. 主程序执行备份
-6. 备份完成后自动解冻
-
-安全兜底：
-
-- 自动保存冻结存在超时保护（约 3 分钟），超时会自动恢复并广播警告。
-
-## 2) 热还原链路
-
-主程序触发热还原请求后，MineBackup 会：
-
-1. 处理 `pre_hot_restore`
-2. 保存并退出当前世界/会话
-3. 回传 `WORLD_SAVE_AND_EXIT_COMPLETE`
-4. 等待主程序还原完成事件（`restore_finished`/`restore_success`）
-5. 处理 `rejoin_world` 事件并执行自动重进
-6. 回传 `REJOIN_RESULT success|failure ...`
-
-握手阶段：
-
-- 模组收到 `handshake` 后会返回 `HANDSHAKE_RESPONSE <mod_version>`，并进行最低版本兼容性检查。
-
----
-
-## 四、完整命令参考（/mb）
-
-> v1.7.0 已修复 `LIST_WORLDS` 远程指令解析问题。若你在更早版本遇到该命令异常，建议升级后重试。
-
-以下为当前模组命令入口的完整清单。
-
-| 分类 | 命令 | 说明 |
-|---|---|---|
-| 本地保存 | `/mb save` | 立即对当前服务器所有维度执行一次保存 |
-| 配置查询 | `/mb list_configs` | 查询主程序中的可用配置 |
-| 世界查询 | `/mb list_worlds <config_id>` | 查询指定配置下的世界列表 |
-| 备份查询 | `/mb list_backups <config_id> <world_index>` | 查询指定世界的备份列表 |
-| 远程备份 | `/mb backup <config_id> <world_index> [comment]` | 对指定世界发起备份，可附注释 |
-| 远程还原 | `/mb restore <config_id> <world_index> <backup_file>` | 按备份文件名还原指定世界 |
-| 快速备份 | `/mb quicksave [comment]` | 先本地保存，再对“当前世界”触发备份 |
-| 快速还原 | `/mb quickrestore [backup_file]` | 不带参数时还原到最新备份；带参数时还原指定备份 |
-| 自动备份 | `/mb auto <config_id> <world_index> <internal_time>` | 启动自动备份并记录到本地配置 |
-| 停止自动备份 | `/mb stop <config_id> <world_index>` | 停止指定世界自动备份并清除本地自动备份配置 |
-| WE 快照联动 | `/mb snap <config_id> <world_index> <backup_file>` | 触发与 WorldEdit 快照相关的联动指令 |
-| 手动冻结 | `/mb freeze` | 保存并冻结自动保存，便于外部工具窗口操作 |
-| 手动恢复 | `/mb unfreeze` | 解除自动保存冻结 |
-
----
-
-## 五、两个具体场景示例
-
-## 场景 1：先打通“最短可用链路”
-
-目标：确认 MineBackup 与主程序通信正常。
-
-操作步骤：
-
-1. 进入目标世界后执行：
-
-```text
-/mb quicksave baseline_before_test
+```properties
+dedicatedRestore.mode=SIDECAR
+dedicatedRestore.restartScript=
+dedicatedRestore.sidecarStartTimeoutSeconds=5
+dedicatedRestore.worldReleaseTimeoutSeconds=8
+dedicatedRestore.operationTimeoutSeconds=3600
 ```
 
-2. 看到“命令已发送 / 备份响应”后，再执行：
+还原时，模组会先验证重启脚本、会话目录和操作状态，再保存所有玩家，写入交接文件并启动 Sidecar。Sidecar 会确认已经订阅 KnotLink、等待父 JVM 退出、连续确认世界文件释放，最后只在收到主程序明确成功/失败/取消终态后执行一次重启脚本。
 
-```text
-/mb quickrestore
-```
+未知结果、断连或超时会让服务端保持离线，不会把静默当成安全成功。不要同时使用会在 JVM 退出后立即重启的面板或 wrapper。
 
-3. 观察流程是否出现以下关键节点：
+## 常见边界
 
-- 还原准备提示
-- 世界退出与等待还原
-- 自动重进成功
-- 主程序收到 `REJOIN_RESULT success`
+- 主程序未运行或 KnotLink 未建立时，游戏内命令会报告通信失败。
+- 指定归档文件必须真实存在。
+- 热还原依赖模组握手、世界退出和文件释放超时。
+- 专用服务端还原成功后，重启脚本只负责重新启动服务端；玩家需要等待服务端起来后重新连接。
+- `Death Rewind` 和 JEA 共享 MineBackup 的归档保留策略，不能提供独立的永久保护槽位。
 
-成功标准：
+## 相关文档
 
-- 能完成“备份 -> 还原 -> 重进”闭环，且回到可正常游玩的世界状态。
-
-## 场景 2：精确回滚到指定备份（事故恢复）
-
-目标：在“已知坏档/误操作”后回到指定时间点。
-
-操作步骤：
-
-1. 先列出可用备份：
-
-```text
-/mb list_backups <config_id> <world_index>
-```
-
-2. 选择目标备份文件名后执行：
-
-```text
-/mb quickrestore <backup_file>
-```
-
-3. 若你使用的是跨世界管理，或需要指定配置维度，也可使用：
-
-```text
-/mb restore <config_id> <world_index> <backup_file>
-```
-
-成功标准：
-
-- 玩家回到预期时间点，关键方块/实体状态与目标备份一致。
-
----
-
-## 六、常见问题与边界
-
-## 1) 命令发送了但没有结果
-
-可能原因：
-
-- 主程序侧未运行
-- KnotLink 链路未建立
-- 端口或本机通信被拦截
-
-建议：
-
-- 先从 `/mb list_configs` 这类只读查询命令开始排查通信。
-
-## 2) 热还原失败或未自动重进
-
-常见原因：
-
-- 目标世界标识无效（无 world / 非法路径）
-- 重进超时
-- 重试上限耗尽
-
-建议：
-
-- 优先用 `quickrestore` 在测试世界演练。
-- 失败后先回到世界选择界面手动进入，确认世界本体是否可加载。
-
-## 3) 专用服务器上命令不可用
-
-常见原因：
-
-- 执行者权限不足。
-
-建议：
-
-- 为执行者分配足够管理权限后重试。
-
-## 4) 自动保存冻结担心忘记恢复
-
-说明：
-
-- 模组带有冻结超时兜底，超时会自动恢复并提示警告。
-- 但仍建议操作完成后主动执行 `/mb unfreeze` 形成习惯。
-
----
-
-## 七、与 MineRewind 文档如何配合阅读
-
-推荐阅读顺序：
-
-1. 先读 [Minecraft 专题总览](./overview)
-2. 再读本文（MineBackup 模组能力）
-3. 深入理解链路细节看 [KnotLink 与联动模组](./knotlink-mod)
-4. 进一步看 [热备份机制详解](./hot-backup) 与 [热还原机制详解](./hot-restore)
-
-如果你准备做联动开发或协议实现，请继续阅读 [KnotLink 协议与联动](../../plugins/knotlink)。
+- [Minecraft 专题总览](./overview)
+- [MineBackupPlugin（Spigot/Paper 联动插件）](./minebackup-plugin)
+- [Death Rewind（死亡回溯）](./death-rewind)
+- [Just Enough Accidents（险兆备份）](./just-enough-accidents)
+- [KnotLink 与联动模组](./knotlink-mod)
+- [热备份机制详解](./hot-backup)
+- [热还原机制详解](./hot-restore)
