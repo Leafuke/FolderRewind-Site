@@ -40,11 +40,15 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          showLastUpdateTime: true,
+          editLocalizedFiles: true,
           editUrl:
-            'https://github.com/Leafuke/FolderRewind-Site/tree/main/',
+            'https://github.com/Leafuke/FolderRewind-Site/edit/main/',
         },
         blog: {
           showReadingTime: true,
+          showLastUpdateTime: true,
+          editLocalizedFiles: true,
           blogTitle: '更新日志',
           blogDescription: 'FolderRewind 版本更新与项目公告',
           blogSidebarTitle: '所有版本',
@@ -54,7 +58,7 @@ const config: Config = {
             xslt: true,
           },
           editUrl:
-            'https://github.com/Leafuke/FolderRewind-Site/tree/main/',
+            'https://github.com/Leafuke/FolderRewind-Site/edit/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -120,6 +124,11 @@ const config: Config = {
           position: 'right',
         },
       ],
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
     },
     footer: {
       style: 'dark',
