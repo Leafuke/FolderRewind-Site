@@ -14,6 +14,29 @@ const config: Config = {
   url: 'https://folderrewind.top',
   baseUrl: '/',
 
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'FolderRewind',
+        alternateName: '存档时光机',
+        applicationCategory: 'BackupApplication',
+        operatingSystem: 'Windows 10, Windows 11',
+        description:
+          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。',
+        url: 'https://folderrewind.top/',
+        image: 'https://folderrewind.top/img/ori.png',
+        downloadUrl: 'https://apps.microsoft.com/detail/9nwsdgxdqws4',
+        sameAs: ['https://github.com/Leafuke/FolderRewind'],
+      }),
+    },
+  ],
+
   organizationName: 'Leafuke',
   projectName: 'FolderRewind-Site',
 
@@ -93,6 +116,35 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/ori.png',
+    metadata: [
+      {
+        name: 'description',
+        content:
+          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
+      },
+      {
+        name: 'keywords',
+        content:
+          'FolderRewind, 存档时光机, Windows 备份, 文件备份, 游戏存档备份, Minecraft 存档备份, file backup, Windows backup, game save backup, Minecraft backup',
+      },
+      {property: 'og:type', content: 'website'},
+      {property: 'og:site_name', content: 'FolderRewind'},
+      {property: 'og:title', content: 'FolderRewind - 存档时光机'},
+      {
+        property: 'og:description',
+        content:
+          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
+      },
+      {property: 'og:image', content: 'https://folderrewind.top/img/ori.png'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {name: 'twitter:title', content: 'FolderRewind - 存档时光机'},
+      {
+        name: 'twitter:description',
+        content:
+          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
+      },
+      {name: 'twitter:image', content: 'https://folderrewind.top/img/ori.png'},
+    ],
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
