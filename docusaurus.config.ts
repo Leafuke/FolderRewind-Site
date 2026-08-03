@@ -66,6 +66,27 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
+        language: ['zh', 'en'],
+        hashed: 'filename',
+        searchBarPosition: 'right',
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        searchBarShortcutKeymap: 'mod+k',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 80,
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/ori.png',
     colorMode: {
