@@ -12,6 +12,8 @@ MineRewind is the official FolderRewind Minecraft extension. It provides backup 
 
 This section also covers several direct integration components. Each one targets a different runtime: MineBackup-Mod for mod-loader servers, MineBackupPlugin for Spigot/Paper, Death Rewind for singleplayer death-screen rewind, and Just Enough Accidents for incident detection.
 
+![Relationship between FolderRewind, MineRewind, and Minecraft integration components](/img/docs/guides/minecraft/minebackup-ecosystem.png)
+
 ![MineRewind plugin card in FolderRewind Settings showing the plugin enabled](/img/docs/guides/minecraft/mine-rewind-settings.webp)
 
 *The `Time Machine` question mark is a future/placeholder extension outside this documentation scope. This guide covers only MineBackup-Mod, MineBackupPlugin, Death Rewind, and Just Enough Accidents.*

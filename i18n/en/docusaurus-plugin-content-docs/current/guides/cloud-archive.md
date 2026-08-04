@@ -73,6 +73,8 @@ rclone version
 
 ### Run rclone config
 
+![Opening a command prompt from the rclone folder](/img/docs/guides/cloud-archive-rclone-folder-cmd.png)
+
 ```powershell
 rclone config
 ```
@@ -88,6 +90,8 @@ Typical flow:
 7. Select drive type and target drive
 8. Save and quit
 
+![Creating a new remote in rclone config](/img/docs/guides/cloud-archive-rclone-config-new-remote.png)
+
 Validate remote:
 
 ```powershell
@@ -99,6 +103,20 @@ Suggested remote base path to use in FolderRewind:
 ```text
 fr_onedrive:FolderRewind
 ```
+
+![Key options in the OneDrive configuration flow](/img/docs/guides/cloud-archive-onedrive-config-steps.png)
+
+![Confirmation screen after completing the OneDrive remote configuration](/img/docs/guides/cloud-archive-onedrive-finish.png)
+
+### OpenList and WebDAV bridge references
+
+For domestic storage providers such as Baidu Netdisk, OpenList can expose a WebDAV endpoint for rclone. The following screenshots preserve the original setup walkthrough.
+
+![OpenList showing the WebDAV address and account information after startup](/img/docs/guides/cloud-archive-openlist-server-webdav.png)
+
+![Adding a Baidu Netdisk storage configuration in OpenList](/img/docs/guides/cloud-archive-openlist-baidu-storage-config.png)
+
+![Example result from obtaining an OpenList token](/img/docs/guides/cloud-archive-openlist-token-result.png)
 
 ## 4) Global Settings prerequisites
 

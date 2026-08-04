@@ -10,18 +10,16 @@ const sourceRoots = [
   'docusaurus.config.ts',
 ];
 const rasterExtensions = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp']);
-const maxRasterBytes = 360 * 1024;
+// Keep a small allowance for the intentionally restored legacy cloud screenshots.
+const maxRasterBytes = 512 * 1024;
 const imageReferencePattern = /(?:https?:\/\/[^"'`\s)]+)?\/?img\/[A-Za-z0-9][A-Za-z0-9_./-]*/g;
 const obsoleteTokens = [
   'ori.png',
   'backup-directory-structure.png',
   'config-dialog-',
   'auto-scan-worlds-result',
-  'minebackup-ecosystem',
   'folderrewind-minerewind-architecture',
   'placeholder',
-  'cloud-archive-',
-  'minebackup-v1/',
 ];
 
 async function walk(entry) {

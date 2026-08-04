@@ -26,7 +26,11 @@ Rclone 支持多种云存储服务，包括 OneDrive、Google Drive、Dropbox �
 
 打开你解压到的那个文件夹如下，在文件夹地址栏输入 cmd 然后回车。
 
+![在文件夹地址栏输入 cmd 打开命令行](/img/docs/guides/cloud-archive-rclone-folder-cmd.png)
+
 然后输入 rclone config 回车。输入 n 回车。输入一个英文名称如下图。回车。
+
+![rclone config 新建远端配置](/img/docs/guides/cloud-archive-rclone-config-new-remote.png)
 
 选择一个数字，回车。这里有67种选择，包含了 OneDrive、DropBox等网盘。
 
@@ -37,6 +41,10 @@ Rclone 支持多种云存储服务，包括 OneDrive、Google Drive、Dropbox �
 最后这一个回车会打开你的浏览器，让你登录微软账号。
 
 咋们继续。。1回车、2回车、y回车、y回车。好了，结束了。
+
+![OneDrive 配置过程中的关键选项](/img/docs/guides/cloud-archive-onedrive-config-steps.png)
+
+![OneDrive 远端配置完成确认界面](/img/docs/guides/cloud-archive-onedrive-finish.png)
 
 2. 百度网盘
 
@@ -53,8 +61,14 @@ Rclone 官方不直接支持百度网盘，但你可以使用 OpenList 这样的
 打开你解压到的那个文件夹，在文件夹地址栏输入 cmd 然后回车。
 输入 openlist server 回车。会显示 WebDAV 的访问地址、用户名和密码。
 
+![OpenList 启动后显示 WebDAV 地址与账号信息](/img/docs/guides/cloud-archive-openlist-server-webdav.png)
+
 打开浏览器，在地址栏输入 `localhost:5244` 回车，输入你在刚才看到的用户名admin和密码登录。
 点击管理 -> 添加存储 -> 选择百度网盘 -> 挂载路径填写 `/baidu` -> 打开[OpenList Token 获取工具](https://api.oplist.org/) -> 选择百度网盘验证登录 -> 勾选使用 OpenList 提供的参数 -> 点击获取token -> 复制获取到的刷新令牌 -> 粘贴到 OpenList 的配置页（刷新令牌） -> 点击保存。
+
+![OpenList 中添加百度网盘存储配置](/img/docs/guides/cloud-archive-openlist-baidu-storage-config.png)
+
+![OpenList Token 获取结果示例](/img/docs/guides/cloud-archive-openlist-token-result.png)
 
 - 在 rclone 中配置 WebDAV 连接 OpenList
 
