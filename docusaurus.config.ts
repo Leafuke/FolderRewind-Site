@@ -63,6 +63,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          exclude: ['**/superpowers/**'],
           showLastUpdateTime: true,
           editLocalizedFiles: true,
           editUrl:
