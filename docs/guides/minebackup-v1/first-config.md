@@ -25,8 +25,6 @@ MineBackup 支持多配置并行。每个配置可理解为一套独立规则集
 
 这是最关键的一步：告诉 MineBackup 您的存档都放在哪里。
 
-![存档路径演示](/img/docs/guides/minebackup-v1/where-folder-saves.gif)
-
 - “存档根目录” 是指包含您所有世界文件夹的父目录。
 
 - 常见示例：
@@ -43,8 +41,6 @@ C:\\Users\\<用户名>\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3
 ```
   它们的名称就没那么规律了~不过别担心，MineBackup会自动识别！
 
-![基岩版存档名称演示](/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg)
-
 如何填写：
 
 - 自动选择（推荐）：使用 `自动选择 Java 版 存档路径` 或 `自动选择 基岩版 存档路径` 按钮，程序会自动填入默认路径。
@@ -59,8 +55,6 @@ C:\\Users\\<用户名>\\Desktop
 ```
 
 - 若使用 PCL2 等启动器，可通过启动器的“打开存档文件夹”复制路径并粘贴到向导中。
-
-![PCL2寻存档](/img/docs/guides/minebackup-v1/pcl-to-find.gif)
 
 ### 第二步：指定备份仓库
 

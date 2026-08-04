@@ -23,7 +23,7 @@ Find the **+ New Config** button in the upper-right corner of the home page and 
 - **New Config**: create a blank config manually
 - **Create from Template**: quickly create one using an existing template
 
-![Home page overview with the New Config button visible in the upper-right corner](/img/docs/getting-started/home-page-overview.png)
+![Home page config overview with the New Config button visible; paths are hidden](/img/docs/getting-started/home-page-overview.webp)
 
 After selecting "New Config", a config type selection dialog appears:
 
@@ -36,7 +36,7 @@ Enter a config name and click confirm to create.
 
 After creation, you are automatically taken to the **Config Management Page**.
 
-![Config Management Page with the toolbar containing Add Folder and Backup buttons at the top](/img/docs/getting-started/folder-manager-page.png)
+![Config Management Page with Add Folder and backup buttons in the toolbar; paths are hidden](/img/docs/getting-started/folder-manager-page.webp)
 
 Click **Add Folder** in the top toolbar, then choose from the Flyout:
 
@@ -51,6 +51,8 @@ After selection, the folders appear in the list below.
 - Back up all folders: click **Backup All Folders** directly
 
 During the backup, you can switch to the **Backup Tasks** page in the bottom navigation bar to view progress.
+
+![Backup Tasks page showing that no task is currently running](/img/docs/guides/backup-tasks.webp)
 
 ## Path B: Create a config from a template
 

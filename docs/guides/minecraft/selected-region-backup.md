@@ -20,6 +20,8 @@ FolderRewind 1.8 可以只备份 Minecraft 存档中指定范围内的区域文�
 4. 每行填写一个区域范围，格式为 `x1,z1,x2,z2`。
 5. 保存后先执行一次手动备份，并在测试副本中验证内容。
 
+![Minecraft 配置详情中的备份类型和路径设置，路径值已隐藏](/img/docs/guides/minecraft/minecraft-region-config-settings.webp)
+
 例如：
 
 ```text

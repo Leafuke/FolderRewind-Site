@@ -18,7 +18,7 @@ description: 使用历史记录进行查看、标记与恢复
 
 历史时间轴采用类似 Git 提交记录的可视化布局：
 
-![历史时间轴页面全貌](/img/docs/getting-started/history-timeline-page.png)
+![历史时间轴页面全貌，展示筛选栏、时间线和历史操作按钮](/img/docs/getting-started/history-timeline-page.webp)
 
 **三列布局：**
 

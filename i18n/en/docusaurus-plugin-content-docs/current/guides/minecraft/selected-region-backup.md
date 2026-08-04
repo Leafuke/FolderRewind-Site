@@ -20,6 +20,8 @@ For both normal and hot restore, a selected-region backup is forced to **Overwri
 4. Enter one region range per line in `x1,z1,x2,z2` format.
 5. Save, run a manual backup, and validate it against a test copy first.
 
+![Minecraft config settings showing the backup type and path fields with path values hidden](/img/docs/guides/minecraft/minecraft-region-config-settings.webp)
+
 For example:
 
 ```text

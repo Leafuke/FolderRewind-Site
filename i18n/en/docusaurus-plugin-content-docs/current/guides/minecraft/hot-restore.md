@@ -8,6 +8,8 @@ description: MineRewind save-exit-restore-rejoin flow and timeout strategy
 
 Hot restore targets the **currently active world**, combining the usual "save -> exit -> restore -> rejoin" steps into one automated chain.
 
+![Minecraft backup entries and restore actions on the History Timeline](/img/docs/getting-started/history-timeline-page.webp)
+
 ## Source mapping
 
 | Capability | Core methods/constants | Location |

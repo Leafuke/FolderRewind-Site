@@ -49,6 +49,8 @@ You now have two common paths:
 1. Click **New Config** and create a config manually
 2. Click **Create from Template** and apply an existing template directly
 
+![New Config dialog showing the config name, type, and icon options](/img/docs/intro/create-config-and-add-folder-entry.webp)
+
 If you already have a stable setup, you can also **save the current config as a template** in config settings.
 
 ### Step 3: Run a first backup and validate

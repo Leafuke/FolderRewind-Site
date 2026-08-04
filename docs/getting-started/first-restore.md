@@ -22,13 +22,13 @@ description: 从历史版本安全恢复文件夹
 2. 在文件夹列表中，选中要还原的文件夹。
 3. 点击工具栏右侧的 **历史版本** 按钮。
 
-![配置管理页中，文件夹列表和历史版本按钮的位置](/img/docs/getting-started/folder-manager-page.png)
+![配置管理页中，文件夹列表和历史版本按钮的位置，路径信息已隐藏](/img/docs/getting-started/folder-manager-page.webp)
 
 ## 步骤 2：认识历史时间轴
 
 进入历史页面后，你会看到一个类似 Git 提交记录的时间轴视图：
 
-![历史时间轴页面，左侧为时间，中间为连接线和彩色节点，右侧为备份信息卡片](/img/docs/getting-started/history-timeline-page.png)
+![历史时间轴页面，左侧为时间，中间为连接线和彩色节点，右侧为备份信息卡片](/img/docs/getting-started/history-timeline-page.webp)
 
 **布局说明：**
 
@@ -56,7 +56,7 @@ description: 从历史版本安全恢复文件夹
 1. 在目标备份卡片上，点击 **还原** 按钮。
 2. 在弹出的确认对话框中选择还原模式：
 
-![还原确认对话框，显示安全还原和覆写还原两个选项](/img/docs/getting-started/restore-confirm-dialog.png)
+![还原确认对话框，显示安全还原和覆写还原两个选项](/img/docs/getting-started/restore-confirm-dialog.webp)
 
    - **安全还原（清空目标）**：先清空目标目录，再还原备份内容。**推荐使用。**
      - 如果开启了 **安全还原**，系统会在清理前创建快照，还原失败时自动回滚。
@@ -85,6 +85,8 @@ description: 从历史版本安全恢复文件夹
 ## 建议的保险设置
 
 在 **配置设置 → 还原策略** 中，建议开启：
+
+![还原策略选项卡，展示安全还原与还原前校验开关](/img/docs/guides/restore-policy.webp)
 
 | 设置 | 作用 |
 |------|------|

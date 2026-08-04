@@ -42,9 +42,9 @@ Across major updates, chain generation, truncation, and restore behavior may cha
 	- Overwrite backup (update latest backup)
 4. Save and run one manual backup for validation.
 
-![Backup mode dropdown with three options](/img/docs/guides/backup-mode-dropdown-options.png)
+![Backup mode dropdown with Full, Smart Incremental, and Overwrite options](/img/docs/guides/backup-mode-dropdown-options.webp)
 
-![Backup Policy tab in Config Settings](/img/docs/guides/config-dialog-backup-tab.png)
+![Backup Policy tab showing scope, archive format, and compression level](/img/docs/guides/backup-policy.webp)
 
 ## Choosing tips
 

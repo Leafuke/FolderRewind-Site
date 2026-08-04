@@ -17,6 +17,8 @@ FolderRewind supports importing/exporting two data types in Settings:
 2. Find **Data Migration** section.
 3. Choose import/export as needed.
 
+![Data Migration area with config and history import/export buttons](/img/docs/guides/data-migration-import-export.webp)
+
 ## Config migration
 
 ### Export config

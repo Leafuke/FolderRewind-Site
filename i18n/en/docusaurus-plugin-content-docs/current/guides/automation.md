@@ -28,9 +28,7 @@ FolderRewind supports multiple automation modes for each config:
 3. Open the **Automation** tab.
 4. Enable **Auto Backup**.
 
-![Auto Backup toggle in the Automation tab](/img/docs/guides/automation-enable-auto-backup.png)
-
-![Full view of the Automation tab in Config Settings](/img/docs/guides/config-dialog-automation-tab.png)
+![Automation tab showing the Auto Backup toggle and interval schedule](/img/docs/guides/automation-enable-auto-backup.webp)
 
 ## Automation modes
 

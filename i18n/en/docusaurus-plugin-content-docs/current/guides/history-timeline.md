@@ -18,7 +18,7 @@ The History Timeline lets you inspect folder backup evolution and run restore ac
 
 The History Timeline uses a visual layout similar to a Git commit log:
 
-![Full view of the History Timeline page](/img/docs/getting-started/history-timeline-page.png)
+![Full History Timeline page showing filters, the timeline, and history actions](/img/docs/getting-started/history-timeline-page.webp)
 
 **Three-column layout:**
 

@@ -23,7 +23,7 @@ description: 创建配置并完成第一次备份
 - **新建配置**：手动创建空白配置
 - **从模板创建**：使用已有模板快速创建
 
-![首页全貌，右上角可见新建配置按钮](/img/docs/getting-started/home-page-overview.png)
+![首页配置概览，右上角可见新建配置按钮，路径信息已隐藏](/img/docs/getting-started/home-page-overview.webp)
 
 选择"新建配置"后，会弹出配置类型选择：
 
@@ -36,7 +36,7 @@ description: 创建配置并完成第一次备份
 
 创建完成后自动进入 **配置管理页**。
 
-![配置管理页，顶部工具栏包含添加文件夹和备份按钮](/img/docs/getting-started/folder-manager-page.png)
+![配置管理页，顶部工具栏包含添加文件夹和备份按钮，路径信息已隐藏](/img/docs/getting-started/folder-manager-page.webp)
 
 在顶部工具栏点击 **添加文件夹**，在弹出的 Flyout 中选择：
 
@@ -51,6 +51,8 @@ description: 创建配置并完成第一次备份
 - 备份所有文件夹：直接点击 **备份全部文件夹**
 
 备份过程中，可以切换到底部导航栏的 **备份任务** 页面查看进度。
+
+![备份任务队列页面，展示当前没有正在运行的任务](/img/docs/guides/backup-tasks.webp)
 
 ## 路线二：从模板创建配置
 

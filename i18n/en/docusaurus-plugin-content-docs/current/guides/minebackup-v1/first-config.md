@@ -22,8 +22,6 @@ The wizard's first page briefly explains its purpose. Simply click the `Start Co
 
 This is the most critical step: tell MineBackup where your saves are stored.
 
-![Save path demo](/img/docs/guides/minebackup-v1/where-folder-saves.gif)
-
 - "Save root directory" refers to the parent directory that contains all your world folders.
 
 - Common examples:
@@ -40,8 +38,6 @@ C:\Users\<username>\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\
 ```
   The naming is less predictable~ but don't worry, MineBackup will recognize them automatically!
 
-![Bedrock save naming demo](/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg)
-
 How to fill in:
 
 - Auto-select (Recommended): Use the `Auto-detect Java Edition save path` or `Auto-detect Bedrock Edition save path` button, and the program will auto-fill the default path.
@@ -56,8 +52,6 @@ C:\Users\<username>\Desktop
 ```
 
 - If you use a launcher like PCL2, you can copy the path from the launcher's "Open save folder" option and paste it into the wizard.
-
-![PCL2 finding saves](/img/docs/guides/minebackup-v1/pcl-to-find.gif)
 
 ### Step 2: Specify the Backup Repository
 

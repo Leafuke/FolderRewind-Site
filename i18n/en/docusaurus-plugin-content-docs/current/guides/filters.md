@@ -19,7 +19,7 @@ FolderRewind has two filter groups:
    - **Blacklist** in the **Filters** section
    - **Restore Whitelist** in the **Restore Policy** section
 
-![Filters tab in Config Settings](/img/docs/guides/config-dialog-filter-tab.png)
+![Filters tab showing blacklist mode and excluded entries](/img/docs/guides/filter-policy.webp)
 
 ## Three filter lists
 

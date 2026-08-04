@@ -19,7 +19,7 @@ FolderRewind 的过滤分为两类：
    - **过滤器** 里配置黑名单
    - **还原策略** 里配置还原白名单
 
-![配置设置中的过滤器选项卡](/img/docs/guides/config-dialog-filter-tab.png)
+![配置设置中的过滤器选项卡，展示黑名单模式和排除列表](/img/docs/guides/filter-policy.webp)
 
 ## 三种过滤列表
 

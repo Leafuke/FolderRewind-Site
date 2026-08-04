@@ -63,7 +63,7 @@ DestinationPath/
       └─ metadata.json
 ```
 
-![Backup directory structure example](/img/docs/guides/backup-directory-structure.png)
+![Generic backup directory structure showing archives, config, and history files](/img/docs/guides/backup-directory-structure.svg)
 
 Notes:
 

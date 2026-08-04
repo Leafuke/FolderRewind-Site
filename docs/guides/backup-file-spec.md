@@ -63,7 +63,7 @@ DestinationPath/
       └─ metadata.json
 ```
 
-![备份目录结构示例](/img/docs/guides/backup-directory-structure.png)
+![备份目录结构示意图，展示归档、配置和历史文件的通用布局](/img/docs/guides/backup-directory-structure.svg)
 
 说明：
 

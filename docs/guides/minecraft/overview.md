@@ -12,7 +12,7 @@ MineRewind 是 FolderRewind 官方 Minecraft 扩展，面向 Minecraft 存档提
 
 本专题还包含多个直接联动组件。它们各自负责不同运行场景：模组化服务端使用 MineBackup-Mod，Spigot/Paper 使用 MineBackupPlugin，单人死亡回溯使用 Death Rewind，险兆检测使用 Just Enough Accidents。
 
-![FolderRewind、MineRewind 与 Minecraft 联动组件关系图](/img/docs/guides/minecraft/minebackup-ecosystem.png)
+![FolderRewind 设置页中的 MineRewind 插件卡片，显示插件已启用](/img/docs/guides/minecraft/mine-rewind-settings.webp)
 
 *图中 `Time Machine` 问号是未纳入本次介绍范围的未来/占位扩展；本文只覆盖 MineBackup-Mod、MineBackupPlugin、Death Rewind 和 Just Enough Accidents。*
 
@@ -52,7 +52,7 @@ MineRewind 是 FolderRewind 官方 Minecraft 扩展，面向 Minecraft 存档提
 
 插件将配置类型标记为 `Minecraft Saves`，并自动补充必要过滤规则，例如 `session.lock`。
 
-![扫描 .minecraft 后自动发现世界并生成配置](/img/docs/guides/minecraft/auto-scan-worlds-result.png)
+![MineRewind 插件设置，展示自动发现存档和自动识别添加配置开关](/img/docs/guides/minecraft/mine-rewind-plugin-settings.webp)
 
 ### 2. 热备份协同
 

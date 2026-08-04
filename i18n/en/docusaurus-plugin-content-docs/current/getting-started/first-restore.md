@@ -22,13 +22,13 @@ For configs upgraded from older versions, validate restore results in a test dir
 2. In the folder list, select the folder you want to restore.
 3. Click the **History** button on the right side of the toolbar.
 
-![The folder list and History button location in the Config Management Page](/img/docs/getting-started/folder-manager-page.png)
+![The folder list and History button location in the Config Management Page; paths are hidden](/img/docs/getting-started/folder-manager-page.webp)
 
 ## Step 2: Understand the history timeline
 
 After entering the history page, you will see a timeline view similar to a Git commit log:
 
-![History timeline page with time on the left, connecting lines and colored nodes in the middle, and backup info cards on the right](/img/docs/getting-started/history-timeline-page.png)
+![History timeline page with time on the left, connecting lines and colored nodes in the middle, and backup info cards on the right](/img/docs/getting-started/history-timeline-page.webp)
 
 **Layout overview:**
 
@@ -56,7 +56,7 @@ Find the point in time you want to restore to. Use the filter bar at the top to 
 1. On the target backup card, click the **Restore** button.
 2. In the confirmation dialog, choose a restore mode:
 
-![Restore confirmation dialog showing Safe Restore and Overwrite Restore options](/img/docs/getting-started/restore-confirm-dialog.png)
+![Restore confirmation dialog showing Safe Restore and Overwrite Restore options](/img/docs/getting-started/restore-confirm-dialog.webp)
 
    - **Safe Restore (clean target)**: cleans the target directory first, then restores the backup content. **Recommended.**
      - If **Safe Restore** is enabled, the system creates a snapshot before cleaning and automatically rolls back if the restore fails.
@@ -85,6 +85,8 @@ Open the target directory and check whether the files have been restored to the 
 ## Recommended safety settings
 
 In **Config Settings > Restore Policy**, it is recommended to enable:
+
+![Restore Policy tab showing Safe Restore and pre-restore validation switches](/img/docs/guides/restore-policy.webp)
 
 | Setting | Purpose |
 |------|------|

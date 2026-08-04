@@ -8,6 +8,8 @@ description: MineRewind 的保存-退出-还原-重进流程与超时策略
 
 热还原用于“当前正在游玩的世界”，目标是把常见的“手动保存 -> 退出 -> 还原 -> 重新进入”收敛成单条自动链路。
 
+![历史时间轴中的 Minecraft 备份记录和还原操作入口](/img/docs/getting-started/history-timeline-page.webp)
+
 ## 源码映射
 
 | 能力 | 核心方法/常量 | 位置 |
