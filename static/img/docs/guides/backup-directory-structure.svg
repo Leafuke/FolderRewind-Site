@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">FolderRewind backup directory structure</title>
+  <desc id="desc">A generic backup root containing archives, configuration metadata, history, and a full backup archive.</desc>
+  <rect width="960" height="520" rx="24" fill="#f7faff"/>
+  <rect x="48" y="42" width="864" height="436" rx="18" fill="#fff" stroke="#dbe5f2" stroke-width="3"/>
+  <g fill="none" stroke="#6d82b7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M112 125h54l20 22h90v58H112z" fill="#e7efff"/>
+    <path d="M160 205v228M160 263h220M160 343h220M160 423h220"/>
+    <path d="M380 263h54v-28h54l18 20h72v48H380z" fill="#eef3ff"/>
+    <path d="M380 343h54v-28h54l18 20h72v48H380z" fill="#eef3ff"/>
+    <path d="M380 423h54v-28h54l18 20h72v48H380z" fill="#eef3ff"/>
+  </g>
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" fill="#17213b">
+    <text x="208" y="157" font-size="30" font-weight="700">FolderRewind-Backup/</text>
+    <text x="190" y="247" font-size="24">config.json</text>
+    <text x="190" y="327" font-size="24">history.json</text>
+    <text x="190" y="407" font-size="24">archives/</text>
+    <text x="568" y="253" font-size="23">full-2026-01.7z</text>
+    <text x="568" y="333" font-size="23">metadata.json</text>
+    <text x="568" y="413" font-size="23">incremental-chain/</text>
+  </g>
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" fill="#5d6d89" font-size="18">
+    <text x="112" y="458">示意结构：实际文件名和归档数量会随配置策略变化</text>
+  </g>
+</svg>
