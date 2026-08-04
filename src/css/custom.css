@@ -144,3 +144,13 @@
   background: rgba(255, 255, 255, 0.08);
   color: #e0e0e0;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

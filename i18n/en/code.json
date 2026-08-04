@@ -676,5 +676,35 @@
   },
   "minecraft.ecosystem.readMore": {
     "message": "Read component guide →"
+  },
+  "notFound.title": {
+    "message": "Page not found"
+  },
+  "notFound.description": {
+    "message": "The page you requested does not exist or has moved."
+  },
+  "notFound.heading": {
+    "message": "Page not found"
+  },
+  "notFound.message": {
+    "message": "The page you requested does not exist or has moved. Try one of these destinations."
+  },
+  "notFound.quickStart": {
+    "message": "Return to Quick Start"
+  },
+  "notFound.download": {
+    "message": "Go to Downloads"
+  },
+  "notFound.moreDestinations": {
+    "message": "More destinations"
+  },
+  "notFound.blog": {
+    "message": "View changelog"
+  },
+  "notFound.issues": {
+    "message": "Open GitHub Issues"
+  },
+  "notFound.discussions": {
+    "message": "Join GitHub Discussions"
   }
 }
