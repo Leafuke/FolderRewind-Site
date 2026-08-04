@@ -29,14 +29,24 @@
   align-items: center;
 }
 
-.heroProductImage {
-  display: block;
-  max-width: 640px;
-  width: 100%;
+.heroImage img {
+  max-width: 100%;
+  width: 320px;
   height: auto;
-  border: 1px solid rgba(58, 76, 180, 0.16);
-  border-radius: 18px;
-  box-shadow: 0 18px 42px rgba(35, 55, 120, 0.18);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .heroTitle {
@@ -109,8 +119,8 @@
   .heroSubtitle {
     font-size: 1.1rem;
   }
-  .heroProductImage {
-    max-width: 560px;
+  .heroImage img {
+    width: 240px;
   }
 }
 
