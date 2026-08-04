@@ -58,7 +58,13 @@ function HomepageHero() {
             </div>
           </div>
           <div className={styles.heroImage}>
-            <img src="/img/ori.png" alt="FolderRewind Logo" />
+            <img
+              className={styles.heroProductImage}
+              src="/img/docs/getting-started/home-page-overview.webp"
+              alt="FolderRewind 首页配置概览"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

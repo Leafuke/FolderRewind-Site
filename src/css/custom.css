@@ -53,6 +53,48 @@
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 }
 
+/* ─── Documentation images ───────────────────── */
+.theme-doc-markdown img {
+  display: block;
+  max-width: min(100%, 1440px);
+  height: auto;
+  margin: 1.25rem auto;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(27, 43, 82, 0.12);
+}
+
+.theme-doc-markdown figure {
+  margin: 1.5rem 0;
+}
+
+.theme-doc-markdown figcaption {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+[data-theme='dark'] .theme-doc-markdown img {
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+@media screen and (max-width: 996px) {
+  .theme-doc-markdown img {
+    margin: 1rem auto;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .theme-doc-markdown img {
+    width: 100%;
+    margin: 0.9rem auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(27, 43, 82, 0.1);
+  }
+}
+
 /* ─── Feature icon containers ──────────────────── */
 .feature-icon-wrap {
   display: inline-flex;

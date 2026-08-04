@@ -30,7 +30,7 @@ const config: Config = {
         description:
           'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。',
         url: 'https://folderrewind.top/',
-        image: 'https://folderrewind.top/img/ori.png',
+        image: 'https://folderrewind.top/img/ori.webp',
         downloadUrl: 'https://apps.microsoft.com/detail/9nwsdgxdqws4',
         sameAs: ['https://github.com/Leafuke/FolderRewind'],
       }),
@@ -115,7 +115,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/ori.png',
+    image: 'img/ori.webp',
     metadata: [
       {
         name: 'description',
@@ -135,7 +135,7 @@ const config: Config = {
         content:
           'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
       },
-      {property: 'og:image', content: 'https://folderrewind.top/img/ori.png'},
+      {property: 'og:image', content: 'https://folderrewind.top/img/ori.webp'},
       {name: 'twitter:card', content: 'summary_large_image'},
       {name: 'twitter:title', content: 'FolderRewind - 存档时光机'},
       {
@@ -143,7 +143,7 @@ const config: Config = {
         content:
           'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
       },
-      {name: 'twitter:image', content: 'https://folderrewind.top/img/ori.png'},
+      {name: 'twitter:image', content: 'https://folderrewind.top/img/ori.webp'},
     ],
     colorMode: {
       defaultMode: 'light',
