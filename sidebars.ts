@@ -71,6 +71,8 @@ const sidebars: SidebarsConfig = {
             'guides/minebackup-v1/filters',
             'guides/minebackup-v1/knotlink-integration',
             'guides/minebackup-v1/cloud-archive',
+            'guides/minebackup-v1/data-and-migration',
+            'guides/minebackup-v1/logging-and-diagnostics',
             'guides/minebackup-v1/service-mode',
             'guides/minebackup-v1/troubleshooting',
             'guides/minebackup-v1/faq',
