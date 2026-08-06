@@ -1,69 +1,71 @@
 ---
-sidebar_position: 15
-title: 常见问题（MineBackup 一代）
-description: 一代时光机使用中的高频问答
+sidebar_position: 19
+title: 常见问题（MineBackup 1.16.1）
+description: MineBackup 1.16.1 的产品边界、备份、还原、迁移与联动问答
 ---
 
-# 常见问题（MineBackup 一代）
+# 常见问题（MineBackup 1.16.1）
 
-## MineBackup 还在维护吗？
+## MineBackup 与 FolderRewind 是什么关系？
 
-是。当前站点将其作为一代产品文档长期保留。
+MineBackup 是 FolderRewind 生态中的第一代存档时光机，保留了独立的配置档、Smart 链、KnotLink 联动和跨平台运行边界。FolderRewind 的通用文档不等于 MineBackup 的能力说明；本文和[一代时光机总览](./overview)以 MineBackup 1.16.1 源码为准。
 
-## 我该用 MineBackup 还是 FolderRewind？
+## 1.16.1 支持哪些平台？
 
-- 新用户建议优先 FolderRewind
-- 已有一代稳定流程、且依赖现有联动链路时，可继续使用 MineBackup
-- Linux/MacOS 用户只能使用 MineBackup，FolderRewind 目前仅支持 Windows 
+当前发行目标包括 Windows x64、Linux x86_64 和 macOS arm64，桌面托盘、通知、热键和 KnotLink 会根据平台会话能力出现差异。Linux/macOS 不是 Windows 的简单“降级版”；核心备份、还原、配置档和任务模型保持一致，但路径、Shell、桌面门户和权限行为不同。详见[平台支持](./platform-support)。
 
-如果你准备迁移，建议保留一代配置并在新目录灰度验证，不要直接“全量替换”。
+## 我能继续安装或启动 Service Mode 吗？
 
-## 能否只用 MineBackup-Mod，不装主程序？
+不能。1.16.1 不能安装或启动 Windows Service Mode；只支持在 Windows 上检查并安全清理已经存在且通过验证的旧 MineBackup 服务。`--service` 已弃用并禁用。需要无人值守执行时，请使用[自动化任务](./automation)或 [Special Config](./special-mode)。
 
-联动场景仍需要主程序端能力承接备份与还原流程。
+## 第一次备份应该选择哪种模式？
 
-## 第一次备份建议用哪种模式？
+先选择配置界面的 **Full**，确认历史记录、备份包和还原闭环正常后再使用 **Smart**。配置界面的 **Overwrite** 是另一种实际备份模式；它们与 KnotLink 一次性请求中的 `backup_mode=full|incremental` 不是同一套术语。
 
-建议先用 Full 模式，确认链路稳定后再切 Smart。
+## Smart 的 Full 基线被删除了怎么办？
 
-## 为什么我明明备份成功，却还原不理想？
+不要手工修改 `state.json` 或 `records`。MineBackup 会在检测到基线、归档或元数据不安全时强制建立新的安全 Full；确认新的 Full 成功后，再继续 Smart。若问题发生在 1.15 迁移后，先查看迁移状态和[配置档与迁移](./data-and-migration)。
 
-常见原因是：
+## 还原方式怎么选？
 
-- 选错目标备份点
-- Smart 链存在断裂
-- 还原方式不匹配当前目标
+**Clean** 先清理目标，**Overwrite** 只覆盖归档提供的文件，**Reverse** 撤销选定归档的变化，**Custom** 只还原选定文件。第一次还原建议在测试世界演练，必要时启用 `backupBefore`；运行中的世界要先保存、退出并等待文件释放。完整决策见[首次还原](./first-restore)。
 
-建议先在测试世界复现，并开启“还原前备份”兜底。
+## 热备份/热还原可靠吗？
 
-## 为什么建议先在测试世界演练？
+它们是尽力而为的联动流程，不是无条件的一致性保证。握手失败、版本不兼容或超时可能回退普通备份；热还原则必须完整演练保存、退出、文件释放、还原和重新进入流程。使用 MineBackup-Mod 至少 `3.0.0`，并先用测试世界验证。
 
-热备份、热还原、联动通信都存在外部依赖，先演练可避免对主存档造成不可逆影响。
+## 配置和历史记录在哪里？
 
-## Linux / macOS 与 Windows 在体验上有何差异？
+1.16.1 使用独立 profile：当前配置在 `<profile>/config/config.ini`，历史在 `<profile>/data/history.json`，日志在 `<profile>/logs` 或平台对应的日志目录。实际备份包仍由配置的 `backupPath` 决定，不一定和 profile 在同一处。详见[配置档与迁移](./data-and-migration)。
 
-- 核心备份与还原流程一致
-- Windows 支持服务模式能力
-- 路径和权限处理在 Linux / macOS 更需要提前确认
+## 如何安全地重新开始？
 
-## 什么时候应该新建配置而不是继续修补旧配置？
+不要只删除某个旧配置文件来重置，也不要在运行中删除当前 profile。先关闭 MineBackup，复制需要保留的 profile、历史和备份清单；若只是想做隔离实验，使用新的绝对路径启动 `--data-dir`，验证无误后再决定是否清理旧 profile。重置 profile 不会自动删除 `backupPath` 中的备份包，但会让历史与外部备份失去关联，因此必须先做好备份。
 
-出现以下情况建议新建：
+## 为什么从云端导入后还不能立即备份？
 
-- 历史链长期混乱
-- 规则叠加过多且难以回溯
-- 目录结构已发生明显变化
+云端 `portable-config.json` 只包含明确允许同步的配置字段，不包含本机世界路径、备份路径、工具路径、凭据、命令、脚本或自动化。导入后配置会处于待绑定状态；重新绑定本机 `saveRoot`、世界列表、`backupPath` 和可选 `snapshotPath` 后才能安全运行。见[云归档](./cloud-archive)。
 
-## 英文文档何时提供？
+## rclone 会随程序一起安装吗？凭据会同步吗？
 
-本栏目按计划先上线中文，英文版本将随后补齐。
+rclone 不随 MineBackup 程序包分发。受管理安装会在用户确认后从官方来源获取经过版本和 SHA-256 校验的版本。MineBackup 不会复制、解析或上传用户的 rclone 凭据文件；云同步的远端权限仍由用户自己负责。
 
-## 如何重置整个程序，恢复到第一次打开时的状态？
+## KnotLink 需要哪些版本？
 
-关闭 MineBackup。在程序 MineBackup.exe 所在的文件夹下，找到并删除 config.ini 和 history.dat 这两个文件。下次启动程序时，就会像全新安装一样，重新弹出设置向导。
+MineBackup-Mod 至少为 `3.0.0`，KnotLinkService 推荐至少为 `3.2.0.0`。KnotLink v2 使用严格的 `key=value;key2=value2` 格式；状态变更请求需要 `from` 和 `request_id`。Windows 默认回环端口是 6370 和 6378。旧位置参数、旧别名和自由文本命令不属于当前接口。详见[KnotLink v2 联动](./knotlink-integration)。
 
-## 我的配置文件和历史记录都存在哪里？
-它们就存放在 MineBackup.exe 的同级目录下，分别是 config.ini (所有设置) 和 history.dat (所有备份历史记录)。这意味着 MineBackup 是一个“绿色”软件，您可以将整个文件夹移动到任何地方，所有配置都会跟着走。
+## 迁移失败会删除我的旧数据吗？
 
-## 智能备份的 [Full] 基础包被我不小心删了怎么办？
-不用担心。下次您再执行“智能备份”时，程序会检测到基础包的丢失，并自动为您创建一个全新的 [Full] 完整备份，作为新备份链的起点。
+不会。1.15 到 1.16 的迁移会保留源文件，不会重命名、移动或重新压缩原有备份；迁移报告和恢复快照位于当前 profile。`Pending`、`Degraded` 或 `Failed` 状态会限制相关写入或让下一次世界备份建立安全 Full。请先看[配置档与迁移](./data-and-migration)和[日志与诊断](./logging-and-diagnostics)，不要直接删除旧数据。
+
+## 为什么找不到旧的 `auto_log.txt` 之类文件？
+
+当前版本使用 `minebackup.log`、Log 面板和 **Export Diagnostics**。旧版日志文件不再写入，也不会自动迁移或删除。诊断导出会脱敏已知路径和 URL 敏感信息，但分享前仍要人工检查；详见[日志与诊断](./logging-and-diagnostics)。
+
+## 什么时候应该新建配置？
+
+当世界路径或备份目录已改变、Smart 链无法安全恢复、过滤规则叠加到难以解释，或者需要测试另一套压缩/云端设置时，可以新建配置。新配置拥有独立的 `ConfigId` 和历史关联；不要为了绕过迁移或权限错误而盲目新建，先保留原 profile 和诊断信息。
+
+## 英文文档在哪里？
+
+本栏目已同步提供英文镜像。页面之间的链接和版本边界应保持一致；如果英文页面与中文页面出现事实差异，请以 1.16.1 源码行为为准并提交反馈。

@@ -35,7 +35,7 @@ The application resolves the profile before loading configuration and history:
 - Without an explicit option, the application uses platform-default configuration, data, state, cache, runtime, tools, and log roots.
 - If old locations or 1.15 data are discovered, MineBackup asks for confirmation before migration; source files are not silently deleted.
 
-These rules replace the old assumption that `config.ini` and `history.dat` always live beside the EXE. See [Profiles, portable mode, and 1.15 migration](./data-and-migration).
+These rules replace the old assumption that fixed data files always live beside the EXE. See [Profiles, portable mode, and 1.15 migration](./data-and-migration).
 
 ## Plan the directories
 

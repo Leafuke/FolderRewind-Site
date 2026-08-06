@@ -1,71 +1,71 @@
 ---
-sidebar_position: 15
-title: FAQ (MineBackup Legacy)
-description: Frequently asked questions about MineBackup
+sidebar_position: 19
+title: MineBackup 1.16.1 FAQ
+description: Product boundaries, backup, restore, migration, and integration answers for MineBackup 1.16.1
 ---
 
-# FAQ (MineBackup Legacy)
+# MineBackup 1.16.1 FAQ
 
-## Is MineBackup still maintained?
+## How does MineBackup relate to FolderRewind?
 
-Yes. This site retains its documentation as a legacy product.
+MineBackup is the first-generation archive time machine in the FolderRewind ecosystem. It keeps its own profile, Smart chain, KnotLink integration, and cross-platform boundaries. The general FolderRewind documentation is not a MineBackup capability reference; this section and [First-generation overview](./overview) follow MineBackup 1.16.1 source behavior.
 
-## Should I use MineBackup or FolderRewind?
+## Which platforms does 1.16.1 support?
 
-- New users are recommended to use FolderRewind first
-- If you already have a stable workflow with MineBackup and rely on existing integration links, you can continue using MineBackup
-- Linux/macOS users can only use MineBackup; FolderRewind currently supports Windows only
+The release targets Windows x64, Linux x86_64, and arm64 macOS. Tray, notification, hotkey, and KnotLink behavior varies with the desktop session. Linux/macOS are not a simple “degraded Windows mode”: core backup, restore, profile, and task models are shared, while paths, shells, desktop portals, and permissions differ. See [Platform support](./platform-support).
 
-If you plan to migrate, keep the legacy configuration and run a trial verification in a new directory. Do not perform a full replacement directly.
+## Can I still install or start Service Mode?
 
-## Can I use MineBackup-Mod without the main program?
+No. 1.16.1 cannot install or start Windows Service Mode. It can only inspect and safely remove an existing, validated legacy MineBackup service on Windows. `--service` is deprecated and disabled. For unattended work, use [Automation Tasks](./automation) or [Special Config](./special-mode).
 
-Integration scenarios still require the main program to handle the backup and restore workflow.
+## Which mode should I use for the first backup?
 
-## Which mode should I use for my first backup?
+Start with **Full** in the configuration UI. Confirm that the history entry, archive, and restore loop work before using **Smart**. The UI’s **Overwrite** is another actual backup mode; these labels are not the same terminology as the one-shot KnotLink request’s `backup_mode=full|incremental`.
 
-Start with Full mode. Once the workflow is proven stable, switch to Smart mode.
+## What if the Full baseline for Smart was deleted?
 
-## Why is the restore not ideal even though the backup succeeded?
+Do not edit `state.json` or `records` by hand. When the baseline, archive, or metadata is unsafe, MineBackup establishes a new safe Full. Confirm that the new Full succeeds before continuing with Smart. If this follows a 1.15 migration, check the migration status and [Profiles and migration](./data-and-migration) first.
 
-Common causes:
+## Which restore method should I choose?
 
-- The wrong backup point was selected
-- The Smart chain has a break
-- The restore method doesn't match the current target
+**Clean** clears the target first, **Overwrite** replaces only files supplied by the archive, **Reverse** undoes the changes represented by a selected archive, and **Custom** restores selected files only. Rehearse the first restore in a test world and enable `backupBefore` when appropriate. A running world must be saved, exited, and allowed to release files first. See [First restore](./first-restore).
 
-Replicate the issue in a test world first, and enable "pre-restore backup" as a safety net.
+## Are hot backup and hot restore guaranteed?
 
-## Why should I rehearse in a test world first?
+They are best-effort integration workflows, not unconditional consistency guarantees. A handshake failure, version mismatch, or timeout can fall back to a normal backup. Rehearse save, exit, file release, restore, and rejoin end to end in a test world. Use MineBackup-Mod `3.0.0` or later for the documented integration.
 
-Hot backup, hot restore, and integration communication all have external dependencies. Rehearsing first avoids irreversible damage to your main save.
+## Where are configuration and history stored?
 
-## What are the differences between Linux/macOS and Windows?
+1.16.1 uses a separate profile: the current configuration is `<profile>/config/config.ini`, history is `<profile>/data/history.json`, and logs are under `<profile>/logs` or the platform’s standard log location. Archive files are still controlled by each configuration’s `backupPath` and do not have to be beside the profile. See [Profiles and migration](./data-and-migration).
 
-- Core backup and restore workflows are the same
-- Windows supports service mode
-- Path and permission handling on Linux/macOS requires more upfront verification
+## How can I start over safely?
 
-## When should I create a new configuration instead of fixing the old one?
+Do not delete one legacy configuration file or remove the active profile while MineBackup is running. Close MineBackup, copy the profile, history, and archive inventory that must be retained, and use a new absolute `--data-dir` for an isolated experiment. A profile reset does not automatically delete archives under `backupPath`, but it can disconnect their history, so make a backup first.
 
-Consider creating a new one when:
+## Why can’t I back up immediately after importing from the cloud?
 
-- The history chain has been chaotic for a long time
-- Too many rules have accumulated and are hard to trace back
-- The directory structure has changed significantly
+Cloud `portable-config.json` contains only an explicit portable whitelist. It excludes local world paths, archive paths, tool paths, credentials, commands, scripts, and automation. An imported configuration remains pending until you bind local `saveRoot`, world entries, `backupPath`, and optional `snapshotPath`. See [Cloud archive](./cloud-archive).
 
-## When will the English documentation be available?
+## Is rclone bundled, and are credentials synchronized?
 
-This section was launched in Chinese first; the English version is being completed alongside it.
+rclone is not bundled with MineBackup. The managed installer obtains the release-pinned version from the official source only after user confirmation and version/SHA-256 verification. MineBackup does not copy, parse, or upload the user’s rclone credential file; the user remains responsible for remote permissions.
 
-## How do I reset the entire program to its first-launch state?
+## Which KnotLink versions are required?
 
-Close MineBackup. In the folder where MineBackup.exe is located, find and delete the files `config.ini` and `history.dat`. The next time you start the program, it will behave like a fresh install and show the setup wizard again.
+MineBackup-Mod must be at least `3.0.0`, and KnotLinkService should be at least `3.2.0.0`. KnotLink v2 uses strict `key=value;key2=value2` syntax; state-changing requests require `from` and `request_id`. The default Windows loopback ports are 6370 and 6378. Old positional arguments, aliases, and free-text commands are not part of the current interface. See [KnotLink v2 integration](./knotlink-integration).
 
-## Where are my configuration and history files stored?
+## Will migration delete my old data?
 
-They are stored in the same directory as MineBackup.exe: `config.ini` (all settings) and `history.dat` (all backup history). This means MineBackup is a "portable" application -- you can move the entire folder anywhere, and all your configuration will follow.
+No. The 1.15-to-1.16 migration retains source files and does not rename, move, or recompress the original archives. The migration report and recovery snapshots are stored in the current profile. `Pending`, `Degraded`, or `Failed` states gate related writes or cause the next world backup to establish a safe Full. Read [Profiles and migration](./data-and-migration) and [Logging and diagnostics](./logging-and-diagnostics) before touching legacy data.
 
-## What if I accidentally deleted the [Full] base archive for Smart backups?
+## Why can’t I find files such as `auto_log.txt`?
 
-Don't worry. The next time you run a Smart backup, the program will detect the missing base archive and automatically create a brand-new [Full] full backup as the starting point of a new backup chain.
+The current release uses `minebackup.log`, the Log panel, and **Export Diagnostics**. Legacy log files are no longer written, migrated, or deleted. Diagnostic export redacts known paths and URL-sensitive values, but review it manually before sharing. See [Logging and diagnostics](./logging-and-diagnostics).
+
+## When should I create a new configuration?
+
+Create one when the world or archive path has changed, a Smart chain cannot be made safe, filters have become difficult to explain, or you need to test a different compression/cloud setup. A new configuration has its own stable `ConfigId` and history association. Do not create one blindly to bypass migration or permission errors; preserve the original profile and diagnostics first.
+
+## Where is the English documentation?
+
+This section has a synchronized English mirror. Links and version boundaries should remain aligned; when a translation appears to disagree with the implementation, MineBackup 1.16.1 source behavior is authoritative and should be reported.

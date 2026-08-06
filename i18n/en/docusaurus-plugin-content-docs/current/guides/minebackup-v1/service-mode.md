@@ -1,53 +1,59 @@
 ---
-sidebar_position: 13
-title: Service Mode (Windows)
-description: MineBackup's Windows service capabilities, limitations, and recommendations
+sidebar_position: 17
+title: Legacy Windows Service Cleanup
+description: Inspection and safe cleanup boundaries for the old Windows Service Mode in MineBackup 1.16.1
 ---
 
-# Service Mode (Windows)
+# Legacy Windows Service Cleanup
 
-MineBackup includes Windows service configuration and installation interfaces, suitable for long-running unattended tasks.
+MineBackup 1.16.1 **cannot install or start Windows Service Mode**. The current release keeps only a compatibility cleanup flow for inspecting and, when safe, removing a MineBackup Windows service left by an older release.
 
-It is recommended to enable service mode only after running in normal mode stably for a period of time.
+This is not a new background execution mode, and it does not convert normal configurations or unified tasks into a service. For unattended work, use [Automation Tasks](./automation) or [Special Config](./special-mode) after a complete manual backup-and-restore drill.
 
-## Key Capabilities
+## What the current release supports
 
-- Install / uninstall the service
-- Start / stop the service
-- Query service installation and running status
-- Support for automatic and delayed start configuration
+The Windows **Legacy Service Cleanup** tab can:
 
-## Recommended Enablement Process
+- inspect the configured legacy service name, ImagePath, and running state;
+- determine whether the service really points to an older MineBackup executable;
+- stop and remove a validated service after user confirmation and UAC elevation;
+- leave the service unchanged when inspection fails, approval is cancelled, or stopping times out.
 
-1. First verify task success rate in normal mode
-2. Solidify task and log paths
-3. Install the service and set the startup policy
-4. Monitor service stability for 2-3 days
+Non-Windows platforms do not provide this cleanup capability. The `--service` option is deprecated and disabled in 1.16; it does not start a service and normally returns an error immediately.
 
-## Applicable Scenarios
+## Why removal is guarded
 
-- Scheduled backups on a dedicated machine
-- Tasks that need to run persistently in the background
+The cleanup code does not delete an arbitrary Windows service based only on its name. It rereads the service configuration and requires all of these ImagePath conditions:
 
-## Operations Recommendations
+1. ImagePath is non-empty and contains one standalone `--service` argument.
+2. It has no arguments other than `--service`, with no duplicate token.
+3. The executable path is absolute and its filename is `MineBackup.exe`.
+4. The file exists and contains MineBackup resources.
 
-- Pre-grant read/write permissions for the service account on target directories
-- Fix the log output location for easy inspection
-- Keep a manual fallback entry (ability to stop the service and switch back to GUI)
+If path, argument, executable, or resource validation fails, MineBackup reports the diagnostic and leaves the service untouched. This prevents a same-named service belonging to another installation from being removed.
 
-## Boundary Notes
+## Recommended cleanup flow
 
-- Service mode is primarily for Windows
-- On non-Windows platforms, the related interfaces are placeholder implementations
+1. Inspect the service in the **Legacy Service Cleanup** tab and record its name, ImagePath, state, and diagnostic.
+2. Confirm that it is an old MineBackup service, and back up any profile, history, or archive data that must be retained.
+3. Choose cleanup and approve the UAC prompt. The elevated helper accepts only the cleanup request; it cannot be combined with normal startup, configuration selection, or `--service`.
+4. The helper validates the service again. If it is running, it requests a stop and waits up to 15 seconds.
+5. It calls the Windows deletion operation only after the service is stopped and validation still succeeds.
+6. Inspect the tab again. Cleanup removes only the service registration; it does not delete the profile, world directories, or archive files.
 
-## Risk Notice
+Maintainers can also run the dedicated entry point on Windows:
 
-- Service mode has fewer on-screen prompts; errors rely more on logs
-- Misconfigured tasks may silently fail repeatedly without being noticed
+```text
+MineBackup.exe --cleanup-legacy-service "<service-name>"
+```
 
-It is recommended to set up at least "one manual check per day."
+This option must be used by itself and performs the same ImagePath, resource, and state checks. Do not substitute `--service`, and do not bypass validation with `sc delete`.
 
-## Tips
+## If cleanup is refused
 
-- First verify tasks are stable in normal mode before switching to service mode
-- Make the log location clear for easier fault diagnosis
+- UAC was cancelled: the service was not changed; start the flow again from settings.
+- ImagePath is unsafe, the EXE is missing, or resources do not match: do not delete it manually until you confirm whether it belongs to another installation.
+- The service did not stop within 15 seconds: the cleanup code does not delete it; investigate the old environment and retry later.
+- The service was not found: the recorded name is not installed; MineBackup does not create a replacement service.
+
+After cleanup, read [Troubleshooting](./troubleshooting) and [Logging and diagnostics](./logging-and-diagnostics) to confirm that the application is using the normal GUI/task workflow. In 1.16.1 the boundary is “inspect and clean up a legacy service,” not “continue maintaining Service Mode.”
