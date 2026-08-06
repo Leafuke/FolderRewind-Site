@@ -1,50 +1,60 @@
 ---
-sidebar_position: 10
-title: "Hot Backup and Snapshots"
-description: Backing up running worlds, snapshot paths and integration waiting
+sidebar_position: 12
+title: Hot Backup and Hot Restore
+description: Running-world coordination, snapshots, hotkeys, and safety boundaries in MineBackup 1.16.1
 ---
 
-# Hot Backup and Snapshots
+# Hot Backup and Hot Restore
 
-When world files are locked (e.g., `level.dat` is in use) or you explicitly enable hot backup, MineBackup will use the snapshot / integration path instead.
+Hot workflows are for worlds that are still running and may have locked files. They depend on occupancy detection, KnotLink, the companion mod, and bounded waits. They are a best-effort coordination layer, not a guarantee against every lock or communication failure.
 
-The core value of hot backup: get a usable backup even while the game is running.
+## Default hotkeys
 
-## Hot Backup Flow
+The default global hotkeys are:
 
-1. Detect file locks or hot backup toggle
-2. If needed, handshake with the integration module and wait for save to complete
-3. Create a temporary snapshot directory
-4. Compress and back up the snapshot
-5. Clean up the snapshot afterwards
+- `Alt+Ctrl+S`: back up the currently detected active world.
+- `Alt+Ctrl+Z`: restore the active world to its latest backup.
 
-## When Hot Backup Is Triggered
+You can rebind them in Settings. If the current desktop session cannot provide global hotkeys, MineBackup shows a capability state and diagnostic; ordinary backup and restore should still work.
 
-- A critical file lock is detected
-- Hot backup is explicitly enabled in the config
-- The integration path requires a save before backup
+## Hot-backup flow
 
-## Key Path Parameters
+When MineBackup detects an occupied world file such as `level.dat`, or the user explicitly requests hot backup, it attempts to:
 
-- `snapshotPath`: Snapshot directory (configurable)
-- Falls back to the system temp directory if not specified
+1. Handshake with the companion mod and check its version.
+2. Request a world save and wait for `WORLD_SAVED`.
+3. Run the ordinary backup in the safe window, using the snapshot root when required.
+4. Release the integration-side wait or freeze after completion.
 
-## Tips for Integration Module Coordination
+If handshake, save confirmation, or version checks fail, MineBackup may fall back to a direct snapshot or ordinary backup. Check the log; “the task ended” does not prove that game state was fully coordinated.
 
-- Confirm the handshake succeeded before running critical backups
-- If a timeout occurs, do not spam retries with high-frequency commands
-- Switch back to the manual backup path to verify basic functionality first
+## Hot-restore flow
 
-## Usage Tips
+Hot restore changes the world currently in use and is more dangerous:
 
-- Enable hot backup when backing up during gameplay
-- Check the snapshot path when disk space is low
-- If the integration times out, switch back to manual first
+1. Handshake and check the companion version.
+2. Send the save-and-exit request and wait for `WORLD_SAVE_AND_EXIT_COMPLETE`.
+3. Wait for the world directory and `level.dat` to be released.
+4. Restore the latest or selected archive.
+5. Send the restore result.
+6. Ask the mod to rejoin the world and wait for `REJOIN_RESULT`.
 
-## Common Failure Points
+MineBackup uses a state machine to prevent concurrent hot restores. A second request may be ignored until the first returns to the idle state.
 
-- No write permission for the snapshot directory
-- Insufficient disk space on the snapshot drive
-- The integration side did not return a "save complete" signal in time
+## Preconditions and limits
 
-Guiding principle: ensure a single stable success first, then restore automation or the hot path.
+- An identifiable active world and a usable archive must exist.
+- MineBackup-Mod must be at least `3.0.0`; older versions cannot participate in the complete hot workflow.
+- KnotLinkService must meet the MineBackup-supported version; service and port boundaries are described in [KnotLink v2 integration](./knotlink-integration).
+- An external custom archive is not automatically a safe hot-restore input for a running world.
+- After a failure, confirm whether the world exited and files were released before switching back to ordinary restore.
+
+## First drill
+
+1. Create a test world and keep an independent Full archive.
+2. Test ordinary backup and restore after closing the game.
+3. Test `Alt+Ctrl+S` hot backup.
+4. List history and confirm the latest archive before testing `Alt+Ctrl+Z`.
+5. Check rejoin status, world state, and logs.
+
+Do not repeatedly trigger a timed-out operation. Return to ordinary backup/restore first, then diagnose the integration.

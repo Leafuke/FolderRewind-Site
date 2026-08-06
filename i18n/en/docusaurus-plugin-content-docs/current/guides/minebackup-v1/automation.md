@@ -1,68 +1,62 @@
 ---
-sidebar_position: 8
-title: "Automation Tasks"
-description: Interval / scheduled execution and task system practices
+sidebar_position: 10
+title: Automation Tasks
+description: Game-session triggers, interval and scheduled runs, and the unified task system in MineBackup 1.16.1
 ---
 
 # Automation Tasks
 
-MineBackup supports regular automatic backups and a unified task system (task type + execution mode + trigger mode).
+Automation is for repeating a workflow that has already been verified manually. Complete a backup-and-restore drill with a normal configuration before enabling long-running tasks.
 
-The goal of automation is stable repetition, not piling on more tasks. Make sure a single task runs reliably before combining them.
+## Automatic triggers in a normal configuration
 
-## Trigger Modes
+A normal configuration can back up when a game session starts. MineBackup detects session transitions from world-file occupancy:
 
-- **Once**: Run once
-- **Interval**: Fixed interval
-- **Scheduled**: Specific time
+- When a world is first detected as occupied, `backupOnGameStart` can queue a backup.
+- When the world session ends, the global “stop automatic backup on exit” setting can stop related automatic tasks.
+- This is not “back up immediately when the application starts”; it targets a detected world session.
 
-Selection tips:
+For the first run, select one world and observe one start, backup, and exit sequence in the log.
 
-- Fixed daily frequency: Interval
-- A specific time window (e.g., overnight): Scheduled
-- Manual ad-hoc execution: Once
+## Unified task system
 
-## Task Types
+The MineBackup 1.16 unified task model contains:
 
-- **Backup**: Perform a world backup
-- **Command**: Run a command
-- **Script**: Reserved for future extension
+| Dimension | Options |
+| --- | --- |
+| Type | Backup, Command, Script |
+| Execution mode | Sequential, Parallel |
+| Trigger | Once, Interval, Scheduled |
+| Backup target | Configuration and world index |
+| Command task | Command text and working directory |
 
-Backup and Command can be combined into a "before/after backup processing" chain.
+`Script` is still an unimplemented extension and is disabled in the settings UI. Command tasks use the platform command interpreter; do not assume that one command is portable between Windows, Linux, and macOS.
 
-## Execution Modes
+The unified task data model also carries advanced retry, timeout, completion-notification, and error-notification fields. Document and use only fields exposed by the current settings UI; do not assume failed tasks will retry automatically without a corresponding control or log evidence.
 
-- **Sequential**: Run tasks one after another
-- **Parallel**: Run tasks simultaneously
+## Triggers
 
-Parallel execution improves throughput but increases disk and CPU contention. Only use it when resources are plentiful and directories are independent.
+- **Once:** run once, useful for manual orchestration or post-migration verification.
+- **Interval:** run on a minute-based cycle, subject to the UI’s minimum interval validation.
+- **Scheduled:** run by month, day, hour, and minute; month or day `0` means every month or every day.
 
-## Practical Tips
+Schedules use local time. After time-zone, daylight-saving, or sleep changes, check the next-run log rather than inferring behavior from the saved fields alone.
 
-1. Start with a single task to verify stability
-2. Then combine parallel tasks, avoiding simultaneous disk contention
-3. Enable failure alerts and retries for critical tasks
+## Sequential and parallel execution
 
-## Recommended Task Templates
+- **Sequential:** waits for the previous task and is appropriate for shared disks or dependent operations.
+- **Parallel:** runs alongside the neighboring task when sources, destinations, and resources are independent.
 
-### Template A: Conservative (Recommended for Beginners)
+Do not let two tasks modify the same world or profile at the same time. MineBackup’s resource coordination prevents some conflicts, but parallel configurations still compete for storage, CPU, and external commands.
 
-1. Backup (Sequential)
-2. Command (Sequential, for cleanup or notification)
+## Before enabling long-running automation
 
-### Template B: High-Frequency (Advanced)
+1. Run the same world manually and confirm its history entry.
+2. Check that configuration and world indices remain valid.
+3. Observe at least two or three trigger periods.
+4. Confirm that failures are visible in logs and do not repeat destructive work without a clear reason.
+5. Set sensible archive retention and Smart-chain limits.
 
-1. Backup (Scheduled)
-2. Command (Parallel, lightweight logging task)
+If a task does not run, check enabled state, schedule fields, target indices, and logs before adding more parallel tasks.
 
-## Pre-Launch Checklist
-
-Before enabling long-term automation, observe 2-3 consecutive cycles:
-
-- Did it trigger on time?
-- Were there any sporadic failures?
-- Did failures trigger automatic retries or timely alerts?
-
-Once verified, roll out to additional profiles.
-
-If you want a "launch on startup + auto-exit" unattended workflow, continue to [Special Config Mode](./special-mode).
+Read [Special Config](./special-mode) for startup execution and unattended exit.
