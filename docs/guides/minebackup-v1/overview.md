@@ -1,84 +1,76 @@
 ---
 sidebar_position: 1
-title: 一代时光机总览（MineBackup）
-description: MineBackup 的定位、能力边界与文档导航
+title: MineBackup 1.16.1 总览
+description: 第一代存档时光机 MineBackup 1.16.1 的能力边界、平台范围与文档导航
 ---
 
-# 一代时光机总览（MineBackup）
+# MineBackup 1.16.1 总览
 
-MineBackup 是 FolderRewind 的前身项目，也是“存档时光机”第一代。当前仍在维护，并且在 Minecraft 场景下保留了大量成熟能力。
+MineBackup 是 FolderRewind 的前身项目，也是“存档时光机”第一代。本文档以 MineBackup **1.16.1** 当前源码和随附文档为准，面向仍在使用 MineBackup 的用户。
 
-如果你是服主、整合包测试者，或主要在 Linux / macOS 环境使用存档时光机，MineBackup 依然是一条稳定路线。
+MineBackup 仍然适合已有 Minecraft 备份工作流、需要跨平台运行，或依赖 MineBackup-Mod / KnotLink 联动的用户。新项目可以评估 FolderRewind，但不应把两个程序的配置文件、插件模型或服务能力混为一谈。
 
-本文档栏目基于参考源码整理，目标是提供可直接操作的完整说明书。
+:::caution 版本边界
+本栏目描述的是 MineBackup 1.16.1 的行为。1.16 已经弃用 Windows Service Mode，只保留对旧服务的检查与安全清理入口；它也不再把配置和历史固定写在可执行文件旁边。
+:::
 
-## 适合哪些用户
+## MineBackup 能做什么
 
-- 已经在使用 MineBackup 的老用户，希望整理规范流程
-- 多启动器 / 多实例玩家，希望分配置隔离管理存档
-- 需要高频备份和可回滚能力的服主、整合包作者
-- 想逐步迁移到 FolderRewind，但要先保证旧工作流稳定的人
+- 管理 Minecraft 世界或任意文件夹，并按配置隔离不同来源目录。
+- 使用 Full、Smart、Overwrite 三种配置级备份模式。
+- 通过历史记录、Smart 链元数据和 Clean / Overwrite / Reverse / Custom 方式恢复内容。
+- 使用间隔、计划、启动触发、统一任务系统和 Special Config 执行自动化工作。
+- 在游戏运行中尝试热备份、热还原，以及通过 KnotLink v2 与联动模组协作。
+- 使用 rclone 同步历史记录、备份包和必要的元数据。
+- 在 Windows、Linux x86_64 和 macOS arm64 上复用相同的核心备份与历史数据契约。
 
-## 这一代的核心思路
+## 先理解三个层次
 
-MineBackup 的设计可以理解为三层：
+MineBackup 的使用可以按三个层次理解：
 
-1. **配置层**：定义路径、压缩、备份策略、过滤规则
-2. **执行层**：手动备份、自动化任务、特殊模式批处理
-3. **恢复层**：历史记录、还原模式、联动重进与故障兜底
-
-读文档时也建议按这三层理解，问题定位会更快。
-
-## 你能在一代做到什么
-
-- 建立多套配置，分别管理不同启动器/游戏目录
-- 执行全量、智能增量、覆写三种备份模式
-- 从历史记录中按文件还原，并选择不同还原策略
-- 配置自动备份任务与特殊模式自动化流程
-- 在需要时启用热备份、快照路径、KnotLink 联动与服务模式
+1. **配置档与备份配置**：决定配置文件、历史、缓存、工具和日志的位置，并定义 `saveRoot`、`backupPath`、压缩、保留和过滤规则。
+2. **执行层**：手动备份、自动任务、特殊模式、云同步和热备份。
+3. **恢复层**：历史记录、备份链、还原方式、联动退出与重进，以及迁移或异常时的安全门禁。
 
 ## 与 FolderRewind 的关系
 
-- FolderRewind：新一代主程序，插件生态更完整
-- MineBackup：一代主程序，仍适合已有工作流与 Minecraft 用户
+- **FolderRewind** 是后续产品，面向 Windows 的现代界面和插件生态。
+- **MineBackup** 是独立的第一代程序，保留自己的配置、任务、联动和跨平台实现。
+- 两者可以并存，但不能把 FolderRewind 的插件设置或当前世界能力直接套到 MineBackup 上。
 
-你可以把它当成“两个可并存的体系”：
-
-- 想继续稳定生产：保留 MineBackup
-- 想逐步升级：在新目录搭建 FolderRewind，再灰度迁移
-
-如果你在使用 MineRewind / MineBackup-Mod 联动链路，建议同时阅读：
-
-- [Minecraft 专题总览](../minecraft/overview)
-- [MineBackup 联动模组详解](../minecraft/minebackup-mod)
+如果准备迁移，建议先保留 MineBackup 的原配置和归档，在新配置档或新程序中做独立的备份—还原演练，再逐步切换生产流程。
 
 ## 推荐阅读顺序
 
-1. [安装与运行前准备](./installation)
-2. [创建第一套配置](./first-config)
-3. [首次备份](./first-backup)
-4. [首次还原](./first-restore)
-5. [故障排查](./troubleshooting)
+1. [平台支持与安装边界](./platform-support)
+2. [安装与运行前准备](./installation)
+3. [创建第一套配置](./first-config)
+4. [首次备份](./first-backup)
+5. [首次还原](./first-restore)
+6. [故障排查](./troubleshooting)
 
-## 高级主题入口
+## 进阶入口
 
-- [备份模式详解](./backup-modes)
+- [备份模式、链完整性与安全删除](./backup-modes)
 - [历史记录与还原策略](./history-and-restore)
+- [过滤规则](./filters)
 - [自动化任务](./automation)
-- [特殊模式（Special Config）](./special-mode)
+- [Special Config](./special-mode)
 - [热备份与快照机制](./hot-backup)
-- [黑名单与还原白名单](./filters)
-- [KnotLink 联动机制](./knotlink-integration)
-- [服务模式（Windows）](./service-mode)
+- [KnotLink v2 联动](./knotlink-integration)
+- [云归档](./cloud-archive)
+- [配置档、便携模式与 1.15 迁移](./data-and-migration)
+- [日志与诊断](./logging-and-diagnostics)
+- [旧 Windows 服务清理](./service-mode)
 
-## 一次性读完太长？先走最短成功路径
+## 最短成功路径
 
-如果你希望 30 分钟内完成可用闭环，直接按下面顺序：
+如果只想先建立一个可用闭环：
 
-1. [安装与运行前准备](./installation)
-2. [创建第一套配置](./first-config)
-3. [首次备份](./first-backup)
-4. [首次还原](./first-restore)
-5. [故障排查](./troubleshooting)
+1. 安装程序并确认压缩工具可用。
+2. 创建一套只包含一个世界的普通配置。
+3. 使用 Full 模式完成一次手动备份。
+4. 在测试世界中从历史记录执行一次还原。
+5. 再按需要启用 Smart、自动化、云归档或 KnotLink 热流程。
 
-完成后你就具备“可备份、可恢复、可排错”的最小生产能力，再进阶自动化会更稳。
+这样可以把“基础备份失败”和“联动、云同步或迁移失败”分开定位。

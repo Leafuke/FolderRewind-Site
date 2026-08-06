@@ -58,6 +58,7 @@ const sidebars: SidebarsConfig = {
           label: '一代时光机（MineBackup）',
           items: [
             'guides/minebackup-v1/overview',
+            'guides/minebackup-v1/platform-support',
             'guides/minebackup-v1/installation',
             'guides/minebackup-v1/first-config',
             'guides/minebackup-v1/first-backup',
