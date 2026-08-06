@@ -1,56 +1,69 @@
 ---
-sidebar_position: 7
-title: "History and Restore Strategy"
-description: History window, important markers, renaming, deletion and restore strategies
+sidebar_position: 8
+title: History and Restore Strategy
+description: History maintenance, important markers, deletion choices, and recovery decisions in MineBackup 1.16.1
 ---
 
 # History and Restore Strategy
 
-History records are MineBackup's core traceability layer. No matter how diligently you back up, if your history is unreadable or unusable, recovery efficiency will drop significantly.
+History is the traceability layer of a backup. It is more than an archive list: it combines world, configuration, time, type, comment, local-file status, and cloud-copy status into a recovery entry.
 
-## What the History Window Can Do
+## What history shows
 
-- Browse backup entries by world
-- Search file names and comments
-- View status (present / missing / abnormal size)
-- Start a restore with one click
+Depending on the archive and metadata state, a history item can show:
 
-Think of the history window as your "restore console," not just a list viewer.
+- The world and owning configuration.
+- Creation time, archive type, and user comment.
+- Whether a local archive exists and is readable, or only a cloud copy remains.
+- Whether the item is marked important.
+- Whether the Full baseline and metadata required by a Smart chain are still available.
 
-## Common Maintenance Operations
+If history exists but the local archive is missing, do not restore immediately. Download the archive from the cloud or verify the archive path first.
 
-- Rename backup files
-- Mark / unmark important backups
-- Open the folder containing a backup
-- Clean up stale history entries
+## Maintenance actions
 
-## Good Maintenance Habits
+- Add readable comments to important checkpoints.
+- Mark pre-update, milestone, and verified-restore archives as important.
+- Open the archive directory from history instead of locating it from memory.
+- Use the built-in deletion actions so history and local-file state stay consistent.
 
-- Star important backups as soon as possible
-- Add comments to key milestone backups
-- Periodically clean up stale entries to keep the list readable
-- Only delete backups through the built-in interface to avoid chain corruption
+## Deletion modes
 
-## Deletion Guidelines
+MineBackup distinguishes:
 
-- Avoid deleting backups manually in your file explorer
-- Prefer the built-in delete function to keep history records and dependency chains consistent
-- Be especially careful with Smart chains to prevent broken links
+1. Delete history only.
+2. Delete the local archive only.
+3. Delete both the local archive and history.
 
-### Recommended Deletion Workflow
+The third option can enable safe deletion for Smart archives. Check important items, middle-chain nodes, and incomplete metadata first. Deleting a file in the file manager does not update history or chain state.
 
-1. First check whether the entry is depended on by later increments
-2. If unsure, mark it as important and keep it
-3. After using the built-in delete, verify that restore still works
+## Decide before restoring
 
-## Why Important Markers Matter
+Ask three questions:
 
-When backup count limits are enabled, important entries can serve as a priority basis for retention, reducing the chance of being automatically cleaned up.
+1. Do I need the complete directory or only a few files?
+2. Are there destination files outside the archive that must remain?
+3. Is the current world still running or locked by another process?
 
-## Restore Strategy Tips
+Typical choices are:
 
-- Routine rollback: Prefer the most recent stable backup
-- Incident recovery: Pick a clear point in time first, then validate on a small scale
-- Chain anomalies: Prefer reverting to the most recent Full, then work forward step by step
+- Complete archive rollback: `Clean`, with the required restore whitelist.
+- Keep files outside the archive: `Overwrite`.
+- Repair a few files: `Custom`.
+- Roll a Smart chain back to a selected point: consider `Reverse` only after confirming chain integrity.
 
-This approach greatly reduces the cost of repeated "restore after restore" cycles.
+See [Your first restore](./first-restore) for the procedure. Perform the first drill in a test world with pre-restore backup enabled.
+
+## Cloud history
+
+Cloud synchronization can produce local-only, local-and-cloud, or cloud-only history. A cloud-only item may remain visible in history, but download the archive and as much metadata as possible before restoring.
+
+If metadata synchronization is partial, the archive may have uploaded successfully while Smart-chain state or records remain incomplete. “The file exists in the cloud” does not mean the cloud copy is independently restorable; complete synchronization and verify the chain first.
+
+## Habits that preserve recovery
+
+- Keep at least one independent Full baseline.
+- Perform actual Smart-chain restore drills instead of relying only on successful backup logs.
+- Create a commented Full archive before major upgrades.
+- Check whether a later Smart archive still depends on an item before deleting it.
+- After enabling cloud archive, rehearse upload → download → local restore once.
