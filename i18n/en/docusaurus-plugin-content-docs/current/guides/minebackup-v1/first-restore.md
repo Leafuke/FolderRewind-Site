@@ -1,69 +1,50 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Your First Restore
-description: Perform a verifiable restore drill from history records
+description: Safely rehearse history archives, restore methods, and fallback strategy in MineBackup 1.16.1
 ---
 
 # Your First Restore
 
-We recommend practicing on a test world first -- do not perform your very first restore directly on your main save.
+Perform the first restore in a test world or copy of the target directory. Restore changes the destination, and a running world may continue writing files. Do not use the only production save for the first drill.
 
-A safe principle: your first restore should only be a "verifiable, minor rollback." Verify the process first, then handle real incidents.
+## Standard flow
 
-## Standard Restore Flow
+1. Confirm that the target world is closed, or explicitly use the hot-restore workflow.
+2. Open history and select an archive known to exist.
+3. Review its type, comment, timestamp, and local/cloud status.
+4. Choose a restore method and decide whether to create a pre-restore backup.
+5. Wait for the task to finish and inspect the log and history.
+6. Open the test world and verify important files and game state.
 
-1. Open history and select the target backup
-2. Choose the restore method and confirm
-3. Wait for the restore to complete, then re-enter the world to verify
+## Four restore methods
 
-## Pre-Restore Checklist
+| Method | Behavior | Suitable for |
+| --- | --- | --- |
+| `Clean` | Cleans the destination before restoring; deletion-whitelisted items are kept | Returning the destination close to a complete archive state |
+| `Overwrite` | Overwrites archive contents without proactively deleting extra destination files | Ordinary overwrite, partial archives, or a conservative choice |
+| `Reverse` | Finds Smart changes newer than the selected point and applies them in reverse | Specific cases that roll a Smart chain back to a selected node |
+| `Custom` | Extracts only the files or directories in the input list | Repairing `level.dat`, region files, or one configuration |
 
-Before executing a restore, confirm the following:
+Custom entries are comma-separated. To extract an entire directory, use the `*` suffix shown by the UI. For a first drill, prefer Clean or Overwrite rather than Reverse.
 
-1. The target world is not currently in a high-risk write state
-2. The target backup file actually exists and is readable
-3. You are aware of the restore scope (full package / partial)
-4. You have decided whether to enable "backup before restore" as a safety net
+## Backup before restore
 
-## Restore Method Descriptions
+When `backupBefore` is enabled, MineBackup creates a safety backup of the current destination before applying the selected archive. Keep it enabled for production worlds, especially before Clean, Reverse, or custom restores.
 
-- Clean: Clears then restores -- suitable for a complete rollback
-- Overwrite: Overwrites existing files
-- Reverse: Reverse strategy (for specific diff scenarios)
-- Custom: Custom list of entries to restore
+If the world is still occupied, an ordinary restore may be blocked. Do not force-terminate the game merely to release files. Save and exit normally, or follow the coordinated flow in [Hot backup and snapshots](./hot-backup) and [KnotLink v2 integration](./knotlink-integration).
 
-### How to Choose a Restore Method
+## Partial archive safety
 
-- Not sure: Start with `Clean`
-- Want to preserve the existing directory structure: Try `Overwrite`
-- Only restore specific files: Use `Custom`
+If an archive contains only part of the source directory, Clean cannot reconstruct a complete destination from information outside the archive. Prefer Overwrite; for dangerous Clean cases MineBackup may require an additional confirmation or reject the operation.
 
-For a first-time drill, we do not recommend using `Reverse` directly.
+Similarly, an external custom archive for a running world is not automatically a safe hot-restore input. Confirm the current world, companion version, and archive source before using hot restore.
 
-## Backup Before Restore
+## Success criteria
 
-If "backup before restore" is enabled, the system will create a safety-net backup before executing the restore.
+- Important destination files match the selected point in time.
+- The game can read the world without obvious leftover writes or corruption.
+- History still shows the state before and after the restore.
+- The pre-restore safety backup can be selected again if needed.
 
-We strongly recommend keeping this setting enabled at all times, especially for production worlds.
-
-## Success Criteria
-
-- The target point-in-time state is correctly restored
-- Key files are readable
-- The operation is still traceable in history
-
-## Post-Restore Verification (3 Minutes)
-
-- Enter the world and confirm block states at key locations
-- Check whether recent key progress points match expectations
-- If player data integration is enabled, verify that player states are correct
-
-## Rollback Strategy if Restore Fails
-
-If the restore result does not meet expectations:
-
-1. Immediately stop further operations
-2. Use "backup before restore" to return to the pre-restore state
-3. Re-run the restore with a more clearly identified target backup
-
-Further reading: [History and Restore Strategies](./history-and-restore).
+If the result is wrong, stop, restore the pre-restore backup, and then choose a more explicit archive or method. Do not repeatedly overwrite the same damaged target with several archives.

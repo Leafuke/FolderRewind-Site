@@ -1,87 +1,68 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Installation and Setup
-description: Installing, configuring dependencies, and first launch requirements for MineBackup
+description: Installation, platform dependencies, profile locations, and first-launch checks for MineBackup 1.16.1
 ---
 
 # Installation and Setup
 
-The goal of this page is not just "open the program," but to ensure your very first backup succeeds -- avoiding common path and permission pitfalls.
+The goal of this page is not merely to open the program. It is to make the first backup run with the correct paths, tools, and permissions. Establish an ordinary backup-and-restore loop before enabling hot backup, cloud archive, or automation.
 
-## Core Dependency
+## Download the release
 
-MineBackup's compression workflow depends on 7-Zip. You can provide `7z.exe` in the following ways:
+MineBackup 1.16.1 provides Windows x64, Linux x86_64, and macOS arm64 distributions. Download the asset for your platform from [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) and, when available, verify the SHA-256 checksum published with the release.
 
-- On Windows, MineBackup bundles 7-Zip internally -- no separate installation needed
-- Place it in the same directory as the program (it will be auto-detected)
-- Manually specify the 7-Zip executable path in settings
+See [Platform support and installation boundaries](./platform-support) for platform ranges and desktop capabilities. The macOS DMG is not Apple-notarized; the first launch may require **Open Anyway** in Privacy & Security.
 
-Tip: Even if auto-detection succeeds, we recommend confirming the compression program path on the settings page once, in case it breaks after moving the directory later.
+## Compression tool
 
-## Platform Notes
+MineBackup uses 7-Zip as its archive engine. The current resolver generally checks:
 
-- Windows: Full feature set (including service mode)
-- Linux / macOS: Core backup and restore are available, but Windows service capabilities do not apply
+1. The bundled `7za.exe` or the corresponding platform resource.
+2. A user-selected path saved in Settings.
+3. A 7-Zip installation discoverable on the system.
 
-If you use MineBackup primarily across platforms, double-check path separators and directory permissions.
+If the path shown in Settings is unavailable, select the compression executable again and save. Do not assume that opening Settings proves that a backup can run; complete a test backup at minimum.
 
-## What the First-Launch Wizard Does
+Cloud archive requires a separate rclone setup. rclone is not distributed with MineBackup; after confirmation, the application can download, verify, and install a managed version. See [Cloud archive](./cloud-archive).
 
-The initial wizard accomplishes four things:
+## What first launch does
 
-1. Choose language, font, and theme
-2. Select the save root directory (supports Java / Bedrock auto-detection)
-3. Select the backup directory
-4. Confirm the compression program path
+The application resolves the profile before loading configuration and history:
 
-After the wizard finishes, we recommend immediately running an "empty-comment manual backup" test -- verify the pipeline first, then tweak advanced settings.
+- `--data-dir <absolute path>` selects a complete profile root explicitly.
+- On Windows or AppImage, an adjacent `portable.flag` selects the neighboring `MineBackupData` profile.
+- Without an explicit option, the application uses platform-default configuration, data, state, cache, runtime, tools, and log roots.
+- If old locations or 1.15 data are discovered, MineBackup asks for confirmation before migration; source files are not silently deleted.
 
-## Recommended Directory Layout
+These rules replace the old assumption that `config.ini` and `history.dat` always live beside the EXE. See [Profiles, portable mode, and 1.15 migration](./data-and-migration).
 
-- `saveRoot`: Only the parent path containing the world directories you want to manage
-- `backupPath`: A separate disk directory, not mixed with the save directory
-- `snapshotPath`: Optional, used for hot backup temporary snapshots
+## Plan the directories
 
-### Layout Example
+Prepare at least two writable locations:
 
-- `saveRoot`: `D:/Minecraft/.minecraft/saves`
-- `backupPath`: `E:/MineBackup/archives`
-- `snapshotPath`: `E:/MineBackup/snapshot-temp`
+- **Save root:** the parent directory containing the worlds or source folders to manage.
+- **Backup root:** the location for archives and MineBackup metadata, preferably on another physical disk.
 
-Principle: Keep the backup directory and save directory on different disks when possible, to reduce the impact of a single disk failure.
+Hot backup can use an optional `snapshotPath` for temporary snapshot data. It needs enough space and stable write access. Do not put it in a directory that another cleanup process may remove during a task unless every operation is guaranteed to finish in the same session.
 
-## Pre-First-Run Checklist
+## Preflight checklist
 
-Before clicking backup for the first time, confirm these 6 items:
+Before creating a configuration, confirm:
 
-1. `saveRoot` exists and is accessible
-2. `backupPath` directory is writable
-3. At least 1 world has been detected
-4. Compression program path is valid
-5. No security software is blocking the compression process
-6. A hot backup strategy is planned for when the game is running
+1. The current user can read the save root.
+2. The backup root and snapshot root, if used, are writable.
+3. The target disk has enough free space.
+4. Security software will not block MineBackup or its 7-Zip child process.
+5. Hot Minecraft workflows have a compatible companion mod and KnotLinkService ready.
+6. Linux/macOS desktop permissions cover any notification, tray, or shortcut capability you need.
 
-## Minimal Post-Install Self-Check
+## Minimum post-install test
 
-1. Can open settings and see the current config
-2. Path fields can be saved and persist after restart
-3. Can successfully run a minimal backup
+1. Open Settings and confirm the active profile mode.
+2. Create a normal configuration containing one world.
+3. Confirm that the compression tool resolves successfully.
+4. Complete one manual Full backup.
+5. Restore once in a test directory or test world.
 
-## Common Installation Issues
-
-### 1) Wizard cannot auto-detect the save directory
-
-- Manually select the parent directory first
-- Then use "Scan Worlds" to confirm detection
-
-### 2) Compression program looks selectable but backup reports an error
-
-- Re-select the compression program path and save
-- Avoid directories with restricted permissions in the path
-
-### 3) Path looks correct on Linux / macOS but is not writable
-
-- Use the terminal to verify directory write permissions first
-- Try to use a backup path under your user directory
-
-Next: Continue to [Creating Your First Config](./first-config).
+Windows Service Mode is not an installation step: version 1.16 cannot install or start it. It can only inspect and remove an older service after the safety checks succeed.
