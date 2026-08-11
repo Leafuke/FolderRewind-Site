@@ -14,29 +14,6 @@ const config: Config = {
   url: 'https://folderrewind.top',
   baseUrl: '/',
 
-  headTags: [
-    {
-      tagName: 'script',
-      attributes: {
-        type: 'application/ld+json',
-      },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
-        name: 'FolderRewind',
-        alternateName: '存档时光机',
-        applicationCategory: 'BackupApplication',
-        operatingSystem: 'Windows 10, Windows 11',
-        description:
-          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。',
-        url: 'https://folderrewind.top/',
-        image: 'https://folderrewind.top/img/ori.webp',
-        downloadUrl: 'https://apps.microsoft.com/detail/9nwsdgxdqws4',
-        sameAs: ['https://github.com/Leafuke/FolderRewind'],
-      }),
-    },
-  ],
-
   organizationName: 'Leafuke',
   projectName: 'FolderRewind-Site',
 
@@ -87,6 +64,20 @@ const config: Config = {
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
+        sitemap: {
+          ignorePatterns: [
+            '/404',
+            '/en/404',
+            '/search',
+            '/en/search',
+            '/blog/authors',
+            '/en/blog/authors',
+            '/blog/archive',
+            '/en/blog/archive',
+            '/blog/tags/**',
+            '/en/blog/tags/**',
+          ],
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -122,11 +113,6 @@ const config: Config = {
         name: 'description',
         content:
           'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
-      },
-      {
-        name: 'keywords',
-        content:
-          'FolderRewind, 存档时光机, Windows 备份, 文件备份, 游戏存档备份, Minecraft 存档备份, file backup, Windows backup, game save backup, Minecraft backup',
       },
       {property: 'og:type', content: 'website'},
       {property: 'og:site_name', content: 'FolderRewind'},

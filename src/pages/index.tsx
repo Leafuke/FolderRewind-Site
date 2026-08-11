@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
 import Translate, {translate} from '@docusaurus/Translate';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
@@ -230,10 +230,32 @@ function CtaBanner() {
 
 /* ── 首页组合 ──────────────────────────────────────── */
 export default function Home(): ReactNode {
+  const softwareApplicationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'FolderRewind',
+    alternateName: '存档时光机',
+    applicationCategory: 'BackupApplication',
+    operatingSystem: 'Windows 10, Windows 11',
+    description: translate({
+      id: 'homepage.layout.description',
+      message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具',
+    }),
+    url: 'https://folderrewind.top/',
+    image: 'https://folderrewind.top/img/ori.webp',
+    downloadUrl: 'https://apps.microsoft.com/detail/9nwsdgxdqws4',
+    sameAs: ['https://github.com/Leafuke/FolderRewind'],
+  };
+
   return (
     <Layout
       title={translate({id: 'homepage.layout.title', message: '首页'})}
       description={translate({id: 'homepage.layout.description', message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具'})}>
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(softwareApplicationSchema)}
+        </script>
+      </Head>
       <HomepageHero />
       <main>
         <HomepageSegments />
