@@ -32,7 +32,7 @@ MineBackup 1.16.1 的 GUI、后台备份、还原、自动任务、平台集成�
 
 ## 日志位置
 
-日志目录跟随[配置档](./data-and-migration)的位置：
+日志目录跟随[配置档](/docs/guides/minebackup-v1/data-and-migration)的位置：
 
 | 平台 | 日志目录 |
 | --- | --- |
@@ -74,4 +74,4 @@ minebackup-diagnostics-YYYYMMDD-HHMMSS.txt
 5. KnotLink 或云归档问题同时记录事件 ID、`request_id`、端点/远端名称和服务版本，但不要提交凭据。
 6. 导出诊断后人工检查脱敏结果，再连同最小复现步骤和相关时间段提供给维护者。
 
-相关页面：[故障排查](./troubleshooting)、[配置档与迁移](./data-and-migration)、[KnotLink v2 联动](./knotlink-integration) 和 [云归档](./cloud-archive)。
+相关页面：[故障排查](/docs/guides/minebackup-v1/troubleshooting)、[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)、[KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration) 和 [云归档](/docs/guides/minebackup-v1/cloud-archive)。

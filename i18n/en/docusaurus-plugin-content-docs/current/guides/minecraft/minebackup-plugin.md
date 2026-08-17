@@ -147,10 +147,10 @@ Start troubleshooting with `/mb status` and verify the host, KnotLink, and plugi
 
 ## Related integration components
 
-- [Minecraft Guide Overview](./overview): choose a mod-loader or Spigot/Paper deployment.
-- [MineBackup Integration Mod](./minebackup-mod): the in-game bridge for modded servers.
-- [Death Rewind](./death-rewind): the singleplayer death-screen rewind extension.
-- [Just Enough Accidents](./just-enough-accidents): the accident detection extension.
-- [KnotLink and Integration Mod](./knotlink-mod): protocol and hot-flow details.
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview): choose a mod-loader or Spigot/Paper deployment.
+- [MineBackup Integration Mod](/en/docs/guides/minecraft/minebackup-mod): the in-game bridge for modded servers.
+- [Death Rewind](/en/docs/guides/minecraft/death-rewind): the singleplayer death-screen rewind extension.
+- [Just Enough Accidents](/en/docs/guides/minecraft/just-enough-accidents): the accident detection extension.
+- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod): protocol and hot-flow details.
 
 Run a full “backup → restore → restart → manual reconnect” drill on a test server before relying on this in production.

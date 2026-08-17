@@ -56,5 +56,5 @@ Mini 悬浮窗适合“边工作边备份”的场景：窗口小、操作快、
 
 ## 相关链接
 
-- [自动化任务](./automation)
-- [备份模式详解](./backup-modes)
+- [自动化任务](/docs/guides/automation)
+- [备份模式详解](/docs/guides/backup-modes)

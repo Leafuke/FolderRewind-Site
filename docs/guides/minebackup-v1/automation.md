@@ -59,4 +59,4 @@ MineBackup 1.16 的统一任务模型包含：
 
 如果任务没有触发，先检查启用状态、时间字段、目标索引和程序日志；不要一开始就增加更多并行任务。
 
-下一步可阅读 [Special Config](./special-mode) 了解“启动后自动执行并可自动退出”的无人值守流程。
+下一步可阅读 [Special Config](/docs/guides/minebackup-v1/special-mode) 了解“启动后自动执行并可自动退出”的无人值守流程。

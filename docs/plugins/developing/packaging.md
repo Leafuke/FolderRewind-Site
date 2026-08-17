@@ -115,5 +115,5 @@ dotnet publish -c Release -o ./publish
 
 ## 相关链接
 
-- [插件安装与管理](../using-plugins)
-- [插件自动更新](./auto-update)
+- [插件安装与管理](/docs/plugins/using-plugins)
+- [插件自动更新](/docs/plugins/developing/auto-update)

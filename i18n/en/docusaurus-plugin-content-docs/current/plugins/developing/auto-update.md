@@ -23,5 +23,5 @@ Publishing plugins to GitHub Releases is recommended for traceable and rollback-
 
 ## Related links
 
-- [Packaging and Release](./packaging)
-- [Install and Manage Plugins](../using-plugins)
+- [Packaging and Release](/en/docs/plugins/developing/packaging)
+- [Install and Manage Plugins](/en/docs/plugins/using-plugins)

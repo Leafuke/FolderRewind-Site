@@ -80,13 +80,13 @@ The directory contains `config.json`, `history.json`, and `plugins`. Before swit
 1. Exit FolderRewind completely.
 2. Back up the entire `FolderRewind` data directory for the current channel.
 3. Uninstall the old channel.
-4. Install the new channel, then import or copy only data you have reviewed by following the [Data Migration Guide](../guides/data-migration).
+4. Install the new channel, then import or copy only data you have reviewed by following the [Data Migration Guide](/en/docs/guides/data-migration).
 
 Do not allow two installations to operate on the same active backup workflow.
 
 ## Upgrading from an older release
 
-Before upgrading to 1.8, read [v1.8 Upgrade and Startup Recovery](./v1-8-upgrade). Complete at least one backup-and-restore test with non-production data before protecting important files.
+Before upgrading to 1.8, read [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade). Complete at least one backup-and-restore test with non-production data before protecting important files.
 
 If v1.8.0 cannot start because of a legacy language value, do not delete `config.json`. Upgrade to v1.8.1 or change only `GlobalSettings.Language` as described in the recovery guide.
 
@@ -108,6 +108,6 @@ If v1.8.0 cannot start because of a legacy language value, do not delete `config
 
 ## Next steps
 
-- [v1.8 Upgrade and Startup Recovery](./v1-8-upgrade)
-- [First Backup](./first-backup)
-- [First Restore](./first-restore)
+- [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade)
+- [First Backup](/en/docs/getting-started/first-backup)
+- [First Restore](/en/docs/getting-started/first-restore)

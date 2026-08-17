@@ -57,4 +57,4 @@ If migration is Degraded or Failed, MineBackup may deliberately force a new Full
 - Add a readable comment in history and mark important milestones as important.
 - Restore once in a test directory to verify that “backup succeeded” means more than a file was written: the recovery chain must also be usable.
 
-After this validation, read [Backup modes, chain integrity, and safe deletion](./backup-modes) and [Your first restore](./first-restore).
+After this validation, read [Backup modes, chain integrity, and safe deletion](/en/docs/guides/minebackup-v1/backup-modes) and [Your first restore](/en/docs/guides/minebackup-v1/first-restore).

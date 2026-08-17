@@ -39,8 +39,8 @@ description: 10 分钟完成 MineRewind 安装、扫描和首次备份
 
 ## 下一步
 
-- [Minecraft 专题总览](./overview)
-- [热备份机制详解](./hot-backup)
-- [热还原机制详解](./hot-restore)
-- [自动化任务](../automation)
-- [备份模式详解](../backup-modes)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [热备份机制详解](/docs/guides/minecraft/hot-backup)
+- [热还原机制详解](/docs/guides/minecraft/hot-restore)
+- [自动化任务](/docs/guides/automation)
+- [备份模式详解](/docs/guides/backup-modes)

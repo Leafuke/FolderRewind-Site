@@ -66,7 +66,7 @@ FolderRewind 会在开始迁移前拒绝无效操作，包括：
 
 ## 相关链接
 
-- [历史时间线](./history-timeline)
-- [自动化任务](./automation)
-- [云端存档](./cloud-archive)
-- [首次还原](../getting-started/first-restore)
+- [历史时间线](/docs/guides/history-timeline)
+- [自动化任务](/docs/guides/automation)
+- [云端存档](/docs/guides/cloud-archive)
+- [首次还原](/docs/getting-started/first-restore)

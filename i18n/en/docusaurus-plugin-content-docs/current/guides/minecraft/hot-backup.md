@@ -103,6 +103,6 @@ ERROR:No active world.
 
 ## Related links
 
-- [Minecraft Quick Start](./quick-start)
-- [Hot Restore Mechanism](./hot-restore)
-- [KnotLink and Integration Mod](./knotlink-mod)
+- [Minecraft Quick Start](/en/docs/guides/minecraft/quick-start)
+- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
+- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)

@@ -147,10 +147,10 @@ logging:
 
 ## 与其他联动组件的关系
 
-- [Minecraft 专题总览](./overview)：选择模组化服务端或 Spigot/Paper 方案。
-- [MineBackup 联动模组](./minebackup-mod)：模组化服务端的游戏内桥梁。
-- [Death Rewind（死亡回溯）](./death-rewind)：单人死亡界面回溯扩展。
-- [Just Enough Accidents（险兆备份）](./just-enough-accidents)：事故检测扩展。
-- [KnotLink 与联动模组](./knotlink-mod)：协议和热备份/热还原握手细节。
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)：选择模组化服务端或 Spigot/Paper 方案。
+- [MineBackup 联动模组](/docs/guides/minecraft/minebackup-mod)：模组化服务端的游戏内桥梁。
+- [Death Rewind（死亡回溯）](/docs/guides/minecraft/death-rewind)：单人死亡界面回溯扩展。
+- [Just Enough Accidents（险兆备份）](/docs/guides/minecraft/just-enough-accidents)：事故检测扩展。
+- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)：协议和热备份/热还原握手细节。
 
 正式世界启用前，请在测试服完整演练一次“备份—还原—启动—手动重连”闭环。

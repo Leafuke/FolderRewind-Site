@@ -78,8 +78,8 @@ cmd=REJOIN_RESULT;result=failure;reason=Server%20not%20ready
 
 ## 相关链接
 
-- [KnotLink 协议与联动](../../plugins/knotlink)
-- [KnotLink 命令参考](../../plugins/knotlink-commands)
-- [热备份机制详解](./hot-backup)
-- [热还原机制详解](./hot-restore)
-- [MineBackup 联动模组详解](./minebackup-mod)
+- [KnotLink 协议与联动](/docs/plugins/knotlink)
+- [KnotLink 命令参考](/docs/plugins/knotlink-commands)
+- [热备份机制详解](/docs/guides/minecraft/hot-backup)
+- [热还原机制详解](/docs/guides/minecraft/hot-restore)
+- [MineBackup 联动模组详解](/docs/guides/minecraft/minebackup-mod)

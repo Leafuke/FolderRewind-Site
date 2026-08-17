@@ -113,6 +113,6 @@ MineRewind 注册了两个全局热键：
 
 ## 相关链接
 
-- [Plugin API 参考](./plugin-api)
-- [KnotLink Command API](./knotlink-api)
-- [实战教程](./tutorial)
+- [Plugin API 参考](/docs/plugins/developing/plugin-api)
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
+- [实战教程](/docs/plugins/developing/tutorial)

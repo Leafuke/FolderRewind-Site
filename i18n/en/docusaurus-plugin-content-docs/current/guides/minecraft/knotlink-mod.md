@@ -78,8 +78,8 @@ Hot restore changes a world that is in use. A failed version handshake, stage ti
 
 ## Related links
 
-- [KnotLink Protocol and Integration](../../plugins/knotlink)
-- [KnotLink Command Reference](../../plugins/knotlink-commands)
-- [Hot Backup Mechanism](./hot-backup)
-- [Hot Restore Mechanism](./hot-restore)
-- [MineBackup Integration Mod Deep Dive](./minebackup-mod)
+- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
+- [KnotLink Command Reference](/en/docs/plugins/knotlink-commands)
+- [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup)
+- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
+- [MineBackup Integration Mod Deep Dive](/en/docs/guides/minecraft/minebackup-mod)

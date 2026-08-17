@@ -56,5 +56,5 @@ Usually related to invalid path or window state issues. Confirm the source folde
 
 ## Related links
 
-- [Automation](./automation)
-- [Backup Modes](./backup-modes)
+- [Automation](/en/docs/guides/automation)
+- [Backup Modes](/en/docs/guides/backup-modes)

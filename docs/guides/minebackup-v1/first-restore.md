@@ -32,7 +32,7 @@ Custom 列表使用逗号分隔；如果希望提取整个目录，可以按界�
 
 开启 `backupBefore` 后，程序会先对当前目标建立兜底备份，再执行还原。生产世界建议保持开启，尤其是在使用 Clean、Reverse 或自定义列表之前。
 
-如果当前世界仍被占用，普通还原可能会被阻止。不要用任务管理器强制结束游戏来“释放文件”；先正常保存并退出，或者按[热备份与快照机制](./hot-backup)和 [KnotLink v2 联动](./knotlink-integration) 的流程完成协同退出。
+如果当前世界仍被占用，普通还原可能会被阻止。不要用任务管理器强制结束游戏来“释放文件”；先正常保存并退出，或者按[热备份与快照机制](/docs/guides/minebackup-v1/hot-backup)和 [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration) 的流程完成协同退出。
 
 ## 部分归档的安全边界
 

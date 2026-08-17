@@ -33,7 +33,7 @@ MineBackup 1.16.1 的配置级备份过滤以 **黑名单** 为主；还原阶�
 
 还原白名单只影响 `Clean` 还原开始前的删除阶段：匹配的文件或目录会被保留，不会因为它们不在目标归档中而被清理。
 
-它不表示“只从归档中提取这些文件”，也不会改变 Overwrite 或 Custom 的提取列表。需要只恢复指定内容时，请使用[首次还原](./first-restore)中的 `Custom` 方式。
+它不表示“只从归档中提取这些文件”，也不会改变 Overwrite 或 Custom 的提取列表。需要只恢复指定内容时，请使用[首次还原](/docs/guides/minebackup-v1/first-restore)中的 `Custom` 方式。
 
 常见用途：
 

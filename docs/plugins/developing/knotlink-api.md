@@ -152,7 +152,7 @@ MineRewind 不再创建另一套空格命令。它扩展内置命令的参数：
 
 ## 相关链接
 
-- [KnotLink 协议与联动](../knotlink)
-- [KnotLink 命令参考](../knotlink-commands)
-- [Plugin API 参考](./plugin-api)
-- [Minecraft 与联动模组](../../guides/minecraft/knotlink-mod)
+- [KnotLink 协议与联动](/docs/plugins/knotlink)
+- [KnotLink 命令参考](/docs/plugins/knotlink-commands)
+- [Plugin API 参考](/docs/plugins/developing/plugin-api)
+- [Minecraft 与联动模组](/docs/guides/minecraft/knotlink-mod)

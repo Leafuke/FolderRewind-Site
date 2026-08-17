@@ -304,9 +304,9 @@ remote:FolderRewind
 
 ## 相关链接
 
-- [常见问题](../faq)
-- [自动化任务](./automation)
-- [历史时间轴](./history-timeline)
-- [备份文件规范](./backup-file-spec)
-- [数据迁移](./data-migration)
+- [常见问题](/docs/faq)
+- [自动化任务](/docs/guides/automation)
+- [历史时间轴](/docs/guides/history-timeline)
+- [备份文件规范](/docs/guides/backup-file-spec)
+- [数据迁移](/docs/guides/data-migration)
 - [FolderRewind v1.7.0 发布](/blog/v1.7.0-release)

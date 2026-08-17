@@ -42,7 +42,7 @@ MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRe
 4. 单人/LAN 场景放入客户端 `mods`；专用模组化服务端场景放入服务端 `mods`，客户端是否安装取决于你要使用的客户端功能。
 5. 同时启动主程序和 Minecraft，再先完成一次测试备份。
 
-如果运行的是 Spigot/Paper，而不是模组化服务端，请改用 [MineBackupPlugin（Spigot/Paper 联动插件）](./minebackup-plugin)。
+如果运行的是 Spigot/Paper，而不是模组化服务端，请改用 [MineBackupPlugin（Spigot/Paper 联动插件）](/docs/guides/minecraft/minebackup-plugin)。
 
 ## 游戏内命令
 
@@ -119,10 +119,10 @@ dedicatedRestore.operationTimeoutSeconds=3600
 
 ## 相关文档
 
-- [Minecraft 专题总览](./overview)
-- [MineBackupPlugin（Spigot/Paper 联动插件）](./minebackup-plugin)
-- [Death Rewind（死亡回溯）](./death-rewind)
-- [Just Enough Accidents（险兆备份）](./just-enough-accidents)
-- [KnotLink 与联动模组](./knotlink-mod)
-- [热备份机制详解](./hot-backup)
-- [热还原机制详解](./hot-restore)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [MineBackupPlugin（Spigot/Paper 联动插件）](/docs/guides/minecraft/minebackup-plugin)
+- [Death Rewind（死亡回溯）](/docs/guides/minecraft/death-rewind)
+- [Just Enough Accidents（险兆备份）](/docs/guides/minecraft/just-enough-accidents)
+- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
+- [热备份机制详解](/docs/guides/minecraft/hot-backup)
+- [热还原机制详解](/docs/guides/minecraft/hot-restore)

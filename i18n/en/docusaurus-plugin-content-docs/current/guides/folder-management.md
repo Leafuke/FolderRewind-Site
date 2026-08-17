@@ -66,7 +66,7 @@ This does not automatically mean history was lost. Keep the old remote path unti
 
 ## Related links
 
-- [History Timeline](./history-timeline)
-- [Automation](./automation)
-- [Cloud Archive](./cloud-archive)
-- [First Restore](../getting-started/first-restore)
+- [History Timeline](/en/docs/guides/history-timeline)
+- [Automation](/en/docs/guides/automation)
+- [Cloud Archive](/en/docs/guides/cloud-archive)
+- [First Restore](/en/docs/getting-started/first-restore)

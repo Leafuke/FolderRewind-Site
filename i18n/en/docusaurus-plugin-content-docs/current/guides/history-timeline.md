@@ -126,7 +126,7 @@ Recommended prerequisites:
 - Keep standard filename format (`[Full/Smart/Overwrite][timestamp]...`)
 - Keep directory layout as `DestinationPath/<folder-name>/`
 
-See: [Backup File Specification](./backup-file-spec)
+See: [Backup File Specification](/en/docs/guides/backup-file-spec)
 
 ## FAQ
 
@@ -138,12 +138,12 @@ History entry still exists, but archive was moved or deleted. Run "Clear invalid
 
 Verify restore point and restore mode first, then check restore whitelist settings. If the config was upgraded from an older version, go back to test data and validate the chain again.
 
-After a folder rename, old history keeps the local or remote identity saved when each record was created. See [Folder Management and Rename](./folder-management).
+After a folder rename, old history keeps the local or remote identity saved when each record was created. See [Folder Management and Rename](/en/docs/guides/folder-management).
 
 ## Related links
 
-- [First Restore](../getting-started/first-restore)
-- [Filter Rules](./filters)
-- [Backup File Specification](./backup-file-spec)
-- [Cloud Archive Guide](./cloud-archive)
-- [Folder Management and Rename](./folder-management)
+- [First Restore](/en/docs/getting-started/first-restore)
+- [Filter Rules](/en/docs/guides/filters)
+- [Backup File Specification](/en/docs/guides/backup-file-spec)
+- [Cloud Archive Guide](/en/docs/guides/cloud-archive)
+- [Folder Management and Rename](/en/docs/guides/folder-management)

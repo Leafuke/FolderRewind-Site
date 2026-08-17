@@ -36,7 +36,7 @@ MSI:
 - **早于 v1.7.4**：先运行 v1.7.4 完成旧配置迁移，再升级到最新 1.8.x。
 - 旧备份与历史元数据仍可用于还原，但升级后必须用测试数据重新验证备份链和还原结果。
 
-升级不会把 MSI 数据自动迁移到 Store/MSIX，反向切换也一样。切换渠道应按 [安装指南](./installation#数据目录与切换渠道) 先备份并卸载旧渠道。
+升级不会把 MSI 数据自动迁移到 Store/MSIX，反向切换也一样。切换渠道应按 [安装指南](/docs/getting-started/installation#数据目录与切换渠道) 先备份并卸载旧渠道。
 
 ## 1.8.0 无法启动时
 
@@ -92,7 +92,7 @@ FolderRewind 1.8 使用严格键值对的 **KnotLink 参数化协议 v2**，并�
 
 ## 相关链接
 
-- [安装指南](./installation)
-- [数据迁移](../guides/data-migration)
-- [备份模式详解](../guides/backup-modes)
-- [KnotLink 协议与联动](../plugins/knotlink)
+- [安装指南](/docs/getting-started/installation)
+- [数据迁移](/docs/guides/data-migration)
+- [备份模式详解](/docs/guides/backup-modes)
+- [KnotLink 协议与联动](/docs/plugins/knotlink)

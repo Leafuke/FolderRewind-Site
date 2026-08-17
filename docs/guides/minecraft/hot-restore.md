@@ -126,6 +126,6 @@ OK:Hot restore triggered for 'WorldName' with backup 'backup_2026-02-28_18-30-01
 
 ## 相关链接
 
-- [KnotLink 与联动模组](./knotlink-mod)
-- [故障排查](./troubleshooting)
-- [首次还原](../../getting-started/first-restore)
+- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
+- [故障排查](/docs/guides/minecraft/troubleshooting)
+- [首次还原](/docs/getting-started/first-restore)

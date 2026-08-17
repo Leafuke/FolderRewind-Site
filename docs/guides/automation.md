@@ -169,6 +169,6 @@ FolderRewind 可以为每个配置独立开启自动备份，支持：
 
 ## 相关链接
 
-- [备份模式详解](./backup-modes) — 选择合适的备份方式
-- [云存档功能介绍](./cloud-archive) — 把自动备份结果同步到云端
-- [Minecraft 专题](./minecraft/overview) — MC 场景推荐设置
+- [备份模式详解](/docs/guides/backup-modes) — 选择合适的备份方式
+- [云存档功能介绍](/docs/guides/cloud-archive) — 把自动备份结果同步到云端
+- [Minecraft 专题](/docs/guides/minecraft/overview) — MC 场景推荐设置

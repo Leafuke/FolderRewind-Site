@@ -168,5 +168,5 @@ public IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions()
 
 ## 相关链接
 
-- [Plugin API 参考](./plugin-api)
-- [插件开发快速上手](./quick-start)
+- [Plugin API 参考](/docs/plugins/developing/plugin-api)
+- [插件开发快速上手](/docs/plugins/developing/quick-start)

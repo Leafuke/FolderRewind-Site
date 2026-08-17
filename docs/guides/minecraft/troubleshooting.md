@@ -121,6 +121,6 @@ description: MineRewind 常见异常现象、原因与处理步骤
 
 ## 相关链接
 
-- [Minecraft 专题总览](./overview)
-- [KnotLink 与联动模组](./knotlink-mod)
-- [插件安装与管理](../../plugins/using-plugins)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
+- [插件安装与管理](/docs/plugins/using-plugins)

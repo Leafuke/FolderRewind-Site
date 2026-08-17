@@ -114,13 +114,13 @@ MineRewind 通过参数化协议 v2 扩展 Host 命令：
 
 ## 下一步
 
-- 新用户先看 [Minecraft 快速开始](./quick-start)。
-- 了解模组化服务端联动看 [MineBackup-Mod](./minebackup-mod)。
-- 了解 Spigot/Paper 联动看 [MineBackupPlugin](./minebackup-plugin)。
-- 需要死亡回溯看 [Death Rewind](./death-rewind)。
-- 需要险兆快照看 [Just Enough Accidents](./just-enough-accidents)。
-- 超大型世界按范围保护看 [指定区域备份](./selected-region-backup)。
-- 了解热备份看 [热备份机制详解](./hot-backup)。
-- 了解热还原看 [热还原机制详解](./hot-restore)。
-- 联动接入看 [KnotLink 与联动模组](./knotlink-mod)。
-- 出现异常先看 [故障排查](./troubleshooting)。
+- 新用户先看 [Minecraft 快速开始](/docs/guides/minecraft/quick-start)。
+- 了解模组化服务端联动看 [MineBackup-Mod](/docs/guides/minecraft/minebackup-mod)。
+- 了解 Spigot/Paper 联动看 [MineBackupPlugin](/docs/guides/minecraft/minebackup-plugin)。
+- 需要死亡回溯看 [Death Rewind](/docs/guides/minecraft/death-rewind)。
+- 需要险兆快照看 [Just Enough Accidents](/docs/guides/minecraft/just-enough-accidents)。
+- 超大型世界按范围保护看 [指定区域备份](/docs/guides/minecraft/selected-region-backup)。
+- 了解热备份看 [热备份机制详解](/docs/guides/minecraft/hot-backup)。
+- 了解热还原看 [热还原机制详解](/docs/guides/minecraft/hot-restore)。
+- 联动接入看 [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)。
+- 出现异常先看 [故障排查](/docs/guides/minecraft/troubleshooting)。

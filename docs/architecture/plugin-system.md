@@ -48,7 +48,7 @@ KnotLinkService 通过 Server v3 提供传输，FolderRewind 使用严格的参�
 - IFolderRewindParameterizedKnotLinkCommandHandler：在内置命令前尝试插件处理器。
 - IFolderRewindKnotLinkCapabilityProvider：把插件命令和信号合并到 GET_CAPABILITIES。
 
-旧的空格命令和旧处理器不再与新接口并存。详见 [KnotLink 命令参考](../plugins/knotlink-commands)。
+旧的空格命令和旧处理器不再与新接口并存。详见 [KnotLink 命令参考](/docs/plugins/knotlink-commands)。
 
 ## 目录与隔离
 
@@ -59,6 +59,6 @@ KnotLinkService 通过 Server v3 提供传输，FolderRewind 使用严格的参�
 
 ## 相关链接
 
-- [Plugin API 参考](../plugins/developing/plugin-api)
-- [KnotLink Command API](../plugins/developing/knotlink-api)
-- [插件开发快速上手](../plugins/developing/quick-start)
+- [Plugin API 参考](/docs/plugins/developing/plugin-api)
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
+- [插件开发快速上手](/docs/plugins/developing/quick-start)

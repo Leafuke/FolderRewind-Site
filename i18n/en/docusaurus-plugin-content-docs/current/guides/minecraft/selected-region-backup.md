@@ -87,8 +87,8 @@ Do not remove essential directories mentioned by an error just to bypass validat
 
 ## Related links
 
-- [Minecraft Overview](./overview)
-- [First Backup](../../getting-started/first-backup)
-- [First Restore](../../getting-started/first-restore)
-- [Filters](../filters)
-- [Minecraft Hot Restore](./hot-restore)
+- [Minecraft Overview](/en/docs/guides/minecraft/overview)
+- [First Backup](/en/docs/getting-started/first-backup)
+- [First Restore](/en/docs/getting-started/first-restore)
+- [Filters](/en/docs/guides/filters)
+- [Minecraft Hot Restore](/en/docs/guides/minecraft/hot-restore)

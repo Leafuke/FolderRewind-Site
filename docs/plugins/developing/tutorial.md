@@ -18,7 +18,7 @@ description: 从零开始构建一个通用游戏存档备份插件，覆盖所�
 完成后，你将掌握 FolderRewind 插件开发的全部核心能力。
 
 :::info 前置要求
-- 已完成 [插件开发快速上手](./quick-start) 中的环境配置
+- 已完成 [插件开发快速上手](/docs/plugins/developing/quick-start) 中的环境配置
 - 了解 C# 基础语法
 :::
 
@@ -546,7 +546,7 @@ public sealed class GameRewindPlugin :
 
 返回 `NotHandled` 表示继续尝试其他插件或 Host 内置命令。长任务应快速返回“已接受”，并通过带同一 `request_id` 的生命周期信号报告进度和最终结果。所有动态字段都必须 percent-encode。
 
-MineRewind 使用同一机制扩展 `cmd=BACKUP;current_save=true`、`cmd=LIST_BACKUPS;current_save=true` 和 `cmd=RESTORE;current_save=true`。完整字段和生命周期见 [KnotLink 命令参考](../knotlink-commands)。
+MineRewind 使用同一机制扩展 `cmd=BACKUP;current_save=true`、`cmd=LIST_BACKUPS;current_save=true` 和 `cmd=RESTORE;current_save=true`。完整字段和生命周期见 [KnotLink 命令参考](/docs/plugins/knotlink-commands)。
 
 ## 7. 打包与发布
 
@@ -595,7 +595,7 @@ GameRewind.zip
 
 ## 下一步
 
-- [Plugin API 参考](./plugin-api) — 接口全量说明和高级用法
-- [Hotkey API](./hotkey-api) — 快捷键进阶
-- [KnotLink Command API](./knotlink-api) — 远程命令进阶
+- [Plugin API 参考](/docs/plugins/developing/plugin-api) — 接口全量说明和高级用法
+- [Hotkey API](/docs/plugins/developing/hotkey-api) — 快捷键进阶
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api) — 远程命令进阶
 - [MineRewind 源码](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft) — 更复杂的官方参考实现

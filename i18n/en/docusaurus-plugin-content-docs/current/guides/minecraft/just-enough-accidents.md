@@ -135,10 +135,10 @@ The TNT detector above is part of the current detector set; the excluded list re
 
 ## Related documentation
 
-- [Minecraft Guide Overview](./overview)
-- [MineBackup Integration Mod](./minebackup-mod)
-- [MineBackupPlugin (Spigot/Paper)](./minebackup-plugin)
-- [Death Rewind](./death-rewind)
-- [FolderRewind filters and backup modes](../filters)
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
+- [MineBackup Integration Mod](/en/docs/guides/minecraft/minebackup-mod)
+- [MineBackupPlugin (Spigot/Paper)](/en/docs/guides/minecraft/minebackup-plugin)
+- [Death Rewind](/en/docs/guides/minecraft/death-rewind)
+- [FolderRewind filters and backup modes](/en/docs/guides/filters)
 
 Observe one detector, archive, and manual-restore flow in a test world before tuning thresholds for a modpack.

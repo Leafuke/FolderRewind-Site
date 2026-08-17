@@ -112,7 +112,7 @@ FolderRewind 使用 7z/zip，可调压缩等级、算法和线程数：
 
 ## 部分备份的还原规则
 
-备份范围不是整个源目录时，备份包不具备清空目标后重建完整目录的能力。例如 [Minecraft 指定区域备份](./minecraft/selected-region-backup)：
+备份范围不是整个源目录时，备份包不具备清空目标后重建完整目录的能力。例如 [Minecraft 指定区域备份](/docs/guides/minecraft/selected-region-backup)：
 
 - 普通还原与热还原都强制使用 **Overwrite（覆写）**。
 - **Clean（清空后还原）** 会被禁用，避免删除未备份的文件。
@@ -128,6 +128,6 @@ FolderRewind 使用 7z/zip，可调压缩等级、算法和线程数：
 
 ## 相关链接
 
-- [首次备份](../getting-started/first-backup) — 基础备份教程
-- [自动化任务](./automation) — 配合自动化使用
-- [Minecraft 指定区域备份](./minecraft/selected-region-backup) — 部分备份与安全还原
+- [首次备份](/docs/getting-started/first-backup) — 基础备份教程
+- [自动化任务](/docs/guides/automation) — 配合自动化使用
+- [Minecraft 指定区域备份](/docs/guides/minecraft/selected-region-backup) — 部分备份与安全还原

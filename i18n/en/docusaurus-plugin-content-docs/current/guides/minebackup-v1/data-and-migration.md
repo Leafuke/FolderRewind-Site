@@ -51,7 +51,7 @@ Without `--data-dir` or a portable marker, 1.16.1 uses these platform locations:
 | Linux | `XDG_CONFIG_HOME/MineBackup`, `XDG_DATA_HOME/MineBackup`, `XDG_STATE_HOME/MineBackup`, and `XDG_CACHE_HOME/MineBackup`; when unset, these fall back to `~/.config`, `~/.local/share`, `~/.local/state`, and `~/.cache`. Tools are under `data/tools`, and logs are under `state/logs`. |
 | macOS | `~/Library/Application Support/MineBackup/{config,data,state,tools}`, `~/Library/Caches/MineBackup/{cache,runtime}`, and `~/Library/Logs/MineBackup` for logs. |
 
-Linux uses `XDG_RUNTIME_DIR` only when it belongs to the current user and has safe permissions. Otherwise it creates a private runtime directory below the state root. To confirm the active paths, use the current profile’s **Log** panel and [Logging and diagnostics](./logging-and-diagnostics).
+Linux uses `XDG_RUNTIME_DIR` only when it belongs to the current user and has safe permissions. Otherwise it creates a private runtime directory below the state root. To confirm the active paths, use the current profile’s **Log** panel and [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics).
 
 ## The 1.16.1 storage model
 
@@ -97,14 +97,14 @@ When world metadata is `Degraded` or `Failed`, MineBackup deliberately does not 
 
 1. Stop other programs that write the world or archive directories, and copy the profile and important archive inventory if it must be retained.
 2. Launch 1.16.1 and review the old-location prompt and the target profile path.
-3. Wait for the migration summary. If it reports `Pending`, `Degraded`, or `Failed`, open [Logging and diagnostics](./logging-and-diagnostics) and the migration report; do not delete the old files.
+3. Wait for the migration summary. If it reports `Pending`, `Degraded`, or `Failed`, open [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics) and the migration report; do not delete the old files.
 4. Run a Full backup for one test world, then perform a Clean or Custom restore drill.
 5. Confirm that `history.json` and the world bindings are correct before enabling Smart, automation, or cloud archives.
 
-Importing `portable-config.json` from the cloud restores only its portable whitelist. New configurations remain pending until you bind local `saveRoot`, world entries, `backupPath`, and optional `snapshotPath` again. See [Cloud archive](./cloud-archive).
+Importing `portable-config.json` from the cloud restores only its portable whitelist. New configurations remain pending until you bind local `saveRoot`, world entries, `backupPath`, and optional `snapshotPath` again. See [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive).
 
 ## Do not use the old reset rule
 
 Deleting an EXE-side `config.ini` or one legacy history file does not fully reset a 1.16.1 profile and can disconnect external archives from their history. If you need a clean start, first confirm the active profile root in settings and logs, export or copy anything that must be retained, and only then handle the profile while MineBackup is closed. Do not delete an active profile directory while the application is running.
 
-Related pages: [Installation](./installation), [First configuration](./first-config), [Cloud archive](./cloud-archive), and [Legacy Windows Service Cleanup](./service-mode).
+Related pages: [Installation](/en/docs/guides/minebackup-v1/installation), [First configuration](/en/docs/guides/minebackup-v1/first-config), [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive), and [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode).

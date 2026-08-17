@@ -57,4 +57,4 @@ description: 在 MineBackup 1.16.1 中验证配置、压缩引擎、历史记录
 - 在历史记录中写下可读注释，并给关键节点标记为重要。
 - 立刻在测试目录执行一次还原，确认“备份成功”不仅代表文件写入成功，也代表恢复链可用。
 
-完成这次验证后，再阅读[备份模式、链完整性与安全删除](./backup-modes)和[首次还原](./first-restore)。
+完成这次验证后，再阅读[备份模式、链完整性与安全删除](/docs/guides/minebackup-v1/backup-modes)和[首次还原](/docs/guides/minebackup-v1/first-restore)。

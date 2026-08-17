@@ -295,9 +295,9 @@ Recommended sequence:
 
 ## Related links
 
-- [FAQ](../faq)
-- [Automation](./automation)
-- [History Timeline](./history-timeline)
-- [Backup File Specification](./backup-file-spec)
-- [Data Migration](./data-migration)
-- [FolderRewind v1.7.0 Release](/blog/v1.7.0-release)
+- [FAQ](/en/docs/faq)
+- [Automation](/en/docs/guides/automation)
+- [History Timeline](/en/docs/guides/history-timeline)
+- [Backup File Specification](/en/docs/guides/backup-file-spec)
+- [Data Migration](/en/docs/guides/data-migration)
+- [FolderRewind v1.7.0 Release](/en/blog/v1.7.0-release)

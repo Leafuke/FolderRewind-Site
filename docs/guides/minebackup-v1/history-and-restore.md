@@ -52,7 +52,7 @@ MineBackup 支持区分：
 - 只修复几个文件：选择 `Custom`。
 - 需要从 Smart 链较新状态退回某个节点：确认链完整后再考虑 `Reverse`。
 
-详细操作见[首次还原](./first-restore)。第一次演练应在测试世界完成，并开启还原前备份。
+详细操作见[首次还原](/docs/guides/minebackup-v1/first-restore)。第一次演练应在测试世界完成，并开启还原前备份。
 
 ## 云端历史
 

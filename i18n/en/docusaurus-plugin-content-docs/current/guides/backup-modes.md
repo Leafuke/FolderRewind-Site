@@ -112,7 +112,7 @@ Arguments are validated when the configuration is saved and again before backup 
 
 ## Restore rules for partial backups
 
-When the backup scope is smaller than the complete source directory, the archive cannot rebuild that directory safely after clearing it. For example, with [Minecraft Selected-Region Backup](./minecraft/selected-region-backup):
+When the backup scope is smaller than the complete source directory, the archive cannot rebuild that directory safely after clearing it. For example, with [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup):
 
 - Normal restore and hot restore are forced to **Overwrite**.
 - **Clean** is disabled to avoid deleting files that were never backed up.
@@ -128,6 +128,6 @@ Before enabling any partial backup for production data, use a copy to verify the
 
 ## Related links
 
-- [First Backup](../getting-started/first-backup)
-- [Automation](./automation)
-- [Minecraft Selected-Region Backup](./minecraft/selected-region-backup)
+- [First Backup](/en/docs/getting-started/first-backup)
+- [Automation](/en/docs/guides/automation)
+- [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup)

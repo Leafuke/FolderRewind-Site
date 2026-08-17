@@ -58,4 +58,4 @@ Use Sequential for “backup, then command” and Parallel only when targets are
 - Early exit: inspect `exitAfterExecution` and whether a periodic task thread remains.
 - Background work does not stop: inspect logs and stop through the UI/task coordinator instead of deleting temporary files.
 
-Once Special Config is stable, combine it with [Profiles, portable mode, and migration](./data-and-migration) or [Cloud archive](./cloud-archive) carefully.
+Once Special Config is stable, combine it with [Profiles, portable mode, and migration](/en/docs/guides/minebackup-v1/data-and-migration) or [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive) carefully.

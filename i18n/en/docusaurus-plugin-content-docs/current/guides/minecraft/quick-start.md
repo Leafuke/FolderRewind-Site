@@ -39,8 +39,8 @@ Open a generated world config to confirm its world name, game mode, and save for
 
 ## Next steps
 
-- [Minecraft Guide Overview](./overview)
-- [Hot Backup Mechanism](./hot-backup)
-- [Hot Restore Mechanism](./hot-restore)
-- [Automation](../automation)
-- [Backup Modes](../backup-modes)
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
+- [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup)
+- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
+- [Automation](/en/docs/guides/automation)
+- [Backup Modes](/en/docs/guides/backup-modes)

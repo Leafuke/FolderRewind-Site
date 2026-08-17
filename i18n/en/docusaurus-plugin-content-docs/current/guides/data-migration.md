@@ -67,5 +67,5 @@ Replace mode attempts to back up existing history as `.bak` first.
 
 ## Related links
 
-- [Encrypted Backups](./encryption)
-- [History Timeline](./history-timeline)
+- [Encrypted Backups](/en/docs/guides/encryption)
+- [History Timeline](/en/docs/guides/history-timeline)

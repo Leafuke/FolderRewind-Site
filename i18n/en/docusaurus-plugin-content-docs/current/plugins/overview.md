@@ -34,7 +34,7 @@ An official save-enhancement plugin built for Minecraft.
 - Region-scoped backup support
 - Parameterized protocol v2 extensions through KnotLink Server v3
 
-👉 [Minecraft Guide](../guides/minecraft/overview) | [Download](/download)
+👉 [Minecraft Guide](/en/docs/guides/minecraft/overview) | [Download](/en/download)
 
 ## Install plugins
 
@@ -44,7 +44,7 @@ An official save-enhancement plugin built for Minecraft.
 
 ## Become a plugin developer
 
-If you want to build plugins for FolderRewind, start with [Plugin Development Quick Start](./developing/quick-start).
+If you want to build plugins for FolderRewind, start with [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start).
 
 FolderRewind provides these extension interfaces:
 
@@ -61,8 +61,8 @@ FolderRewind provides these extension interfaces:
 
 ## Related links
 
-- [Plugin Development Quick Start](./developing/quick-start)
-- [Install and Manage Plugins](./using-plugins)
-- [KnotLink Protocol and Integration](./knotlink)
-- [Plugin API Reference](./developing/plugin-api)
-- [Minecraft Guide](../guides/minecraft/overview)
+- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
+- [Install and Manage Plugins](/en/docs/plugins/using-plugins)
+- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [Minecraft Guide](/en/docs/guides/minecraft/overview)

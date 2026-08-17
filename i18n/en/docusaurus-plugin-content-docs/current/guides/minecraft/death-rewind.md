@@ -103,10 +103,10 @@ If the first periodic checkpoint has not completed and FolderRewind has no archi
 
 ## Related documentation
 
-- [Minecraft Guide Overview](./overview)
-- [MineBackup Integration Mod](./minebackup-mod)
-- [MineBackupPlugin (Spigot/Paper)](./minebackup-plugin)
-- [Just Enough Accidents](./just-enough-accidents)
-- [Hot Restore Mechanism](./hot-restore)
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
+- [MineBackup Integration Mod](/en/docs/guides/minecraft/minebackup-mod)
+- [MineBackupPlugin (Spigot/Paper)](/en/docs/guides/minecraft/minebackup-plugin)
+- [Just Enough Accidents](/en/docs/guides/minecraft/just-enough-accidents)
+- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
 
 Run a full “create checkpoint → die → rewind → rejoin” drill in a test world before relying on the extension.

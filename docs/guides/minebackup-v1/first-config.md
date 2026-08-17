@@ -94,4 +94,4 @@ MineBackup 会按世界建立归档子目录，并在备份根目录的 `_metada
 - `backupPath` 可写且与源目录规划合理。
 - 7-Zip 探测成功。
 - 保存配置后重启程序，配置仍然存在。
-- 下一步可以执行[首次备份](./first-backup)。
+- 下一步可以执行[首次备份](/docs/guides/minebackup-v1/first-backup)。

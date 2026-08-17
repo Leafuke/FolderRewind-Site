@@ -217,6 +217,6 @@ Remove-Item -Path "./staging" -Recurse -Force
 
 ## 下一步
 
-- [实战教程：构建游戏存档备份插件](./tutorial) — 跟着做一个完整插件
-- [Plugin API 参考](./plugin-api) — 接口全量说明
+- [实战教程：构建游戏存档备份插件](/docs/plugins/developing/tutorial) — 跟着做一个完整插件
+- [Plugin API 参考](/docs/plugins/developing/plugin-api) — 接口全量说明
 - [MineRewind 源码](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft) — 官方插件参考实现

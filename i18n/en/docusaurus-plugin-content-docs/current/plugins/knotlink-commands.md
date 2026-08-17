@@ -176,6 +176,6 @@ Additional query/state signals include `app_startup`, `status`, `list_configs`, 
 
 ## Related links
 
-- [KnotLink Protocol and Integration](./knotlink)
-- [KnotLink Command API](./developing/knotlink-api)
-- [Backup Modes and One-Shot Parameters](../guides/backup-modes)
+- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
+- [Backup Modes and One-Shot Parameters](/en/docs/guides/backup-modes)

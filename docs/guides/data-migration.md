@@ -67,5 +67,5 @@ FolderRewind 支持在设置页导入导出两类数据：
 
 ## 相关链接
 
-- [加密备份](./encryption)
-- [历史时间轴](./history-timeline)
+- [加密备份](/docs/guides/encryption)
+- [历史时间轴](/docs/guides/history-timeline)

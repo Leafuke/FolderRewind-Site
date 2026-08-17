@@ -122,6 +122,6 @@ OK:Hot restore triggered for 'WorldName' with backup 'backup_2026-02-28_18-30-01
 
 ## Related links
 
-- [KnotLink and Integration Mod](./knotlink-mod)
-- [Troubleshooting](./troubleshooting)
-- [First Restore](../../getting-started/first-restore)
+- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
+- [Troubleshooting](/en/docs/guides/minecraft/troubleshooting)
+- [First Restore](/en/docs/getting-started/first-restore)

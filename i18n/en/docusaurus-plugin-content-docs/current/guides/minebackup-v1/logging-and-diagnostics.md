@@ -32,7 +32,7 @@ Changing the level in settings rebuilds the logging backend immediately and does
 
 ## Log locations
 
-The log root follows the [profile](./data-and-migration):
+The log root follows the [profile](/en/docs/guides/minebackup-v1/data-and-migration):
 
 | Platform | Log directory |
 | --- | --- |
@@ -74,4 +74,4 @@ Copies left in an installation directory or old profile are neither migrated nor
 5. For KnotLink or cloud issues, record event IDs, `request_id`, endpoint/remote name, and service version without sharing credentials.
 6. Export diagnostics, inspect the redaction result, and provide it with the smallest reproducible procedure and relevant time window.
 
-Related pages: [Troubleshooting](./troubleshooting), [Profiles and migration](./data-and-migration), [KnotLink v2 integration](./knotlink-integration), and [Cloud archive](./cloud-archive).
+Related pages: [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting), [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration), [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration), and [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive).

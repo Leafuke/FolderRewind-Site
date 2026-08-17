@@ -144,7 +144,7 @@ bool ShouldAugmentAfterSettingsChange(
 
 ## KnotLink 与快捷键
 
-- `IFolderRewindParameterizedKnotLinkCommandHandler`：实现 `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`，参见 [KnotLink Command API](./knotlink-api)。
+- `IFolderRewindParameterizedKnotLinkCommandHandler`：实现 `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`，参见 [KnotLink Command API](/docs/plugins/developing/knotlink-api)。
 - `IFolderRewindKnotLinkCapabilityProvider`：实现 `GetKnotLinkCapabilities()`，发布运行时可发现的命令和信号。
 - `IFolderRewindHotkeyProvider`：实现 `GetHotkeyDefinitions()` 和 `OnHotkeyInvokedAsync(...)`，注册全局或应用内快捷键。
 
@@ -178,8 +178,8 @@ Task<PluginRestoreResult> PerformRestoreAsync(
 
 ## 相关链接
 
-- [插件开发快速上手](./quick-start)
-- [实战教程](./tutorial)
-- [KnotLink Command API](./knotlink-api)
-- [插件打包与发布](./packaging)
-- [项目架构：插件体系](../../architecture/plugin-system)
+- [插件开发快速上手](/docs/plugins/developing/quick-start)
+- [实战教程](/docs/plugins/developing/tutorial)
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
+- [插件打包与发布](/docs/plugins/developing/packaging)
+- [项目架构：插件体系](/docs/architecture/plugin-system)

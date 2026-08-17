@@ -87,8 +87,8 @@ FolderRewind 1.8 可以只备份 Minecraft 存档中指定范围内的区域文�
 
 ## 相关链接
 
-- [Minecraft 专题总览](./overview)
-- [首次备份](../../getting-started/first-backup)
-- [首次还原](../../getting-started/first-restore)
-- [过滤器](../filters)
-- [Minecraft 热还原](./hot-restore)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [首次备份](/docs/getting-started/first-backup)
+- [首次还原](/docs/getting-started/first-restore)
+- [过滤器](/docs/guides/filters)
+- [Minecraft 热还原](/docs/guides/minecraft/hot-restore)

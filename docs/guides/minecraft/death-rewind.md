@@ -103,10 +103,10 @@ Death Rewind 检查点、JEA 快照和普通 MineBackup/FolderRewind 备份共�
 
 ## 相关文档
 
-- [Minecraft 专题总览](./overview)
-- [MineBackup 联动模组](./minebackup-mod)
-- [MineBackupPlugin（Spigot/Paper）](./minebackup-plugin)
-- [Just Enough Accidents（险兆备份）](./just-enough-accidents)
-- [热还原机制详解](./hot-restore)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [MineBackup 联动模组](/docs/guides/minecraft/minebackup-mod)
+- [MineBackupPlugin（Spigot/Paper）](/docs/guides/minecraft/minebackup-plugin)
+- [Just Enough Accidents（险兆备份）](/docs/guides/minecraft/just-enough-accidents)
+- [热还原机制详解](/docs/guides/minecraft/hot-restore)
 
 第一次使用时，请先在测试世界演练一次“创建检查点—死亡—回溯—重新进入”的完整流程。

@@ -52,7 +52,7 @@ Typical choices are:
 - Repair a few files: `Custom`.
 - Roll a Smart chain back to a selected point: consider `Reverse` only after confirming chain integrity.
 
-See [Your first restore](./first-restore) for the procedure. Perform the first drill in a test world with pre-restore backup enabled.
+See [Your first restore](/en/docs/guides/minebackup-v1/first-restore) for the procedure. Perform the first drill in a test world with pre-restore backup enabled.
 
 ## Cloud history
 

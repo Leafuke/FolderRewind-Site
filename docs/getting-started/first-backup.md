@@ -10,7 +10,7 @@ description: 创建配置并完成第一次备份
 
 ## 开始前
 
-- 你已经完成 [安装](./installation)
+- 你已经完成 [安装](/docs/getting-started/installation)
 - 你知道备份要保存到哪个目标目录
 - 你愿意先用测试数据跑通一次流程
 
@@ -79,7 +79,7 @@ description: 创建配置并完成第一次备份
 2. 点击 **历史版本** 按钮，进入历史时间轴
 3. 确认最新的备份记录已出现，且状态为蓝色（正常）
 
-详细操作见 [首次还原](./first-restore)。
+详细操作见 [首次还原](/docs/getting-started/first-restore)。
 
 ### 方案 B：运行核心功能自动校验
 
@@ -98,12 +98,12 @@ description: 创建配置并完成第一次备份
 如果这套配置已经比较成熟：
 
 - 在配置设置中点击 **保存为模板**，供其他设备或项目复用
-- 详细内容见 [模板：创建与使用](../guides/templates) 和 [模板：分享与导入](../guides/template-sharing)
+- 详细内容见 [模板：创建与使用](/docs/guides/templates) 和 [模板：分享与导入](/docs/guides/template-sharing)
 
 ## 下一步
 
-- [首次还原](./first-restore)
-- [备份模式与性能预设](../guides/backup-modes)
-- [Minecraft 指定区域备份](../guides/minecraft/selected-region-backup)
-- [自动化任务](../guides/automation)
-- [模板：创建与使用](../guides/templates)
+- [首次还原](/docs/getting-started/first-restore)
+- [备份模式与性能预设](/docs/guides/backup-modes)
+- [Minecraft 指定区域备份](/docs/guides/minecraft/selected-region-backup)
+- [自动化任务](/docs/guides/automation)
+- [模板：创建与使用](/docs/guides/templates)

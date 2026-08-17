@@ -122,13 +122,13 @@ Install it from **Settings → Plugin Management → Local Install**, restart if
 
 ## KnotLink and region examples
 
-- For parameterized commands, follow [KnotLink Command API](./knotlink-api) and declare runtime capabilities.
-- For a custom backup scope, follow [Backup Scope API](./plugin-api) and fail closed on invalid parameters.
+- For parameterized commands, follow [KnotLink Command API](/en/docs/plugins/developing/knotlink-api) and declare runtime capabilities.
+- For a custom backup scope, follow [Backup Scope API](/en/docs/plugins/developing/plugin-api) and fail closed on invalid parameters.
 - For a complete reference implementation, see [MineRewind source](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft).
 
 ## Next steps
 
-- [Plugin API Reference](./plugin-api)
-- [KnotLink Command API](./knotlink-api)
-- [Packaging and Publishing](./packaging)
-- [Tutorial: Build a Game Save Backup Plugin](./tutorial)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
+- [Packaging and Publishing](/en/docs/plugins/developing/packaging)
+- [Tutorial: Build a Game Save Backup Plugin](/en/docs/plugins/developing/tutorial)

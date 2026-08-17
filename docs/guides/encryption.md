@@ -60,6 +60,6 @@ FolderRewind 通过 **Encrypted 配置类型**提供加密备份能力。创建�
 
 ## 相关链接
 
-- [首次还原](../getting-started/first-restore)
-- [自动化任务](./automation)
-- [数据迁移](./data-migration)
+- [首次还原](/docs/getting-started/first-restore)
+- [自动化任务](/docs/guides/automation)
+- [数据迁移](/docs/guides/data-migration)

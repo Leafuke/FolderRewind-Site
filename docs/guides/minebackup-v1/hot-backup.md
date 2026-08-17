@@ -45,7 +45,7 @@ description: MineBackup 1.16.1 的运行中世界协同、快照、热键和安�
 
 - 必须存在可识别的活动世界和可用归档。
 - MineBackup-Mod 至少需要 `3.0.0`；旧版本不能参与完整热流程。
-- KnotLinkService 需要使用 MineBackup 支持的版本，服务端和端口边界见 [KnotLink v2 联动](./knotlink-integration)。
+- KnotLinkService 需要使用 MineBackup 支持的版本，服务端和端口边界见 [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration)。
 - 运行中的外部自定义归档不能自动视为安全热还原输入。
 - 热还原失败时，先确认世界是否已经退出、文件是否释放，再决定是否改用普通还原。
 

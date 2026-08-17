@@ -33,7 +33,7 @@ An invalid regular expression is ignored for compatibility and recorded; saving 
 
 The restore whitelist only affects the deletion stage before `Clean` restore: matching files and directories are kept instead of being removed because they are not present in the selected archive.
 
-It does not mean “extract only these archive entries”, and it does not change Overwrite or Custom extraction lists. To restore only selected contents, use the `Custom` method described in [Your first restore](./first-restore).
+It does not mean “extract only these archive entries”, and it does not change Overwrite or Custom extraction lists. To restore only selected contents, use the `Custom` method described in [Your first restore](/en/docs/guides/minebackup-v1/first-restore).
 
 Typical uses include:
 

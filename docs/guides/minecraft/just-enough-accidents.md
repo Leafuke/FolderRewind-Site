@@ -133,10 +133,10 @@ JEA 0.2.0 当前不包含：
 
 ## 相关文档
 
-- [Minecraft 专题总览](./overview)
-- [MineBackup 联动模组](./minebackup-mod)
-- [MineBackupPlugin（Spigot/Paper）](./minebackup-plugin)
-- [Death Rewind（死亡回溯）](./death-rewind)
-- [FolderRewind 过滤器与备份策略](../filters)
+- [Minecraft 专题总览](/docs/guides/minecraft/overview)
+- [MineBackup 联动模组](/docs/guides/minecraft/minebackup-mod)
+- [MineBackupPlugin（Spigot/Paper）](/docs/guides/minecraft/minebackup-plugin)
+- [Death Rewind（死亡回溯）](/docs/guides/minecraft/death-rewind)
+- [FolderRewind 过滤器与备份策略](/docs/guides/filters)
 
 启用前请先在测试世界观察一次触发、归档和手动还原流程，确认检测阈值符合你的整合包玩法。

@@ -94,4 +94,4 @@ A configuration imported from cloud `portable-config.json` may be **Pending Loca
 - `backupPath` is writable and sensibly separated from the source.
 - The compression tool resolves successfully.
 - The configuration survives an application restart.
-- You can proceed to [Your first backup](./first-backup).
+- You can proceed to [Your first backup](/en/docs/guides/minebackup-v1/first-backup).

@@ -76,10 +76,10 @@ graph TB
 
 | 文档 | 内容 |
 |---|---|
-| [目录结构](./directory-structure.md) | 项目文件树与各目录职责 |
-| [架构模式](./patterns.md) | MVVM、静态服务、Shell 导航等核心设计模式 |
-| [命名空间参考](./namespaces.md) | 命名空间划分与关键类速查 |
-| [服务层概览](./services.md) | 40+ 服务按功能域分组说明 |
-| [插件体系](./plugin-system.md) | 插件接口、生命周期与 KnotLink 协议 |
-| [数据模型](./data-models.md) | AppConfig 层级结构与序列化策略 |
-| [视图层与导航](./views.md) | 页面列表、Dialog 与导航流程 |
+| [目录结构](/docs/architecture/directory-structure) | 项目文件树与各目录职责 |
+| [架构模式](/docs/architecture/patterns) | MVVM、静态服务、Shell 导航等核心设计模式 |
+| [命名空间参考](/docs/architecture/namespaces) | 命名空间划分与关键类速查 |
+| [服务层概览](/docs/architecture/services) | 40+ 服务按功能域分组说明 |
+| [插件体系](/docs/architecture/plugin-system) | 插件接口、生命周期与 KnotLink 协议 |
+| [数据模型](/docs/architecture/data-models) | AppConfig 层级结构与序列化策略 |
+| [视图层与导航](/docs/architecture/views) | 页面列表、Dialog 与导航流程 |

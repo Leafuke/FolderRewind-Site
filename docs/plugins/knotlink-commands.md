@@ -176,6 +176,6 @@ cmd=MARK_IMPORTANT;config_id=demo;folder=0;file=backup.7z;important=true;from=pa
 
 ## 相关链接
 
-- [KnotLink 协议与联动](./knotlink)
-- [KnotLink Command API](./developing/knotlink-api)
-- [备份模式与一次性参数](../guides/backup-modes)
+- [KnotLink 协议与联动](/docs/plugins/knotlink)
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
+- [备份模式与一次性参数](/docs/guides/backup-modes)

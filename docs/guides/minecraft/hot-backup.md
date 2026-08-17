@@ -105,6 +105,6 @@ ERROR:No active world.
 
 ## 相关链接
 
-- [Minecraft 快速开始](./quick-start)
-- [热还原机制详解](./hot-restore)
-- [KnotLink 与联动模组](./knotlink-mod)
+- [Minecraft 快速开始](/docs/guides/minecraft/quick-start)
+- [热还原机制详解](/docs/guides/minecraft/hot-restore)
+- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)

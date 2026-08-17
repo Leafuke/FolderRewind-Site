@@ -12,7 +12,7 @@ The goal of this page is not merely to open the program. It is to make the first
 
 MineBackup 1.16.1 provides Windows x64, Linux x86_64, and macOS arm64 distributions. Download the asset for your platform from [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) and, when available, verify the SHA-256 checksum published with the release.
 
-See [Platform support and installation boundaries](./platform-support) for platform ranges and desktop capabilities. The macOS DMG is not Apple-notarized; the first launch may require **Open Anyway** in Privacy & Security.
+See [Platform support and installation boundaries](/en/docs/guides/minebackup-v1/platform-support) for platform ranges and desktop capabilities. The macOS DMG is not Apple-notarized; the first launch may require **Open Anyway** in Privacy & Security.
 
 ## Compression tool
 
@@ -24,7 +24,7 @@ MineBackup uses 7-Zip as its archive engine. The current resolver generally chec
 
 If the path shown in Settings is unavailable, select the compression executable again and save. Do not assume that opening Settings proves that a backup can run; complete a test backup at minimum.
 
-Cloud archive requires a separate rclone setup. rclone is not distributed with MineBackup; after confirmation, the application can download, verify, and install a managed version. See [Cloud archive](./cloud-archive).
+Cloud archive requires a separate rclone setup. rclone is not distributed with MineBackup; after confirmation, the application can download, verify, and install a managed version. See [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive).
 
 ## What first launch does
 
@@ -35,7 +35,7 @@ The application resolves the profile before loading configuration and history:
 - Without an explicit option, the application uses platform-default configuration, data, state, cache, runtime, tools, and log roots.
 - If old locations or 1.15 data are discovered, MineBackup asks for confirmation before migration; source files are not silently deleted.
 
-These rules replace the old assumption that fixed data files always live beside the EXE. See [Profiles, portable mode, and 1.15 migration](./data-and-migration).
+These rules replace the old assumption that fixed data files always live beside the EXE. See [Profiles, portable mode, and 1.15 migration](/en/docs/guides/minebackup-v1/data-and-migration).
 
 ## Plan the directories
 

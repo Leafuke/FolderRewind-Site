@@ -18,7 +18,7 @@ In this tutorial, we will build a plugin called **GameRewind** from scratch. It 
 After completion, you will have mastered all core capabilities of FolderRewind plugin development.
 
 :::info Prerequisites
-- Completed the environment setup in [Plugin Development Quick Start](./quick-start)
+- Completed the environment setup in [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
 - Familiar with basic C# syntax
 :::
 
@@ -546,7 +546,7 @@ public sealed class GameRewindPlugin :
 
 Returning `NotHandled` lets another plugin or the Host handle the request. Long tasks should return an accepted response quickly, then report progress and completion through lifecycle signals carrying the same `request_id`. Percent-encode every dynamic field.
 
-MineRewind uses the same mechanism to extend `cmd=BACKUP;current_save=true`, `cmd=LIST_BACKUPS;current_save=true`, and `cmd=RESTORE;current_save=true`. See [KnotLink Command Reference](../knotlink-commands) for fields and lifecycle details.
+MineRewind uses the same mechanism to extend `cmd=BACKUP;current_save=true`, `cmd=LIST_BACKUPS;current_save=true`, and `cmd=RESTORE;current_save=true`. See [KnotLink Command Reference](/en/docs/plugins/knotlink-commands) for fields and lifecycle details.
 
 ## 7. Packaging & Publishing
 
@@ -595,7 +595,7 @@ The code snippets from each section above combine into a complete, runnable plug
 
 ## Next Steps
 
-- [Plugin API Reference](./plugin-api) -- Full interface documentation and advanced usage
-- [Hotkey API](./hotkey-api) -- Advanced hotkey topics
-- [KnotLink Command API](./knotlink-api) -- Advanced remote command topics
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api) -- Full interface documentation and advanced usage
+- [Hotkey API](/en/docs/plugins/developing/hotkey-api) -- Advanced hotkey topics
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api) -- Advanced remote command topics
 - [MineRewind source](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft) -- A more complex official reference implementation

@@ -18,7 +18,7 @@ Windows 10 1809 (17763) and above, including Windows 11. Supports x64 and ARM64 
 - **MSI:** run the installer directly with no Developer Mode requirement; this distribution format is still under testing.
 - **MSIX (`.7z`):** extract and run `install.ps1`; requires Developer Mode and is closest to the Store build.
 
-Do not install or run the three channels side by side. MSI and MSIX/Store use separate data directories and do not migrate configs or plugins automatically. See [Installation Guide](./getting-started/installation).
+Do not install or run the three channels side by side. MSI and MSIX/Store use separate data directories and do not migrate configs or plugins automatically. See [Installation Guide](/en/docs/getting-started/installation).
 
 ### What should I watch out for when upgrading from an older version?
 
@@ -30,7 +30,7 @@ Recommended flow:
 2. Run several backup-and-restore rounds.
 3. Move production data only after the result matches your expectation.
 
-See [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade) for the complete checklist.
+See [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade) for the complete checklist.
 
 ### What should I do if the app won't launch after installation?
 
@@ -41,7 +41,7 @@ For other cases:
 1. Confirm your OS version meets minimum requirements.
 2. Reinstall the latest version without mixing channels.
 3. Check whether security software blocked the app.
-4. Follow [Startup recovery](./getting-started/v1-8-upgrade#if-v180-cannot-start).
+4. Follow [Startup recovery](/en/docs/getting-started/v1-8-upgrade#if-v180-cannot-start).
 5. Search or report in [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues).
 
 ## Backup
@@ -81,7 +81,7 @@ Note: history-page manual upload/download is available in rclone mode only.
 
 Start here:
 
-- [Cloud Archive Guide](./guides/cloud-archive)
+- [Cloud Archive Guide](/en/docs/guides/cloud-archive)
 
 ### Why did auto backup stop unexpectedly?
 
@@ -143,7 +143,7 @@ Yes. MineRewind is an official free open-source plugin.
 
 ### How can I develop my own plugin?
 
-See [Plugin Development Quick Start](/docs/plugins/developing/quick-start).
+See [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start).
 
 ## Feedback and community
 

@@ -48,7 +48,7 @@ KnotLinkService provides transport through Server v3, while FolderRewind uses st
 - IFolderRewindParameterizedKnotLinkCommandHandler runs plugin handlers before built-in commands.
 - IFolderRewindKnotLinkCapabilityProvider merges plugin commands and signals into GET_CAPABILITIES.
 
-The removed space-delimited commands and legacy handler do not coexist with the new API. See [KnotLink Command Reference](../plugins/knotlink-commands).
+The removed space-delimited commands and legacy handler do not coexist with the new API. See [KnotLink Command Reference](/en/docs/plugins/knotlink-commands).
 
 ## Layout and isolation
 
@@ -59,6 +59,6 @@ The removed space-delimited commands and legacy handler do not coexist with the 
 
 ## Related links
 
-- [Plugin API Reference](../plugins/developing/plugin-api)
-- [KnotLink Command API](../plugins/developing/knotlink-api)
-- [Plugin Development Quick Start](../plugins/developing/quick-start)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
+- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)

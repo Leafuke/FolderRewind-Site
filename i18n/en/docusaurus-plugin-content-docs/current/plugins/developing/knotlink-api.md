@@ -152,7 +152,7 @@ The plugin contributes these capabilities through `IFolderRewindKnotLinkCapabili
 
 ## Related links
 
-- [KnotLink Protocol and Integration](../knotlink)
-- [KnotLink Command Reference](../knotlink-commands)
-- [Plugin API Reference](./plugin-api)
-- [Minecraft and Integration Mod](../../guides/minecraft/knotlink-mod)
+- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
+- [KnotLink Command Reference](/en/docs/plugins/knotlink-commands)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [Minecraft and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)

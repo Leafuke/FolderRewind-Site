@@ -86,6 +86,6 @@ description: 如何在 FolderRewind 中安装、启用、升级和排查插件
 
 ## 相关链接
 
-- [插件系统概述](./overview)
-- [插件开发快速上手](./developing/quick-start)
-- [Minecraft 专题](../guides/minecraft/overview)
+- [插件系统概述](/docs/plugins/overview)
+- [插件开发快速上手](/docs/plugins/developing/quick-start)
+- [Minecraft 专题](/docs/guides/minecraft/overview)

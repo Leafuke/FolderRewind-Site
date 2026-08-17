@@ -86,5 +86,5 @@ v1.6.0 还支持从应用内直接把模板提交流程发往 GitHub。
 
 ## 相关链接
 
-- [模板：创建与使用](./templates)
-- [安装指南](../getting-started/installation)
+- [模板：创建与使用](/docs/guides/templates)
+- [安装指南](/docs/getting-started/installation)

@@ -42,7 +42,7 @@ Use [MineBackup-Mod releases](https://github.com/Leafuke/MineBackup/releases) or
 4. Put it in the client `mods` directory for singleplayer/LAN, or in the server `mods` directory for a modded dedicated server. Client installation depends on the features you need.
 5. Run the host and Minecraft together, then complete a test backup before relying on automation.
 
-For a Spigot/Paper server, use [MineBackupPlugin (Spigot/Paper Integration)](./minebackup-plugin) instead.
+For a Spigot/Paper server, use [MineBackupPlugin (Spigot/Paper Integration)](/en/docs/guides/minecraft/minebackup-plugin) instead.
 
 ## In-game commands
 
@@ -119,10 +119,10 @@ Unknown outcomes, disconnects, and timeouts keep the server offline rather than 
 
 ## Related documentation
 
-- [Minecraft Guide Overview](./overview)
-- [MineBackupPlugin (Spigot/Paper Integration)](./minebackup-plugin)
-- [Death Rewind](./death-rewind)
-- [Just Enough Accidents](./just-enough-accidents)
-- [KnotLink and Integration Mod](./knotlink-mod)
-- [Hot Backup Mechanism](./hot-backup)
-- [Hot Restore Mechanism](./hot-restore)
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
+- [MineBackupPlugin (Spigot/Paper Integration)](/en/docs/guides/minecraft/minebackup-plugin)
+- [Death Rewind](/en/docs/guides/minecraft/death-rewind)
+- [Just Enough Accidents](/en/docs/guides/minecraft/just-enough-accidents)
+- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
+- [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup)
+- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)

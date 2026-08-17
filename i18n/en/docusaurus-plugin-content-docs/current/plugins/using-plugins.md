@@ -49,6 +49,6 @@ This page is for everyday users who want stable plugin usage.
 
 ## Related links
 
-- [Plugin System Overview](./overview)
-- [Plugin Development Quick Start](./developing/quick-start)
-- [Minecraft Guide](../guides/minecraft/overview)
+- [Plugin System Overview](/en/docs/plugins/overview)
+- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
+- [Minecraft Guide](/en/docs/guides/minecraft/overview)

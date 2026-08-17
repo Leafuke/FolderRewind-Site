@@ -118,6 +118,6 @@ If step 3/4 fails, prioritize restore prerequisites and backup file existence.
 
 ## Related links
 
-- [Minecraft Guide Overview](./overview)
-- [KnotLink and Integration Mod](./knotlink-mod)
-- [Install and Manage Plugins](../../plugins/using-plugins)
+- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
+- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
+- [Install and Manage Plugins](/en/docs/plugins/using-plugins)

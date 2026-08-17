@@ -68,5 +68,5 @@ Release 的 tag 名称应以 `v` 开头，后跟语义化版本号。
 
 ## 相关链接
 
-- [打包与发布](./packaging)
-- [插件安装与管理](../using-plugins)
+- [打包与发布](/docs/plugins/developing/packaging)
+- [插件安装与管理](/docs/plugins/using-plugins)

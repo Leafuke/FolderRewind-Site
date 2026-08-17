@@ -13,7 +13,7 @@ English is a secondary language for this project — if you spot inaccuracies, c
 :::
 
 :::caution Upgrade recommendation
-If you are upgrading from an older version, read [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade) and run several backup-and-restore drills in a test directory before relying on the new version in production.
+If you are upgrading from an older version, read [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade) and run several backup-and-restore drills in a test directory before relying on the new version in production.
 :::
 
 ## What FolderRewind now helps with
@@ -34,7 +34,7 @@ FolderRewind can help you:
 
 ### Step 1: Install
 
-Install from Microsoft Store first, or see the [Installation Guide](./getting-started/installation) for side-loading.
+Install from Microsoft Store first, or see the [Installation Guide](/en/docs/getting-started/installation) for side-loading.
 
 > Do not install the Store build and the side-loaded offline build at the same time.
 
@@ -73,15 +73,15 @@ The FolderRewind 1.8 series brings backup control, migration, and remote integra
 - **KnotLink Server v3 and parameterized protocol v2**: let tools and plugins discover commands and coordinate backup workflows safely.
 - **Safer restore**: validate the backup first, then choose Clean or Overwrite according to normal or partial-backup rules without clearing unbacked data.
 
-Before upgrading an older release or switching install channels, read [v1.8 Upgrade and Startup Recovery](./getting-started/v1-8-upgrade).
-Minecraft users can start with the [Selected-region Backup Guide](./guides/minecraft/selected-region-backup) and [Folder Rename Guide](./guides/folder-management).
+Before upgrading an older release or switching install channels, read [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade).
+Minecraft users can start with the [Selected-region Backup Guide](/en/docs/guides/minecraft/selected-region-backup) and [Folder Rename Guide](/en/docs/guides/folder-management).
 
 ## Next steps
 
-- [Installation Guide](./getting-started/installation)
-- [First Backup](./getting-started/first-backup)
-- [First Restore](./getting-started/first-restore)
-- [Templates: Create and Use](./guides/templates)
-- [Templates: Share and Import](./guides/template-sharing)
-- [Automation](./guides/automation)
-- [Cloud Archive Guide](./guides/cloud-archive)
+- [Installation Guide](/en/docs/getting-started/installation)
+- [First Backup](/en/docs/getting-started/first-backup)
+- [First Restore](/en/docs/getting-started/first-restore)
+- [Templates: Create and Use](/en/docs/guides/templates)
+- [Templates: Share and Import](/en/docs/guides/template-sharing)
+- [Automation](/en/docs/guides/automation)
+- [Cloud Archive Guide](/en/docs/guides/cloud-archive)

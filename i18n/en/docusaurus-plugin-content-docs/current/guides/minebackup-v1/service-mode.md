@@ -8,7 +8,7 @@ description: Inspection and safe cleanup boundaries for the old Windows Service 
 
 MineBackup 1.16.1 **cannot install or start Windows Service Mode**. The current release keeps only a compatibility cleanup flow for inspecting and, when safe, removing a MineBackup Windows service left by an older release.
 
-This is not a new background execution mode, and it does not convert normal configurations or unified tasks into a service. For unattended work, use [Automation Tasks](./automation) or [Special Config](./special-mode) after a complete manual backup-and-restore drill.
+This is not a new background execution mode, and it does not convert normal configurations or unified tasks into a service. For unattended work, use [Automation Tasks](/en/docs/guides/minebackup-v1/automation) or [Special Config](/en/docs/guides/minebackup-v1/special-mode) after a complete manual backup-and-restore drill.
 
 ## What the current release supports
 
@@ -56,4 +56,4 @@ This option must be used by itself and performs the same ImagePath, resource, an
 - The service did not stop within 15 seconds: the cleanup code does not delete it; investigate the old environment and retry later.
 - The service was not found: the recorded name is not installed; MineBackup does not create a replacement service.
 
-After cleanup, read [Troubleshooting](./troubleshooting) and [Logging and diagnostics](./logging-and-diagnostics) to confirm that the application is using the normal GUI/task workflow. In 1.16.1 the boundary is “inspect and clean up a legacy service,” not “continue maintaining Service Mode.”
+After cleanup, read [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting) and [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics) to confirm that the application is using the normal GUI/task workflow. In 1.16.1 the boundary is “inspect and clean up a legacy service,” not “continue maintaining Service Mode.”

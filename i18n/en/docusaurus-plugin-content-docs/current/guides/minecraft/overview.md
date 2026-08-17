@@ -114,13 +114,13 @@ With `PreservePlayerData` enabled, the plugin can extract player data before res
 
 ## Next steps
 
-- New users: [Minecraft Quick Start](./quick-start).
-- Mod-loader integration: [MineBackup-Mod](./minebackup-mod).
-- Spigot/Paper integration: [MineBackupPlugin](./minebackup-plugin).
-- Death-screen rewind: [Death Rewind](./death-rewind).
-- Incident snapshots: [Just Enough Accidents](./just-enough-accidents).
-- Protect large worlds by range: [Selected-Region Backup](./selected-region-backup).
-- Backup details: [Hot Backup Mechanism](./hot-backup).
-- Restore details: [Hot Restore Mechanism](./hot-restore).
-- Integration protocol: [KnotLink and Integration Mod](./knotlink-mod).
-- Troubleshooting: [Troubleshooting](./troubleshooting).
+- New users: [Minecraft Quick Start](/en/docs/guides/minecraft/quick-start).
+- Mod-loader integration: [MineBackup-Mod](/en/docs/guides/minecraft/minebackup-mod).
+- Spigot/Paper integration: [MineBackupPlugin](/en/docs/guides/minecraft/minebackup-plugin).
+- Death-screen rewind: [Death Rewind](/en/docs/guides/minecraft/death-rewind).
+- Incident snapshots: [Just Enough Accidents](/en/docs/guides/minecraft/just-enough-accidents).
+- Protect large worlds by range: [Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup).
+- Backup details: [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup).
+- Restore details: [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore).
+- Integration protocol: [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod).
+- Troubleshooting: [Troubleshooting](/en/docs/guides/minecraft/troubleshooting).

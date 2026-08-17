@@ -58,4 +58,4 @@ Special Config 用于“启动后进入特殊模式，执行一组任务，并�
 - 任务提前退出：检查 `exitAfterExecution` 以及是否仍有周期任务线程。
 - 后台任务停不下来：先查看日志，再从 GUI 或任务协调器停止，不要强制删除临时文件。
 
-Special Config 稳定后，再考虑和[配置档、便携模式与迁移](./data-and-migration)或[云归档](./cloud-archive)组合。
+Special Config 稳定后，再考虑和[配置档、便携模式与迁移](/docs/guides/minebackup-v1/data-and-migration)或[云归档](/docs/guides/minebackup-v1/cloud-archive)组合。

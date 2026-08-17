@@ -80,13 +80,13 @@ MSI 不要求开发人员模式或手动导入证书。由于安装包尚未使�
 1. 完全退出 FolderRewind。
 2. 备份当前渠道的整个 `FolderRewind` 数据目录。
 3. 卸载旧渠道。
-4. 安装新渠道后，再按 [数据迁移指南](../guides/data-migration) 导入或复制经过确认的数据。
+4. 安装新渠道后，再按 [数据迁移指南](/docs/guides/data-migration) 导入或复制经过确认的数据。
 
 不要让两套安装共用同一个运行中的备份任务。
 
 ## 从旧版本升级
 
-升级 1.8 前请阅读 [1.8 升级与启动故障恢复](./v1-8-upgrade)。至少使用测试目录完成一次备份与还原，再把新版本用于重要数据。
+升级 1.8 前请阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)。至少使用测试目录完成一次备份与还原，再把新版本用于重要数据。
 
 如果 1.8.0 因旧语言配置无法启动，不要删除 `config.json`；升级到 1.8.1，或按恢复指南只修正 `GlobalSettings.Language`。
 
@@ -108,6 +108,6 @@ MSI 不要求开发人员模式或手动导入证书。由于安装包尚未使�
 
 ## 下一步
 
-- [1.8 升级与启动故障恢复](./v1-8-upgrade)
-- [首次备份](./first-backup)
-- [首次还原](./first-restore)
+- [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)
+- [首次备份](/docs/getting-started/first-backup)
+- [首次还原](/docs/getting-started/first-restore)

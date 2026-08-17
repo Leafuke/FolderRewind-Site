@@ -10,7 +10,7 @@ description: 按配置档、备份链、还原、自动化、联动与云归档�
 
 ## 最短排查路径
 
-1. 打开 [日志与诊断](./logging-and-diagnostics)，确认版本、平台、当前 profile root 和错误时间点。
+1. 打开 [日志与诊断](/docs/guides/minebackup-v1/logging-and-diagnostics)，确认版本、平台、当前 profile root 和错误时间点。
 2. 检查配置的世界路径、`backupPath`、`snapshotPath`、权限和磁盘空间。
 3. 用一个世界执行普通 Full 备份，再在测试副本上执行还原。
 4. 最后才叠加 Smart、过滤、自动任务、KnotLink 或云归档。
@@ -26,7 +26,7 @@ description: 按配置档、备份链、还原、自动化、联动与云归档�
 - 运行日志显示的 profile root 是否是期望目录；
 - 是否有另一个 MineBackup 实例持有同一配置档的锁。
 
-需要隔离实验时，使用一个新的绝对路径启动 `--data-dir`，不要先删除现有 profile。目录布局和默认位置见[配置档与迁移](./data-and-migration)。
+需要隔离实验时，使用一个新的绝对路径启动 `--data-dir`，不要先删除现有 profile。目录布局和默认位置见[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)。
 
 ## 2. 找不到 7-Zip 或备份立即失败
 
@@ -53,7 +53,7 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 - 是否手动移动、重命名或只删除了部分归档；
 - 是否刚完成 1.15 迁移、迁移状态为 `Degraded`/`Failed`，或达到了 Smart 链长度上限。
 
-元数据缺失、基线丢失、迁移降级或链不完整时，MineBackup 会安全地建立新的 Full，不要手工拼接旧记录。确认新 Full 成功后，再启用 Smart；`keepCount` 和 `maxSmartBackupsPerFull` 的作用见[备份模式](./backup-modes)。
+元数据缺失、基线丢失、迁移降级或链不完整时，MineBackup 会安全地建立新的 Full，不要手工拼接旧记录。确认新 Full 成功后，再启用 Smart；`keepCount` 和 `maxSmartBackupsPerFull` 的作用见[备份模式](/docs/guides/minebackup-v1/backup-modes)。
 
 ## 5. 还原后状态不符合预期
 
@@ -83,7 +83,7 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 
 确认 MineBackup-Mod 至少为 `3.0.0`，KnotLinkService 至少为 `3.2.0.0`，并按平台确认端点：Windows 默认回环端口为 6370（主服务）和 6378（相关服务）。请求必须使用严格的 `key=value;key2=value2` 格式；会改变状态的请求需要 `from` 和 `request_id`。
 
-不要继续尝试旧位置参数、旧别名或自由文本命令。先用“检查端点/版本”确认能力，再观察 `request_id` 对应的事件；协议开发细节请看[插件文档](../../plugins/knotlink-commands)，MineBackup 使用示例见 [KnotLink v2 联动](./knotlink-integration)。
+不要继续尝试旧位置参数、旧别名或自由文本命令。先用“检查端点/版本”确认能力，再观察 `request_id` 对应的事件；协议开发细节请看[插件文档](/docs/plugins/knotlink-commands)，MineBackup 使用示例见 [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration)。
 
 ## 8. 云归档或 rclone 失败
 
@@ -93,11 +93,11 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 - 云端导入的新配置会保持待绑定，必须重新绑定本机世界和备份路径。
 - 若单条历史显示云端副本不完整，先恢复元数据或重新上传对应备份包，再尝试从云端恢复。
 
-详细步骤见[云归档](./cloud-archive)。
+详细步骤见[云归档](/docs/guides/minebackup-v1/cloud-archive)。
 
 ## 9. 1.15 迁移显示 Pending、Degraded 或 Failed
 
-不要删除旧配置或历史来“跳过”迁移。打开迁移摘要和[配置档与迁移](./data-and-migration)：
+不要删除旧配置或历史来“跳过”迁移。打开迁移摘要和[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)：
 
 - `Pending` 通常表示配置身份事务尚未完成，依赖的历史、世界或云写入被门禁保护。
 - `Degraded` 表示可识别数据已迁移但无法完整重建；相关世界下一次备份会建立安全 Full。
@@ -107,7 +107,7 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 
 ## 10. 旧 Windows 服务问题
 
-1.16.1 不能安装或启动 Service Mode。只使用[旧 Windows 服务清理](./service-mode)页签检查并清理通过验证的旧服务；非 Windows 没有该清理能力。不要用 `--service` 或绕过验证的服务管理命令来修复当前版本。
+1.16.1 不能安装或启动 Service Mode。只使用[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)页签检查并清理通过验证的旧服务；非 Windows 没有该清理能力。不要用 `--service` 或绕过验证的服务管理命令来修复当前版本。
 
 ## 提交诊断信息前
 

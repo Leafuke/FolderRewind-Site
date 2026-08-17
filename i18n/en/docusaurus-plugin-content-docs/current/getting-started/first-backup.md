@@ -10,7 +10,7 @@ This guide walks through your first verifiable backup workflow.
 
 ## Before you start
 
-- You have completed [installation](./installation)
+- You have completed [installation](/en/docs/getting-started/installation)
 - You know where the backup destination should be
 - You are willing to test the workflow on non-critical data first
 
@@ -79,7 +79,7 @@ After the first backup, verify immediately:
 2. Click the **History** button to enter the history timeline
 3. Confirm that the latest backup record appears and its status is blue (normal)
 
-See [First Restore](./first-restore) for detailed steps.
+See [First Restore](/en/docs/getting-started/first-restore) for detailed steps.
 
 ### Option B: Run automatic core validation
 
@@ -98,12 +98,12 @@ This is recommended for a general verification before enabling automatic backups
 If this config becomes stable:
 
 - Click **Save as Template** in config settings for reuse on other devices or projects
-- See [Templates: Create and Use](../guides/templates) and [Templates: Share and Import](../guides/template-sharing)
+- See [Templates: Create and Use](/en/docs/guides/templates) and [Templates: Share and Import](/en/docs/guides/template-sharing)
 
 ## Next step
 
-- [First Restore](./first-restore)
-- [Backup Modes and Performance Presets](../guides/backup-modes)
-- [Minecraft Selected-Region Backup](../guides/minecraft/selected-region-backup)
-- [Automation](../guides/automation)
-- [Templates: Create and Use](../guides/templates)
+- [First Restore](/en/docs/getting-started/first-restore)
+- [Backup Modes and Performance Presets](/en/docs/guides/backup-modes)
+- [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup)
+- [Automation](/en/docs/guides/automation)
+- [Templates: Create and Use](/en/docs/guides/templates)

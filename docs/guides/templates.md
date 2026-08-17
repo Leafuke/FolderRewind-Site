@@ -113,6 +113,6 @@ v1.6.0 起，FolderRewind 支持把现有配置保存为模板，并在之后反
 
 ## 相关链接
 
-- [模板：分享与导入](./template-sharing)
-- [自动化任务](./automation)
-- [过滤器](./filters)
+- [模板：分享与导入](/docs/guides/template-sharing)
+- [自动化任务](/docs/guides/automation)
+- [过滤器](/docs/guides/filters)

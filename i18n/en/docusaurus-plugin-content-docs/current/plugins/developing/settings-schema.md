@@ -29,5 +29,5 @@ MineRewind uses two boolean settings:
 
 ## Related links
 
-- [Plugin API Reference](./plugin-api)
-- [Plugin Development Quick Start](./quick-start)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)

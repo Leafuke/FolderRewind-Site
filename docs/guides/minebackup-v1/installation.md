@@ -12,7 +12,7 @@ description: MineBackup 1.16.1 的安装、平台依赖、配置档和首次启�
 
 MineBackup 1.16.1 提供 Windows x64、Linux x86_64 和 macOS arm64 分发形式。请从 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 下载与平台匹配的资产，并优先核对发布页提供的 SHA-256 校验值。
 
-平台版本和桌面能力见[平台支持与安装边界](./platform-support)。macOS DMG 未进行 Apple 公证，第一次启动可能需要在“隐私与安全性”中选择“仍要打开”。
+平台版本和桌面能力见[平台支持与安装边界](/docs/guides/minebackup-v1/platform-support)。macOS DMG 未进行 Apple 公证，第一次启动可能需要在“隐私与安全性”中选择“仍要打开”。
 
 ## 压缩工具
 
@@ -24,7 +24,7 @@ MineBackup 把 7-Zip 作为备份引擎使用。当前版本通常会按以下�
 
 如果设置页显示的路径不可用，请重新选择压缩程序并保存。不要只根据“设置可以打开”判断备份一定能成功；至少应执行一次测试备份。
 
-云归档还需要单独配置 rclone。rclone 不随 MineBackup 分发，可在用户确认后由程序下载、校验并安装受管理版本，详见[云归档](./cloud-archive)。
+云归档还需要单独配置 rclone。rclone 不随 MineBackup 分发，可在用户确认后由程序下载、校验并安装受管理版本，详见[云归档](/docs/guides/minebackup-v1/cloud-archive)。
 
 ## 首次启动会做什么
 
@@ -35,7 +35,7 @@ MineBackup 把 7-Zip 作为备份引擎使用。当前版本通常会按以下�
 - 没有显式选项时，程序使用系统默认的配置、数据、状态、缓存、运行时、工具和日志目录。
 - 如果发现旧版位置或 1.15 数据，程序会先让用户确认，再执行迁移；源文件不会被静默删除。
 
-这些位置不是 EXE 同级的固定数据文件。完整目录规则见[配置档、便携模式与 1.15 迁移](./data-and-migration)。
+这些位置不是 EXE 同级的固定数据文件。完整目录规则见[配置档、便携模式与 1.15 迁移](/docs/guides/minebackup-v1/data-and-migration)。
 
 ## 安装前的目录规划
 

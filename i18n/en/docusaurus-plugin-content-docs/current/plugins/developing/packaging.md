@@ -37,5 +37,5 @@ MyPlugin.zip
 
 ## Related links
 
-- [Install and Manage Plugins](../using-plugins)
-- [Plugin Auto Update](./auto-update)
+- [Install and Manage Plugins](/en/docs/plugins/using-plugins)
+- [Plugin Auto Update](/en/docs/plugins/developing/auto-update)

@@ -42,26 +42,26 @@ If you plan to migrate, preserve the MineBackup configuration and archives first
 
 ## Recommended reading order
 
-1. [Platform support and installation boundaries](./platform-support)
-2. [Installation and setup](./installation)
-3. [Creating your first configuration](./first-config)
-4. [Your first backup](./first-backup)
-5. [Your first restore](./first-restore)
-6. [Troubleshooting](./troubleshooting)
+1. [Platform support and installation boundaries](/en/docs/guides/minebackup-v1/platform-support)
+2. [Installation and setup](/en/docs/guides/minebackup-v1/installation)
+3. [Creating your first configuration](/en/docs/guides/minebackup-v1/first-config)
+4. [Your first backup](/en/docs/guides/minebackup-v1/first-backup)
+5. [Your first restore](/en/docs/guides/minebackup-v1/first-restore)
+6. [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting)
 
 ## Advanced topics
 
-- [Backup modes, chain integrity, and safe deletion](./backup-modes)
-- [History and restore strategy](./history-and-restore)
-- [Filters](./filters)
-- [Automation tasks](./automation)
-- [Special Config](./special-mode)
-- [Hot backup and snapshots](./hot-backup)
-- [KnotLink v2 integration](./knotlink-integration)
-- [Cloud archive](./cloud-archive)
-- [Profiles, portable mode, and 1.15 migration](./data-and-migration)
-- [Logging and diagnostics](./logging-and-diagnostics)
-- [Legacy Windows service cleanup](./service-mode)
+- [Backup modes, chain integrity, and safe deletion](/en/docs/guides/minebackup-v1/backup-modes)
+- [History and restore strategy](/en/docs/guides/minebackup-v1/history-and-restore)
+- [Filters](/en/docs/guides/minebackup-v1/filters)
+- [Automation tasks](/en/docs/guides/minebackup-v1/automation)
+- [Special Config](/en/docs/guides/minebackup-v1/special-mode)
+- [Hot backup and snapshots](/en/docs/guides/minebackup-v1/hot-backup)
+- [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration)
+- [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive)
+- [Profiles, portable mode, and 1.15 migration](/en/docs/guides/minebackup-v1/data-and-migration)
+- [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics)
+- [Legacy Windows service cleanup](/en/docs/guides/minebackup-v1/service-mode)
 
 ## Shortest path to a verified workflow
 

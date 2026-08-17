@@ -124,6 +124,6 @@ v1.4.2 adds `MARK_IMPORTANT` for marking/unmarking important backups:
 
 ## Related links
 
-- [History Timeline](./history-timeline)
-- [Backup Modes](./backup-modes)
-- [Data Migration](./data-migration)
+- [History Timeline](/en/docs/guides/history-timeline)
+- [Backup Modes](/en/docs/guides/backup-modes)
+- [Data Migration](/en/docs/guides/data-migration)

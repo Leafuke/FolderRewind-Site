@@ -42,26 +42,26 @@ MineBackup 的使用可以按三个层次理解：
 
 ## 推荐阅读顺序
 
-1. [平台支持与安装边界](./platform-support)
-2. [安装与运行前准备](./installation)
-3. [创建第一套配置](./first-config)
-4. [首次备份](./first-backup)
-5. [首次还原](./first-restore)
-6. [故障排查](./troubleshooting)
+1. [平台支持与安装边界](/docs/guides/minebackup-v1/platform-support)
+2. [安装与运行前准备](/docs/guides/minebackup-v1/installation)
+3. [创建第一套配置](/docs/guides/minebackup-v1/first-config)
+4. [首次备份](/docs/guides/minebackup-v1/first-backup)
+5. [首次还原](/docs/guides/minebackup-v1/first-restore)
+6. [故障排查](/docs/guides/minebackup-v1/troubleshooting)
 
 ## 进阶入口
 
-- [备份模式、链完整性与安全删除](./backup-modes)
-- [历史记录与还原策略](./history-and-restore)
-- [过滤规则](./filters)
-- [自动化任务](./automation)
-- [Special Config](./special-mode)
-- [热备份与快照机制](./hot-backup)
-- [KnotLink v2 联动](./knotlink-integration)
-- [云归档](./cloud-archive)
-- [配置档、便携模式与 1.15 迁移](./data-and-migration)
-- [日志与诊断](./logging-and-diagnostics)
-- [旧 Windows 服务清理](./service-mode)
+- [备份模式、链完整性与安全删除](/docs/guides/minebackup-v1/backup-modes)
+- [历史记录与还原策略](/docs/guides/minebackup-v1/history-and-restore)
+- [过滤规则](/docs/guides/minebackup-v1/filters)
+- [自动化任务](/docs/guides/minebackup-v1/automation)
+- [Special Config](/docs/guides/minebackup-v1/special-mode)
+- [热备份与快照机制](/docs/guides/minebackup-v1/hot-backup)
+- [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration)
+- [云归档](/docs/guides/minebackup-v1/cloud-archive)
+- [配置档、便携模式与 1.15 迁移](/docs/guides/minebackup-v1/data-and-migration)
+- [日志与诊断](/docs/guides/minebackup-v1/logging-and-diagnostics)
+- [旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)
 
 ## 最短成功路径
 

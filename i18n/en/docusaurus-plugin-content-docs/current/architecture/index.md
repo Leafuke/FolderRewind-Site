@@ -76,10 +76,10 @@ graph TB
 
 | Document | Content |
 |---|---|
-| [Directory Structure](./directory-structure.md) | Project file tree and directory responsibilities |
-| [Architecture Patterns](./patterns.md) | MVVM, static services, Shell navigation, and other core design patterns |
-| [Namespace Reference](./namespaces.md) | Namespace layout and key class quick reference |
-| [Service Layer Overview](./services.md) | 40+ services grouped by functional domain |
-| [Plugin System](./plugin-system.md) | Plugin interface, lifecycle, and KnotLink protocol |
-| [Data Models](./data-models.md) | AppConfig hierarchy and serialization strategy |
-| [Views & Navigation](./views.md) | Page list, dialogs, and navigation flow |
+| [Directory Structure](/en/docs/architecture/directory-structure) | Project file tree and directory responsibilities |
+| [Architecture Patterns](/en/docs/architecture/patterns) | MVVM, static services, Shell navigation, and other core design patterns |
+| [Namespace Reference](/en/docs/architecture/namespaces) | Namespace layout and key class quick reference |
+| [Service Layer Overview](/en/docs/architecture/services) | 40+ services grouped by functional domain |
+| [Plugin System](/en/docs/architecture/plugin-system) | Plugin interface, lifecycle, and KnotLink protocol |
+| [Data Models](/en/docs/architecture/data-models) | AppConfig hierarchy and serialization strategy |
+| [Views & Navigation](/en/docs/architecture/views) | Page list, dialogs, and navigation flow |

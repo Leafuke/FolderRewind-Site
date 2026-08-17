@@ -144,7 +144,7 @@ Return folders to suggest adding. The Host deduplicates, filters conflicts, save
 
 ## KnotLink and hotkeys
 
-- `IFolderRewindParameterizedKnotLinkCommandHandler` implements `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`; see [KnotLink Command API](./knotlink-api).
+- `IFolderRewindParameterizedKnotLinkCommandHandler` implements `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`; see [KnotLink Command API](/en/docs/plugins/developing/knotlink-api).
 - `IFolderRewindKnotLinkCapabilityProvider` implements `GetKnotLinkCapabilities()` and publishes discoverable commands and signals.
 - `IFolderRewindHotkeyProvider` implements `GetHotkeyDefinitions()` and `OnHotkeyInvokedAsync(...)` for global or in-app hotkeys.
 
@@ -178,8 +178,8 @@ Task<PluginRestoreResult> PerformRestoreAsync(
 
 ## Related links
 
-- [Plugin Development Quick Start](./quick-start)
-- [Tutorial](./tutorial)
-- [KnotLink Command API](./knotlink-api)
-- [Packaging and Publishing](./packaging)
-- [Architecture: Plugin System](../../architecture/plugin-system)
+- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
+- [Tutorial](/en/docs/plugins/developing/tutorial)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
+- [Packaging and Publishing](/en/docs/plugins/developing/packaging)
+- [Architecture: Plugin System](/en/docs/architecture/plugin-system)

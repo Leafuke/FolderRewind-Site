@@ -43,11 +43,11 @@ KnotLink 联动的核心协议跨平台一致，但服务发现和安装方式�
 - Linux 通过 dpkg 信息发现服务，服务由 systemd 管理。
 - macOS 通过 Installer receipt 发现服务，服务由 launchd 管理。
 
-MineBackup 可以在向导或设置页下载并校验官方服务包，然后交给系统安装器；剩余安装步骤仍由用户完成。联动模组最低版本和热流程见 [KnotLink v2 联动](./knotlink-integration)。
+MineBackup 可以在向导或设置页下载并校验官方服务包，然后交给系统安装器；剩余安装步骤仍由用户完成。联动模组最低版本和热流程见 [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration)。
 
 ## Windows Service Mode 的边界
 
-1.16 不再安装或启动 Windows Service Mode。Windows 设置页只保留旧服务检查和安全清理入口；Linux 与 macOS 不提供该清理能力。详见[旧 Windows 服务清理](./service-mode)。
+1.16 不再安装或启动 Windows Service Mode。Windows 设置页只保留旧服务检查和安全清理入口；Linux 与 macOS 不提供该清理能力。详见[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。
 
 ## 安装后的最小验证
 

@@ -13,6 +13,7 @@ const config: Config = {
 
   url: 'https://folderrewind.top',
   baseUrl: '/',
+  trailingSlash: true,
 
   organizationName: 'Leafuke',
   projectName: 'FolderRewind-Site',
@@ -71,9 +72,13 @@ const config: Config = {
             '/search',
             '/en/search',
             '/blog/authors',
+            '/blog/authors/',
             '/en/blog/authors',
+            '/en/blog/authors/',
             '/blog/archive',
+            '/blog/archive/',
             '/en/blog/archive',
+            '/en/blog/archive/',
             '/blog/tags/**',
             '/en/blog/tags/**',
           ],

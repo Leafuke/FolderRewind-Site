@@ -32,7 +32,7 @@ Custom entries are comma-separated. To extract an entire directory, use the `*` 
 
 When `backupBefore` is enabled, MineBackup creates a safety backup of the current destination before applying the selected archive. Keep it enabled for production worlds, especially before Clean, Reverse, or custom restores.
 
-If the world is still occupied, an ordinary restore may be blocked. Do not force-terminate the game merely to release files. Save and exit normally, or follow the coordinated flow in [Hot backup and snapshots](./hot-backup) and [KnotLink v2 integration](./knotlink-integration).
+If the world is still occupied, an ordinary restore may be blocked. Do not force-terminate the game merely to release files. Save and exit normally, or follow the coordinated flow in [Hot backup and snapshots](/en/docs/guides/minebackup-v1/hot-backup) and [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration).
 
 ## Partial archive safety
 

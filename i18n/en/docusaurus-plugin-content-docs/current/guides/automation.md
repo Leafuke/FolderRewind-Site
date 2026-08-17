@@ -167,6 +167,6 @@ Automation creates many backups. Configure retention in backup policy:
 
 ## Related links
 
-- [Backup Modes](./backup-modes)
-- [Cloud Archive Guide](./cloud-archive)
-- [Minecraft Guide](./minecraft/overview)
+- [Backup Modes](/en/docs/guides/backup-modes)
+- [Cloud Archive Guide](/en/docs/guides/cloud-archive)
+- [Minecraft Guide](/en/docs/guides/minecraft/overview)

@@ -14,7 +14,7 @@ For configs upgraded from older versions, validate restore results in a test dir
 
 ## Before you start
 
-- You have completed [First Backup](./first-backup) and have at least one available backup record
+- You have completed [First Backup](/en/docs/getting-started/first-backup) and have at least one available backup record
 
 ## Step 1: Enter the history page
 
@@ -75,7 +75,7 @@ If the config has encryption enabled, a password prompt will appear before the r
 :::
 
 :::warning Partial-backup exception
-[Minecraft Selected-Region Backup](../guides/minecraft/selected-region-backup) does not contain the complete source directory. Normal and hot restore are therefore forced to **Overwrite** and cannot use Clean mode, which could erase files that were never backed up.
+[Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup) does not contain the complete source directory. Normal and hot restore are therefore forced to **Overwrite** and cannot use Clean mode, which could erase files that were never backed up.
 :::
 
 ## Step 5: Verify the restore result
@@ -105,6 +105,6 @@ In **Config Settings > Restore Policy**, it is recommended to enable:
 
 ## Next step
 
-- [Backup Modes](../guides/backup-modes) -- Learn about different backup strategies
-- [Minecraft Guide](../guides/minecraft/overview) -- Scenario-specific restore workflow for Minecraft players
-- [Minecraft Selected-Region Backup](../guides/minecraft/selected-region-backup) -- Forced Overwrite rules for partial backups
+- [Backup Modes](/en/docs/guides/backup-modes) -- Learn about different backup strategies
+- [Minecraft Guide](/en/docs/guides/minecraft/overview) -- Scenario-specific restore workflow for Minecraft players
+- [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup) -- Forced Overwrite rules for partial backups

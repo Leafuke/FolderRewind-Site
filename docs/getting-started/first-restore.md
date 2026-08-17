@@ -14,7 +14,7 @@ description: 从历史版本安全恢复文件夹
 
 ## 开始前
 
-- 你已经完成 [首次备份](./first-backup)，至少有一个可用的备份记录
+- 你已经完成 [首次备份](/docs/getting-started/first-backup)，至少有一个可用的备份记录
 
 ## 步骤 1：进入历史页面
 
@@ -75,7 +75,7 @@ description: 从历史版本安全恢复文件夹
 :::
 
 :::warning 部分备份例外
-[Minecraft 指定区域备份](../guides/minecraft/selected-region-backup) 不包含完整源目录，因此普通还原与热还原都强制使用 **Overwrite（覆写）**，不能使用会清空未备份文件的 Clean 模式。
+[Minecraft 指定区域备份](/docs/guides/minecraft/selected-region-backup) 不包含完整源目录，因此普通还原与热还原都强制使用 **Overwrite（覆写）**，不能使用会清空未备份文件的 Clean 模式。
 :::
 
 ## 步骤 5：验证还原结果
@@ -105,6 +105,6 @@ description: 从历史版本安全恢复文件夹
 
 ## 下一步
 
-- [备份模式详解](../guides/backup-modes) — 了解不同备份策略
-- [Minecraft 专题](../guides/minecraft/overview) — MC 玩家的场景化还原指南
-- [Minecraft 指定区域备份](../guides/minecraft/selected-region-backup) — 部分备份的强制覆写规则
+- [备份模式详解](/docs/guides/backup-modes) — 了解不同备份策略
+- [Minecraft 专题](/docs/guides/minecraft/overview) — MC 玩家的场景化还原指南
+- [Minecraft 指定区域备份](/docs/guides/minecraft/selected-region-backup) — 部分备份的强制覆写规则

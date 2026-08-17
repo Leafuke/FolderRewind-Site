@@ -55,7 +55,7 @@ cmd=GET_CAPABILITIES
 
 The response's `func_list` field is percent-encoded JSON containing built-in Host commands plus commands and signals contributed by plugins. The repository's `funcList.json` is the fact baseline for built-in commands; the runtime manifest may grow with enabled plugins.
 
-See [KnotLink Command Reference](./knotlink-commands) for every field.
+See [KnotLink Command Reference](/en/docs/plugins/knotlink-commands) for every field.
 
 ## Lifecycle signals
 
@@ -76,7 +76,7 @@ Plugins participate in the protocol through these 1.8 interfaces:
 - `IFolderRewindKnotLinkCapabilityProvider` contributes command and signal definitions to the runtime `func_list`.
 - `PluginHostContext` exposes KnotLink state, event broadcasting, command sending, and request-response queries.
 
-See [KnotLink Command API](./developing/knotlink-api) for implementation details.
+See [KnotLink Command API](/en/docs/plugins/developing/knotlink-api) for implementation details.
 
 ## Security guidance
 
@@ -87,7 +87,7 @@ See [KnotLink Command API](./developing/knotlink-api) for implementation details
 
 ## Related links
 
-- [KnotLink Command Reference](./knotlink-commands)
-- [KnotLink Command API](./developing/knotlink-api)
-- [Minecraft and Integration Mod](../guides/minecraft/knotlink-mod)
-- [1.8 Upgrade and Recovery](../getting-started/v1-8-upgrade)
+- [KnotLink Command Reference](/en/docs/plugins/knotlink-commands)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
+- [Minecraft and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
+- [1.8 Upgrade and Recovery](/en/docs/getting-started/v1-8-upgrade)

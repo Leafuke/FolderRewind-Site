@@ -10,7 +10,7 @@ Identify the layer where the failure occurs and change one variable at a time. P
 
 ## The shortest diagnostic path
 
-1. Open [Logging and diagnostics](./logging-and-diagnostics) and confirm the version, platform, active profile root, and failure time.
+1. Open [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics) and confirm the version, platform, active profile root, and failure time.
 2. Check world paths, `backupPath`, `snapshotPath`, permissions, and free space.
 3. Run a normal Full backup for one world, then restore it in a test copy.
 4. Add Smart, filters, automation, KnotLink, or cloud archives only after the basic loop works.
@@ -26,7 +26,7 @@ In 1.16.1, configuration and history are not necessarily beside the EXE. Confirm
 - whether the profile root shown in the log is the expected directory;
 - whether another MineBackup instance holds the profile lock.
 
-For an isolated experiment, launch with a new absolute `--data-dir` rather than deleting the existing profile. See [Profiles and migration](./data-and-migration) for the layout and defaults.
+For an isolated experiment, launch with a new absolute `--data-dir` rather than deleting the existing profile. See [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration) for the layout and defaults.
 
 ## 2. 7-Zip is missing or the backup fails immediately
 
@@ -53,7 +53,7 @@ Smart depends on `_metadata/<world>/state.json`, `records/*.json`, a Full baseli
 - whether archives were moved, renamed, or partially deleted by hand;
 - whether a 1.15 migration just completed with `Degraded`/`Failed`, or the Smart-chain limit was reached.
 
-When metadata, the baseline, migration state, or the chain is unsafe, MineBackup establishes a new Full. Do not splice old records manually. After the new Full succeeds, enable Smart again; see [Backup modes](./backup-modes) for `keepCount` and `maxSmartBackupsPerFull`.
+When metadata, the baseline, migration state, or the chain is unsafe, MineBackup establishes a new Full. Do not splice old records manually. After the new Full succeeds, enable Smart again; see [Backup modes](/en/docs/guides/minebackup-v1/backup-modes) for `keepCount` and `maxSmartBackupsPerFull`.
 
 ## 5. The restored world is not what was expected
 
@@ -83,7 +83,7 @@ Disable parallel work and reproduce once with a Once task. Use Debug logging to 
 
 Confirm MineBackup-Mod is at least `3.0.0` and KnotLinkService is at least `3.2.0.0`. On Windows, check the default loopback endpoints: port 6370 for the main service and 6378 for the related service. Requests must use strict `key=value;key2=value2` syntax; state-changing requests require `from` and `request_id`.
 
-Do not keep trying old positional arguments, aliases, or free-text commands. Check endpoint/version capability first, then follow the event associated with the `request_id`. See [KnotLink v2 integration](./knotlink-integration) for MineBackup usage and [plugin documentation](../../plugins/knotlink-commands) for developer-facing details.
+Do not keep trying old positional arguments, aliases, or free-text commands. Check endpoint/version capability first, then follow the event associated with the `request_id`. See [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration) for MineBackup usage and [plugin documentation](/en/docs/plugins/knotlink-commands) for developer-facing details.
 
 ## 8. Cloud archive or rclone fails
 
@@ -93,11 +93,11 @@ Do not keep trying old positional arguments, aliases, or free-text commands. Che
 - A configuration imported from the cloud remains pending until local world and archive paths are bound again.
 - If one history entry has an incomplete cloud copy, restore or re-upload the corresponding archive and metadata before trying a cloud restore.
 
-See [Cloud archive](./cloud-archive) for the complete user workflow.
+See [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive) for the complete user workflow.
 
 ## 9. 1.15 migration reports Pending, Degraded, or Failed
 
-Do not delete legacy configuration or history to bypass migration. Open the migration summary and [Profiles and migration](./data-and-migration):
+Do not delete legacy configuration or history to bypass migration. Open the migration summary and [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration):
 
 - `Pending` usually means the configuration identity transaction is incomplete, so dependent history, world, or cloud writes are gated.
 - `Degraded` means recognized data was migrated but could not be reconstructed completely; the next backup for that world establishes a safe Full.
@@ -107,7 +107,7 @@ Check the snapshot path and error in the log, retry the migration unit, and then
 
 ## 10. Legacy Windows Service problems
 
-MineBackup 1.16.1 cannot install or start Service Mode. Use [Legacy Windows Service Cleanup](./service-mode) to inspect and remove only a validated old service; non-Windows platforms do not provide this cleanup. Do not use `--service` or bypass the validation with a service-management command.
+MineBackup 1.16.1 cannot install or start Service Mode. Use [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode) to inspect and remove only a validated old service; non-Windows platforms do not provide this cleanup. Do not use `--service` or bypass the validation with a service-management command.
 
 ## Before sending diagnostics
 

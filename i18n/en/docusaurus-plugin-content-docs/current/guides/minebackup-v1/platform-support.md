@@ -43,11 +43,11 @@ KnotLink’s core protocol is cross-platform, but service discovery and installa
 - Linux discovers the service through dpkg information; the service is managed by systemd.
 - macOS discovers the service through the Installer receipt; the service is managed by launchd.
 
-MineBackup can download and verify the official service package from the wizard or Settings, then open the platform installer. The user completes the remaining installation steps. See [KnotLink v2 integration](./knotlink-integration) for the mod minimum version and hot workflows.
+MineBackup can download and verify the official service package from the wizard or Settings, then open the platform installer. The user completes the remaining installation steps. See [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration) for the mod minimum version and hot workflows.
 
 ## Windows Service Mode boundary
 
-Version 1.16 no longer installs or starts Windows Service Mode. The Windows settings page only retains legacy-service inspection and safe cleanup; Linux and macOS do not provide that cleanup path. See [Legacy Windows service cleanup](./service-mode).
+Version 1.16 no longer installs or starts Windows Service Mode. The Windows settings page only retains legacy-service inspection and safe cleanup; Linux and macOS do not provide that cleanup path. See [Legacy Windows service cleanup](/en/docs/guides/minebackup-v1/service-mode).
 
 ## Minimum post-install verification
 

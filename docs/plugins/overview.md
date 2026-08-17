@@ -35,7 +35,7 @@ FolderRewind 内置了完整的插件系统，允许开发者为特定场景扩�
 - KnotLink 参数化协议 v2 命令（通过 `current_save=true` 扩展 Host 命令）
 - 按区域选择性备份
 
-👉 [Minecraft 专题](../guides/minecraft/overview) | [下载页](/download)
+👉 [Minecraft 专题](/docs/guides/minecraft/overview) | [下载页](/download)
 
 ## 插件隔离
 
@@ -47,15 +47,15 @@ FolderRewind 内置了完整的插件系统，允许开发者为特定场景扩�
 2. 在 FolderRewind 的 **插件管理** 界面中安装
 3. 重启应用以加载新插件
 
-详见 [插件安装与管理](./using-plugins)。
+详见 [插件安装与管理](/docs/plugins/using-plugins)。
 
 ## 成为开发者
 
 如果你想为 FolderRewind 开发插件，请查看：
 
-- [插件开发快速上手](./developing/quick-start) — 从零开始
-- [实战教程](./developing/tutorial) — 构建一个完整插件
-- [Plugin API 参考](./developing/plugin-api) — 接口全量说明
+- [插件开发快速上手](/docs/plugins/developing/quick-start) — 从零开始
+- [实战教程](/docs/plugins/developing/tutorial) — 构建一个完整插件
+- [Plugin API 参考](/docs/plugins/developing/plugin-api) — 接口全量说明
 
 FolderRewind 提供了以下开发接口：
 
@@ -74,9 +74,9 @@ FolderRewind 提供了以下开发接口：
 
 ## 相关链接
 
-- [插件开发快速上手](./developing/quick-start)
-- [实战教程](./developing/tutorial)
-- [插件安装与管理](./using-plugins)
-- [KnotLink 协议与联动](./knotlink)
-- [Plugin API 参考](./developing/plugin-api)
-- [Minecraft 专题](../guides/minecraft/overview)
+- [插件开发快速上手](/docs/plugins/developing/quick-start)
+- [实战教程](/docs/plugins/developing/tutorial)
+- [插件安装与管理](/docs/plugins/using-plugins)
+- [KnotLink 协议与联动](/docs/plugins/knotlink)
+- [Plugin API 参考](/docs/plugins/developing/plugin-api)
+- [Minecraft 专题](/docs/guides/minecraft/overview)

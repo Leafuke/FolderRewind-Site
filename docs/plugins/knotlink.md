@@ -55,7 +55,7 @@ cmd=GET_CAPABILITIES
 
 响应中的 `func_list` 是 percent-encoded JSON，包含当前 Host 内置命令、插件贡献的命令和信号。仓库中的 `funcList.json` 是内置命令事实基线；运行时清单可能因已启用插件而扩展。
 
-完整字段见 [KnotLink 命令参考](./knotlink-commands)。
+完整字段见 [KnotLink 命令参考](/docs/plugins/knotlink-commands)。
 
 ## 生命周期信号
 
@@ -76,7 +76,7 @@ command_accepted → command_started → command_progress → command_completed
 - `IFolderRewindKnotLinkCapabilityProvider`：把命令和信号定义加入运行时 `func_list`。
 - `PluginHostContext`：查询 KnotLink 状态、广播事件、发送命令或执行请求/响应查询。
 
-开发细节见 [KnotLink Command API](./developing/knotlink-api)。
+开发细节见 [KnotLink Command API](/docs/plugins/developing/knotlink-api)。
 
 ## 安全建议
 
@@ -87,7 +87,7 @@ command_accepted → command_started → command_progress → command_completed
 
 ## 相关链接
 
-- [KnotLink 命令参考](./knotlink-commands)
-- [KnotLink Command API](./developing/knotlink-api)
-- [Minecraft 与联动模组](../guides/minecraft/knotlink-mod)
-- [1.8 升级与恢复](../getting-started/v1-8-upgrade)
+- [KnotLink 命令参考](/docs/plugins/knotlink-commands)
+- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
+- [Minecraft 与联动模组](/docs/guides/minecraft/knotlink-mod)
+- [1.8 升级与恢复](/docs/getting-started/v1-8-upgrade)

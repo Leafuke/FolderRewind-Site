@@ -113,6 +113,6 @@ For v1.7.0, also review:
 
 ## Related links
 
-- [Templates: Share and Import](./template-sharing)
-- [Automation](./automation)
-- [Filters](./filters)
+- [Templates: Share and Import](/en/docs/guides/template-sharing)
+- [Automation](/en/docs/guides/automation)
+- [Filters](/en/docs/guides/filters)

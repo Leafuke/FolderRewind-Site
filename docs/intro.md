@@ -9,7 +9,7 @@ description: 5 分钟上手 FolderRewind
 欢迎使用 **FolderRewind（存档时光机）**。它是一个面向重要文件、项目资料与游戏存档的现代化备份工具，同时也是 MineBackup 的后继作品。
 
 :::caution 升级前建议
-如果你是从旧版本升级，先阅读 [1.8 升级与启动故障恢复](./getting-started/v1-8-upgrade)，并在测试目录完成几轮备份与还原演练，再把新版本投入生产使用。
+如果你是从旧版本升级，先阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)，并在测试目录完成几轮备份与还原演练，再把新版本投入生产使用。
 :::
 
 ## FolderRewind 现在适合做什么
@@ -29,7 +29,7 @@ FolderRewind 可以帮助你：
 
 ### 第一步：安装
 
-优先从 Microsoft Store 安装，或参考 [安装指南](./getting-started/installation) 进行侧载安装。
+优先从 Microsoft Store 安装，或参考 [安装指南](/docs/getting-started/installation) 进行侧载安装。
 
 > 建议优先使用 Microsoft Store 下载，**请勿同时安装商店版与当前页面下载的离线版**。
 
@@ -68,15 +68,15 @@ FolderRewind 1.8 系列把备份控制、迁移和远程联动放在同一条安
 - **KnotLink Server v3 与参数化协议 v2**：让远程工具和插件通过可发现的命令、安全地联动备份流程。
 - **安全还原**：先验证备份，再按普通或部分备份规则选择 Clean / Overwrite，避免误清空未备份数据。
 
-升级旧版本或更换安装渠道前，请先阅读 [1.8 升级与启动故障恢复](./getting-started/v1-8-upgrade)。
-Minecraft 用户还可以从 [区域范围备份指南](./guides/minecraft/selected-region-backup) 和 [文件夹重命名指南](./guides/folder-management) 开始。
+升级旧版本或更换安装渠道前，请先阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)。
+Minecraft 用户还可以从 [区域范围备份指南](/docs/guides/minecraft/selected-region-backup) 和 [文件夹重命名指南](/docs/guides/folder-management) 开始。
 
 ## 下一步
 
-- [安装指南](./getting-started/installation)
-- [首次备份](./getting-started/first-backup)
-- [首次还原](./getting-started/first-restore)
-- [模板：创建与使用](./guides/templates)
-- [模板：分享与导入](./guides/template-sharing)
-- [自动化任务](./guides/automation)
-- [云存档功能介绍](./guides/cloud-archive)
+- [安装指南](/docs/getting-started/installation)
+- [首次备份](/docs/getting-started/first-backup)
+- [首次还原](/docs/getting-started/first-restore)
+- [模板：创建与使用](/docs/guides/templates)
+- [模板：分享与导入](/docs/guides/template-sharing)
+- [自动化任务](/docs/guides/automation)
+- [云存档功能介绍](/docs/guides/cloud-archive)

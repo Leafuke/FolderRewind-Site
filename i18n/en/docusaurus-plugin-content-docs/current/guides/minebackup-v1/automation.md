@@ -59,4 +59,4 @@ Do not let two tasks modify the same world or profile at the same time. MineBack
 
 If a task does not run, check enabled state, schedule fields, target indices, and logs before adding more parallel tasks.
 
-Read [Special Config](./special-mode) for startup execution and unattended exit.
+Read [Special Config](/en/docs/guides/minebackup-v1/special-mode) for startup execution and unattended exit.

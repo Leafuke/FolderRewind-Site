@@ -62,6 +62,6 @@ After cross-device migration, validate encrypted restore flow on the new device 
 
 ## Related links
 
-- [First Restore](../getting-started/first-restore)
-- [Automation](./automation)
-- [Data Migration](./data-migration)
+- [First Restore](/en/docs/getting-started/first-restore)
+- [Automation](/en/docs/guides/automation)
+- [Data Migration](/en/docs/guides/data-migration)

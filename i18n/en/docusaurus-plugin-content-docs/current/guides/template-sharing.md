@@ -86,5 +86,5 @@ try switching the mirror source in Settings first.
 
 ## Related links
 
-- [Templates: Create and Use](./templates)
-- [Installation Guide](../getting-started/installation)
+- [Templates: Create and Use](/en/docs/guides/templates)
+- [Installation Guide](/en/docs/getting-started/installation)

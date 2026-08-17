@@ -8,7 +8,7 @@ description: MineBackup 1.16.1 对旧版 Windows Service Mode 的检查与安全
 
 MineBackup 1.16.1 **不能安装或启动 Windows Service Mode**。当前版本只保留一套兼容性清理流程，用来检查并在安全条件满足时移除旧版本留下的 MineBackup Windows 服务。
 
-这不是新的后台运行方式，也不会把普通配置或统一任务转换成服务。需要无人值守执行时，请使用[自动化任务](./automation)或 [Special Config](./special-mode)，并先完成手动备份/还原演练。
+这不是新的后台运行方式，也不会把普通配置或统一任务转换成服务。需要无人值守执行时，请使用[自动化任务](/docs/guides/minebackup-v1/automation)或 [Special Config](/docs/guides/minebackup-v1/special-mode)，并先完成手动备份/还原演练。
 
 ## 当前支持什么
 
@@ -56,4 +56,4 @@ MineBackup.exe --cleanup-legacy-service "<service-name>"
 - 服务无法在 15 秒内停止：清理器不会删除它；检查占用该服务的旧环境后再重试。
 - 找不到服务：说明当前记录的服务名没有安装，不需要通过 MineBackup 创建新服务。
 
-清理完成后仍建议阅读[故障排查](./troubleshooting)和[日志与诊断](./logging-and-diagnostics)，确认应用已经回到普通 GUI/任务流程。1.16.1 的产品能力边界是“检查并清理旧服务”，不是“继续维护服务模式”。
+清理完成后仍建议阅读[故障排查](/docs/guides/minebackup-v1/troubleshooting)和[日志与诊断](/docs/guides/minebackup-v1/logging-and-diagnostics)，确认应用已经回到普通 GUI/任务流程。1.16.1 的产品能力边界是“检查并清理旧服务”，不是“继续维护服务模式”。

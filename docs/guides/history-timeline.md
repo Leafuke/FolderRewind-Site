@@ -126,7 +126,7 @@ description: 使用历史记录进行查看、标记与恢复
 - 备份文件保留了标准命名（`[Full/Smart/Overwrite][时间戳]...`）
 - 备份目录结构符合 `DestinationPath/<文件夹名>/`
 
-详见：[备份文件规范](./backup-file-spec)
+详见：[备份文件规范](/docs/guides/backup-file-spec)
 
 ## 常见问题
 
@@ -138,12 +138,12 @@ description: 使用历史记录进行查看、标记与恢复
 
 先确认是否选对时间点与还原模式，再检查是否启用了还原白名单；若是旧版本升级后的配置，请优先回到测试数据重新验证链条。
 
-文件夹重命名后，旧历史仍会保留创建记录时的本地或远端身份。详情见 [文件夹管理与重命名](./folder-management)。
+文件夹重命名后，旧历史仍会保留创建记录时的本地或远端身份。详情见 [文件夹管理与重命名](/docs/guides/folder-management)。
 
 ## 相关链接
 
-- [首次还原](../getting-started/first-restore)
-- [过滤规则](./filters)
-- [备份文件规范](./backup-file-spec)
-- [云存档功能介绍](./cloud-archive)
-- [文件夹管理与重命名](./folder-management)
+- [首次还原](/docs/getting-started/first-restore)
+- [过滤规则](/docs/guides/filters)
+- [备份文件规范](/docs/guides/backup-file-spec)
+- [云存档功能介绍](/docs/guides/cloud-archive)
+- [文件夹管理与重命名](/docs/guides/folder-management)

@@ -18,7 +18,7 @@ Windows 10 1809 (17763) 及以上版本，包括 Windows 11。支持 x64 和 ARM
 - **MSI：** 双击安装，不要求开发人员模式；当前分发格式仍在测试中。
 - **MSIX (`.7z`)：** 解压后运行 `install.ps1`，需要开发人员模式，体验最接近 Store 版。
 
-三种渠道不应同时安装或运行。MSI 与 MSIX/Store 使用不同数据目录，也不会自动迁移配置和插件。详见 [安装指南](./getting-started/installation)。
+三种渠道不应同时安装或运行。MSI 与 MSIX/Store 使用不同数据目录，也不会自动迁移配置和插件。详见 [安装指南](/docs/getting-started/installation)。
 
 ### 从旧版本升级要注意什么？
 
@@ -30,7 +30,7 @@ v1.8 支持从 v1.7.4 直接升级；更早版本应先运行 v1.7.4 完成旧�
 2. 执行几轮备份与还原。
 3. 确认结果符合预期后，再把正式数据迁移到新逻辑上。
 
-完整检查项见 [1.8 升级与启动故障恢复](./getting-started/v1-8-upgrade)。
+完整检查项见 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)。
 
 ### 安装后无法启动怎么办？
 
@@ -41,7 +41,7 @@ v1.8 支持从 v1.7.4 直接升级；更早版本应先运行 v1.7.4 完成旧�
 1. 确认系统版本满足最低要求。
 2. 重新安装最新版本，但不要混装不同渠道。
 3. 检查是否被安全软件拦截。
-4. 按 [启动故障恢复步骤](./getting-started/v1-8-upgrade#180-无法启动时) 检查配置。
+4. 按 [启动故障恢复步骤](/docs/getting-started/v1-8-upgrade#180-无法启动时) 检查配置。
 5. 前往 [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues) 搜索或提交问题。
 
 ## 备份相关
@@ -81,7 +81,7 @@ v1.8 支持从 v1.7.4 直接升级；更早版本应先运行 v1.7.4 完成旧�
 
 建议先阅读：
 
-- [云存档功能介绍](./guides/cloud-archive)
+- [云存档功能介绍](/docs/guides/cloud-archive)
 
 ### 为什么自动备份突然停止了？
 

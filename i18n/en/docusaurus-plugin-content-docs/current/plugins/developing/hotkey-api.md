@@ -35,5 +35,5 @@ MineRewind examples:
 
 ## Related links
 
-- [Plugin API Reference](./plugin-api)
-- [KnotLink Command API](./knotlink-api)
+- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
+- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)

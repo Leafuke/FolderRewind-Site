@@ -124,6 +124,6 @@ v1.4.2 新增 `MARK_IMPORTANT` 远程命令，用于标记/取消标记重要备
 
 ## 相关链接
 
-- [历史时间轴](./history-timeline)
-- [备份模式详解](./backup-modes)
-- [数据迁移](./data-migration)
+- [历史时间轴](/docs/guides/history-timeline)
+- [备份模式详解](/docs/guides/backup-modes)
+- [数据迁移](/docs/guides/data-migration)

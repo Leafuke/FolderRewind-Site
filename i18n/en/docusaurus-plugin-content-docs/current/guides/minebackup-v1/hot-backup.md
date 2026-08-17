@@ -45,7 +45,7 @@ MineBackup uses a state machine to prevent concurrent hot restores. A second req
 
 - An identifiable active world and a usable archive must exist.
 - MineBackup-Mod must be at least `3.0.0`; older versions cannot participate in the complete hot workflow.
-- KnotLinkService must meet the MineBackup-supported version; service and port boundaries are described in [KnotLink v2 integration](./knotlink-integration).
+- KnotLinkService must meet the MineBackup-supported version; service and port boundaries are described in [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration).
 - An external custom archive is not automatically a safe hot-restore input for a running world.
 - After a failure, confirm whether the world exited and files were released before switching back to ordinary restore.
 
