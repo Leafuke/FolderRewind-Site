@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: 插件配置定义
-description: PluginSettingDefinition 设计规范与字段约定
+description: FolderRewind 1.8 插件配置项定义规范，包含 PluginSettingDefinition 完整字段说明、类型枚举与渲染控件映射，指导插件开发者设计用户设置界面
 ---
 
 # 插件配置定义

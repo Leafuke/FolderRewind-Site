@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 平台支持与安装边界
-description: MineBackup 1.16.1 的 Windows、Linux、macOS 支持范围与能力降级规则
+description: MineBackup 1.16.1 的 Windows、Linux、macOS 跨平台支持范围与分发形式，包含桌面集成能力判断、会话降级规则与安装基线说明
 ---
 
 # 平台支持与安装边界

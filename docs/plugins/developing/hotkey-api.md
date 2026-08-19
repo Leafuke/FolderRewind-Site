@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Hotkey API
-description: IFolderRewindHotkeyProvider 接口说明与热键设计建议
+description: FolderRewind 1.8 热键提供器接口 IFolderRewindHotkeyProvider 完整说明，包含快捷键定义、全局热键注册、触发回调与设计最佳实践指南
 ---
 
 # Hotkey API

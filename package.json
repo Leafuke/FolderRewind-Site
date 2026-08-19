@@ -13,6 +13,8 @@
     "serve": "docusaurus serve",
     "check:i18n": "node scripts/check-i18n-parity.mjs",
     "check:images": "node scripts/check-doc-images.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
+    "check:built-seo": "node scripts/check-built-seo.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc"
@@ -32,6 +34,9 @@
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/tsconfig": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "glob": "^13.0.6",
+    "gray-matter": "^4.0.3",
+    "node-html-parser": "^9.0.1",
     "typescript": "~5.6.2"
   },
   "browserslist": {

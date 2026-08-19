@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: 安装指南
-description: 选择 Store、MSI 或 MSIX 安装 FolderRewind
+description: 详解 FolderRewind 三种安装渠道（Microsoft Store、MSI、MSIX）的特点、系统要求、架构选择与混装风险，帮助用户选择最适合的安装方式
 ---
 
 # 安装指南

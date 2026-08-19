@@ -52,7 +52,7 @@ const config: Config = {
           showLastUpdateTime: true,
           editLocalizedFiles: true,
           blogTitle: '更新日志',
-          blogDescription: 'FolderRewind 版本更新与项目公告',
+          blogDescription: 'FolderRewind 版本发布公告、功能更新说明、问题修复记录与项目动态 — 追踪备份工具的演进历程与新特性',
           blogSidebarTitle: '所有版本',
           blogSidebarCount: 'ALL',
           feedOptions: {
@@ -68,9 +68,13 @@ const config: Config = {
         sitemap: {
           ignorePatterns: [
             '/404',
+            '/404/',
             '/en/404',
+            '/en/404/',
             '/search',
+            '/search/',
             '/en/search',
+            '/en/search/',
             '/blog/authors',
             '/blog/authors/',
             '/en/blog/authors',

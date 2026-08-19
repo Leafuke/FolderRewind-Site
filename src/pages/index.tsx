@@ -239,7 +239,7 @@ export default function Home(): ReactNode {
     operatingSystem: 'Windows 10, Windows 11',
     description: translate({
       id: 'homepage.layout.description',
-      message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具',
+      message: 'FolderRewind 是一款面向 Windows 的现代备份工具，为重要文件、项目资料与游戏存档（包括 Minecraft 世界）提供版本管理、云同步、自动备份与热备份热还原等安全保护功能',
     }),
     url: 'https://folderrewind.top/',
     image: 'https://folderrewind.top/img/ori.webp',
@@ -250,7 +250,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={translate({id: 'homepage.layout.title', message: '首页'})}
-      description={translate({id: 'homepage.layout.description', message: 'FolderRewind — 面向重要文件、项目资料与游戏存档的现代备份工具'})}>
+      description={translate({id: 'homepage.layout.description', message: 'FolderRewind 是一款面向 Windows 的现代备份工具，为重要文件、项目资料与游戏存档（包括 Minecraft 世界）提供版本管理、云同步、自动备份与热备份热还原等安全保护功能'})}>
       <Head>
         <script type="application/ld+json">
           {JSON.stringify(softwareApplicationSchema)}

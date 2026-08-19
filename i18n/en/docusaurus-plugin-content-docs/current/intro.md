@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: Quick Start
-description: Get started with FolderRewind in 5 minutes
+description: Get started with FolderRewind in 5 minutes — a modern Windows backup tool featuring 7-Zip compression, smart incremental chains, cloud sync, config templates, and plugin extensibility for protecting files, projects, and game saves
 ---
 
 # Quick Start

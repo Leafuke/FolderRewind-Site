@@ -1,7 +1,7 @@
 ---
 sidebar_position: 13
 title: KnotLink v2 联动
-description: MineBackup 1.16.1 与 MineBackup-Mod、KnotLinkService 的实用联动流程和边界
+description: MineBackup 1.16.1 通过 KnotLink v2 参数化协议与 MineBackup-Mod、KnotLinkService 联动的完整流程，包含版本要求、请求格式、服务发现与跨平台安装边界
 ---
 
 # KnotLink v2 联动

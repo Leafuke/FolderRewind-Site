@@ -25,7 +25,7 @@ const MINEREWIND_LATEST_RELEASE_URL =
 
 export default function Download(): ReactNode {
   return (
-    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: '下载 FolderRewind — 存档时光机'})}>
+    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: '下载 FolderRewind Windows 版 — 提供 Microsoft Store、MSI 与 MSIX 三种安装方式，支持 x64 和 ARM64 架构，具备自动更新与云同步功能'})}>
       <main className="container margin-vert--xl">
         <Heading as="h1" className="text--center">
           <Translate id="download.heading">下载 FolderRewind</Translate>

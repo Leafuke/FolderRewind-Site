@@ -1,7 +1,7 @@
 ---
 sidebar_position: 99
 title: 常见问题
-description: FolderRewind 常见问题与解答
+description: FolderRewind 常见问题解答 — 涵盖安装方式选择、备份模式差异、还原策略、云同步配置、插件使用、Minecraft 存档保护与故障排查等实用问答
 ---
 
 # 常见问题 (FAQ)

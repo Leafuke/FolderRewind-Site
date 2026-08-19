@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: 备份模式、链完整性与安全删除
-description: MineBackup 1.16.1 的 Full、Smart、Overwrite 模式和 Smart 链维护规则
+description: MineBackup 1.16.1 的 Full、Smart、Overwrite 三种备份模式详解，包含 Smart 增量链工作原理、链维护规则、安全删除策略与基线重建机制
 ---
 
 # 备份模式、链完整性与安全删除

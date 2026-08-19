@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: KnotLink 与联动模组
-description: 使用 Server v3 和参数化协议 v2 联动 MineRewind 与 Minecraft 模组
+description: 使用 KnotLink Server v3 与参数化协议 v2 联动 MineRewind 和 Minecraft 模组，实现热备份热还原、能力查询与当前世界命令的完整集成方案
 ---
 
 # KnotLink 与联动模组

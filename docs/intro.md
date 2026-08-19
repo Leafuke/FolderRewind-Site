@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: 快速开始
-description: 5 分钟上手 FolderRewind
+description: FolderRewind 是面向重要文件、项目资料与游戏存档的现代备份工具，支持 7-Zip 压缩、智能增量链、云同步、配置模板与插件扩展，5 分钟即可完成首次备份与还原验证
 ---
 
 # 快速开始

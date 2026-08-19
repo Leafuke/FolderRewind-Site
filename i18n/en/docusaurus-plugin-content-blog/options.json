@@ -4,7 +4,7 @@
     "description": "The title for the blog used in SEO"
   },
   "description": {
-    "message": "FolderRewind version updates and project announcements",
+    "message": "FolderRewind release announcements, feature updates, bug fixes, and project news — track the evolution of this modern Windows backup tool and discover new capabilities",
     "description": "The description for the blog used in SEO"
   },
   "sidebar.title": {

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Minecraft 专题总览
-description: FolderRewind、MineRewind 与 MineBackup 联动组件的 Minecraft 存档保护方案
+description: FolderRewind 官方我的世界扩展专题总览，涵盖 MineRewind 插件的热备份热还原、存档自动发现能力，以及模组插件联动方案（游戏内备份模组、服务器插件、死亡回溯、险兆检测）与典型部署组合指南
 ---
 
 import MinecraftEcosystem from '@site/src/components/MinecraftEcosystem';

@@ -1,6 +1,6 @@
 ---
 title: MineBackupPlugin（Spigot/Paper 联动插件）
-description: 为 Spigot 和 Paper 专用服务器提供 FolderRewind/MineBackup 备份、热还原与 Sidecar 安全交接
+description: 为 Spigot 和 Paper 专用服务器提供 FolderRewind/MineBackup 联动能力，通过 KnotLink 协议请求备份与热还原，并由纯 JDK Sidecar 安全交接文件释放流程
 ---
 
 # MineBackupPlugin（Spigot/Paper 联动插件）

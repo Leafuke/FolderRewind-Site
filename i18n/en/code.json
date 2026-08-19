@@ -330,7 +330,7 @@
     "message": "Download"
   },
   "download.description": {
-    "message": "Download FolderRewind — Backup Time Machine"
+    "message": "Download FolderRewind for Windows — Microsoft Store, MSI, and MSIX installation options for x64 and ARM64 architectures with automatic updates and cloud sync support"
   },
   "download.heading": {
     "message": "Download FolderRewind"
@@ -540,7 +540,7 @@
     "message": "Home"
   },
   "homepage.layout.description": {
-    "message": "FolderRewind \u2014 Modern backup tool for important files, projects, and game saves"
+    "message": "FolderRewind is a modern Windows backup tool providing secure version control, cloud sync, and automated protection for important files, project data, and game saves including Minecraft world backups with hot backup and restoration features"
   },
   "features.7zip.title": {
     "message": "7-Zip Compression Engine"

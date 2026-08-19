@@ -27,5 +27,11 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      - name: Check SEO metadata
+        run: npm run check:seo
+
       - name: Build site
         run: npm run build
+
+      - name: Check built SEO
+        run: npm run check:built-seo

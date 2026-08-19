@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: KnotLink 协议与联动
-description: 了解 KnotLink Server v3、FolderRewind 参数化协议 v2 与外部联动方式
+description: 深入理解 KnotLink Server v3 与 FolderRewind 参数化协议 v2 的架构、命令发现机制、安全模型与外部工具集成方式，实现游戏模组、脚本与备份系统的可靠联动
 ---
 
 # KnotLink 协议与联动

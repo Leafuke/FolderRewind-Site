@@ -1,7 +1,7 @@
 ---
 sidebar_position: 17
 title: 旧 Windows 服务清理
-description: MineBackup 1.16.1 对旧版 Windows Service Mode 的检查与安全清理边界
+description: MineBackup 1.16.1 对旧版 Windows Service Mode 的兼容性清理流程，包含旧服务检查、安全移除边界与 UAC 提权验证说明
 ---
 
 # 旧 Windows 服务清理
