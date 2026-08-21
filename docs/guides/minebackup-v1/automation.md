@@ -1,12 +1,20 @@
 ---
 sidebar_position: 10
 title: 自动化任务
-description: MineBackup 1.16.1 的游戏会话触发、间隔、计划与统一任务系统
+description: MineBackup 1.16.2 Desktop GUI 的游戏会话触发、间隔、计划与统一任务系统
 ---
 
 # 自动化任务
 
 自动化适合“重复执行同一套已验证流程”。请先用普通配置手动完成一次备份和还原，再启用长期任务。
+
+:::note CLI 与本页不同
+
+本页描述的是 Desktop GUI 的传统自动化模型。
+
+Headless CLI 的 Job 模型不同：Job 不包含定时器。请阅读 [CLI Job 工作流](/docs/guides/minebackup-v1/cli/jobs)、[Linux 与 systemd](/docs/guides/minebackup-v1/cli/linux-systemd) 和 [Windows Task Scheduler](/docs/guides/minebackup-v1/cli/windows-task-scheduler)。
+
+:::
 
 ## 普通配置的自动触发
 
@@ -59,4 +67,4 @@ MineBackup 1.16 的统一任务模型包含：
 
 如果任务没有触发，先检查启用状态、时间字段、目标索引和程序日志；不要一开始就增加更多并行任务。
 
-下一步可阅读 [Special Config](/docs/guides/minebackup-v1/special-mode) 了解“启动后自动执行并可自动退出”的无人值守流程。
+下一步可阅读 [Special Config](/docs/guides/minebackup-v1/special-mode) 了解桌面 GUI 的“启动后自动执行并可自动退出”流程；服务器用户应改读 [CLI Job 工作流](/docs/guides/minebackup-v1/cli/jobs)。

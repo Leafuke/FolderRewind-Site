@@ -1,12 +1,20 @@
 ---
 sidebar_position: 10
 title: Automation Tasks
-description: Game-session triggers, interval and scheduled runs, and the unified task system in MineBackup 1.16.1
+description: MineBackup 1.16.2 Desktop GUI game-session triggers, interval and scheduled runs, and the unified task system
 ---
 
 # Automation Tasks
 
 Automation is for repeating a workflow that has already been verified manually. Complete a backup-and-restore drill with a normal configuration before enabling long-running tasks.
+
+:::note The CLI model is different
+
+This page describes the traditional Desktop GUI automation model.
+
+The headless CLI Job model is different: a Job does not contain a timer. Read [CLI Job workflows](/en/docs/guides/minebackup-v1/cli/jobs), [Linux and systemd](/en/docs/guides/minebackup-v1/cli/linux-systemd), and [Windows Task Scheduler](/en/docs/guides/minebackup-v1/cli/windows-task-scheduler).
+
+:::
 
 ## Automatic triggers in a normal configuration
 
@@ -59,4 +67,4 @@ Do not let two tasks modify the same world or profile at the same time. MineBack
 
 If a task does not run, check enabled state, schedule fields, target indices, and logs before adding more parallel tasks.
 
-Read [Special Config](/en/docs/guides/minebackup-v1/special-mode) for startup execution and unattended exit.
+Read [Special Config](/en/docs/guides/minebackup-v1/special-mode) for Desktop GUI startup execution and unattended exit. Server users should read [CLI Job workflows](/en/docs/guides/minebackup-v1/cli/jobs) instead.
