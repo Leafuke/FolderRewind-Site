@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Serve 常驻运行时
-description: 配置 MineBackup 1.16.2 CLI 可选的长期 Profile runtime、IPC 转发和取消行为
+description: MineBackup 1.16.2 命令行可选配置档常驻运行时的启动、IPC 转发、KnotLink 和取消行为说明
 ---
 
 # Serve 常驻运行时

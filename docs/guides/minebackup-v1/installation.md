@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 安装与运行前准备
-description: MineBackup 1.16.2 的桌面 GUI、Headless CLI 安装、平台依赖和首次检查
+description: MineBackup 1.16.2 桌面 GUI 与无界面 CLI 的安装步骤、平台依赖、权限要求和首次检查指南
 ---
 
 # 安装与运行前准备

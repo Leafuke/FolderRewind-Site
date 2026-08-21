@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: Job 工作流
-description: 理解 MineBackup 1.16.2 CLI Job、Stage、Step 和外部系统调度
+description: 说明 MineBackup 1.16.2 CLI Job、Stage、Step 的结构、执行顺序与外部系统调度方式
 ---
 
 # Job 工作流

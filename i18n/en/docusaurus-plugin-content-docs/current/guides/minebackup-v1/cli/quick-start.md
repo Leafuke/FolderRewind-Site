@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Five-Minute Quick Start: Complete the First Server Backup
+title: "Five-Minute Quick Start: Complete the First Server Backup"
 description: Use MineBackup 1.16.2 CLI to go from a Manifest to Backup, History, Verify, and a Restore dry-run
 ---
 

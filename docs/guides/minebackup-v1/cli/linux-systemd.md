@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: Linux 与 systemd
-description: 使用 MineBackup 1.16.2 CLI、官方 systemd 模板和 timer 部署 Linux 服务器
+description: 使用 MineBackup 1.16.2 CLI 和官方 systemd 模板配置 Linux 服务器、常驻服务与定时任务
 ---
 
 # Linux 与 systemd

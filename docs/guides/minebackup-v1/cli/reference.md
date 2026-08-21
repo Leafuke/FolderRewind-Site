@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: 命令、JSON 与退出码
-description: MineBackup 1.16.2 CLI 的全局选项、命令索引、JSON envelope 与退出码查表
+description: MineBackup 1.16.2 CLI 的全局选项、命令语法、JSON envelope、退出码和常用示例查表
 ---
 
 # 命令、JSON 与退出码

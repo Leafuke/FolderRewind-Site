@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 使用 AI 生成配置
-description: 为 MineBackup 1.16.2 CLI 安全使用 ChatGPT、Claude、Gemini 等 AI 配置助手
+description: MineBackup 1.16.2 命令行配置中使用人工智能助手的安全规则、隐私边界和人工校验流程
 ---
 
 # 使用 AI 生成配置

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Profile 与 Manifest
-description: 理解 MineBackup 1.16.2 CLI 的 Profile、Config、World、Job 和 Manifest 生命周期
+description: MineBackup 1.16.2 命令行配置档、配置、世界、任务与清单对象的结构和生命周期说明
 ---
 
 # Profile 与 Manifest

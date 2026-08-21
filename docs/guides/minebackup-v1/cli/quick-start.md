@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 5 分钟快速开始：从零完成第一次服务器备份
-description: 使用 MineBackup 1.16.2 CLI 从 Manifest 到 Backup、History、Verify 和 Restore dry-run
+description: 使用 MineBackup 1.16.2 CLI 按照 Manifest、备份、历史、校验到还原演练完成服务器首次配置
 ---
 
 # 5 分钟快速开始：从零完成第一次服务器备份

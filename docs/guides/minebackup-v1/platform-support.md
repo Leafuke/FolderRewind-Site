@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 平台支持与安装边界
-description: MineBackup 1.16.2 的 Windows、Linux、macOS 桌面与 CLI 支持范围、分发形式和安装边界
+description: MineBackup 1.16.2 的 Windows、Linux、macOS 桌面与命令行支持范围、发行包形式、安装前置条件及运行边界说明
 ---
 
 # 平台支持与安装边界

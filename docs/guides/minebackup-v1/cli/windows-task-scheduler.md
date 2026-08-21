@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 title: Windows Task Scheduler
-description: 使用 MineBackup 1.16.2 CLI 官方 XML 模板部署 Windows Serve 和 Job Task
+description: MineBackup 1.16.2 命令行使用官方 XML 模板部署 Windows 常驻服务任务和 Job 定时任务的步骤
 ---
 
 # Windows Task Scheduler

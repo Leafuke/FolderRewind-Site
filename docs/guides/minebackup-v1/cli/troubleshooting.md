@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: CLI 故障排查
-description: 按症状、命令、含义和下一步定位 MineBackup 1.16.2 CLI 问题
+description: 按症状、命令、错误含义和下一步操作定位 MineBackup 1.16.2 CLI 故障
 ---
 
 # CLI 故障排查

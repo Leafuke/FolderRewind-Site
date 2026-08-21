@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: CLI 与服务器模式概览
-description: MineBackup 1.16.2 headless CLI、GUI 关系、适用场景与学习路径
+description: MineBackup 1.16.2 无界面 CLI 的定位、与 GUI 的关系、服务器适用场景和学习路线
 ---
 
 # CLI 与服务器模式概览

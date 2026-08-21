@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: 备份、历史、校验与还原
-description: 用 MineBackup 1.16.2 CLI 完成 Backup、History、Verify、Restore dry-run 和冷还原
+description: 使用 MineBackup 1.16.2 CLI 完成备份、历史查询、完整性校验、还原演练和冷还原操作
 ---
 
 # 备份、历史、校验与还原
