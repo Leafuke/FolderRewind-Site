@@ -1,12 +1,12 @@
 ---
 sidebar_position: 9
 title: 过滤规则
-description: MineBackup 1.16.1 的备份黑名单与 Clean 还原白名单
+description: MineBackup 1.16.2 的备份黑名单与 Clean 还原白名单
 ---
 
 # 过滤规则
 
-MineBackup 1.16.1 的配置级备份过滤以 **黑名单** 为主；还原阶段另有用于 Clean 清理步骤的**还原白名单**。它没有把 FolderRewind 的备份白名单模式直接带入 MineBackup 配置。
+MineBackup 1.16.2 的配置级备份过滤以 **黑名单** 为主；还原阶段另有用于 Clean 清理步骤的**还原白名单**。它没有把 FolderRewind 的备份白名单模式直接带入 MineBackup 配置。
 
 ## 备份黑名单
 

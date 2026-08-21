@@ -1,7 +1,7 @@
 ---
 sidebar_position: 14
 title: Cloud Archive
-description: Use rclone to synchronize history, archives, and portable configuration data in MineBackup 1.16.1
+description: Use rclone to synchronize history, archives, and portable configuration data in MineBackup 1.16.2
 ---
 
 # Cloud Archive

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 18
 title: Troubleshooting
-description: Diagnose MineBackup 1.16.1 by profile, backup chain, restore, automation, integration, and cloud layer
+description: Diagnose MineBackup 1.16.2 by profile, backup chain, restore, automation, integration, and cloud layer
 ---
 
 # Troubleshooting
 
-Identify the layer where the failure occurs and change one variable at a time. Preserve the profile, archives, and logs while investigating; do not delete an active directory just to “reset” the application.
+Identify the layer where the failure occurs and change one variable at a time. Preserve the profile, archives, and logs while investigating; do not delete an active directory just to “reset” the application. For CLI/headless command failures, `profile_busy`, JSON output, exit codes, serve IPC, and system scheduling, start with [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting). This page keeps the GUI, migration, cloud-archive, and legacy-runtime boundaries.
 
 ## The shortest diagnostic path
 
@@ -19,7 +19,7 @@ If a minimal configuration completes “Full backup → visible history → rest
 
 ## 1. MineBackup opened the wrong profile
 
-In 1.16.1, configuration and history are not necessarily beside the EXE. Confirm:
+In 1.16.2, configuration and history are not necessarily beside the EXE. Confirm:
 
 - whether the launch used `--data-dir <absolute path>`;
 - whether `portable.flag` is beside the Windows executable or AppImage;
@@ -107,7 +107,7 @@ Check the snapshot path and error in the log, retry the migration unit, and then
 
 ## 10. Legacy Windows Service problems
 
-MineBackup 1.16.1 cannot install or start Service Mode. Use [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode) to inspect and remove only a validated old service; non-Windows platforms do not provide this cleanup. Do not use `--service` or bypass the validation with a service-management command.
+MineBackup 1.16.2 cannot install or start Service Mode. Use [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode) to inspect and remove only a validated old service; non-Windows platforms do not provide this cleanup. Do not use `--service` or bypass the validation with a service-management command.
 
 ## Before sending diagnostics
 

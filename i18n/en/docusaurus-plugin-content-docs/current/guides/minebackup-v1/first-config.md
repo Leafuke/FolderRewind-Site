@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Creating Your First Configuration
-description: Configure paths, worlds, compression, and backup policy using the MineBackup 1.16.1 model
+description: Configure paths, worlds, compression, and backup policy using the MineBackup 1.16.2 model
 ---
 
 # Creating Your First Configuration

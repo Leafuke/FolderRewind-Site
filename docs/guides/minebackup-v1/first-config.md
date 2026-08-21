@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: 创建第一套配置
-description: 基于 MineBackup 1.16.1 配置模型设置路径、世界、压缩和备份策略
+description: 基于 MineBackup 1.16.2 配置模型设置路径、世界、压缩和备份策略
 ---
 
 # 创建第一套配置

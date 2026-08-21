@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: Your First Restore
-description: Safely rehearse history archives, restore methods, and fallback strategy in MineBackup 1.16.1
+description: Safely rehearse history archives, restore methods, and fallback strategy in MineBackup 1.16.2
 ---
 
 # Your First Restore

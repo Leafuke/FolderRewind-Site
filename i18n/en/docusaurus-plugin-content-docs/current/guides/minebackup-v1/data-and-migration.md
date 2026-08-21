@@ -1,12 +1,12 @@
 ---
 sidebar_position: 15
 title: Profiles and Migration
-description: MineBackup 1.16.1 profile layout, portable mode, and the 1.15-to-1.16 migration
+description: MineBackup 1.16.2 profile layout, portable mode, and the 1.15-to-1.16 migration
 ---
 
 # Profiles and Migration
 
-MineBackup 1.16.1 manages application data through a profile. It no longer treats the current working directory or the directory beside the executable as a fixed data location. A profile stores settings, history, migration state, logs, and managed tools; archive files are still written to each configuration’s `backupPath`, so the two locations must not be conflated.
+MineBackup 1.16.2 manages application data through a profile. It no longer treats the current working directory or the directory beside the executable as a fixed data location. A profile stores settings, history, migration state, logs, and managed tools; archive files are still written to each configuration’s `backupPath`, so the two locations must not be conflated.
 
 ## Selecting a profile
 
@@ -43,7 +43,7 @@ An explicit `--data-dir` overrides the marker. A macOS application never writes 
 
 ## Default locations
 
-Without `--data-dir` or a portable marker, 1.16.1 uses these platform locations:
+Without `--data-dir` or a portable marker, 1.16.2 uses these platform locations:
 
 | Platform | Profile layout |
 | --- | --- |
@@ -53,7 +53,7 @@ Without `--data-dir` or a portable marker, 1.16.1 uses these platform locations:
 
 Linux uses `XDG_RUNTIME_DIR` only when it belongs to the current user and has safe permissions. Otherwise it creates a private runtime directory below the state root. To confirm the active paths, use the current profile’s **Log** panel and [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics).
 
-## The 1.16.1 storage model
+## The 1.16.2 storage model
 
 | Content | Location | Meaning |
 | --- | --- | --- |
@@ -68,7 +68,7 @@ Archive files themselves remain under the configured `backupPath`. The profile m
 
 ## Startup migration from 1.15
 
-The 1.16.1 startup sequence parses launch options and AppPaths, acquires the profile’s single-instance lock, discovers old locations and asks for confirmation, performs the 1.15-to-1.16 transaction, then loads 1.16 data and starts desktop, task, and network services. Declining an old-location prompt does not delete the old files or silently import another location.
+The 1.16.2 startup sequence parses launch options and AppPaths, acquires the profile’s single-instance lock, discovers old locations and asks for confirmation, performs the 1.15-to-1.16 transaction, then loads 1.16 data and starts desktop, task, and network services. Declining an old-location prompt does not delete the old files or silently import another location.
 
 The migration follows these boundaries:
 
@@ -96,15 +96,46 @@ When world metadata is `Degraded` or `Failed`, MineBackup deliberately does not 
 ## A safe upgrade workflow
 
 1. Stop other programs that write the world or archive directories, and copy the profile and important archive inventory if it must be retained.
-2. Launch 1.16.1 and review the old-location prompt and the target profile path.
+2. Launch 1.16.2 and review the old-location prompt and the target profile path.
 3. Wait for the migration summary. If it reports `Pending`, `Degraded`, or `Failed`, open [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics) and the migration report; do not delete the old files.
 4. Run a Full backup for one test world, then perform a Clean or Custom restore drill.
 5. Confirm that `history.json` and the world bindings are correct before enabling Smart, automation, or cloud archives.
 
 Importing `portable-config.json` from the cloud restores only its portable whitelist. New configurations remain pending until you bind local `saveRoot`, world entries, `backupPath`, and optional `snapshotPath` again. See [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive).
 
+## Migrate an existing GUI configuration to the headless CLI
+
+Do not copy desktop paths directly to a server. Export through the CLI, change the server paths, and apply it again:
+
+```text
+GUI Profile
+  ↓
+profile export
+  ↓
+Change server saveRoot / backupRoot / world paths
+  ↓
+validate
+  ↓
+diff
+  ↓
+profile apply --dry-run
+  ↓
+profile apply
+  ↓
+doctor
+```
+
+Example:
+
+```bash
+minebackup-cli --data-dir "$PROFILE" --json \
+  profile export --output server.json
+```
+
+After export, translate GUI `backupPath` and related desktop fields into the CLI Manifest’s `backupRoot` and `worlds[].path`, while preserving existing UUIDs and fields that do not need to change. Do not put passwords, tokens, rclone secrets, or cloud credentials in the file. Close the GUI during migration, then use `config list`, `world list`, and `doctor` to confirm what the server accepts.
+
 ## Do not use the old reset rule
 
-Deleting an EXE-side `config.ini` or one legacy history file does not fully reset a 1.16.1 profile and can disconnect external archives from their history. If you need a clean start, first confirm the active profile root in settings and logs, export or copy anything that must be retained, and only then handle the profile while MineBackup is closed. Do not delete an active profile directory while the application is running.
+Deleting an EXE-side `config.ini` or one legacy history file does not fully reset a 1.16.2 profile and can disconnect external archives from their history. If you need a clean start, first confirm the active profile root in settings and logs, export or copy anything that must be retained, and only then handle the profile while MineBackup is closed. Do not delete an active profile directory while the application is running.
 
-Related pages: [Installation](/en/docs/guides/minebackup-v1/installation), [First configuration](/en/docs/guides/minebackup-v1/first-config), [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive), and [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode).
+Related pages: [Installation](/en/docs/guides/minebackup-v1/installation), [First configuration](/en/docs/guides/minebackup-v1/first-config), [CLI Profiles and Manifest](/en/docs/guides/minebackup-v1/cli/profile-manifest), [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive), and [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode).

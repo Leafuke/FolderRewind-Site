@@ -1,12 +1,16 @@
 ---
 sidebar_position: 11
 title: Special Config
-description: Special configurations, command tasks, and unattended execution rules in MineBackup 1.16.1
+description: Special configurations, command tasks, and unattended execution rules in MineBackup 1.16.2
 ---
 
 # Special Config
 
 Special Config is designed for an unattended flow: start in a special mode, run a task set, and optionally exit. It is not merely an alias for a normal configuration; it has a stable identity and its own task queue.
+
+:::note Server and headless boundary
+Special Config is the compatibility model for the desktop GUI. For a new unattended server, prefer [CLI Profiles and Manifest](/en/docs/guides/minebackup-v1/cli/profile-manifest) and [`minebackup-cli serve`](/en/docs/guides/minebackup-v1/cli/serve). A CLI Job describes what to execute; it does not contain a timer, so systemd or Task Scheduler decides when it runs. Legacy Special Config is not converted into a CLI Job automatically.
+:::
 
 ## Core switches
 

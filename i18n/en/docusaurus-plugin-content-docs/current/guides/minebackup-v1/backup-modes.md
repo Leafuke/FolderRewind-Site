@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Backup Modes, Chain Integrity, and Safe Deletion
-description: Full, Smart, and Overwrite modes and Smart-chain maintenance rules in MineBackup 1.16.1
+description: Full, Smart, and Overwrite modes and Smart-chain maintenance rules in MineBackup 1.16.2
 ---
 
 # Backup Modes, Chain Integrity, and Safe Deletion

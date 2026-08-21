@@ -1,12 +1,16 @@
 ---
 sidebar_position: 11
 title: Special Config
-description: MineBackup 1.16.1 的特殊配置、命令任务和无人值守执行规则
+description: MineBackup 1.16.2 的特殊配置、命令任务和无人值守执行规则
 ---
 
 # Special Config
 
 Special Config 用于“启动后进入特殊模式，执行一组任务，并按需要自动退出”的无人值守流程。它不是普通配置的简单别名，而是拥有独立稳定身份和任务队列的执行入口。
+
+:::note 服务器与 headless 边界
+Special Config 是桌面 GUI 的兼容模型。新建无人值守服务器时，优先使用 [CLI Profile 与 Manifest](/docs/guides/minebackup-v1/cli/profile-manifest) 和 [`minebackup-cli serve`](/docs/guides/minebackup-v1/cli/serve)；CLI Job 描述执行什么，不内置定时器，何时执行由 systemd 或 Task Scheduler 决定。旧 Special Config 不会自动转换成 CLI Job。
+:::
 
 ## 核心开关
 

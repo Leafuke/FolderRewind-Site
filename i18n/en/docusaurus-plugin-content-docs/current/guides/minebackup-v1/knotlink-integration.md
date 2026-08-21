@@ -1,12 +1,12 @@
 ---
 sidebar_position: 13
 title: KnotLink v2 Integration
-description: Practical integration flows and boundaries for MineBackup 1.16.1, MineBackup-Mod, and KnotLinkService
+description: Practical integration flows and boundaries for MineBackup 1.16.2, MineBackup-Mod, and KnotLinkService
 ---
 
 # KnotLink v2 Integration
 
-MineBackup 1.16.1 implements only the FolderRewind/KnotLink v2 parameterized protocol. A request is a non-empty semicolon-separated key-value map:
+MineBackup 1.16.2 implements only the FolderRewind/KnotLink v2 parameterized protocol. A request is a non-empty semicolon-separated key-value map:
 
 ```text
 key=value;key2=value2
@@ -16,12 +16,16 @@ Keys are case-insensitive and values use RFC 3986 percent-encoding. Empty segmen
 
 ## Version and service requirements
 
-- MineBackup: 1.16.1.
+- MineBackup: 1.16.2.
 - MineBackup-Mod: `3.0.0` or newer.
 - KnotLinkService: `3.2.0.0` or newer is required by the current integration path.
 - On Windows, the service must expose loopback ports `6370` and `6378`; a startup wait beyond 10 seconds is treated as failure without blocking the main window.
 
 Linux discovers the service through dpkg and macOS through the Installer receipt. The wizard and Settings can download the service package from the official release location, try the text mirror when necessary, and open the platform installer. MineBackup does not complete the remaining system installation steps for the user.
+
+## Recommended headless-server entry point
+
+When a Minecraft Server runs on a host without a logged-in desktop, use [`minebackup-cli serve`](/en/docs/guides/minebackup-v1/cli/serve) to hold the long-lived runtime instead of treating the GUI or legacy Windows Service Mode as a daemon. `serve` keeps backup, history, verification, restore, and the KnotLink runtime for one profile online; the profile still has only one owner at a time. Use `serve status` to inspect KnotLink state and `serve stop` for an orderly shutdown. See [Linux systemd](/en/docs/guides/minebackup-v1/cli/linux-systemd) and [Windows Task Scheduler](/en/docs/guides/minebackup-v1/cli/windows-task-scheduler) for scheduler and account boundaries.
 
 ## Check capabilities first
 

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 16
 title: 日志与诊断
-description: MineBackup 1.16.1 的结构化日志、会话记录与隐私安全诊断导出
+description: MineBackup 1.16.2 的结构化日志、会话记录与隐私安全诊断导出
 ---
 
 # 日志与诊断
 
-MineBackup 1.16.1 的 GUI、后台备份、还原、自动任务、平台集成和 KnotLink 共用一条结构化日志路径。排查问题时，要区分 **Log 面板**、**会话日志**、**本地轮转文件** 和 **诊断导出**；它们的保存范围和隐私处理不同。
+MineBackup 1.16.2 的 GUI、后台备份、还原、自动任务、平台集成和 KnotLink 共用一条结构化日志路径。排查问题时，要区分 **Log 面板**、**会话日志**、**本地轮转文件** 和 **诊断导出**；它们的保存范围和隐私处理不同。
 
 ## 三个日志层次
 
@@ -17,6 +17,10 @@ MineBackup 1.16.1 的 GUI、后台备份、还原、自动任务、平台集成�
 | **本地文件** | 在应用外查看完整的结构化运行线索。 | `minebackup.log` 当前文件 10 MiB，另有最多 4 个轮转文件。 |
 
 命令面板的历史不是日志存储；复制命令或过滤结果是本地操作，会保留真实本机路径。不要把命令面板内容当成可脱敏的诊断包。
+
+## CLI 日志与 JSON 输出
+
+Headless CLI 支持全局 `--log-level off|info|debug`；启用 `--json` 时，stdout 只输出一个 schema v1 envelope，日志和进度进入配置档 `logs` 或 stderr。自动化脚本应解析 JSON envelope 和退出码，不要解析人类可读的进度文本。服务器排障可先运行 `minebackup-cli --json --no-network doctor`，它不会启动 KnotLink；需要观察长期运行时则使用 `serve status`，再结合 profile 的日志文件定位问题。完整命令和退出码见 [CLI 命令参考](/docs/guides/minebackup-v1/cli/reference) 与 [CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)。
 
 ## 日志级别
 
@@ -57,7 +61,7 @@ minebackup-diagnostics-YYYYMMDD-HHMMSS.txt
 
 ## 旧日志文件不再是当前机制
 
-1.16.1 不再写入以下旧文件：
+1.16.2 不再写入以下旧文件：
 
 - `auto_log.txt`
 - `special_mode_log.txt`

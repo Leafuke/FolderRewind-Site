@@ -1,12 +1,12 @@
 ---
 sidebar_position: 13
 title: KnotLink v2 联动
-description: MineBackup 1.16.1 通过 KnotLink v2 参数化协议与 MineBackup-Mod、KnotLinkService 联动的完整流程，包含版本要求、请求格式、服务发现与跨平台安装边界
+description: MineBackup 1.16.2 通过 KnotLink v2 参数化协议与 MineBackup-Mod、KnotLinkService 联动的完整流程，包含版本要求、请求格式、服务发现与跨平台安装边界
 ---
 
 # KnotLink v2 联动
 
-MineBackup 1.16.1 只实现 FolderRewind/KnotLink 的 v2 参数化协议。请求是非空的分号分隔键值表，例如：
+MineBackup 1.16.2 只实现 FolderRewind/KnotLink 的 v2 参数化协议。请求是非空的分号分隔键值表，例如：
 
 ```text
 key=value;key2=value2
@@ -16,12 +16,16 @@ key=value;key2=value2
 
 ## 版本和服务前提
 
-- MineBackup：1.16.1。
+- MineBackup：1.16.2。
 - MineBackup-Mod：至少 `3.0.0`。
 - KnotLinkService：当前联动路径要求 `3.2.0.0` 或更高版本。
 - Windows 服务必须提供本机回环端口 `6370` 和 `6378`；启动等待超过 10 秒会被视为失败，但不应阻塞主窗口。
 
 Linux 通过 dpkg 发现服务，macOS 通过 Installer receipt 发现服务。向导和设置页可以从官方发布地址下载服务安装包，必要时尝试文本镜像，然后交给系统安装器；MineBackup 不替用户完成剩余系统安装步骤。
+
+## Headless Server 推荐入口
+
+如果 Minecraft Server 长期运行在无人登录桌面的主机上，推荐使用 [`minebackup-cli serve`](/docs/guides/minebackup-v1/cli/serve) 持有长期运行时，而不是把 GUI 或旧的 Windows Service Mode 当作后台守护进程。`serve` 让同一配置档的备份、历史、校验、还原和 KnotLink 运行时持续在线；同一时间仍只允许一个配置档 owner。使用 `serve status` 检查 KnotLink 状态，使用 `serve stop` 做有序停止；系统调度模板和账户边界见 [Linux systemd](/docs/guides/minebackup-v1/cli/linux-systemd) 与 [Windows Task Scheduler](/docs/guides/minebackup-v1/cli/windows-task-scheduler)。
 
 ## 先做能力检查
 

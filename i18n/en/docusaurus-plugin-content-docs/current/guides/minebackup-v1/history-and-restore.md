@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: History and Restore Strategy
-description: History maintenance, important markers, deletion choices, and recovery decisions in MineBackup 1.16.1
+description: History maintenance, important markers, deletion choices, and recovery decisions in MineBackup 1.16.2
 ---
 
 # History and Restore Strategy

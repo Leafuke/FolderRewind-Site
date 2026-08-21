@@ -1,7 +1,7 @@
 ---
 sidebar_position: 12
 title: Hot Backup and Hot Restore
-description: Running-world coordination, snapshots, hotkeys, and safety boundaries in MineBackup 1.16.1
+description: Running-world coordination, snapshots, hotkeys, and safety boundaries in MineBackup 1.16.2
 ---
 
 # Hot Backup and Hot Restore

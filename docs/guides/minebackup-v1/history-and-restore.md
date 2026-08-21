@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: 历史记录与还原策略
-description: MineBackup 1.16.1 的历史维护、重要标记、删除方式和恢复选择
+description: MineBackup 1.16.2 的历史维护、重要标记、删除方式和恢复选择
 ---
 
 # 历史记录与还原策略

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 18
 title: 故障排查
-description: 按配置档、备份链、还原、自动化、联动与云归档定位 MineBackup 1.16.1 问题
+description: 按配置档、备份链、还原、自动化、联动与云归档定位 MineBackup 1.16.2 问题
 ---
 
 # 故障排查
 
-先确定问题发生在哪一层，再一次只改变一个变量。排查过程中优先保留配置档、备份包和日志，不要为了“重置”直接删除正在使用的目录。
+先确定问题发生在哪一层，再一次只改变一个变量。排查过程中优先保留配置档、备份包和日志，不要为了“重置”直接删除正在使用的目录。CLI/headless 的命令失败、`profile_busy`、JSON 输出、退出码、serve IPC 和系统调度问题请先看 [CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)；本页保留 GUI、迁移、云归档和旧运行模式的排查边界。
 
 ## 最短排查路径
 
@@ -19,7 +19,7 @@ description: 按配置档、备份链、还原、自动化、联动与云归档�
 
 ## 1. 启动到了错误的配置档
 
-1.16.1 的配置和历史不一定在 EXE 旁边。先确认：
+1.16.2 的配置和历史不一定在 EXE 旁边。先确认：
 
 - 是否带有 `--data-dir <absolute path>`；
 - Windows/AppImage 旁是否存在 `portable.flag`；
@@ -107,7 +107,7 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 
 ## 10. 旧 Windows 服务问题
 
-1.16.1 不能安装或启动 Service Mode。只使用[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)页签检查并清理通过验证的旧服务；非 Windows 没有该清理能力。不要用 `--service` 或绕过验证的服务管理命令来修复当前版本。
+1.16.2 不能安装或启动 Service Mode。只使用[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)页签检查并清理通过验证的旧服务；非 Windows 没有该清理能力。不要用 `--service` 或绕过验证的服务管理命令来修复当前版本。
 
 ## 提交诊断信息前
 

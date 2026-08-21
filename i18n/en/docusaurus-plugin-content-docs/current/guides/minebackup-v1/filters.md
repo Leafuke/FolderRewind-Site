@@ -1,12 +1,12 @@
 ---
 sidebar_position: 9
 title: Filter Rules
-description: Backup blacklists and Clean-restore deletion whitelists in MineBackup 1.16.1
+description: Backup blacklists and Clean-restore deletion whitelists in MineBackup 1.16.2
 ---
 
 # Filter Rules
 
-MineBackup 1.16.1 primarily uses a **blacklist** for configuration-level backup filtering. Restore has a separate **restore whitelist** for the deletion step of Clean restore. MineBackup does not directly provide FolderRewind’s backup-whitelist mode.
+MineBackup 1.16.2 primarily uses a **blacklist** for configuration-level backup filtering. Restore has a separate **restore whitelist** for the deletion step of Clean restore. MineBackup does not directly provide FolderRewind’s backup-whitelist mode.
 
 ## Backup blacklist
 

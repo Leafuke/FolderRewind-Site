@@ -1,12 +1,12 @@
 ---
 sidebar_position: 15
 title: 配置档与迁移
-description: MineBackup 1.16.1 的配置档布局、便携模式与 1.15 到 1.16 迁移
+description: MineBackup 1.16.2 的配置档布局、便携模式与 1.15 到 1.16 迁移
 ---
 
 # 配置档与迁移
 
-MineBackup 1.16.1 使用“配置档（profile）”管理应用数据，不再把当前工作目录或 EXE 同级目录当作固定数据目录。配置档保存设置、历史、迁移状态、日志和受管理工具；实际备份包仍然写入每个配置的 `backupPath`，不要把两者混为一谈。
+MineBackup 1.16.2 使用“配置档（profile）”管理应用数据，不再把当前工作目录或 EXE 同级目录当作固定数据目录。配置档保存设置、历史、迁移状态、日志和受管理工具；实际备份包仍然写入每个配置的 `backupPath`，不要把两者混为一谈。
 
 ## 选择配置档
 
@@ -43,7 +43,7 @@ MineBackupData/
 
 ## 默认目录
 
-未使用 `--data-dir` 或便携标记时，1.16.1 按平台使用以下位置：
+未使用 `--data-dir` 或便携标记时，1.16.2 按平台使用以下位置：
 
 | 平台 | 配置档布局 |
 | --- | --- |
@@ -53,7 +53,7 @@ MineBackupData/
 
 Linux 的 `XDG_RUNTIME_DIR` 只有在属于当前用户且权限安全时才用于运行时目录；否则会在状态目录下使用权限收紧的私有目录。若要确认实际路径，以当前配置档的 **Log** 面板和 [日志诊断](/docs/guides/minebackup-v1/logging-and-diagnostics) 页面为准。
 
-## 1.16.1 的存储模型
+## 1.16.2 的存储模型
 
 | 内容 | 位置 | 说明 |
 | --- | --- | --- |
@@ -68,7 +68,7 @@ Linux 的 `XDG_RUNTIME_DIR` 只有在属于当前用户且权限安全时才用�
 
 ## 从 1.15 启动迁移
 
-1.16.1 的启动顺序会先解析启动参数和 AppPaths，再获取配置档的单实例锁，然后发现旧位置并请求确认，之后执行 1.15 到 1.16 的事务迁移，最后加载 1.16 数据并启动桌面、任务和网络服务。发现旧位置时，拒绝确认不会删除旧文件，也不会偷偷导入另一份数据。
+1.16.2 的启动顺序会先解析启动参数和 AppPaths，再获取配置档的单实例锁，然后发现旧位置并请求确认，之后执行 1.15 到 1.16 的事务迁移，最后加载 1.16 数据并启动桌面、任务和网络服务。发现旧位置时，拒绝确认不会删除旧文件，也不会偷偷导入另一份数据。
 
 迁移遵循以下边界：
 
@@ -96,15 +96,46 @@ Linux 的 `XDG_RUNTIME_DIR` 只有在属于当前用户且权限安全时才用�
 ## 升级前后的安全流程
 
 1. 关闭正在写入世界或备份目录的其他程序，并复制当前配置档和重要备份目录的清单。
-2. 启动 1.16.1，确认导入旧位置的提示内容和目标配置档路径。
+2. 启动 1.16.2，确认导入旧位置的提示内容和目标配置档路径。
 3. 等待迁移摘要完成；若出现 `Pending`、`Degraded` 或 `Failed`，先打开 [日志诊断](/docs/guides/minebackup-v1/logging-and-diagnostics) 和迁移报告，不要删除旧文件。
 4. 对一个测试世界执行 Full 备份，再执行一次 Clean 或 Custom 还原演练。
 5. 确认 `history.json` 中的历史和配置页中的世界绑定正确后，再启用 Smart、自动任务或云归档。
 
 从云端导入 `portable-config.json` 只会恢复白名单字段，新的配置会保持待绑定状态；请先在本机重新绑定 `saveRoot`、世界列表、`backupPath` 和可选的 `snapshotPath`，再开始备份。详见[云归档](/docs/guides/minebackup-v1/cloud-archive)。
 
+## 已有 GUI 配置迁移到 Headless CLI
+
+服务器迁移不要直接复制桌面路径。使用 CLI 导出，再修改服务器路径并重新应用：
+
+```text
+GUI Profile
+  ↓
+profile export
+  ↓
+修改服务器 saveRoot / backupRoot / 世界路径
+  ↓
+validate
+  ↓
+diff
+  ↓
+profile apply --dry-run
+  ↓
+profile apply
+  ↓
+doctor
+```
+
+示例：
+
+```bash
+minebackup-cli --data-dir "$PROFILE" --json \
+  profile export --output server.json
+```
+
+导出后把 GUI 的 `backupPath` 等桌面字段转换为 CLI Manifest 的 `backupRoot` 和 `worlds[].path`，保留现有 UUID 与不需要修改的字段。不要把密码、Token、rclone secret 或云凭据放进文件；同一 Profile 迁移时关闭 GUI，最后用 `config list`、`world list` 和 `doctor` 确认服务器实际接受的对象。
+
 ## 不要用旧版重置方法判断当前版本
 
-删除 EXE 旁的 `config.ini` 或某个旧历史文件，并不能完整重置 1.16.1 配置档，也可能让外部备份与历史脱钩。需要重新开始时，先在设置和日志中确认实际 profile root，导出或复制仍需保留的数据，再在 MineBackup 退出后按配置档范围进行备份后处理；不要在运行中直接删除正在使用的目录。
+删除 EXE 旁的 `config.ini` 或某个旧历史文件，并不能完整重置 1.16.2 配置档，也可能让外部备份与历史脱钩。需要重新开始时，先在设置和日志中确认实际 profile root，导出或复制仍需保留的数据，再在 MineBackup 退出后按配置档范围进行备份后处理；不要在运行中直接删除正在使用的目录。
 
-相关页面：[安装](/docs/guides/minebackup-v1/installation)、[首次配置](/docs/guides/minebackup-v1/first-config)、[云归档](/docs/guides/minebackup-v1/cloud-archive)、[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。
+相关页面：[安装](/docs/guides/minebackup-v1/installation)、[首次配置](/docs/guides/minebackup-v1/first-config)、[CLI Profile 与 Manifest](/docs/guides/minebackup-v1/cli/profile-manifest)、[云归档](/docs/guides/minebackup-v1/cloud-archive)、[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。

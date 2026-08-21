@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: 首次备份
-description: 在 MineBackup 1.16.1 中验证配置、压缩引擎、历史记录和备份链
+description: 在 MineBackup 1.16.2 中验证配置、压缩引擎、历史记录和备份链
 ---
 
 # 首次备份

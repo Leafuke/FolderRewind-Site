@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: 首次还原
-description: 在 MineBackup 1.16.1 中安全演练历史归档、还原方式和回退策略
+description: 在 MineBackup 1.16.2 中安全演练历史归档、还原方式和回退策略
 ---
 
 # 首次还原

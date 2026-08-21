@@ -1,22 +1,42 @@
 ---
 sidebar_position: 19
-title: MineBackup 1.16.1 FAQ
-description: Product boundaries, backup, restore, migration, and integration answers for MineBackup 1.16.1
+title: MineBackup 1.16.2 FAQ
+description: Product boundaries, backup, restore, migration, and integration answers for MineBackup 1.16.2
 ---
 
-# MineBackup 1.16.1 FAQ
+# MineBackup 1.16.2 FAQ
 
 ## How does MineBackup relate to FolderRewind?
 
-MineBackup is the first-generation archive time machine in the FolderRewind ecosystem. It keeps its own profile, Smart chain, KnotLink integration, and cross-platform boundaries. The general FolderRewind documentation is not a MineBackup capability reference; this section and [First-generation overview](/en/docs/guides/minebackup-v1/overview) follow MineBackup 1.16.1 source behavior.
+MineBackup is the first-generation archive time machine in the FolderRewind ecosystem. It keeps its own profile, Smart chain, KnotLink integration, and cross-platform boundaries. The general FolderRewind documentation is not a MineBackup capability reference; this section and [First-generation overview](/en/docs/guides/minebackup-v1/overview) follow MineBackup 1.16.2 source behavior.
 
-## Which platforms does 1.16.1 support?
+## Which platforms does 1.16.2 support?
 
 The release targets Windows x64, Linux x86_64, and arm64 macOS. Tray, notification, hotkey, and KnotLink behavior varies with the desktop session. Linux/macOS are not a simple “degraded Windows mode”: core backup, restore, profile, and task models are shared, while paths, shells, desktop portals, and permissions differ. See [Platform support](/en/docs/guides/minebackup-v1/platform-support).
 
 ## Can I still install or start Service Mode?
 
-No. 1.16.1 cannot install or start Windows Service Mode. It can only inspect and safely remove an existing, validated legacy MineBackup service on Windows. `--service` is deprecated and disabled. For unattended work, use [Automation Tasks](/en/docs/guides/minebackup-v1/automation) or [Special Config](/en/docs/guides/minebackup-v1/special-mode).
+No. 1.16.2 cannot install or start Windows Service Mode. It can only inspect and safely remove an existing, validated legacy MineBackup service on Windows. `--service` is deprecated and disabled. For a new server runtime, see [`minebackup-cli serve`](/en/docs/guides/minebackup-v1/cli/serve); legacy desktop unattended flows can still use [Automation Tasks](/en/docs/guides/minebackup-v1/automation) or [Special Config](/en/docs/guides/minebackup-v1/special-mode).
+
+## Can MineBackup run without starting the GUI at all?
+
+Yes. `minebackup-cli` is the headless entry point and can run profiles, doctor, backup, history, verify, restore, Jobs, and `serve` without the GUI. Start a new server with the [CLI overview](/en/docs/guides/minebackup-v1/cli/overview) and [quick start](/en/docs/guides/minebackup-v1/cli/quick-start), following the documented validation chain.
+
+## Do the CLI and GUI share backup history?
+
+Yes. Both use the same core, profile, and HistoryRepository, so a single profile exposes the same configuration, Jobs, history, and archive associations. A profile still has only one owner at a time: the CLI returns `profile_busy` while the GUI owns it, and vice versa. Use a separate server profile and close the GUI before migration.
+
+## Is `serve` the old Windows Service Mode?
+
+No. `serve` is an optional cross-platform headless runtime that holds one profile through local IPC and can keep KnotLink available. It does not install a Windows service or revive deprecated `--service`. Legacy Service Mode only supports inspecting and safely removing an existing validated service; see [Legacy Windows service cleanup](/en/docs/guides/minebackup-v1/service-mode) and [Serve runtime](/en/docs/guides/minebackup-v1/cli/serve).
+
+## Why does a Job have no timer setting?
+
+A Job describes what to execute—backup targets, steps, and ordering—while a systemd timer or Windows Task Scheduler describes when to execute it. The same Job can therefore be run manually, once, or under a platform scheduling policy. See [CLI Jobs](/en/docs/guides/minebackup-v1/cli/jobs), [Linux systemd](/en/docs/guides/minebackup-v1/cli/linux-systemd), and [Windows Task Scheduler](/en/docs/guides/minebackup-v1/cli/windows-task-scheduler).
+
+## Can AI generate a Manifest for me?
+
+Yes, as an optional configuration assistant—not as the validator or source of truth. Never provide passwords, tokens, rclone secrets, private keys, or complete internal paths to a model. After generation, require `profile validate`, `profile diff`, `profile apply --dry-run`, `profile apply`, and `doctor` to confirm the result. See [AI-assisted configuration](/en/docs/guides/minebackup-v1/cli/ai-assisted-config) for the safety warning and reusable prompts.
 
 ## Which mode should I use for the first backup?
 
@@ -36,7 +56,7 @@ They are best-effort integration workflows, not unconditional consistency guaran
 
 ## Where are configuration and history stored?
 
-1.16.1 uses a separate profile: the current configuration is `<profile>/config/config.ini`, history is `<profile>/data/history.json`, and logs are under `<profile>/logs` or the platform’s standard log location. Archive files are still controlled by each configuration’s `backupPath` and do not have to be beside the profile. See [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration).
+1.16.2 uses a separate profile: the current configuration is `<profile>/config/config.ini`, history is `<profile>/data/history.json`, and logs are under `<profile>/logs` or the platform’s standard log location. Archive files are still controlled by each configuration’s `backupPath` and do not have to be beside the profile. See [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration).
 
 ## How can I start over safely?
 
@@ -68,4 +88,4 @@ Create one when the world or archive path has changed, a Smart chain cannot be m
 
 ## Where is the English documentation?
 
-This section has a synchronized English mirror. Links and version boundaries should remain aligned; when a translation appears to disagree with the implementation, MineBackup 1.16.1 source behavior is authoritative and should be reported.
+This section has a synchronized English mirror. Links and version boundaries should remain aligned; when a translation appears to disagree with the implementation, MineBackup 1.16.2 source behavior is authoritative and should be reported.

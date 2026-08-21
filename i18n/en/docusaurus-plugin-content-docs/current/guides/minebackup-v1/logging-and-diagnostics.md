@@ -1,12 +1,12 @@
 ---
 sidebar_position: 16
 title: Logging and Diagnostics
-description: Structured logs, session records, and privacy-safe diagnostic exports in MineBackup 1.16.1
+description: Structured logs, session records, and privacy-safe diagnostic exports in MineBackup 1.16.2
 ---
 
 # Logging and Diagnostics
 
-MineBackup 1.16.1 uses one structured logging path for the GUI, backup and restore work, automation, platform integration, and KnotLink. For troubleshooting, distinguish the **Log panel**, **session log**, **local rotating file**, and **diagnostic export**; they have different retention and privacy behavior.
+MineBackup 1.16.2 uses one structured logging path for the GUI, backup and restore work, automation, platform integration, and KnotLink. For troubleshooting, distinguish the **Log panel**, **session log**, **local rotating file**, and **diagnostic export**; they have different retention and privacy behavior.
 
 ## Three logging layers
 
@@ -17,6 +17,10 @@ MineBackup 1.16.1 uses one structured logging path for the GUI, backup and resto
 | **Local file** | Inspect a run outside the application. | `minebackup.log` at 10 MiB, with up to four rotated archives. |
 
 The Command panel’s history is not a log store. Copying a command or filtered result is a local operation and keeps real local paths, so it must not be treated as a sanitized diagnostic package.
+
+## CLI logs and JSON output
+
+The headless CLI supports the global `--log-level off|info|debug`. With `--json`, stdout contains exactly one schema v1 envelope; logs and progress go to the profile’s `logs` directory or stderr. Automation should parse the JSON envelope and exit code instead of human-readable progress text. For server diagnostics, start with `minebackup-cli --json --no-network doctor`; it does not start KnotLink. Use `serve status` for a long-lived runtime and combine it with the profile log when locating a failure. See [CLI reference](/en/docs/guides/minebackup-v1/cli/reference) and [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting) for the complete command and exit-code behavior.
 
 ## Log levels
 
@@ -57,7 +61,7 @@ Arbitrary secrets in external process stdout/stderr cannot be recognized reliabl
 
 ## Legacy log files are not the current mechanism
 
-1.16.1 no longer writes these legacy files:
+1.16.2 no longer writes these legacy files:
 
 - `auto_log.txt`
 - `special_mode_log.txt`

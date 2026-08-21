@@ -1,22 +1,42 @@
 ---
 sidebar_position: 19
-title: 常见问题（MineBackup 1.16.1）
-description: MineBackup 1.16.1 的产品边界、备份、还原、迁移与联动问答
+title: 常见问题（MineBackup 1.16.2）
+description: MineBackup 1.16.2 的产品边界、备份、还原、迁移与联动问答
 ---
 
-# 常见问题（MineBackup 1.16.1）
+# 常见问题（MineBackup 1.16.2）
 
 ## MineBackup 与 FolderRewind 是什么关系？
 
-MineBackup 是 FolderRewind 生态中的第一代存档时光机，保留了独立的配置档、Smart 链、KnotLink 联动和跨平台运行边界。FolderRewind 的通用文档不等于 MineBackup 的能力说明；本文和[一代时光机总览](/docs/guides/minebackup-v1/overview)以 MineBackup 1.16.1 源码为准。
+MineBackup 是 FolderRewind 生态中的第一代存档时光机，保留了独立的配置档、Smart 链、KnotLink 联动和跨平台运行边界。FolderRewind 的通用文档不等于 MineBackup 的能力说明；本文和[一代时光机总览](/docs/guides/minebackup-v1/overview)以 MineBackup 1.16.2 源码为准。
 
-## 1.16.1 支持哪些平台？
+## 1.16.2 支持哪些平台？
 
 当前发行目标包括 Windows x64、Linux x86_64 和 macOS arm64，桌面托盘、通知、热键和 KnotLink 会根据平台会话能力出现差异。Linux/macOS 不是 Windows 的简单“降级版”；核心备份、还原、配置档和任务模型保持一致，但路径、Shell、桌面门户和权限行为不同。详见[平台支持](/docs/guides/minebackup-v1/platform-support)。
 
 ## 我能继续安装或启动 Service Mode 吗？
 
-不能。1.16.1 不能安装或启动 Windows Service Mode；只支持在 Windows 上检查并安全清理已经存在且通过验证的旧 MineBackup 服务。`--service` 已弃用并禁用。需要无人值守执行时，请使用[自动化任务](/docs/guides/minebackup-v1/automation)或 [Special Config](/docs/guides/minebackup-v1/special-mode)。
+不能。1.16.2 不能安装或启动 Windows Service Mode；只支持在 Windows 上检查并安全清理已经存在且通过验证的旧 MineBackup 服务。`--service` 已弃用并禁用。新的服务器常驻运行时请看 [`minebackup-cli serve`](/docs/guides/minebackup-v1/cli/serve)；旧桌面无人值守流程仍可参考[自动化任务](/docs/guides/minebackup-v1/automation)或 [Special Config](/docs/guides/minebackup-v1/special-mode)。
+
+## MineBackup 能否完全不启动 GUI？
+
+可以。`minebackup-cli` 是无 GUI 的 headless 入口，能直接执行 profile、doctor、backup、history、verify、restore、Job 和 `serve`；新服务器应从 [CLI 总览](/docs/guides/minebackup-v1/cli/overview) 和[快速上手](/docs/guides/minebackup-v1/cli/quick-start)开始，并按校验链逐步推进。
+
+## CLI 和 GUI 是否共用备份历史？
+
+共用。两者使用同一核心、配置档和 HistoryRepository，因此同一 Profile 下看到的是同一套配置、Job、历史和归档关联。但一个 Profile 同时只能有一个 owner；GUI 正在运行时，CLI 会返回 `profile_busy`，反过来也一样。服务器部署应使用独立 profile，并在迁移前关闭 GUI。
+
+## `serve` 是不是旧 Windows Service Mode？
+
+不是。`serve` 是可选的跨平台 headless 运行时，通过本机 IPC 长期持有一个 Profile，并可承载 KnotLink；它不安装 Windows 服务，也不复活已弃用的 `--service`。旧 Service Mode 只允许检查并安全清理已经存在且通过验证的服务，详见[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)和 [Serve 常驻运行时](/docs/guides/minebackup-v1/cli/serve)。
+
+## 为什么 Job 没有定时设置？
+
+因为 Job 描述“执行什么”（备份目标、步骤和顺序），而 systemd timer 或 Windows Task Scheduler 描述“何时执行”。这样同一 Job 可以被手动运行、一次性调度或按平台策略调度；先看 [CLI Jobs](/docs/guides/minebackup-v1/cli/jobs)、[Linux systemd](/docs/guides/minebackup-v1/cli/linux-systemd) 和 [Windows Task Scheduler](/docs/guides/minebackup-v1/cli/windows-task-scheduler)。
+
+## 能否让 AI 帮我生成 Manifest？
+
+可以，但 AI 只是可选的配置助手，不是 validator，也不是事实来源。不要把密码、Token、rclone secret、私钥或完整内部路径交给模型；生成后必须由 `profile validate`、`profile diff`、`profile apply --dry-run`、`profile apply` 和 `doctor` 逐步确认。安全提示和可复用提示词见 [AI 辅助配置](/docs/guides/minebackup-v1/cli/ai-assisted-config)。
 
 ## 第一次备份应该选择哪种模式？
 
@@ -36,7 +56,7 @@ MineBackup 是 FolderRewind 生态中的第一代存档时光机，保留了独�
 
 ## 配置和历史记录在哪里？
 
-1.16.1 使用独立 profile：当前配置在 `<profile>/config/config.ini`，历史在 `<profile>/data/history.json`，日志在 `<profile>/logs` 或平台对应的日志目录。实际备份包仍由配置的 `backupPath` 决定，不一定和 profile 在同一处。详见[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)。
+1.16.2 使用独立 profile：当前配置在 `<profile>/config/config.ini`，历史在 `<profile>/data/history.json`，日志在 `<profile>/logs` 或平台对应的日志目录。实际备份包仍由配置的 `backupPath` 决定，不一定和 profile 在同一处。详见[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)。
 
 ## 如何安全地重新开始？
 
@@ -68,4 +88,4 @@ MineBackup-Mod 至少为 `3.0.0`，KnotLinkService 推荐至少为 `3.2.0.0`。K
 
 ## 英文文档在哪里？
 
-本栏目已同步提供英文镜像。页面之间的链接和版本边界应保持一致；如果英文页面与中文页面出现事实差异，请以 1.16.1 源码行为为准并提交反馈。
+本栏目已同步提供英文镜像。页面之间的链接和版本边界应保持一致；如果英文页面与中文页面出现事实差异，请以 1.16.2 源码行为为准并提交反馈。

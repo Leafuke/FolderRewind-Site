@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: Your First Backup
-description: Validate the configuration, compression engine, history, and backup chain in MineBackup 1.16.1
+description: Validate the configuration, compression engine, history, and backup chain in MineBackup 1.16.2
 ---
 
 # Your First Backup

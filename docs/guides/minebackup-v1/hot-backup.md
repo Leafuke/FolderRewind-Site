@@ -1,7 +1,7 @@
 ---
 sidebar_position: 12
 title: 热备份与热还原
-description: MineBackup 1.16.1 的运行中世界协同、快照、热键和安全边界
+description: MineBackup 1.16.2 的运行中世界协同、快照、热键和安全边界
 ---
 
 # 热备份与热还原
