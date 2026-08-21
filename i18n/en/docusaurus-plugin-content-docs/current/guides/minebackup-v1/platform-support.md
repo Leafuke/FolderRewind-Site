@@ -1,23 +1,24 @@
 ---
 sidebar_position: 2
 title: Platform Support and Installation Boundaries
-description: Supported Windows, Linux, and macOS environments and capability degradation rules for MineBackup 1.16.1
+description: MineBackup 1.16.2 desktop and CLI support ranges, distribution forms, and installation boundaries
 ---
 
 # Platform Support and Installation Boundaries
 
-MineBackup 1.16.1 keeps backup, restore, history, and core data contracts consistent across platforms. Desktop integration is evaluated separately according to the operating system and the active desktop session.
+MineBackup 1.16.2 keeps backup, restore, history, and core data contracts consistent across platforms. Desktop integration and the headless CLI are separate distribution and runtime boundaries.
 
 ## Support matrix
 
-| Platform | Supported range | Distribution | Possible desktop capabilities |
-| --- | --- | --- | --- |
-| Windows x64 | Windows 10 22H2, Windows 11 | Single EXE | Native file dialogs, tray, notifications, global hotkeys, current-user autostart |
-| Ubuntu x86_64 | Ubuntu 24.04 and later | `.deb` or AppImage | X11/Wayland selected by session capability; portals, tray, and shortcuts may require permission or degrade |
-| Debian x86_64 | Debian 13 and later | AppImage | The same capability-based Linux behavior |
-| macOS arm64 | macOS 15 and later | arm64 DMG | Native dialogs, menu bar, notifications, hotkeys, login item |
+| Platform | Desktop | CLI |
+| --- | --- | --- |
+| Windows x64 | Officially supported; Windows 10 22H2 and Windows 11 | Official CLI ZIP: `MineBackup-CLI-<version>-windows-x64.zip` |
+| Linux x86_64 | Officially supported; Ubuntu 24.04/glibc 2.39 baseline | Portable `.tar.gz` and `.deb` |
+| macOS arm64 | Officially supported; macOS 15 and later | CLI-only build validation; no formal CLI release asset at present |
 
-Linux release builds use the Ubuntu 24.04 toolchain and glibc 2.39 baseline. Ubuntu 22.04 and Debian 12 are outside the current support range. Use [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) for exact asset names and checksums.
+Linux release builds use the Ubuntu 24.04 toolchain and glibc 2.39 baseline. Ubuntu 22.04 and Debian 12 are outside the current support range. Use [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) for exact desktop/CLI asset names and checksums.
+
+The macOS CLI-only build continues to receive build and regression validation, but a self-built result is not an official server download.
 
 ## Core capability is separate from desktop integration
 
@@ -45,9 +46,9 @@ KnotLink’s core protocol is cross-platform, but service discovery and installa
 
 MineBackup can download and verify the official service package from the wizard or Settings, then open the platform installer. The user completes the remaining installation steps. See [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration) for the mod minimum version and hot workflows.
 
-## Windows Service Mode boundary
+## Windows Service Mode and CLI boundary
 
-Version 1.16 no longer installs or starts Windows Service Mode. The Windows settings page only retains legacy-service inspection and safe cleanup; Linux and macOS do not provide that cleanup path. See [Legacy Windows service cleanup](/en/docs/guides/minebackup-v1/service-mode).
+Version 1.16.2 no longer installs or starts the old Windows Service Mode. The Windows settings page only retains legacy-service inspection and safe cleanup; servers should use [CLI `serve`](/en/docs/guides/minebackup-v1/cli/serve), systemd, or Task Scheduler. Linux and macOS do not provide that cleanup path. See [Legacy Windows service cleanup](/en/docs/guides/minebackup-v1/service-mode).
 
 ## Minimum post-install verification
 

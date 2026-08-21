@@ -19,6 +19,10 @@
     "message": "MineBackup (Legacy)",
     "description": "The label for category '一代时光机（MineBackup）' in sidebar 'docs'"
   },
+  "sidebar.docs.category.命令行与服务器（CLI）": {
+    "message": "Command Line and Server (CLI)",
+    "description": "The label for category '命令行与服务器（CLI）' in sidebar 'docs'"
+  },
   "sidebar.docs.category.插件生态": {
     "message": "Plugins",
     "description": "The label for category '插件生态' in sidebar 'docs'"

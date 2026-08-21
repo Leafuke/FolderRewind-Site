@@ -1,16 +1,36 @@
 ---
 sidebar_position: 3
 title: 安装与运行前准备
-description: MineBackup 1.16.1 的安装、平台依赖、配置档和首次启动检查
+description: MineBackup 1.16.2 的桌面 GUI、Headless CLI 安装、平台依赖和首次检查
 ---
 
 # 安装与运行前准备
 
 这页的目标不是只把程序打开，而是让第一次备份在正确的路径、工具和权限下完成。先完成普通备份—还原闭环，再启用热备份、云归档或自动化。
 
-## 下载安装包
+## 选择你的安装方式
 
-MineBackup 1.16.1 提供 Windows x64、Linux x86_64 和 macOS arm64 分发形式。请从 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 下载与平台匹配的资产，并优先核对发布页提供的 SHA-256 校验值。
+### A. Desktop GUI
+
+桌面用户从 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 下载对应平台的 GUI 资产，然后按本页的压缩工具、配置档和首次运行检查操作。
+
+### B. Headless CLI / Server
+
+服务器、VPS、NAS 或无 DISPLAY/Wayland 环境请选择 CLI 资产：
+
+```text
+MineBackup-CLI-<version>-windows-x64.zip
+MineBackup-CLI-<version>-linux-x64.tar.gz
+minebackup-cli_<version>_amd64.deb
+```
+
+这些只是资产命名格式，不是固定版本 URL。统一从 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 进入；生产站公开声称 1.16.2 CLI 可下载前，必须先确认 `v1.16.2` Release 已经真正发布。
+
+CLI 不需要启动 GUI。安装后从[CLI 与服务器模式概览](/docs/guides/minebackup-v1/cli/overview)开始，并按[5 分钟快速开始](/docs/guides/minebackup-v1/cli/quick-start)完成一次验证闭环。
+
+## GUI 下载与运行
+
+MineBackup 1.16.2 的 GUI 提供 Windows x64、Linux x86_64 和 macOS arm64 分发形式。请从 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 下载与平台匹配的资产，并优先核对发布页提供的 SHA-256 校验值。
 
 平台版本和桌面能力见[平台支持与安装边界](/docs/guides/minebackup-v1/platform-support)。macOS DMG 未进行 Apple 公证，第一次启动可能需要在“隐私与安全性”中选择“仍要打开”。
 

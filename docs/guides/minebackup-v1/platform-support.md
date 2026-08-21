@@ -1,23 +1,24 @@
 ---
 sidebar_position: 2
 title: 平台支持与安装边界
-description: MineBackup 1.16.1 的 Windows、Linux、macOS 跨平台支持范围与分发形式，包含桌面集成能力判断、会话降级规则与安装基线说明
+description: MineBackup 1.16.2 的 Windows、Linux、macOS 桌面与 CLI 支持范围、分发形式和安装边界
 ---
 
 # 平台支持与安装边界
 
-MineBackup 1.16.1 的备份、还原、历史记录和核心数据契约跨平台一致；桌面集成能力则根据操作系统和当前桌面会话单独判断。
+MineBackup 1.16.2 的备份、还原、历史记录和核心数据契约跨平台一致；桌面集成与 headless CLI 是两种分发/运行边界，应分别判断。
 
 ## 支持矩阵
 
-| 平台 | 支持范围 | 分发形式 | 可能的桌面能力 |
-| --- | --- | --- | --- |
-| Windows x64 | Windows 10 22H2、Windows 11 | 单 EXE | 原生文件对话框、托盘、通知、全局热键、当前用户自动启动 |
-| Ubuntu x86_64 | Ubuntu 24.04 及更高版本 | `.deb` 或 AppImage | X11/Wayland 按会话能力选择；门户、托盘和快捷键可能需要权限或降级 |
-| Debian x86_64 | Debian 13 及更高版本 | AppImage | 与 Linux 桌面会话能力相同 |
-| macOS arm64 | macOS 15 及更高版本 | arm64 DMG | 原生对话框、菜单栏、通知、热键、登录项 |
+| 平台 | Desktop | CLI |
+| --- | --- | --- |
+| Windows x64 | 正式支持；Windows 10 22H2、Windows 11 | 正式 CLI ZIP：`MineBackup-CLI-<version>-windows-x64.zip` |
+| Linux x86_64 | 正式支持；Ubuntu 24.04/glibc 2.39 基线 | portable `.tar.gz` 与 `.deb` |
+| macOS arm64 | 正式支持；macOS 15 及更高版本 | CLI-only 构建验证；当前不提供正式 CLI release asset |
 
-Linux 正式构建以 Ubuntu 24.04 工具链和 glibc 2.39 为基线；Ubuntu 22.04 和 Debian 12 不在当前支持范围内。具体版本资产和校验值以 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 为准。
+Linux 正式构建以 Ubuntu 24.04 工具链和 glibc 2.39 为基线；Ubuntu 22.04 和 Debian 12 不在当前支持范围内。桌面资产和 CLI 资产的具体版本、校验值以 [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) 为准。
+
+macOS 的 CLI-only 构建会继续参与构建与回归验证，但不要把自行构建结果误认为官方服务器下载包。
 
 ## 核心能力与桌面能力是两回事
 
@@ -45,9 +46,9 @@ KnotLink 联动的核心协议跨平台一致，但服务发现和安装方式�
 
 MineBackup 可以在向导或设置页下载并校验官方服务包，然后交给系统安装器；剩余安装步骤仍由用户完成。联动模组最低版本和热流程见 [KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration)。
 
-## Windows Service Mode 的边界
+## Windows Service Mode 与 CLI 的边界
 
-1.16 不再安装或启动 Windows Service Mode。Windows 设置页只保留旧服务检查和安全清理入口；Linux 与 macOS 不提供该清理能力。详见[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。
+1.16.2 不再安装或启动旧 Windows Service Mode。Windows 设置页只保留旧服务检查和安全清理入口；服务器请使用 [CLI `serve`](/docs/guides/minebackup-v1/cli/serve)、systemd 或 Task Scheduler。Linux 与 macOS 不提供旧服务清理能力。详见[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。
 
 ## 安装后的最小验证
 

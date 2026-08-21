@@ -1,18 +1,33 @@
 ---
 sidebar_position: 1
-title: MineBackup 1.16.1 Overview
-description: The positioning, platform scope, capability boundaries, and documentation map for MineBackup 1.16.1
+title: MineBackup 1.16.2 Overview
+description: The positioning, platform scope, capability boundaries, and documentation map for MineBackup 1.16.2
 ---
 
-# MineBackup 1.16.1 Overview
+# MineBackup 1.16.2 Overview
 
-MineBackup is the predecessor of FolderRewind and the first generation of the “save time machine”. This section follows the current MineBackup **1.16.1** source and accompanying engineering documentation for users who still run MineBackup.
+MineBackup is the predecessor of FolderRewind and the first generation of the “save time machine”. This section follows the current MineBackup **1.16.2** source, CLI behavior, and accompanying documentation for users who still run MineBackup.
 
-MineBackup remains a good fit for existing Minecraft backup workflows, cross-platform users, and workflows that depend on MineBackup-Mod or KnotLink integration. New projects can evaluate FolderRewind, but the two applications should not be treated as sharing the same configuration files, plugin model, or service behavior.
+MineBackup remains a good fit for existing Minecraft backup workflows, cross-platform users, and workflows that depend on MineBackup-Mod or KnotLink integration. Starting with 1.16.2 it also provides a formal headless CLI path for servers, VPS hosts, NAS systems, and SSH-only environments. New projects can evaluate FolderRewind, but the two applications should not be treated as sharing the same configuration files, plugin model, or service behavior.
 
 :::caution Version boundary
-This section describes MineBackup 1.16.1. Windows Service Mode is deprecated in 1.16: the application can inspect and safely remove an older service, but it cannot install or start one. Configuration and history are no longer fixed beside the executable.
+This section describes MineBackup 1.16.2. Windows Service Mode is deprecated in 1.16: the application can inspect and safely remove an older service, but it cannot install or start one. For server deployment, start with the CLI learning path.
 :::
+
+## How do you want to use MineBackup?
+
+| Scenario | Recommended path |
+| --- | --- |
+| Desktop computer with a window and Settings | [GUI setup: Installation](/en/docs/guides/minebackup-v1/installation) → [Create your first configuration](/en/docs/guides/minebackup-v1/first-config) |
+| Minecraft Dedicated Server, VPS, NAS, or SSH-only Linux | [CLI and server overview](/en/docs/guides/minebackup-v1/cli/overview) → [Five-minute quick start](/en/docs/guides/minebackup-v1/cli/quick-start) |
+
+Ordinary Windows, Linux, and macOS desktop users do not need to switch to the CLI. It is the headless/server execution path.
+
+## How GUI and CLI fit together
+
+The GUI and `minebackup-cli` share the core runtime, Profiles, History, Backup, and Restore data contracts; they are not incompatible products. The CLI is an official headless/server mode starting with 1.16.2, and a Profile still follows the single-instance ownership rule.
+
+CLI does not mean `serve`. `minebackup-cli backup` can perform a one-shot backup by itself. `serve` is an optional long-running Profile runtime for persistent servers, KnotLink, or frequent calls.
 
 ## What MineBackup can do
 
@@ -29,7 +44,7 @@ This section describes MineBackup 1.16.1. Windows Service Mode is deprecated in 
 MineBackup is easiest to use when separated into three layers:
 
 1. **Profile and backup configuration**: the locations for configuration, history, cache, tools, and logs, plus `saveRoot`, `backupPath`, compression, retention, and filters.
-2. **Execution**: manual backups, automatic tasks, Special Config, cloud synchronization, and hot backup.
+2. **Execution**: manual backups, desktop automation, CLI Jobs, cloud synchronization, and hot backup.
 3. **Recovery**: history, backup chains, restore methods, coordinated exit/rejoin, and migration or failure safety gates.
 
 ## Relationship to FolderRewind
@@ -42,12 +57,23 @@ If you plan to migrate, preserve the MineBackup configuration and archives first
 
 ## Recommended reading order
 
+### Desktop
+
 1. [Platform support and installation boundaries](/en/docs/guides/minebackup-v1/platform-support)
 2. [Installation and setup](/en/docs/guides/minebackup-v1/installation)
 3. [Creating your first configuration](/en/docs/guides/minebackup-v1/first-config)
 4. [Your first backup](/en/docs/guides/minebackup-v1/first-backup)
 5. [Your first restore](/en/docs/guides/minebackup-v1/first-restore)
-6. [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting)
+
+### CLI
+
+1. [CLI and server overview](/en/docs/guides/minebackup-v1/cli/overview)
+2. [Five-minute quick start](/en/docs/guides/minebackup-v1/cli/quick-start)
+3. [Profiles and Manifests](/en/docs/guides/minebackup-v1/cli/profile-manifest)
+4. [Backup, History, Verify, and Restore](/en/docs/guides/minebackup-v1/cli/backup-restore)
+5. [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting)
+
+Both routes can finish with [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting); server users should also continue to the CLI Job, Serve, and platform deployment pages.
 
 ## Advanced topics
 
@@ -71,6 +97,6 @@ If you only want a working, testable loop first:
 2. Create a normal configuration containing one world.
 3. Complete one manual Full backup.
 4. Restore it once from history in a test world.
-5. Enable Smart, automation, cloud archive, or KnotLink hot workflows only as needed.
+5. Server users should instead complete `Backup → History → Verify → Restore dry-run` through the CLI before enabling Jobs, Serve, or system scheduling.
 
 This separation keeps a basic backup failure distinct from an integration, cloud, or migration failure.

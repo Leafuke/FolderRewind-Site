@@ -1,16 +1,36 @@
 ---
 sidebar_position: 3
 title: Installation and Setup
-description: Installation, platform dependencies, profile locations, and first-launch checks for MineBackup 1.16.1
+description: MineBackup 1.16.2 desktop GUI and headless CLI installation, platform dependencies, and first checks
 ---
 
 # Installation and Setup
 
 The goal of this page is not merely to open the program. It is to make the first backup run with the correct paths, tools, and permissions. Establish an ordinary backup-and-restore loop before enabling hot backup, cloud archive, or automation.
 
-## Download the release
+## Choose your installation path
 
-MineBackup 1.16.1 provides Windows x64, Linux x86_64, and macOS arm64 distributions. Download the asset for your platform from [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) and, when available, verify the SHA-256 checksum published with the release.
+### A. Desktop GUI
+
+Desktop users can download the GUI asset for their platform from [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases), then follow the compression-tool, profile, and first-run checks on this page.
+
+### B. Headless CLI / Server
+
+Choose the CLI assets for a server, VPS, NAS, or an environment without DISPLAY/Wayland:
+
+```text
+MineBackup-CLI-<version>-windows-x64.zip
+MineBackup-CLI-<version>-linux-x64.tar.gz
+minebackup-cli_<version>_amd64.deb
+```
+
+These are asset naming patterns, not fixed version URLs. Always start at [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases). Before the production site claims that the 1.16.2 CLI is downloadable, confirm that the `v1.16.2` Release has actually been published.
+
+The CLI does not require the GUI. Start with [CLI and server overview](/en/docs/guides/minebackup-v1/cli/overview), then complete the [five-minute quick start](/en/docs/guides/minebackup-v1/cli/quick-start).
+
+## Download and run the GUI
+
+MineBackup 1.16.2 provides Windows x64, Linux x86_64, and macOS arm64 GUI distributions. Download the asset for your platform from [MineBackup Releases](https://github.com/Leafuke/MineBackup/releases) and, when available, verify the SHA-256 checksum published with the release.
 
 See [Platform support and installation boundaries](/en/docs/guides/minebackup-v1/platform-support) for platform ranges and desktop capabilities. The macOS DMG is not Apple-notarized; the first launch may require **Open Anyway** in Privacy & Security.
 
