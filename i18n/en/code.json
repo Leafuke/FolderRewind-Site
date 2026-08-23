@@ -422,6 +422,48 @@
   "homepage.hero.title": {
     "message": "FolderRewind"
   },
+  "homepage.hero.tagline": {
+    "message": "The time machine for your saves"
+  },
+  "homepage.hero.mock.folderName": {
+    "message": "Minecraft world"
+  },
+  "homepage.hero.mock.folderMeta": {
+    "message": "2.4 GB · Auto backup"
+  },
+  "homepage.hero.mock.entry1.label": {
+    "message": "Incremental backup · 84 MB"
+  },
+  "homepage.hero.mock.entry1.time": {
+    "message": "Just now"
+  },
+  "homepage.hero.mock.entry2.label": {
+    "message": "Incremental backup · 96 MB"
+  },
+  "homepage.hero.mock.entry2.time": {
+    "message": "Yesterday 21:17"
+  },
+  "homepage.hero.mock.entry3.label": {
+    "message": "Incremental backup · 91 MB"
+  },
+  "homepage.hero.mock.entry3.time": {
+    "message": "Aug 20"
+  },
+  "homepage.hero.mock.entry4.label": {
+    "message": "Full backup · 2.1 GB"
+  },
+  "homepage.hero.mock.entry4.time": {
+    "message": "Aug 13"
+  },
+  "homepage.hero.mock.progress": {
+    "message": "Backing up · 68%"
+  },
+  "homepage.hero.mock.badgeEncryption": {
+    "message": "AES-256 encrypted"
+  },
+  "homepage.hero.mock.badgeIncremental": {
+    "message": "Incremental"
+  },
   "homepage.hero.subtitle.line1": {
     "message": "Safe backups for important files, project data, and game saves"
   },

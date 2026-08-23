@@ -22,33 +22,6 @@
   max-width: 600px;
 }
 
-.heroImage {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroImage img {
-  max-width: 100%;
-  width: 320px;
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
 .heroTitle {
   font-size: 3.5rem;
   font-weight: 800;
@@ -62,6 +35,18 @@
   color: #fff;
 }
 
+.heroTagline {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #b07818;
+  margin: -0.5rem 0 0.75rem;
+}
+
+[data-theme='dark'] .heroTagline {
+  color: #f0b95a;
+}
+
 .heroSubtitle {
   font-size: 1.25rem;
   line-height: 1.7;
@@ -71,6 +56,243 @@
 
 [data-theme='dark'] .heroSubtitle {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Hero 视觉：备份时间轴模拟窗口 ─────────── */
+.heroVisual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.mockWindow {
+  width: min(100%, 440px);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 24px 56px rgba(20, 32, 77, 0.16);
+  overflow: hidden;
+}
+
+[data-theme='dark'] .mockWindow {
+  border-color: var(--ifm-color-emphasis-200);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+}
+
+.mockTitlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.mockDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-400);
+}
+
+.mockAppTitle {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.mockBody {
+  padding: 1.1rem 1.2rem 1.2rem;
+}
+
+.mockFolderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.mockFolderIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 8px;
+  background: rgba(58, 76, 180, 0.1);
+  color: var(--ifm-color-primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+[data-theme='dark'] .mockFolderIcon {
+  background: rgba(123, 142, 230, 0.16);
+  color: #93a1ed;
+}
+
+.mockFolderText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.mockFolderName {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mockFolderMeta {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.mockTimeline {
+  list-style: none;
+  margin: 1.05rem 0 0;
+  padding: 0;
+}
+
+.mockTimeline li {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.34rem 0 0.34rem 1.3rem;
+}
+
+.mockTimeline li::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0.72rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+}
+
+.mockTimeline li::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: calc(0.72rem + 9px);
+  bottom: -0.34rem;
+  width: 1px;
+  background: var(--ifm-color-emphasis-300);
+}
+
+.mockTimeline li:last-child::after {
+  display: none;
+}
+
+.mockTimeline li:last-child::before {
+  background: var(--ifm-color-emphasis-400);
+}
+
+.mockEntryActive::before {
+  background: #2eaf5a;
+  box-shadow: 0 0 0 4px rgba(46, 175, 90, 0.18);
+}
+
+.mockEntryLabel {
+  font-size: 0.85rem;
+}
+
+.mockEntryActive .mockEntryLabel {
+  font-weight: 600;
+}
+
+.mockEntryTime {
+  font-size: 0.76rem;
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+.mockProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.05rem;
+}
+
+.mockProgressBar {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+
+.mockProgressBar::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 68%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-light) 100%);
+}
+
+.mockProgressLabel {
+  font-size: 0.76rem;
+  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
+}
+
+/* 悬浮徽章：品牌特性的轻量暗示 */
+.floatBadge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 8px 20px rgba(20, 32, 77, 0.14);
+  font-size: 0.82rem;
+  font-weight: 600;
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+[data-theme='dark'] .floatBadge {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floatBadgeIcon {
+  color: #b07818;
+  font-size: 0.85rem;
+}
+
+[data-theme='dark'] .floatBadgeIcon {
+  color: #f0b95a;
+}
+
+.floatBadgeA {
+  top: -16px;
+  right: -6px;
+}
+
+.floatBadgeB {
+  bottom: -16px;
+  left: -10px;
+  animation-delay: -3.5s;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .heroTrust {
@@ -95,11 +317,14 @@
 
 @media screen and (max-width: 996px) {
   .heroInner {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
   }
   .heroText {
     max-width: 100%;
+  }
+  .heroVisual {
+    margin-top: 2.5rem;
   }
   .heroTrust {
     justify-content: center;
@@ -116,11 +341,19 @@
   .heroTitle {
     font-size: 2.5rem;
   }
+  .heroTagline {
+    font-size: 1.2rem;
+  }
   .heroSubtitle {
     font-size: 1.1rem;
   }
-  .heroImage img {
-    width: 240px;
+  .floatBadgeA {
+    top: -12px;
+    right: 4px;
+  }
+  .floatBadgeB {
+    bottom: -12px;
+    left: 0;
   }
 }
 

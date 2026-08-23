@@ -14,6 +14,8 @@ import {
   FaPuzzlePiece,
   FaCircleCheck,
   FaWindows,
+  FaLock,
+  FaBolt,
 } from 'react-icons/fa6';
 
 import styles from './index.module.css';
@@ -21,6 +23,85 @@ import styles from './index.module.css';
 const STORE_URL = 'https://apps.microsoft.com/detail/9nwsdgxdqws4';
 
 /* ── Hero ──────────────────────────────────────────── */
+/* 备份时间轴模拟窗口：以风格化方式呈现产品核心场景，纯 CSS 绘制、随主题切换 */
+function HeroVisual() {
+  return (
+    <div className={styles.heroVisual} aria-hidden="true">
+      <div className={styles.mockWindow}>
+        <div className={styles.mockTitlebar}>
+          <span className={styles.mockDot} />
+          <span className={styles.mockDot} />
+          <span className={styles.mockDot} />
+          <span className={styles.mockAppTitle}>FolderRewind</span>
+        </div>
+        <div className={styles.mockBody}>
+          <div className={styles.mockFolderRow}>
+            <span className={styles.mockFolderIcon}>
+              <FaFolderOpen />
+            </span>
+            <span className={styles.mockFolderText}>
+              <span className={styles.mockFolderName}>
+                <Translate id="homepage.hero.mock.folderName">Minecraft 世界</Translate>
+              </span>
+              <span className={styles.mockFolderMeta}>
+                <Translate id="homepage.hero.mock.folderMeta">2.4 GB · 自动备份</Translate>
+              </span>
+            </span>
+          </div>
+          <ul className={styles.mockTimeline}>
+            <li className={styles.mockEntryActive}>
+              <span className={styles.mockEntryLabel}>
+                <Translate id="homepage.hero.mock.entry1.label">增量备份 · 84 MB</Translate>
+              </span>
+              <span className={styles.mockEntryTime}>
+                <Translate id="homepage.hero.mock.entry1.time">刚刚</Translate>
+              </span>
+            </li>
+            <li>
+              <span className={styles.mockEntryLabel}>
+                <Translate id="homepage.hero.mock.entry2.label">增量备份 · 96 MB</Translate>
+              </span>
+              <span className={styles.mockEntryTime}>
+                <Translate id="homepage.hero.mock.entry2.time">昨天 21:17</Translate>
+              </span>
+            </li>
+            <li>
+              <span className={styles.mockEntryLabel}>
+                <Translate id="homepage.hero.mock.entry3.label">增量备份 · 91 MB</Translate>
+              </span>
+              <span className={styles.mockEntryTime}>
+                <Translate id="homepage.hero.mock.entry3.time">8 月 20 日</Translate>
+              </span>
+            </li>
+            <li>
+              <span className={styles.mockEntryLabel}>
+                <Translate id="homepage.hero.mock.entry4.label">全量备份 · 2.1 GB</Translate>
+              </span>
+              <span className={styles.mockEntryTime}>
+                <Translate id="homepage.hero.mock.entry4.time">8 月 13 日</Translate>
+              </span>
+            </li>
+          </ul>
+          <div className={styles.mockProgress}>
+            <div className={styles.mockProgressBar} />
+            <span className={styles.mockProgressLabel}>
+              <Translate id="homepage.hero.mock.progress">正在备份 · 68%</Translate>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className={clsx(styles.floatBadge, styles.floatBadgeA)}>
+        <FaLock className={styles.floatBadgeIcon} />
+        <Translate id="homepage.hero.mock.badgeEncryption">AES-256 加密</Translate>
+      </div>
+      <div className={clsx(styles.floatBadge, styles.floatBadgeB)}>
+        <FaBolt className={styles.floatBadgeIcon} />
+        <Translate id="homepage.hero.mock.badgeIncremental">增量备份</Translate>
+      </div>
+    </div>
+  );
+}
+
 function HomepageHero() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
@@ -28,8 +109,11 @@ function HomepageHero() {
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
             <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-              <Translate id="homepage.hero.title">存档时光机</Translate>
+              <Translate id="homepage.hero.title">FolderRewind</Translate>
             </Heading>
+            <p className={styles.heroTagline}>
+              <Translate id="homepage.hero.tagline">存档时光机</Translate>
+            </p>
             <p className={styles.heroSubtitle}>
               <Translate id="homepage.hero.subtitle.line1">为重要文件、项目资料与游戏存档提供安全备份</Translate>
               <br />
@@ -57,9 +141,7 @@ function HomepageHero() {
               <span>WinUI 3</span>
             </div>
           </div>
-          <div className={styles.heroImage}>
-            <img src="/img/ori.webp" alt="FolderRewind Logo" />
-          </div>
+          <HeroVisual />
         </div>
       </div>
     </header>
