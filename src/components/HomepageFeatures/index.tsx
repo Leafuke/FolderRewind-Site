@@ -27,7 +27,7 @@ type FeatureItem = {
 };
 
 type FeatureGroup = {
-  id: string;
+  key: string;
   tone: FeatureTone;
   heading: string;
   features: FeatureItem[];
@@ -36,7 +36,7 @@ type FeatureGroup = {
 function useFeatureGroups(): FeatureGroup[] {
   return [
     {
-      id: 'core',
+      key: 'core',
       tone: 'indigo',
       heading: translate({id: 'features.group.core', message: '备份核心'}),
       features: [
@@ -64,7 +64,7 @@ function useFeatureGroups(): FeatureGroup[] {
       ],
     },
     {
-      id: 'safety',
+      key: 'safety',
       tone: 'teal',
       heading: translate({id: 'features.group.safety', message: '自动化与安全'}),
       features: [
@@ -92,7 +92,7 @@ function useFeatureGroups(): FeatureGroup[] {
       ],
     },
     {
-      id: 'eco',
+      key: 'eco',
       tone: 'amber',
       heading: translate({id: 'features.group.eco', message: '生态扩展'}),
       features: [
@@ -149,7 +149,7 @@ export default function HomepageFeatures(): ReactNode {
           <Translate id="features.subheading">FolderRewind 覆盖从备份、同步到安全回滚的完整链路</Translate>
         </p>
         {groups.map((group) => (
-          <div className={styles.group} key={group.id}>
+          <div className={styles.group} key={group.key}>
             <Heading as="h3" className={styles.groupHeading}>
               <span aria-hidden="true" className={styles.groupDot} data-tone={group.tone} />
               {group.heading}
