@@ -668,6 +668,15 @@
   "features.heading": {
     "message": "Core Features"
   },
+  "features.group.core": {
+    "message": "Core Backup"
+  },
+  "features.group.safety": {
+    "message": "Automation & Safety"
+  },
+  "features.group.eco": {
+    "message": "Ecosystem & Extensions"
+  },
   "features.subheading": {
     "message": "From backup and sync to rollback, FolderRewind covers the whole safety chain"
   },

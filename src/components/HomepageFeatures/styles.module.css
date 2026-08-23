@@ -15,6 +15,44 @@
   font-size: 1.05rem;
 }
 
+.group + .group {
+  margin-top: 2.75rem;
+}
+
+.groupHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.groupDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.groupDot[data-tone='indigo'] {
+  background: var(--ifm-color-primary);
+}
+.groupDot[data-tone='teal'] {
+  background: #0f8a7e;
+}
+.groupDot[data-tone='amber'] {
+  background: #d49520;
+}
+[data-theme='dark'] .groupDot[data-tone='indigo'] {
+  background: #93a1ed;
+}
+[data-theme='dark'] .groupDot[data-tone='teal'] {
+  background: #2dd4bf;
+}
+[data-theme='dark'] .groupDot[data-tone='amber'] {
+  background: #f0b95a;
+}
+
 .featureCard {
   text-align: center;
   padding: 1.75rem 1.25rem;
