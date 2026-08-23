@@ -11,6 +11,16 @@ const config: Config = {
     v4: true,
   },
 
+  // future.v4 默认禁用 MDX1 兼容语法,站内 25 个 md 文件使用 HTML 注释,
+  // 显式恢复 3.9.x 的默认值;迁移注释写法后可移除
+  markdown: {
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
+  },
+
   url: 'https://folderrewind.top',
   baseUrl: '/',
   trailingSlash: true,
