@@ -9,6 +9,16 @@
   margin-bottom: 0.5rem;
 }
 
+.sectionHeading::after {
+  content: '';
+  display: block;
+  width: 42px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fr-accent);
+  margin: 0.65rem auto 0;
+}
+
 .sectionSub {
   color: var(--ifm-color-emphasis-700);
   margin-bottom: 2.5rem;
@@ -92,4 +102,8 @@
   margin-top: 0.35rem;
   font-size: 0.88rem;
   font-weight: 600;
+  transition: color 0.2s;
+}
+.featureLink:hover {
+  color: var(--fr-accent-text);
 }

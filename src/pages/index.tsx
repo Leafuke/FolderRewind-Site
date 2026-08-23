@@ -260,16 +260,11 @@ function HomepageQuickDemo() {
           <Translate id="homepage.quickdemo.subheading">从安装到第一次备份完成，只需几分钟</Translate>
         </p>
         <div className={styles.stepsRow}>
-          {steps.map((s, idx) => (
+          {steps.map((s) => (
             <div className={styles.stepCard} key={s.num}>
               <span className="step-number">{s.num}</span>
               <Heading as="h3" className={styles.stepTitle}>{s.title}</Heading>
               <p className={styles.stepDesc}>{s.desc}</p>
-              {idx < steps.length - 1 && (
-                <div className={styles.stepArrow}>
-                  <FaArrowRight />
-                </div>
-              )}
             </div>
           ))}
         </div>

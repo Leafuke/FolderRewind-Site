@@ -14,9 +14,10 @@
   --ifm-color-primary-lighter: #5565c5;
   --ifm-color-primary-lightest: #7280d1;
 
-  /* 强调色：暖琥珀 */
+  /* 强调色：暖琥珀（--fr-accent 用于装饰，--fr-accent-text 保证浅底文字对比度） */
   --fr-accent: #e8a838;
   --fr-accent-dark: #d49520;
+  --fr-accent-text: #a06a10;
 
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
@@ -39,6 +40,7 @@
 
   --fr-accent: #f0b95a;
   --fr-accent-dark: #e8a838;
+  --fr-accent-text: #f0b95a;
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
@@ -168,7 +170,7 @@
 }
 .segment-card .segment-icon-wrap--dev {
   background: rgba(232, 168, 56, 0.12);
-  color: var(--fr-accent-dark);
+  color: var(--fr-accent-text);
 }
 
 /* ─── Step numbers ─────────────────────────────── */
