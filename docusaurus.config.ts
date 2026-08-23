@@ -117,7 +117,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/og-card.jpg',
+    image: 'img/ori.webp',
     // og:title / og:description 由各页面自动生成；twitter 卡片字段回退到对应 og 标签
     metadata: [
       {
