@@ -32,9 +32,18 @@
   background: linear-gradient(135deg, rgba(254, 243, 199, 0.75) 0%, rgba(255, 237, 213, 0.75) 100%);
 }
 
+/* 深色模式：低透明度琥珀晕染保持暖调，避免棕褐浑浊；边框提高存在感 */
 [data-theme='dark'] .noticeBox {
-  border-color: rgba(251, 191, 36, 0.28);
-  background: linear-gradient(135deg, rgba(120, 53, 15, 0.42) 0%, rgba(124, 45, 18, 0.3) 100%);
+  border-color: rgba(240, 185, 90, 0.5);
+  background: linear-gradient(
+    135deg,
+    rgba(240, 185, 90, 0.1) 0%,
+    rgba(232, 168, 56, 0.05) 100%
+  );
+}
+
+[data-theme='dark'] .noticeTitle {
+  color: #f0b95a;
 }
 
 .noticeTitle {
