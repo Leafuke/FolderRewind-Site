@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
@@ -17,6 +18,9 @@ export default function NotFound(): ReactNode {
         id: 'notFound.description',
         message: '你访问的页面不存在或已经移动。',
       })}>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <main className={styles.container}>
         <div className={styles.content}>
           <p className={styles.code} aria-hidden="true">
