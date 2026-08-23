@@ -26,7 +26,7 @@ const config: Config = {
     localeConfigs: {
       'zh-Hans': {
         label: '中文',
-        htmlLang: 'zh-Hans',
+        htmlLang: 'zh-CN',
       },
       en: {
         label: 'English',
@@ -66,6 +66,7 @@ const config: Config = {
           onUntruncatedBlogPosts: 'warn',
         },
         sitemap: {
+          lastmod: 'date',
           ignorePatterns: [
             '/404',
             '/404/',
@@ -116,7 +117,8 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/ori.webp',
+    image: 'img/og-card.jpg',
+    // og:title / og:description 由各页面自动生成；twitter 卡片字段回退到对应 og 标签
     metadata: [
       {
         name: 'description',
@@ -125,21 +127,7 @@ const config: Config = {
       },
       {property: 'og:type', content: 'website'},
       {property: 'og:site_name', content: 'FolderRewind'},
-      {property: 'og:title', content: 'FolderRewind - 存档时光机'},
-      {
-        property: 'og:description',
-        content:
-          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
-      },
-      {property: 'og:image', content: 'https://folderrewind.top/img/ori.webp'},
       {name: 'twitter:card', content: 'summary_large_image'},
-      {name: 'twitter:title', content: 'FolderRewind - 存档时光机'},
-      {
-        name: 'twitter:description',
-        content:
-          'FolderRewind 是一款面向重要文件、项目资料与游戏存档的现代 Windows 备份工具。 A modern Windows backup tool for important files, project data, and game saves.',
-      },
-      {name: 'twitter:image', content: 'https://folderrewind.top/img/ori.webp'},
     ],
     colorMode: {
       defaultMode: 'light',
