@@ -35,11 +35,20 @@
   color: #fff;
 }
 
+/* 靛蓝→琥珀渐变文字：呼应"时间回溯"的品牌叙事，两种模式均保持对比度 */
 .heroTagline {
   font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--fr-accent-text);
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-primary) 0%,
+    var(--fr-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--fr-accent-text); /* 不支持文字裁切时的回退色 */
   margin: -0.5rem 0 0.75rem;
 }
 

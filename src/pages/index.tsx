@@ -14,7 +14,7 @@ import {
   FaPuzzlePiece,
   FaCircleCheck,
   FaWindows,
-  FaLock,
+  FaCloudArrowUp,
   FaBolt,
 } from 'react-icons/fa6';
 
@@ -75,7 +75,7 @@ function HeroVisual() {
             </li>
             <li>
               <span className={styles.mockEntryLabel}>
-                <Translate id="homepage.hero.mock.entry4.label">全量备份 · 2.1 GB</Translate>
+                <Translate id="homepage.hero.mock.entry4.label">全量备份 · 860 MB</Translate>
               </span>
               <span className={styles.mockEntryTime}>
                 <Translate id="homepage.hero.mock.entry4.time">8 月 13 日</Translate>
@@ -91,8 +91,8 @@ function HeroVisual() {
         </div>
       </div>
       <div className={clsx(styles.floatBadge, styles.floatBadgeA)}>
-        <FaLock className={styles.floatBadgeIcon} />
-        <Translate id="homepage.hero.mock.badgeEncryption">AES-256 加密</Translate>
+        <FaCloudArrowUp className={styles.floatBadgeIcon} />
+        <Translate id="homepage.hero.mock.badgeCloud">云存档</Translate>
       </div>
       <div className={clsx(styles.floatBadge, styles.floatBadgeB)}>
         <FaBolt className={styles.floatBadgeIcon} />

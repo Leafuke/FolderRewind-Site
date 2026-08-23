@@ -450,7 +450,7 @@
     "message": "Aug 20"
   },
   "homepage.hero.mock.entry4.label": {
-    "message": "Full backup · 2.1 GB"
+    "message": "Full backup · 860 MB"
   },
   "homepage.hero.mock.entry4.time": {
     "message": "Aug 13"
@@ -458,8 +458,8 @@
   "homepage.hero.mock.progress": {
     "message": "Backing up · 68%"
   },
-  "homepage.hero.mock.badgeEncryption": {
-    "message": "AES-256 encrypted"
+  "homepage.hero.mock.badgeCloud": {
+    "message": "Cloud archive"
   },
   "homepage.hero.mock.badgeIncremental": {
     "message": "Incremental"
