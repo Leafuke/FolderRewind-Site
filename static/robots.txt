@@ -3,3 +3,4 @@ Allow: /
 Disallow: /search/
 Disallow: /en/search/
 Sitemap: https://folderrewind.top/sitemap.xml
+Sitemap: https://folderrewind.top/en/sitemap.xml

@@ -1,2 +1,3 @@
 /zh-Hans / 301
 /zh-Hans/ / 301
+/zh-Hans/* /:splat 301
