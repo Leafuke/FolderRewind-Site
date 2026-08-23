@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: 插件系统概述
-description: 了解 FolderRewind 的插件生态
+description: 了解 FolderRewind 的插件生态：内置插件、第三方扩展与 KnotLink 联动能力的完整概览与选型建议
 ---
 
 # 插件系统概述

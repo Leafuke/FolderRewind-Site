@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Namespace Reference
-description: Quick reference of namespace responsibilities and key classes
+description: Quick reference of namespace responsibilities and key classes to help developers locate feature modules in the codebase
 ---
 
 # Namespace Reference

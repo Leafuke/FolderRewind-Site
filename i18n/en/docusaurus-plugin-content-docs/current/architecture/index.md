@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: Architecture Overview
-description: FolderRewind project tech stack and architecture bird's-eye view
+description: FolderRewind project tech stack and architecture bird's-eye view, including the .NET and WPF layering and subsystem cooperation
 ---
 
 # Architecture Overview

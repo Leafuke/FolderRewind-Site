@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Encrypted Backups
-description: Protect backup data with the Encrypted config type
+description: Protect backup data with the Encrypted config type, including the creation flow, key management, and compatibility limitations
 ---
 
 # Encrypted Backups

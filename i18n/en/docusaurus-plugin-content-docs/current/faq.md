@@ -1,7 +1,7 @@
 ---
 sidebar_position: 99
 title: FAQ
-description: Frequently asked questions about FolderRewind
+description: Frequently asked questions about FolderRewind backup modes, restore behavior, cloud sync, plugins, and upgrade paths
 ---
 
 # Frequently Asked Questions (FAQ)

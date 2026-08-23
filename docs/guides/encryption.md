@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: 加密备份
-description: 使用 Encrypted 配置保护备份数据
+description: 使用 Encrypted 配置类型保护备份数据，了解加密备份的创建流程、密钥管理与兼容性限制
 ---
 
 # 加密备份

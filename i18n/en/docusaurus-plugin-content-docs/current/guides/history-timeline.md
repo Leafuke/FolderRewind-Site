@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: History Timeline
-description: View, mark, and restore backups from history
+description: View backup history on a timeline, mark important versions, and restore folder contents from any previous backup point
 ---
 
 # History Timeline

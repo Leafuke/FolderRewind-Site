@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Backup File Specification
-description: Naming rules and storage layout required for rebuilding history
+description: Naming rules, directory layout, and metadata files required for rebuilding a backup history from existing archives
 ---
 
 # Backup File Specification

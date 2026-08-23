@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 自动化任务
-description: 配置间隔、计划、目标选择与条件触发自动备份
+description: 配置间隔、计划任务、目标选择与条件触发的自动备份策略，让 FolderRewind 在无人值守时保护数据
 ---
 
 # 自动化任务

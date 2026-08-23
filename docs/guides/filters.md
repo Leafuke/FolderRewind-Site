@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: 过滤规则
-description: 配置黑名单与还原白名单
+description: 配置备份黑名单与还原白名单规则，精确控制哪些文件与目录参与备份、哪些内容在还原时被保留或删除
 ---
 
 # 过滤规则

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Minecraft 快速开始
-description: 10 分钟完成 MineRewind 安装、扫描和首次备份
+description: 10 分钟完成 MineRewind 安装、存档扫描和首次备份的入门流程，快速上手 Minecraft 存档保护
 ---
 
 # Minecraft 快速开始

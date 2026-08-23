@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Installation Guide
-description: Choose the Store, MSI, or MSIX installation channel
+description: Choose between the Microsoft Store, MSI, and MSIX installation channels for FolderRewind on Windows x64 and ARM64 devices
 ---
 
 # Installation Guide

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 1.8 升级与启动故障恢复
-description: 从旧版本升级到 1.8，并安全处理 1.8.0 的语言配置启动故障
+description: 从旧版本升级到 FolderRewind 1.8 的完整步骤，并安全处理 1.8.0 的语言配置启动故障与回退方案
 ---
 
 # 1.8 升级与启动故障恢复

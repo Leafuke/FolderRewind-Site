@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: 插件自动更新
-description: 基于 GitHub Releases 的版本发布与更新策略
+description: 基于 GitHub Releases 的插件版本发布与自动更新策略，包括版本号约定、更新清单与灰度发布建议
 ---
 
 # 插件自动更新

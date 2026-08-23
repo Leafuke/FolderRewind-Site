@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Minecraft Quick Start
-description: Finish MineRewind setup, scan, and first backup in 10 minutes
+description: Finish MineRewind setup, save scanning, and your first backup in 10 minutes with this quick start guide for Minecraft saves
 ---
 
 # Minecraft Quick Start

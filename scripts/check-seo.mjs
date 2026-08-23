@@ -23,8 +23,9 @@ const stats = {
 };
 
 // Minimum recommended lengths (warnings only)
+// English threshold aligns with common SEO guidance (70–160 chars display range)
 const MIN_ZH_CHARS = 45;
-const MIN_EN_CHARS = 100;
+const MIN_EN_CHARS = 70;
 
 // Detect if description language matches expected locale
 function detectLanguage(text) {

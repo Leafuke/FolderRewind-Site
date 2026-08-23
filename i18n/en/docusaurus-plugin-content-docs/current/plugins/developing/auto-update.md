@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Plugin Auto Update
-description: Version release and update strategy based on GitHub Releases
+description: Version release and update strategy for plugins based on GitHub Releases, including semver conventions and rollout tips
 ---
 
 # Plugin Auto Update

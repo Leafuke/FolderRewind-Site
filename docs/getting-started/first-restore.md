@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 首次还原
-description: 从历史版本安全恢复文件夹
+description: 从任意历史版本安全恢复文件夹：选择备份点、预览文件差异并验证还原结果，确保数据完整且操作可回退
 ---
 
 # 首次还原

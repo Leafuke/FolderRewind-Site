@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: Data Migration
-description: Import and export configs and history records
+description: Import and export configs and history records to keep the full backup chain intact when moving between devices or versions
 ---
 
 # Data Migration

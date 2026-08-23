@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: Packaging and Release
-description: Plugin artifact layout, ZIP conventions, and pre-release checklist
+description: Plugin artifact layout, ZIP packaging conventions, and a pre-release checklist so FolderRewind can load your plugin correctly
 ---
 
 # Packaging and Release

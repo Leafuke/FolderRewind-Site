@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 架构模式
-description: MVVM、静态服务、Shell 导航等核心设计模式
+description: MVVM、静态服务、Shell 导航等核心设计模式的选型理由与实现约定，理解 FolderRewind 代码组织的统一语言
 ---
 
 # 架构模式

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 14
 title: 云归档
-description: MineBackup 1.16.2 使用 rclone 同步历史记录、备份包和便携配置
+description: MineBackup 1.16.2 使用 rclone 同步历史记录、备份包和便携配置，把存档安全延伸到云端存储
 ---
 
 # 云归档

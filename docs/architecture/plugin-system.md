@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: 插件体系
-description: FolderRewind 1.8 插件接口、生命周期与 KnotLink 参数化协议
+description: FolderRewind 1.8 插件接口、生命周期与 KnotLink 参数化协议的设计原理，说明插件如何与宿主进程协作
 ---
 
 # 插件体系

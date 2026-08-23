@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Plugin API 参考
-description: FolderRewind 1.8 插件接口、生命周期与扩展点
+description: FolderRewind 1.8 插件接口、生命周期与扩展点参考，说明宿主与插件之间的契约和版本兼容规则
 ---
 
 # Plugin API 参考

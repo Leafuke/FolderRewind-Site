@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: 插件开发快速上手
-description: 从零开始开发一个 FolderRewind 插件
+description: 从零开始开发一个 FolderRewind 插件：搭建项目、接入 SDK、运行调试并在十分钟内看到第一个效果
 ---
 
 # 插件开发快速上手

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: Filter Rules
-description: Configure backup blacklist and restore whitelist
+description: Configure backup blacklists and restore whitelists to control which files are backed up and what gets preserved or deleted on restore
 ---
 
 # Filter Rules

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 插件安装与管理
-description: 如何在 FolderRewind 中安装、启用、升级和排查插件
+description: 如何在 FolderRewind 中安装、启用、升级和排查插件，包含插件目录、依赖管理与常见故障的处理方法
 ---
 
 # 插件安装与管理

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Hot Backup Mechanism
-description: How MineRewind safely triggers backup while the game is running
+description: How MineRewind safely triggers a backup while the game is running, using world snapshots and file-lock coordination
 ---
 
 # Hot Backup Mechanism

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: First Restore
-description: Restore folders from a backup history version
+description: Restore folders from a backup history version by picking a restore point, previewing changes, and verifying the result
 ---
 
 # First Restore

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: 视图层与导航
-description: 页面列表、Dialog 与导航流程
+description: FolderRewind 的页面列表、Dialog 弹窗与导航流程，梳理各视图的职责边界与页面间跳转关系
 ---
 
 # 视图层与导航

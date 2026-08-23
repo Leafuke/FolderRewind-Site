@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: Special Config
-description: MineBackup 1.16.2 的特殊配置、命令任务和无人值守执行规则
+description: MineBackup 1.16.2 的特殊配置、命令任务和无人值守执行规则，适合服务器与自动化场景的进阶用法
 ---
 
 # Special Config

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: 数据模型
-description: AppConfig 层级结构与序列化策略
+description: AppConfig 层级结构与序列化策略，涵盖配置版本迁移、默认值合并与向后兼容的数据模型设计
 ---
 
 # 数据模型

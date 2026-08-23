@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 title: 过滤规则
-description: MineBackup 1.16.2 的备份黑名单与 Clean 还原白名单
+description: MineBackup 1.16.2 的备份黑名单与 Clean 还原白名单配置方法，控制备份范围与还原时的删除行为
 ---
 
 # 过滤规则

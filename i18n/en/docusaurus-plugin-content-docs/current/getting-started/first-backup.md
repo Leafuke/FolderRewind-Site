@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: First Backup
-description: Create a config and complete your first backup
+description: Create a config and complete your first backup, covering folder selection, backup mode, target location, and integrity checks
 ---
 
 # First Backup

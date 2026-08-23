@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Mini Window
-description: Lightweight monitoring and quick backup for a single folder
+description: Lightweight monitoring and quick backup for a single folder, ideal for protecting game saves and other small high-frequency targets
 ---
 
 # Mini Window

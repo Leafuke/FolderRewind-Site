@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: 打包与发布
-description: 插件产物结构、ZIP 规范与发布检查清单
+description: 插件产物结构、ZIP 打包规范与发布前检查清单，确保插件能被 FolderRewind 正确识别与加载
 ---
 
 # 打包与发布

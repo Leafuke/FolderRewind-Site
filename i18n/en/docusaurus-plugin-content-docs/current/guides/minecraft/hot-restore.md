@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Hot Restore Mechanism
-description: MineRewind save-exit-restore-rejoin flow and timeout strategy
+description: The MineRewind save-exit-restore-rejoin flow and timeout strategy for rolling a running world back to any backup point safely
 ---
 
 # Hot Restore Mechanism

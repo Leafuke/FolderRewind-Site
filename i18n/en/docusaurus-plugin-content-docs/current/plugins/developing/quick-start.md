@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Plugin Development Quick Start
-description: Build, package, and test a FolderRewind 1.8 plugin
+description: Build, package, and test a FolderRewind 1.8 plugin from scratch — set up the project, wire the SDK, and see results in minutes
 ---
 
 # Plugin Development Quick Start

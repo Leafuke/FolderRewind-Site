@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Plugin API Reference
-description: FolderRewind 1.8 plugin interfaces, lifecycle, and extension points
+description: FolderRewind 1.8 plugin interfaces, lifecycle hooks, and extension points, defining the contract between host and plugin
 ---
 
 # Plugin API Reference

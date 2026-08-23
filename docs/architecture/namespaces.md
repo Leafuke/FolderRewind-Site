@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 命名空间参考
-description: 各命名空间职责与关键类速查
+description: FolderRewind 各命名空间职责与关键类速查表，帮助开发者快速定位功能模块对应的代码位置
 ---
 
 # 命名空间参考

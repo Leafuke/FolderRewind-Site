@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 title: 架构总览
-description: FolderRewind 项目技术栈与架构鸟瞰
+description: FolderRewind 项目技术栈与架构鸟瞰：.NET、WPF 与分层设计的整体结构，以及各子系统的协作方式
 ---
 
 # 架构总览

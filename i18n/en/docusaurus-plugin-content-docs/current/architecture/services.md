@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Service Layer Overview
-description: 40+ services grouped by functional domain
+description: More than 40 core services grouped by functional domain, covering backup scheduling, config management, cloud sync, and plugin hosting
 ---
 
 # Service Layer Overview

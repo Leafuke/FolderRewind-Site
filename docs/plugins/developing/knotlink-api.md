@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: KnotLink Command API
-description: 使用 FolderRewind 1.8 参数化命令处理器与能力提供器
+description: 使用 FolderRewind 1.8 参数化命令处理器与能力提供器，为插件实现远程指令响应与自定义能力暴露
 ---
 
 # KnotLink Command API

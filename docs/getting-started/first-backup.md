@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: 首次备份
-description: 创建配置并完成第一次备份
+description: 创建配置并完成第一次备份：选择文件夹、设置备份模式与目标位置，并验证备份产物的完整性与可还原性
 ---
 
 # 首次备份

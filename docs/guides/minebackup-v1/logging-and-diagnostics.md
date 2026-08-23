@@ -1,7 +1,7 @@
 ---
 sidebar_position: 16
 title: 日志与诊断
-description: MineBackup 1.16.2 的结构化日志、会话记录与隐私安全诊断导出
+description: MineBackup 1.16.2 的结构化日志、会话记录与隐私安全诊断导出，定位问题时优先查看的数据来源
 ---
 
 # 日志与诊断

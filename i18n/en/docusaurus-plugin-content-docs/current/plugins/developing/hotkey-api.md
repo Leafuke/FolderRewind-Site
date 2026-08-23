@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Hotkey API
-description: IFolderRewindHotkeyProvider reference and hotkey design guidelines
+description: IFolderRewindHotkeyProvider API reference with hotkey design guidelines, registration flow, and conflict handling advice
 ---
 
 # Hotkey API

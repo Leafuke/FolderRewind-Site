@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: Plugin Settings Definition
-description: PluginSettingDefinition design conventions and field practices
+description: PluginSettingDefinition design conventions and field practices for declaring plugin settings that render correctly in the UI
 ---
 
 # Plugin Settings Definition

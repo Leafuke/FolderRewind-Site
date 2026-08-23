@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Mini 悬浮窗
-description: 为单个文件夹开启轻量监控与快速备份
+description: 为单个文件夹开启轻量监控与快速备份的迷你窗口模式，适合游戏存档等小范围、高频次、低打扰的保护场景
 ---
 
 # Mini 悬浮窗

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Directory Structure
-description: FolderRewind project file tree and directory responsibilities
+description: FolderRewind project file tree and directory responsibilities, covering source, tests, plugins, and documentation assets
 ---
 
 # Directory Structure

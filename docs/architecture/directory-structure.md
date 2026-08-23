@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: 目录结构
-description: FolderRewind 项目文件树与各目录职责
+description: FolderRewind 项目文件树与各目录职责说明，快速了解源码、测试、插件与文档资源的组织方式
 ---
 
 # 目录结构

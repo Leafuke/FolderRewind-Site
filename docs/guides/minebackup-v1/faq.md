@@ -1,7 +1,7 @@
 ---
 sidebar_position: 19
 title: 常见问题（MineBackup 1.16.2）
-description: MineBackup 1.16.2 的产品边界、备份、还原、迁移与联动问答
+description: MineBackup 1.16.2 的产品边界、备份、还原、迁移与联动常见问答，快速解决老版本使用中的疑问
 ---
 
 # 常见问题（MineBackup 1.16.2）

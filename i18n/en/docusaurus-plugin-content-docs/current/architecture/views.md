@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Views and Navigation
-description: Page listing, dialogs, and navigation flow
+description: Page listing, dialogs, and navigation flow of the FolderRewind UI, covering view responsibilities and route relationships
 ---
 
 # Views and Navigation

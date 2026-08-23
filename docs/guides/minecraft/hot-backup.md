@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: 热备份机制详解
-description: MineRewind 如何在游戏运行中安全触发备份
+description: MineRewind 如何在游戏运行中安全触发备份：世界快照、文件锁协调与热键触发的完整工作原理
 ---
 
 # 热备份机制详解

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: 模板：分享与导入
-description: 导出、导入、搜索和分享 FolderRewind 模板
+description: 导出、导入、搜索和分享 FolderRewind 模板，了解模板文件的格式规范与社区分享的注意事项
 ---
 
 # 模板：分享与导入

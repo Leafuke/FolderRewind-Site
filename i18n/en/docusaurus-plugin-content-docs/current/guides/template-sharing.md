@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: "Templates: Share and Import"
-description: Export, import, browse, and share FolderRewind templates
+description: Export, import, browse, and share FolderRewind templates, including the template file format and community sharing tips
 ---
 
 # Templates: Share and Import

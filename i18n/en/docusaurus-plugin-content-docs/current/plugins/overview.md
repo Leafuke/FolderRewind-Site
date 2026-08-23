@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Plugin System Overview
-description: Learn about the FolderRewind plugin ecosystem
+description: Learn about the FolderRewind plugin ecosystem, including built-in extensions, third-party plugins, and KnotLink integration options
 ---
 
 # Plugin System Overview

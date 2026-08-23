@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "Templates: Create and Use"
-description: Save configs as templates and create new configs from them
+description: Save configs as reusable templates and create new configs from them to avoid repeating backup and filter settings
 ---
 
 # Templates: Create and Use

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: KnotLink 命令参考
-description: FolderRewind 1.8 参数化协议 v2 的内置命令、字段、响应和信号
+description: FolderRewind 1.8 参数化协议 v2 的内置命令、字段、响应和信号，覆盖远程指令的调用方式与错误码语义
 ---
 
 # KnotLink 命令参考

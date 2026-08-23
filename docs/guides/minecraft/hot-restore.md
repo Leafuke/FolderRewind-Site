@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: 热还原机制详解
-description: MineRewind 的保存-退出-还原-重进流程与超时策略
+description: MineRewind 的保存-退出-还原-重进完整流程与超时策略，在游戏运行期间安全回滚世界到任意备份点
 ---
 
 # 热还原机制详解

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Minecraft 指定区域备份
-description: 使用 FolderRewind 1.8 按维度选择区域文件，并安全还原部分存档
+description: 使用 FolderRewind 1.8 按维度选择区域文件进行备份，并安全还原部分存档而不影响其他区域数据
 ---
 
 # Minecraft 指定区域备份

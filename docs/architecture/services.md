@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: 服务层概览
-description: 40+ 服务按功能域分组说明
+description: 40+ 核心服务按功能域分组说明，包括备份调度、配置管理、云同步与插件宿主等模块的职责划分
 ---
 
 # 服务层概览

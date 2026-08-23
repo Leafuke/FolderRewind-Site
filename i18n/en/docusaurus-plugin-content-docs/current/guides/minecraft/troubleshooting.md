@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: Troubleshooting
-description: Common MineRewind issues, causes, and resolution steps
+description: Common MineRewind issues, causes, and resolution steps, covering scan failures, hot backup conflicts, and restore errors
 ---
 
 # Troubleshooting

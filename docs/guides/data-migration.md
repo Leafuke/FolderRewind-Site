@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: 数据迁移
-description: 导入导出配置与历史记录
+description: 导入导出配置与历史记录，在设备迁移或 FolderRewind 版本切换时保留完整的备份链数据
 ---
 
 # 数据迁移

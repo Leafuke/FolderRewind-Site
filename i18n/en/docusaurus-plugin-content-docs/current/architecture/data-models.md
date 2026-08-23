@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: Data Models
-description: AppConfig hierarchy and serialization strategy
+description: AppConfig hierarchy and serialization strategy, including config versioning, default merging, and backward compatibility
 ---
 
 # Data Models

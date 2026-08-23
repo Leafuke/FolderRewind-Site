@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: 故障排查
-description: MineRewind 常见异常现象、原因与处理步骤
+description: MineRewind 常见异常现象、原因与处理步骤汇总，覆盖扫描失败、热备份冲突与还原报错的排查路径
 ---
 
 # 故障排查

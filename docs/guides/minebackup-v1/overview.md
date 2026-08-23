@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: MineBackup 1.16.2 总览
-description: 第一代存档时光机 MineBackup 1.16.2 的能力边界、平台范围与文档导航
+description: 第一代存档时光机 MineBackup 1.16.2 的能力边界、平台范围与文档导航，帮助老用户快速找到迁移与使用答案
 ---
 
 # MineBackup 1.16.2 总览
