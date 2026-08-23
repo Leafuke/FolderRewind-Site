@@ -266,31 +266,47 @@
 }
 
 /* ─── CTA Banner ───────────────────────────── */
+/* 深靛蓝实底与浅色 Hero 形成首尾对比，收束全页 */
 .ctaBanner {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-  color: var(--ifm-font-color-base);
+  padding: 4.5rem 0;
+  background: linear-gradient(135deg, #232c74 0%, #1a2158 100%);
+  color: #fff;
 }
 [data-theme='dark'] .ctaBanner {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #161c4e 0%, #10153a 100%);
 }
 
 .ctaTitle {
-  color: var(--ifm-heading-color);
+  color: #fff;
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
-[data-theme='dark'] .ctaTitle {
-  color: #fff;
-}
 
 .ctaDesc {
-  color: var(--ifm-color-emphasis-700);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 1.05rem;
   margin-bottom: 1.5rem;
 }
-[data-theme='dark'] .ctaDesc {
-  color: rgba(255, 255, 255, 0.8);
+
+/* 横幅本身是深色底，两种主题下都用白色行动按钮 */
+.ctaBanner .btnPrimary {
+  background: #fff;
+  color: #1a2158;
+  border-color: #fff;
+}
+.ctaBanner .btnPrimary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a2158;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+.ctaBanner .btnSecondary {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.ctaBanner .btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: #fff;
 }
 
 .ctaButtons {
