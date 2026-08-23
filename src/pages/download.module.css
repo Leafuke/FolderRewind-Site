@@ -21,7 +21,7 @@
 }
 
 .noticeSection {
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   max-width: 980px;
 }
 
@@ -114,6 +114,31 @@
   font-size: 0.78rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+}
+
+/* 琥珀描边徽章：标记尚在测试中的分发渠道 */
+.badgeWarn {
+  display: inline-block;
+  background: rgba(232, 168, 56, 0.12);
+  color: #a06a10;
+  border: 1px solid rgba(232, 168, 56, 0.55);
+  padding: 0.1rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme='dark'] .badgeWarn {
+  background: rgba(240, 185, 90, 0.14);
+  color: #f0b95a;
+  border-color: rgba(240, 185, 90, 0.45);
+}
+
+/* 渠道卡按钮统一等宽，保证三张卡的行动区对齐 */
+.cardBtn {
+  width: 100%;
+  justify-content: center;
 }
 
 .architectureHint {

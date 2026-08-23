@@ -366,7 +366,7 @@
     "message": "Open Microsoft Store"
   },
   "download.badge.msi": {
-    "message": "Standard sideload"
+    "message": "Beta"
   },
   "download.msi.desc": {
     "message": "Run the installer directly with no Developer Mode requirement. This distribution format is still under testing; verify the matching .sha256 file."

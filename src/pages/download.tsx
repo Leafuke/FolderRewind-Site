@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
@@ -34,7 +35,68 @@ export default function Download(): ReactNode {
           <Translate id="download.subheading">优先使用商店版；升级后先做测试再上生产</Translate>
         </p>
 
-        <section className={styles.noticeSection}>
+        <section>
+          <div className={styles.channelGrid}>
+            {/* Microsoft Store */}
+            <div className={styles.channelColumn}>
+              <div className={styles.downloadCard}>
+                <div className="download-icon-wrap download-icon-wrap--store">
+                  <FaWindows />
+                </div>
+                <Heading as="h2" className={styles.cardTitle}>Microsoft Store</Heading>
+                <span className={styles.badge}><Translate id="download.badge.recommended">推荐</Translate></span>
+                <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新、安装简单，也更适合作为长期安装方式。</Translate></p>
+                <Link className={clsx('button button--primary button--lg', styles.cardBtn)} href={STORE_URL}>
+                  <FaWindows style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
+                  <Translate id="download.store.btn">打开 Microsoft Store</Translate>
+                </Link>
+              </div>
+            </div>
+
+            {/* MSI */}
+            <div className={styles.channelColumn}>
+              <div className={styles.downloadCard}>
+                <div className="download-icon-wrap download-icon-wrap--github">
+                  <FaBoxOpen />
+                </div>
+                <Heading as="h2" className={styles.cardTitle}>MSI</Heading>
+                <span className={styles.badgeWarn}><Translate id="download.badge.msi">测试中</Translate></span>
+                <p className={styles.cardDesc}><Translate id="download.msi.desc">双击安装，无需开发人员模式；该分发格式仍在测试中，请核对同名 .sha256 文件。</Translate></p>
+                <Link
+                  className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
+                  href={GITHUB_LATEST_RELEASE_URL}>
+                  <FaBoxOpen style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
+                  <Translate id="download.msi.btn">获取最新 MSI</Translate>
+                </Link>
+              </div>
+            </div>
+
+            {/* MSIX */}
+            <div className={styles.channelColumn}>
+              <div className={styles.downloadCard}>
+                <div className="download-icon-wrap download-icon-wrap--github">
+                  <FaTerminal />
+                </div>
+                <Heading as="h2" className={styles.cardTitle}>MSIX (.7z)</Heading>
+                <span className={styles.badgeAlt}><Translate id="download.badge.msix">高级侧载</Translate></span>
+                <p className={styles.cardDesc}><Translate id="download.msix.desc">体验最接近 Store 版；需解压 .7z、启用开发人员模式并运行 install.ps1。</Translate></p>
+                <Link
+                  className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
+                  href={GITHUB_LATEST_RELEASE_URL}>
+                  <FaTerminal style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
+                  <Translate id="download.msix.btn">获取最新 MSIX 包</Translate>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <p className={styles.architectureHint}>
+            <Translate id="download.archHint">大多数 Intel/AMD 电脑请选择 x64；仅 Windows on ARM 设备选择 ARM64。</Translate>
+          </p>
+        </section>
+
+        {/* 安装与升级提醒：置于下载渠道之后，避免警示信息抢占首屏主行动区 */}
+        <section className={clsx('margin-top--xl', styles.noticeSection)}>
           <div className={styles.noticeBox}>
             <Heading as="h2" className={styles.noticeTitle}>
               <Translate id="download.notice.title">安装与升级提醒</Translate>
@@ -53,64 +115,6 @@ export default function Download(): ReactNode {
             </Link>
           </div>
         </section>
-
-        <div className={styles.channelGrid}>
-          {/* Microsoft Store */}
-          <div className={styles.channelColumn}>
-            <div className={styles.downloadCard}>
-              <div className="download-icon-wrap download-icon-wrap--store">
-                <FaWindows />
-              </div>
-              <Heading as="h2" className={styles.cardTitle}>Microsoft Store</Heading>
-              <span className={styles.badge}><Translate id="download.badge.recommended">推荐</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.store.desc">自动更新、安装简单，也更适合作为长期安装方式。</Translate></p>
-              <Link className="button button--primary button--lg" href={STORE_URL}>
-                <FaWindows style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                <Translate id="download.store.btn">打开 Microsoft Store</Translate>
-              </Link>
-            </div>
-          </div>
-
-          {/* MSI */}
-          <div className={styles.channelColumn}>
-            <div className={styles.downloadCard}>
-              <div className="download-icon-wrap download-icon-wrap--github">
-                <FaBoxOpen />
-              </div>
-              <Heading as="h2" className={styles.cardTitle}>MSI</Heading>
-              <span className={styles.badgeAlt}><Translate id="download.badge.msi">普通侧载</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.msi.desc">双击安装，无需开发人员模式；该分发格式仍在测试中，请核对同名 .sha256 文件。</Translate></p>
-              <Link
-                className="button button--outline button--primary button--lg"
-                href={GITHUB_LATEST_RELEASE_URL}>
-                <FaBoxOpen style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                <Translate id="download.msi.btn">获取最新 MSI</Translate>
-              </Link>
-            </div>
-          </div>
-
-          {/* MSIX */}
-          <div className={styles.channelColumn}>
-            <div className={styles.downloadCard}>
-              <div className="download-icon-wrap download-icon-wrap--github">
-                <FaTerminal />
-              </div>
-              <Heading as="h2" className={styles.cardTitle}>MSIX (.7z)</Heading>
-              <span className={styles.badgeAlt}><Translate id="download.badge.msix">高级侧载</Translate></span>
-              <p className={styles.cardDesc}><Translate id="download.msix.desc">体验最接近 Store 版；需解压 .7z、启用开发人员模式并运行 install.ps1。</Translate></p>
-              <Link
-                className="button button--outline button--primary button--lg"
-                href={GITHUB_LATEST_RELEASE_URL}>
-                <FaTerminal style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                <Translate id="download.msix.btn">获取最新 MSIX 包</Translate>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <p className={styles.architectureHint}>
-          <Translate id="download.archHint">大多数 Intel/AMD 电脑请选择 x64；仅 Windows on ARM 设备选择 ARM64。</Translate>
-        </p>
 
         {/* 系统要求 */}
         <section className="margin-top--xl">
