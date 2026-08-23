@@ -96,17 +96,40 @@
 }
 
 /* ─── Feature icon containers ──────────────────── */
+/* 与 segment-card 的浅底彩色图标保持同一视觉语言 */
 .feature-icon-wrap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 12px;
-  background: var(--ifm-color-primary);
-  color: #fff;
-  font-size: 1.4rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
+}
+.feature-icon-wrap--indigo {
+  background: rgba(58, 76, 180, 0.1);
+  color: var(--ifm-color-primary);
+}
+.feature-icon-wrap--teal {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0f8a7e;
+}
+.feature-icon-wrap--amber {
+  background: rgba(232, 168, 56, 0.14);
+  color: #b07818;
+}
+[data-theme='dark'] .feature-icon-wrap--indigo {
+  background: rgba(123, 142, 230, 0.16);
+  color: #93a1ed;
+}
+[data-theme='dark'] .feature-icon-wrap--teal {
+  background: rgba(45, 212, 191, 0.14);
+  color: #2dd4bf;
+}
+[data-theme='dark'] .feature-icon-wrap--amber {
+  background: rgba(240, 185, 90, 0.16);
+  color: #f0b95a;
 }
 
 /* ─── Segment cards ────────────────────────────── */

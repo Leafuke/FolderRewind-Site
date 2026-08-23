@@ -16,8 +16,11 @@ import {
 } from 'react-icons/fa6';
 import styles from './styles.module.css';
 
+type FeatureTone = 'indigo' | 'teal' | 'amber';
+
 type FeatureItem = {
   icon: ReactNode;
+  tone: FeatureTone;
   title: string;
   description: string;
   link: string;
@@ -28,6 +31,7 @@ function useFeatureList(): FeatureItem[] {
   return [
     {
       icon: <FaBolt />,
+      tone: 'indigo',
       title: translate({id: 'features.7zip.title', message: '7-Zip 压缩引擎'}),
       description: translate({id: 'features.7zip.desc', message: '基于 7z 格式的高效压缩，节省磁盘空间，备份速度更快。'}),
       link: '/docs/guides/backup-modes',
@@ -35,6 +39,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaArrowsRotate />,
+      tone: 'indigo',
       title: translate({id: 'features.modes.title', message: '全量、增量与覆写'}),
       description: translate({id: 'features.modes.desc', message: '按场景选择全量、智能增量、轻量或覆写策略，并控制增量链长度。'}),
       link: '/docs/guides/backup-modes',
@@ -42,6 +47,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaClock />,
+      tone: 'teal',
       title: translate({id: 'features.automation.title', message: '自动化与远程命令'}),
       description: translate({id: 'features.automation.desc', message: '支持间隔、定时、条件任务，并通过 KnotLink 参数化协议触发远程操作。'}),
       link: '/docs/guides/automation',
@@ -49,6 +55,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaLock />,
+      tone: 'indigo',
       title: translate({id: 'features.encryption.title', message: '加密备份'}),
       description: translate({id: 'features.encryption.desc', message: '使用 AES-256 加密备份文件，确保敏感数据安全。'}),
       link: '/docs/guides/encryption',
@@ -56,6 +63,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaShieldHalved />,
+      tone: 'teal',
       title: translate({id: 'features.i18n.title', message: '安全还原'}),
       description: translate({id: 'features.i18n.desc', message: 'Clean 模式创建安全快照；部分备份还原强制使用 Overwrite，绝不清空未备份文件。'}),
       link: '/docs/getting-started/first-restore',
@@ -63,6 +71,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaTimeline />,
+      tone: 'teal',
       title: translate({id: 'features.timeline.title', message: '历史时间轴与安全删除'}),
       description: translate({id: 'features.timeline.desc', message: '查看、标记、重建与删除历史；在增量模式下尽量避免链断裂。'}),
       link: '/docs/guides/history-timeline',
@@ -70,6 +79,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaPuzzlePiece />,
+      tone: 'amber',
       title: translate({id: 'features.plugins.title', message: '插件系统'}),
       description: translate({id: 'features.plugins.desc', message: '插件可扩展备份范围、KnotLink 命令、还原拦截和配置字段。'}),
       link: '/docs/plugins/overview',
@@ -77,6 +87,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaWindowRestore />,
+      tone: 'amber',
       title: translate({id: 'features.miniwindow.title', message: 'Mini 悬浮窗'}),
       description: translate({id: 'features.miniwindow.desc', message: '在游戏或工作中通过迷你窗口随时监控与即时备份。'}),
       link: '/docs/guides/mini-window',
@@ -84,6 +95,7 @@ function useFeatureList(): FeatureItem[] {
     },
     {
       icon: <FaCloudArrowUp />,
+      tone: 'amber',
       title: translate({id: 'features.knotlink.title', message: '云同步与外部工具'}),
       description: translate({id: 'features.knotlink.desc', message: '支持调用 rclone 等第三方工具，将备份同步到云端或其他存储。'}),
       link: '/docs/guides/cloud-archive',
@@ -92,11 +104,11 @@ function useFeatureList(): FeatureItem[] {
   ];
 }
 
-function Feature({icon, title, description, link, linkText}: FeatureItem) {
+function Feature({icon, tone, title, description, link, linkText}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className="col col--4">
       <div className={styles.featureCard}>
-        <div className="feature-icon-wrap">{icon}</div>
+        <div className={`feature-icon-wrap feature-icon-wrap--${tone}`}>{icon}</div>
         <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
         <p className={styles.featureDesc}>{description}</p>
         <Link className={styles.featureLink} to={link}>
