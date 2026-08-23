@@ -137,7 +137,7 @@ const config: Config = {
       title: 'FolderRewind',
       logo: {
         alt: 'FolderRewind Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
