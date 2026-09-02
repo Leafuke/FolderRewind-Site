@@ -4,7 +4,8 @@
  * 主色调：靛蓝 → 琥珀点缀，暗示"时光流逝与回溯"
  */
 
-:root {
+:root,
+[data-theme='light'] {
   /* v4 Infima 将浅色模式底色默认为 transparent，页面底色会透出浏览器画布，
      在强制深色的内嵌浏览器（微信/QQ 等 WebView）下呈黑底黑字，必须保持不透明 */
   --ifm-background-color: #ffffff;
@@ -34,6 +35,10 @@
 }
 
 [data-theme='dark'] {
+  /* 本文件未分层，会压过 @layer 内 Infima 的深浅色全部默认值；
+     浅色底改白后深色底必须显式回写，否则深色模式会得到白色页面底 */
+  --ifm-background-color: #1b1b1d;
+
   --ifm-color-primary: #7b8ee6;
   --ifm-color-primary-dark: #6375df;
   --ifm-color-primary-darker: #576bdc;
