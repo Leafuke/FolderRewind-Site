@@ -5,6 +5,10 @@
  */
 
 :root {
+  /* v4 Infima 将浅色模式底色默认为 transparent，页面底色会透出浏览器画布，
+     在强制深色的内嵌浏览器（微信/QQ 等 WebView）下呈黑底黑字，必须保持不透明 */
+  --ifm-background-color: #ffffff;
+
   /* 主色：深靛蓝 */
   --ifm-color-primary: #3a4cb4;
   --ifm-color-primary-dark: #3343a2;
