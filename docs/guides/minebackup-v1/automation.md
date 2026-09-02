@@ -8,7 +8,7 @@ description: MineBackup 1.16.2 Desktop GUI 的游戏会话触发、间隔、计�
 
 自动化适合“重复执行同一套已验证流程”。请先用普通配置手动完成一次备份和还原，再启用长期任务。
 
-:::note CLI 与本页不同
+:::note[CLI 与本页不同]
 
 本页描述的是 Desktop GUI 的传统自动化模型。
 

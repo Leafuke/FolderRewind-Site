@@ -10,7 +10,7 @@ MineBackup 是 FolderRewind 的前身项目，也是“存档时光机”第一�
 
 MineBackup 仍然适合已有 Minecraft 备份工作流、需要跨平台运行，或依赖 MineBackup-Mod / KnotLink 联动的用户。1.16.2 还提供正式的 headless CLI 路线，适合服务器、VPS、NAS 和 SSH-only 环境。新项目可以评估 FolderRewind，但不应把两个程序的配置文件、插件模型或服务能力混为一谈。
 
-:::caution 版本边界
+:::caution[版本边界]
 本栏目描述的是 MineBackup 1.16.2 的行为。1.16 已经弃用 Windows Service Mode，只保留对旧服务的检查与安全清理入口；服务器部署请优先阅读 CLI 学习路径。
 :::
 

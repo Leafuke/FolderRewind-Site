@@ -9,7 +9,7 @@ Death Rewind 是 MineBackup 的附属模组。它在游玩期间定时请求 Min
 
 从 2.0 开始，Death Rewind 不再直接连接 FolderRewind，也不重复实现保存、自动保存冻结、还原和重连逻辑；这些操作统一由 MineBackup API v2 协调。
 
-:::warning 这是单人/LAN 房主扩展
+:::warning[这是单人/LAN 房主扩展]
 Death Rewind 2.0 只支持 Fabric 26.1～26.1.2 的单人世界和 LAN 世界房主。不支持专用服务器，加入 LAN 的普通客户端也不能发起世界恢复。
 :::
 

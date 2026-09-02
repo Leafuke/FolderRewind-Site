@@ -8,7 +8,7 @@ description: 从旧版本升级到 FolderRewind 1.8 的完整步骤，并安全�
 
 本页适用于从旧版本升级到 FolderRewind 1.8，以及遇到 1.8.0 无法创建窗口的问题。
 
-:::tip 优先升级到 1.8.1
+:::tip[优先升级到 1.8.1]
 1.8.1 会自动把旧的 `zh_CN` / `en_US` 迁移为 `zh-CN` / `en-US`。未知语言值会回退到系统语言；即使 Windows 拒绝语言覆盖，程序也会继续使用系统语言启动。
 :::
 
@@ -55,7 +55,7 @@ MSI:
 6. 保存文件并保持 JSON 结构有效。
 7. 安装或升级到 1.8.1，再启动 FolderRewind。
 
-:::danger 不要删除整个配置
+:::danger[不要删除整个配置]
 删除 `config.json` 会丢失应用设置、备份配置和插件启用状态。恢复启动只需要备份文件并修正 `GlobalSettings.Language`。
 :::
 

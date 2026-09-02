@@ -8,7 +8,7 @@ description: 从零开始开发一个 FolderRewind 插件：搭建项目、接�
 
 本指南将带你完成 FolderRewind 插件开发的完整流程：从创建项目到安装测试。
 
-:::info 前置要求
+:::info[前置要求]
 - Visual Studio 2022 或 JetBrains Rider
 - .NET 10 SDK
 - FolderRewind 已安装（[下载页](/download)）

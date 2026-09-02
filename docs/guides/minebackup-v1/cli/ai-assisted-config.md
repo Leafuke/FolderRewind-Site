@@ -8,7 +8,7 @@ description: MineBackup 1.16.2 命令行配置中使用人工智能助手的安�
 
 > **AI 是可选的配置助手，不是 MineBackup 配置验证器。** CLI is source of truth；任何 AI 输出都必须回到 `profile validate`、`profile diff`、`profile apply --dry-run`、`profile apply` 和 `doctor`。
 
-:::caution 不要把秘密交给公共 AI
+:::caution[不要把秘密交给公共 AI]
 
 不要向公共 AI 提供：
 

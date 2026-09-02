@@ -120,7 +120,7 @@ cmd=BACKUP;config_id=demo;folder=World;comment=Before%20upgrade;backup_mode=full
 cmd=RESTORE;config_id=demo;folder=World;file=backup%202026-07-30.7z;mode=overwrite;from=panel;request_id=restore-001
 ```
 
-:::danger 部分备份规则
+:::danger[部分备份规则]
 如果记录是指定区域等部分备份，Host 会强制使用 `overwrite`，即使请求传入 `mode=clean` 也不会清空未备份文件。
 :::
 

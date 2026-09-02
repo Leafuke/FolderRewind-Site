@@ -8,7 +8,7 @@ description: FolderRewind 是面向重要文件、项目资料与游戏存档的
 
 欢迎使用 **FolderRewind（存档时光机）**。它是一个面向重要文件、项目资料与游戏存档的现代化备份工具，同时也是 MineBackup 的后继作品。
 
-:::caution 升级前建议
+:::caution[升级前建议]
 如果你是从旧版本升级，先阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)，并在测试目录完成几轮备份与还原演练，再把新版本投入生产使用。
 :::
 

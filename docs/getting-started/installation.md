@@ -8,11 +8,11 @@ description: 详解 FolderRewind 三种安装渠道（Microsoft Store、MSI、MS
 
 FolderRewind 提供三种安装渠道：**Microsoft Store**、**MSI** 和 **MSIX 侧载包**。
 
-:::tip 推荐
+:::tip[推荐]
 能使用 Microsoft Store 时，优先选择商店版。它安装简单，并由商店负责后续更新。
 :::
 
-:::warning 不要混装
+:::warning[不要混装]
 Store、MSI 与 MSIX 版本不应同时安装或运行。MSI 与 MSIX/Store 使用不同的数据目录，切换渠道不会自动迁移配置、历史或插件。
 :::
 

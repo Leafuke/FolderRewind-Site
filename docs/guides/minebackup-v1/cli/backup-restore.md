@@ -90,7 +90,7 @@ dry-run 会规划完整恢复链、验证 metadata 并测试每个 7-Zip 包，�
 
 ## 7. 真实 Restore：单独的高风险操作
 
-:::warning 真实恢复会写入世界
+:::warning[真实恢复会写入世界]
 
 真实恢复必须明确确认，并且不属于第一次 CLI 教程。先完成 Verify、Restore dry-run、服务器停机和 `doctor` 检查，再由管理员确认归档、模式、目标路径和 `backupBefore` 行为。只有 CLI 明确要求时才使用 `--confirm`。
 

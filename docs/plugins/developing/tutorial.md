@@ -17,7 +17,7 @@ description: 从零开始构建一个通用游戏存档备份插件的完整教�
 
 完成后，你将掌握 FolderRewind 插件开发的全部核心能力。
 
-:::info 前置要求
+:::info[前置要求]
 - 已完成 [插件开发快速上手](/docs/plugins/developing/quick-start) 中的环境配置
 - 了解 C# 基础语法
 :::

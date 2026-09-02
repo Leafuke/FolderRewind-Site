@@ -7,7 +7,7 @@ description: 检测 Minecraft 高风险状态并自动创建事故现场快照�
 
 Just Enough Accidents（JEA）是 MineBackup 的事故检测扩展。它在单人世界或 LAN 世界中发现高风险状态后，请求 MineBackup 与 FolderRewind 创建一次事故现场快照。
 
-:::warning 快照不是绝对安全点
+:::warning[快照不是绝对安全点]
 JEA 记录的是检测触发时的事故现场，不保证是事故发生前的安全点。低生命值和不死图腾检测尤其可能已经包含伤害或图腾消耗。
 :::
 

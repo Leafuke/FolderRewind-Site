@@ -10,7 +10,7 @@ MineBackup 1.16.2 **不能安装或启动 Windows Service Mode**。当前版本�
 
 这不是新的后台运行方式，也不会把普通配置或统一任务转换成服务。
 
-:::note 现代服务器入口
+:::note[现代服务器入口]
 
 Legacy Windows Service Mode 与新的 CLI `serve` 完全不同。服务器无人值守部署请优先使用 [CLI `serve`](/docs/guides/minebackup-v1/cli/serve)、[Linux systemd](/docs/guides/minebackup-v1/cli/linux-systemd) 或 [Windows Task Scheduler](/docs/guides/minebackup-v1/cli/windows-task-scheduler)。本页的旧 `--service` 清理逻辑仍然保留，但不要把它当作新的服务机制。
 

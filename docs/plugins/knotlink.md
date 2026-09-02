@@ -17,7 +17,7 @@ KnotLink 是 FolderRewind 与游戏模组、脚本和控制面板之间的通信
 
 Server v3 是传输服务版本，参数化协议 v2 是 FolderRewind 的消息格式。升级其中一个并不代表另一个也已兼容；1.8 联动环境应同时满足两项要求。
 
-:::warning v1 指令已移除
+:::warning[v1 指令已移除]
 FolderRewind 1.8 不再解析空格分隔的旧指令。调用方必须发送包含 `cmd=` 的严格键值对负载。
 :::
 

@@ -7,7 +7,7 @@ description: 为 Spigot 和 Paper 专用服务器提供 FolderRewind/MineBackup 
 
 MineBackupPlugin 是 Minecraft 模组化服务端之外的联动方案，面向 Spigot、Paper 以及兼容 Bukkit/Spigot API 的专用服务器。它不自行存储备份，而是负责保存世界、通过 KnotLink 请求 MineBackup 或 FolderRewind 执行备份，并在还原时把停服后的文件释放流程交给纯 JDK Sidecar。
 
-:::warning 它不是独立备份程序
+:::warning[它不是独立备份程序]
 运行插件时，后台仍必须有 MineBackup 或 FolderRewind，以及可用的 KnotLink 服务。插件无法脱离主程序单独创建或还原归档。
 :::
 
@@ -131,7 +131,7 @@ logging:
 
 断连、超时或未知终态会被标记为不确定状态，服务器保持离线，不会把“没有消息”误判为成功。
 
-:::danger 不要让两个重启器同时接管 JVM
+:::danger[不要让两个重启器同时接管 JVM]
 不要同时启用面板或 wrapper 的“进程退出立即重启”。它可能在 FolderRewind 尚未完成写入时抢先启动服务器，破坏还原安全边界。
 :::
 
