@@ -23,7 +23,8 @@
 }
 
 .heroTitle {
-  font-size: 3.5rem;
+  /* 随视口平滑缩放，避免 "FolderRewind" 在窄屏上断词折行 */
+  font-size: clamp(2rem, 4.5vw + 0.5rem, 3.5rem);
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--ifm-color-primary-darkest);
@@ -92,7 +93,8 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.65rem 1rem;
+  /* 右侧为悬浮的“云存档”徽章预留空间，避免压住应用名 */
+  padding: 0.65rem 6.5rem 0.65rem 1rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -338,9 +340,6 @@
 @media screen and (max-width: 768px) {
   .heroBanner {
     padding: 3rem 1.5rem 2.5rem;
-  }
-  .heroTitle {
-    font-size: 2.5rem;
   }
   .heroTagline {
     font-size: 1.2rem;
