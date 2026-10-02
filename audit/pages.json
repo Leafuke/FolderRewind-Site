@@ -144,7 +144,7 @@
       "path": "docs/guides/backup-file-spec.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/backup-file-spec.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -154,7 +154,7 @@
       "path": "docs/guides/backup-modes.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/backup-modes.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
