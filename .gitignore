@@ -24,3 +24,7 @@ yarn-error.log*
 *.txt
 
 /docs/superpowers
+# Plugin documentation example build outputs
+/artifacts/
+**/bin/
+**/obj/

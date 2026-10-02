@@ -1,0 +1,43 @@
+{
+  "manifestVersion": 3,
+  "pluginId": "com.example.gamerewind",
+  "version": "1.0.0",
+  "name": "GameRewind",
+  "description": "API 3.5 documentation example; use test data.",
+  "author": "FolderRewind documentation",
+  "pluginApi": {
+    "major": 3,
+    "minor": 5
+  },
+  "entryAssembly": "GameRewind.dll",
+  "entryType": "GameRewind.Plugin",
+  "settingsSchema": "settings.schema.json",
+  "architectures": [
+    "any"
+  ],
+  "configKinds": [
+    {
+      "ownerId": "com.example.gamerewind",
+      "kindId": "game-saves",
+      "displayName": "Game saves example",
+      "description": "User-reviewed local save directories.",
+      "icon": "folder",
+      "backupFallback": "block",
+      "restoreCoordination": "none"
+    }
+  ],
+  "requestedHostServices": [
+    "backupRequest",
+    "logging"
+  ],
+  "capabilities": [
+    "discovery",
+    "filePolicy",
+    "pluginCommand",
+    "knotLinkIntegration"
+  ],
+  "artifactFormats": [],
+  "artifactTransformers": [],
+  "restoreStrategies": [],
+  "hasBackupCompletionObserver": false
+}

@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 3,
+  "pluginId": "com.example.minimal",
+  "version": "1.0.0",
+  "name": "MinimalPlugin",
+  "description": "API 3.5 documentation example; use test data.",
+  "author": "FolderRewind documentation",
+  "pluginApi": {
+    "major": 3,
+    "minor": 5
+  },
+  "entryAssembly": "MinimalPlugin.dll",
+  "entryType": "MinimalPlugin.Plugin",
+  "settingsSchema": "settings.schema.json",
+  "architectures": [
+    "any"
+  ],
+  "configKinds": [],
+  "requestedHostServices": [],
+  "capabilities": [],
+  "artifactFormats": [],
+  "artifactTransformers": [],
+  "restoreStrategies": [],
+  "hasBackupCompletionObserver": false
+}

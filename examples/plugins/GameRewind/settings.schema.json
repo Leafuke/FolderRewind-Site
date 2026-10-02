@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "settings": [
+    {
+      "key": "DiscoverSaves",
+      "type": "boolean",
+      "default": true,
+      "displayName": "Discover save.dat directories",
+      "localizedDisplayName": {
+        "zh-CN": "发现 save.dat 存档目录",
+        "en-US": "Discover save.dat directories"
+      }
+    }
+  ]
+}
