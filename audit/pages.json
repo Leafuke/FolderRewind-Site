@@ -684,7 +684,7 @@
       "path": "docs/plugins/developing/hotkey-api.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/hotkey-api.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -694,7 +694,7 @@
       "path": "docs/plugins/developing/knotlink-api.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/knotlink-api.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -754,7 +754,7 @@
       "path": "docs/plugins/knotlink-commands.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/knotlink-commands.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -764,7 +764,7 @@
       "path": "docs/plugins/knotlink.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/knotlink.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],

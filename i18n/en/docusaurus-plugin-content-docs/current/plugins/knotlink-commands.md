@@ -1,181 +1,83 @@
 ---
 sidebar_position: 4
-title: KnotLink Command Reference
-description: Built-in commands, fields, responses, and signals in FolderRewind 1.8 parameterized protocol v2
+title: "KnotLink command reference"
+description: "FolderRewind 1.9 knotlink command reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# KnotLink Command Reference
+# KnotLink command reference
 
-This page uses FolderRewind 1.8's `funcList.json` as the fact source for built-in commands. Call `GET_CAPABILITIES` at runtime first because plugins can contribute command parameters and signals.
+Baseline: API3.5 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
 
-## Common format
+## Queries and shared targets
 
-```text
-key=value;key2=value2
-```
+| Command | Target/result |
+|---|---|
+| PING | message |
+| GET_CAPABILITIES | content_type, encoding, manifest_version, func_list |
+| LIST_CONFIGS, GET_STATUS | data |
+| LIST_FOLDERS, GET_CONFIG | config_id, returns data |
+| LIST_BACKUPS | config_id, folder, returns data |
 
-- Every request needs `cmd`.
-- State-changing commands need `from` and a unique `request_id`.
-- `folder` can be a display name or an index within the configuration.
-- A response contains at least `status=ok` or `status=error`. Conversation commands also echo `from` and `request_id`.
-- Dynamic values must be percent-encoded. For lists, encode each item and join them with commas.
+config_id accepts stable ID/name/zero-based index. folder accepts stable ID/name/path/zero-based index. Prefer stable IDs in long-lived scripts. BACKUP, BACKUP_ALL, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP and MARK_IMPORTANT require from/request_id.
 
-```text
-# Comment "pre-release; manual check"
-comment=pre-release%3B%20manual%20check
+## Backup options
 
-# Two whitelist rules: world data, config=prod
-backup_whitelist=world%20data,config%3Dprod
-```
+BACKUP selects one folder; BACKUP_ALL selects a config and rejects folder; AUTO_BACKUP binds a folder and interval_minutes≥1 (descriptor default10). All three share:
 
-## Connection and discovery
+| Field | Meaning |
+|---|---|
+| comment | Per-operation comment |
+| backup_mode | full/smart; omission inherits local mode |
+| compression_method | LZMA2/Deflate/BZip2/zstd |
+| compression_level | Valid integer; omission inherits |
+| backup_blacklist | Append/deduplicate local rules; empty does not clear |
+| backup_whitelist | Append/deduplicate; nonempty selects whitelist mode |
+| backup_scope | Per-operation override; full/all/default/none disables local plugin scope |
+| scope_dimensions | overworld/nether/end and supported aliases |
+| scope_areas | Block-coordinate rectangles x1,z1,x2,z2, one per line; selected-regions required |
 
-| Command | Request fields | Success fields | Purpose |
-|---------|----------------|----------------|---------|
-| `PING` | `cmd` | `status`, `message` | Check whether the FolderRewind KnotLink endpoint is available |
-| `GET_STATUS` | `cmd` | `status`, `data` | Query enabled, initialized, active periodic-backup, and active-task state |
-| `GET_CAPABILITIES` | `cmd` | `status`, `content_type`, `encoding`, `manifest_version`, `func_list` | Get the percent-encoded runtime JSON capability manifest |
-
-Example:
-
-```text
-> cmd=PING
-< status=ok;message=PONG
-
-> cmd=GET_CAPABILITIES
-< status=ok;content_type=application%2Fjson;encoding=percent;manifest_version=2.0.0;func_list=%7B...%7D
-```
-
-Decode `func_list` and generate requests from the manifest. Do not treat this page as a permanently hardcoded list of plugin capabilities.
-
-## Configuration and history queries
-
-| Command | Request fields | Success fields | Purpose |
-|---------|----------------|----------------|---------|
-| `LIST_CONFIGS` | `cmd` | `status`, `data` | List backup configurations |
-| `LIST_FOLDERS` | `cmd`, `config_id` | `status`, `data` | List managed folders in a configuration |
-| `LIST_BACKUPS` | `cmd`, `config_id`, `folder` | `status`, `data` | List archives for a managed folder |
-| `GET_CONFIG` | `cmd`, `config_id` | `status`, `data` | Get a summary including name, backup mode, format, and keep count |
-
-Query example:
+Overrides do not persist and cannot expand source boundaries. STOP_AUTO_BACKUP stops the folder's remote periodic job.
 
 ```text
-cmd=LIST_BACKUPS;config_id=demo;folder=0
+cmd=BACKUP;config_id=demo;folder=World;backup_mode=smart;from=panel;request_id=backup-001
 ```
 
-`data` is one percent-encoded field. Parse the v2 payload first, then decode its content.
+## RESTORE
 
-## `BACKUP`
+| Field | Meaning |
+|---|---|
+| file | Optional; omission uses active Workspace's unique local branch tip |
+| mode | clean/overwrite; default clean |
+| restore_whitelist | Append local rules; Clean retains current matches unless archive supplies the same path |
+| preserve_player_data | Minecraft null/true/false: omit to inherit; explicit value overrides this operation |
 
-Queue a backup for one managed folder.
-
-| Field | Required | Meaning |
-|-------|----------|---------|
-| `config_id` | Yes | Configuration ID |
-| `folder` | Yes | Folder name or index |
-| `from` | Yes | Caller identifier |
-| `request_id` | Yes | Unique correlation ID for this request |
-| `comment` | No | One-shot backup comment |
-| `backup_mode` | No | One-shot override: `full` or `incremental` |
-| `compression_method` | No | `LZMA2`, `Deflate`, `BZip2`, or `zstd` |
-| `compression_level` | No | One-shot compression level |
-| `backup_blacklist` | No | Comma-delimited one-shot blacklist |
-| `backup_whitelist` | No | Comma-delimited one-shot whitelist |
-| `backup_scope` | No | Backup-scope ID supplied by a plugin |
-| `scope_areas` | No | Example scope parameter; use the runtime manifest for actual fields |
-| `scope_dimensions` | No | Example dimension parameter; use the runtime manifest for actual fields |
-
-Overrides apply only to this invocation and are not written back to persistent configuration. The Host validates filters, backup scope, and compression settings before queuing.
+Partial captures always Overwrite, including Exact representations. Quick Restore blocks divergence/unavailable targets/precondition failures. An already-exact target produces NoChanges, not an older archive selection.
 
 ```text
-cmd=BACKUP;config_id=demo;folder=World;comment=Before%20upgrade;backup_mode=full;from=panel;request_id=backup-001
+cmd=RESTORE;config_id=demo;folder=World;from=panel;request_id=restore-001
+cmd=RESTORE;current_save=true;preserve_player_data=false;from=panel;request_id=restore-002
 ```
 
-## `BACKUP_ALL`
+Preservation covers selected NBT fields for all UUIDs, retaining complete current NBT for players absent from the backup. Stats/advancements still restore. Cross-26.1-layout preservation is rejected. Checkout/Merge do not preserve player state.
 
-Queue every folder in a configuration:
+## Importance and current-world selectors
 
-| Field | Required | Meaning |
-|-------|----------|---------|
-| `config_id`, `from`, `request_id` | Yes | Configuration and conversation metadata |
-| `comment` | No | One-shot comment |
-| `backup_blacklist`, `backup_whitelist` | No | One-shot filter overrides |
-| `backup_scope` | No | Plugin scope ID |
+MARK_IMPORTANT requires file; important defaults true. MineRewind extends current_save=true to BACKUP, LIST_BACKUPS, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP and MARK_IMPORTANT. Discovery names differ but wire commands stay the same; use runtime target information.
 
-`BACKUP_ALL` does not accept `folder`. Scope parameters must be valid for the configuration's targets or the entire request is rejected.
+## Responses and signals
 
-## `RESTORE`
+Responses include status=ok/error; conversations echo from/request_id. Dynamic values are percent-encoded. Long-task ok means accepted; correlate lifecycle signals to determine completion. Failed rejoin does not necessarily mean restore failed; never blindly repeat Restore.
 
-| Field | Required | Meaning |
-|-------|----------|---------|
-| `config_id` | Yes | Configuration ID |
-| `folder` | Yes | Folder name or index |
-| `file` | Yes | Backup archive filename |
-| `from` | Yes | Caller identifier |
-| `request_id` | Yes | Unique correlation ID |
-| `mode` | No | `overwrite` or `clean` |
-| `restore_whitelist` | No | Comma-delimited one-shot restore whitelist |
-
-```text
-cmd=RESTORE;config_id=demo;folder=World;file=backup%202026-07-30.7z;mode=overwrite;from=panel;request_id=restore-001
-```
-
-:::danger Partial-backup rule
-For a selected-region or other partial backup, the Host forces `overwrite`. Even if `mode=clean` is supplied, it will not erase files absent from the backup.
-:::
-
-## Periodic backup control
-
-| Command | Required fields | Other fields | Purpose |
-|---------|-----------------|--------------|---------|
-| `AUTO_BACKUP` | `config_id`, `folder`, `interval_minutes`, `from`, `request_id` | — | Start periodic backup for one folder |
-| `STOP_AUTO_BACKUP` | `config_id`, `folder`, `from`, `request_id` | — | Stop periodic backup for that folder |
-
-`interval_minutes` must be a valid minute interval. Query status or track task state on the caller before starting it again.
-
-## `MARK_IMPORTANT`
-
-Set or clear the important flag on one archive:
-
-```text
-cmd=MARK_IMPORTANT;config_id=demo;folder=0;file=backup.7z;important=true;from=panel;request_id=mark-001
-```
-
-`important` accepts `true` or `false`. Supply `config_id`, `folder`, and `file` together to identify the record.
-
-## Response status
-
-| Status | Meaning |
-|--------|---------|
-| `status=ok` | A query completed, or a long task passed initial validation and was accepted |
-| `status=error` | Parsing, field, state, or execution validation failed; read `message` |
-
-For long work, `status=ok` normally means "accepted", not "backup or restore completed." Follow lifecycle and domain signals for the final result.
-
-## Signals
-
-### Command lifecycle
-
-- `command_accepted`
-- `command_started`
-- `command_progress`
-- `command_completed`
-- `command_failed`
-- `command_error`
-
-These events carry `command` and `request_id`. Progress or error events can add stage, percentage, and reason fields.
-
-### Backup and restore
-
-- One-folder backup: `backup_started`, `backup_success`, `backup_warning`, `backup_failed`
-- Whole configuration: `backup_all_started`, `backup_all_completed`, `backup_all_failed`
-- Restore: `restore_started`, `restore_success`, `restore_failed`, `restore_finished`
-- Periodic backup: `auto_backup_started`, `auto_backup_executed`, `auto_backup_stopped`, `auto_backup_error`
-
-Additional query/state signals include `app_startup`, `status`, `list_configs`, `list_folders`, `list_backups`, `get_config`, and `mark_important`. Plugins can add more through the runtime manifest.
-
-## Related links
-
-- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
-- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
-- [Backup Modes and One-Shot Parameters](/en/docs/guides/backup-modes)
+<span id="common-format" />
+<span id="connection-and-discovery" />
+<span id="configuration-and-history-queries" />
+<span id="backup" />
+<span id="backup_all" />
+<span id="periodic-backup-control" />
+<span id="mark_important" />
+<span id="response-status" />
+<span id="signals" />
+<span id="command-lifecycle" />
+<span id="backup-and-restore" />
+<span id="related-links" />

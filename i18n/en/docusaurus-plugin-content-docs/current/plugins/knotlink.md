@@ -1,93 +1,41 @@
 ---
 sidebar_position: 3
-title: KnotLink Protocol and Integration
-description: Understand KnotLink Server v3, FolderRewind parameterized protocol v2, and external integrations
+title: "KnotLink protocol and integration"
+description: "FolderRewind 1.9 knotlink protocol and integration: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# KnotLink Protocol and Integration
+# KnotLink protocol and integration
 
-KnotLink is the communication channel between FolderRewind and game mods, scripts, or control panels. FolderRewind 1.8 uses a new remote-command model and requires **KnotLink Server v3**.
+FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API3.5 evolve independently.
 
-## Do not confuse the two version numbers
+## Format and encoding
 
-| Name | Meaning |
-|------|---------|
-| **KnotLink Server v3** | The external service version providing TCP/OpenSocket, query, and signal transport |
-| **FolderRewind parameterized protocol v2** | FolderRewind's strict `key=value` message format carried over KnotLink |
-
-Server v3 is the transport service version; parameterized protocol v2 is FolderRewind's payload format. Upgrading one does not imply compatibility with the other. A 1.8 integration must satisfy both.
-
-:::warning v1 commands were removed
-FolderRewind 1.8 no longer parses legacy space-delimited commands. Callers must send a strict key-value payload containing `cmd=`.
-:::
-
-## Wire format
-
-Requests, responses, and events use semicolon-delimited fields:
+Requests start with cmd= and use strict semicolon-separated key/value fields. Percent-encode dynamic values per RFC3986; encode list items individually before joining with commas. Legacy space-separated commands are unsupported. Long operations need from/request_id.
 
 ```text
-cmd=BACKUP;config_id=demo;folder=0;comment=Before%20upgrade;from=panel;request_id=req-001
+cmd=BACKUP;config_id=demo;folder=World;comment=Before%20upgrade;from=panel;request_id=backup-001
+status=ok;from=panel;request_id=backup-001;message=Queued
 ```
 
-Rules:
+## Discover before invoking
 
-- Keys contain only ASCII letters, digits, and underscores, and are normalized to lowercase internally.
-- Every segment has exactly one `=`. Empty segments, duplicate keys, and invalid escapes reject the whole request.
-- Values use RFC 3986 percent-encoding. A space is `%20`, a semicolon is `%3B`, an equals sign is `%3D`, and `%` is `%25`.
-- Lists are comma-delimited, with each item encoded separately.
-- `BACKUP`, `RESTORE`, `BACKUP_ALL`, `AUTO_BACKUP`, `STOP_AUTO_BACKUP`, and `MARK_IMPORTANT` require `from` and a unique `request_id`.
+Use cmd=PING, then cmd=GET_CAPABILITIES for percent-encoded JSON func_list. Check commands, plugin selectors, arguments and signals from the runtime list rather than guessing by plugin name.
 
-A typical response:
+## Lifecycle and semantics
 
-```text
-status=ok;from=panel;request_id=req-001;message=Backup%20task%20queued
-```
+status=ok may mean accepted, not completed. Correlate later signals using request_id and avoid duplicate destructive requests. Remote Restore defaults Clean; partial captures force Overwrite. Omitting file invokes active-branch Quick Restore, not the preceding timestamp.
 
-Errors use `status=error` and explain the reason in `message`.
+## Plugins
 
-## Discover capabilities before sending commands
+API3.5 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for six folder commands; an active, unambiguous world is required.
 
-Clients should begin with:
+See the [command reference](/docs/plugins/knotlink-commands), [developer API](/docs/plugins/developing/knotlink-api) and [Minecraft integration](/docs/guides/minecraft/knotlink-mod).
 
-```text
-cmd=GET_CAPABILITIES
-```
-
-The response's `func_list` field is percent-encoded JSON containing built-in Host commands plus commands and signals contributed by plugins. The repository's `funcList.json` is the fact baseline for built-in commands; the runtime manifest may grow with enabled plugins.
-
-See [KnotLink Command Reference](/en/docs/plugins/knotlink-commands) for every field.
-
-## Lifecycle signals
-
-Long operations carrying conversation metadata broadcast lifecycle events with the same `request_id`:
-
-```text
-command_accepted → command_started → command_progress → command_completed
-                                      ↘ command_failed / command_error
-```
-
-Backup, restore, and periodic backup also emit domain-specific signals. Correlate responses and events by `request_id`; do not infer an operation from arrival order alone.
-
-## Plugin integration
-
-Plugins participate in the protocol through these 1.8 interfaces:
-
-- `IFolderRewindParameterizedKnotLinkCommandHandler` reads `KnotLinkCommandRequest` and handles parameterized commands.
-- `IFolderRewindKnotLinkCapabilityProvider` contributes command and signal definitions to the runtime `func_list`.
-- `PluginHostContext` exposes KnotLink state, event broadcasting, command sending, and request-response queries.
-
-See [KnotLink Command API](/en/docs/plugins/developing/knotlink-api) for implementation details.
-
-## Security guidance
-
-- Run KnotLink Server only on trusted networks and controlled ports.
-- Generate a new `request_id` for every state-changing request and deduplicate it on the caller side.
-- Rehearse the complete event chain with a test configuration before remote restore touches a real directory.
-- Never concatenate percent-decoded values directly into shell commands.
-
-## Related links
-
-- [KnotLink Command Reference](/en/docs/plugins/knotlink-commands)
-- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
-- [Minecraft and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
-- [1.8 Upgrade and Recovery](/en/docs/getting-started/v1-8-upgrade)
+<span id="do-not-confuse-the-two-version-numbers" />
+<span id="wire-format" />
+<span id="discover-capabilities-before-sending-commands" />
+<span id="lifecycle-signals" />
+<span id="plugin-integration" />
+<span id="security-guidance" />
+<span id="related-links" />
