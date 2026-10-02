@@ -8,7 +8,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/directory-structure.md",
@@ -18,7 +20,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/index.md",
@@ -28,7 +32,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/namespaces.md",
@@ -38,7 +44,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/patterns.md",
@@ -48,7 +56,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/plugin-system.md",
@@ -58,7 +68,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/services.md",
@@ -68,7 +80,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "63ec6ad"
     },
     {
       "path": "docs/architecture/views.md",
@@ -78,7 +92,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fa0c1d9"
     },
     {
       "path": "docs/faq.md",
@@ -88,7 +104,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/getting-started/first-backup.md",
@@ -98,7 +116,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fa0c1d9"
     },
     {
       "path": "docs/getting-started/first-restore.md",
@@ -108,7 +128,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/getting-started/installation.md",
@@ -118,7 +140,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "917933c"
     },
     {
       "path": "docs/getting-started/v1-8-upgrade.md",
@@ -128,7 +152,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/guides/automation.md",
@@ -138,7 +164,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/backup-file-spec.md",
@@ -148,7 +176,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "9b605a5"
     },
     {
       "path": "docs/guides/backup-modes.md",
@@ -158,7 +188,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "9b605a5"
     },
     {
       "path": "docs/guides/cloud-archive.md",
@@ -168,7 +200,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fa0c1d9"
     },
     {
       "path": "docs/guides/data-migration.md",
@@ -178,7 +212,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/encryption.md",
@@ -188,7 +224,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/filters.md",
@@ -198,7 +236,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/folder-management.md",
@@ -208,7 +248,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/history-timeline.md",
@@ -218,7 +260,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8f023d4"
     },
     {
       "path": "docs/guides/minebackup-v1/automation.md",
@@ -228,7 +272,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/backup-modes.md",
@@ -238,7 +284,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "70a05e3"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/ai-assisted-config.md",
@@ -248,7 +296,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/backup-restore.md",
@@ -258,7 +308,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/jobs.md",
@@ -268,7 +320,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/linux-systemd.md",
@@ -278,7 +332,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/overview.md",
@@ -288,7 +344,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/profile-manifest.md",
@@ -298,7 +356,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/quick-start.md",
@@ -308,7 +368,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/reference.md",
@@ -318,7 +380,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/serve.md",
@@ -328,7 +392,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/troubleshooting.md",
@@ -338,7 +404,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/windows-task-scheduler.md",
@@ -348,7 +416,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/cloud-archive.md",
@@ -358,7 +428,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/data-and-migration.md",
@@ -368,7 +440,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "70a05e3"
     },
     {
       "path": "docs/guides/minebackup-v1/faq.md",
@@ -378,7 +452,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/filters.md",
@@ -388,7 +464,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/first-backup.md",
@@ -398,7 +476,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/first-config.md",
@@ -408,7 +488,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/first-restore.md",
@@ -418,7 +500,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/history-and-restore.md",
@@ -428,7 +512,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/hot-backup.md",
@@ -438,7 +524,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/installation.md",
@@ -448,7 +536,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/knotlink-integration.md",
@@ -458,7 +548,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "70a05e3"
     },
     {
       "path": "docs/guides/minebackup-v1/logging-and-diagnostics.md",
@@ -468,7 +560,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "a62fad0"
     },
     {
       "path": "docs/guides/minebackup-v1/overview.md",
@@ -478,7 +572,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/platform-support.md",
@@ -488,7 +584,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "5eeb4ba"
     },
     {
       "path": "docs/guides/minebackup-v1/service-mode.md",
@@ -498,7 +596,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/special-mode.md",
@@ -508,7 +608,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "ec66000"
     },
     {
       "path": "docs/guides/minebackup-v1/troubleshooting.md",
@@ -518,7 +620,9 @@
       "sources": [
         "MineBackup independent 1.16.2 documentation"
       ],
-      "manualAcceptance": "not-applicable"
+      "manualAcceptance": "not-applicable",
+      "followUp": "preserve independent baseline; cross-product links checked by build",
+      "responsibleCommit": "70a05e3"
     },
     {
       "path": "docs/guides/minecraft/death-rewind.md",
@@ -528,7 +632,9 @@
       "sources": [
         "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/guides/minecraft/hot-backup.md",
@@ -538,7 +644,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/hot-restore.md",
@@ -548,7 +656,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/just-enough-accidents.md",
@@ -558,7 +668,9 @@
       "sources": [
         "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/guides/minecraft/knotlink-mod.md",
@@ -568,7 +680,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/minebackup-mod.md",
@@ -578,7 +692,9 @@
       "sources": [
         "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/guides/minecraft/minebackup-plugin.md",
@@ -588,7 +704,9 @@
       "sources": [
         "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/guides/minecraft/overview.md",
@@ -598,7 +716,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/quick-start.md",
@@ -608,7 +728,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/selected-region-backup.md",
@@ -618,7 +740,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/minecraft/troubleshooting.md",
@@ -628,7 +752,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "6b6341e"
     },
     {
       "path": "docs/guides/mini-window.md",
@@ -638,7 +764,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "5f74a5c"
     },
     {
       "path": "docs/guides/template-sharing.md",
@@ -648,7 +776,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "81d7224"
     },
     {
       "path": "docs/guides/templates.md",
@@ -658,7 +788,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "81d7224"
     },
     {
       "path": "docs/intro.md",
@@ -668,7 +800,9 @@
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fa0c1d9"
     },
     {
       "path": "docs/plugins/developing/auto-update.md",
@@ -678,7 +812,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "7f0ab4f"
     },
     {
       "path": "docs/plugins/developing/hotkey-api.md",
@@ -688,7 +824,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8bb3152"
     },
     {
       "path": "docs/plugins/developing/knotlink-api.md",
@@ -698,7 +836,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8bb3152"
     },
     {
       "path": "docs/plugins/developing/packaging.md",
@@ -708,7 +848,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "7f0ab4f"
     },
     {
       "path": "docs/plugins/developing/plugin-api.md",
@@ -718,7 +860,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "19973f5"
     },
     {
       "path": "docs/plugins/developing/quick-start.md",
@@ -728,7 +872,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8ef6014"
     },
     {
       "path": "docs/plugins/developing/settings-schema.md",
@@ -738,7 +884,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "d209ddc"
     },
     {
       "path": "docs/plugins/developing/tutorial.md",
@@ -748,7 +896,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8ef6014"
     },
     {
       "path": "docs/plugins/knotlink-commands.md",
@@ -758,7 +908,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8bb3152"
     },
     {
       "path": "docs/plugins/knotlink.md",
@@ -768,7 +920,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8bb3152"
     },
     {
       "path": "docs/plugins/overview.md",
@@ -778,7 +932,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "7f0ab4f"
     },
     {
       "path": "docs/plugins/using-plugins.md",
@@ -788,7 +944,9 @@
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "7f0ab4f"
     },
     {
       "path": "docs/plugins/developing/capabilities.md",
@@ -798,7 +956,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fd2e000"
     },
     {
       "path": "docs/plugins/developing/artifacts.md",
@@ -808,7 +968,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "2c65ecd"
     },
     {
       "path": "docs/plugins/developing/migration-v2-v3.md",
@@ -818,7 +980,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "136d6fc"
     },
     {
       "path": "docs/getting-started/v1-9-upgrade.md",
@@ -828,7 +992,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8d32669"
     },
     {
       "path": "docs/guides/history-branches.md",
@@ -838,7 +1004,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8f023d4"
     },
     {
       "path": "docs/guides/safety-snapshots.md",
@@ -848,7 +1016,9 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "8f023d4"
     },
     {
       "path": "docs/guides/game-discovery.md",
@@ -858,69 +1028,77 @@
       "sources": [
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
-      "manualAcceptance": "pending"
+      "manualAcceptance": "pending",
+      "followUp": "manual validation pending",
+      "responsibleCommit": "fa0c1d9"
     }
   ],
   "blogs": [
     {
       "path": "blog/2026-01-15-v1.4.0-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-01-15-v1.4.0-release.md"
     },
     {
       "path": "blog/2026-02-20-v1.4.1-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-02-20-v1.4.1-release.md"
     },
     {
       "path": "blog/2026-03-01-v1.4.2-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-01-v1.4.2-release.md"
     },
     {
       "path": "blog/2026-03-11-v1.5.0-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-11-v1.5.0-release.md"
     },
     {
       "path": "blog/2026-03-21-v1.6.0-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-21-v1.6.0-release.md"
     },
     {
       "path": "blog/2026-04-05-v1.6.1-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-05-v1.6.1-release.md"
     },
     {
       "path": "blog/2026-04-16-v1.7.0-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-16-v1.7.0-release.md"
     },
     {
       "path": "blog/2026-04-25-v1.7.1-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-25-v1.7.1-release.md"
     },
     {
       "path": "blog/2026-05-01-v1.7.2-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-05-01-v1.7.2-release.md"
     },
     {
       "path": "blog/2026-07-10-v1.7.4-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-10-v1.7.4-release.md"
     },
     {
       "path": "blog/2026-07-29-v1.8.0-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-29-v1.8.0-release.md"
     },
     {
       "path": "blog/2026-07-30-v1.8.1-release.md",
-      "status": "preserve-historical-facts",
+      "status": "historical-facts-retained-current-entrypoint-added",
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-30-v1.8.1-release.md"
+    },
+    {
+      "path": "blog/2026-08-03-v1.8.2-release.md",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-08-03-v1.8.2-release.md",
+      "status": "historical-facts-retained-current-entrypoint-added",
+      "source": "GitHub Release v1.8.2 published_at 2026-08-03T05:24:42Z"
     }
   ],
   "images": [

@@ -117,7 +117,7 @@ function HomepageHero() {
             <p className={styles.heroSubtitle}>
               <Translate id="homepage.hero.subtitle.line1">为重要文件、项目资料与游戏存档提供安全备份</Translate>
               <br />
-              <Translate id="homepage.hero.subtitle.line2">支持区域范围、文件夹重命名、性能控制和远程指令</Translate>
+              <Translate id="homepage.hero.subtitle.line2">支持游戏发现、历史分支、安全恢复点与云副本</Translate>
             </p>
 
             <div className={styles.buttons}>
@@ -180,8 +180,8 @@ function useSegments(): Segment[] {
       title: translate({id: 'homepage.segment.files.title', message: '文件管理者'}),
       desc: translate({id: 'homepage.segment.files.desc', message: '让重要文件拥有清晰的版本、迁移和回滚路径'}),
       bullets: [
-        translate({id: 'homepage.segment.files.bullet1', message: '全量 / 智能增量 / 覆写策略'}),
-        translate({id: 'homepage.segment.files.bullet2', message: '文件夹重命名与历史身份迁移'}),
+        translate({id: 'homepage.segment.files.bullet1', message: 'Full / Smart / Rolling 策略'}),
+        translate({id: 'homepage.segment.files.bullet2', message: '来源重命名与稳定历史身份'}),
         translate({id: 'homepage.segment.files.bullet3', message: '云同步与安全还原'}),
       ],
       link: '/docs/intro',
@@ -191,11 +191,11 @@ function useSegments(): Segment[] {
       icon: <FaPuzzlePiece />,
       iconClass: 'segment-icon-wrap--dev',
       title: translate({id: 'homepage.segment.dev.title', message: '插件开发者'}),
-      desc: translate({id: 'homepage.segment.dev.desc', message: '用 1.8 API 把应用、游戏和自动化接入备份链路'}),
+      desc: translate({id: 'homepage.segment.dev.desc', message: '用独立 Plugin API 3.5 接入应用、游戏与自动化'}),
       bullets: [
-        translate({id: 'homepage.segment.dev.bullet1', message: '1.8 Plugin API'}),
+        translate({id: 'homepage.segment.dev.bullet1', message: '独立 Plugin API 3.5'}),
         translate({id: 'homepage.segment.dev.bullet2', message: 'KnotLink 协议 v2 / Server v3'}),
-        translate({id: 'homepage.segment.dev.bullet3', message: '备份范围与还原拦截'}),
+        translate({id: 'homepage.segment.dev.bullet3', message: '能力注册、备份范围与还原协调'}),
       ],
       link: '/docs/plugins/developing/quick-start',
       linkText: translate({id: 'homepage.segment.dev.link', message: '开发文档'}),

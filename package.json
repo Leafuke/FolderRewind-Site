@@ -22,7 +22,8 @@
     "check:built-docs": "node scripts/check-built-docs.mjs",
     "check:release": "node scripts/check-release-readiness.mjs",
     "predeploy": "npm run check:release",
-    "check:all": "npm run check:i18n && npm run typecheck && npm run check:contracts && npm run check:images && npm run check:seo && npm run build && npm run check:built-seo && npm run check:built-docs"
+    "check:all": "npm run check:i18n && npm run typecheck && npm run check:contracts && npm run check:images && npm run check:seo && npm run build && npm run check:built-seo && npm run check:built-docs",
+    "prepare:release": "node scripts/prepare-release-notice.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

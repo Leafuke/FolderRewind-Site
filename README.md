@@ -105,3 +105,10 @@ The deploy command has the same predeploy hook, and main CI includes the gate.
 Candidate screenshots explicitly identify1.9.2.0/API3.5 and Chinese UI.
 Do not fabricate a1.9 publication date/tag while preparing docs. NuGet only
 listed3.0.0 and official latest releases were1.8.2 at the initial audit.
+
+When the public gate passes, set the verified official tag in acceptance.json and
+run `npm run prepare:release`. It writes both notices using actual GitHub metadata
+and the Asia/Shanghai date; it refuses to overwrite existing posts. Check/review
+before committing. The templates in audit are not published blog content.
+`audit/catalog-proposal.json` validates local bundled bytes only; apply it to
+the Catalog source and regenerate its index only after public asset verification.

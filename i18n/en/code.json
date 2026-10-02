@@ -374,15 +374,6 @@
   "download.msi.btn": {
     "message": "View Setup EXE releases"
   },
-  "download.badge.msix": {
-    "message": "Advanced sideload"
-  },
-  "download.msix.desc": {
-    "message": "Closest to the Store build. Extract the .7z package, enable Developer Mode, and run install.ps1."
-  },
-  "download.msix.btn": {
-    "message": "Get the latest MSIX package"
-  },
   "download.archHint": {
     "message": "Choose x64 for most Intel/AMD PCs. Choose ARM64 only for Windows on Arm devices."
   },
@@ -468,7 +459,7 @@
     "message": "Safe backups for important files, project data, and game saves"
   },
   "homepage.hero.subtitle.line2": {
-    "message": "Selected regions, folder renames, performance controls, and remote commands"
+    "message": "Game discovery, branches, safety points and cloud replicas"
   },
   "homepage.hero.storeBtn": {
     "message": "Get from Microsoft Store"
@@ -504,10 +495,10 @@
     "message": "Clear versioning, migration, and rollback paths for important files"
   },
   "homepage.segment.files.bullet1": {
-    "message": "Full / smart incremental / overwrite strategies"
+    "message": "Full / Smart / immutable Rolling policies"
   },
   "homepage.segment.files.bullet2": {
-    "message": "Folder rename and history identity migration"
+    "message": "Rename sources while preserving stable history identity"
   },
   "homepage.segment.files.bullet3": {
     "message": "Cloud sync and safe restore"
@@ -519,16 +510,16 @@
     "message": "Plugin Developers"
   },
   "homepage.segment.dev.desc": {
-    "message": "Connect apps, games, and automation to the backup pipeline with the 1.8 API"
+    "message": "Integrate apps, games and automation using standalone Plugin API3.5"
   },
   "homepage.segment.dev.bullet1": {
-    "message": "1.8 Plugin API"
+    "message": "Standalone Plugin API3.5"
   },
   "homepage.segment.dev.bullet2": {
     "message": "KnotLink protocol v2 / Server v3"
   },
   "homepage.segment.dev.bullet3": {
-    "message": "Backup scopes and restore interceptors"
+    "message": "Capabilities, backup scope and restore coordination"
   },
   "homepage.segment.dev.link": {
     "message": "Dev Docs"
@@ -594,10 +585,10 @@
     "message": "Explore backup modes"
   },
   "features.modes.title": {
-    "message": "Full, incremental, and overwrite"
+    "message": "Full, Smart and Rolling"
   },
   "features.modes.desc": {
-    "message": "Choose full, smart incremental, lightweight, or overwrite strategies and control chain length."
+    "message": "Choose complete captures, change captures or immutable Rolling archives, with reviewed retention."
   },
   "features.modes.link": {
     "message": "Learn backup modes"
@@ -621,10 +612,10 @@
     "message": "Read encryption guide"
   },
   "features.timeline.title": {
-    "message": "History timeline and safe delete"
+    "message": "History, branches and recovery points"
   },
   "features.timeline.desc": {
-    "message": "Inspect, mark, rebuild, and delete history while reducing the risk of breaking incremental chains."
+    "message": "Inspect versions, runs and cloud replicas; manage branches and protected restore dependencies."
   },
   "features.timeline.link": {
     "message": "Read history guide"
@@ -633,7 +624,7 @@
     "message": "Plugin System"
   },
   "features.plugins.desc": {
-    "message": "Extend backup scopes, KnotLink commands, restore interception, and configuration fields."
+    "message": "Register discovery, scope, consistency, commands and controlled restore through the independent SDK."
   },
   "features.plugins.link": {
     "message": "Read plugin docs"
@@ -660,7 +651,7 @@
     "message": "Safe restore"
   },
   "features.i18n.desc": {
-    "message": "Clean mode creates a safety snapshot; partial-backup restores force Overwrite and never clear unbacked files."
+    "message": "Review targets, managed boundaries and protection options; partial captures force Overwrite."
   },
   "features.i18n.link": {
     "message": "Read restore guide"

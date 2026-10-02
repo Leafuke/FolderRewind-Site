@@ -49,8 +49,8 @@ function useFeatureGroups(): FeatureGroup[] {
         },
         {
           icon: <FaArrowsRotate />,
-          title: translate({id: 'features.modes.title', message: '全量、增量与覆写'}),
-          description: translate({id: 'features.modes.desc', message: '按场景选择全量、智能增量、轻量或覆写策略，并控制增量链长度。'}),
+          title: translate({id: 'features.modes.title', message: 'Full、Smart 与 Rolling'}),
+          description: translate({id: 'features.modes.desc', message: '按场景选择完整捕获、变更捕获或不可变 Rolling 归档，并核对保留策略。'}),
           link: '/docs/guides/backup-modes',
           linkText: translate({id: 'features.modes.link', message: '了解备份模式'}),
         },
@@ -78,14 +78,14 @@ function useFeatureGroups(): FeatureGroup[] {
         {
           icon: <FaShieldHalved />,
           title: translate({id: 'features.i18n.title', message: '安全还原'}),
-          description: translate({id: 'features.i18n.desc', message: 'Clean 模式创建安全快照；部分备份还原强制使用 Overwrite，绝不清空未备份文件。'}),
+          description: translate({id: 'features.i18n.desc', message: '核对目标、受管范围与保护选项；部分捕获强制 Overwrite，普通还原与分支切换职责不同。'}),
           link: '/docs/getting-started/first-restore',
           linkText: translate({id: 'features.i18n.link', message: '查看还原指南'}),
         },
         {
           icon: <FaTimeline />,
-          title: translate({id: 'features.timeline.title', message: '历史时间轴与安全删除'}),
-          description: translate({id: 'features.timeline.desc', message: '查看、标记、重建与删除历史；在增量模式下尽量避免链断裂。'}),
+          title: translate({id: 'features.timeline.title', message: '历史版本、分支与恢复点'}),
+          description: translate({id: 'features.timeline.desc', message: '检查版本、运行与云副本，管理分支和恢复点，按可还原依赖保留数据。'}),
           link: '/docs/guides/history-timeline',
           linkText: translate({id: 'features.timeline.link', message: '查看历史指南'}),
         },
@@ -99,7 +99,7 @@ function useFeatureGroups(): FeatureGroup[] {
         {
           icon: <FaPuzzlePiece />,
           title: translate({id: 'features.plugins.title', message: '插件系统'}),
-          description: translate({id: 'features.plugins.desc', message: '插件可扩展备份范围、KnotLink 命令、还原拦截和配置字段。'}),
+          description: translate({id: 'features.plugins.desc', message: '通过独立 SDK 注册发现、范围、一致性、命令和受控还原能力。'}),
           link: '/docs/plugins/overview',
           linkText: translate({id: 'features.plugins.link', message: '查看插件文档'}),
         },
