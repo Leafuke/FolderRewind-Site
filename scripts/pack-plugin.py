@@ -6,9 +6,10 @@ destination = Path(sys.argv[2]).resolve()
 manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
 if manifest["manifestVersion"] != 3:
     raise ValueError("manifestVersion must be 3")
-files = [p for p in root.rglob("*") if p.is_file() and p.suffix in {".dll", ".json"}]
+files = [p for p in root.rglob("*") if p.is_file() and p.suffix in {".dll", ".json"}
+         and p.name != "FolderRewind.Plugin.Abstractions.dll"]
 for p in files:
-    if p.name == "FolderRewind.Plugin.Abstractions.dll" or p.name.startswith("FolderRewind.Plugin.Runtime") or p.name == "FolderRewind.dll":
+    if p.name.startswith("FolderRewind.Plugin.Runtime") or p.name == "FolderRewind.dll":
         raise ValueError("The package must not bundle SDK/Host/Runtime assemblies")
 with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED) as archive:
     for p in sorted(files):
