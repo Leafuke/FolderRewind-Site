@@ -1,129 +1,43 @@
 ---
 sidebar_position: 5
-title: Filter Rules
-description: Configure backup blacklists and restore whitelists to control which files are backed up and what gets preserved or deleted on restore
+title: "Source scopes, filters and restore whitelists"
+description: "FolderRewind 1.9 source scopes, filters and restore whitelists: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Filter Rules
+# Source scopes, filters and restore whitelists
 
-FolderRewind has two filter groups:
+## Ordering and boundaries
 
-- **Blacklist**: affects backup stage (matched items are excluded)
-- **Restore Whitelist**: affects Clean restore stage (matched items are preserved during cleanup)
+SourceScope first defines per-source All/relative Include globs. Config filters/provider policies/scopes narrow afterward; whitelists never expand the hard boundary. Preview managed inventory and review discovered/manual scope edits.
 
-## Where to configure
+## Backup filters
 
-1. Open the target config.
-2. Click **Config Settings**.
-3. Configure:
-   - **Blacklist** in the **Filters** section
-   - **Restore Whitelist** in the **Restore Policy** section
+Blacklist excludes matches; whitelist includes matches only. Names/relative paths/globs/enabled regexes have distinct rules. Test positive/negative examples before broad filters.
 
-![Filters tab showing blacklist mode and excluded entries](/img/docs/guides/filter-policy.webp)
+Required provider rules remain effective; region scope cannot expand unmanaged data. Remote backup_blacklist appends/deduplicates; empty does not clear. Nonempty backup_whitelist appends and selects whitelist mode, without removing boundaries.
 
-## Three filter lists
+## Clean and restore whitelist
 
-FolderRewind has three independent filter lists, each active at a different stage:
+Clean mutates only managed content. Whitelists retain current matches unless backup supplies the same path, which wins. They do not permanently protect live files from archive overrides. Overwrite retains omitted content; partial captures force it.
 
-| List | Config location | Active stage | Purpose |
-|------|----------------|--------------|---------|
-| **Blacklist** | Filters -> Blacklist | During backup | Exclude matched files/folders |
-| **Backup Whitelist** | Filters -> Whitelist | During backup (whitelist mode only) | Include only matched files/folders |
-| **Restore Whitelist** | Restore Policy -> Restore Whitelist | During Clean restore | Preserve matched items during target directory cleanup |
+Ordinary preservation may produce Derived baselines. Checkout/Merge have Exact target/coordinator semantics and do not use ordinary player preservation as a branch-switch mechanism.
 
-Note: Blacklist and Backup Whitelist are mutually exclusive (switched via filter mode). Restore Whitelist is independent and can be configured in either backup filter mode.
+## Verify
 
-## Backup filter mode
+Test managed/unmanaged, matches/nonmatches, same-path conflicts and new files; inspect archives and compare Clean/Overwrite byte results. Review scope/upstream changes before save, not only matching counts.
 
-FolderRewind supports two backup filter modes, switched in **Config Settings -> Filters**:
-
-| Mode | Description | Best for |
-|------|-------------|----------|
-| **Blacklist mode** (default) | Exclude matched files, back up everything else | Most scenarios; exclude cache/logs/temp files |
-| **Whitelist mode** | Back up only matched files, exclude everything else | When you only want to back up specific file types |
-
-:::tip Choosing advice
-Use blacklist mode if you only want to exclude a few files. Use whitelist mode if you only want to back up a few specific files.
-:::
-
-## Blacklist (backup stage)
-
-Blacklist rules apply during file scan. Common use cases include cache, logs, and temporary files.
-
-In v1.6.1, matching behavior for blacklist/whitelist was tightened to reduce overly broad matches. Prefer writing more precise rules.
-
-### Supported matching methods
-
-- Exact filename match (for example `latest.log`)
-- Path-contains match (for example `node_modules`)
-- Wildcards (`*`, `?`)
-- Regex rules (`regex:` prefix, with regex option enabled)
-
-### Examples
-
-- `*.tmp`
-- `cache`
-- `regex:^logs/.*\\.txt$`
-
-## Whitelist mode examples
-
-After switching to whitelist mode, only files matching the rules will be backed up.
-
-**Typical use cases:**
-- Back up only save data: `*.dat`, `*.json`
-- Back up only specific directories: `saves`, `worlds`
-- Back up only config files: `*.yml`, `*.yaml`, `*.toml`
-
-**Example rules:**
-- `*.dat`
-- `*.json`
-- `saves`
-- `regex:^saves/[^/]+/level\.dat$`
-
-## Restore Whitelist (Clean restore stage)
-
-During **Clean Restore**, FolderRewind cleans the target directory first.
-Items in whitelist are preserved during cleanup.
-
-v1.6.1 also fixes the issue where full-path whitelist entries could fail to apply. Full-path rules are now reliable for precise preservation.
-
-### Typical use cases
-
-- Preserve local config files
-- Preserve machine-specific environment files
-
-### Examples
-
-- `.env.local`
-- `user-settings.json`
-- `screenshots`
-
-## Best practices
-
-- Run one manual backup and verify results after adding rules.
-- Start with precise rules, then broaden if needed.
-- Validate regex on a small scope before production use.
-- Avoid a single broad rule that effectively covers an entire parent directory.
-- For critical preserved items, prefer full-path rules to reduce ambiguity.
-
-## FAQ
-
-### Regex rule is not working
-
-Confirm:
-
-- Rule starts with `regex:`
-- "Use regex" is enabled
-- Expression is valid
-
-### Old files remain after restore
-
-Check restore mode first. Only Clean restore runs "cleanup + whitelist preserve" logic.
-
-Partial backups such as selected-region scope are forced to Overwrite because Clean would delete files absent from the backup. See [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup).
-
-## Related links
-
-- [First Restore](/en/docs/getting-started/first-restore)
-- [Backup Modes](/en/docs/guides/backup-modes)
-- [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup)
+<span id="where-to-configure" />
+<span id="three-filter-lists" />
+<span id="backup-filter-mode" />
+<span id="blacklist-backup-stage" />
+<span id="supported-matching-methods" />
+<span id="examples" />
+<span id="whitelist-mode-examples" />
+<span id="restore-whitelist-clean-restore-stage" />
+<span id="typical-use-cases" />
+<span id="best-practices" />
+<span id="faq" />
+<span id="regex-rule-is-not-working" />
+<span id="old-files-remain-after-restore" />
+<span id="related-links" />

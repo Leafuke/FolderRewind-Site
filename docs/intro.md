@@ -1,82 +1,34 @@
 ---
 sidebar_position: 0
-title: 快速开始
-description: FolderRewind 是面向重要文件、项目资料与游戏存档的现代备份工具，支持 7-Zip 压缩、智能增量链、云同步、配置模板与插件扩展，5 分钟即可完成首次备份与还原验证
+title: "快速开始"
+description: "FolderRewind 1.9 系列快速开始操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # 快速开始
 
-欢迎使用 **FolderRewind（存档时光机）**。它是一个面向重要文件、项目资料与游戏存档的现代化备份工具，同时也是 MineBackup 的后继作品。
+FolderRewind 是基于 WinUI3 的 Windows 备份管理工具。1.9系列提供原生不可变历史、Full／Smart／Rolling、云副本、游戏发现和 Plugin System v3；当前文档使用 API3.5候选基线，正式可用版本以下载入口为准。
 
-:::caution[升级前建议]
-如果你是从旧版本升级，先阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)，并在测试目录完成几轮备份与还原演练，再把新版本投入生产使用。
-:::
+## 三步验证
 
-## FolderRewind 现在适合做什么
+1. 按[安装指南](/docs/getting-started/installation)选择 Store 或 Setup EXE，旧用户先读[1.9升级](/docs/getting-started/v1-9-upgrade)。
+2. 用测试来源创建配置，核对受管范围和独立备份目标，执行[首次备份](/docs/getting-started/first-backup)。
+3. [还原测试副本](/docs/getting-started/first-restore)，验证新增／修改／删除及真实应用加载后再启用自动化。
 
-FolderRewind 可以帮助你：
+## 按场景继续
 
-- 使用 **7-Zip 引擎** 创建高压缩率、可加密的版本化备份
-- 通过 **智能增量链、链长控制与安全删除** 长期管理历史记录
-- 使用 **核心功能自动校验**，在当前电脑上快速验证备份、还原、安全删除等关键流程是否正常
-- 创建并复用 **配置模板**，把备份策略、过滤器和路径规则沉淀成可重复使用的方案
-- 通过 **模板分享、导入与官方模板搜索**，在不同设备或不同用户之间快速复用配置
-- 通过 **云存档能力（rclone）**，将本地备份目录稳定同步到 OneDrive 等云端
-- 使用 **设置页搜索与运行状态显示**，更快定位配置项并判断当前软件状态
-- 借助 **插件系统** 深度适配特定场景，例如 Minecraft 存档管理
+- 普通资料：[模式](/docs/guides/backup-modes)、[过滤范围](/docs/guides/filters)、[自动化](/docs/guides/automation)。
+- 游戏：[自动发现 Beta](/docs/guides/game-discovery)、[Minecraft](/docs/guides/minecraft/overview)。
+- 历史：[普通／高级视图](/docs/guides/history-timeline)、[分支合并](/docs/guides/history-branches)、[恢复点](/docs/guides/safety-snapshots)。
+- 云端与迁移：[云存档](/docs/guides/cloud-archive)、[数据迁移](/docs/guides/data-migration)。
+- 开发：[独立插件 SDK](/docs/plugins/developing/quick-start)、[API参考](/docs/plugins/developing/plugin-api)。
 
-## 三步开始使用
+历史记录、可物化表示和实际备份字节不同。显示成功、云图标或插件启用开关不替代一次可验证还原。MineBackup一代程序保留[独立教程](/docs/guides/minebackup-v1/overview)，其 CLI 和数据格式不能套用到 FolderRewind。
 
-### 第一步：安装
-
-优先从 Microsoft Store 安装，或参考 [安装指南](/docs/getting-started/installation) 进行侧载安装。
-
-> 建议优先使用 Microsoft Store 下载，**请勿同时安装商店版与当前页面下载的离线版**。
-
-<a href="https://apps.microsoft.com/detail/9nwsdgxdqws4" target="_blank">
-  👉 从 Microsoft Store 安装
-</a>
-
-### 第二步：创建配置
-
-你现在有两种常见方式：
-
-1. 点击 **新建配置**，手动创建一个普通配置
-2. 点击 **从模板创建**，直接套用现成模板并自动识别可加入的来源文件夹
-
-![新建配置对话框，显示配置名称、类型和图标选项](/img/docs/intro/create-config-and-add-folder-entry.webp)
-
-如果你已经整理出一套稳定的规则，也可以在配置设置中将当前配置 **保存为模板**，以后重复使用。
-
-### 第三步：执行首轮备份并验证
-
-进入配置管理页后：
-
-1. 添加要保护的文件夹，或确认模板自动识别出的文件夹列表
-2. 执行一次手动备份
-3. 建议立刻做一次测试还原，或到设置页运行 **核心功能自动校验**
-
-这样可以更早发现环境、路径、权限或第三方工具相关的问题。
-
-## 近期能力
-
-FolderRewind 1.8 系列把备份控制、迁移和远程联动放在同一条安全链路中：
-
-- **区域范围备份**：Minecraft 可按 `x1,z1,x2,z2` 选择区域，并在还原时强制使用 Overwrite。
-- **文件夹重命名**：迁移本地目录、历史身份、配置引用和自动化目标，并在失败时尝试回滚。
-- **性能预设与高级参数**：按自动、轻量、极轻量或自定义策略平衡速度、线程和优先级。
-- **KnotLink Server v3 与参数化协议 v2**：让远程工具和插件通过可发现的命令、安全地联动备份流程。
-- **安全还原**：先验证备份，再按普通或部分备份规则选择 Clean / Overwrite，避免误清空未备份数据。
-
-升级旧版本或更换安装渠道前，请先阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)。
-Minecraft 用户还可以从 [区域范围备份指南](/docs/guides/minecraft/selected-region-backup) 和 [文件夹重命名指南](/docs/guides/folder-management) 开始。
-
-## 下一步
-
-- [安装指南](/docs/getting-started/installation)
-- [首次备份](/docs/getting-started/first-backup)
-- [首次还原](/docs/getting-started/first-restore)
-- [模板：创建与使用](/docs/guides/templates)
-- [模板：分享与导入](/docs/guides/template-sharing)
-- [自动化任务](/docs/guides/automation)
-- [云存档功能介绍](/docs/guides/cloud-archive)
+<span id="folderrewind-现在适合做什么" />
+<span id="三步开始使用" />
+<span id="第一步安装" />
+<span id="第二步创建配置" />
+<span id="第三步执行首轮备份并验证" />
+<span id="近期能力" />
+<span id="下一步" />

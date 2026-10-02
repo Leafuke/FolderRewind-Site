@@ -1,110 +1,42 @@
 ---
 sidebar_position: 3
-title: First Restore
-description: Restore folders from a backup history version by picking a restore point, previewing changes, and verifying the result
+title: "First restore"
+description: "FolderRewind 1.9 first restore: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# First Restore
+# First restore
 
-Learn how to restore a folder to any historical state.
+## Select a target
 
-:::caution Upgrade notice
-For configs upgraded from older versions, validate restore results in a test directory first before applying to production data.
-:::
+Open config history and select a source version or Checkpoint. Practice with copies; check config/source/path/time/scope/outcome. A list record alone is insufficient without recoverable representation/dependencies.
 
-## Before you start
+## Prepare and confirm
 
-- You have completed [First Backup](/en/docs/getting-started/first-backup) and have at least one available backup record
+Preview/prepare required cloud closure and size/hash checks. Confirm mappings and stopped writers; Minecraft must coordinate when required. Supply encryption credentials and resolve missing providers/sources/recovery states first.
 
-## Step 1: Enter the history page
+## Modes
 
-1. On the home page, click the target config card to enter the **Config Management Page**.
-2. In the folder list, select the folder you want to restore.
-3. Click the **History** button on the right side of the toolbar.
+- Clean reconstructs within the effective managed boundary, not the entire physical root.
+- Overwrite applies captured content without deleting omitted files, potentially retaining later data.
+- Partial captures always Overwrite, even with Exact fidelity.
 
-![The folder list and History button location in the Config Management Page; paths are hidden](/img/docs/getting-started/folder-manager-page.webp)
+Restore whitelists retain matching current content unless the archive supplies the same path. Safe Restore/pre-restore backup are separate protection options; check the dialog rather than assuming every successful restore creates a long-lived recovery point.
 
-## Step 2: Understand the history timeline
+## Verify outcomes
 
-After entering the history page, you will see a timeline view similar to a Git commit log:
+Wait for terminal results and compare files/application loading. NoChanges means no mutation; inspect SuccessWithWarnings. RecoveryRequired/CommittedRecoveryRequired need diagnostics/controlled recovery, not repeated destructive requests.
 
-![History timeline page with time on the left, connecting lines and colored nodes in the middle, and backup info cards on the right](/img/docs/getting-started/history-timeline-page.webp)
+Quick Restore resolves the active branch tip, not the previous timestamp. See [advanced history](/docs/guides/history-branches). Preservation/whitelist-derived ordinary restores can form Derived baselines.
 
-**Layout overview:**
+Check trusted cloud copies before purging missing-local history. Validate copies before production.
 
-- **Left**: backup date and time
-- **Middle**: vertical connecting line + colored dot nodes indicating backup status
-- **Right**: backup info cards containing file size, notes, and action buttons
-
-**Node color meanings:**
-
-- Blue: normal backup record
-- Sky blue: cloud-only copy (local file no longer exists)
-- Orange-red: backup file missing
-- Gold: backup marked as "important"
-
-## Step 3: Select a restore point
-
-Find the point in time you want to restore to. Use the filter bar at the top to narrow the range:
-
-- **Config selection**: switch between different configs
-- **Folder selection**: switch between different folders under the same config
-- **Notes search**: filter backup records by keyword
-
-## Step 4: Run the restore
-
-1. On the target backup card, click the **Restore** button.
-2. In the confirmation dialog, choose a restore mode:
-
-![Restore confirmation dialog showing Safe Restore and Overwrite Restore options](/img/docs/getting-started/restore-confirm-dialog.webp)
-
-   - **Safe Restore (clean target)**: cleans the target directory first, then restores the backup content. **Recommended.**
-     - If **Safe Restore** is enabled, the system creates a snapshot before cleaning and automatically rolls back if the restore fails.
-   - **Overwrite Restore**: overwrites same-name files directly without deleting extra files in the target directory.
-     - May leave old files behind.
-
-3. Click confirm and wait for the restore to complete.
-
-:::info Encrypted configs
-If the config has encryption enabled, a password prompt will appear before the restore. Enter the password set when the backup was created.
-:::
-
-:::caution Important
-- Safe Restore mode deletes existing content in the target directory (except files in the restore whitelist).
-- If unsure, enable **Auto backup before restore** and **Safe Restore** in config settings first.
-:::
-
-:::warning Partial-backup exception
-[Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup) does not contain the complete source directory. Normal and hot restore are therefore forced to **Overwrite** and cannot use Clean mode, which could erase files that were never backed up.
-:::
-
-## Step 5: Verify the restore result
-
-Open the target directory and check whether the files have been restored to the expected state.
-
-## Recommended safety settings
-
-In **Config Settings > Restore Policy**, it is recommended to enable:
-
-![Restore Policy tab showing Safe Restore and pre-restore validation switches](/img/docs/guides/restore-policy.webp)
-
-| Setting | Purpose |
-|------|------|
-| **Auto backup before restore** | Allows rolling back to the pre-restore state if something goes wrong |
-| **Safe Restore** | Automatically rolls back if Safe Restore mode fails |
-| **Restore Whitelist** | Preserves specified files/folders during Safe Restore |
-
-## Troubleshooting
-
-| Problem | Possible cause | Solution |
-|------|---------|---------|
-| Backup file missing | Archive was manually deleted or moved | Run "Clear Invalid" to clean up invalid records |
-| Password verification failed | Incorrect password entered | Confirm the encryption password for this config |
-| Restore failed midway | Insufficient disk space or files in use | Check disk space and close programs using the files |
-| Unexpected result after restore | Overwrite Restore mode was used by mistake | Re-run with Safe Restore |
-
-## Next step
-
-- [Backup Modes](/en/docs/guides/backup-modes) -- Learn about different backup strategies
-- [Minecraft Guide](/en/docs/guides/minecraft/overview) -- Scenario-specific restore workflow for Minecraft players
-- [Minecraft Selected-Region Backup](/en/docs/guides/minecraft/selected-region-backup) -- Forced Overwrite rules for partial backups
+<span id="before-you-start" />
+<span id="step-1-enter-the-history-page" />
+<span id="step-2-understand-the-history-timeline" />
+<span id="step-3-select-a-restore-point" />
+<span id="step-4-run-the-restore" />
+<span id="step-5-verify-the-restore-result" />
+<span id="recommended-safety-settings" />
+<span id="troubleshooting" />
+<span id="next-step" />

@@ -84,7 +84,7 @@
       "path": "docs/faq.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/faq.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -94,7 +94,7 @@
       "path": "docs/getting-started/first-backup.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/first-backup.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -104,7 +104,7 @@
       "path": "docs/getting-started/first-restore.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/first-restore.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -134,7 +134,7 @@
       "path": "docs/guides/automation.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/automation.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -174,7 +174,7 @@
       "path": "docs/guides/data-migration.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/data-migration.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -184,7 +184,7 @@
       "path": "docs/guides/encryption.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/encryption.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -194,7 +194,7 @@
       "path": "docs/guides/filters.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/filters.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -204,7 +204,7 @@
       "path": "docs/guides/folder-management.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/folder-management.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -634,7 +634,7 @@
       "path": "docs/guides/mini-window.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/mini-window.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -664,7 +664,7 @@
       "path": "docs/intro.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/intro.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],

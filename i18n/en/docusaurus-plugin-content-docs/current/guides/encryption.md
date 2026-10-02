@@ -1,67 +1,34 @@
 ---
 sidebar_position: 4
-title: Encrypted Backups
-description: Protect backup data with the Encrypted config type, including the creation flow, key management, and compatibility limitations
+title: "Encrypted backups and recovery materials"
+description: "FolderRewind 1.9 encrypted backups and recovery materials: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Encrypted Backups
+# Encrypted backups and recovery materials
 
-FolderRewind provides encrypted backup through the **Encrypted config type**. After creation, backup and restore follow encrypted workflows.
+## Create
 
-## Best for
+Choose encrypted project/password in creation, confirm test sources/destination and make a backup. Passwords cannot be changed directly afterward; keep recovery materials outside templates/logs.
 
-- Privacy documents or account-related data
-- Shared devices where accidental access risk should be reduced
-- Long-term encrypted archival on local machine
+## Device boundary
 
-## Create an encrypted config
+The Host protects local passwords with current-user Windows DPAPI, not plaintext config JSON. Same-machine/user access is not portable to another device; importing config.json alone does not transfer password storage. Preserve needed passwords and test new-device restores on copies.
 
-1. Click **New Config** on the home page.
-2. Choose **Encrypted** as config type.
-3. Enter config name, set password, and confirm.
-4. Open the management page, add folders, and run backup.
+## Restore
 
-:::caution Password policy
-In current versions, the encryption password cannot be directly changed after creation.
-Please keep it safely.
-:::
+Validate credentials before materialization; bad passwords/integrity failures block before live mutation. Full/Smart/Rolling still require payload closure. ArtifactRead/materializers may access decrypted content; review service declarations/trust.
 
-## Restore behavior
+## Acceptance
 
-- Password verification is required before restore.
-- Restore starts only after successful verification.
-- Verification failure aborts restore.
+Exercise correct/incorrect passwords, cross-device, missing dependencies, cancellation and restored bytes. Encryption offers no password recovery and does not replace Safe Restore, replicas or boundary validation.
 
-## Storage and security notes
-
-- Password is not stored as plain text in config JSON.
-- Password is protected locally with Windows DPAPI (current user scope).
-- Verification works in the same machine + same user environment.
-
-## Recommended strategy combinations
-
-- Use with **Auto backup before restore** to reduce operation risk.
-- Use with **Automation** for continuous encrypted snapshots.
-- For large folders, use Smart Incremental to balance security and performance.
-
-## FAQ
-
-### What if I forget the password?
-
-There is currently no plaintext password recovery.
-
-Recommended:
-
-- Save password in a password manager
-- Keep at least one validated non-encrypted fallback backup before changing strategy
-
-### Why does restore fail after importing config?
-
-Importing `config.json` alone is not equal to migrating local encrypted credential storage.
-After cross-device migration, validate encrypted restore flow on the new device first.
-
-## Related links
-
-- [First Restore](/en/docs/getting-started/first-restore)
-- [Automation](/en/docs/guides/automation)
-- [Data Migration](/en/docs/guides/data-migration)
+<span id="best-for" />
+<span id="create-an-encrypted-config" />
+<span id="restore-behavior" />
+<span id="storage-and-security-notes" />
+<span id="recommended-strategy-combinations" />
+<span id="faq" />
+<span id="what-if-i-forget-the-password" />
+<span id="why-does-restore-fail-after-importing-config" />
+<span id="related-links" />

@@ -1,161 +1,78 @@
 ---
 sidebar_position: 99
-title: FAQ
-description: Frequently asked questions about FolderRewind backup modes, restore behavior, cloud sync, plugins, and upgrade paths
+title: "Frequently asked questions"
+description: "FolderRewind 1.9 frequently asked questions: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Frequently Asked Questions (FAQ)
+# Frequently asked questions
 
-## Installation
+## Which version?
 
-### What operating systems does FolderRewind support?
+FolderRewind1.9/API3.5. Before publication latest may remain1.8.2; check downloads. MineBackup docs keep their independent baseline.
 
-Windows 10 1809 (17763) and above, including Windows 11. Supports x64 and ARM64 architectures.
+## MSI or MSIX?
 
-### What's the difference between Microsoft Store, MSI, and MSIX?
+Public1.9 GitHub assets are x64/ARM64 Setup EXE/checksums. Store updates are managed by the Store; old MSI/7z belong to historical releases.
 
-- **Store (recommended):** one-click installation with Store-managed updates.
-- **MSI:** run the installer directly with no Developer Mode requirement; this distribution format is still under testing.
-- **MSIX (`.7z`):** extract and run `install.ps1`; requires Developer Mode and is closest to the Store build.
+## Where is Overwrite backup?
 
-Do not install or run the three channels side by side. MSI and MSIX/Store use separate data directories and do not migrate configs or plugins automatically. See [Installation Guide](/en/docs/getting-started/installation).
+It migrates to Rolling, creating immutable new archives rather than updating old ones. Overwrite restore remains a separate file apply mode.
 
-### What should I watch out for when upgrading from an older version?
+## Why did Quick Restore not choose the previous row?
 
-v1.8 supports a direct upgrade from v1.7.4. Earlier releases should run v1.7.4 first to complete legacy config migration. Backup and restore behavior must still be retested after upgrading.
+It resolves the active branch's unique source tip. Already matched means NoChanges. Explicitly choose older versions; resolve divergence first.
 
-Recommended flow:
+## Why does exported history contain no saves?
 
-1. Pick a test folder or test save.
-2. Run several backup-and-restore rounds.
-3. Move production data only after the result matches your expectation.
+.frhistory carries per-config Commit Pack facts, not payloads/local Workspace. Transfer config, archives or trusted replicas and encryption materials separately.
 
-See [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade) for the complete checklist.
+## Enabled plugin unavailable?
 
-### What should I do if the app won't launch after installation?
+Enabled Intent differs from Active. Check API/architecture/schema/declarations/diagnostics. v2 code is incompatible. Safe Mode preserves intent without execution; follow RequiresRestart.
 
-If you are using v1.8.0 and the old config contains `zh_CN` or `en_US`, upgrade to v1.8.1. If you cannot upgrade first, back up `config.json` and change only `GlobalSettings.Language` to `system`, `zh-CN`, or `en-US`. Do not delete the entire config.
+## Cloud record cannot restore?
 
-For other cases:
+Restoring needs valid representations/full closure/replicas. History sync differs from payload download. Prepare and verify rather than purging logical records blindly.
 
-1. Confirm your OS version meets minimum requirements.
-2. Reinstall the latest version without mixing channels.
-3. Check whether security software blocked the app.
-4. Follow [Startup recovery](/en/docs/getting-started/v1-8-upgrade#if-v180-cannot-start).
-5. Search or report in [GitHub Issues](https://github.com/Leafuke/FolderRewind/issues).
+## Can selected regions clear the world?
 
-## Backup
+Partial captures force Overwrite; omitted files are not synchronized to the same time. Inputs are block coordinates; all relevant dimension.mcc can be included.
 
-### Where are backup files stored?
+## Which players are preserved?
 
-Each config has its own target path. You can view or modify it in **Config Settings**.
+Ordinary Restore preserves selected NBT fields for all UUIDs; absent players keep complete current NBT. Stats/advancements restore. Explicit false overrides defaults; Checkout/Merge do not preserve and cross-26.1 preservation blocks.
 
-### Will backups consume too much disk space?
+## Recovery required?
 
-You can reduce usage by:
+Preserve diagnostics/originals and use controlled recovery. CommittedRecoveryRequired means commit happened; do not repeat destructive work or delete config/packs/journals.
 
-- Using Smart Incremental mode
-- Enabling skip when no changes
-- Setting "Keep latest backup count"
-- Applying lower compression policy for large file types
-
-### Can I back up game saves while the game is running?
-
-With MineRewind, Minecraft hot backup is supported while the game is running. For other games, backing up after pause/exit is still recommended.
-
-### Can I keep using my PC during backup?
-
-Yes. Backups run in the background.
-
-### Can FolderRewind sync backups to the cloud?
-
-Yes. Since v1.7.0, cloud-archive workflow support is complete. The recommended path is syncing backup directories to OneDrive (or other cloud storage) via **rclone**.
-
-Main entry points are:
-
-- enable post-backup auto cloud upload in Config Settings
-- use "Sync this config from cloud" for config-level sync
-- use per-item upload/download actions in History page
-
-Note: history-page manual upload/download is available in rclone mode only.
-
-Start here:
-
-- [Cloud Archive Guide](/en/docs/guides/cloud-archive)
-
-### Why did auto backup stop unexpectedly?
-
-You may have enabled "Stop auto tasks after repeated no-change detections". When the threshold is reached, auto backup is disabled and needs to be enabled again manually.
-
-## Restore
-
-### Will restore overwrite my current files?
-
-Two primary modes are available:
-
-- **Clean Restore:** clean target first, then restore (recommended). If Safe Restore is enabled, it can roll back automatically on failure.
-- **Overwrite Restore:** overwrite same-name files, may keep old files
-
-For important directories, enable both "Auto backup before restore" and "Safe Restore".
-
-### Can I restore only selected files?
-
-Current versions restore whole folders. Partial restore is planned.
-
-### Why am I prompted for a password before restore?
-
-That config is encrypted. Password verification is required before restore.
-
-### Why does history show an entry but "View" can't find the backup file?
-
-The archive was likely moved or deleted manually. Use "Clear invalid entries" on the history page.
-
-### Why can deleting history be slower now?
-
-If **Safe Delete** is enabled, FolderRewind will repair chain continuity before removing a backup from an incremental chain. That extra safety work takes more time than direct deletion.
-
-## Data migration
-
-### Can I migrate configs and history to a new PC?
-
-Yes. Export/import is available in Settings.
-
-### What's the difference between "Merge" and "Replace" when importing history?
-
-- **Merge:** imports only missing entries (deduplicated)
-- **Replace:** overwrites current history with imported data
-
-Before replace, the app attempts to create a `.bak` backup.
-
-### Anything special for encrypted configs across devices?
-
-Encrypted credentials are tied to machine/user-secured storage. Validate encrypted restore flow first after migration.
-
-## Plugins
-
-### How do I install a plugin?
-
-Install from plugin settings with zip import, or open the plugin folder for manual management.
-
-### Is MineRewind free?
-
-Yes. MineRewind is an official free open-source plugin.
-
-### How can I develop my own plugin?
-
-See [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start).
-
-## Feedback and community
-
-### How do I report bugs or request features?
-
-- **GitHub Issues:** [Report issue](https://github.com/Leafuke/FolderRewind/issues)
-- **GitHub Discussions:** [Join discussion](https://github.com/Leafuke/FolderRewind/discussions)
-
-### Is there a Chinese-speaking community?
-
-Yes. You are welcome to discuss in Chinese on GitHub Discussions.
-
----
-
-> Didn't find your question? Ask in [GitHub Discussions](https://github.com/Leafuke/FolderRewind/discussions).
+<span id="installation" />
+<span id="what-operating-systems-does-folderrewind-support" />
+<span id="whats-the-difference-between-microsoft-store-msi-and-msix" />
+<span id="what-should-i-watch-out-for-when-upgrading-from-an-older-version" />
+<span id="what-should-i-do-if-the-app-wont-launch-after-installation" />
+<span id="backup" />
+<span id="where-are-backup-files-stored" />
+<span id="will-backups-consume-too-much-disk-space" />
+<span id="can-i-back-up-game-saves-while-the-game-is-running" />
+<span id="can-i-keep-using-my-pc-during-backup" />
+<span id="can-folderrewind-sync-backups-to-the-cloud" />
+<span id="why-did-auto-backup-stop-unexpectedly" />
+<span id="restore" />
+<span id="will-restore-overwrite-my-current-files" />
+<span id="can-i-restore-only-selected-files" />
+<span id="why-am-i-prompted-for-a-password-before-restore" />
+<span id="why-does-history-show-an-entry-but-view-cant-find-the-backup-file" />
+<span id="why-can-deleting-history-be-slower-now" />
+<span id="data-migration" />
+<span id="can-i-migrate-configs-and-history-to-a-new-pc" />
+<span id="whats-the-difference-between-merge-and-replace-when-importing-history" />
+<span id="anything-special-for-encrypted-configs-across-devices" />
+<span id="plugins" />
+<span id="how-do-i-install-a-plugin" />
+<span id="is-minerewind-free" />
+<span id="how-can-i-develop-my-own-plugin" />
+<span id="feedback-and-community" />
+<span id="how-do-i-report-bugs-or-request-features" />
+<span id="is-there-a-chinese-speaking-community" />

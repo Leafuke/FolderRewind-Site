@@ -1,60 +1,32 @@
 ---
 sidebar_position: 7
-title: Mini Window
-description: Lightweight monitoring and quick backup for a single folder, ideal for protecting game saves and other small high-frequency targets
+title: "Mini floating window"
+description: "FolderRewind 1.9 mini floating window: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Mini Window
+# Mini floating window
 
-Mini Window is ideal for "work while backing up" scenarios: small window, fast actions, and clear status.
+## Open and operate
 
-## How to open
+Open Mini from a source menu; an existing window is reactivated. It binds a stable source for monitoring/backup/comments through the Host. Closing stops that window's monitoring without deleting history.
 
-1. Enter config management page.
-2. Open action menu on target folder row.
-3. Click **Mini Window**.
+The current UI includes compact/expanded states, Acrylic, task feedback, multi-monitor bounds and DPI handling. Verify actual-version visuals and use state text, not color alone.
 
-If a Mini Window for this folder already exists, it will be activated instead of opening a duplicate.
+## Hotkey
 
-## Core capabilities
+Ctrl+Alt+A targets the most recently active Mini source and is configurable. Check window/source/focus/system collisions. It differs from MineRewind Alt+Ctrl+S/Z active-world commands.
 
-- Monitor folder change status
-- Trigger one-click backup for that folder
-- Right-click quick actions: open folder / backup / close
-- Global hotkey support for backup on the most recently active Mini Window
+## Verify
 
-## Global hotkey
+Test multiple windows, no-change, progress/cancellation/comments, displays/DPI and reopen. Smart/Rolling need independent restore checks; animation does not certify data consistency.
 
-- Default: `Ctrl+Alt+A`
-- Target: most recently focused Mini Window
-- Customizable in Settings hotkey list
-
-## Recommended usage
-
-- Enable Mini Window for frequently edited project folders
-- Combine with Smart Incremental mode to reduce backup cost
-- Trigger one manual backup at each work milestone
-
-## Notes
-
-- Closing Mini Window stops monitoring for that window.
-- Global hotkey applies only to the most recently active Mini Window.
-
-## FAQ
-
-### Hotkey does not trigger backup
-
-Confirm:
-
-- At least one Mini Window is open
-- Target Mini Window was recently focused
-- Hotkey is not occupied by system/other software
-
-### Failed to open Mini Window
-
-Usually related to invalid path or window state issues. Confirm the source folder exists and is accessible.
-
-## Related links
-
-- [Automation](/en/docs/guides/automation)
-- [Backup Modes](/en/docs/guides/backup-modes)
+<span id="how-to-open" />
+<span id="core-capabilities" />
+<span id="global-hotkey" />
+<span id="recommended-usage" />
+<span id="notes" />
+<span id="faq" />
+<span id="hotkey-does-not-trigger-backup" />
+<span id="failed-to-open-mini-window" />
+<span id="related-links" />
