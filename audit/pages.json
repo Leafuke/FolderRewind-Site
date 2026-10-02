@@ -1,0 +1,987 @@
+{
+  "pages": [
+    {
+      "path": "docs/architecture/data-models.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/data-models.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/directory-structure.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/directory-structure.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/index.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/index.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/namespaces.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/namespaces.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/patterns.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/patterns.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/plugin-system.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/plugin-system.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/services.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/services.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/architecture/views.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/views.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/faq.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/faq.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/getting-started/first-backup.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/first-backup.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/getting-started/first-restore.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/first-restore.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/getting-started/installation.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/installation.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/getting-started/v1-8-upgrade.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/v1-8-upgrade.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/automation.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/automation.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/backup-file-spec.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/backup-file-spec.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/backup-modes.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/backup-modes.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/cloud-archive.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/cloud-archive.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/data-migration.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/data-migration.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/encryption.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/encryption.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/filters.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/filters.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/folder-management.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/folder-management.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/history-timeline.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/history-timeline.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/automation.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/automation.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/backup-modes.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/backup-modes.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/ai-assisted-config.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/ai-assisted-config.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/backup-restore.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/backup-restore.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/jobs.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/jobs.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/linux-systemd.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/linux-systemd.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/overview.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/overview.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/profile-manifest.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/profile-manifest.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/quick-start.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/quick-start.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/reference.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/reference.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/serve.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/serve.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/troubleshooting.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/troubleshooting.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cli/windows-task-scheduler.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cli/windows-task-scheduler.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/cloud-archive.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/cloud-archive.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/data-and-migration.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/data-and-migration.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/faq.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/faq.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/filters.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/filters.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/first-backup.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/first-backup.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/first-config.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/first-config.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/first-restore.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/first-restore.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/history-and-restore.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/history-and-restore.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/hot-backup.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/hot-backup.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/installation.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/installation.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/knotlink-integration.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/knotlink-integration.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/logging-and-diagnostics.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/logging-and-diagnostics.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/overview.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/overview.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/platform-support.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/platform-support.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/service-mode.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/service-mode.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/special-mode.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/special-mode.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minebackup-v1/troubleshooting.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minebackup-v1/troubleshooting.md",
+      "product": "MineBackup",
+      "status": "preserve-product-baseline",
+      "sources": [
+        "MineBackup independent 1.16.2 documentation"
+      ],
+      "manualAcceptance": "not-applicable"
+    },
+    {
+      "path": "docs/guides/minecraft/death-rewind.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/death-rewind.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/hot-backup.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/hot-backup.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/hot-restore.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/hot-restore.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/just-enough-accidents.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/just-enough-accidents.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/knotlink-mod.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/knotlink-mod.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/minebackup-mod.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-mod.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/minebackup-plugin.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-plugin.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/overview.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/overview.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/quick-start.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/quick-start.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/selected-region-backup.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/selected-region-backup.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/minecraft/troubleshooting.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/troubleshooting.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/mini-window.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/mini-window.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/template-sharing.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/template-sharing.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/templates.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/templates.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/intro.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/intro.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind/History and FolderRewind/Services current implementation"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/auto-update.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/auto-update.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/hotkey-api.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/hotkey-api.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/knotlink-api.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/knotlink-api.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/packaging.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/packaging.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/plugin-api.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/plugin-api.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/quick-start.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/quick-start.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/settings-schema.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/settings-schema.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/tutorial.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/tutorial.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/knotlink-commands.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/knotlink-commands.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/knotlink.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/knotlink.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/overview.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/overview.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/using-plugins.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/using-plugins.md",
+      "product": "FolderRewind/integration",
+      "status": "pending",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+      ],
+      "manualAcceptance": "pending"
+    }
+  ],
+  "blogs": [
+    {
+      "path": "blog/2026-01-15-v1.4.0-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-01-15-v1.4.0-release.md"
+    },
+    {
+      "path": "blog/2026-02-20-v1.4.1-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-02-20-v1.4.1-release.md"
+    },
+    {
+      "path": "blog/2026-03-01-v1.4.2-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-01-v1.4.2-release.md"
+    },
+    {
+      "path": "blog/2026-03-11-v1.5.0-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-11-v1.5.0-release.md"
+    },
+    {
+      "path": "blog/2026-03-21-v1.6.0-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-03-21-v1.6.0-release.md"
+    },
+    {
+      "path": "blog/2026-04-05-v1.6.1-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-05-v1.6.1-release.md"
+    },
+    {
+      "path": "blog/2026-04-16-v1.7.0-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-16-v1.7.0-release.md"
+    },
+    {
+      "path": "blog/2026-04-25-v1.7.1-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-04-25-v1.7.1-release.md"
+    },
+    {
+      "path": "blog/2026-05-01-v1.7.2-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-05-01-v1.7.2-release.md"
+    },
+    {
+      "path": "blog/2026-07-10-v1.7.4-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-10-v1.7.4-release.md"
+    },
+    {
+      "path": "blog/2026-07-29-v1.8.0-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-29-v1.8.0-release.md"
+    },
+    {
+      "path": "blog/2026-07-30-v1.8.1-release.md",
+      "status": "preserve-historical-facts",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-07-30-v1.8.1-release.md"
+    }
+  ],
+  "images": [
+    {
+      "path": "static/img/docs/getting-started/folder-manager-page.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/getting-started/history-timeline-page.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/getting-started/home-page-overview.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/getting-started/restore-confirm-dialog.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/automation-enable-auto-backup.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/backup-directory-structure.svg",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/backup-mode-dropdown-options.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/backup-policy.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/backup-tasks.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-onedrive-config-steps.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-onedrive-finish.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-openlist-baidu-storage-config.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-openlist-server-webdav.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-openlist-token-result.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-rclone-config-new-remote.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/cloud-archive-rclone-folder-cmd.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/data-migration-import-export.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/filter-policy.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minebackup-v1/pcl-to-find.gif",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minebackup-v1/where-folder-saves.gif",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minecraft/mine-rewind-plugin-settings.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minecraft/mine-rewind-settings.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minecraft/minebackup-ecosystem.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minecraft/minecraft-region-config-settings.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/minecraft/minecraft-world-details.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/guides/restore-policy.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/docs/intro/create-config-and-add-folder-entry.webp",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/favicon.ico",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/logo.png",
+      "status": "pending-visual-verification"
+    },
+    {
+      "path": "static/img/ori.webp",
+      "status": "pending-visual-verification"
+    }
+  ],
+  "landingPages": [
+    "src/pages/index.tsx",
+    "src/pages/download.tsx"
+  ],
+  "releaseReady": false
+}
