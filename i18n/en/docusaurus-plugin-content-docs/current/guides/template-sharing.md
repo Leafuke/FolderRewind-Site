@@ -1,90 +1,31 @@
 ---
 sidebar_position: 4
-title: "Templates: Share and Import"
-description: Export, import, browse, and share FolderRewind templates, including the template file format and community sharing tips
+title: "Sharing, importing and official presets"
+description: "FolderRewind 1.9 sharing, importing and official presets: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Templates: Share and Import
+# Sharing, importing and official presets
 
-v1.6.0 completes the full template sharing workflow. You can export templates locally, import templates from others, or browse official templates directly.
+## Local transfer
 
-## Export a local template
+Export a selected template from Settings template data. Import validates format/schema before replace/keep-both conflict handling.1.9 supports V2 and legacy formats; do not strip envelope/version fields to bypass checks.
 
-In the **Template Data** section of Settings, you can choose:
+## Official index and share codes
 
-- **Export Template**
-- **Import Template**
+Browse official templates or enter a code, reviewing source, content, plugin dependencies and game applicability. The merged dual-track index preserves compatible presets; the chosen provider still resolves definitions. Mirrors affect downloads, not Kind/trust ownership.
 
-When exporting, pick one of your local templates and save it as a template file. This is useful for:
+## Submit
 
-- moving setups across devices
-- sharing within a team
-- archiving your own template versions
+The app prepares sharing packages and a GitHub PR/code workflow. Inspect private paths, Provider State, passwords/tokens and boundaries first. Authentication/submission are separate from preview; preview is not publication.
 
-## Import a template
+Test another environment's path matching, plugins, drafts and backup/restore. Presets contain no history repositories/payloads and are not cross-device recovery packages.
 
-When importing, FolderRewind validates the file first and then handles name conflicts.
-
-If a conflict is detected, the app usually offers two choices:
-
-- replace the existing template
-- keep both and rename the imported one
-
-If you are not sure which version is newer, keeping both first is usually safer.
-
-## Official templates and share codes
-
-Besides importing files manually, FolderRewind also supports:
-
-- browsing the official template list
-- importing a template via a **share code**
-
-This is a good fit for communities, plugin authors, and tutorial-driven distribution.
-
-## Prepare a template sharing package
-
-If you want to submit a template to the official repository, or send a reviewable package to someone else first, you can prepare a template sharing package in Settings.
-
-That process typically validates whether the template is suitable for public sharing, such as:
-
-- no obviously unsafe path rules
-- no inappropriate local-sensitive data
-- required metadata is complete
-
-## Submit directly to GitHub
-
-v1.6.0 also supports initiating the GitHub submission flow from inside the app.
-
-The general flow is:
-
-1. choose a local template
-2. add share metadata such as game name
-3. sign in to GitHub
-4. let the app generate and submit the sharing content
-5. receive a share code and Pull Request link
-
-This makes it much easier to go from “template created” to “template shared”.
-
-## Mirror source and online templates
-
-Online template browsing and template file downloads are affected by the **GitHub source / mirror source** setting.
-
-If you notice that:
-
-- official template search is slow
-- template downloads fail
-- the online template list does not refresh correctly
-
-try switching the mirror source in Settings first.
-
-## Before sharing a template
-
-- test-import it on another machine or another test directory
-- clearly describe the intended scenario and expected folder structure
-- document plugin requirements
-- avoid hard-coding personal private directory structures
-
-## Related links
-
-- [Templates: Create and Use](/en/docs/guides/templates)
-- [Installation Guide](/en/docs/getting-started/installation)
+<span id="export-a-local-template" />
+<span id="import-a-template" />
+<span id="official-templates-and-share-codes" />
+<span id="prepare-a-template-sharing-package" />
+<span id="submit-directly-to-github" />
+<span id="mirror-source-and-online-templates" />
+<span id="before-sharing-a-template" />
+<span id="related-links" />

@@ -644,7 +644,7 @@
       "path": "docs/guides/template-sharing.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/template-sharing.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -654,7 +654,7 @@
       "path": "docs/guides/templates.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/templates.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -843,6 +843,16 @@
     {
       "path": "docs/guides/safety-snapshots.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/safety-snapshots.md",
+      "product": "FolderRewind",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind 32cb9b4 API 3.5 baseline"
+      ],
+      "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/guides/game-discovery.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/game-discovery.md",
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [

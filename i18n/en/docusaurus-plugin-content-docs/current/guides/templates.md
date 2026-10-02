@@ -1,118 +1,36 @@
 ---
 sidebar_position: 3
-title: "Templates: Create and Use"
-description: Save configs as reusable templates and create new configs from them to avoid repeating backup and filter settings
+title: "Templates and Backup Presets"
+description: "FolderRewind 1.9 templates and backup presets: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Templates: Create and Use
+# Templates and Backup Presets
 
-Starting with v1.6.0, FolderRewind can save an existing config as a reusable template and apply it later.
+A Backup Preset is reusable policy, not installed-game evidence or a saved configuration.1.9 uses Backup Preset V2 with legacy import compatibility; do not apply old1.8 Envelope restrictions to every new preset.
 
-A template is more than a copied config name. It can preserve a reusable backup solution, such as:
+## Save and create
 
-- backup policy
-- automation presets
-- filters
-- path rules
-- default config type
-- selected plugin-related extended properties
+Save a validated config as a template with name/author/description, checking compression, scopes, filters and automation. Inspect inferred paths/Kind on import. Home template creation or discovery plus preset produces drafts for Host-reviewed persistence.
 
-## When templates are useful
+## Provider targeting
 
-- You create many similar configs
-- You want to standardize a proven backup setup
-- You deploy FolderRewind on multiple devices
-- You want to share a setup with teammates, friends, or a game community
+V2 can reference a provider DefinitionId to choose discovery sets. Definitions differ from Backup Sets; presets do not redefine installation proof, discovery identity or runtime ownership. API3.0 discovery without DefinitionCatalog remains compatible but lacks targeted-definition participation.
 
-## Save the current config as a template
+## Dependencies and maintenance
 
-1. Open an existing config
-2. Go to **Config Settings**
-3. Click **Save as Template**
-4. Fill in template name, author, and description
-5. Save
+Inspect missing/disabled/incompatible plugin diagnostics and explicitly confirm behavior. Do not assume silent Default fallback retains specialized protection. Preview before batch creation and recheck scope/mode/retention after upgrades.
 
-FolderRewind will preserve the main strategy information and try to infer reusable path rules.
+Template management supports inspect/edit/copy/delete/path preview. Remove private paths/credentials/nonportable state before [sharing](/docs/guides/template-sharing).
 
-> If no strong path rule can be inferred, the template can still be saved. It will simply have weaker auto-discovery capability.
-
-## Create a config from a template
-
-From the home page, click **Create from Template** and follow this general flow:
-
-1. Choose a local template
-2. Optionally search and import an official template
-3. Confirm the config name
-4. Review the suggested config type
-5. Review the auto-discovered folder candidates
-6. Create the config and continue to the management page
-
-## How path rules help
-
-Template path rules try to locate matching folders on the current machine, for example:
-
-- known game save directories
-- fixed project structures under user folders
-- paths that contain specific marker files or subdirectories
-
-Starting in v1.7.0, template path rules support broader combinations, such as:
-
-- fixed path + optional child path
-- marker-file detection (match only when specific files exist)
-- ordered fallback matching (precise rules first, broad rules later)
-- compatibility rules for different machine directory layouts
-
-FolderRewind does not silently add those folders. It presents them as candidates for confirmation first, which is much safer.
-
-> Put precise rules first and fallback rules later to reduce false-positive matches.
-
-## Templates and plugins
-
-A template may depend on a plugin-defined config type or plugin-specific capabilities.
-
-If the target machine does not have the required plugin, FolderRewind can:
-
-- show a warning
-- fall back to `Default` when necessary
-
-So when you share a template, it is a good idea to document any plugin dependency.
-
-## Manage local templates
-
-In Settings, you can manage your local template library:
-
-- browse templates
-- search templates
-- edit name, author, and description
-- adjust path rules
-- preview matching behavior
-- duplicate templates
-- delete templates
-
-This is especially useful if you maintain a long-lived template library.
-
-## Recommended workflow
-
-### Build templates from proven configs
-
-Only template a config after it has gone through several successful backup and restore drills.
-
-### Template first, automate later
-
-If you plan to deploy automation on multiple devices, build the template first, then apply it and only adjust local paths.
-
-### Re-check templates after major upgrades
-
-If a release changes assumptions around retention, filters, or backup behavior, review your templates before reusing them at scale.
-
-For v1.7.0, also review:
-
-- whether path-rule matches still align with expectation
-- whether selected auto-backup targets should be narrowed
-- whether condition-based backup triggers should be added
-
-## Related links
-
-- [Templates: Share and Import](/en/docs/guides/template-sharing)
-- [Automation](/en/docs/guides/automation)
-- [Filters](/en/docs/guides/filters)
+<span id="when-templates-are-useful" />
+<span id="save-the-current-config-as-a-template" />
+<span id="create-a-config-from-a-template" />
+<span id="how-path-rules-help" />
+<span id="templates-and-plugins" />
+<span id="manage-local-templates" />
+<span id="recommended-workflow" />
+<span id="build-templates-from-proven-configs" />
+<span id="template-first-automate-later" />
+<span id="re-check-templates-after-major-upgrades" />
+<span id="related-links" />

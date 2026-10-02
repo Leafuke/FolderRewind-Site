@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         'guides/backup-modes',
         'guides/backup-file-spec',
         'guides/folder-management',
+        'guides/game-discovery',
         'guides/templates',
         'guides/template-sharing',
         'guides/automation',
