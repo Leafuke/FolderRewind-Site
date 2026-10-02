@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # Automatic game-save discovery Beta
 
+![Discovery Beta initial page,1.9.2.0/API3.5 Chinese candidate; no network scan](/img/docs/v1-9/discovery-candidate.png)
+
+*Discovery Beta initial page,1.9.2.0/API3.5 Chinese candidate; no network scan.*
+
+
 ## What discovery means
 
 Definitions describe paths, not installation proof. Windows Steam/GOG/Epic supply evidence; Ludusavi primary, manually selected secondary manifests and local overrides describe resources. Registry resources can be unsupported; registry backup/Heroic/Lutris are outside current Windows Beta scope.

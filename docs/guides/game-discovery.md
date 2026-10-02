@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # 自动发现游戏存档 Beta
 
+![游戏发现Beta初始页，1.9.2.0／API3.5 中文候选版；未联网扫描](/img/docs/v1-9/discovery-candidate.png)
+
+*游戏发现Beta初始页，1.9.2.0／API3.5 中文候选版；未联网扫描.*
+
+
 ## 发现什么
 
 游戏定义是目录知识，不证明安装；安装证据来自 Windows Steam／GOG／Epic。Ludusavi主清单、用户手选次级清单和本地覆盖提供资源规则。注册表资源可显示为不支持，不承诺注册表备份；Heroic／Lutris不在当前 Windows Beta 范围。

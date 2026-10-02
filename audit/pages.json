@@ -124,7 +124,7 @@
       "path": "docs/getting-started/v1-8-upgrade.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/v1-8-upgrade.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "historical-upgrade-guidance-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -926,127 +926,157 @@
   "images": [
     {
       "path": "static/img/docs/getting-started/folder-manager-page.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/getting-started/history-timeline-page.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/getting-started/home-page-overview.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/getting-started/restore-confirm-dialog.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/automation-enable-auto-backup.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/backup-directory-structure.svg",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/backup-mode-dropdown-options.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/backup-policy.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/backup-tasks.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-onedrive-config-steps.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-onedrive-finish.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-openlist-baidu-storage-config.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-openlist-server-webdav.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-openlist-token-result.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-rclone-config-new-remote.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/cloud-archive-rclone-folder-cmd.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/data-migration-import-export.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/filter-policy.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minebackup-v1/pcl-to-find.gif",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minebackup-v1/where-folder-saves.gif",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minecraft/mine-rewind-plugin-settings.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minecraft/mine-rewind-settings.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minecraft/minebackup-ecosystem.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minecraft/minecraft-region-config-settings.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/minecraft/minecraft-world-details.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/guides/restore-policy.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/docs/intro/create-config-and-add-folder-entry.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/favicon.ico",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/logo.png",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
     },
     {
       "path": "static/img/ori.webp",
-      "status": "pending-visual-verification"
+      "status": "retained-historical-asset-not-used-as-1.9-proof"
+    },
+    {
+      "path": "static/img/docs/v1-9/home-candidate.png",
+      "status": "captured-isolated-candidate",
+      "version": "1.9.2.0/API3.5",
+      "description": "空配置首页，FolderRewind 1.9.2.0／API3.5 隔离候选版，中文界面"
+    },
+    {
+      "path": "static/img/docs/v1-9/creation-candidate.png",
+      "status": "captured-isolated-candidate",
+      "version": "1.9.2.0/API3.5",
+      "description": "普通文件夹三步创建入口，1.9.2.0／API3.5 中文候选版；尚未提交来源"
+    },
+    {
+      "path": "static/img/docs/v1-9/discovery-candidate.png",
+      "status": "captured-isolated-candidate",
+      "version": "1.9.2.0/API3.5",
+      "description": "游戏发现Beta初始页，1.9.2.0／API3.5 中文候选版；未联网扫描"
+    },
+    {
+      "path": "static/img/docs/v1-9/cloud-candidate.png",
+      "status": "captured-isolated-candidate",
+      "version": "1.9.2.0/API3.5",
+      "description": "只读云恢复连接向导，1.9.2.0／API3.5 中文候选版，凭据字段为空"
+    },
+    {
+      "path": "static/img/docs/v1-9/settings-candidate.png",
+      "status": "captured-isolated-candidate",
+      "version": "1.9.2.0/API3.5",
+      "description": "设置分区，1.9.2.0／API3.5 中文候选版；完整发布验收待完成"
     }
   ],
   "landingPages": [

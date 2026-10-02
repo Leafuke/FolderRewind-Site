@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # 云存档：连接、历史与副本恢复
 
+![只读云恢复连接向导，1.9.2.0／API3.5 中文候选版，凭据字段为空](/img/docs/v1-9/cloud-candidate.png)
+
+*只读云恢复连接向导，1.9.2.0／API3.5 中文候选版，凭据字段为空.*
+
+
 ## 建立连接
 
 打开云设置流程，按服务选择 WebDAV、OneDrive、S3 或通过 OpenList 桥接的网盘。准备 rclone，显式选择 rclone 配置文件、命名 remote 和 RemoteBasePath；配置文件中的凭据不应分享。OpenList 工具准备不等于已登录网盘或测试连接成功。

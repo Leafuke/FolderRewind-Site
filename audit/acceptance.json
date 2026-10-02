@@ -1,0 +1,62 @@
+{
+  "officialHostTag": null,
+  "officialHostPublishedAt": null,
+  "catalogVerified": false,
+  "finalScreenshotsVerified": false,
+  "desktopCandidate": {
+    "displayedVersion": "1.9.2.0",
+    "sdkFileVersion": "3.5.0.0",
+    "executable": "artifacts/exe-repair-192/publish/x64/FolderRewind.exe",
+    "isolation": "FOLDERREWIND_TEST_DATA_ROOT in website artifacts/desktop-candidate",
+    "date": "2026-10-02",
+    "captures": [
+      "home-candidate.png",
+      "creation-candidate.png",
+      "discovery-candidate.png",
+      "cloud-candidate.png",
+      "settings-candidate.png"
+    ],
+    "scope": "Read-only navigation, empty creation and connection forms. No production data/configuration or cloud credentials were used. Folder picker was not exposed as a targetable automation window; canceled without committing."
+  },
+  "manualScenarios": [
+    {
+      "name": "Setup installation/channel migration",
+      "status": "pending"
+    },
+    {
+      "name": "Example plugin desktop install/update/rollback",
+      "status": "pending"
+    },
+    {
+      "name": "Full Smart Rolling byte-level desktop restore",
+      "status": "pending"
+    },
+    {
+      "name": "Restore Checkout Merge safety recovery",
+      "status": "pending"
+    },
+    {
+      "name": "frhistory transfer and repeat import",
+      "status": "pending"
+    },
+    {
+      "name": "Two-device cloud union/closure/read-only recovery",
+      "status": "pending"
+    },
+    {
+      "name": "Reviewed game discovery create/rediscovery",
+      "status": "pending"
+    },
+    {
+      "name": "Minecraft regions/player overrides/layouts and real game loading",
+      "status": "pending"
+    }
+  ],
+  "automatedExampleValidation": "passed against pinned source Runtime and locally packed SDK; not public NuGet restoration",
+  "publicationBlockers": [
+    "NuGet.org3.5.0 missing",
+    "Official Host and MineRewind latest are still v1.8.2",
+    "Catalog1.9.3 public binding pending",
+    "Final isolated desktop/game acceptance and remaining screenshots pending"
+  ]
+}

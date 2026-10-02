@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # 快速开始
 
+![空配置首页，FolderRewind 1.9.2.0／API3.5 隔离候选版，中文界面](/img/docs/v1-9/home-candidate.png)
+
+*空配置首页，FolderRewind 1.9.2.0／API3.5 隔离候选版，中文界面.*
+
+
 FolderRewind 是基于 WinUI3 的 Windows 备份管理工具。1.9系列提供原生不可变历史、Full／Smart／Rolling、云副本、游戏发现和 Plugin System v3；当前文档使用 API3.5候选基线，正式可用版本以下载入口为准。
 
 ## 三步验证

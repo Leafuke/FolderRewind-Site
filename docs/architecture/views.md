@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # 视图、引导与导航
 
+![设置分区，1.9.2.0／API3.5 中文候选版；完整发布验收待完成](/img/docs/v1-9/settings-candidate.png)
+
+*设置分区，1.9.2.0／API3.5 中文候选版；完整发布验收待完成.*
+
+
 ## 页面职责
 
 首页创建／模板／批量发现；FolderManager管理来源；BackupTasks观察任务；History以普通／高级、来源／Run查看原生历史；GameDiscovery提供Beta候选审阅；CloudSetup配置和验证连接；Log提供诊断；Settings组织全局工具、插件、模板与数据迁移。

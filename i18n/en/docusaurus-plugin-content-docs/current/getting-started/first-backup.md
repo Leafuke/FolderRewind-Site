@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # First backup
 
+![Three-step folder creation,1.9.2.0/API3.5 Chinese candidate; sources not committed](/img/docs/v1-9/creation-candidate.png)
+
+*Three-step folder creation,1.9.2.0/API3.5 Chinese candidate; sources not committed.*
+
+
 ## Prepare test data
 
 Use disposable files and a separate writable destination with enough space. Source/destination overlap blocks; neither should contain the other.

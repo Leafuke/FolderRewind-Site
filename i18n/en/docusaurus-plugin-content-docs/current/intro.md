@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # Quick start
 
+![Empty-config home; isolated FolderRewind1.9.2.0/API3.5 candidate, Chinese UI](/img/docs/v1-9/home-candidate.png)
+
+*Empty-config home; isolated FolderRewind1.9.2.0/API3.5 candidate, Chinese UI.*
+
+
 FolderRewind is a WinUI3 Windows backup manager.1.9 adds native immutable history, Full/Smart/Rolling, cloud replicas, game discovery and Plugin System v3. These docs use an API3.5 candidate baseline; verify actual availability at download entrypoints.
 
 ## Verify in three steps

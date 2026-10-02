@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # Cloud archives: connections, history and replica recovery
 
+![Read-only cloud recovery setup,1.9.2.0/API3.5 Chinese candidate; credential fields empty](/img/docs/v1-9/cloud-candidate.png)
+
+*Read-only cloud recovery setup,1.9.2.0/API3.5 Chinese candidate; credential fields empty.*
+
+
 ## Connect
 
 Choose WebDAV, OneDrive, S3 or an OpenList-bridged provider in cloud setup. Prepare rclone and explicitly select its config, remote name and RemoteBasePath. Never share credential files. Preparing OpenList does not mean cloud authorization/connection succeeded.

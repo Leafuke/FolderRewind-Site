@@ -7,6 +7,11 @@ reviewed_baseline: "1.9-api3.5"
 
 # Views, onboarding and navigation
 
+![Settings sections,1.9.2.0/API3.5 Chinese candidate; final release acceptance pending](/img/docs/v1-9/settings-candidate.png)
+
+*Settings sections,1.9.2.0/API3.5 Chinese candidate; final release acceptance pending.*
+
+
 ## Pages
 
 Home creates/templates/batches; FolderManager manages sources; BackupTasks observes jobs; History has normal/advanced and source/Run views; GameDiscovery reviews Beta candidates; CloudSetup configures/tests connections; Log shows diagnostics; Settings groups tools/plugins/templates/transfer.
