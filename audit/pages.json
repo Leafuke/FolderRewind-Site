@@ -4,7 +4,7 @@
       "path": "docs/architecture/data-models.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/data-models.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -14,7 +14,7 @@
       "path": "docs/architecture/directory-structure.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/directory-structure.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -24,7 +24,7 @@
       "path": "docs/architecture/index.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/index.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -34,7 +34,7 @@
       "path": "docs/architecture/namespaces.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/namespaces.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -44,7 +44,7 @@
       "path": "docs/architecture/patterns.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/patterns.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -54,7 +54,7 @@
       "path": "docs/architecture/plugin-system.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/plugin-system.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -64,7 +64,7 @@
       "path": "docs/architecture/services.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/services.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -74,7 +74,7 @@
       "path": "docs/architecture/views.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/views.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],

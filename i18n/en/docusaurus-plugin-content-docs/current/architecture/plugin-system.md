@@ -1,64 +1,35 @@
 ---
 sidebar_position: 6
-title: Plugin System
-description: FolderRewind 1.8 plugin interfaces, lifecycle, and parameterized KnotLink protocol
+title: "Plugin System v3 architecture"
+description: "FolderRewind 1.9 plugin system v3 architecture: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Plugin System
+# Plugin System v3 architecture
 
-FolderRewind 1.8 combines a core lifecycle interface with capability-specific optional interfaces. Plugins run in the Host process and load through an isolated collectible `AssemblyLoadContext`; plugins still own their exception and threading discipline.
+## Static packages and sessions
 
-## Interface map
+SDK3.5.0 keeps assembly3.0.0.0. manifestVersion3 declares API/Kinds/services/capabilities/settings/artifact semantics. Installation validates canonical paths/bounds/PE/declarations without execution; versioned installs keep journals.
 
-| Interface | Responsibility |
-|-----------|----------------|
-| `IFolderRewindPlugin` | Manifest, settings, initialization, backup/restore hooks, discovery, and optional full takeover |
-| `IFolderRewindBackupFilterProvider` | Add rules for one backup |
-| `IFolderRewindBackupScopeProvider` | Declare and resolve configuration-level scopes |
-| `IFolderRewindBackupPreparationProvider` | Inspect trigger source and consistency preferences |
-| `IFolderRewindFolderDetailsProvider` | Supply read-only key/value sections to folder details |
-| `IFolderRewindRestoreInterceptor` | Continue, handle, or block a restore before a task is created |
-| `IFolderRewindConfigAugmenter` | Suggest discovered folders for an existing config |
-| `IFolderRewindParameterizedKnotLinkCommandHandler` | Handle strict key-value KnotLink v2 requests |
-| `IFolderRewindKnotLinkCapabilityProvider` | Publish discoverable KnotLink commands/signals |
-| `IFolderRewindHotkeyProvider` | Register global or in-app hotkeys |
+Explicit Enable→snapshot activation/registration→Host validation/atomic state commit→callable Active session. One implementation per contract; intent/state/RequiresRestart differ.
 
-## Lifecycle
+## Ownership
 
-Scan the plugin directory → read the manifest and check MinHostVersion → load through an isolated AssemblyLoadContext → Initialize → SetHostContext → register extensions → call backup/restore interfaces per task → disable, unload, or update.
+Kind owners route operation capabilities, not DiscoveryProviderId. Reconciliation proposes revision-bound changes. Artifact graphs validate revisions; materializers write isolated Workspaces.
 
-Example plugins using new 1.8 interfaces should declare `MinHostVersion: "1.8.0"`. Current MineRewind uses `1.8.1` because it depends on that release's fixes.
+Config-wide RestoreCoordinator receives operation identity/kind/once-only continuation. Ordinary staging differs from Checkout/Merge. The Host owns preflight/Safe Restore/live writes. Recovery-required outcomes prohibit automatic rejoin.
 
-## Backup and restore extensions
+## Trust and cancellation
 
-- Filters and scope resolutions create an effective per-invocation config; the Host does not modify the saved source config.
-- Selected-region scopes can use PluginBackupRuleMergeMode.Replace to replace the regular whitelist and return Invalid for unsafe parameters.
-- IFolderRewindBackupPreparationProvider can inspect BackupInvocationOptions; without it, the core OnBeforeBackupFolder still runs.
-- Detail providers return data only; the Host owns rendering.
-- Restore interceptors return Continue, Handled, or Blocked before side effects.
-- Config augmenters return suggestions; the Host deduplicates, handles conflicts, and saves.
+AssemblyLoadContext isolates dependencies, not OS privileges. Declarations gate formal services; plugins retain ambient rights. Catalog binds exact hashes/provenance, which manifests cannot self-award.
 
-## KnotLink subsystem
+Disable removes routing/cancels/drains before bounded Deactivate. Timeouts may retain physical contexts until restart. Journals recover interrupted update/uninstall. Safe Mode preserves intent.
 
-KnotLinkService provides transport through Server v3, while FolderRewind uses strict parameterized protocol v2:
+See all15 [capabilities](/docs/plugins/developing/plugin-api) and [v2 migration](/docs/plugins/developing/migration-v2-v3).
 
-- KnotLinkCommandParser checks for cmd= and parses fields.
-- KnotLinkCommandRequest exposes string, boolean, and list accessors.
-- KnotLinkKeyValueCodec validates keys and performs RFC 3986 percent-encoding.
-- IFolderRewindParameterizedKnotLinkCommandHandler runs plugin handlers before built-in commands.
-- IFolderRewindKnotLinkCapabilityProvider merges plugin commands and signals into GET_CAPABILITIES.
-
-The removed space-delimited commands and legacy handler do not coexist with the new API. See [KnotLink Command Reference](/en/docs/plugins/knotlink-commands).
-
-## Layout and isolation
-
-- Interfaces live in FolderRewind/Services/Plugins/; PluginService discovers and dispatches them.
-- KnotLink protocol helpers live in FolderRewind/Services/KnotLink/.
-- Plugins may ship dependency DLLs; PluginLoadContext resolves dependencies from the plugin directory first.
-- A plugin root must contain manifest.json and its entry assembly, packaged as ZIP.
-
-## Related links
-
-- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
-- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
-- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
+<span id="interface-map" />
+<span id="lifecycle" />
+<span id="backup-and-restore-extensions" />
+<span id="knotlink-subsystem" />
+<span id="layout-and-isolation" />
+<span id="related-links" />

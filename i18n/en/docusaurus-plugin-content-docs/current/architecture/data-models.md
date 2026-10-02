@@ -1,90 +1,44 @@
 ---
 sidebar_position: 6
-title: Data Models
-description: AppConfig hierarchy and serialization strategy, including config versioning, default merging, and backward compatibility
+title: "Configuration and immutable history models"
+description: "FolderRewind 1.9 configuration and immutable history models: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Data Models
+# Configuration and immutable history models
 
-## AppConfig Hierarchy
+## User configuration
 
-`AppConfig` is the root configuration object, persisted as `config.json`:
+AppConfig holds GlobalSettings, BackupConfigs and templates/presets. BackupConfig includes stableId, ConfigRevision, Kind, HostOrigin, ProviderStates, SourceFolders, Archive, Automation, Filters, BackupScope, Cloud, encryption and HistoryRepositoryBinding.
+
+ManagedFolder has stableId/Path/DisplayName/SourceScope/state. Kind is OwnerId+KindId; history binding stores format rather than sharing machine repository paths. Settings/state and discovery/user ownership differ.
+
+## History facts
 
 ```mermaid
-graph TB
-    AppConfig["AppConfig"]
-    GlobalSettings["GlobalSettings<br/>Global settings"]
-    BackupConfigs["BackupConfig[]<br/>Backup configuration collection"]
-    ConfigTemplates["ConfigTemplate[]<br/>Configuration template collection"]
-
-    AppConfig --> GlobalSettings
-    AppConfig --> BackupConfigs
-    AppConfig --> ConfigTemplates
-
-    BackupConfig["BackupConfig"]
-    ManagedFolder["ManagedFolder[]<br/>Source folders"]
-    ArchiveSettings["ArchiveSettings<br/>Archive settings"]
-    AutomationSettings["AutomationSettings<br/>Automation settings"]
-    FilterSettings["FilterSettings<br/>Filter rules"]
-    CloudSettings["CloudSettings<br/>Cloud sync settings"]
-    ScheduleEntries["ScheduleEntry[]<br/>Scheduled tasks"]
-
-    BackupConfigs --> BackupConfig
-    BackupConfig --> ManagedFolder
-    BackupConfig --> ArchiveSettings
-    BackupConfig --> AutomationSettings
-    BackupConfig --> FilterSettings
-    BackupConfig --> CloudSettings
-    BackupConfig --> ScheduleEntries
+flowchart LR
+  Run[Backup Run] --> CP[Configuration Checkpoint]
+  CP --> SV[Source Versions]
+  SV --> Rep[Version Representations]
+  Rep --> Copy[Storage Replicas]
+  Branch[Branch Updates] --> CP
+  WS[Local Workspace] --> Branch
 ```
 
-## Core Model Descriptions
+A Commit Pack publishes related Run/Version/Representation/Checkpoint/BranchUpdate facts. Representations carry physical dependencies/fidelity; Versions are logical state. Replica lifecycle differs from local observations. Annotations update comments/Pins/presentation without rewriting Versions.
 
-### AppConfig
+## Local state and caches
 
-Root configuration object containing global settings and all backup configurations.
+Index/Capture Baseline Cache are rebuildable; Workspace/Local Replica Catalog are local durable state, not shared history. Safety points protect Checkpoint closure without branch advancement. Config/history migration are separate; the legacy HistoryItem list is not the new model.
 
-### BackupConfig
+Public Abstractions record snapshots differ from observable Host models; plugins never retain writable BackupConfig/ManagedFolder references.
 
-A single backup configuration describing the complete rules for a backup task:
-
-- `ManagedFolder[]`: List of source folders to back up
-- `ArchiveSettings`: Compression format, encryption options, output path
-- `AutomationSettings`: Trigger conditions for automatic backups
-- `FilterSettings`: File inclusion/exclusion rules (`FileTypeRule[]`)
-- `CloudSettings`: rclone cloud sync configuration
-- `ScheduleEntry[]`: Scheduled task entries
-
-### GlobalSettings
-
-Application-level global settings: language, theme, keyboard shortcuts, startup behavior, etc.
-
-### ManagedFolder
-
-A single source folder: path, enabled state, last modified time.
-
-## Incremental Backup Metadata
-
-Incremental backups use a separate metadata structure to track file changes:
-
-| Model | Responsibility |
-|---|---|
-| `BackupMetadata` | Metadata for a single incremental backup |
-| `BackupMetadataState` | Metadata state (complete / part of an incremental chain) |
-| `BackupChangeRecord` | Change record for a single file |
-| `FileState` | File state (added / modified / deleted / unchanged) |
-
-## History and Tasks
-
-| Model | Responsibility |
-|---|---|
-| `HistoryItem` | A single backup history entry (timestamp, size, mode, status) |
-| `BackupTask` | A running backup task (progress, status, error info) |
-
-## Serialization
-
-- All models are serialized to JSON using `System.Text.Json`
-- `AppJsonContext` (source generator context) registers all serializable types for AOT compatibility
-- Configuration migration logic handles automatic conversion from legacy JSON formats to the current version
-
-All model definitions are located in `Models/BackupModels.cs` (approximately 1300 lines); incremental metadata is in `Models/BackupMetadata.cs`.
+<span id="appconfig-hierarchy" />
+<span id="core-model-descriptions" />
+<span id="appconfig" />
+<span id="backupconfig" />
+<span id="globalsettings" />
+<span id="managedfolder" />
+<span id="incremental-backup-metadata" />
+<span id="history-and-tasks" />
+<span id="serialization" />

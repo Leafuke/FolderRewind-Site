@@ -1,21 +1,26 @@
 ---
 sidebar_position: 3
-title: Namespace Reference
-description: Quick reference of namespace responsibilities and key classes to help developers locate feature modules in the codebase
+title: "Namespaces and contract entrypoints"
+description: "FolderRewind 1.9 namespaces and contract entrypoints: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Namespace Reference
+# Namespaces and contract entrypoints
 
-All source code resides under the `FolderRewind` root namespace.
+| Namespace | Responsibility |
+|---|---|
+| FolderRewind.Views/ViewModels | Pages/interactions/state/commands |
+| FolderRewind.Models | User config and Host persistence/UI models |
+| FolderRewind.Services | Host orchestration/environment/adapters |
+| FolderRewind.Services.Discovery | Providers/manifests/resources/review/draft transactions |
+| FolderRewind.Services.Plugins.V3 | SDK snapshot/request mapping and Host runtime adapters |
+| FolderRewind.History.Domain | Immutable Version/Checkpoint/Branch/Representation/Replica facts |
+| FolderRewind.History.Application | Runtime/commit/Restore/Checkout/Merge/migration/transfer |
+| FolderRewind.History.Storage/Index/LocalState | Packs/projections/device state |
+| FolderRewind.History.Representation/Retention/Cloud | Materialization/closure protection/shared sync |
+| FolderRewind.Plugin.Abstractions | Public plugin SDK boundary |
+| FolderRewind.Plugin.Runtime | Host runtime implementation |
 
-| Namespace | Responsibility | Key Classes | Source Directory |
-|---|---|---|---|
-| `FolderRewind` | Application entry point and window | `App`, `MainWindow`, `AppConstants` | Root directory |
-| `FolderRewind.Models` | Data model definitions | `AppConfig`, `BackupConfig`, `ManagedFolder`, `ArchiveSettings`, `AutomationSettings`, `FilterSettings`, `HistoryItem`, `BackupTask` | `Models/` |
-| `FolderRewind.Services` | Business logic (static services) | `ConfigService`, `BackupService`, `HistoryService`, `AutomationService`, `NavigationService`, `ThemeService`, `NotificationService`, `I18n` | `Services/` |
-| `FolderRewind.Services.Plugins` | Plugin interfaces and management | `IFolderRewindPlugin`, `PluginService`, `IFolderRewindBackupFilterProvider`, `IFolderRewindBackupScopeProvider`, `IFolderRewindBackupPreparationProvider`, `IFolderRewindFolderDetailsProvider`, `IFolderRewindRestoreInterceptor`, `IFolderRewindConfigAugmenter`, `IFolderRewindParameterizedKnotLinkCommandHandler`, `IFolderRewindKnotLinkCapabilityProvider` | `Services/Plugins/` |
-| `FolderRewind.Services.Hotkeys` | Hotkey management | `HotkeyManager`, `HotkeyParser`, `NativeHotkeyService`, `HotkeyGesture`, `HotkeyDefinition` | `Services/Hotkeys/` |
-| `FolderRewind.Services.KnotLink` | KnotLink protocol implementation | `SignalSender`, `SignalSubscriber`, `OpenSocketQuerier`, `OpenSocketResponser`, `TcpClient`, `KnotLinkCommandParser` | `Services/KnotLink/` |
-| `FolderRewind.ViewModels` | Page-level ViewModels | `ViewModelBase` (base class), per-page ViewModels | `ViewModels/` |
-| `FolderRewind.Views` | XAML pages and dialogs | `ShellPage`, `HomePage`, `SettingsPage`, `ConfigSettingsDialog`, etc. | `Views/` |
-| `FolderRewind.Converters` | XAML value converters | `BoolToVisibility`, `BoolToColor`, `StringToBitmap`, etc. | `Converters/` |
+Plugin authors import IFolderRewindPlugin/capabilities from Abstractions, not old Host Services.Plugins/Models namespaces. Namespaces/display names are not product identities; manifest API controls compatibility.
+
+

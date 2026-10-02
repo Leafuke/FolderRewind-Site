@@ -1,85 +1,34 @@
 ---
 sidebar_position: 0
-title: 架构总览
-description: FolderRewind 项目技术栈与架构鸟瞰：.NET、WPF 与分层设计的整体结构，以及各子系统的协作方式
+title: "架构总览"
+description: "FolderRewind 1.9 系列架构总览操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # 架构总览
 
-**FolderRewind（存档时光机）** 是一个基于 WinUI 3 的 Windows 备份管理工具，采用 MVVM 架构，通过静态服务层组织业务逻辑，支持插件扩展和远程命令协议。
-
-## 技术栈
-
-| 类别 | 技术 | 版本 |
-|---|---|---|
-| 框架 | .NET + Windows App SDK | .NET 10 / Windows App SDK 2.3.1 |
-| UI | WinUI 3 | — |
-| MVVM | CommunityToolkit.Mvvm | 8.4.2 |
-| 压缩引擎 | 7-Zip（7za.exe） | 捆绑 |
-| 云同步 | rclone | 用户自备 |
-| 系统托盘 | H.NotifyIcon.WinUI | 2.4.1 |
-| 序列化 | System.Text.Json + 源生成器 | — |
-| 设置控件 | CommunityToolkit.WinUI.SettingsControls | 8.2.251219 |
-
-## 架构鸟瞰
+FolderRewind是.NET10／WinUI3 Windows应用，当前项目Windows App SDK2.5.1。UI使用MVVM与可测试命令编排，核心历史和插件运行时通过实例服务与显式依赖组织；不能把所有业务解释成静态单例。
 
 ```mermaid
-graph TB
-    subgraph Views["视图层 Views"]
-        ShellPage
-        HomePage
-        SettingsPage
-        OtherPages["其他页面 & Dialog"]
-    end
-
-    subgraph ViewModels["视图模型层"]
-        VM["各页面 ViewModel"]
-    end
-
-    subgraph Services["服务层 Services"]
-        ConfigService
-        BackupService
-        HistoryService
-        AutomationService
-        PluginService
-        OtherSvc["Navigation / Theme / Notification / ..."]
-    end
-
-    subgraph Models["数据模型层 Models"]
-        AppConfig
-        BackupConfig
-        ManagedFolder
-        OtherModel["HistoryItem / BackupMetadata / ..."]
-    end
-
-    subgraph Plugins["插件体系"]
-        IFolderRewindPlugin
-        KnotLink
-        MineRewind["MineRewind 插件"]
-    end
-
-    subgraph External["外部依赖"]
-        SevenZip["7za.exe"]
-        Rclone["rclone"]
-    end
-
-    Views --> ViewModels
-    ViewModels --> Services
-    Services --> Models
-    Services --> Plugins
-    Plugins --> External
-    BackupService --> SevenZip
-    CloudSyncService["CloudSyncService"] --> Rclone
+flowchart TD
+  V[Views / ViewModels] --> H[Host application orchestration]
+  H --> C[User-owned configuration]
+  H --> N[Native History runtime]
+  H --> P[Plugin Runtime]
+  P --> A[Public Abstractions API 3.5]
+  N --> R[Representations / Replicas]
+  R --> Z[7-Zip / cloud transport]
+  H --> D[Discovery / reviewed drafts]
 ```
 
-## 文档导航
+## 边界
 
-| 文档 | 内容 |
-|---|---|
-| [目录结构](/docs/architecture/directory-structure) | 项目文件树与各目录职责 |
-| [架构模式](/docs/architecture/patterns) | MVVM、静态服务、Shell 导航等核心设计模式 |
-| [命名空间参考](/docs/architecture/namespaces) | 命名空间划分与关键类速查 |
-| [服务层概览](/docs/architecture/services) | 40+ 服务按功能域分组说明 |
-| [插件体系](/docs/architecture/plugin-system) | 插件接口、生命周期与 KnotLink 协议 |
-| [数据模型](/docs/architecture/data-models) | AppConfig 层级结构与序列化策略 |
-| [视图层与导航](/docs/architecture/views) | 页面列表、Dialog 与导航流程 |
+Host、SDK、Runtime与MineRewind独立产品／构建边界。SDK仅BCL，net10.0；Runtime可无WinUI测试；第三方插件只依赖SDK。Host使用固定哈希.frplugin验收，不以插件应用源码作为构建输入。
+
+配置由用户拥有；发现提出候选，插件对账提出修订提案。Native History用不可变事实与可重建索引；设备Workspace与共享分支区分。还原由Host先物化／校验，再在操作门内修改目标；插件不能绕过。
+
+查看[目录](/docs/architecture/directory-structure)、[模式](/docs/architecture/patterns)、[服务](/docs/architecture/services)、[模型](/docs/architecture/data-models)与[插件体系](/docs/architecture/plugin-system)。
+
+<span id="技术栈" />
+<span id="架构鸟瞰" />
+<span id="文档导航" />

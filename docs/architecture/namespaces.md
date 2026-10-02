@@ -1,21 +1,26 @@
 ---
 sidebar_position: 3
-title: 命名空间参考
-description: FolderRewind 各命名空间职责与关键类速查表，帮助开发者快速定位功能模块对应的代码位置
+title: "命名空间与契约入口"
+description: "FolderRewind 1.9 系列命名空间与契约入口操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 命名空间参考
+# 命名空间与契约入口
 
-所有源代码位于 `FolderRewind` 根命名空间下。
+| 命名空间 | 当前职责 |
+|---|---|
+| FolderRewind.Views／ViewModels | 页面、交互、状态与命令 |
+| FolderRewind.Models | 用户配置和Host持久化／UI模型 |
+| FolderRewind.Services | Host编排、运行环境与适配 |
+| FolderRewind.Services.Discovery | provider、清单、资源规划、审阅与草稿事务 |
+| FolderRewind.Services.Plugins.V3 | SDK快照／请求与Host模型映射、运行及操作适配 |
+| FolderRewind.History.Domain | Version／Checkpoint／Branch／Representation／Replica等不可变事实 |
+| FolderRewind.History.Application | runtime、提交、还原、Checkout、Merge、迁移与传输 |
+| FolderRewind.History.Storage／Index／LocalState | Commit Pack仓库、投影和设备状态 |
+| FolderRewind.History.Representation／Retention／Cloud | 物化、保留依赖与共享事实／副本同步 |
+| FolderRewind.Plugin.Abstractions | 第三方唯一公开SDK契约 |
+| FolderRewind.Plugin.Runtime | 宿主插件运行时实现 |
 
-| 命名空间 | 职责 | 关键类 | 所属目录 |
-|---|---|---|---|
-| `FolderRewind` | 应用入口与窗口 | `App`, `MainWindow`, `AppConstants` | 根目录 |
-| `FolderRewind.Models` | 数据模型定义 | `AppConfig`, `BackupConfig`, `ManagedFolder`, `ArchiveSettings`, `AutomationSettings`, `FilterSettings`, `HistoryItem`, `BackupTask` | `Models/` |
-| `FolderRewind.Services` | 业务逻辑（静态服务） | `ConfigService`, `BackupService`, `HistoryService`, `AutomationService`, `NavigationService`, `ThemeService`, `NotificationService`, `I18n` | `Services/` |
-| `FolderRewind.Services.Plugins` | 插件接口与管理 | `IFolderRewindPlugin`, `PluginService`, `IFolderRewindBackupFilterProvider`, `IFolderRewindBackupScopeProvider`, `IFolderRewindBackupPreparationProvider`, `IFolderRewindFolderDetailsProvider`, `IFolderRewindRestoreInterceptor`, `IFolderRewindConfigAugmenter`, `IFolderRewindParameterizedKnotLinkCommandHandler`, `IFolderRewindKnotLinkCapabilityProvider` | `Services/Plugins/` |
-| `FolderRewind.Services.Hotkeys` | 快捷键管理 | `HotkeyManager`, `HotkeyParser`, `NativeHotkeyService`, `HotkeyGesture`, `HotkeyDefinition` | `Services/Hotkeys/` |
-| `FolderRewind.Services.KnotLink` | KnotLink 协议实现 | `SignalSender`, `SignalSubscriber`, `OpenSocketQuerier`, `OpenSocketResponser`, `TcpClient`, `KnotLinkCommandParser` | `Services/KnotLink/` |
-| `FolderRewind.ViewModels` | 页面级 ViewModel | `ViewModelBase`（基类），各页面 ViewModel | `ViewModels/` |
-| `FolderRewind.Views` | XAML 页面与对话框 | `ShellPage`, `HomePage`, `SettingsPage`, `ConfigSettingsDialog` 等 | `Views/` |
-| `FolderRewind.Converters` | XAML 值转换器 | `BoolToVisibility`, `BoolToColor`, `StringToBitmap` 等 | `Converters/` |
+插件作者从Abstractions导入IFolderRewindPlugin与能力，不从FolderRewind.Services.Plugins或FolderRewind.Models导入旧接口。显示名和namespace不是产品身份；版本兼容由manifest API决定。
+
+

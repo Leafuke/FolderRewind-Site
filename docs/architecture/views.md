@@ -1,69 +1,32 @@
 ---
 sidebar_position: 7
-title: 视图层与导航
-description: FolderRewind 的页面列表、Dialog 弹窗与导航流程，梳理各视图的职责边界与页面间跳转关系
+title: "视图、引导与导航"
+description: "FolderRewind 1.9 系列视图、引导与导航操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 视图层与导航
+# 视图、引导与导航
 
-## 页面列表
+## 页面职责
 
-| 页面 | 文件 | 导航 Tag | 对应 ViewModel | 说明 |
-|---|---|---|---|---|
-| 首页 | `HomePage.xaml` | `Home` | `HomePageViewModel` | 所有备份配置的仪表盘卡片 |
-| 文件夹管理 | `FolderManagerPage.xaml` | `Manager` | `FolderManagerViewModel` | 管理备份配置中的来源文件夹 |
-| 备份任务 | `BackupTasksPage.xaml` | `Tasks` | `BackupTasksViewModel` | 运行中的备份任务与进度 |
-| 历史记录 | `HistoryPage.xaml` | `History` | `HistoryViewModel` | 备份历史时间线与还原 |
-| 日志 | `LogPage.xaml` | `Logs` | `LogViewModel` | 应用日志查看器 |
-| 设置 | `SettingsPage.xaml` | `Settings` | `SettingsViewModel` | 应用设置（含子控件） |
-| 迷你窗口 | `MiniWindow.xaml` | — | — | 独立浮动窗口，快速备份触发 |
-| 插件商店 | `PluginStorePage.xaml` | — | `PluginStoreViewModel` | 插件发现与管理 |
+首页创建／模板／批量发现；FolderManager管理来源；BackupTasks观察任务；History以普通／高级、来源／Run查看原生历史；GameDiscovery提供Beta候选审阅；CloudSetup配置和验证连接；Log提供诊断；Settings组织全局工具、插件、模板与数据迁移。
 
-## 对话框
+当前ViewModels包括HomePageViewModel、FolderManagerPageViewModel、HistoryPageViewModel、PluginStorePageViewModel、GameDiscoveryPageViewModel与CloudSetupViewModel；类名和状态以当前项目文件为准，不引用旧HistoryViewModel／PluginStoreViewModel名称。
 
-| 对话框 | 文件 | 用途 |
-|---|---|---|
-| 配置编辑 | `ConfigSettingsDialog.xaml` | 创建/编辑备份配置 |
-| 云同步配置 | `ConfigCloudSyncDialog.xaml` | 配置 rclone 云同步 |
-| 模板管理 | `TemplateManagerDialog.xaml` | 管理配置模板 |
-| 模板提交 | `TemplateSubmissionDialog.xaml` | 提交模板到社区 |
+## 对话框与次级窗口
 
-## 设置页子控件
+配置设置／云配置／模板／合并交互由视图与AppDialog服务协作；对话框创建、显示和结果读取在UI线程。MiniWindow是稳定来源绑定的独立窗口；RecoveryCenter处理配置损坏，恢复模式禁止普通配置写入。
 
-`SettingsPage` 通过子控件组织各项设置：
+## 设置与主题
 
-| 子控件 | 文件 | 职责 |
-|---|---|---|
-| `AboutControl` | `Settings/AboutControl.xaml` | 版本信息与关于 |
-| `AppearanceLayoutControl` | `Settings/AppearanceLayoutControl.xaml` | 主题、字体、窗口尺寸 |
-| `CoreBehaviorControl` | `Settings/CoreBehaviorControl.xaml` | 核心备份行为设置 |
-| `DataManagementControl` | `Settings/DataManagementControl.xaml` | 配置导入/导出、数据管理 |
-| `DiagnosticsControl` | `Settings/DiagnosticsControl.xaml` | 诊断与校验 |
-| `PluginsKnotLinkControl` | `Settings/PluginsKnotLinkControl.xaml` | 插件系统与 KnotLink 设置 |
-| `PresetSettingsControl` | `Settings/PresetSettingsControl.xaml` | Minecraft 预设与模板设置 |
-| `RuntimeEnvControl` | `Settings/RuntimeEnvControl.xaml` | 运行环境（7z 路径、rclone 路径） |
+设置子控件负责外观、核心行为、诊断、插件／KnotLink、预设／模板、数据与运行环境。OpenList环境控制与连接诊断提供实际工具状态。语义资源适配浅／深／系统主题和高对比度，状态同时提供文字与自动化标签。
 
-## 导航流程
+## 验收
 
-```mermaid
-graph TB
-    App["App.OnLaunched()"] --> MainWindow["MainWindow"]
-    MainWindow --> ShellPage["ShellPage<br/>（导航外壳）"]
-    ShellPage --> NavView["NavigationView<br/>侧边栏导航"]
-    ShellPage --> ContentFrame["ContentFrame<br/>页面容器"]
+导航与业务编排分离；测试窄窗口、高DPI、双语言、键盘、任务取消、恢复诊断和深层通知跳转。源码构建通过不能代替真实布局或游戏退出／重进验证。
 
-    NavView -->|"tag: Home"| HomePage
-    NavView -->|"tag: Manager"| FolderManagerPage
-    NavView -->|"tag: Tasks"| BackupTasksPage
-    NavView -->|"tag: History"| HistoryPage
-    NavView -->|"tag: Logs"| LogPage
-    NavView -->|"tag: Settings"| SettingsPage
-
-    HomePage -->|"打开配置"| ConfigSettingsDialog
-    HomePage -->|"打开模板"| TemplateManagerDialog
-```
-
-## 特殊窗口
-
-- **MiniWindow**：独立于主窗口的浮动小窗口，由 `MiniWindowService` 管理。每个 MiniWindow 绑定一个文件夹，提供一键备份按钮。不通过 `NavigationService` 路由。
-- **SponsorWindow**：赞助版信息窗口，由 `MainWindowService` 管理生命周期。
+<span id="页面列表" />
+<span id="对话框" />
+<span id="设置页子控件" />
+<span id="导航流程" />
+<span id="特殊窗口" />

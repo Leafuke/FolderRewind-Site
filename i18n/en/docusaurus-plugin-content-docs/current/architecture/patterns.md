@@ -1,70 +1,33 @@
 ---
 sidebar_position: 2
-title: Architectural Patterns
-description: Core design patterns including MVVM, static services, Shell navigation, and more
+title: "Architecture patterns and transaction boundaries"
+description: "FolderRewind 1.9 architecture patterns and transaction boundaries: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Architectural Patterns
+# Architecture patterns and transaction boundaries
 
-## MVVM Pattern
+## MVVM and interactions
 
-FolderRewind uses **CommunityToolkit.Mvvm** to implement the MVVM pattern.
+ViewModels own semantic state/cancellable commands; views own controls/themes. Interaction services create dialogs on the UI thread, serialize display and return choices. Domain outcomes do not depend on brushes. Cancel stale queries before they overwrite current selection.
 
-- All ViewModels inherit from `ViewModelBase` (which extends `ObservableObject`)
-- `ViewModelBase` provides an `EnqueueOnUiThread()` method that dispatches operations to the UI thread via `UiDispatcherService`
-- The `[ObservableProperty]` source-generator attribute is used to auto-generate properties and change-notification code
-- XAML.cs code-behind is limited to UI event bridging; business logic lives in Services or ViewModels
+## Dependencies and lifetime
 
-## Static Service Architecture
+Static Host façades such as ConfigService coexist with instance HistoryRuntime/plugin sessions/indexes/transports/operation services. Do not make load contexts/gates/cancellation sources unbounded global state.
 
-The application uses **static services** instead of dependency injection (DI):
+## Atomic commit and recovery
 
-- Nearly all services are static classes with static methods (e.g. `ConfigService.Load()`, `BackupService.RunBackup()`)
-- Services are manually initialized in `App.OnLaunched()`
-- `UiDispatcherService` acts as the central dispatch point for non-UI services to post operations to the UI thread
+Config snapshots serialize writes; a Commit Pack atomically exposes transaction facts. Indexes are rebuildable; Workspace/Replica Catalog are device-local. Config gates/final Guards revalidate identities/revisions, preserving committed semantics after faults.
 
-Rationale: WinUI 3 applications have a short lifecycle and inter-service dependencies are simple, so static calls are more straightforward.
+Journals, isolated staging/quarantine and idempotent compensation handle interruptions. Catching an exception and continuing writes is not success. Keep stage diagnostics/cancellation; RecoveryRequired blocks destructive work.
 
-## Shell Navigation Pattern
+## Proposals and immutable extensions
 
-```mermaid
-graph LR
-    ShellPage["ShellPage<br/>(INavigationHost)"] --> ContentFrame["ContentFrame"]
-    NavigationService["NavigationService<br/>(static)"] --> ShellPage
-    Pages["HomePage / FolderManagerPage<br/>/ HistoryPage / SettingsPage / ..."] --> ContentFrame
-```
+Discovery/reconciliation return drafts/patches for Host persistence. Artifact transactions append nodes; materializers write isolated workspaces. Snapshots/proposals/validation/commit replace ordered hooks and writable Host models.
 
-- `ShellPage` is the navigation host, containing a `NavigationView` and a `ContentFrame`
-- `NavigationService` is a static service that holds the current `INavigationHost` reference
-- Pages are identified by string tags ("Home", "Manager", "Tasks", "History", "Logs", "Settings")
-- Navigation requests are initiated via `NavigationService.NavigateTo(tag)`
-
-## Configuration-Driven Design
-
-All application state is persisted in a single `config.json` file:
-
-- `ConfigService` is the single source of truth for configuration
-- The top-level `AppConfig` contains `GlobalSettings`, `BackupConfig[]`, and `ConfigTemplate[]`
-- Legacy configuration formats are automatically migrated
-- Import/export functionality is provided
-
-## Partial Class Organization
-
-Complex services are split across multiple files using C# partial classes, with `BackupService` as the canonical example:
-
-| File | Responsibility |
-|---|---|
-| `BackupService.cs` | Main orchestration (backup/restore entry points) |
-| `BackupService.Archive.cs` | 7-Zip archive creation |
-| `BackupService.Filtering.cs` | File inclusion/exclusion logic |
-| `BackupService.Helpers.cs` | Utility methods |
-| `BackupService.Metadata.cs` | Incremental backup metadata management |
-| `BackupService.Pruning.cs` | Old archive cleanup |
-| `BackupService.Restore.cs` | Restore logic |
-
-## Serialization Strategy
-
-- All models are serialized to JSON using `System.Text.Json`
-- AOT-compatible serialization is achieved via `AppJsonContext` (source-generator context)
-- All serializable types are registered in `AppJsonContext`
-- Configuration migration logic handles conversion from legacy JSON formats to the current version
+<span id="mvvm-pattern" />
+<span id="static-service-architecture" />
+<span id="shell-navigation-pattern" />
+<span id="configuration-driven-design" />
+<span id="partial-class-organization" />
+<span id="serialization-strategy" />

@@ -1,67 +1,33 @@
 ---
 sidebar_position: 4
-title: 服务层概览
-description: 40+ 核心服务按功能域分组说明，包括备份调度、配置管理、云同步与插件宿主等模块的职责划分
+title: "服务编排与核心职责"
+description: "FolderRewind 1.9 系列服务编排与核心职责操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 服务层概览
+# 服务编排与核心职责
 
-FolderRewind 的业务逻辑通过静态服务类组织。以下按功能域分组说明。
+| 子系统 | 当前入口／职责 |
+|---|---|
+| 配置 | ConfigService、ConfigWriteCoordinator：快照串行持久化、配置恢复模式 |
+| 备份 | BackupService：来源解析、捕获与Host事务终态；7-Zip后端处理载荷 |
+| 历史 | NativeHistoryCoreGateway、HistoryRuntime、提交／查询／还原服务：原生仓库、索引、Workspace与门控 |
+| 历史交互 | NativeHistoryApplicationService、NativeHistoryRestoreOrchestrator：UI请求、来源、插件协调和结果映射 |
+| 云 | CloudSyncService、RcloneNativeHistoryTransport、HistoryMetadataSyncService／HistoryReplicaSyncService：冻结连接、并集和验证副本 |
+| 插件 | PluginService Host入口与独立PluginRuntimeManager：静态安装、激活、排空、typed settings和目录更新 |
+| 发现 | GameDiscoveryService与provider／三方Review／DraftTransaction：候选与受控配置提交 |
+| 引导 | CloudSetup、MinecraftOnboarding与创建事务：步骤、诊断和一次提交 |
+| 自动化 | AutomationService：可取消调度、条件触发、来源目标与无变更停止 |
+| UI | Navigation、AppDialog、Notification、Theme、MiniWindow及Dispatcher适配 |
 
-## 核心备份
+旧HistoryService管理可变history.json不再是核心权威，旧TemplateService／PluginService单文件清单也不能代表当前模块。优先描述职责与测试边界，具体partial文件随实际源码查询。
 
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `BackupService` | `Services/BackupService.cs` + 6 个 partial 文件 | 备份/还原编排，7-Zip 归档，文件过滤，元数据管理，旧归档清理 |
-| `HistoryService` | `Services/HistoryService.cs` | 管理 `history.json` 中的备份历史记录，为时间线视图提供数据 |
-| `ConfigService` | `Services/ConfigService.cs` | 配置的加载/保存/迁移/导入/导出，应用状态的单一真相源 |
+受控还原先评估／物化／完整性验证，再进入Host原子变更；插件协调不能嵌套Host写入。云数据操作区分配置导入、packs同步和payload传输。失败诊断与取消传至UI，不以任务排队成功代替最终成功。
 
-## 自动化与调度
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `AutomationService` | `Services/AutomationService.cs` | 定时备份引擎：间隔备份、计划任务、条件触发（文件锁检测） |
-| `FolderWatcherService` | `Services/FolderWatcherService.cs` | 文件系统监控，为事件触发备份提供支持 |
-| `FileLockService` | `Services/FileLockService.cs` | 检测文件是否被占用，用于条件自动化判断 |
-
-## 插件与扩展
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `PluginService` | `Services/Plugins/PluginService.cs` | 插件生命周期：扫描、安装（zip）、卸载、加载（AssemblyLoadContext）、启用/禁用、版本检查、设置持久化 |
-| `KnotLinkService` | `Services/KnotLinkService.cs` | KnotLink 远程命令/事件协议，允许外部工具通过 TCP 触发备份/还原 |
-| `FolderRenameService` | `Services/FolderRenameService.cs` | 预览并事务化迁移源目录、本地备份、元数据、配置引用、自动化目标和历史身份，失败时尝试回滚 |
-| `SevenZipAdditionalArguments` | `Services/SevenZipAdditionalArguments.cs` | 校验仅用于备份创建/更新的高级 7-Zip 参数，拒绝受保护开关 |
-
-## UI 辅助
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `NavigationService` | `Services/NavigationService.cs` | 静态导航服务，持有 INavigationHost 引用，分发页面导航请求 |
-| `NotificationService` | `Services/NotificationService.cs` | 应用内 InfoBar 通知与 Windows Toast 通知 |
-| `ThemeService` | `Services/ThemeService.cs` | 主题管理（深色/浅色/跟随系统）、强调色预设、背景材质（Mica/Acrylic） |
-| `MiniWindowService` | `Services/MiniWindowService.cs` | 管理紧凑的迷你窗口，用于快速触发单个文件夹的备份 |
-| `UiDispatcherService` | `Services/UiDispatcherService.cs` | 集中式 UI 线程调度器，供非 UI 服务/ViewModel 投递操作 |
-
-## 系统集成
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `StartupService` | `Services/StartupService.cs` | Windows 开机自启任务注册 |
-| `AppUpdateService` | `Services/AppUpdateService.cs` | GitHub Release 更新检查，支持多下载源（官方/镜像/自定义） |
-| `SponsorService` | `Services/SponsorService.cs` | 赞助版许可证验证（Microsoft Store 权益） |
-| `CloudSyncService` | `Services/CloudSyncService.cs` | 通过 rclone 实现云上传/下载，备份后排队上传，还原前下载缺失归档 |
-
-## 安全
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `EncryptionService` | `Services/EncryptionService.cs` | 加密备份的密码管理（DPAPI 保护存储） |
-
-## 其他
-
-| 服务 | 文件 | 职责 |
-|---|---|---|
-| `I18n` | `Services/I18n.cs` | 国际化辅助，封装 `ResourceLoader` 的字符串查找与格式化，支持 `PickBest()` 多语言字典 |
-| `TemplateService` | `Services/TemplateService.cs` | 配置模板的创建、导出、导入和社区分享 |
-| `MainWindowService` | `Services/MainWindowService.cs` | 主窗口引用管理与赞助版窗口生命周期 |
+<span id="核心备份" />
+<span id="自动化与调度" />
+<span id="插件与扩展" />
+<span id="ui-辅助" />
+<span id="系统集成" />
+<span id="安全" />
+<span id="其他" />

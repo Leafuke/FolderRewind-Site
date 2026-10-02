@@ -1,90 +1,44 @@
 ---
 sidebar_position: 6
-title: 数据模型
-description: AppConfig 层级结构与序列化策略，涵盖配置版本迁移、默认值合并与向后兼容的数据模型设计
+title: "配置与不可变历史数据模型"
+description: "FolderRewind 1.9 系列配置与不可变历史数据模型操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 数据模型
+# 配置与不可变历史数据模型
 
-## AppConfig 层级结构
+## 用户配置
 
-`AppConfig` 是应用配置的根对象，持久化为 `config.json`：
+AppConfig含GlobalSettings、BackupConfigs及模板／预设集合。BackupConfig包含稳定Id、ConfigRevision、Kind、HostOrigin、ProviderStates、SourceFolders、Archive、Automation、Filters、BackupScope、Cloud、加密状态与HistoryRepositoryBinding。
+
+ManagedFolder保持稳定Id、Path、DisplayName、SourceScope和Provider State。Kind为OwnerId+KindId；历史绑定只记录格式，不把设备仓库路径共享进配置。Settings与Provider State、DiscoveryOrigin与用户配置各自不同职责。
+
+## 历史事实
 
 ```mermaid
-graph TB
-    AppConfig["AppConfig"]
-    GlobalSettings["GlobalSettings<br/>全局设置"]
-    BackupConfigs["BackupConfig[]<br/>备份配置集合"]
-    ConfigTemplates["ConfigTemplate[]<br/>配置模板集合"]
-
-    AppConfig --> GlobalSettings
-    AppConfig --> BackupConfigs
-    AppConfig --> ConfigTemplates
-
-    BackupConfig["BackupConfig"]
-    ManagedFolder["ManagedFolder[]<br/>来源文件夹"]
-    ArchiveSettings["ArchiveSettings<br/>归档设置"]
-    AutomationSettings["AutomationSettings<br/>自动化设置"]
-    FilterSettings["FilterSettings<br/>过滤规则"]
-    CloudSettings["CloudSettings<br/>云同步设置"]
-    ScheduleEntries["ScheduleEntry[]<br/>计划任务"]
-
-    BackupConfigs --> BackupConfig
-    BackupConfig --> ManagedFolder
-    BackupConfig --> ArchiveSettings
-    BackupConfig --> AutomationSettings
-    BackupConfig --> FilterSettings
-    BackupConfig --> CloudSettings
-    BackupConfig --> ScheduleEntries
+flowchart LR
+  Run[Backup Run] --> CP[Configuration Checkpoint]
+  CP --> SV[Source Versions]
+  SV --> Rep[Version Representations]
+  Rep --> Copy[Storage Replicas]
+  Branch[Branch Updates] --> CP
+  WS[Local Workspace] --> Branch
 ```
 
-## 核心模型说明
+一次Commit Pack公开Run、Version、Representation、Checkpoint、BranchUpdate等关联事实。表示有物理依赖和fidelity，源版本只描述逻辑状态；Replica lifecycle与本机Observation分开。History Annotation保存备注、Pin、展示策略，不改旧Version。
 
-### AppConfig
+## 本机与缓存
 
-配置根对象，包含全局设置和所有备份配置。
+History Index、Capture Baseline Cache可重建；Workspace和Local Replica Catalog是设备持久状态，不作共享历史。Safety Snapshot独立保护Checkpoint闭包，不推进活动分支。Config迁移与旧History迁移分别完成，不把旧HistoryItem列表当新模型。
 
-### BackupConfig
+插件公开快照来自Abstractions的不可变record，与Host可观察UI模型不同；禁止插件持有可写BackupConfig／ManagedFolder引用。
 
-单个备份配置，描述一个备份任务的完整规则：
-
-- `ManagedFolder[]`：要备份的来源文件夹列表
-- `ArchiveSettings`：压缩格式、加密选项、输出路径
-- `AutomationSettings`：自动备份的触发条件
-- `FilterSettings`：文件包含/排除规则（`FileTypeRule[]`）
-- `CloudSettings`：rclone 云同步配置
-- `ScheduleEntry[]`：计划任务条目
-
-### GlobalSettings
-
-应用级全局设置：语言、主题、快捷键、启动行为等。
-
-### ManagedFolder
-
-单个来源文件夹：路径、启用状态、最后修改时间。
-
-## 增量备份元数据
-
-增量备份使用独立的元数据结构追踪文件变化：
-
-| 模型 | 职责 |
-|---|---|
-| `BackupMetadata` | 单次增量备份的元数据 |
-| `BackupMetadataState` | 元数据状态（完整/增量链中） |
-| `BackupChangeRecord` | 单个文件的变更记录 |
-| `FileState` | 文件状态（新增/修改/删除/未变） |
-
-## 历史与任务
-
-| 模型 | 职责 |
-|---|---|
-| `HistoryItem` | 单条备份历史记录（时间、大小、模式、状态） |
-| `BackupTask` | 运行中的备份任务（进度、状态、错误信息） |
-
-## 序列化
-
-- 使用 `System.Text.Json` 进行所有模型的 JSON 序列化
-- `AppJsonContext`（源生成器上下文）注册所有可序列化类型，实现 AOT 兼容
-- 配置迁移逻辑处理旧版 JSON 格式到新版的自动转换
-
-所有模型定义在 `Models/BackupModels.cs`（约 1300 行），增量元数据在 `Models/BackupMetadata.cs`。
+<span id="appconfig-层级结构" />
+<span id="核心模型说明" />
+<span id="appconfig" />
+<span id="backupconfig" />
+<span id="globalsettings" />
+<span id="managedfolder" />
+<span id="增量备份元数据" />
+<span id="历史与任务" />
+<span id="序列化" />

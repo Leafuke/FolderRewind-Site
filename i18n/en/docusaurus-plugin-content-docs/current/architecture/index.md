@@ -1,85 +1,34 @@
 ---
 sidebar_position: 0
-title: Architecture Overview
-description: FolderRewind project tech stack and architecture bird's-eye view, including the .NET and WPF layering and subsystem cooperation
+title: "Architecture overview"
+description: "FolderRewind 1.9 architecture overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Architecture Overview
+# Architecture overview
 
-**FolderRewind** is a WinUI 3-based Windows backup management tool. It adopts the MVVM architecture, organizes business logic through a static service layer, and supports plugin extensions and a remote command protocol.
-
-## Tech Stack
-
-| Category | Technology | Version |
-|---|---|---|
-| Framework | .NET + Windows App SDK | .NET 10 / Windows App SDK 2.3.1 |
-| UI | WinUI 3 | — |
-| MVVM | CommunityToolkit.Mvvm | 8.4.2 |
-| Compression Engine | 7-Zip (7za.exe) | Bundled |
-| Cloud Sync | rclone | User-provided |
-| System Tray | H.NotifyIcon.WinUI | 2.4.1 |
-| Serialization | System.Text.Json + Source Generator | — |
-| Settings Controls | CommunityToolkit.WinUI.SettingsControls | 8.2.251219 |
-
-## Architecture Bird's-Eye View
+FolderRewind is .NET10/WinUI3 on Windows, with Windows App SDK2.5.1 in the current project. MVVM and testable command orchestration serve the UI; history/plugin cores use instance services and explicit dependencies, not blanket static-singleton architecture.
 
 ```mermaid
-graph TB
-    subgraph Views["Views"]
-        ShellPage
-        HomePage
-        SettingsPage
-        OtherPages["Other Pages & Dialogs"]
-    end
-
-    subgraph ViewModels["ViewModels"]
-        VM["Page ViewModels"]
-    end
-
-    subgraph Services["Services"]
-        ConfigService
-        BackupService
-        HistoryService
-        AutomationService
-        PluginService
-        OtherSvc["Navigation / Theme / Notification / ..."]
-    end
-
-    subgraph Models["Models"]
-        AppConfig
-        BackupConfig
-        ManagedFolder
-        OtherModel["HistoryItem / BackupMetadata / ..."]
-    end
-
-    subgraph Plugins["Plugin System"]
-        IFolderRewindPlugin
-        KnotLink
-        MineRewind["MineRewind Plugin"]
-    end
-
-    subgraph External["External Dependencies"]
-        SevenZip["7za.exe"]
-        Rclone["rclone"]
-    end
-
-    Views --> ViewModels
-    ViewModels --> Services
-    Services --> Models
-    Services --> Plugins
-    Plugins --> External
-    BackupService --> SevenZip
-    CloudSyncService["CloudSyncService"] --> Rclone
+flowchart TD
+  V[Views / ViewModels] --> H[Host application orchestration]
+  H --> C[User-owned configuration]
+  H --> N[Native History runtime]
+  H --> P[Plugin Runtime]
+  P --> A[Public Abstractions API 3.5]
+  N --> R[Representations / Replicas]
+  R --> Z[7-Zip / cloud transport]
+  H --> D[Discovery / reviewed drafts]
 ```
 
-## Documentation Navigation
+## Boundaries
 
-| Document | Content |
-|---|---|
-| [Directory Structure](/en/docs/architecture/directory-structure) | Project file tree and directory responsibilities |
-| [Architecture Patterns](/en/docs/architecture/patterns) | MVVM, static services, Shell navigation, and other core design patterns |
-| [Namespace Reference](/en/docs/architecture/namespaces) | Namespace layout and key class quick reference |
-| [Service Layer Overview](/en/docs/architecture/services) | 40+ services grouped by functional domain |
-| [Plugin System](/en/docs/architecture/plugin-system) | Plugin interface, lifecycle, and KnotLink protocol |
-| [Data Models](/en/docs/architecture/data-models) | AppConfig hierarchy and serialization strategy |
-| [Views & Navigation](/en/docs/architecture/views) | Page list, dialogs, and navigation flow |
+Host/SDK/Runtime/MineRewind have independent product/build boundaries. SDK is BCL-only net10.0; Runtime tests need no WinUI; external plugins reference SDK only. Host acceptance consumes fixed-hash .frplugin without plugin application source as build input.
+
+Users own configs; discovery/reconciliation propose candidates/revision changes. Native history separates immutable shared facts, disposable indexes and local Workspace. The Host materializes/verifies before gated mutation; plugins cannot bypass it.
+
+See [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [models](/docs/architecture/data-models), [plugins](/docs/architecture/plugin-system).
+
+<span id="tech-stack" />
+<span id="architecture-birds-eye-view" />
+<span id="documentation-navigation" />
