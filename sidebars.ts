@@ -119,6 +119,7 @@ const sidebars: SidebarsConfig = {
             'plugins/developing/settings-schema',
             'plugins/developing/packaging',
             'plugins/developing/auto-update',
+            'plugins/developing/migration-v2-v3',
           ],
         },
       ],
