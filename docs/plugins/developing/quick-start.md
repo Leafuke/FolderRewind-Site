@@ -1,222 +1,78 @@
 ---
 sidebar_position: 1
-title: 插件开发快速上手
-description: 从零开始开发一个 FolderRewind 插件：搭建项目、接入 SDK、运行调试并在十分钟内看到第一个效果
+title: "插件开发快速上手"
+description: "FolderRewind 1.9 系列插件开发快速上手操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # 插件开发快速上手
 
-本指南将带你完成 FolderRewind 插件开发的完整流程：从创建项目到安装测试。
+本页适用于 FolderRewind 1.9 系列、Plugin API 3.5。应用版本、插件产品版本、SDK 包版本和程序集版本独立演进。
 
-:::info[前置要求]
-- Visual Studio 2022 或 JetBrains Rider
-- .NET 10 SDK
-- FolderRewind 已安装（[下载页](/download)）
+## 准备环境
+
+安装 .NET 10 SDK、Node.js 24 和 Python 3.10+；使用能支持 .NET 10 的编辑器。安装支持 API 3.5 的 FolderRewind。示例项目从[网站源码仓库](https://github.com/Leafuke/FolderRewind-Site/tree/codex/docs-1.9-refresh/examples/plugins)获取。
+
+:::info[发布候选基线]
+本教程使用 Abstractions 3.5.0。正式上线前必须确认 NuGet.org 已列出该版本。若公开恢复提示找不到版本，请核对发布状态，不要改为引用 FolderRewind.dll。网站发布分支的本地包验证不代表 SDK 已公开发布。
 :::
 
-## 插件架构概览
-
-FolderRewind 插件基于 .NET 类库构建，通过接口与宿主交互。每个插件必须实现核心接口，可选择实现扩展接口：
-
-| 接口 | 必选 | 用途 |
-|------|:----:|------|
-| `IFolderRewindPlugin` | ✅ | 插件主入口：生命周期、备份/还原钩子、配置发现 |
-| `IFolderRewindHotkeyProvider` | — | 注册自定义快捷键（全局或应用内） |
-| `IFolderRewindParameterizedKnotLinkCommandHandler` | — | 新版参数化 KnotLink 命令 |
-| `IFolderRewindKnotLinkCapabilityProvider` | — | 发布可发现的命令与信号 |
-| `IFolderRewindBackupScopeProvider` | — | 定义备份范围/过滤策略（如按区域备份） |
-
-插件运行在宿主进程中，但通过 `AssemblyLoadContext` 实现依赖隔离，互不干扰。
-
-### 生命周期
-
-```mermaid
-graph LR
-    A[创建项目] --> B[实现接口]
-    B --> C[打包 ZIP]
-    C --> D[安装到 FolderRewind]
-    D --> E[启用插件]
-    E --> F[Initialize 调用]
-    F --> G[运行中 — 钩子/命令/快捷键]
-```
-
-## 第一步：创建项目
-
-创建一个 .NET 10 类库项目：
+## 创建独立类库
 
 ```powershell
 dotnet new classlib -n MyFirstPlugin -f net10.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.5.0
 ```
 
-在 `.csproj` 中添加 FolderRewind 插件接口的引用。你需要引用 FolderRewind 安装目录下的接口程序集：
+仅引用 `FolderRewind.Plugin.Abstractions`。不要引用应用、WinUI、Models 或 Runtime 项目。设置 SDK 引用的 `Private="false"`，不将 Abstractions DLL 放入发布包。
 
-```xml
-<!-- MyFirstPlugin.csproj -->
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+## 实现生命周期
 
-  <ItemGroup>
-    <!-- 引用 FolderRewind 的插件接口程序集 -->
-    <!-- 路径根据你的 FolderRewind 安装目录调整 -->
-    <Reference Include="FolderRewind">
-      <HintPath>..\..\FolderRewind\FolderRewind\bin\Release\net10.0-windows10.0.19041.0\FolderRewind.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-</Project>
-```
+下面直接展示可构建的 MinimalPlugin 源文件：
 
-## 第二步：编写 manifest.json
+import CodeBlock from '@theme/CodeBlock';
+import MinimalSource from '!!raw-loader!@site/examples/plugins/MinimalPlugin/Plugin.cs';
 
-每个插件必须在根目录包含一个 `manifest.json`，描述插件的基本信息：
+<CodeBlock language="csharp" title="MinimalPlugin/Plugin.cs">{MinimalSource}</CodeBlock>
 
-```json
-{
-  "Id": "com.example.myfirstplugin",
-  "Name": "MyFirstPlugin",
-  "Version": "1.0.0",
-  "Author": "YourName",
-  "Description": "我的第一个 FolderRewind 插件",
-  "EntryAssembly": "MyFirstPlugin.dll",
-  "EntryType": "MyFirstPlugin.MyPlugin",
-  "MinHostVersion": "1.8.0"
-}
-```
+激活阶段只读取设置／配置快照并注册能力。Host 校验并原子提交后才公开能力。无能力插件只展示生命周期；它不会自动增加备份按钮。
 
-**字段说明：**
+## 静态清单与设置
 
-| 字段 | 必选 | 说明 |
-|------|:----:|------|
-| `Id` | ✅ | 全局唯一标识，建议反向域名风格 |
-| `Name` | ✅ | 插件显示名称 |
-| `Version` | ✅ | 语义化版本号（`MAJOR.MINOR.PATCH`） |
-| `Author` | ✅ | 作者名称 |
-| `Description` | ✅ | 一句话描述 |
-| `EntryAssembly` | ✅ | 入口 DLL 文件名 |
-| `EntryType` | ✅ | 入口类型的完全限定名 |
-| `LocalizedName` | — | 多语言名称 `{"en-US": "...", "zh-CN": "..."}` |
-| `LocalizedDescription` | — | 多语言描述 |
-| `MinHostVersion` | — | 最低宿主版本 |
-| `Homepage` | — | 插件主页链接 |
-| `Repository` | — | GitHub 仓库（`owner/repo`，用于自动更新） |
+import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json';
+import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json';
 
-## 第三步：实现最小插件
+<CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
+<CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
 
-创建 `MyPlugin.cs`，实现 `IFolderRewindPlugin` 的必要成员：
+`manifestVersion` 为3，`pluginApi` 请求3.5。字段使用精确的 camelCase；入口类型必须与类的完全限定名一致。无设置仍需合法的空设置模式。
 
-```csharp
-using FolderRewind.Models;
-using FolderRewind.Services.Plugins;
+## 构建、打包与安装
 
-namespace MyFirstPlugin
-{
-    public class MyPlugin : IFolderRewindPlugin
-    {
-        // 必选：插件清单（与 manifest.json 保持一致）
-        public PluginInstallManifest Manifest { get; } = new()
-        {
-            Id = "com.example.myfirstplugin",
-            Name = "MyFirstPlugin",
-            Version = "1.0.0",
-            Author = "YourName",
-            Description = "我的第一个 FolderRewind 插件",
-            EntryAssembly = "MyFirstPlugin.dll",
-            EntryType = "MyFirstPlugin.MyPlugin"
-        };
-
-        // 必选：声明插件设置（无设置则返回空列表）
-        public IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions()
-            => new List<PluginSettingDefinition>();
-
-        // 必选：插件启用时调用一次
-        public void Initialize(IReadOnlyDictionary<string, string> settingsValues)
-        {
-            // 读取设置、预热状态等
-        }
-
-        // 必选：备份前钩子（返回 null 表示不修改备份源路径）
-        public string? OnBeforeBackupFolder(
-            BackupConfig config,
-            ManagedFolder folder,
-            IReadOnlyDictionary<string, string> settingsValues)
-            => null;
-
-        // 必选：备份后钩子
-        public void OnAfterBackupFolder(
-            BackupConfig config,
-            ManagedFolder folder,
-            bool success,
-            string? generatedArchiveFileName,
-            IReadOnlyDictionary<string, string> settingsValues)
-        {
-            // 清理、日志、元数据等
-        }
-
-        // 必选：文件夹发现（返回空列表表示不自动发现）
-        public IReadOnlyList<ManagedFolder> TryDiscoverManagedFolders(
-            string selectedRootPath,
-            IReadOnlyDictionary<string, string> settingsValues)
-            => new List<ManagedFolder>();
-    }
-}
-```
-
-:::tip
-`IFolderRewindPlugin` 的许多方法有默认实现（如 `OnBeforeRestoreFolder`、`WantsToHandleBackup` 等），你只需实现上述 6 个必要成员即可让插件正常加载。
-:::
-
-## 第四步：打包为 ZIP
-
-插件以 ZIP 包形式分发。ZIP 内必须包含一个顶层目录，其中放置 `manifest.json` 和编译产物：
-
-```text
-MyFirstPlugin.zip
-└─ MyFirstPlugin/
-   ├─ manifest.json
-   ├─ MyFirstPlugin.dll
-   └─ （其他依赖 DLL，如有）
-```
-
-构建并打包：
+在网站仓库根目录运行：
 
 ```powershell
-# 编译
-dotnet publish -c Release -o ./publish
-
-# 创建 ZIP（PowerShell）
-$staging = "staging/MyFirstPlugin"
-New-Item -ItemType Directory -Path $staging -Force
-Copy-Item -Path "./publish/*" -Destination $staging -Recurse
-Copy-Item -Path "./manifest.json" -Destination $staging
-Compress-Archive -Path "./staging/MyFirstPlugin" -DestinationPath "./MyFirstPlugin.zip" -Force
-Remove-Item -Path "./staging" -Recurse -Force
+node scripts/pack-plugin.mjs MinimalPlugin
+Get-FileHash .\artifacts\examples\MinimalPlugin-1.0.0.frplugin -Algorithm SHA256
 ```
 
-## 第五步：安装与测试
+`.frplugin` 使用 ZIP 容器，根目录直接放置 `manifest.json`、`settings.schema.json` 和入口 DLL。包不携带 Abstractions。不要增加旧教程要求的顶层插件目录。
 
-1. 打开 FolderRewind → **设置** → **插件管理**
-2. 点击 **本地安装**，选择 `MyFirstPlugin.zip`
-3. 安装完成后重启 FolderRewind
-4. 在插件列表中确认 `MyFirstPlugin` 已出现并启用
+打开设置中的插件管理，选择本地安装并检查静态声明。新安装默认停用；明确启用后才执行代码。正常安装／启停可热切换；只有界面提示 RequiresRestart 时重启。
 
-### 验证加载成功
+## 验证与排错
 
-- 插件管理界面显示插件名称、版本、作者
-- 无加载错误提示
+确认名称、版本、来源、请求服务和运行状态。若加载失败，依次检查 API 兼容、入口类型、静态设置类型、声明与能力注册一致性。不要仅依据启用开关判断激活成功。
 
-### 常见错误排查
+下一步：[实战教程](/docs/plugins/developing/tutorial)、[API 参考](/docs/plugins/developing/plugin-api)、[打包与发布](/docs/plugins/developing/packaging)。
 
-| 症状 | 可能原因 |
-|------|----------|
-| 插件未出现在列表中 | ZIP 结构错误（缺少顶层目录或 `manifest.json`） |
-| 加载失败：找不到入口类型 | `EntryType` 与实际类的完全限定名不一致 |
-| 加载失败：版本不兼容 | `MinHostVersion` 高于当前 FolderRewind 版本 |
-| 编译错误：找不到引用 | `.csproj` 中的 `HintPath` 指向了不存在的路径 |
-
-## 下一步
-
-- [实战教程：构建游戏存档备份插件](/docs/plugins/developing/tutorial) — 跟着做一个完整插件
-- [Plugin API 参考](/docs/plugins/developing/plugin-api) — 接口全量说明
-- [MineRewind 源码](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft) — 官方插件参考实现
+<span id="插件架构概览" />
+<span id="生命周期" />
+<span id="第一步创建项目" />
+<span id="第二步编写-manifestjson" />
+<span id="第三步实现最小插件" />
+<span id="第四步打包为-zip" />
+<span id="第五步安装与测试" />
+<span id="验证加载成功" />
+<span id="常见错误排查" />
+<span id="下一步" />

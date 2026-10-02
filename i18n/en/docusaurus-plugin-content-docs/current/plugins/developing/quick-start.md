@@ -1,134 +1,75 @@
 ---
 sidebar_position: 1
-title: Plugin Development Quick Start
-description: Build, package, and test a FolderRewind 1.8 plugin from scratch — set up the project, wire the SDK, and see results in minutes
+title: "Plugin development quick start"
+description: "FolderRewind 1.9 plugin development quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Plugin Development Quick Start
+# Plugin development quick start
 
-This guide covers the shortest path from a .NET project to an installed FolderRewind 1.8 plugin.
+This guide targets FolderRewind 1.9 and Plugin API 3.5. App, plugin product, package and assembly versions are independent.
 
-:::info Prerequisites
-- Visual Studio 2022 or JetBrains Rider
-- .NET 10 SDK
-- FolderRewind installed ([Downloads](/en/download))
+## Prerequisites
+
+Install .NET 10 SDK, Node.js 24 and Python 3.10+, an editor supporting .NET 10, and a Host supporting API 3.5. Get the projects from the [website source repository](https://github.com/Leafuke/FolderRewind-Site/tree/codex/docs-1.9-refresh/examples/plugins).
+
+:::info[Release candidate baseline]
+The examples require Abstractions 3.5.0. Confirm it is listed on NuGet.org before following the public restore path. A missing version means the release is unavailable; do not replace the reference with FolderRewind.dll. Local package validation on the release branch does not establish public availability.
 :::
 
-## Choose interfaces
-
-Every plugin implements `IFolderRewindPlugin`. Add only the optional interfaces you need:
-
-| Interface | Purpose |
-|-----------|---------|
-| `IFolderRewindBackupFilterProvider` | Per-backup include/exclude rules |
-| `IFolderRewindBackupScopeProvider` | Configurable scopes such as selected Minecraft regions |
-| `IFolderRewindBackupPreparationProvider` | Trigger and consistency context before backup |
-| `IFolderRewindFolderDetailsProvider` | Read-only folder detail sections |
-| `IFolderRewindRestoreInterceptor` | Handle or block restore before side effects |
-| `IFolderRewindConfigAugmenter` | Suggest discovered folders for existing configs |
-| `IFolderRewindParameterizedKnotLinkCommandHandler` | Parameterized KnotLink v2 commands |
-| `IFolderRewindKnotLinkCapabilityProvider` | Discoverable KnotLink command/signal manifest |
-| `IFolderRewindHotkeyProvider` | Global or in-app hotkeys |
-
-Interfaces introduced in 1.8 require `"MinHostVersion": "1.8.0"`.
-
-## Create the project
+## Create an independent library
 
 ```powershell
-dotnet new classlib -n MyFirstPlugin -f net10.0-windows10.0.19041.0
+dotnet new classlib -n MyFirstPlugin -f net10.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.5.0
 ```
 
-Reference the FolderRewind assembly from the actual build output:
+Reference only `FolderRewind.Plugin.Abstractions`. Set `Private="false"` on that package reference. Do not reference the application, WinUI, Models or Runtime, or bundle the Abstractions DLL.
 
-```xml
-<Reference Include="FolderRewind">
-  <HintPath>..\..\FolderRewind\FolderRewind\bin\Release\net10.0-windows10.0.19041.0\FolderRewind.dll</HintPath>
-</Reference>
+## Implement the lifecycle
+
+The following is the buildable MinimalPlugin source:
+
+import CodeBlock from '@theme/CodeBlock';
+import MinimalSource from '!!raw-loader!@site/examples/plugins/MinimalPlugin/Plugin.cs';
+
+<CodeBlock language="csharp" title="MinimalPlugin/Plugin.cs">{MinimalSource}</CodeBlock>
+
+During activation, read settings/config snapshots and register capabilities. The Host exposes them only after validation and atomic commit. This minimal lifecycle example contributes no backup command.
+
+## Static manifest and settings
+
+import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json';
+import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json';
+
+<CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
+<CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
+
+Use `manifestVersion` 3, `pluginApi` 3.5 and exact camelCase fields. The entry type is fully qualified. Even a plugin without settings needs a valid empty settings schema.
+
+## Build, package and install
+
+From the website repository root:
+
+```powershell
+node scripts/pack-plugin.mjs MinimalPlugin
+Get-FileHash .\artifacts\examples\MinimalPlugin-1.0.0.frplugin -Algorithm SHA256
 ```
 
-The application uses .NET 10 with Windows App SDK 2.3.1. Use the target framework from the current project file rather than copying an old path.
+The ZIP-based `.frplugin` has `manifest.json`, `settings.schema.json` and the entry DLL directly at its root. No Abstractions DLL or extra top-level plugin directory is allowed.
 
-## Add `manifest.json`
+Use local install in plugin management and review the declarations. New installs are disabled; code first runs after explicit Enable. Normal transitions are live; restart only when the Host reports RequiresRestart.
 
-```json
-{
-  "Id": "com.example.myfirstplugin",
-  "Name": "MyFirstPlugin",
-  "Version": "1.0.0",
-  "Author": "YourName",
-  "Description": "My first FolderRewind plugin",
-  "EntryAssembly": "MyFirstPlugin.dll",
-  "EntryType": "MyFirstPlugin.MyPlugin",
-  "MinHostVersion": "1.8.0"
-}
-```
+## Verify and troubleshoot
 
-## Implement the core lifecycle
+Check product, version, provenance, requested services and runtime state. For failures, check API compatibility, entry type, typed settings and manifest/registration agreement. Enabled intent alone does not prove activation succeeded.
 
-```csharp
-using FolderRewind.Models;
-using FolderRewind.Services.Plugins;
+Continue with the [tutorial](/docs/plugins/developing/tutorial), [API reference](/docs/plugins/developing/plugin-api) and [packaging guide](/docs/plugins/developing/packaging).
 
-public sealed class MyPlugin : IFolderRewindPlugin
-{
-    public PluginInstallManifest Manifest { get; } = new()
-    {
-        Id = "com.example.myfirstplugin",
-        Name = "MyFirstPlugin",
-        Version = "1.0.0",
-        Author = "YourName",
-        Description = "My first FolderRewind plugin",
-        EntryAssembly = "MyFirstPlugin.dll",
-        EntryType = "MyFirstPlugin.MyPlugin",
-        MinHostVersion = "1.8.0"
-    };
-
-    public IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions()
-        => Array.Empty<PluginSettingDefinition>();
-
-    public void Initialize(IReadOnlyDictionary<string, string> settingsValues) { }
-
-    public string? OnBeforeBackupFolder(
-        BackupConfig config, ManagedFolder folder,
-        IReadOnlyDictionary<string, string> settingsValues) => null;
-
-    public void OnAfterBackupFolder(
-        BackupConfig config, ManagedFolder folder, bool success,
-        string? generatedArchiveFileName,
-        IReadOnlyDictionary<string, string> settingsValues) { }
-
-    public IReadOnlyList<ManagedFolder> TryDiscoverManagedFolders(
-        string selectedRootPath,
-        IReadOnlyDictionary<string, string> settingsValues)
-        => Array.Empty<ManagedFolder>();
-}
-```
-
-The remaining core methods have default implementations. Add extension interfaces only after deciding which Host behavior the plugin owns.
-
-## Package and test
-
-The ZIP must contain a top-level plugin directory:
-
-```text
-MyFirstPlugin.zip
-└─ MyFirstPlugin/
-   ├─ manifest.json
-   ├─ MyFirstPlugin.dll
-   └─ dependencies/
-```
-
-Install it from **Settings → Plugin Management → Local Install**, restart if requested, and verify the manifest, minimum Host version, settings, and one backup/restore test.
-
-## KnotLink and region examples
-
-- For parameterized commands, follow [KnotLink Command API](/en/docs/plugins/developing/knotlink-api) and declare runtime capabilities.
-- For a custom backup scope, follow [Backup Scope API](/en/docs/plugins/developing/plugin-api) and fail closed on invalid parameters.
-- For a complete reference implementation, see [MineRewind source](https://github.com/Leafuke/FolderRewind-Plugin-Minecraft).
-
-## Next steps
-
-- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
-- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
-- [Packaging and Publishing](/en/docs/plugins/developing/packaging)
-- [Tutorial: Build a Game Save Backup Plugin](/en/docs/plugins/developing/tutorial)
+<span id="choose-interfaces" />
+<span id="create-the-project" />
+<span id="add-manifestjson" />
+<span id="implement-the-core-lifecycle" />
+<span id="package-and-test" />
+<span id="knotlink-and-region-examples" />
+<span id="next-steps" />

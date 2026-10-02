@@ -1,185 +1,78 @@
 ---
 sidebar_position: 3
-title: Plugin API Reference
-description: FolderRewind 1.8 plugin interfaces, lifecycle hooks, and extension points, defining the contract between host and plugin
+title: "Plugin API 3.5 reference"
+description: "FolderRewind 1.9 plugin api 3.5 reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Plugin API Reference
+# Plugin API 3.5 reference
 
-This page follows the current `Services/Plugins/` source. A plugin using the interfaces introduced in 1.8 should declare `MinHostVersion: "1.8.0"` in `manifest.json`; use `1.8.1` when it also depends on the 1.8.1 fixes.
+Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Package 3.5.0 represents API 3.5; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
 
-## Core interface and lifecycle
+## Lifecycle and registration
 
-Every plugin implements `IFolderRewindPlugin`:
+`IFolderRewindPlugin` exposes `ActivateAsync(IPluginActivationContext, CancellationToken)` and `DeactivateAsync(CancellationToken)`. Product, service and capability facts are static manifest data. The Host validates and commits the state patch in `PluginActivationResult`.
 
-```csharp
-public interface IFolderRewindPlugin
-{
-    PluginInstallManifest Manifest { get; }
-    IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions();
-    void Initialize(IReadOnlyDictionary<string, string> settingsValues);
-    void SetHostContext(PluginHostContext hostContext) { }
+Activation reads settings and config/folder snapshots, and registers at most one implementation per capability contract. Compose internal multiplicity yourself. Registration and manifest sets must match; capabilities are unavailable before commit, and activation cannot use DataStore.
 
-    string? OnBeforeBackupFolder(BackupConfig config, ManagedFolder folder,
-        IReadOnlyDictionary<string, string> settingsValues);
-    void OnAfterBackupFolder(BackupConfig config, ManagedFolder folder, bool success,
-        string? generatedArchiveFileName,
-        IReadOnlyDictionary<string, string> settingsValues);
-    object? OnBeforeRestoreFolder(BackupConfig config, ManagedFolder folder,
-        string archiveFileName, IReadOnlyDictionary<string, string> settingsValues) => null;
-    void OnAfterRestoreFolder(BackupConfig config, ManagedFolder folder, bool success,
-        string archiveFileName, object? state,
-        IReadOnlyDictionary<string, string> settingsValues) { }
-}
-```
+## All capabilities
 
-Configuration discovery and full takeover members have default implementations: `GetSupportedConfigTypes`, `CanHandleConfigType`, `TryDiscoverManagedFolders`, `TryCreateConfigs`, `WantsToHandleBackup`, `PerformBackupAsync`, `WantsToHandleRestore`, and `PerformRestoreAsync`.
+| Interface | Manifest capability | Responsibility |
+|---|---|---|
+| `IDiscoveryCapability` | `Discovery` | Discovery candidates and config drafts |
+| `IConfigReconciliationCapability` | `ConfigReconciliation` | Revision-bound change proposals |
+| `IFilePolicyCapability` | `FilePolicy` | Required file policy |
+| `IBackupScopeCapability` | `BackupScope` | Parameterized scope and readiness |
+| `IBackupConsistencyCapability` | `BackupConsistency` | Disposable consistency source lease |
+| `IFolderMetadataCapability` | `FolderMetadata` | Live folder details |
+| `IVersionMetadataProviderCapability` | `VersionMetadataProvider` | Metadata from the same stable capture |
+| `IRestoreCoordinatorCapability` | `RestoreCoordinator` | Config-level coordination and once-only continuation |
+| `IRestoreStagingPreparationCapability` | `RestoreStagingPreparation` | Bounded ordinary-Restore staging proposals |
+| `IPluginCommandCapability` | `PluginCommand` | Commands and default hotkeys |
+| `IKnotLinkIntegrationCapability` | `KnotLinkIntegration` | Commands, arguments, signals and execution |
+| `IProviderStateMigrationCapability` | `ProviderStateMigration` | Versioned opaque provider-state migration |
+| `IBackupArtifactTransformerCapability` | `BackupArtifactTransformer` | Controlled immutable artifact transformation |
+| `IBackupCompletionObserverCapability` | `BackupCompletionObserver` | Read-only completion observation |
+| `IRestoreMaterializerCapability` | `RestoreMaterializer` | Materialization into an isolated workspace |
 
-The usual call order is:
+`IDiscoveryDefinitionCatalog` extends a Discovery implementation; `IKnotLinkTargetResolver` extends KnotLink integration. Neither is registered or declared as a separate capability.
 
-```text
-load manifest → Initialize → SetHostContext
-discover/create config → backup hook or full takeover → after-backup hook
-restore hook/interceptor → standard restore or full takeover → after-restore hook
-```
+## Identities and snapshots
 
-## Manifest and target framework
+PluginId identifies the product; ConfigKindRef is OwnerId + KindId; DiscoveryProviderId identifies discovery; StateOwnerId namespaces opaque state. Equal text does not make roles interchangeable. Display names, paths and load order do not establish ownership.
 
-```json
-{
-  "Id": "com.example.myplugin",
-  "Name": "MyPlugin",
-  "Version": "1.0.0",
-  "EntryAssembly": "MyPlugin.dll",
-  "EntryType": "MyPlugin.MyPlugin",
-  "MinHostVersion": "1.8.0"
-}
-```
+ConfigRevision binds proposals. Settings use JsonElement; Provider State includes a location and schema version. Exchange snapshots, drafts, patches, requests, results and descriptors, never writable Host models.
 
-The application target framework is `net10.0-windows10.0.19041.0`. Plugin projects should use a compatible .NET 10 Windows target and reference the interface assembly from the actual installation/build output; do not copy a target path from older site content.
+## Host services
 
-## Backup filters and scopes
+IPluginHostServices provides Configs, Backups, Restores, History, Notifications, KnotLink, DataStore, TemporaryStorage and Logger. requestedHostServices gates the formal façade. Artifact services arrive in operation requests and also require declarations.
 
-### `IFolderRewindBackupFilterProvider`
+Plugins execute in-process with ambient user privileges. Service gating, hashes and AssemblyLoadContext are not an OS/.NET sandbox.
 
-```csharp
-PluginBackupFilterContribution? GetBackupFilterContribution(
-    BackupConfig config,
-    ManagedFolder folder,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
+## Cancellation, outcomes and diagnostics
 
-The contribution applies to one backup invocation. The Host clones the effective config and does not mutate the saved whitelist/blacklist.
+Respect OperationCancellation and PluginLifetime, dispose leases/staging resources, and avoid detached work. Readiness is Ready/Degraded/Blocked. Outcomes are Success, SuccessWithWarnings, NoChanges, Canceled, Failed, Blocked, RecoveryRequired and CommittedRecoveryRequired.
 
-### `IFolderRewindBackupScopeProvider`
+CommittedRecoveryRequired means durable commit happened but subsequent recovery is incomplete. Do not automatically retry destructive work or rejoin a game. PluginDiagnostic carries Code, Severity, Capability, Owner and Arguments; log prose is not a stable interface.
 
-```csharp
-IReadOnlyList<PluginBackupScopeDefinition> GetBackupScopeDefinitions(
-    BackupConfig config,
-    IReadOnlyDictionary<string, string> settingsValues);
+## Disable and settings transitions
 
-PluginBackupScopeResolution ResolveBackupScope(
-    BackupConfig config,
-    ManagedFolder folder,
-    PluginBackupScopeContext scope,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
+The Host removes routing, cancels lifetime, drains operations and calls DeactivateAsync. A bounded timeout isolates the session logically and reports RequiresRestart; physical unloading may wait for restart. Enabled Intent differs from Active, and Safe Mode preserves it.
 
-`PluginBackupScopeDefinition` supplies an ID, display name, description, and parameter definitions. `PluginBackupScopeContext` carries the selected `ScopeId` and parameters. A resolution is `Applied`, `NotApplicable`, or `Invalid`, and can merge rules with `Append` or `Replace`. Selected-region backup uses `Replace`, so its calculated scope replaces the regular whitelist.
+See the [tutorial](/docs/plugins/developing/tutorial), [settings schema](/docs/plugins/developing/settings-schema) and [command integration](/docs/plugins/developing/knotlink-api).
 
-## Backup preparation and folder details
-
-### `IFolderRewindBackupPreparationProvider`
-
-```csharp
-string? OnBeforeBackupFolder(
-    BackupConfig config,
-    ManagedFolder folder,
-    BackupInvocationOptions invocationOptions,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
-
-This interface can inspect trigger source and consistency preferences. If it is not implemented, the core `OnBeforeBackupFolder` hook still runs.
-
-### `IFolderRewindFolderDetailsProvider`
-
-```csharp
-Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
-    BackupConfig config,
-    ManagedFolder folder,
-    IReadOnlyDictionary<string, string> settingsValues,
-    CancellationToken cancellationToken);
-```
-
-Plugins return read-only key/value data; the Host renders the details dialog. An exception from one provider does not prevent other details from rendering.
-
-## Restore interception and config augmentation
-
-### `IFolderRewindRestoreInterceptor`
-
-```csharp
-Task<PluginRestoreInterceptionResult> TryInterceptRestoreAsync(
-    BackupConfig config,
-    ManagedFolder folder,
-    string archiveFileName,
-    IReadOnlyDictionary<string, string> settingsValues,
-    CancellationToken cancellationToken);
-```
-
-Return `Continue` to let the Host proceed, `Handled` when the plugin completed the request, or `Blocked` to reject it. Use `PluginRestoreInterceptionResult.Continue/Handled/Blocked(...)`.
-
-### `IFolderRewindConfigAugmenter`
-
-```csharp
-PluginConfigAugmentationResult AugmentConfigs(
-    PluginConfigAugmentationRequest request,
-    IReadOnlyDictionary<string, string> settingsValues);
-
-bool ShouldAugmentAfterSettingsChange(
-    IReadOnlyDictionary<string, string> previousSettings,
-    IReadOnlyDictionary<string, string> currentSettings) => false;
-```
-
-Return folders to suggest adding. The Host deduplicates, filters conflicts, saves, and notifies the user. Do not mutate `ConfigService.CurrentConfig` directly.
-
-## KnotLink and hotkeys
-
-- `IFolderRewindParameterizedKnotLinkCommandHandler` implements `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`; see [KnotLink Command API](/en/docs/plugins/developing/knotlink-api).
-- `IFolderRewindKnotLinkCapabilityProvider` implements `GetKnotLinkCapabilities()` and publishes discoverable commands and signals.
-- `IFolderRewindHotkeyProvider` implements `GetHotkeyDefinitions()` and `OnHotkeyInvokedAsync(...)` for global or in-app hotkeys.
-
-`PluginHostContext` exposes the plugin ID, KnotLink state, event broadcasting, query/send operations, signal subscriptions, and logging. KnotLink payloads must follow strict key-value protocol v2.
-
-## Full backup/restore takeover
-
-Return `WantsToHandleBackup/Restore = true` only when the plugin owns a genuinely different archive format or workflow, then implement:
-
-```csharp
-Task<PluginBackupResult> PerformBackupAsync(
-    BackupConfig config, ManagedFolder folder, string comment,
-    IReadOnlyDictionary<string, string> settingsValues,
-    Action<double, string>? progressCallback = null);
-
-Task<PluginRestoreResult> PerformRestoreAsync(
-    BackupConfig config, ManagedFolder folder, string archiveFileName,
-    IReadOnlyDictionary<string, string> settingsValues,
-    Action<double, string>? progressCallback = null);
-```
-
-`PluginBackupResult` has `Success`, `GeneratedFileName`, and `Message`; `PluginRestoreResult` has `Success` and `Message`. Prefer hooks and extension interfaces for ordinary plugins so Host history, cleanup, and safety policy remain active.
-
-## Exceptions, threads, and compatibility
-
-- Plugins run in the Host process; catch expected exceptions in hooks, handlers, and detail providers.
-- Do not perform long I/O on the UI thread; use async APIs and honor `CancellationToken`.
-- Do not cache internal models across versions or mutate Host service state directly.
-- New interfaces require 1.8.0. The current MineRewind manifest uses `MinHostVersion: 1.8.1`; set the minimum to the actual API you require.
-- A ZIP root must contain `manifest.json` and the entry assembly, with dependencies beside it.
-
-## Related links
-
-- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
-- [Tutorial](/en/docs/plugins/developing/tutorial)
-- [KnotLink Command API](/en/docs/plugins/developing/knotlink-api)
-- [Packaging and Publishing](/en/docs/plugins/developing/packaging)
-- [Architecture: Plugin System](/en/docs/architecture/plugin-system)
+<span id="core-interface-and-lifecycle" />
+<span id="manifest-and-target-framework" />
+<span id="backup-filters-and-scopes" />
+<span id="ifolderrewindbackupfilterprovider" />
+<span id="ifolderrewindbackupscopeprovider" />
+<span id="backup-preparation-and-folder-details" />
+<span id="ifolderrewindbackuppreparationprovider" />
+<span id="ifolderrewindfolderdetailsprovider" />
+<span id="restore-interception-and-config-augmentation" />
+<span id="ifolderrewindrestoreinterceptor" />
+<span id="ifolderrewindconfigaugmenter" />
+<span id="knotlink-and-hotkeys" />
+<span id="full-backuprestore-takeover" />
+<span id="exceptions-threads-and-compatibility" />
+<span id="related-links" />

@@ -1,185 +1,78 @@
 ---
 sidebar_position: 3
-title: Plugin API 参考
-description: FolderRewind 1.8 插件接口、生命周期与扩展点参考，说明宿主与插件之间的契约和版本兼容规则
+title: "Plugin API 3.5 参考"
+description: "FolderRewind 1.9 系列Plugin API 3.5 参考操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Plugin API 参考
+# Plugin API 3.5 参考
 
-本文以当前 `Services/Plugins/` 源码为准，说明 FolderRewind 1.8 的插件接口。使用本页新增接口的插件应在 `manifest.json` 中声明 `MinHostVersion: "1.8.0"`；如果同时依赖 1.8.1 的修复，再声明 `1.8.1`。
+公开契约在 `FolderRewind.Plugin.Abstractions`，目标 `net10.0`。SDK 包3.5.0对应 API 3.5；程序集身份保持3.0.0.0。兼容条件是 major 相同且 Host minor 不低于插件请求；不要用应用版本比较替代此规则。
 
-## 核心接口与生命周期
+## 生命周期与注册
 
-所有插件必须实现 `IFolderRewindPlugin`：
+`IFolderRewindPlugin` 只有 `ActivateAsync(IPluginActivationContext, CancellationToken)` 和 `DeactivateAsync(CancellationToken)`。静态 manifest 定义产品／权限／能力；激活返回 `PluginActivationResult`，其中状态 patch 由 Host 验证并提交。
 
-```csharp
-public interface IFolderRewindPlugin
-{
-    PluginInstallManifest Manifest { get; }
-    IReadOnlyList<PluginSettingDefinition> GetSettingsDefinitions();
-    void Initialize(IReadOnlyDictionary<string, string> settingsValues);
-    void SetHostContext(PluginHostContext hostContext) { }
+激活时可以读取 `PluginSettingsSnapshot`、`ConfigSnapshot` 和 `FolderSnapshot`。每种能力契约最多注册一个实现，内部多个行为自行组合；Manifest 与注册集合必须一致。提交之前能力不可调用，激活阶段不能访问 DataStore。
 
-    string? OnBeforeBackupFolder(BackupConfig config, ManagedFolder folder,
-        IReadOnlyDictionary<string, string> settingsValues);
-    void OnAfterBackupFolder(BackupConfig config, ManagedFolder folder, bool success,
-        string? generatedArchiveFileName,
-        IReadOnlyDictionary<string, string> settingsValues);
-    object? OnBeforeRestoreFolder(BackupConfig config, ManagedFolder folder,
-        string archiveFileName, IReadOnlyDictionary<string, string> settingsValues) => null;
-    void OnAfterRestoreFolder(BackupConfig config, ManagedFolder folder, bool success,
-        string archiveFileName, object? state,
-        IReadOnlyDictionary<string, string> settingsValues) { }
-}
-```
+## 全部能力
 
-配置发现和完整接管成员有默认实现，可以按需覆盖：`GetSupportedConfigTypes`、`CanHandleConfigType`、`TryDiscoverManagedFolders`、`TryCreateConfigs`、`WantsToHandleBackup`、`PerformBackupAsync`、`WantsToHandleRestore` 和 `PerformRestoreAsync`。
+| 接口 | 清单能力 | 责任 |
+|---|---|---|
+| `IDiscoveryCapability` | `Discovery` | 发现候选与配置草稿 |
+| `IConfigReconciliationCapability` | `ConfigReconciliation` | 按配置修订提出变更 |
+| `IFilePolicyCapability` | `FilePolicy` | 必要包含／排除规则 |
+| `IBackupScopeCapability` | `BackupScope` | 参数化范围与就绪结果 |
+| `IBackupConsistencyCapability` | `BackupConsistency` | 提供可释放的一致性来源租约 |
+| `IFolderMetadataCapability` | `FolderMetadata` | 当前活跃文件夹详情 |
+| `IVersionMetadataProviderCapability` | `VersionMetadataProvider` | 同次稳定捕获的版本元数据 |
+| `IRestoreCoordinatorCapability` | `RestoreCoordinator` | 配置级环境协调和一次性继续执行 |
+| `IRestoreStagingPreparationCapability` | `RestoreStagingPreparation` | 普通还原的有界相对文件提案 |
+| `IPluginCommandCapability` | `PluginCommand` | 命令及默认快捷键 |
+| `IKnotLinkIntegrationCapability` | `KnotLinkIntegration` | 命令、参数、信号与远程执行 |
+| `IProviderStateMigrationCapability` | `ProviderStateMigration` | 版本化不透明提供器状态迁移 |
+| `IBackupArtifactTransformerCapability` | `BackupArtifactTransformer` | 受控不可变制品转换 |
+| `IBackupCompletionObserverCapability` | `BackupCompletionObserver` | 提交完成后的只读观察 |
+| `IRestoreMaterializerCapability` | `RestoreMaterializer` | 向隔离工作区物化制品 |
 
-Host 通常按以下顺序调用：
+`IDiscoveryDefinitionCatalog` 附加在 Discovery 实现上，`IKnotLinkTargetResolver` 附加在 KnotLink integration 上；两者不单独注册，也不单独声明 capability。
 
-```text
-加载 manifest → Initialize → SetHostContext
-配置发现/创建 → 备份前钩子或完整接管 → 备份后钩子
-还原前钩子/拦截器 → 标准还原或完整接管 → 还原后钩子
-```
+## 身份与快照
 
-## Manifest 与目标框架
+`PluginId` 是产品身份；`ConfigKindRef` 是 OwnerId + KindId；`DiscoveryProviderId` 标识发现来源；`StateOwnerId` 标识状态命名空间。即使文本相同，角色也不能互换。显示名、目录名和装载顺序不决定行为所有权。
 
-```json
-{
-  "Id": "com.example.myplugin",
-  "Name": "MyPlugin",
-  "Version": "1.0.0",
-  "EntryAssembly": "MyPlugin.dll",
-  "EntryType": "MyPlugin.MyPlugin",
-  "MinHostVersion": "1.8.0"
-}
-```
+`ConfigRevision` 绑定修改提案。设置值为 `JsonElement`；Provider State 带位置与 schemaVersion。插件传递快照、draft、patch、request、result 和 descriptor，不持有可写宿主模型。
 
-主程序引用的目标框架为 `net10.0-windows10.0.19041.0`。插件项目应使用兼容的 .NET 10 Windows 目标框架，并从实际安装/构建产物引用接口程序集；不要复制旧站点示例中的目标框架路径。
+## Host 服务
 
-## 备份过滤与范围
+`IPluginHostServices` 提供 Configs、Backups、Restores、History、Notifications、KnotLink、DataStore、TemporaryStorage 和 Logger。Manifest 的 requestedHostServices 限制正式服务入口；Artifact 服务由操作请求显式提供，仍必须声明。
 
-### `IFolderRewindBackupFilterProvider`
+插件代码在宿主进程内运行，拥有当前用户的环境权限。服务门控、哈希和 AssemblyLoadContext 都不是 OS／.NET 安全沙箱。
 
-```csharp
-PluginBackupFilterContribution? GetBackupFilterContribution(
-    BackupConfig config,
-    ManagedFolder folder,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
+## 取消、结果与诊断
 
-返回按次过滤贡献。Host 会克隆有效配置，不会污染用户保存的白名单/黑名单。
+操作上下文分别提供 `OperationCancellation` 与 `PluginLifetime`。尊重两者，释放租约和暂存资源，不启动无人管理的后台任务。就绪为 Ready／Degraded／Blocked；操作结果为 Success、SuccessWithWarnings、NoChanges、Canceled、Failed、Blocked、RecoveryRequired、CommittedRecoveryRequired。
 
-### `IFolderRewindBackupScopeProvider`
+恢复状态不等于普通失败：CommittedRecoveryRequired 表示持久提交已经发生，但后续恢复未完成；不能自动重试破坏性操作或自动重进游戏。使用 `PluginDiagnostic` 的 Code、Severity、Capability、Owner、Arguments，不把日志文本当稳定接口。
 
-```csharp
-IReadOnlyList<PluginBackupScopeDefinition> GetBackupScopeDefinitions(
-    BackupConfig config,
-    IReadOnlyDictionary<string, string> settingsValues);
+## 停用与设置更新
 
-PluginBackupScopeResolution ResolveBackupScope(
-    BackupConfig config,
-    ManagedFolder folder,
-    PluginBackupScopeContext scope,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
+Host 先撤销路由、取消生命周期并排空操作，再调用 DeactivateAsync。超过有界宽限期会逻辑隔离并报告 RequiresRestart，物理装载上下文可保留到重启。Enabled Intent 不等于 Active，Safe Mode 不改写用户启用意图。
 
-`PluginBackupScopeDefinition` 提供 `Id`、显示名、说明和参数定义；`PluginBackupScopeContext` 携带选中的 `ScopeId` 与参数；解析结果可为 `Applied`、`NotApplicable` 或 `Invalid`，并以 `Append`/`Replace` 合并过滤规则。区域备份使用 `Replace`，因此范围会替换普通白名单。
+继续阅读[实战教程](/docs/plugins/developing/tutorial)、[设置模式](/docs/plugins/developing/settings-schema)和[命令扩展](/docs/plugins/developing/knotlink-api)。
 
-## 备份准备与文件夹详情
-
-### `IFolderRewindBackupPreparationProvider`
-
-```csharp
-string? OnBeforeBackupFolder(
-    BackupConfig config,
-    ManagedFolder folder,
-    BackupInvocationOptions invocationOptions,
-    IReadOnlyDictionary<string, string> settingsValues);
-```
-
-该接口可以读取触发来源和一致性偏好；未实现时仍调用核心接口的 `OnBeforeBackupFolder`。
-
-### `IFolderRewindFolderDetailsProvider`
-
-```csharp
-Task<IReadOnlyList<FolderDetailsSection>> GetFolderDetailsSectionsAsync(
-    BackupConfig config,
-    ManagedFolder folder,
-    IReadOnlyDictionary<string, string> settingsValues,
-    CancellationToken cancellationToken);
-```
-
-插件只返回只读键值数据，Host 统一渲染详情对话框。单个插件异常不会阻止其他详情显示。
-
-## 还原拦截与配置补全
-
-### `IFolderRewindRestoreInterceptor`
-
-```csharp
-Task<PluginRestoreInterceptionResult> TryInterceptRestoreAsync(
-    BackupConfig config,
-    ManagedFolder folder,
-    string archiveFileName,
-    IReadOnlyDictionary<string, string> settingsValues,
-    CancellationToken cancellationToken);
-```
-
-返回 `Continue` 让 Host 继续，`Handled` 表示插件已完成请求，`Blocked` 表示拒绝还原。使用 `PluginRestoreInterceptionResult.Continue/Handled/Blocked(...)` 创建结果。
-
-### `IFolderRewindConfigAugmenter`
-
-```csharp
-PluginConfigAugmentationResult AugmentConfigs(
-    PluginConfigAugmentationRequest request,
-    IReadOnlyDictionary<string, string> settingsValues);
-
-bool ShouldAugmentAfterSettingsChange(
-    IReadOnlyDictionary<string, string> previousSettings,
-    IReadOnlyDictionary<string, string> currentSettings) => false;
-```
-
-插件返回建议追加的 `ManagedFolder`，Host 负责去重、冲突过滤、保存和通知。不要直接修改 `ConfigService.CurrentConfig`。
-
-## KnotLink 与快捷键
-
-- `IFolderRewindParameterizedKnotLinkCommandHandler`：实现 `TryHandleParameterizedKnotLinkCommandAsync(KnotLinkCommandRequest, settingsValues, hostContext)`，参见 [KnotLink Command API](/docs/plugins/developing/knotlink-api)。
-- `IFolderRewindKnotLinkCapabilityProvider`：实现 `GetKnotLinkCapabilities()`，发布运行时可发现的命令和信号。
-- `IFolderRewindHotkeyProvider`：实现 `GetHotkeyDefinitions()` 和 `OnHotkeyInvokedAsync(...)`，注册全局或应用内快捷键。
-
-`PluginHostContext` 提供插件 ID、KnotLink 状态、事件广播、查询/发送命令、信号订阅和日志方法。KnotLink 负载必须遵循严格键值对协议 v2。
-
-## 完整接管备份/还原
-
-仅在插件确实拥有不同的归档格式或流程时返回 `WantsToHandleBackup/Restore = true`，再实现：
-
-```csharp
-Task<PluginBackupResult> PerformBackupAsync(
-    BackupConfig config, ManagedFolder folder, string comment,
-    IReadOnlyDictionary<string, string> settingsValues,
-    Action<double, string>? progressCallback = null);
-
-Task<PluginRestoreResult> PerformRestoreAsync(
-    BackupConfig config, ManagedFolder folder, string archiveFileName,
-    IReadOnlyDictionary<string, string> settingsValues,
-    Action<double, string>? progressCallback = null);
-```
-
-`PluginBackupResult` 包含 `Success`、`GeneratedFileName` 和 `Message`；`PluginRestoreResult` 包含 `Success` 和 `Message`。普通插件应优先使用钩子和扩展接口，避免绕过 Host 的历史、清理和安全策略。
-
-## 异常、线程与兼容性
-
-- 插件运行在宿主进程内；在钩子、命令处理器和详情提供器中捕获预期异常。
-- 不要在 UI 线程执行长时间 I/O；使用异步方法，并用 `CancellationToken` 响应取消。
-- 不要缓存跨版本的内部模型或直接改写 Host 服务状态。
-- 新接口需要 1.8.0，MineRewind 当前 manifest 使用 `MinHostVersion: 1.8.1`；发布前应按实际最低 API 调整。
-- ZIP 根目录必须包含 `manifest.json` 和入口程序集，依赖放在同一插件目录。
-
-## 相关链接
-
-- [插件开发快速上手](/docs/plugins/developing/quick-start)
-- [实战教程](/docs/plugins/developing/tutorial)
-- [KnotLink Command API](/docs/plugins/developing/knotlink-api)
-- [插件打包与发布](/docs/plugins/developing/packaging)
-- [项目架构：插件体系](/docs/architecture/plugin-system)
+<span id="核心接口与生命周期" />
+<span id="manifest-与目标框架" />
+<span id="备份过滤与范围" />
+<span id="ifolderrewindbackupfilterprovider" />
+<span id="ifolderrewindbackupscopeprovider" />
+<span id="备份准备与文件夹详情" />
+<span id="ifolderrewindbackuppreparationprovider" />
+<span id="ifolderrewindfolderdetailsprovider" />
+<span id="还原拦截与配置补全" />
+<span id="ifolderrewindrestoreinterceptor" />
+<span id="ifolderrewindconfigaugmenter" />
+<span id="knotlink-与快捷键" />
+<span id="完整接管备份还原" />
+<span id="异常线程与兼容性" />
+<span id="相关链接" />
