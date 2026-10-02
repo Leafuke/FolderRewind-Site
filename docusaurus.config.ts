@@ -20,6 +20,15 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  plugins: [function exampleSourceLoader() {
+    return {
+      name: 'example-source-loader',
+      configureWebpack() {
+        return {resolveLoader: {alias: {'raw-loader': require.resolve('raw-loader')}}};
+      },
+    };
+  }],
+
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans', 'en'],
