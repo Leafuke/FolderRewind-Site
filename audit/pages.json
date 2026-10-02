@@ -164,7 +164,7 @@
       "path": "docs/guides/cloud-archive.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/cloud-archive.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
