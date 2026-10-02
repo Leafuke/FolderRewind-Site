@@ -1,46 +1,31 @@
 ---
 sidebar_position: 2
-title: Minecraft 快速开始
-description: 10 分钟完成 MineRewind 安装、存档扫描和首次备份的入门流程，快速上手 Minecraft 存档保护
+title: "Minecraft 快速开始"
+description: "FolderRewind 1.9 系列Minecraft 快速开始操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # Minecraft 快速开始
 
-## 步骤 1：安装插件
+## 安装并启用
 
-1. 打开 FolderRewind 的插件管理。
-2. 安装 `MineRewind`（市场安装或本地 ZIP）。
-3. 重启应用。
+使用支持 API3.5 的 Host 和 MineRewind1.9.3候选；正式使用按 Release 核对。设置→插件管理从目录或本地 .frplugin 安装，检查声明并显式启用。看到 Enabled Intent 后还需确认 Active；旧1.8 ZIP不能兼容。
 
-![FolderRewind 设置页中的 MineRewind 插件卡片](/img/docs/guides/minecraft/mine-rewind-settings.webp)
+## 发现实例
 
-## 步骤 2：扫描 `.minecraft`
+从首页的 Minecraft 创建流程、插件批量发现或游戏发现 Beta 选择 .minecraft／versions／实例 saves 根。检查生成的备份集合／世界草稿、Kind、目标目录和来源范围；摘要确认后由 Host 创建。AutoCreateConfigs 默认 false；AutoDiscoverSaves 默认 true。多实例可分别建配置。
 
-1. 新建配置时选择 Minecraft 相关流程。
-2. 选择你的 `.minecraft` 根目录。
-3. 让插件自动发现存档并创建配置。
+## 首次验证
 
-![MineRewind 插件设置，展示自动发现存档和自动识别添加配置开关](/img/docs/guides/minecraft/mine-rewind-plugin-settings.webp)
+用世界副本，先停止游戏写入，执行 Full 备份并在测试目录还原，比较内容。再联调 KnotLink Server v3 与对应游戏组件，确认运行时 GET_CAPABILITIES 暴露当前世界命令。
 
-打开生成的世界配置后，可以在文件夹详情中确认世界名称、游戏模式和存档格式等信息。
-
-![Minecraft 世界详情窗口，展示世界名称、游戏模式、种子和存档格式](/img/docs/guides/minecraft/minecraft-world-details.webp)
-
-## 步骤 3：验证一次备份
-
-1. 选择一个世界执行手动备份。
-2. 检查备份记录是否生成。
-3. 可选：在测试世界演练一次还原。
-
-## 推荐设置
-
-- `EnableHotBackup = true`
-- 若你需要还原后尽量保留玩家状态，再开启 `PreservePlayerData`
+不要寻找旧 EnableHotBackup 选项；一致性由配置请求 Prefer／Require 和运行时 provider 决定。若启用 PreservePlayerData，另测试全 UUID、false override、stats／advancements及布局兼容。
 
 ## 下一步
 
-- [Minecraft 专题总览](/docs/guides/minecraft/overview)
-- [热备份机制详解](/docs/guides/minecraft/hot-backup)
-- [热还原机制详解](/docs/guides/minecraft/hot-restore)
-- [自动化任务](/docs/guides/automation)
-- [备份模式详解](/docs/guides/backup-modes)
+[区域保护](/docs/guides/minecraft/selected-region-backup)、[热备份](/docs/guides/minecraft/hot-backup)、[热还原](/docs/guides/minecraft/hot-restore)。真实游戏加载必须单独验收，文件级测试不替代它。
+
+<span id="步骤-1安装插件" />
+<span id="步骤-2扫描-minecraft" />
+<span id="步骤-3验证一次备份" />
+<span id="推荐设置" />

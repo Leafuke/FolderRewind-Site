@@ -1,108 +1,43 @@
 ---
 sidebar_position: 3
-title: Hot Backup Mechanism
-description: How MineRewind safely triggers a backup while the game is running, using world snapshots and file-lock coordination
+title: "Minecraft hot backup and consistency leases"
+description: "FolderRewind 1.9 minecraft hot backup and consistency leases: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Hot Backup Mechanism
+# Minecraft hot backup and consistency leases
 
-This page targets advanced MineRewind users and explains when hot backup is triggered, how decisions are made, and why fallback to regular backup can happen.
+## Active target
 
-## Source mapping
+MineRewind1.9.3 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
 
-| Capability | Core methods/constants | Location |
-|---|---|---|
-| Hot backup entry | `OnBeforeBackupFolder(...)` | `MinecraftSavesPlugin.Snapshot.cs` |
-| Force-hot flag | `MarkForceHotBackup` / `IsForceHotBackupRequested` | `MinecraftSavesPlugin.Snapshot.cs` |
-| File lock check | `IsFileLocked(...)` | `MinecraftSavesPlugin.Snapshot.cs` |
-| Handshake flow | `PerformModHandshakeSync("backup", ...)` | `MinecraftSavesPlugin.Restore.cs` |
-| Key switch | `EnableHotBackup` (`HotBackupSettingKey`) | `MinecraftSavesPlugin.cs` |
-| Key timeout | `HandshakeTimeoutMs` / `WorldSaveTimeoutMs` | `MinecraftSavesPlugin.cs` |
+## Coordination
 
-## Trigger entry points
+The Host resolves Kind/readiness/consistency intent and calls IBackupConsistencyCapability. Active worlds coordinate KnotLink/mod handshake/WORLD_SAVED. A disposable snapshot source feeds the same enumeration/archive capture.
 
-- Regular backup flow (world file is occupied before backup)
-- Global hotkey `Alt+Ctrl+S`
-- KnotLink v2 request `cmd=BACKUP;current_save=true;...`
+Success, cancellation and failure must release temporary data. v3 does not return replacement paths through OnBeforeBackupFolder or edit archives afterward.
 
-## Trigger conditions
+## Prefer and Require
 
-MineRewind first confirms target is a Minecraft world folder:
+With permitted rawWithWarnings, Prefer can degrade to SuccessWithWarnings plus specific coordination/snapshot diagnostics; it is not proof of game consistency. Require blocks unavailable handshake/save/stable source. Missing/invalid region providers must not silently broaden protection.
 
-- `level.dat` exists in current `ManagedFolder`
-- Config type is `Minecraft Saves`
-
-Then it decides whether to coordinate hot backup:
-
-- `level.dat` is locked
-- Or command requested forced hot backup
-
-If these conditions are not met, plugin returns `null` and host continues normal backup.
-
-## Execution flow
-
-1. Read plugin settings and confirm `EnableHotBackup = true`
-2. Handshake with integration mod (`action = backup`)
-3. If handshake succeeds, broadcast `pre_hot_backup`
-4. Wait for `WORLD_SAVED` confirmation (with timeout)
-5. Continue host backup flow
-
-> If handshake fails, times out, or is incompatible, plugin falls back to regular backup.
-
-### Sequence (text)
+## Request and acceptance
 
 ```text
-Host backup start
-  -> MineRewind.OnBeforeBackupFolder
-      -> check configType + EnableHotBackup + level.dat
-      -> if locked/forced: handshake(action=backup)
-          -> success: Broadcast pre_hot_backup
-          -> wait WORLD_SAVED (10s)
-          -> return to Host regardless of result
-  -> Host continues backup engine
+cmd=BACKUP;current_save=true;backup_mode=smart;from=panel;request_id=hot-001
 ```
 
-## Key timeout behavior
+Query capabilities and correlate final signals. Missing/multiple worlds produce diagnostics; accepted is not finished. Test online coordination, offline warnings, Require blocking, cancellation, cleanup and real archive restores.
 
-- Handshake timeout: `HandshakeTimeoutMs = 3000`
-- World-save wait timeout: `WorldSaveTimeoutMs = 10000`
-- Timeout policy: log and continue regular backup
-
-Hot coordination is best-effort and does not block backup forever.
-
-## Command example
-
-### Request
-
-```text
-cmd=BACKUP;current_save=true;comment=QuickSave;from=minebackup.mod;request_id=hot-backup-001
-```
-
-### Typical response
-
-```text
-OK:Backup started for 'WorldName'
-```
-
-If no active world:
-
-```text
-ERROR:No active world.
-```
-
-## Difference vs regular backup
-
-- Regular backup: directly enters backup engine
-- Hot backup: attempts mod save-flush coordination first
-
-## Best practices
-
-- Keep `EnableHotBackup = true` for long-running worlds
-- Run one manual chain test before daily use
-- Trigger extra manual backup at important moments in heavy modpacks
-
-## Related links
-
-- [Minecraft Quick Start](/en/docs/guides/minecraft/quick-start)
-- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
-- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
+<span id="source-mapping" />
+<span id="trigger-entry-points" />
+<span id="trigger-conditions" />
+<span id="execution-flow" />
+<span id="sequence-text" />
+<span id="key-timeout-behavior" />
+<span id="command-example" />
+<span id="request" />
+<span id="typical-response" />
+<span id="difference-vs-regular-backup" />
+<span id="best-practices" />
+<span id="related-links" />

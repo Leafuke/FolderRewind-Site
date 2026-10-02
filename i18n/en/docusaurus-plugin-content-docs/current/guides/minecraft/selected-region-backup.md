@@ -1,94 +1,53 @@
 ---
 sidebar_position: 3
-title: Minecraft Selected-Region Backup
-description: Select region files by dimension with FolderRewind 1.8 and safely restore a partial world backup
+title: "Minecraft selected-region backups"
+description: "FolderRewind 1.9 minecraft selected-region backups: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Minecraft Selected-Region Backup
+# Minecraft selected-region backups
 
-FolderRewind 1.8 can back up only region files within selected ranges of a Minecraft world. This is useful for partitioning protection of very large worlds, but the result is a **partial backup**, not a complete world snapshot.
+MineRewind1.9 selected-regions takes **block-coordinate** rectangles, creating partial captures. Inputs are not .mca region coordinates or chunk coordinates.
 
-:::danger Partial backups use Overwrite restore only
-For both normal and hot restore, a selected-region backup is forced to **Overwrite**. **Clean** is unavailable because it could delete world files that were never included in the backup.
-:::
+## Configure coordinates
 
-## Configuration
-
-1. Open **Config Settings** for the Minecraft world.
-2. Go to **Backup Policy** and set the backup scope to **Minecraft Selected Regions**.
-3. Select the dimensions to protect.
-4. Enter one region range per line in `x1,z1,x2,z2` format.
-5. Save, run a manual backup, and validate it against a test copy first.
-
-![Minecraft config settings showing the backup type and path fields with path values hidden](/img/docs/guides/minecraft/minecraft-region-config-settings.webp)
-
-For example:
+Select the plugin scope in backup policy, explicitly choose overworld/nether/end and enter x1,z1,x2,z2 per line:
 
 ```text
-# Rectangle around spawn
--2,-2,2,2
-
-# A second range
-10,8,14,12
+# Cross boundaries: region -1,0,1
+-512,-512,512,512
+# One nonnegative region
+0,0,511,511
 ```
 
-These are `.mca` **region-file coordinates**, not block or chunk coordinates. Either pair of opposite corners may come first.
+Finite floating values in[-30000000,30000000] are accepted. region=floor(block/512): -0.5→-1,0→0,511→0,512→1. Corners may be reversed; never truncate negatives toward zero.
 
-## Dimensions and directory layouts
+## Limits
 
-Ranges can be selected independently for the Overworld, Nether, and End. FolderRewind recognizes supported world layouts including:
+| Input | Limit/rule |
+|---|---|
+| UTF-8 areas text |32 KiB |
+| Effective rectangles |128, excluding blanks/# comments |
+| Coordinates | Finite and within world bounds |
+| Deduplicated regions |4096 per dimension |
+| Format | Four comma-separated numbers, no extra fields |
 
-| Dimension | Common directory examples |
-|-----------|---------------------------|
-| Overworld | `region/`, `entities/`, `poi/` |
-| Nether | `DIM-1/region/`, plus corresponding Paper/Spigot world directories |
-| End | `DIM1/region/`, plus corresponding Paper/Spigot world directories |
+Empty/invalid/oversized/ambiguous input blocks the operation rather than producing silently incomplete content. Early regions/selectedRegions compatibility fields are not current areas UI semantics.
 
-Detection covers legacy Vanilla layout, split-dimension Paper/Spigot layouts, and supported layouts used by Minecraft 26.1 and later. If a directory ambiguously matches multiple layouts, the backup is rejected instead of guessing.
+## Included files
 
-For every selected region, FolderRewind includes the matching `.mca` files from `region`, `entities`, and `poi`, along with referenced external `.mcc` files. It also preserves essential world files needed for a valid restore.
+Selected .mca files in region/entities/poi plus essential world/player/data rules are included. For external large-chunk safety, current code includes **all c.*.*.mcc** in the relevant dimension directories, not just referenced files parsed from selected .mca. Size can exceed a rectangle estimate.
 
-## Input limits
+Supported recognized Vanilla/Paper/Spigot/26.1 layouts are accepted; ambiguity blocks. SourceScope/config filters can narrow further; scope never expands the source boundary. Inspect archive inventory after changes.
 
-| Item | Limit |
-|------|-------|
-| Configuration text | 32 KiB maximum |
-| Effective range lines | Up to 128 per configuration (blank lines and comments excluded) |
-| Coordinate range | `-30000000` to `30000000` |
-| Deduplicated region files | Up to 4096 per dimension |
-| Line format | Exactly `x1,z1,x2,z2`, with four integers |
+## Restore
 
-Lines beginning with `#` may be used as comments. Out-of-range coordinates, missing or extra fields, non-integers, or an expanded selection above the limit reject the **entire backup**. FolderRewind does not silently skip bad lines and produce an incomplete result.
+Partial captures always Overwrite in ordinary/hot Restore. Clean cannot delete omitted regions; other regions do not return to the same time. Stop writes or complete coordination. Verify dimensions/entities/POI/large chunks and real loading on copies first.
 
-## Relationship with filters
-
-Selected-region mode replaces the normal backup whitelist with the calculated region scope. Do not rely on a regular whitelist to expand the backup: the region selection is the source of truth for this run's scope.
-
-Exclusion rules should still be used carefully. Reinspect backup contents and repeat a restore test after changing filters or region ranges.
-
-## Safe restore rules
-
-- Normal restore and hot restore are both forced to **Overwrite**.
-- **Clean** is unavailable, so unselected regions and other files are not erased first.
-- Overwrite restores only packaged content; it does not rewind the rest of the target world to the same point in time.
-- Stop server writes before a normal restore. For hot restore, follow MineRewind's world unload and reload flow.
-- Before first production use, copy the world and validate dimensions, entities, POI data, and external chunk files.
-
-## When a backup is rejected
-
-Check:
-
-1. Every line uses exactly `x1,z1,x2,z2`.
-2. Coordinates, line count, text size, and deduplicated region count are within limits.
-3. Selected dimensions exist and the world layout is supported and unambiguous.
-4. The world directory is complete and readable by the process account.
-
-Do not remove essential directories mentioned by an error just to bypass validation. Selected-region mode fails closed: a rejection normally means FolderRewind cannot guarantee a safely restorable result.
-
-## Related links
-
-- [Minecraft Overview](/en/docs/guides/minecraft/overview)
-- [First Backup](/en/docs/getting-started/first-backup)
-- [First Restore](/en/docs/getting-started/first-restore)
-- [Filters](/en/docs/guides/filters)
-- [Minecraft Hot Restore](/en/docs/guides/minecraft/hot-restore)
+<span id="configuration" />
+<span id="dimensions-and-directory-layouts" />
+<span id="input-limits" />
+<span id="relationship-with-filters" />
+<span id="safe-restore-rules" />
+<span id="when-a-backup-is-rejected" />
+<span id="related-links" />

@@ -1,46 +1,32 @@
 ---
 sidebar_position: 2
-title: Minecraft Quick Start
-description: Finish MineRewind setup, save scanning, and your first backup in 10 minutes with this quick start guide for Minecraft saves
+title: "Minecraft quick start"
+description: "FolderRewind 1.9 minecraft quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Minecraft Quick Start
+# Minecraft quick start
 
-## Step 1: Install plugin
+## Install and enable
 
-1. Open Plugin Management in FolderRewind.
-2. Install `MineRewind` (market or local ZIP).
-3. Restart the app.
+Use an API3.5 Host and MineRewind1.9.3 candidate; verify released versions for production. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
 
-![MineRewind plugin card in FolderRewind Settings](/img/docs/guides/minecraft/mine-rewind-settings.webp)
+## Discover instances
 
-## Step 2: Scan `.minecraft`
+Use Home Minecraft creation, plugin batch discovery or game discovery Beta with .minecraft/versions/instance saves roots. Review sets/world drafts, Kind, destinations/scopes; the Host persists after summary confirmation. AutoCreateConfigs defaults false; AutoDiscoverSaves true. Instances can have independent configs.
 
-1. Choose Minecraft-related flow when creating config.
-2. Select your `.minecraft` root folder.
-3. Let plugin auto-discover saves and create configs.
+## Validate
 
-![MineRewind plugin settings showing the save discovery and automatic config switches](/img/docs/guides/minecraft/mine-rewind-plugin-settings.webp)
+Stop writers on a copied world, make Full backup and test restore/content comparison. Then integrate KnotLink Server v3 and the appropriate game component, checking runtime current-world capabilities.
 
-Open a generated world config to confirm its world name, game mode, and save format in the folder details.
+The old EnableHotBackup setting is absent. Config Prefer/Require intent and providers resolve consistency. Test PreservePlayerData with all UUIDs, explicit false, stats/advancements and layout compatibility.
 
-![Minecraft world details dialog showing the world name, game mode, seed, and save format](/img/docs/guides/minecraft/minecraft-world-details.webp)
+## Next
 
-## Step 3: Verify one backup
+Read [regions](/docs/guides/minecraft/selected-region-backup), [hot backup](/docs/guides/minecraft/hot-backup), [hot restore](/docs/guides/minecraft/hot-restore). File tests do not replace actual game-loading acceptance.
 
-1. Select one world and run manual backup.
-2. Check whether backup history is generated.
-3. Optional: run one restore drill in a test world.
-
-## Recommended settings
-
-- `EnableHotBackup = true`
-- Enable `PreservePlayerData` if you want to preserve player state after restore when possible
-
-## Next steps
-
-- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
-- [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup)
-- [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
-- [Automation](/en/docs/guides/automation)
-- [Backup Modes](/en/docs/guides/backup-modes)
+<span id="step-1-install-plugin" />
+<span id="step-2-scan-minecraft" />
+<span id="step-3-verify-one-backup" />
+<span id="recommended-settings" />
+<span id="next-steps" />

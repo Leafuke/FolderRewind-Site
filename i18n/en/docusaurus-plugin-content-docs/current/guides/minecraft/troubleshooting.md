@@ -1,123 +1,39 @@
 ---
 sidebar_position: 6
-title: Troubleshooting
-description: Common MineRewind issues, causes, and resolution steps, covering scan failures, hot backup conflicts, and restore errors
+title: "Minecraft troubleshooting"
+description: "FolderRewind 1.9 minecraft troubleshooting: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Troubleshooting
+# Minecraft troubleshooting
 
-This page follows "check chain first, then symptoms" to reduce trial-and-error.
+## Check the chain
 
-## 60-second chain health check
+Check Host API3.5, MineRewind provenance/version, Enabled Intent and Active, Kind, valid world path/session.lock, KnotLink/game component and materializable history. Old EnableHotBackup/v2 hooks are not current diagnostic entrypoints.
 
-Verify in order:
-
-1. Plugin is enabled and `EnableHotBackup` is configured correctly.
-2. Config type is `Minecraft Saves`.
-3. Current world folder contains `level.dat`.
-4. KnotLink and integration mod are online.
-5. At least one backup file exists (for restore chain).
-
-Any failed step can make hot backup/hot restore look like "no action" or "fallback".
-
-## Symptom-to-source map
-
-| Symptom | First logic to inspect |
+| Symptom | Check/action |
 |---|---|
-| Saves not discovered | `TryDiscoverManagedFolders(...)` |
-| Hot backup not coordinated | pre-return conditions in `OnBeforeBackupFolder(...)` |
-| Hot restore ignored | non-reentrancy state machine in `TriggerHotRestoreAsync(...)` |
-| Specified backup restore failed | `cmd=RESTORE` `file` field and file existence check |
-| Player data not preserved | `OnBeforeRestoreFolder` / `OnAfterRestoreFolder` |
+| No worlds | Roots/AutoDiscoverSaves/instance definitions/scan diagnostics; review drafts |
+| Backup warnings | Prefer degradation/handshake/snapshot failure; Require must block; test recovery |
+| Wrong region | Block coordinates/floor512/dimensions/scopes/filters/all.mcc rule |
+| Quick Restore unchanged | Already at active-branch target; no older version selection |
+| Restore blocked | Divergence/closure/multiple worlds/coordination/recovery state |
+| Player preservation missing | Local setting/explicit false/ordinaryRestore/allUUID/layout/proposal errors |
+| Restored but no rejoin | Separate Host success from rejoin warning; inspect before entering |
 
-## Symptom 1: saves are not discovered
+## Diagnostics
 
-Possible causes:
+Use GET_CAPABILITIES/LIST_BACKUPS for runtime targets/arguments; percent-encode filenames. Install/activation/readiness/outcomes differ. RecoveryRequired/CommittedRecoveryRequired prohibit destructive retries/automatic rejoin.
 
-- Selected directory is not `.minecraft`, `saves`, or version folder
-- World folder does not contain `level.dat`
+Report versions, time, request_id, outcomes and redacted logs. Do not upload tokens/private paths/production worlds. Preserve copied-world game-loading errors; passing NBT tests is insufficient.
 
-Fix steps:
-
-1. Ensure selected folder is Minecraft root or `saves`.
-2. Confirm `level.dat` exists in target world folder.
-3. Retry scan or add folder manually.
-
-## Symptom 2: hot backup coordination does not trigger
-
-Possible causes:
-
-- `EnableHotBackup` is disabled
-- KnotLink/integration mod unavailable
-- World files are not occupied, so flow falls back to regular backup
-
-Note: any early `return null` in `OnBeforeBackupFolder(...)` leads to fallback.
-
-Fix steps:
-
-1. Confirm `EnableHotBackup = true`.
-2. Verify integration mod and KnotLink availability.
-3. Test the forced path via `cmd=BACKUP;current_save=true;...`.
-
-## Symptom 3: hot restore is cancelled midway
-
-Possible causes:
-
-- Handshake timeout or version incompatibility
-- World files not released before timeout
-- No available backup file
-
-Note: hot restore has staged timeouts (commonly 10s/15s/30s).
-
-Fix steps:
-
-1. Run `cmd=LIST_BACKUPS;current_save=true` to confirm backup existence.
-2. Verify mod/service status and retry.
-3. Use regular restore flow if issue persists.
-
-## Symptom 4: specified backup restore fails
-
-Possible causes:
-
-- Typo in the `cmd=RESTORE` `file` field
-- Backup file moved or deleted
-
-Fix steps:
-
-1. List backups and copy the exact filename.
-2. Percent-encode the filename and retry the specified restore request.
-
-## Symptom 5: player state is abnormal after restore
-
-Possible causes:
-
-- `PreservePlayerData` not enabled
-- World data structure does not satisfy write-back conditions
-
-Fix steps:
-
-1. Enable `PreservePlayerData` in plugin settings.
-2. Validate the full preserve flow in a test world first.
-
-## Diagnostic command template
-
-```text
-1) cmd=BACKUP;current_save=true;from=minebackup.mod;request_id=diag-001
-2) cmd=LIST_BACKUPS;current_save=true
-3) cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=diag-002
-4) cmd=RESTORE;current_save=true;file=<encoded from step 2>;from=minebackup.mod;request_id=diag-003
-```
-
-If step 1 fails, prioritize active-world detection and integration availability.
-If step 3/4 fails, prioritize restore prerequisites and backup file existence.
-
-## Still not solved?
-
-- Export logs and include reproduction steps (trigger method, timestamp, command, result)
-- Open an issue in community/repository
-
-## Related links
-
-- [Minecraft Guide Overview](/en/docs/guides/minecraft/overview)
-- [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
-- [Install and Manage Plugins](/en/docs/plugins/using-plugins)
+<span id="60-second-chain-health-check" />
+<span id="symptom-to-source-map" />
+<span id="symptom-1-saves-are-not-discovered" />
+<span id="symptom-2-hot-backup-coordination-does-not-trigger" />
+<span id="symptom-3-hot-restore-is-cancelled-midway" />
+<span id="symptom-4-specified-backup-restore-fails" />
+<span id="symptom-5-player-state-is-abnormal-after-restore" />
+<span id="diagnostic-command-template" />
+<span id="still-not-solved" />
+<span id="related-links" />

@@ -4,6 +4,10 @@ description: 检测 Minecraft 高风险状态并自动创建事故现场快照�
 ---
 
 # Just Enough Accidents（险兆备份）
+:::info[FolderRewind 1.9 后端基线]
+接入本网站当前教程时使用支持 API3.5 的 FolderRewind1.9与MineRewind1.9.3；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+:::
+
 
 Just Enough Accidents（JEA）是 MineBackup 的事故检测扩展。它在单人世界或 LAN 世界中发现高风险状态后，请求 MineBackup 与 FolderRewind 创建一次事故现场快照。
 
@@ -50,7 +54,7 @@ JEA 0.2.0 不支持专用服务器。专用服务器加载时只记录一次禁�
 - 同一 Tick 内的多个险兆会合并为一份世界快照。
 - MineBackup 接受请求后进入默认 60 秒全局冷却；立即拒绝不会占用冷却。
 - 正在执行的请求、冷却期间的请求和后端拒绝不会排队重试。
-- JEA 快照与普通 FolderRewind 备份共用同一个 `KeepCount`。
+- JEA 快照与普通 FolderRewind 备份共用配置的 `KeepCount` Checkpoint 保留策略。
 - 频繁触发可能使较旧归档按正常策略清理；JEA 不提供独立配额、固定槽位或保护槽位。
 
 ## 计分板触发

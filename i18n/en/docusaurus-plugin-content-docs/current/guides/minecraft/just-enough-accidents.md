@@ -4,6 +4,10 @@ description: Detect high-risk Minecraft states and create MineBackup incident sn
 ---
 
 # Just Enough Accidents
+:::info[FolderRewind1.9 backend baseline]
+For this site's current workflow use an API3.5 FolderRewind1.9 Host and MineRewind1.9.3. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
+:::
+
 
 Just Enough Accidents (JEA) is an accident-detection extension for MineBackup. In singleplayer or LAN worlds, it detects high-risk states and asks MineBackup and FolderRewind to create an incident snapshot.
 

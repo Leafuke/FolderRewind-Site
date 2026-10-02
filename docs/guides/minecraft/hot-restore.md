@@ -1,131 +1,48 @@
 ---
 sidebar_position: 4
-title: 热还原机制详解
-description: MineRewind 的保存-退出-还原-重进完整流程与超时策略，在游戏运行期间安全回滚世界到任意备份点
+title: "Minecraft 热还原与玩家数据保留"
+description: "FolderRewind 1.9 系列Minecraft 热还原与玩家数据保留操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 热还原机制详解
+# Minecraft 热还原与玩家数据保留
 
-热还原用于“当前正在游玩的世界”，目标是把常见的“手动保存 -> 退出 -> 还原 -> 重新进入”收敛成单条自动链路。
+## Host 管理的还原
 
-![历史时间轴中的 Minecraft 备份记录和还原操作入口](/img/docs/getting-started/history-timeline-page.webp)
+MineRewind 用配置级 RestoreCoordinator 接收全部受影响来源、OperationId 和 Restore／Checkout／Merge 类型，协调活动世界保存、退出及 session.lock 释放。多个活动世界、握手失败或来源仍占用时拒绝，不绕过环境检查。
 
-## 源码映射
+准备完成后调用一次 Host continuation；实际写入、Safe Restore 和恢复事务由 Host 管理。插件返回后不能继续写 live 世界。Merge／Checkout同样协调环境，但不启用普通还原玩家保留；零写入合并无需退出。
 
-| 能力 | 核心方法/常量 | 位置 |
-|---|---|---|
-| 热还原入口 | `TriggerHotRestoreAsync(...)` | `MinecraftSavesPlugin.Restore.cs` |
-| 命令触发入口 | `HandleRestoreCurrentLatestAsync` / `HandleRestoreCurrentAsync` | `MinecraftSavesPlugin.KnotLink.cs` |
-| 状态机防重入 | `RestoreIdle/RestoreWaitingForMod/RestoreRestoring` + `Interlocked.CompareExchange` | `MinecraftSavesPlugin.cs` / `MinecraftSavesPlugin.Restore.cs` |
-| 文件释放等待 | `WaitForWorldReleaseAsync` / `WaitForFileUnlockedAsync` | `MinecraftSavesPlugin.Restore.cs` |
-| 关键超时 | `WorldExitTimeoutMs` / `FileReleaseTimeoutMs` / `RejoinTimeoutMs` | `MinecraftSavesPlugin.cs` |
-| 玩家数据保留 | `OnBeforeRestoreFolder` / `OnAfterRestoreFolder` | `MinecraftSavesPlugin.Restore.cs` |
+## 目标和模式
 
-## 两种触发方式
-
-- 热键触发：`Alt+Ctrl+Z`
-- KnotLink v2 命令触发：
-  - `cmd=RESTORE;current_save=true;...`（`file` 为空表示最新备份）
-  - 增加 `file=<encoded backup filename>` 选择指定备份
-
-## 执行前提
-
-- 当前有可识别的活跃世界（世界文件处于占用状态）
-- 有可用的历史备份（最新或指定文件）
-- 联动模组与 KnotLink 正常可用
-
-如果任一条件不满足，流程会中止并记录失败原因。
-
-## 状态机说明
-
-热还原通过原子状态避免并发执行：
-
-- `RestoreIdle`：空闲，可进入流程
-- `RestoreWaitingForMod`：等待模组保存并退出
-- `RestoreRestoring`：正在执行还原
-
-如果在非空闲状态再次触发，会直接忽略本次请求并记录日志。
-
-## 执行流程（源码对照）
-
-1. 握手（action = `restore`）并校验模组版本
-2. 发送 `pre_hot_restore`，等待“保存并退出世界”确认
-3. 等待世界文件释放（含 `level.dat` 解锁检查）
-4. 执行还原（最新备份或指定备份）
-5. 发送 `restore_finished`
-6. 发送 `rejoin_world`，等待模组返回重进结果
-7. 广播 `hot_restore_complete`
-
-### 流程时序（文本版）
+Alt+Ctrl+Z 或 file 省略的 RESTORE 使用活动分支唯一尖端的 Quick Restore。状态已精确匹配时 NoChanges，不选择上一个时间包。远程默认 Clean，部分捕获强制 Overwrite；指定 file 使用可解析的历史目标并验证依赖。
 
 ```text
-TriggerHotRestoreAsync
-  -> handshake(action=restore)
-  -> pre_hot_restore
-  -> wait WORLD_SAVE_AND_EXIT_COMPLETE (10s)
-  -> wait world release (15s) + level.dat unlock (10s)
-  -> RestoreBackupAsync
-  -> restore_finished(status=success/failure)
-  -> rejoin_world
-  -> wait REJOIN_RESULT (30s)
-  -> hot_restore_complete(status=...)
+cmd=RESTORE;current_save=true;preserve_player_data=true;from=panel;request_id=restore-001
 ```
 
-## 关键状态与结果
+## 玩家保留
 
-最终状态通常是以下之一：
+PreservePlayerData 本地默认 false；preserve_player_data 省略继承，true／false明确覆盖当前操作。普通 Restore 在锁定只读 Current／Target 视图中生成相对文件提案，Host整批验证并应用到暂存，不在还原后补写 level.dat。
 
-- `full_success`：还原成功且重进成功
-- `restore_ok_rejoin_failed`：还原成功，但重进失败
-- `restore_ok_rejoin_timeout`：还原成功，但重进超时
+对全部 UUID 保留位置、背包、经验等选定 NBT字段；备份中缺少该玩家时保留当前完整 NBT。统计／进度仍随备份恢复。单人嵌入 Player 与服务器 playerdata／players 布局按实现处理；跨26.1布局保留或不支持显式override时阻断。修改结果 Workspace baseline为Derived。
 
-若链路前段失败（例如握手失败、文件未释放、备份文件缺失），则会提前广播 `restore_cancelled` 或 `restore_finished;status=failure`。
+## 完成与恢复状态
 
-## 常见失败点
+归档写入成功与自动重进成功是不同结果，重进失败可产生 SuccessWithWarnings。RecoveryRequired／CommittedRecoveryRequired 禁止自动重进，应检查恢复诊断再操作。不能对未知提交状态重复点击还原。
 
-- 模组握手超时或版本不兼容
-- 世界文件长期占用，未在超时内释放
-- 指定备份文件不存在
+先在副本验证多个玩家、显式false、缺失玩家、布局异常、取消、部分捕获和游戏重进。NBT夹具通过不证明真实游戏加载成功。
 
-## 请求/响应示例
-
-### 指令：还原到最新备份
-
-请求：
-
-```text
-cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=hot-restore-001
-```
-
-响应：
-
-```text
-OK:Hot restore triggered for 'WorldName'
-```
-
-### 指令：还原到指定备份
-
-请求：
-
-```text
-cmd=RESTORE;current_save=true;file=backup_2026-02-28_18-30-01.7z;from=minebackup.mod;request_id=hot-restore-002
-```
-
-响应：
-
-```text
-OK:Hot restore triggered for 'WorldName' with backup 'backup_2026-02-28_18-30-01.7z'
-```
-
-## 安全建议
-
-- 首次启用热还原时，先在测试世界演练
-- 使用指定备份还原前，先通过 `cmd=LIST_BACKUPS;current_save=true` 确认文件名
-- 热还原失败时优先改用常规还原路径，避免连续重复触发
-- 若你需要保留玩家状态，先开启 `PreservePlayerData` 再测试
-
-## 相关链接
-
-- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
-- [故障排查](/docs/guides/minecraft/troubleshooting)
-- [首次还原](/docs/getting-started/first-restore)
+<span id="源码映射" />
+<span id="两种触发方式" />
+<span id="执行前提" />
+<span id="状态机说明" />
+<span id="执行流程源码对照" />
+<span id="流程时序文本版" />
+<span id="关键状态与结果" />
+<span id="常见失败点" />
+<span id="请求响应示例" />
+<span id="指令还原到最新备份" />
+<span id="指令还原到指定备份" />
+<span id="安全建议" />
+<span id="相关链接" />

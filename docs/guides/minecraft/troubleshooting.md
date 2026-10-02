@@ -1,126 +1,39 @@
 ---
 sidebar_position: 6
-title: 故障排查
-description: MineRewind 常见异常现象、原因与处理步骤汇总，覆盖扫描失败、热备份冲突与还原报错的排查路径
+title: "Minecraft 故障排查"
+description: "FolderRewind 1.9 系列Minecraft 故障排查操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 故障排查
+# Minecraft 故障排查
 
-本页按“先看链路，再看现象”的顺序给出排查步骤，避免反复试错。
+## 先检查链路
 
-## 先做 60 秒链路体检
+检查Host支持API3.5、MineRewind来源与版本、Enabled Intent和Active、Kind、世界有效路径、session.lock状态、KnotLink和游戏组件，以及可物化的历史目标。旧EnableHotBackup开关和v2钩子不是当前排错入口。
 
-按顺序确认：
-
-1. 插件已启用，且 `EnableHotBackup` 设置正确。
-2. 当前配置类型是 `Minecraft Saves`。
-3. 当前世界目录存在 `level.dat`。
-4. KnotLink 与联动模组在线。
-5. 至少存在一个可用备份文件（用于还原链路）。
-
-任一步失败，都可能导致热备份/热还原表现为“无动作”或“自动回退”。
-
-## 现象与源码定位表
-
-| 现象 | 优先检查方法/逻辑 |
+| 现象 | 检查与处理 |
 |---|---|
-| 扫描不到存档 | `TryDiscoverManagedFolders(...)` |
-| 热备份不协同 | `OnBeforeBackupFolder(...)` 的前置返回条件 |
-| 热还原被忽略 | `TriggerHotRestoreAsync(...)` 的状态机防重入 |
-| 指定备份失败 | `cmd=RESTORE` 的 `file` 参数与文件存在性检查 |
-| 玩家数据没保留 | `OnBeforeRestoreFolder` / `OnAfterRestoreFolder` |
+| 未发现世界 | 根路径、AutoDiscoverSaves、实例／定义目录、扫描诊断；审阅草稿而非强行写配置 |
+| 备份有警告 | Prefer降级／握手／快照失败；Require应阻断；保存日志并测试恢复 |
+| 区域不符预期 | 输入方块坐标、floor/512、维度、SourceScope与过滤、全部.mcc规则 |
+| 快速还原无变化 | 已处于活动分支目标；不会自动选择更早版本 |
+| 还原被拒绝 | 分叉、依赖缺失、多个活动世界、协调失败或恢复状态；先准备目标／修复 |
+| 玩家没保留 | 本地设置、显式false、普通Restore限定、全部UUID、布局兼容及提案错误 |
+| 已恢复但未重进 | 区分Host成功与重进警告，人工确认游戏环境再进入 |
 
-## 现象 1：扫描不到存档
+## 诊断与恢复
 
-可能原因：
+用GET_CAPABILITIES与LIST_BACKUPS取得运行时目标及精确参数；文件名动态值需percent-encoding。安装、激活、Ready／Degraded／Blocked与SuccessWithWarnings是不同阶段。RecoveryRequired／CommittedRecoveryRequired时不再次发起破坏性请求，不自动重进。
 
-- 选择目录不是 `.minecraft`、`saves` 或版本目录
-- 世界目录缺失 `level.dat`
+提交问题提供Host／API／插件／游戏组件版本、时间、request_id、结果和脱敏日志，不上传令牌、私有路径或完整生产存档。真实加载失败需要保留测试副本与游戏错误，不仅提供NBT测试通过的结论。
 
-处理步骤：
-
-1. 确认选择的是 Minecraft 根目录或 `saves` 目录。
-2. 检查目标世界目录是否存在 `level.dat`。
-3. 重新执行扫描或改用手动添加目录。
-
-## 现象 2：热备份没有触发协同
-
-可能原因：
-
-- `EnableHotBackup` 已关闭
-- KnotLink/联动模组不可用
-- 世界文件并未被占用，流程回退为普通备份
-
-补充说明：`OnBeforeBackupFolder(...)` 命中任一前置 `return null` 都会回退。
-
-处理步骤：
-
-1. 在插件设置确认 `EnableHotBackup = true`。
-2. 检查联动模组是否在线且 KnotLink 可用。
-3. 通过 `cmd=BACKUP;current_save=true;...` 再测试一次强制协同链路。
-
-## 现象 3：热还原中途取消
-
-可能原因：
-
-- 握手超时或版本不兼容
-- 世界文件未在超时窗口内释放
-- 没有可用备份文件
-
-补充说明：热还原有阶段性超时，常见阈值包括 10s（保存退出）/15s（世界释放）/30s（重进结果）。
-
-处理步骤：
-
-1. 先执行 `cmd=LIST_BACKUPS;current_save=true` 确认备份存在。
-2. 检查模组与服务状态后重试。
-3. 若仍失败，改用常规还原流程。
-
-## 现象 4：指定备份还原失败
-
-可能原因：
-
-- `cmd=RESTORE` 的 `file` 中文件名拼写错误
-- 备份文件已被移动或删除
-
-补充说明：插件会先拼接目标路径并做文件存在性检查，不存在会直接失败。
-
-处理步骤：
-
-1. 先列出备份文件并复制精确文件名。
-2. 对文件名进行 percent-encode，再执行指定还原请求。
-
-## 现象 5：还原后玩家状态异常
-
-可能原因：
-
-- 未开启 `PreservePlayerData`
-- 当前世界数据结构不满足写回条件
-
-补充说明：只有 `OnBeforeRestoreFolder(...)` 成功返回快照，后续 `OnAfterRestoreFolder(...)` 才能写回。
-
-处理步骤：
-
-1. 在插件设置中开启 `PreservePlayerData`。
-2. 先在测试世界验证一次保留流程。
-
-## 命令诊断模板（可直接复用）
-
-```text
-1) cmd=BACKUP;current_save=true;from=minebackup.mod;request_id=diag-001
-2) cmd=LIST_BACKUPS;current_save=true
-3) cmd=RESTORE;current_save=true;from=minebackup.mod;request_id=diag-002
-4) cmd=RESTORE;current_save=true;file=<encoded from step 2>;from=minebackup.mod;request_id=diag-003
-```
-
-若第 1 步就失败，优先排查“活跃世界识别与联动可用性”；若第 3/4 步失败，优先排查“还原前置条件与备份文件存在性”。
-
-## 仍未解决？
-
-- 导出日志并附上复现步骤（触发方式、时间点、命令、结果）
-- 到社区或仓库 Issues 提交问题
-
-## 相关链接
-
-- [Minecraft 专题总览](/docs/guides/minecraft/overview)
-- [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
-- [插件安装与管理](/docs/plugins/using-plugins)
+<span id="先做-60-秒链路体检" />
+<span id="现象与源码定位表" />
+<span id="现象-1扫描不到存档" />
+<span id="现象-2热备份没有触发协同" />
+<span id="现象-3热还原中途取消" />
+<span id="现象-4指定备份还原失败" />
+<span id="现象-5还原后玩家状态异常" />
+<span id="命令诊断模板可直接复用" />
+<span id="仍未解决" />
+<span id="相关链接" />

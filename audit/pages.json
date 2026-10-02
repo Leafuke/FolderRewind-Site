@@ -524,9 +524,9 @@
       "path": "docs/guides/minecraft/death-rewind.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/death-rewind.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked-backend-boundary",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
       "manualAcceptance": "pending"
     },
@@ -534,7 +534,7 @@
       "path": "docs/guides/minecraft/hot-backup.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/hot-backup.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -544,7 +544,7 @@
       "path": "docs/guides/minecraft/hot-restore.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/hot-restore.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -554,9 +554,9 @@
       "path": "docs/guides/minecraft/just-enough-accidents.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/just-enough-accidents.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked-backend-boundary",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
       "manualAcceptance": "pending"
     },
@@ -564,7 +564,7 @@
       "path": "docs/guides/minecraft/knotlink-mod.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/knotlink-mod.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -574,9 +574,9 @@
       "path": "docs/guides/minecraft/minebackup-mod.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-mod.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked-backend-boundary",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
       "manualAcceptance": "pending"
     },
@@ -584,9 +584,9 @@
       "path": "docs/guides/minecraft/minebackup-plugin.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-plugin.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked-backend-boundary",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
       ],
       "manualAcceptance": "pending"
     },
@@ -594,7 +594,7 @@
       "path": "docs/guides/minecraft/overview.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/overview.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -604,7 +604,7 @@
       "path": "docs/guides/minecraft/quick-start.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/quick-start.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -614,7 +614,7 @@
       "path": "docs/guides/minecraft/selected-region-backup.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/selected-region-backup.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
@@ -624,7 +624,7 @@
       "path": "docs/guides/minecraft/troubleshooting.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/troubleshooting.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],

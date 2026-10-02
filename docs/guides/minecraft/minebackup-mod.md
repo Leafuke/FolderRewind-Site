@@ -5,6 +5,10 @@ description: 当前 MineBackup-Mod 的安装、命令、热备份、热还原与
 ---
 
 # MineBackup-Mod（模组化服务端联动）
+:::info[FolderRewind 1.9 后端基线]
+接入本网站当前教程时使用支持 API3.5 的 FolderRewind1.9与MineRewind1.9.3；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+:::
+
 
 MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRewind 与游戏运行时。它负责游戏内命令、世界保存、热备份前协同、热还原前退出，以及还原后的自动重进。
 
