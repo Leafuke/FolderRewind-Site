@@ -58,5 +58,25 @@
     "Official Host and MineRewind latest are still v1.8.2",
     "Catalog1.9.3 public binding pending",
     "Final isolated desktop/game acceptance and remaining screenshots pending"
-  ]
+  ],
+  "finalPreparationValidation": {
+    "date": "2026-10-02",
+    "siteContentCommit": "3bf8548",
+    "cleanDependencyInstall": "npm ci: passed",
+    "siteChecks": "npm run check:all: passed",
+    "documentsPerLocale": 86,
+    "postsPerLocale": 13,
+    "builtPages": 206,
+    "preservedOriginalDocumentRoutes": 158,
+    "sourceTests": {
+      "api": 15,
+      "runtime": 54,
+      "host": 18,
+      "minecraft": 26,
+      "failed": 0
+    },
+    "publicReleaseGate": "closed as expected",
+    "officialNoticePreparation": "rejected without writing announcements",
+    "guiAutomation": "stopped by user; not resumed"
+  }
 }

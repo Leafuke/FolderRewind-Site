@@ -10,3 +10,5 @@
 2026-10-02 公开源：NuGet 仅列出 SDK 3.0.0；主程序与插件 latest 均为 v1.8.2。不合入 main、不部署、不虚构正式发布公告。安装器工作区中原有修改不属于本任务。
 
 Release gates: public SDK restore, immutable plugin + catalog verification, official Host assets, isolated desktop/game acceptance, bilingual site validation.
+
+最终准备阶段检查结果见 [FINAL_VERIFICATION.md](./FINAL_VERIFICATION.md)。自动检查通过与正式发布/实机验收分别记录，不将 pending 提升为 passed。
