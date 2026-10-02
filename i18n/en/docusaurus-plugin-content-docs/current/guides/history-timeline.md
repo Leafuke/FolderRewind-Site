@@ -1,149 +1,44 @@
 ---
 sidebar_position: 6
-title: History Timeline
-description: View backup history on a timeline, mark important versions, and restore folder contents from any previous backup point
+title: "History: versions, runs and normal/advanced views"
+description: "FolderRewind 1.9 history: versions, runs and normal/advanced views: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# History Timeline
+# History: versions, runs and normal/advanced views
 
-The History Timeline lets you inspect folder backup evolution and run restore actions.
+Open history from configuration management; select config/source and source-version or Backup-Run view. A Run is an operation fact, a Checkpoint configuration state; no-change runs need not create a version.
 
-## How to open
+## Normal view
 
-1. Enter the target config management page.
-2. Select a folder.
-3. Click **History Versions**.
+Filter results, inspect outcomes, comments, Pins, Restore and cloud replicas. Use text/icons, not blue/gold nodes alone to infer integrity. Logical history, local bytes, cloud replicas, diagnostics and materializability are distinct.
 
-## Page layout
+## Advanced view
 
-The History Timeline uses a visual layout similar to a Git commit log:
+Manage branches, Workspace, Checkpoints, source bindings, safety points and merges. A branch is not a folder label; a Checkpoint can cover several sources. Multiple tips indicate divergence requiring explicit selection/merge rather than newest-time overwrite.
 
-![Full History Timeline page showing filters, the timeline, and history actions](/img/docs/getting-started/history-timeline-page.webp)
+## Restore and Quick Restore
 
-**Three-column layout:**
+Select a Source Version or complete Checkpoint. The Host assesses representations/dependencies, stages and confirms bindings. Clean reconstructs within managed boundaries; Overwrite applies included content. Partial captures force Overwrite. Ordinary preservation proposals create Derived baselines.
 
-| Column | Content | Description |
-|--------|---------|-------------|
-| Left | Time display | Backup date and time |
-| Center | Vertical line + dot nodes | Connecting lines represent time continuity; dot color indicates status |
-| Right | Info card | Backup type, file size, notes, and action buttons |
+Quick Restore uses the active Workspace branch's unique tip/source version. Already exact yields NoChanges. Divergence, missing sources/dependencies or recovery-required state blocks; it does not select the previous timestamp row.
 
-**Node color meanings:**
+## Cloud, deletion and rebuilding
 
-| Color | Status | Description |
-|-------|--------|-------------|
-| Blue | Normal | Local backup file exists and is intact |
-| Light blue | Cloud only | Local file is missing, but a cloud copy exists |
-| Orange-red | Missing | Backup file has been lost or deleted |
-| Gold | Important | Marked as "Important" by the user (starred) |
+Prepare required cloud replicas/closure before Restore. Missing local bytes do not invalidate logical history; do not purge all missing records blindly. Suppression, representation release, local deletion and cloud retirement differ—read each confirmation.
 
-**Info card action buttons:**
-- Star: mark/unmark as important
-- View: locate backup file in File Explorer
-- Edit notes: modify backup notes
-- Upload/Download: cloud operations
-- Restore: recover files from this backup
-- Delete: delete this backup record and/or file
+Rebuild indexes from packs rather than guessing branches from old filenames. Protection roots retain dependencies. See [branches/merge](/docs/guides/history-branches) and [safety snapshots](/docs/guides/safety-snapshots).
 
-## What you can do
-
-- View time, type, notes, and file size per entry
-- Search by note keywords
-- Mark/unmark important backups (star)
-- Edit notes
-- Locate backup file in File Explorer
-- Restore or delete history entries
-- Upload a single history entry to cloud
-- Download a single history entry from cloud back to local backup storage
-
-## Filtering and visualization
-
-The filter bar at the top of the page provides the following controls:
-- **Config selector**: dropdown to switch between different configs
-- **Folder selector**: dropdown to switch between folders under the same config
-- **Note search**: input field to filter backup records by keyword
-- **Status color toggle**: toggle whether to display different colors by status
-
-- Switch history scope by config and folder
-- Filter results by note keywords
-- Enable status color display:
-  - Normal
-  - Small-file warning
-  - Missing-file warning
-
-## Recommended restore flow
-
-1. Click **Restore** on the target entry.
-2. Choose mode:
-   - Clean Restore
-   - Overwrite Restore
-3. Wait for completion and verify results.
-
-## Management tips
-
-- Star key milestone backups to prevent accidental cleanup.
-- Use notes like "change purpose + date" for better traceability.
-- Prefer deleting history entries inside FolderRewind instead of manually deleting incremental archives in File Explorer.
-- Run "Clear invalid entries" periodically to remove entries whose archives no longer exist.
-
-## Cloud copy operations
-
-Each history row exposes two cloud actions:
-
-- Upload to cloud
-- Download from cloud
-
-Behavior summary:
-
-- Upload is enabled only when the local archive exists.
-- Download is enabled only when the entry has cloud-copy metadata.
-- A cloud icon indicates cloud copy availability; "cloud only" means local archive is missing but cloud copy exists.
-- In legacy custom-command mode, history-page cloud actions are unavailable (rclone mode only).
-
-Recommended sequence:
-
-1. For cloud-only entries, download from cloud first.
-2. Restore after local archive is available.
-
-If metadata is reported as partial, archive transfer may still have succeeded. Usually it means archive is present while metadata is incomplete.
-
-## Safe Delete
-
-When you delete a backup that belongs to a smart incremental chain, FolderRewind can enable **Safe Delete** to merge required content into the successor backup before removing the current one, reducing the chance of a broken restore chain.
-
-Recommendations:
-
-- Keep **Safe Delete** enabled for long-lived Smart Incremental configs.
-- Verify restore results before deleting key milestones.
-- For bulk cleanup, prefer the app workflow instead of deleting archives manually.
-
-## Rebuild History
-
-If history records are accidentally removed, migration is incomplete, or only backup archives remain, you can use **Rebuild History** to regenerate history entries from backup files.
-
-Recommended prerequisites:
-
-- Keep standard filename format (`[Full/Smart/Overwrite][timestamp]...`)
-- Keep directory layout as `DestinationPath/<folder-name>/`
-
-See: [Backup File Specification](/en/docs/guides/backup-file-spec)
-
-## FAQ
-
-### "View" says file not found
-
-History entry still exists, but archive was moved or deleted. Run "Clear invalid entries" first.
-
-### Restore result is not expected
-
-Verify restore point and restore mode first, then check restore whitelist settings. If the config was upgraded from an older version, go back to test data and validate the chain again.
-
-After a folder rename, old history keeps the local or remote identity saved when each record was created. See [Folder Management and Rename](/en/docs/guides/folder-management).
-
-## Related links
-
-- [First Restore](/en/docs/getting-started/first-restore)
-- [Filter Rules](/en/docs/guides/filters)
-- [Backup File Specification](/en/docs/guides/backup-file-spec)
-- [Cloud Archive Guide](/en/docs/guides/cloud-archive)
-- [Folder Management and Rename](/en/docs/guides/folder-management)
+<span id="how-to-open" />
+<span id="page-layout" />
+<span id="what-you-can-do" />
+<span id="filtering-and-visualization" />
+<span id="recommended-restore-flow" />
+<span id="management-tips" />
+<span id="cloud-copy-operations" />
+<span id="safe-delete" />
+<span id="rebuild-history" />
+<span id="faq" />
+<span id="view-says-file-not-found" />
+<span id="restore-result-is-not-expected" />
+<span id="related-links" />

@@ -29,6 +29,8 @@ const sidebars: SidebarsConfig = {
         'guides/encryption',
         'guides/filters',
         'guides/history-timeline',
+        'guides/history-branches',
+        'guides/safety-snapshots',
         'guides/mini-window',
         'guides/data-migration',
         {
