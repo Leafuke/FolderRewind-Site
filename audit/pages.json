@@ -799,6 +799,16 @@
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
       "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/plugins/developing/artifacts.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/artifacts.md",
+      "product": "FolderRewind",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind 32cb9b4 API 3.5 baseline"
+      ],
+      "manualAcceptance": "pending"
     }
   ],
   "blogs": [

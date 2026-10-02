@@ -112,6 +112,7 @@ const sidebars: SidebarsConfig = {
             'plugins/developing/quick-start',
             'plugins/developing/tutorial',
             'plugins/developing/capabilities',
+            'plugins/developing/artifacts',
             'plugins/developing/plugin-api',
             'plugins/developing/hotkey-api',
             'plugins/developing/knotlink-api',
