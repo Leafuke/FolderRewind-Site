@@ -330,7 +330,7 @@
     "message": "Download"
   },
   "download.description": {
-    "message": "Download FolderRewind for Windows — Microsoft Store, MSI, and MSIX installation options for x64 and ARM64 architectures with automatic updates and cloud sync support"
+    "message": "Download FolderRewind for Windows via Microsoft Store or matching x64/ARM64 Setup EXE; verify the actual release version and checksums."
   },
   "download.heading": {
     "message": "Download FolderRewind"
@@ -348,13 +348,13 @@
     "message": "Microsoft Store is recommended first for smoother upgrades."
   },
   "download.notice.point2": {
-    "message": "Do not install the Store, MSI, and MSIX versions side by side."
+    "message": "Do not run the Store and Setup channels concurrently."
   },
   "download.notice.point3": {
     "message": "Switching installation channels does not migrate configs or plugins automatically; back up your data first."
   },
   "download.notice.upgradeLink": {
-    "message": "Read the v1.8 upgrade and startup recovery guide"
+    "message": "Read installation and data-path guidance"
   },
   "download.badge.recommended": {
     "message": "Recommended"
@@ -366,13 +366,13 @@
     "message": "Open Microsoft Store"
   },
   "download.badge.msi": {
-    "message": "Beta"
+    "message": "Check release version"
   },
   "download.msi.desc": {
-    "message": "Run the installer directly with no Developer Mode requirement. This distribution format is still under testing; verify the matching .sha256 file."
+    "message": "Choose x64 or ARM64 Setup EXE and verify its .sha256; check the Release version while 1.9 assets are pending."
   },
   "download.msi.btn": {
-    "message": "Get the latest MSI"
+    "message": "View Setup EXE releases"
   },
   "download.badge.msix": {
     "message": "Advanced sideload"
@@ -405,7 +405,7 @@
     "message": "Disk Space"
   },
   "download.sysreq.disk.value": {
-    "message": "About 80 MB (excluding backup data)"
+    "message": "Use official installer figures; archives require extra space"
   },
   "download.plugin.heading": {
     "message": "Official Plugins"
@@ -537,7 +537,7 @@
     "message": "Who is it for?"
   },
   "homepage.segments.subheading": {
-    "message": "Whether you're a gamer, everyday backup user, or developer \u2014 FolderRewind has you covered"
+    "message": "Whether you're a gamer, everyday backup user, or developer — FolderRewind has you covered"
   },
   "homepage.steps.1.title": {
     "message": "Install"
@@ -570,7 +570,7 @@
     "message": "Ready to protect your files?"
   },
   "homepage.cta.desc": {
-    "message": "Free download \u2014 start protecting your files with FolderRewind"
+    "message": "Free download — start protecting your files with FolderRewind"
   },
   "homepage.cta.downloadBtn": {
     "message": "Download Now"
@@ -588,7 +588,7 @@
     "message": "7-Zip Compression Engine"
   },
   "features.7zip.desc": {
-    "message": "High-performance compression in 7z format \u2014 save disk space with faster backups."
+    "message": "High-performance compression in 7z format — save disk space with faster backups."
   },
   "features.7zip.link": {
     "message": "Explore backup modes"

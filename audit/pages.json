@@ -114,7 +114,7 @@
       "path": "docs/getting-started/installation.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/installation.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],

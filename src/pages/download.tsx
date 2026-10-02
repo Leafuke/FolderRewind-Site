@@ -14,7 +14,7 @@ import {
   FaCode,
   FaHardDrive,
   FaBoxOpen,
-  FaTerminal,
+  
 } from 'react-icons/fa6';
 
 import styles from './download.module.css';
@@ -26,7 +26,7 @@ const MINEREWIND_LATEST_RELEASE_URL =
 
 export default function Download(): ReactNode {
   return (
-    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: '下载 FolderRewind Windows 版 — 提供 Microsoft Store、MSI 与 MSIX 三种安装方式，支持 x64 和 ARM64 架构，具备自动更新与云同步功能'})}>
+    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: '下载 FolderRewind Windows 版 — 提供 Microsoft Store 与 Setup EXE 两种安装方式，支持 x64 和 ARM64 架构，具备自动更新与云同步功能'})}>
       <main className="container margin-vert--xl">
         <Heading as="h1" className="text--center">
           <Translate id="download.heading">下载 FolderRewind</Translate>
@@ -53,41 +53,24 @@ export default function Download(): ReactNode {
               </div>
             </div>
 
-            {/* MSI */}
+            {/* Setup EXE */}
             <div className={styles.channelColumn}>
               <div className={styles.downloadCard}>
                 <div className="download-icon-wrap download-icon-wrap--github">
                   <FaBoxOpen />
                 </div>
-                <Heading as="h2" className={styles.cardTitle}>MSI</Heading>
-                <span className={styles.badgeWarn}><Translate id="download.badge.msi">测试中</Translate></span>
-                <p className={styles.cardDesc}><Translate id="download.msi.desc">双击安装，无需开发人员模式；该分发格式仍在测试中，请核对同名 .sha256 文件。</Translate></p>
+                <Heading as="h2" className={styles.cardTitle}>Setup EXE</Heading>
+                <span className={styles.badgeWarn}><Translate id="download.badge.msi">核对发布版本</Translate></span>
+                <p className={styles.cardDesc}><Translate id="download.msi.desc">选择 x64 或 ARM64 Setup EXE 并核对同名 .sha256；1.9 正式附件尚未提供时请核对 Release 版本。</Translate></p>
                 <Link
                   className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
                   href={GITHUB_LATEST_RELEASE_URL}>
                   <FaBoxOpen style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                  <Translate id="download.msi.btn">获取最新 MSI</Translate>
+                  <Translate id="download.msi.btn">查看 Setup EXE 发布包</Translate>
                 </Link>
               </div>
             </div>
 
-            {/* MSIX */}
-            <div className={styles.channelColumn}>
-              <div className={styles.downloadCard}>
-                <div className="download-icon-wrap download-icon-wrap--github">
-                  <FaTerminal />
-                </div>
-                <Heading as="h2" className={styles.cardTitle}>MSIX (.7z)</Heading>
-                <span className={styles.badgeAlt}><Translate id="download.badge.msix">高级侧载</Translate></span>
-                <p className={styles.cardDesc}><Translate id="download.msix.desc">体验最接近 Store 版；需解压 .7z、启用开发人员模式并运行 install.ps1。</Translate></p>
-                <Link
-                  className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
-                  href={GITHUB_LATEST_RELEASE_URL}>
-                  <FaTerminal style={{marginRight: '0.4rem', verticalAlign: '-1px'}} />
-                  <Translate id="download.msix.btn">获取最新 MSIX 包</Translate>
-                </Link>
-              </div>
-            </div>
           </div>
 
           <p className={styles.architectureHint}>
@@ -106,11 +89,11 @@ export default function Download(): ReactNode {
             </p>
             <ul className={styles.noticeList}>
               <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
-              <li><Translate id="download.notice.point2">请勿同时安装 Store、MSI 与 MSIX 版本。</Translate></li>
+              <li><Translate id="download.notice.point2">请勿同时安装 Store 与 Setup 版本。</Translate></li>
               <li><Translate id="download.notice.point3">切换安装渠道不会自动迁移配置或插件，请先备份数据。</Translate></li>
             </ul>
-            <Link className={styles.noticeLink} to="/docs/getting-started/v1-8-upgrade">
-              <Translate id="download.notice.upgradeLink">查看 1.8 升级与启动故障恢复指南</Translate>
+            <Link className={styles.noticeLink} to="/docs/getting-started/installation">
+              <Translate id="download.notice.upgradeLink">查看安装与数据目录指南</Translate>
               <FaArrowRight aria-hidden="true" />
             </Link>
           </div>
@@ -140,7 +123,7 @@ export default function Download(): ReactNode {
             <div className={styles.sysReqCard}>
               <div className={styles.sysReqIcon}><FaHardDrive /></div>
               <div className={styles.sysReqLabel}><Translate id="download.sysreq.disk">磁盘空间</Translate></div>
-              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">约 80 MB（不含备份数据）</Translate></div>
+              <div className={styles.sysReqValue}><Translate id="download.sysreq.disk.value">以正式安装器显示为准，备份另需空间</Translate></div>
             </div>
           </div>
         </section>

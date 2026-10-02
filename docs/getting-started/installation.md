@@ -1,113 +1,60 @@
 ---
 sidebar_position: 1
-title: 安装指南
-description: 详解 FolderRewind 三种安装渠道（Microsoft Store、MSI、MSIX）的特点、系统要求、架构选择与混装风险，帮助用户选择最适合的安装方式
+title: "安装指南"
+description: "FolderRewind 1.9 系列安装指南操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # 安装指南
 
-FolderRewind 提供三种安装渠道：**Microsoft Store**、**MSI** 和 **MSIX 侧载包**。
+FolderRewind 1.9 系列提供 Microsoft Store 和 GitHub Setup EXE 两个普通用户入口。本文按1.9发布策略说明；正式资产发布前，releases/latest 仍可能指向1.8.2，不能把旧包当作1.9。
 
-:::tip[推荐]
-能使用 Microsoft Store 时，优先选择商店版。它安装简单，并由商店负责后续更新。
-:::
+## Microsoft Store
 
-:::warning[不要混装]
-Store、MSI 与 MSIX 版本不应同时安装或运行。MSI 与 MSIX/Store 使用不同的数据目录，切换渠道不会自动迁移配置、历史或插件。
-:::
+从 [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4) 安装，更新由商店管理。核对应用版本；商店审核与 GitHub 发布可能不同步。
 
-## 先选安装渠道
+## Setup EXE
 
-| 渠道 | 适合谁 | 安装方式 | 注意事项 |
-| --- | --- | --- | --- |
-| Microsoft Store | 大多数用户 | 商店一键安装 | 推荐，更新最省心 |
-| MSI | 无法使用 Store 的普通用户 | 双击 `.msi` | 分发格式仍在测试；安装包未使用受信任的 Authenticode 证书 |
-| MSIX (`.7z`) | 熟悉开发人员模式和 PowerShell 的用户 | 解压后运行 `install.ps1` | 需要开发人员模式，体验最接近 Store 版 |
+正式 [GitHub Release](https://github.com/Leafuke/FolderRewind/releases) 每版只公开以下附件：
 
-大多数 Intel/AMD Windows 设备选择 **x64**；只有 Windows on ARM 设备选择 **ARM64**。
+```text
+FolderRewind_<version>_Setup_x64.exe
+FolderRewind_<version>_Setup_x64.exe.sha256
+FolderRewind_<version>_Setup_arm64.exe
+FolderRewind_<version>_Setup_arm64.exe.sha256
+```
 
-## 方式一：Microsoft Store
+Intel／AMD 电脑选择 x64，Windows on ARM 选择 arm64。先下载对应包及校验文件：
 
-1. 打开 [Microsoft Store 下载页](https://apps.microsoft.com/detail/9nwsdgxdqws4)。
-2. 点击安装。
-3. 安装完成后，从开始菜单启动 FolderRewind。
+```powershell
+Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
+```
 
-## 方式二：MSI
+把输出与同名 .sha256 核对后运行安装向导。默认安装目录为当前用户 LocalAppData 下 Programs/FolderRewind；实际安装权限和提示按包与系统显示处理。Setup 内含安装引擎，不要求用户另找 MSI。没有架构匹配 EXE 时打开 Release 页面，不回退推荐旧 MSI。
 
-1. 打开 [最新 GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest)。
-2. 下载架构匹配的 `.msi` 和同名 `.msi.sha256` 文件。
-3. 在下载目录运行以下命令，并将输出与 `.sha256` 文件中的值比较：
+## 系统要求与数据目录
 
-   ```powershell
-   Get-FileHash .\FolderRewind_*.msi -Algorithm SHA256
-   ```
+Windows10 1809+／Windows11；发行架构 x64／ARM64；程序携带 .NET10。安装空间以正式附件及安装器显示为准，不沿用旧80MB估计；备份、临时物化和恢复另需空间。
 
-4. 双击 MSI 并完成安装。默认安装到 `%LOCALAPPDATA%\Programs\FolderRewind`，也可以在向导中选择其他本地目录。
+| 渠道 | 数据目录 |
+|---|---|
+| Store／旧 MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| Setup 未打包版 | `%LOCALAPPDATA%\FolderRewind` |
 
-MSI 不要求开发人员模式或手动导入证书。由于安装包尚未使用 Windows 信任的 Authenticode 证书，Windows 可能显示“未知发布者”或 SmartScreen 提示。只应从官方 Release 下载并先校验哈希。
+配置、plugins、按配置的 history 仓库、日志和本机状态在数据目录下；归档还保存在每个配置的目标目录。切换渠道不会自动迁移两套数据。完全退出、备份完整数据目录和归档、卸载旧渠道，再按迁移指南验证新环境；不要同时运行两种渠道保护相同来源。
 
-## 方式三：MSIX 侧载包
+## 旧版包
 
-1. 打开 **Windows 设置 > 系统 > 开发者选项**，启用 **开发人员模式**。
-2. 打开 [最新 GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest)。
-3. 下载架构匹配的 `.7z` 和同名 `.7z.sha256` 文件。
-4. 校验下载文件：
+1.8等历史 Release 可能仍含 MSI／MSIX .7z 和 install.ps1，仅用于对应旧版本。1.9 GitHub 不公开这些附件；开发人员模式／证书脚本不是新 Setup 安装步骤。
 
-   ```powershell
-   Get-FileHash .\FolderRewind_*.7z -Algorithm SHA256
-   ```
+安装后用测试来源完成备份和还原，再运行核心自动校验并启用自动任务。[数据迁移](/docs/guides/data-migration)说明配置与载荷的区别。
 
-5. 解压 `.7z`，在解压目录中运行：
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-   .\install.ps1
-   ```
-
-6. 等待脚本注册证书并安装 MSIX 包，然后从开始菜单启动 FolderRewind。
-
-`Set-ExecutionPolicy` 只影响当前 PowerShell 会话，不会修改系统全局策略。
-
-## 数据目录与切换渠道
-
-| 渠道 | 配置与历史目录 |
-| --- | --- |
-| Store / MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
-| MSI | `%LOCALAPPDATA%\FolderRewind` |
-
-目录中包含 `config.json`、`history.json` 和 `plugins`。切换渠道前：
-
-1. 完全退出 FolderRewind。
-2. 备份当前渠道的整个 `FolderRewind` 数据目录。
-3. 卸载旧渠道。
-4. 安装新渠道后，再按 [数据迁移指南](/docs/guides/data-migration) 导入或复制经过确认的数据。
-
-不要让两套安装共用同一个运行中的备份任务。
-
-## 从旧版本升级
-
-升级 1.8 前请阅读 [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)。至少使用测试目录完成一次备份与还原，再把新版本用于重要数据。
-
-如果 1.8.0 因旧语言配置无法启动，不要删除 `config.json`；升级到 1.8.1，或按恢复指南只修正 `GlobalSettings.Language`。
-
-## 安装后立即验证
-
-1. 创建一个使用测试目录的配置。
-2. 完成一次手动备份和一次测试还原。
-3. 在设置页运行 **核心功能自动校验**。
-4. 确认目标备份路径可写、历史记录正常生成，再启用自动化。
-
-## 系统要求
-
-| 项目 | 要求 |
-| --- | --- |
-| 操作系统 | Windows 10 1809 及以上 / Windows 11 |
-| 架构 | x64 / ARM64 |
-| 运行环境 | .NET 10（应用已携带） |
-| 磁盘空间 | 约 80 MB，不含备份数据 |
-
-## 下一步
-
-- [1.8 升级与启动故障恢复](/docs/getting-started/v1-8-upgrade)
-- [首次备份](/docs/getting-started/first-backup)
-- [首次还原](/docs/getting-started/first-restore)
+<span id="先选安装渠道" />
+<span id="方式一microsoft-store" />
+<span id="方式二msi" />
+<span id="方式三msix-侧载包" />
+<span id="数据目录与切换渠道" />
+<span id="从旧版本升级" />
+<span id="安装后立即验证" />
+<span id="系统要求" />
+<span id="下一步" />

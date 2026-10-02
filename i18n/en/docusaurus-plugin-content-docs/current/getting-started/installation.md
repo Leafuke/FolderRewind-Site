@@ -1,113 +1,60 @@
 ---
 sidebar_position: 1
-title: Installation Guide
-description: Choose between the Microsoft Store, MSI, and MSIX installation channels for FolderRewind on Windows x64 and ARM64 devices
+title: "Installation guide"
+description: "FolderRewind 1.9 installation guide: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Installation Guide
+# Installation guide
 
-FolderRewind is distributed through three channels: **Microsoft Store**, **MSI**, and an **MSIX sideload package**.
+FolderRewind1.9 offers Microsoft Store and GitHub Setup EXE for users. This is the1.9 release policy; releases/latest can still point to1.8.2 until publication. Do not treat old assets as1.9.
 
-:::tip Recommended
-Use Microsoft Store whenever it is available. Installation is simple and the Store manages later updates.
-:::
+## Microsoft Store
 
-:::warning Do not mix channels
-Do not install or run the Store, MSI, and MSIX versions side by side. MSI and MSIX/Store use different data directories, and switching channels does not migrate configs, history, or plugins automatically.
-:::
+Install from [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4); the Store manages updates. Verify the app version because Store review and GitHub publication can differ.
 
-## Choose a channel
+## Setup EXE
 
-| Channel | Best for | Installation | Important note |
-| --- | --- | --- | --- |
-| Microsoft Store | Most users | One-click Store install | Recommended and easiest to keep updated |
-| MSI | General users who cannot use Store | Run the `.msi` | This distribution format is still under testing; the installer is not signed with a trusted Authenticode certificate |
-| MSIX (`.7z`) | Users comfortable with Developer Mode and PowerShell | Extract and run `install.ps1` | Requires Developer Mode; closest to the Store build |
+The official [GitHub Release](https://github.com/Leafuke/FolderRewind/releases) exposes only:
 
-Choose **x64** for most Intel/AMD Windows devices. Choose **ARM64** only for Windows on Arm.
+```text
+FolderRewind_<version>_Setup_x64.exe
+FolderRewind_<version>_Setup_x64.exe.sha256
+FolderRewind_<version>_Setup_arm64.exe
+FolderRewind_<version>_Setup_arm64.exe.sha256
+```
 
-## Option 1: Microsoft Store
+Choose x64 for Intel/AMD and arm64 for Windows on ARM. Download matching checksum and verify:
 
-1. Open the [Microsoft Store page](https://apps.microsoft.com/detail/9nwsdgxdqws4).
-2. Select Install.
-3. Launch FolderRewind from the Start menu.
+```powershell
+Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
+```
 
-## Option 2: MSI
+Compare against .sha256 before running the wizard. The default per-user directory is LocalAppData/Programs/FolderRewind; follow actual permission/system prompts. Setup includes its installation engine; no separate MSI is needed. If the correct EXE is unavailable, open the release page rather than falling back to old MSI.
 
-1. Open the [latest GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest).
-2. Download the `.msi` for your architecture and the matching `.msi.sha256` file.
-3. In the download directory, run the command below and compare the output with the value in the `.sha256` file:
+## Requirements and data paths
 
-   ```powershell
-   Get-FileHash .\FolderRewind_*.msi -Algorithm SHA256
-   ```
+Windows10 1809+/Windows11; x64/ARM64 distribution; .NET10 included. Use official asset/installer size information, not the old80MB estimate. Archives/staging/recovery need additional space.
 
-4. Run the MSI and complete the wizard. It installs to `%LOCALAPPDATA%\Programs\FolderRewind` by default, with an option to choose another local directory.
+| Channel | Data path |
+|---|---|
+| Store/legacy MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| Unpackaged Setup | `%LOCALAPPDATA%\FolderRewind` |
 
-MSI does not require Developer Mode or manual certificate import. Because the installer is not yet signed with a Windows-trusted Authenticode certificate, Windows may show an unknown-publisher or SmartScreen warning. Download only from the official Release and verify the hash first.
+The data directory contains config, plugins, per-config history, logs and local state; archives also live in each destination. Channel changes do not automatically migrate these stores. Exit, back up data/archives, uninstall the old channel, then validate migration. Do not run two channels on the same sources concurrently.
 
-## Option 3: MSIX sideload package
+## Historical packages
 
-1. Open **Windows Settings > System > For Developers** and enable **Developer Mode**.
-2. Open the [latest GitHub Release](https://github.com/Leafuke/FolderRewind/releases/latest).
-3. Download the `.7z` for your architecture and the matching `.7z.sha256` file.
-4. Verify the download:
+Older releases may contain MSI/MSIX .7z/install.ps1 for their own versions. They are not public1.9 GitHub assets. Developer Mode/certificate scripts are not Setup prerequisites.
 
-   ```powershell
-   Get-FileHash .\FolderRewind_*.7z -Algorithm SHA256
-   ```
+Validate a test backup/restore and core checks before automation. See [migration](/docs/guides/data-migration).
 
-5. Extract the `.7z`, then run the following commands in the extracted directory:
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-   .\install.ps1
-   ```
-
-6. Wait for the script to register the certificate and install the MSIX package, then launch FolderRewind from the Start menu.
-
-`Set-ExecutionPolicy` applies only to the current PowerShell session and does not change the system-wide policy.
-
-## Data directories and channel switching
-
-| Channel | Config and history directory |
-| --- | --- |
-| Store / MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
-| MSI | `%LOCALAPPDATA%\FolderRewind` |
-
-The directory contains `config.json`, `history.json`, and `plugins`. Before switching channels:
-
-1. Exit FolderRewind completely.
-2. Back up the entire `FolderRewind` data directory for the current channel.
-3. Uninstall the old channel.
-4. Install the new channel, then import or copy only data you have reviewed by following the [Data Migration Guide](/en/docs/guides/data-migration).
-
-Do not allow two installations to operate on the same active backup workflow.
-
-## Upgrading from an older release
-
-Before upgrading to 1.8, read [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade). Complete at least one backup-and-restore test with non-production data before protecting important files.
-
-If v1.8.0 cannot start because of a legacy language value, do not delete `config.json`. Upgrade to v1.8.1 or change only `GlobalSettings.Language` as described in the recovery guide.
-
-## Validate immediately after installation
-
-1. Create a config that uses a test directory.
-2. Complete one manual backup and one test restore.
-3. Run **Automatic Core Feature Validation** in Settings.
-4. Confirm the destination is writable and history is generated before enabling automation.
-
-## System requirements
-
-| Item | Requirement |
-| --- | --- |
-| OS | Windows 10 1809 or later / Windows 11 |
-| Architecture | x64 / ARM64 |
-| Runtime | .NET 10 (bundled) |
-| Disk space | About 80 MB, excluding backup data |
-
-## Next steps
-
-- [v1.8 Upgrade and Startup Recovery](/en/docs/getting-started/v1-8-upgrade)
-- [First Backup](/en/docs/getting-started/first-backup)
-- [First Restore](/en/docs/getting-started/first-restore)
+<span id="choose-a-channel" />
+<span id="option-1-microsoft-store" />
+<span id="option-2-msi" />
+<span id="option-3-msix-sideload-package" />
+<span id="data-directories-and-channel-switching" />
+<span id="upgrading-from-an-older-release" />
+<span id="validate-immediately-after-installation" />
+<span id="system-requirements" />
+<span id="next-steps" />
