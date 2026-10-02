@@ -734,7 +734,7 @@
       "path": "docs/plugins/developing/settings-schema.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/settings-schema.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
