@@ -1,119 +1,45 @@
 ---
 sidebar_position: 7
-title: 打包与发布
-description: 插件产物结构、ZIP 打包规范与发布前检查清单，确保插件能被 FolderRewind 正确识别与加载
+title: "插件打包与发布"
+description: "FolderRewind 1.9 系列插件打包与发布操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 打包与发布
+# 插件打包与发布
 
-## ZIP 结构要求
-
-插件发布包为 `.zip` 文件，**必须**包含一个顶层目录，其中放置 `manifest.json` 和编译产物：
+## 包结构
 
 ```text
-MyPlugin.zip
-└─ MyPlugin/
-   ├─ manifest.json
-   ├─ MyPlugin.dll
-   └─ （其他依赖 DLL，如有）
+MyPlugin-1.0.0.frplugin
+├─ manifest.json
+├─ settings.schema.json
+├─ MyPlugin.dll
+└─ private-dependency.dll
 ```
 
-:::warning
-ZIP 根目录**不能**直接包含文件——必须有一层与插件名相同的目录。否则安装会失败。
-:::
+这是 ZIP 容器，根目录直接放文件。禁止携带 FolderRewind.Plugin.Abstractions.dll；宿主共享程序集身份3.0.0.0。私有依赖可以随包携带。使用[可构建示例](/docs/plugins/developing/quick-start)的打包脚本，不复制旧 ZIP 顶层目录规则。
 
-## 构建脚本
+## Manifest
 
-### PowerShell
+manifestVersion=3；pluginId 是稳定反向域名；version 为严格 SemVer；pluginApi 为 major/minor；entryAssembly 和 settingsSchema 为规范相对路径，entryType 完全限定。name、description、本地化字典、configKinds、requestedHostServices、capabilities、Artifact 声明和 observer 标记与实际实现一致。
 
-```powershell
-# 1. 编译
-dotnet publish -c Release -o ./publish
+author／homepage／repository 是描述信息，repository 不授予官方来源或自动更新信任。JSON字段严格 camelCase，不能保留旧 Id／EntryAssembly／MinHostVersion。
 
-# 2. 创建暂存目录
-$pluginName = "MyPlugin"
-$staging = "staging/$pluginName"
-New-Item -ItemType Directory -Path $staging -Force
+## 静态验证
 
-# 3. 复制编译产物和 manifest
-Copy-Item -Path "./publish/*" -Destination $staging -Recurse
-Copy-Item -Path "./manifest.json" -Destination $staging
+检查哈希、Windows 安全路径、大小写冲突、链接、展开大小、压缩比、声明的文件、设置 JSON、API／架构以及 PE 入口元数据。当前默认限制：10000条目、总展开1 GiB、单条256 MiB、压缩比100、清单1 MiB。安装不装载候选程序集、不执行构造器／生命周期／安装脚本。
 
-# 4. 打包 ZIP
-Compress-Archive -Path "./staging/$pluginName" -DestinationPath "./$pluginName.zip" -Force
+## 发布
 
-# 5. 清理暂存目录
-Remove-Item -Path "./staging" -Recurse -Force
-```
+构建固定版本 `.frplugin` 与同名 SHA-256。使用不可变 Release 附件并保留旧版本供审核／恢复。正式官方更新需要 Catalog 绑定精确 URL、哈希、API、架构和 manifest；不能通过 manifest 自称 Official。
 
-### dotnet publish + 手动打包
+在干净 Host 验证安装默认停用、显式启用、设置、取消、停用、更新／回滚及失败恢复后再发布。SDK包版本、插件产品 SemVer、宿主版本彼此独立。
 
-```powershell
-dotnet publish -c Release -o ./publish
-# 然后手动将 publish/ 目录内容和 manifest.json 放入一个文件夹，压缩为 ZIP
-```
-
-## manifest.json 完整字段
-
-```json
-{
-  "Id": "com.example.myplugin",
-  "Name": "MyPlugin",
-  "Version": "1.0.0",
-  "Author": "YourName",
-  "Description": "插件描述",
-  "LocalizedName": {
-    "en-US": "My Plugin",
-    "zh-CN": "我的插件"
-  },
-  "LocalizedDescription": {
-    "en-US": "A sample plugin for FolderRewind",
-    "zh-CN": "一个 FolderRewind 示例插件"
-  },
-  "EntryAssembly": "MyPlugin.dll",
-  "EntryType": "MyPlugin.MyPlugin",
-  "MinHostVersion": "1.7.3",
-  "Homepage": "https://github.com/yourname/myplugin",
-  "Repository": "yourname/myplugin"
-}
-```
-
-| 字段 | 必选 | 说明 |
-|------|:----:|------|
-| `Id` | ✅ | 全局唯一标识，建议反向域名风格 |
-| `Name` | ✅ | 插件名称 |
-| `Version` | ✅ | 语义化版本 |
-| `Author` | ✅ | 作者 |
-| `Description` | ✅ | 一句话描述 |
-| `EntryAssembly` | ✅ | 入口 DLL 文件名 |
-| `EntryType` | ✅ | 入口类型完全限定名 |
-| `LocalizedName` | — | 多语言名称 |
-| `LocalizedDescription` | — | 多语言描述 |
-| `MinHostVersion` | — | 最低宿主版本 |
-| `Homepage` | — | 主页链接 |
-| `Repository` | — | GitHub 仓库（`owner/repo`，用于自动更新） |
-
-## 发布前检查清单
-
-- `manifest.json` 的 `EntryAssembly` / `EntryType` 与实际代码一致
-- `EntryType` 是完全限定名（包含命名空间）
-- `MinHostVersion` 与目标用户版本匹配
-- ZIP 结构正确（顶层目录 → 文件）
-- 在干净环境完成一次安装与基本功能验证
-- 设置项的 `DefaultValue` 都有合理值
-- 所有钩子方法都有 try-catch 保护
-
-## 版本策略
-
-使用语义化版本（`MAJOR.MINOR.PATCH`）：
-
-- **MAJOR**：不兼容的 API 变更
-- **MINOR**：向后兼容的功能新增
-- **PATCH**：向后兼容的问题修复
-
-每次发布附更新说明（新增/修复/破坏性变更）。
-
-## 相关链接
-
-- [插件安装与管理](/docs/plugins/using-plugins)
-- [插件自动更新](/docs/plugins/developing/auto-update)
+<span id="zip-结构要求" />
+<span id="构建脚本" />
+<span id="powershell" />
+<span id="dotnet-publish--手动打包" />
+<span id="manifestjson-完整字段" />
+<span id="发布前检查清单" />
+<span id="版本策略" />
+<span id="相关链接" />

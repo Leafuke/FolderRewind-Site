@@ -1,41 +1,42 @@
 ---
 sidebar_position: 6
-title: Packaging and Release
-description: Plugin artifact layout, ZIP packaging conventions, and a pre-release checklist so FolderRewind can load your plugin correctly
+title: "Plugin packaging and publishing"
+description: "FolderRewind 1.9 plugin packaging and publishing: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Packaging and Release
+# Plugin packaging and publishing
 
-## Required artifacts
-
-Plugin release package is usually a `.zip` including at least:
-
-- `manifest.json`
-- Entry assembly (for example `MyPlugin.dll`)
-- Additional runtime dependencies if needed
-
-## Recommended ZIP layout
+## Package layout
 
 ```text
-MyPlugin.zip
-└─ MyPlugin/
-   ├─ manifest.json
-   ├─ MyPlugin.dll
-   └─ ...
+MyPlugin-1.0.0.frplugin
+├─ manifest.json
+├─ settings.schema.json
+├─ MyPlugin.dll
+└─ private-dependency.dll
 ```
 
-## Pre-release checklist
+Files go directly at the ZIP container root. Do not bundle FolderRewind.Plugin.Abstractions.dll; the Host shares assembly identity3.0.0.0. Private dependencies may be bundled. Use the [buildable sample packer](/docs/plugins/developing/quick-start), not the old nested ZIP rule.
 
-- `EntryAssembly` / `EntryType` in `manifest.json` can be loaded correctly
-- `MinHostVersion` matches target user host versions
-- Install + smoke test on a clean environment
+## Manifest
 
-## Versioning recommendations
+manifestVersion=3; pluginId is a stable reverse-domain ID; version uses strict SemVer; pluginApi has major/minor. entryAssembly/settingsSchema use canonical relative paths and entryType is fully qualified. Names/localizations, configKinds, requestedHostServices, capabilities, Artifact declarations and observer flags match runtime behavior.
 
-- Use semantic versioning (`MAJOR.MINOR.PATCH`)
-- Include release notes (features/fixes/breaking changes)
+author/homepage/repository are metadata, not official trust/update authority. Use exact camelCase JSON, without old Id/EntryAssembly/MinHostVersion fields.
 
-## Related links
+## Static validation
 
-- [Install and Manage Plugins](/en/docs/plugins/using-plugins)
-- [Plugin Auto Update](/en/docs/plugins/developing/auto-update)
+Checks cover hashes, safe Windows paths, case collisions, links, expanded sizes, compression ratio, declared files, schema, API/architecture and PE entry metadata. Defaults:10000 entries,1 GiB total,256 MiB per entry, ratio100,1 MiB manifest. Install never loads candidate assemblies or executes constructors/lifecycle/install scripts.
+
+## Publish
+
+Build versioned `.frplugin` and matching SHA-256; publish immutable Release assets and preserve previous versions for review/recovery. Official updates require Catalog bindings to exact URL/hash/API/architecture/manifest; manifests cannot self-declare Official.
+
+Validate disabled-on-install, explicit Enable, settings, cancellation, Disable, update/rollback and interrupted recovery before release. SDK, plugin SemVer and Host versions are independent.
+
+<span id="required-artifacts" />
+<span id="recommended-zip-layout" />
+<span id="pre-release-checklist" />
+<span id="versioning-recommendations" />
+<span id="related-links" />

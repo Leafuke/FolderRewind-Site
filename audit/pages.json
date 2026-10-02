@@ -674,7 +674,7 @@
       "path": "docs/plugins/developing/auto-update.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/auto-update.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -704,7 +704,7 @@
       "path": "docs/plugins/developing/packaging.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/developing/packaging.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -774,7 +774,7 @@
       "path": "docs/plugins/overview.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/overview.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],
@@ -784,7 +784,7 @@
       "path": "docs/plugins/using-plugins.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/plugins/using-plugins.md",
       "product": "FolderRewind/integration",
-      "status": "pending",
+      "status": "source-checked",
       "sources": [
         "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
       ],

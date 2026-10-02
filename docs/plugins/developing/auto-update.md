@@ -1,72 +1,35 @@
 ---
 sidebar_position: 8
-title: 插件自动更新
-description: 基于 GitHub Releases 的插件版本发布与自动更新策略，包括版本号约定、更新清单与灰度发布建议
+title: "官方目录与插件更新"
+description: "FolderRewind 1.9 系列官方目录与插件更新操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# 插件自动更新
+# 官方目录与插件更新
 
-FolderRewind 支持通过 GitHub Releases 自动检查插件更新。
+## 更新事实源
 
-## 工作原理
+FolderRewind 1.9 的更新以独立 Official Catalog 为准。GitHub Releases 托管制品，插件的 repository 字段只提供项目信息，不决定可安装的版本或安全来源。
 
-1. 插件 `manifest.json` 中的 `Repository` 字段指定 GitHub 仓库（格式：`owner/repo`）
-2. FolderRewind 定期调用 GitHub Releases API 获取最新版本
-3. 比较最新版本与当前安装版本
-4. 如果有新版本，在插件管理界面显示更新提示
-5. 用户确认后自动下载 ZIP 并安装
+Host 匹配 PluginId，并使用 SemVer2.0 比较优先级；下载前核对目录项、精确 Release URL、SHA-256、声明/API和实际包。发布者签名和任意自定义目录不是 v3 首发功能。
 
-## 配置步骤
+## 作者发布步骤
 
-### 1. 设置 Repository 字段
+更新 manifest 产品版本，构建不可变 .frplugin 和校验文件，上传固定 tag 下的附件。验证公开下载字节后提交目录 source 项；目录 CI 校验包并生成 public/catalog.v1.json。改动 API 要求时单独说明，不用应用版本推导 API。
 
-在 `manifest.json` 中添加：
+## 更新事务
 
-```json
-{
-  "Repository": "yourname/myplugin"
-}
-```
+升级尊重用户 Enabled Intent 和当前操作排空，保存 current／previous 已知良好载荷及恢复日志。候选不兼容／静态验证失败则拒绝，不先运行代码试错。RequiresRestart 时按提示重启。
 
-### 2. 创建 GitHub Release
+## 手动分发
 
-每次发布新版本时：
+手动包同样接受静态校验，来源仍记录为 Manual；不因为同 ID／名称就被赋予 Official。向用户说明维护方式和兼容性，使用管理页的本地安装入口，不直接覆盖程序集。
 
-```powershell
-# 1. 更新 manifest.json 中的 Version
-# 2. 构建并打包（参见「打包与发布」）
-# 3. 在 GitHub 创建 Release
-gh release create v1.1.0 ./MyPlugin.zip --title "MyPlugin v1.1.0" --notes "修复了..."
-```
-
-Release 的 tag 名称应以 `v` 开头，后跟语义化版本号。
-
-### 3. 上传 ZIP 资产
-
-将打包好的 ZIP 文件作为 Release 的 asset 上传。FolderRewind 会自动识别 ZIP 文件并下载安装。
-
-## MinHostVersion
-
-`MinHostVersion` 字段声明插件所需的最低宿主版本：
-
-```json
-{
-  "MinHostVersion": "1.7.3"
-}
-```
-
-- 如果用户的 FolderRewind 版本低于此值，插件不会被加载
-- 如果新版本提高了 `MinHostVersion`，请在 Release 标题和正文明确说明
-- 建议在提高 `MinHostVersion` 时使用 MAJOR 或 MINOR 版本号变更
-
-## 破坏性变更处理
-
-- 破坏性变更（不兼容旧版宿主）要提高主版本号
-- 在 Release 说明中明确列出破坏性变更
-- 保留最近几个稳定版本的 Release，方便用户回滚
-- 考虑在插件代码中做运行时兼容性检查
-
-## 相关链接
-
-- [打包与发布](/docs/plugins/developing/packaging)
-- [插件安装与管理](/docs/plugins/using-plugins)
+<span id="工作原理" />
+<span id="配置步骤" />
+<span id="1-设置-repository-字段" />
+<span id="2-创建-github-release" />
+<span id="3-上传-zip-资产" />
+<span id="minhostversion" />
+<span id="破坏性变更处理" />
+<span id="相关链接" />

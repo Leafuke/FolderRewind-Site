@@ -1,68 +1,32 @@
 ---
 sidebar_position: 1
-title: Plugin System Overview
-description: Learn about the FolderRewind plugin ecosystem, including built-in extensions, third-party plugins, and KnotLink integration options
+title: "Plugin system overview"
+description: "FolderRewind 1.9 plugin system overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.5"
 ---
 
-# Plugin System Overview
+# Plugin system overview
 
-FolderRewind has a built-in plugin system that allows developers to extend functionality for specific scenarios.
+FolderRewind1.9 Plugin System v3 uses a standalone BCL-only SDK, static declarations and capability registration; the current source API is3.5. The Host owns configuration, orchestration, history, retention, cloud ordering, integrity and target writes.
 
-## What plugins can do
+## Responsibilities
 
-| Capability | Description | Example |
-|------|------|------|
-| **Custom config types** | Define new backup config types | MineRewind adds a "Minecraft" type |
-| **Auto discovery** | Scan directory structures intelligently | Discover saves under `.minecraft/saves` |
-| **Backup hooks and filters** | Run custom logic and filter files before/after backup | Snapshot while game is running |
-| **Backup scopes** | Define parameterized backup scope strategies | Select Minecraft regions |
-| **Folder details** | Contribute display and identity details for managed folders | Show world metadata |
-| **Restore interception** | Validate or enrich a restore before it starts | Preserve game state |
-| **Config augmentation** | Add validated plugin-owned config fields | Store scenario-specific settings |
-| **Hotkey extensions** | Register custom global or in-app hotkeys | Trigger backup or restore quickly |
-| **KnotLink commands** | Receive strict key-value commands over IPC | Integrate with third-party tools |
+Plugins propose discovery/config changes, resolve file policies/scopes, provide consistent sources and folder/version metadata, coordinate restore environments, contribute commands/hotkeys/KnotLink, transform immutable artifacts and materialize them. See all15 contracts in the [API reference](/docs/plugins/developing/plugin-api).
 
-## Official plugin
+Plugins never save Host configuration directly, rewrite old archives in after-hooks or bypass Safe Restore. Discovery, Kind ownership and state namespaces are separate identities.
 
-### MineRewind
+## MineRewind
 
-An official save-enhancement plugin built for Minecraft.
+Bundled candidate1.9.3 requires API3.5 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
 
-- Auto-scan and discover Minecraft saves
-- Hot backup while the game is running
-- Hot restore with world coordination
-- Region-scoped backup support
-- Parameterized protocol v2 extensions through KnotLink Server v3
+## Install and trust
 
-👉 [Minecraft Guide](/en/docs/guides/minecraft/overview) | [Download](/en/download)
+Catalog and manual `.frplugin` packages undergo static validation. New installs are disabled and first execute after explicit Enable. AssemblyLoadContext isolates dependencies, but plugins execute with ambient user privileges. Curation, hashes and service gating are not a sandbox.
 
-## Install plugins
+See [management](/docs/plugins/using-plugins), [development](/docs/plugins/developing/quick-start) and [Minecraft](/docs/guides/minecraft/overview).
 
-1. Download plugin files from a plugin source.
-2. Install from FolderRewind **Plugin Management**.
-3. Restart the app to load the plugin.
-
-## Become a plugin developer
-
-If you want to build plugins for FolderRewind, start with [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start).
-
-FolderRewind provides these extension interfaces:
-
-- `IFolderRewindPlugin` — Main plugin interface
-- `IFolderRewindBackupFilterProvider` — Backup filtering
-- `IFolderRewindBackupScopeProvider` — Parameterized backup scopes
-- `IFolderRewindBackupPreparationProvider` — Backup preparation and validation
-- `IFolderRewindFolderDetailsProvider` — Folder display and identity details
-- `IFolderRewindRestoreInterceptor` — Restore validation and interception
-- `IFolderRewindConfigAugmenter` — Plugin-owned configuration fields
-- `IFolderRewindHotkeyProvider` — Hotkey extension interface
-- `IFolderRewindParameterizedKnotLinkCommandHandler` — parameterized KnotLink command handler
-- `IFolderRewindKnotLinkCapabilityProvider` — discoverable command and signal manifest
-
-## Related links
-
-- [Plugin Development Quick Start](/en/docs/plugins/developing/quick-start)
-- [Install and Manage Plugins](/en/docs/plugins/using-plugins)
-- [KnotLink Protocol and Integration](/en/docs/plugins/knotlink)
-- [Plugin API Reference](/en/docs/plugins/developing/plugin-api)
-- [Minecraft Guide](/en/docs/guides/minecraft/overview)
+<span id="what-plugins-can-do" />
+<span id="official-plugin" />
+<span id="install-plugins" />
+<span id="become-a-plugin-developer" />
+<span id="related-links" />
