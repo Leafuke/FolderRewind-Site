@@ -13,7 +13,7 @@ GameRewind is a buildable API 3.5 example. It discovers supplied roots containin
 
 import CodeBlock from '@theme/CodeBlock';
 import GameSource from '!!raw-loader!@site/examples/plugins/GameRewind/Plugin.cs';
-import GameManifest from '!!raw-loader!@site/examples/plugins/GameRewind/manifest.json';
+import GameManifest from '!!raw-loader!@site/examples/plugins/GameRewind/manifest.json?raw';
 
 <CodeBlock language="csharp" title="GameRewind/Plugin.cs">{GameSource}</CodeBlock>
 <CodeBlock language="json" title="GameRewind/manifest.json">{GameManifest}</CodeBlock>

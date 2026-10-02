@@ -20,8 +20,11 @@ OneDrive 在 rclone config 按选项名称进行授权；WebDAV 填服务器／�
 ```text
 <RemoteBasePath>/_folderrewind/history/<编码 ConfigId>/
 ├─ repository.json
-├─ packs/<前两位>/<PackId>.frpack
-└─ replicas/<ReplicaId>/payload
+└─ packs/<前两位>/<PackId>.frpack
+
+<RemoteBasePath>/_folderrewind/replicas/<ReplicaId>/
+├─ manifest.json
+└─ payload
 ```
 
 实际副本定位依照 Host 保存的对象键和传输入口，旧迁移载荷可以保留旧远端定位。名称不是同步身份，local-state／index 不作为共享事实上传；不要沿用 ConfigName/FolderName/history.json 的旧结构猜测新版数据。

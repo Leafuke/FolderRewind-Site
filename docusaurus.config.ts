@@ -24,7 +24,10 @@ const config: Config = {
     return {
       name: 'example-source-loader',
       configureWebpack() {
-        return {resolveLoader: {alias: {'raw-loader': require.resolve('raw-loader')}}};
+        return {
+          resolveLoader: {alias: {'raw-loader': require.resolve('raw-loader')}},
+          module: {rules: [{resourceQuery: /raw/, type: 'javascript/auto'}]},
+        };
       },
     };
   }],

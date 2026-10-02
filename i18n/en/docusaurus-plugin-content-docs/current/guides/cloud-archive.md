@@ -20,8 +20,11 @@ Global/config connection cards select executable, working directory, explicit co
 ```text
 <RemoteBasePath>/_folderrewind/history/<encoded ConfigId>/
 ├─ repository.json
-├─ packs/<first-two>/<PackId>.frpack
-└─ replicas/<ReplicaId>/payload
+└─ packs/<first-two>/<PackId>.frpack
+
+<RemoteBasePath>/_folderrewind/replicas/<ReplicaId>/
+├─ manifest.json
+└─ payload
 ```
 
 Actual object locators follow Host records/transport entrypoints; migrated payloads may keep old locators. Names are not sync identities. local-state/index are not shared facts. Do not infer new layout from old ConfigName/FolderName/history.json.

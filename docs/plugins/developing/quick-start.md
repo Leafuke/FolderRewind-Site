@@ -39,8 +39,8 @@ import MinimalSource from '!!raw-loader!@site/examples/plugins/MinimalPlugin/Plu
 
 ## 静态清单与设置
 
-import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json';
-import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json';
+import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json?raw';
+import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json?raw';
 
 <CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
 <CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
