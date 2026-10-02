@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: MineBackup-Mod (Modded-Server Integration)
 description: Current MineBackup-Mod installation, commands, hot backup, hot restore, and dedicated-server Sidecar guide
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # MineBackup-Mod (Modded-Server Integration)

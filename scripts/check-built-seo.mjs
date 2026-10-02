@@ -16,15 +16,17 @@ const warnings = [];
 
 // Parse sitemap
 function parseSitemap() {
-  const sitemapPath = path.join(buildDir, 'sitemap.xml');
-  if (!fs.existsSync(sitemapPath)) {
-    errors.push('sitemap.xml not found in build/');
-    return [];
+  const urls = [];
+  for (const locale of ['', 'en']) {
+    const sitemapPath = path.join(buildDir, locale, 'sitemap.xml');
+    if (!fs.existsSync(sitemapPath)) {
+      errors.push(`${locale || 'zh'} sitemap.xml missing`);
+      continue;
+    }
+    const content = fs.readFileSync(sitemapPath, 'utf8');
+    urls.push(...[...content.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]));
   }
-
-  const content = fs.readFileSync(sitemapPath, 'utf8');
-  const urls = [...content.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-  return urls;
+  return [...new Set(urls)];
 }
 
 // Check if superpowers exists in build

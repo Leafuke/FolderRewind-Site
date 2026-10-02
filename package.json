@@ -17,12 +17,18 @@
     "check:built-seo": "node scripts/check-built-seo.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "check:contracts": "node scripts/check-doc-contracts.mjs",
+    "check:built-docs": "node scripts/check-built-docs.mjs",
+    "check:release": "node scripts/check-release-readiness.mjs",
+    "predeploy": "npm run check:release",
+    "check:all": "npm run check:i18n && npm run typecheck && npm run check:contracts && npm run check:images && npm run check:seo && npm run build && npm run check:built-seo && npm run check:built-docs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
     "@docusaurus/faster": "3.10.2",
     "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/theme-mermaid": "^3.10.2",
     "@easyops-cn/docusaurus-search-local": "0.55.3",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",

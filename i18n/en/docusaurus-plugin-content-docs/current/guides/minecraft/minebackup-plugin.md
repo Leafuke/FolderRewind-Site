@@ -1,6 +1,7 @@
 ---
 title: MineBackupPlugin (Spigot/Paper Integration)
 description: FolderRewind/MineBackup backup, hot restore, and Sidecar handoff for Spigot and Paper dedicated servers
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # MineBackupPlugin (Spigot/Paper Integration)

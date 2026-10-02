@@ -40,7 +40,7 @@ MSI:
 - **Earlier than v1.7.4:** run v1.7.4 first to complete legacy config migration, then upgrade to the latest v1.8.x.
 - Existing backups and history metadata remain restorable, but the upgraded backup chain and restore result must be retested with non-production data.
 
-Upgrading does not move MSI data to Store/MSIX or vice versa. When switching channels, follow [Installation Guide](/en/docs/getting-started/installation#data-directories-and-channel-switching) to back up data and uninstall the old channel first.
+Upgrading does not move MSI data to Store/MSIX or vice versa. When switching channels, follow [Installation Guide](/en/docs/getting-started/installation#requirements-and-data-paths) to back up data and uninstall the old channel first.
 
 ## If v1.8.0 cannot start
 

@@ -13,7 +13,7 @@ reviewed_baseline: "1.9-api3.5"
 
 `IFolderRewindPlugin` 只有 `ActivateAsync(IPluginActivationContext, CancellationToken)` 和 `DeactivateAsync(CancellationToken)`。静态 manifest 定义产品／权限／能力；激活返回 `PluginActivationResult`，其中状态 patch 由 Host 验证并提交。
 
-激活时可以读取 `PluginSettingsSnapshot`、`ConfigSnapshot` 和 `FolderSnapshot`。每种能力契约最多注册一个实现，内部多个行为自行组合；Manifest 与注册集合必须一致。提交之前能力不可调用，激活阶段不能访问 DataStore。
+激活时可以读取 `PluginSettingsSnapshot`、`ConfigSnapshot` 和 `FolderSnapshot`。同一实例只注册一次；实现多种能力接口的实例会贡献其全部契约。每种能力契约最多注册一个实现，内部多个行为自行组合；Manifest 与注册集合必须一致。提交之前能力不可调用，激活阶段不能访问 DataStore。
 
 ## 全部能力
 

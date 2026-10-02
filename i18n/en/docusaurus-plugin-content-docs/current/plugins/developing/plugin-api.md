@@ -13,7 +13,7 @@ Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting 
 
 `IFolderRewindPlugin` exposes `ActivateAsync(IPluginActivationContext, CancellationToken)` and `DeactivateAsync(CancellationToken)`. Product, service and capability facts are static manifest data. The Host validates and commits the state patch in `PluginActivationResult`.
 
-Activation reads settings and config/folder snapshots, and registers at most one implementation per capability contract. Compose internal multiplicity yourself. Registration and manifest sets must match; capabilities are unavailable before commit, and activation cannot use DataStore.
+Activation reads settings and config/folder snapshots, and registers each instance once, recognizing all of its capability interfaces, with at most one implementation per contract. Compose internal multiplicity yourself. Registration and manifest sets must match; capabilities are unavailable before commit, and activation cannot use DataStore.
 
 ## All capabilities
 

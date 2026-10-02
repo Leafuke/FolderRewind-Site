@@ -2,8 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'codex/**']
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -27,6 +31,12 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      - name: Check reviewed documentation contracts
+        run: npm run check:contracts
+
+      - name: Check images
+        run: npm run check:images
+
       - name: Check SEO metadata
         run: npm run check:seo
 
@@ -35,3 +45,62 @@ jobs:
 
       - name: Check built SEO
         run: npm run check:built-seo
+
+      - name: Check original routes and anchors in both languages
+        run: npm run check:built-docs
+
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+      - name: Read pinned source baseline
+        id: baseline
+        run: node -e 'console.log("ref="+JSON.parse(require("fs").readFileSync("audit/baseline.json","utf8")).hostRef)' >> "$GITHUB_OUTPUT"
+      - name: Checkout read-only Host contracts and Runtime
+        uses: actions/checkout@v7
+        with:
+          repository: Leafuke/FolderRewind
+          ref: ${{ steps.baseline.outputs.ref }}
+          path: artifacts/host
+      - name: Pack pinned candidate SDK (does not establish public availability)
+        run: dotnet pack artifacts/host/FolderRewind.Plugin.Abstractions -c Release -o artifacts/feed
+      - name: Build, pack and validate independent examples
+        env:
+          NUGET_PACKAGES: ${{ runner.temp }}/fr-candidate-packages
+        run: |
+          dotnet restore examples/plugins/MinimalPlugin --source artifacts/feed
+          dotnet restore examples/plugins/GameRewind --source artifacts/feed
+          node scripts/pack-plugin.mjs MinimalPlugin
+          node scripts/pack-plugin.mjs GameRewind
+          dotnet run --project tools/ExampleValidation -p:HostRoot="$GITHUB_WORKSPACE/artifacts/host" -- artifacts/examples
+      - uses: actions/upload-artifact@v6
+        with:
+          name: plugin-examples-and-validation
+          path: |
+            artifacts/examples/*.frplugin
+            artifacts/examples/*.sha256
+            artifacts/examples/validation-results.json
+
+  release-readiness:
+    if: github.ref == 'refs/heads/main'
+    needs: [build, examples]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+      - name: Reject premature release publication
+        run: node scripts/check-release-readiness.mjs

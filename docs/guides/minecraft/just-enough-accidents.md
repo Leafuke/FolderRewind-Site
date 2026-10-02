@@ -1,6 +1,7 @@
 ---
 title: Just Enough Accidents（险兆备份）
 description: 检测 Minecraft 高风险状态并自动创建事故现场快照，在死亡、爆炸等意外发生前保留可回溯的存档点
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # Just Enough Accidents（险兆备份）

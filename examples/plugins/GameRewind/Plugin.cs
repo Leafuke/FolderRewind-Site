@@ -19,9 +19,7 @@ public sealed class Plugin : IFolderRewindPlugin, IDiscoveryCapability,
         _discover = context.Settings.Values.TryGetValue("DiscoverSaves", out var value)
             && value.GetBoolean();
         context.RegisterCapability<IDiscoveryCapability>(this);
-        context.RegisterCapability<IFilePolicyCapability>(this);
-        context.RegisterCapability<IPluginCommandCapability>(this);
-        context.RegisterCapability<IKnotLinkIntegrationCapability>(this);
+        // Register this multi-interface instance once. Runtime recognizes all its contracts.
         return ValueTask.FromResult(PluginActivationResult.Empty);
     }
 

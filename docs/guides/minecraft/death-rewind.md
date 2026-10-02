@@ -1,6 +1,7 @@
 ---
 title: Death Rewind（死亡回溯）
 description: 在 Fabric 单人世界死亡后，从死亡界面一键回溯到 MineBackup 的最新归档，避免灾难性损失重开存档
+reviewed_baseline: "1.9-api3.5"
 ---
 
 # Death Rewind（死亡回溯）

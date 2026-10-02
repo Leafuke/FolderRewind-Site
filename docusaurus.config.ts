@@ -19,6 +19,8 @@ const config: Config = {
   projectName: 'FolderRewind-Site',
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
+  markdown: {mermaid: true},
 
   plugins: [function exampleSourceLoader() {
     return {
@@ -108,6 +110,7 @@ const config: Config = {
   ],
 
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
