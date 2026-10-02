@@ -354,7 +354,7 @@
     "message": "Switching installation channels does not migrate configs or plugins automatically; back up your data first."
   },
   "download.notice.upgradeLink": {
-    "message": "Read installation and data-path guidance"
+    "message": "Read the1.9 upgrade and recovery guide"
   },
   "download.badge.recommended": {
     "message": "Recommended"

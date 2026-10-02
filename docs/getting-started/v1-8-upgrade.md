@@ -5,6 +5,10 @@ description: 从旧版本升级到 FolderRewind 1.8 的完整步骤，并安全�
 ---
 
 # 1.8 升级与启动故障恢复
+:::info[历史版本范围]
+本页仅记录1.8升级和语言修复；1.9请阅读[新版升级指南](/docs/getting-started/v1-9-upgrade)。
+:::
+
 
 本页适用于从旧版本升级到 FolderRewind 1.8，以及遇到 1.8.0 无法创建窗口的问题。
 

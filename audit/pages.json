@@ -819,6 +819,16 @@
         "FolderRewind 32cb9b4 API 3.5 baseline"
       ],
       "manualAcceptance": "pending"
+    },
+    {
+      "path": "docs/getting-started/v1-9-upgrade.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/v1-9-upgrade.md",
+      "product": "FolderRewind",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind 32cb9b4 API 3.5 baseline"
+      ],
+      "manualAcceptance": "pending"
     }
   ],
   "blogs": [

@@ -5,6 +5,10 @@ description: Upgrade from older releases and safely recover from the v1.8.0 lang
 ---
 
 # v1.8 Upgrade and Startup Recovery
+:::info[Historical version]
+This page records1.8 upgrade/language recovery only. Use the [1.9 upgrade guide](/docs/getting-started/v1-9-upgrade) for current migrations.
+:::
+
 
 Use this page when upgrading an older installation to FolderRewind 1.8 or when v1.8.0 exits before creating a window.
 

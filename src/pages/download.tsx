@@ -92,8 +92,8 @@ export default function Download(): ReactNode {
               <li><Translate id="download.notice.point2">请勿同时安装 Store 与 Setup 版本。</Translate></li>
               <li><Translate id="download.notice.point3">切换安装渠道不会自动迁移配置或插件，请先备份数据。</Translate></li>
             </ul>
-            <Link className={styles.noticeLink} to="/docs/getting-started/installation">
-              <Translate id="download.notice.upgradeLink">查看安装与数据目录指南</Translate>
+            <Link className={styles.noticeLink} to="/docs/getting-started/v1-9-upgrade">
+              <Translate id="download.notice.upgradeLink">查看 1.9 升级与恢复指南</Translate>
               <FaArrowRight aria-hidden="true" />
             </Link>
           </div>
