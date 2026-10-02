@@ -26,8 +26,10 @@ async function release(repo,tag) {
 const hostTag=evidence.officialHostTag;
 if(!hostTag)failures.push('Final official Host tag/date are not frozen.');
 else {
+  if(!/^v?1\.9\.\d+(?:\.\d+)?$/.test(hostTag))failures.push('Expected a final 1.9-series Host tag.');
   const r=await release('FolderRewind',hostTag);
   if(r){
+    if(!r.published_at||evidence.officialHostPublishedAt!==r.published_at)failures.push('Recorded Host publication date does not match official metadata.');
     const version=r.assets.map(a=>/^FolderRewind_(\d+(?:\.\d+){2,3})_Setup_x64\.exe$/.exec(a.name)?.[1]).find(Boolean);
     if(!version)failures.push('Missing versioned Setup EXE.');
     else{
@@ -35,6 +37,21 @@ else {
       for(const name of allowed)if(!r.assets.some(a=>a.name===name))failures.push(`Missing ${name}`);
       for(const asset of r.assets)if(!allowed.has(asset.name))failures.push(`Unexpected public asset: ${asset.name}`);
       if(version.replace(/\.0$/,'')!==hostTag.replace(/^v/,'').replace(/\.0$/,''))failures.push('Host asset version does not match tag.');
+      for(const arch of ['x64','arm64']){
+        const name=`FolderRewind_${version}_Setup_${arch}.exe`;
+        const exe=r.assets.find(a=>a.name===name);
+        const checksum=r.assets.find(a=>a.name===`${name}.sha256`);
+        if(!exe||!checksum)continue;
+        const checksumResponse=await fetch(checksum.browser_download_url);
+        if(!checksumResponse.ok)throw new Error(`Checksum download failed: ${checksumResponse.status}`);
+        const match=/^([a-fA-F0-9]{64})(?:\s+\*?(.+))?$/.exec((await checksumResponse.text()).trim());
+        if(!match||(match[2]&&match[2]!==name)){failures.push(`Invalid checksum file: ${name}`);continue;}
+        const download=await fetch(exe.browser_download_url);
+        if(!download.ok||!download.body)throw new Error(`Setup download failed: ${download.status}`);
+        const hash=crypto.createHash('sha256');
+        for await(const chunk of download.body)hash.update(chunk);
+        if(hash.digest('hex')!==match[1].toLowerCase())failures.push(`Setup checksum mismatch: ${name}`);
+      }
     }
   }
 }
