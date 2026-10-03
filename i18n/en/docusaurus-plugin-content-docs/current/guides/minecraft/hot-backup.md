@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## Active target
 
-MineRewind1.9.3 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
+MineRewind1.9.5 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
 
 ## Coordination
 

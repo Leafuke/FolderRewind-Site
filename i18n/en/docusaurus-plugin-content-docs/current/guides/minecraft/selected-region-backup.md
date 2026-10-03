@@ -44,6 +44,10 @@ Supported recognized Vanilla/Paper/Spigot/26.1 layouts are accepted; ambiguity b
 
 Partial captures always Overwrite in ordinary/hot Restore. Clean cannot delete omitted regions; other regions do not return to the same time. Stop writes or complete coordination. Verify dimensions/entities/POI/large chunks and real loading on copies first.
 
+## Edition boundary
+
+selected-regions is a Java-world scope, not a Bedrock LevelDB or ordinary-folder scope. Bedrock discovery does not convert its layout into Java regions. Close the game and use a full ordinary file backup.
+
 <span id="configuration" />
 <span id="dimensions-and-directory-layouts" />
 <span id="input-limits" />

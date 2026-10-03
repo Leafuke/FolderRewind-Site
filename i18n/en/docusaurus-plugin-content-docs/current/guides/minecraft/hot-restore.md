@@ -33,6 +33,16 @@ Archive apply and automatic rejoin success differ; failed rejoin may yield Succe
 
 Test all players, explicit false, missing players, layout errors, cancellation, partial captures and real rejoin on copies. NBT fixtures do not certify game loading.
 
+## One-shot path preservation
+
+Ordinary Java Restore accepts `restore_preserve_paths`, relative to the unique managed world root. A relative file or directory ending in `/` preserves exact current state, including deletions. This differs from player-field preservation and cannot expand SourceScope. Checkout/Merge do not apply it. See [filter limits](/docs/guides/filters#one-shot-file-and-directory-preservation) for boundaries, ambiguity and staging limits.
+
+```text
+cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;preserve_player_data=false;from=panel;request_id=restore-preserve-001
+```
+
+These example paths must actually be inside the managed world root; they cannot protect instance directories outside it. Bedrock does not use Java hot coordination or NBT preservation: close the game and use ordinary file restore.
+
 <span id="source-mapping" />
 <span id="trigger-methods" />
 <span id="prerequisites" />

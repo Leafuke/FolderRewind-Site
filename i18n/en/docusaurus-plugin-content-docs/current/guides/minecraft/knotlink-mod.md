@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## Versions
 
-The backend baseline is FolderRewind1.9/MineRewind1.9.3/API3.5. Server v3, wire v2 and capability manifestVersion3.0.0 are separate. Install game components according to their Release loader/game matrices, not plugin API versions.
+The backend baseline is FolderRewind1.9/MineRewind1.9.5/API3.6. Server v3, wire v2 and capability manifestVersion3.0.0 are separate. Install game components according to their Release loader/game matrices, not plugin API versions.
 
 ## Minimal integration
 

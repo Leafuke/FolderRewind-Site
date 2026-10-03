@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## 前置与版本
 
-当前文档后端为 FolderRewind1.9、MineRewind1.9.3、API3.5；KnotLink Server v3、wire v2与能力 manifestVersion3.0.0独立。游戏组件按各自 Release 的加载器／游戏版本安装，不能把插件 API3.5当 Server或游戏模组版本。
+当前文档后端为 FolderRewind1.9、MineRewind1.9.5、API3.6；KnotLink Server v3、wire v2与能力 manifestVersion3.0.0独立。游戏组件按各自 Release 的加载器／游戏版本安装，不能把插件 API3.6当 Server或游戏模组版本。
 
 ## 最小联调
 

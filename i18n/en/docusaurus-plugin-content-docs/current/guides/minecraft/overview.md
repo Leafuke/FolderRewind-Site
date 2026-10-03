@@ -7,7 +7,7 @@ reviewed_baseline: "1.9-api3.5"
 
 # Minecraft overview
 
-FolderRewind1.9 uses MineRewind v3. Bundled candidate1.9.3 requires API3.5; game-side mods/server plugins have independent versions. Verify public artifacts and actual game-loading acceptance before production use.
+FolderRewind1.9 uses MineRewind v3. FolderRewind 1.9.3 bundles released MineRewind 1.9.5, requiring API3.6; game-side mods/server plugins have independent versions. Actual game loading still needs separate validation.
 
 ## Components
 
@@ -34,6 +34,12 @@ Start with [setup](/docs/guides/minecraft/quick-start), [hot backup](/docs/guide
 import MinecraftEcosystem from '@site/src/components/MinecraftEcosystem';
 
 <MinecraftEcosystem />
+
+## Java, Bedrock and ordinary directories
+
+MineRewind 1.9.5 extends launcher and Bedrock discovery; see [quick start](/docs/guides/minecraft/quick-start). Java worlds, Bedrock worlds and ordinary configuration folders differ: Java may use its coordination, NBT and region capabilities; Bedrock uses a separate Kind with ordinary file handling and requires the game to close; ordinary directories skip optional world metadata capture. Successful discovery does not certify actual game loading.
+
+Minecraft Merge uses the Host's conservative file-level three-way merge, without region/chunk/NBT semantic merging.
 
 <span id="typical-combinations" />
 <span id="minerewind-capabilities" />

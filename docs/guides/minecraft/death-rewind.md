@@ -6,7 +6,7 @@ reviewed_baseline: "1.9-api3.5"
 
 # Death Rewind（死亡回溯）
 :::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API3.5 的 FolderRewind1.9与MineRewind1.9.3；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+接入本网站当前教程时使用支持 API3.6 的 FolderRewind1.9与MineRewind1.9.5；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
 :::
 
 

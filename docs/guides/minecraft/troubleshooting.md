@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## 先检查链路
 
-检查Host支持API3.5、MineRewind来源与版本、Enabled Intent和Active、Kind、世界有效路径、session.lock状态、KnotLink和游戏组件，以及可物化的历史目标。旧EnableHotBackup开关和v2钩子不是当前排错入口。
+检查Host支持API3.6、MineRewind来源与版本、Enabled Intent和Active、Kind、世界有效路径、session.lock状态、KnotLink和游戏组件，以及可物化的历史目标。旧EnableHotBackup开关和v2钩子不是当前排错入口。
 
 | 现象 | 检查与处理 |
 |---|---|
@@ -26,6 +26,10 @@ reviewed_baseline: "1.9-api3.5"
 用GET_CAPABILITIES与LIST_BACKUPS取得运行时目标及精确参数；文件名动态值需percent-encoding。安装、激活、Ready／Degraded／Blocked与SuccessWithWarnings是不同阶段。RecoveryRequired／CommittedRecoveryRequired时不再次发起破坏性请求，不自动重进。
 
 提交问题提供Host／API／插件／游戏组件版本、时间、request_id、结果和脱敏日志，不上传令牌、私有路径或完整生产存档。真实加载失败需要保留测试副本与游戏错误，不仅提供NBT测试通过的结论。
+
+## 未找到存档或版别不符
+
+先确认自动发现与指定根目录扫描的区别；便携／自定义目录手选补足。检查草稿实际 Kind：Java、Bedrock 不能互换。Bedrock 不提供 Java 热协调、NBT 玩家保留或区域范围；普通目录也不要求世界元数据。查看逐来源诊断，不把部分结果或预算超限当成全盘扫描完成。
 
 <span id="先做-60-秒链路体检" />
 <span id="现象与源码定位表" />

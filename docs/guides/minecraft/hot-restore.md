@@ -33,6 +33,16 @@ PreservePlayerData 本地默认 false；preserve_player_data 省略继承，true
 
 先在副本验证多个玩家、显式false、缺失玩家、布局异常、取消、部分捕获和游戏重进。NBT夹具通过不证明真实游戏加载成功。
 
+## 单次路径强保留
+
+普通 Java Restore 可使用 `restore_preserve_paths`，路径相对于唯一受管世界根；相对文件或以 `/` 结尾的目录保留当前完整状态，包括当前删除。它不同于玩家字段保留，且不会扩大 SourceScope；Checkout／Merge 不应用此参数。边界、歧义和暂存限制见[过滤指南](/docs/guides/filters#单次文件与目录强保留)。
+
+```text
+cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;preserve_player_data=false;from=panel;request_id=restore-preserve-001
+```
+
+示例路径必须实际位于受管世界根内；不能借此保护世界根外的实例目录。Bedrock 不使用 Java 热协调或 NBT 玩家保留，请关闭游戏后走普通文件还原。
+
 <span id="源码映射" />
 <span id="两种触发方式" />
 <span id="执行前提" />

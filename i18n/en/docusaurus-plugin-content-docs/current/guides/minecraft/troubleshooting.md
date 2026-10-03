@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## Check the chain
 
-Check Host API3.5, MineRewind provenance/version, Enabled Intent and Active, Kind, valid world path/session.lock, KnotLink/game component and materializable history. Old EnableHotBackup/v2 hooks are not current diagnostic entrypoints.
+Check Host API3.6, MineRewind provenance/version, Enabled Intent and Active, Kind, valid world path/session.lock, KnotLink/game component and materializable history. Old EnableHotBackup/v2 hooks are not current diagnostic entrypoints.
 
 | Symptom | Check/action |
 |---|---|
@@ -26,6 +26,10 @@ Check Host API3.5, MineRewind provenance/version, Enabled Intent and Active, Kin
 Use GET_CAPABILITIES/LIST_BACKUPS for runtime targets/arguments; percent-encode filenames. Install/activation/readiness/outcomes differ. RecoveryRequired/CommittedRecoveryRequired prohibit destructive retries/automatic rejoin.
 
 Report versions, time, request_id, outcomes and redacted logs. Do not upload tokens/private paths/production worlds. Preserve copied-world game-loading errors; passing NBT tests is insufficient.
+
+## Missing saves or wrong edition
+
+Distinguish automatic discovery from explicit-root scanning and select portable/custom locations manually. Check the draft's actual Kind: Java and Bedrock are not interchangeable. Bedrock lacks Java hot coordination, NBT player preservation and region scope; ordinary folders do not require world metadata. Read per-source diagnostics rather than treating partial/budget-limited results as a completed whole-drive scan.
 
 <span id="60-second-chain-health-check" />
 <span id="symptom-to-source-map" />

@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## 目标与活动检测
 
-MineRewind 1.9.3 通过有效世界路径及 session.lock 判断活动世界，不以 level.dat 锁定作为唯一依据。手动备份、快捷键或 current_save 选择器都进入同一 Host 流程，v3没有旧 EnableHotBackup 开关。
+MineRewind 1.9.5 通过有效世界路径及 session.lock 判断活动世界，不以 level.dat 锁定作为唯一依据。手动备份、快捷键或 current_save 选择器都进入同一 Host 流程，v3没有旧 EnableHotBackup 开关。
 
 ## 协调
 

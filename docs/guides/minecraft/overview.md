@@ -7,7 +7,7 @@ reviewed_baseline: "1.9-api3.5"
 
 # Minecraft 专题总览
 
-FolderRewind 1.9 系列的 Minecraft 后端为 MineRewind v3。当前捆绑候选1.9.3要求 API3.5；游戏侧模组／服务端插件使用自己的版本线。正式发布前需核对公开制品与实际游戏加载验收。
+FolderRewind 1.9 系列的 Minecraft 后端为 MineRewind v3。FolderRewind 1.9.3 内置正式 MineRewind 1.9.5，要求 API3.6；游戏侧模组／服务端插件使用自己的版本线，真实游戏加载仍需单独验证。
 
 ## 组件分工
 
@@ -34,6 +34,12 @@ FolderRewind 管理配置、历史、归档、云副本与 Safe Restore。MineRe
 import MinecraftEcosystem from '@site/src/components/MinecraftEcosystem';
 
 <MinecraftEcosystem />
+
+## Java、Bedrock 与普通目录
+
+MineRewind 1.9.5 扩展多启动器与 Bedrock 发现，详见[快速开始](/docs/guides/minecraft/quick-start)。Java、Bedrock 和配置中的普通文件夹应分别理解：Java 世界可使用对应协调、NBT 与区域能力；Bedrock 是独立 Kind 的普通文件流程，需关闭游戏；普通目录不捕获可选世界元数据。发现成功不代表真实游戏加载验收完成。
+
+Minecraft Merge 使用 Host 的保守文件级三方合并，没有 region／chunk／NBT 语义合并。
 
 <span id="典型组合" />
 <span id="minerewind-能力" />

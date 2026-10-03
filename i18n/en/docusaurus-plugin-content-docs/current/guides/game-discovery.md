@@ -7,9 +7,6 @@ reviewed_baseline: "1.9-api3.5"
 
 # Automatic game-save discovery Beta
 
-![Discovery Beta initial page,1.9.2.0/API3.5 Chinese candidate; no network scan](/img/docs/v1-9/discovery-candidate.png)
-
-*Discovery Beta initial page,1.9.2.0/API3.5 Chinese candidate; no network scan.*
 
 
 ## What discovery means
@@ -36,4 +33,9 @@ Three-way review compares last-reviewed upstream baseline, current user config a
 
 Exercise scan/account selection/create, scope edits, single-source backup, review conflicts/cancellation and attribution. Discovery knowledge does not elect runtime Kind ownership.
 
+## Staged confirmation in 1.9.3
+
+After scanning, confirm configurations by game/backup set, then review individual sources and resources. Read full paths, edition, provider and scope; a game entry is not a saved configuration. Continue with names, backup destinations and final review. Selection is disabled while scanning; canceled or departed scans cannot update the current page later.
+
+The Minecraft creation entrypoint can automatically discover saves without first selecting a directory or downloading Ludusavi. Automatic discovery includes known launcher locations and remembered roots. Selected-directory scans stay within the chosen scope; switching back to automatic discovery includes known locations again. Java and Bedrock use separate Kinds, matching each draft's edition. Discovery uses directory/`level.dat` evidence, not world-health or game-loading validation.
 

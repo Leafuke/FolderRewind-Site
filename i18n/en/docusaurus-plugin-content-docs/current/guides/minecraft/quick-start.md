@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## Install and enable
 
-Use an API3.5 Host and MineRewind1.9.3 candidate; verify released versions for production. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
+Use FolderRewind 1.9.3 (API3.6) and MineRewind 1.9.5; verify their official versions and sources. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
 
 ## Discover instances
 
@@ -24,6 +24,14 @@ The old EnableHotBackup setting is absent. Config Prefer/Require intent and prov
 ## Next
 
 Read [regions](/docs/guides/minecraft/selected-region-backup), [hot backup](/docs/guides/minecraft/hot-backup), [hot restore](/docs/guides/minecraft/hot-restore). File tests do not replace actual game-loading acceptance.
+
+## Launchers and Bedrock
+
+Home → New backup project → Minecraft can discover automatically. Alternatively select a launcher directory, game root, instance library, saves, minecraftWorlds or a single world. Common locations cover official Java, HMCL, PCL2, PCLCE, Prism Launcher, Modrinth App, NetEase and Bedrock. Select custom/portable locations manually when needed; this is not a whole-drive search.
+
+Automatic discovery combines known locations and remembered roots; selected-root discovery stays scoped. Selected drafts return to setup for names, destinations and review instead of creating projects during scanning. Minecraft configurations may include ordinary folders, which use ordinary file backup rather than being treated as worlds.
+
+Bedrock uses a separate Kind and ordinary file handling: close the game first. Java NBT player preservation, selected-regions and current-world KnotLink coordination do not apply. Java hot-backup capabilities are not Bedrock capabilities.
 
 <span id="step-1-install-plugin" />
 <span id="step-2-scan-minecraft" />

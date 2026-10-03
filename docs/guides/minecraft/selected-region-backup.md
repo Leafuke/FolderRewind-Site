@@ -44,6 +44,10 @@ reviewed_baseline: "1.9-api3.5"
 
 部分捕获普通／热还原始终 Overwrite，不能 Clean 清空未包含的区域。包外区域不会回到同一时间。Restore 前停止游戏写入或完成热协调；测试维度、实体、POI、大区块和真实游戏加载后再用于正式世界。
 
+## 版别边界
+
+selected-regions 是 Java 世界范围，不适用于 Bedrock 的 LevelDB 世界或普通文件夹。发现 Bedrock 不会将其转换为 Java 区域布局；请关闭游戏并使用完整普通文件备份。
+
 <span id="配置入口" />
 <span id="维度与目录布局" />
 <span id="输入限制" />
