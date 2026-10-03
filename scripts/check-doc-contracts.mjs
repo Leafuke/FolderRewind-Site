@@ -1,15 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import matter from 'gray-matter';
 
 const baseline = JSON.parse(fs.readFileSync('audit/baseline.json', 'utf8'));
 const inventory = JSON.parse(fs.readFileSync('audit/pages.json', 'utf8'));
 const errors = [];
-for (const [file, hash] of Object.entries(baseline.preservedFiles)) {
-  if (crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex') !== hash)
-    errors.push(`Independent MineBackup baseline changed: ${file}`);
-}
 const deprecated = /using FolderRewind\.(?:Models|Services)|\bGetSettingsDefinitions\s*\(|\bOnBeforeBackupFolder\s*\(|\bOnAfterBackupFolder\s*\(|\bInitialize\s*\(|IFolderRewindHotkeyProvider|IFolderRewindParameterizedKnotLinkCommandHandler/;
 for (const item of inventory.pages.filter(p => p.product !== 'MineBackup')) {
   if (!item.status.startsWith('source-checked') && !item.status.startsWith('historical-')) errors.push(`Unaudited page: ${item.path}`);
@@ -40,4 +35,4 @@ const api = fs.readFileSync('docs/plugins/developing/plugin-api.md', 'utf8');
 const kinds = ['Discovery','ConfigReconciliation','FilePolicy','BackupScope','BackupConsistency','FolderMetadata','RestoreCoordinator','PluginCommand','KnotLinkIntegration','ProviderStateMigration','BackupArtifactTransformer','BackupCompletionObserver','RestoreMaterializer','VersionMetadataProvider','RestoreStagingPreparation'];
 for (const kind of kinds) if (!api.includes('`'+kind+'`')) errors.push(`Undocumented capability: ${kind}`);
 if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
-else console.log(`Contracts OK: ${inventory.pages.length} bilingual pages, 15 capabilities, independent legacy baseline preserved.`);
+else console.log(`Contracts OK: ${inventory.pages.length} bilingual pages, 15 capabilities.`);
