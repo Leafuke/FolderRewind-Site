@@ -117,7 +117,7 @@ function HomepageHero() {
             <p className={styles.heroSubtitle}>
               <Translate id="homepage.hero.subtitle.line1">为重要文件、项目资料与游戏存档提供安全备份</Translate>
               <br />
-              <Translate id="homepage.hero.subtitle.line2">支持游戏发现、历史分支、安全恢复点与云副本</Translate>
+              <Translate id="homepage.hero.subtitle.line2">1.9.3 支持游戏发现、历史分支、安全恢复点与云副本</Translate>
             </p>
 
             <div className={styles.buttons}>
@@ -191,9 +191,9 @@ function useSegments(): Segment[] {
       icon: <FaPuzzlePiece />,
       iconClass: 'segment-icon-wrap--dev',
       title: translate({id: 'homepage.segment.dev.title', message: '插件开发者'}),
-      desc: translate({id: 'homepage.segment.dev.desc', message: '用独立 Plugin API 3.5 接入应用、游戏与自动化'}),
+      desc: translate({id: 'homepage.segment.dev.desc', message: '用独立 Plugin API 3.6 接入应用、游戏与自动化'}),
       bullets: [
-        translate({id: 'homepage.segment.dev.bullet1', message: '独立 Plugin API 3.5'}),
+        translate({id: 'homepage.segment.dev.bullet1', message: '独立 Plugin API 3.6'}),
         translate({id: 'homepage.segment.dev.bullet2', message: 'KnotLink 协议 v2 / Server v3'}),
         translate({id: 'homepage.segment.dev.bullet3', message: '能力注册、备份范围与还原协调'}),
       ],

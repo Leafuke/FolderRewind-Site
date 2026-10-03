@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## 当前文档适用哪个版本？
 
-适用 FolderRewind1.9系列与API3.5。正式发布前公开 latest 仍可能是1.8.2；先核对下载版本。MineBackup独立教程适用其自身基线。
+适用 FolderRewind 1.9.3、内置 MineRewind 1.9.5 与 Plugin API 3.6／SDK 3.6.0。程序集身份保持 3.0.0.0。MineBackup 独立教程适用其自身基线。
 
 ## 应下载 MSI 或 MSIX 吗？
 

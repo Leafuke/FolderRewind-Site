@@ -9,7 +9,7 @@ reviewed_baseline: "1.9-api3.5"
 
 ## Which version?
 
-FolderRewind1.9/API3.5. Before publication latest may remain1.8.2; check downloads. MineBackup docs keep their independent baseline.
+FolderRewind 1.9.3, bundled MineRewind 1.9.5 and Plugin API 3.6 / SDK 3.6.0. Assembly identity remains 3.0.0.0. MineBackup docs keep their independent baseline.
 
 ## MSI or MSIX?
 

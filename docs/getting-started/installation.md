@@ -7,7 +7,7 @@ reviewed_baseline: "1.9-api3.5"
 
 # 安装指南
 
-FolderRewind 1.9 系列提供 Microsoft Store 和 GitHub Setup EXE 两个普通用户入口。本文按1.9发布策略说明；正式资产发布前，releases/latest 仍可能指向1.8.2，不能把旧包当作1.9。
+FolderRewind 1.9.3 已于 2026-10-03 发布，内置 MineRewind 1.9.5。可从 Microsoft Store 或 GitHub Setup EXE 安装；商店版本按实际页面和应用显示核对。
 
 ## Microsoft Store
 
@@ -30,7 +30,7 @@ Intel／AMD 电脑选择 x64，Windows on ARM 选择 arm64。先下载对应包�
 Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
 ```
 
-把输出与同名 .sha256 核对后运行安装向导。默认安装目录为当前用户 LocalAppData 下 Programs/FolderRewind；实际安装权限和提示按包与系统显示处理。Setup 内含安装引擎，不要求用户另找 MSI。没有架构匹配 EXE 时打开 Release 页面，不回退推荐旧 MSI。
+把输出与同名 .sha256 核对后运行中英文安装向导，选择当前用户或所有用户安装范围；所有用户安装需要相应权限。卸载默认保留设置，可显式清理当前用户设置，备份仍保留。旧客户端无法识别 Setup 更新时，从 Release 页面手动下载。Setup 内含安装引擎，不要求用户另找 MSI。没有架构匹配 EXE 时打开 Release 页面，不回退推荐旧 MSI。
 
 ## 系统要求与数据目录
 

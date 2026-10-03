@@ -369,7 +369,7 @@
     "message": "Check release version"
   },
   "download.msi.desc": {
-    "message": "Choose x64 or ARM64 Setup EXE and verify its .sha256; check the Release version while 1.9 assets are pending."
+    "message": "FolderRewind 1.9.3 is available: choose x64 or ARM64 Setup EXE and verify the matching .sha256."
   },
   "download.msi.btn": {
     "message": "View Setup EXE releases"
@@ -402,7 +402,7 @@
     "message": "Official Plugins"
   },
   "download.plugin.minerewind.desc": {
-    "message": "Minecraft save enhancement plugin — auto-discovery, hot backup, version detection."
+    "message": "Bundled MineRewind 1.9.5: Java/Bedrock discovery, region backups and player preservation; requires Plugin API 3.6."
   },
   "download.plugin.downloadBtn": {
     "message": "Download"
@@ -459,7 +459,7 @@
     "message": "Safe backups for important files, project data, and game saves"
   },
   "homepage.hero.subtitle.line2": {
-    "message": "Game discovery, branches, safety points and cloud replicas"
+    "message": "1.9.3 adds game discovery, history branches, safety recovery points and cloud replicas"
   },
   "homepage.hero.storeBtn": {
     "message": "Get from Microsoft Store"
@@ -510,10 +510,10 @@
     "message": "Plugin Developers"
   },
   "homepage.segment.dev.desc": {
-    "message": "Integrate apps, games and automation using standalone Plugin API3.5"
+    "message": "Integrate apps, games and automation using standalone Plugin API3.6"
   },
   "homepage.segment.dev.bullet1": {
-    "message": "Standalone Plugin API3.5"
+    "message": "Standalone Plugin API3.6"
   },
   "homepage.segment.dev.bullet2": {
     "message": "KnotLink protocol v2 / Server v3"

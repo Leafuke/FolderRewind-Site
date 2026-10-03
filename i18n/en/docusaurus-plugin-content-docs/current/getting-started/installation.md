@@ -7,7 +7,7 @@ reviewed_baseline: "1.9-api3.5"
 
 # Installation guide
 
-FolderRewind1.9 offers Microsoft Store and GitHub Setup EXE for users. This is the1.9 release policy; releases/latest can still point to1.8.2 until publication. Do not treat old assets as1.9.
+FolderRewind 1.9.3 was released on 2026-10-03 with MineRewind 1.9.5 bundled. Install through Microsoft Store or GitHub Setup EXE; check the actual Store listing and installed app version.
 
 ## Microsoft Store
 
@@ -30,7 +30,7 @@ Choose x64 for Intel/AMD and arm64 for Windows on ARM. Download matching checksu
 Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
 ```
 
-Compare against .sha256 before running the wizard. The default per-user directory is LocalAppData/Programs/FolderRewind; follow actual permission/system prompts. Setup includes its installation engine; no separate MSI is needed. If the correct EXE is unavailable, open the release page rather than falling back to old MSI.
+Compare against .sha256 before running the bilingual wizard. Choose current-user or all-users installation; all-users installation requires appropriate permissions. Uninstallation preserves settings by default, with optional current-user settings cleanup that preserves backups. Older clients that cannot recognize Setup updates should download manually from the Release page. Setup includes its installation engine; no separate MSI is needed. If the correct EXE is unavailable, open the release page rather than falling back to old MSI.
 
 ## Requirements and data paths
 

@@ -61,7 +61,7 @@ export default function Download(): ReactNode {
                 </div>
                 <Heading as="h2" className={styles.cardTitle}>Setup EXE</Heading>
                 <span className={styles.badgeWarn}><Translate id="download.badge.msi">核对发布版本</Translate></span>
-                <p className={styles.cardDesc}><Translate id="download.msi.desc">选择 x64 或 ARM64 Setup EXE 并核对同名 .sha256；1.9 正式附件尚未提供时请核对 Release 版本。</Translate></p>
+                <p className={styles.cardDesc}><Translate id="download.msi.desc">FolderRewind 1.9.3 已发布：选择 x64 或 ARM64 Setup EXE，并核对同名 .sha256。</Translate></p>
                 <Link
                   className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
                   href={GITHUB_LATEST_RELEASE_URL}>
@@ -139,7 +139,7 @@ export default function Download(): ReactNode {
                 <FaGamepad />
               </div>
               <Heading as="h3">MineRewind</Heading>
-              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">Minecraft 存档增强插件 —— 自动发现存档、热备份、版本识别。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">内置 MineRewind 1.9.5：Java／基岩版存档发现、区域备份与玩家数据保留；需要 Plugin API 3.6。</Translate></p>
               <Link
                 className="button button--outline button--primary"
                 href={MINEREWIND_LATEST_RELEASE_URL}>
