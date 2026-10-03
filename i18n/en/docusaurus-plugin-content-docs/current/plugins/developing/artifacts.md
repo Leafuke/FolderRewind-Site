@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Artifact transformation, materialization and version metadata"
 description: "FolderRewind 1.9 artifact transformation, materialization and version metadata: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Artifact transformation, materialization and version metadata

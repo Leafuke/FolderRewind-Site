@@ -2,12 +2,12 @@
 sidebar_position: 2
 title: "Tutorial: GameRewind v3 plugin"
 description: "FolderRewind 1.9 tutorial: gamerewind v3 plugin: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Tutorial: GameRewind v3 plugin
 
-GameRewind is a buildable API 3.5 example. It discovers supplied roots containing save.dat, proposes drafts, excludes cache files, and asks the Host to back up a config or run a side-effect-free ECHO.
+GameRewind is a buildable API 3.6 example. It discovers supplied roots containing save.dat, proposes drafts, excludes cache files, and asks the Host to back up a config or run a side-effect-free ECHO.
 
 ## Complete source
 
@@ -43,6 +43,10 @@ node scripts/pack-plugin.mjs GameRewind
 Create a test directory with save.dat, install and review declarations, enable, discover and review drafts, then back up and restore test content. Check diagnostics and resource release on failure/cancellation. Stop writers before testing real game data.
 
 See [capability contracts](/docs/plugins/developing/capabilities) and the [API reference](/docs/plugins/developing/plugin-api).
+
+## Known locations and selected roots
+
+The GameRewind example checks only supplied `UserRoots` containing `save.dat`; it defines no known-location catalog. A production provider may merge read-only machine hints when `IncludeKnownLocations=true`; false keeps selected-root scope. Do not scan entire drives, write launcher settings or persist candidates directly as configurations.
 
 <span id="0-project-initialization" />
 <span id="create-the-project" />

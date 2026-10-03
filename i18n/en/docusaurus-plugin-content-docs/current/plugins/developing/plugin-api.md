@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
-title: "Plugin API 3.5 reference"
-description: "FolderRewind 1.9 plugin api 3.5 reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+title: "Plugin API 3.6 reference"
+description: "FolderRewind 1.9 plugin api 3.6 reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
+reviewed_baseline: "1.9-api3.6"
 ---
 
-# Plugin API 3.5 reference
+# Plugin API 3.6 reference
 
-Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Package 3.5.0 represents API 3.5; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
+Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Package 3.6.0 represents API 3.6; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
 
 ## Lifecycle and registration
 
@@ -60,6 +60,17 @@ CommittedRecoveryRequired means durable commit happened but subsequent recovery 
 The Host removes routing, cancels lifetime, drains operations and calls DeactivateAsync. A bounded timeout isolates the session logically and reports RequiresRestart; physical unloading may wait for restart. Enabled Intent differs from Active, and Safe Mode preserves it.
 
 See the [tutorial](/docs/plugins/developing/tutorial), [settings schema](/docs/plugins/developing/settings-schema) and [command integration](/docs/plugins/developing/knotlink-api).
+
+## Discovery scope in API 3.6
+
+The positional `DiscoveryRequest(UserRoots)` constructor remains. The new init property `IncludeKnownLocations` defaults to false. Hosts may explicitly enable it for machine/preset discovery; selected roots or adding sources to an existing config remain false. Plugins add known machine locations only when allowed, rather than expanding a selected-root scan into a machine scan.
+
+```csharp
+var scoped = new DiscoveryRequest(userRoots);
+var automatic = new DiscoveryRequest(userRoots) { IncludeKnownLocations = true };
+```
+
+This is an optional property on Discovery, not a new capability declaration. Plugins using it request API 3.6; 3.x assembly identity remains 3.0.0.0. `RestoreRequestOptions.RestorePreservePaths` supplies one-shot ordinary-Restore preservation. Default option-bearing services return Blocked when unsupported instead of silently dropping options.
 
 <span id="core-interface-and-lifecycle" />
 <span id="manifest-and-target-framework" />

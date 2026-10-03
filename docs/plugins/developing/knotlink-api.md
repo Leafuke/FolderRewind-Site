@@ -2,12 +2,12 @@
 sidebar_position: 5
 title: "KnotLink 集成与目标解析 API"
 description: "FolderRewind 1.9 系列KnotLink 集成与目标解析 API操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink 集成与目标解析 API
 
-API 3.5 使用 IKnotLinkIntegrationCapability，提供 Commands、Signals 和 ExecuteAsync。KnotLink 参数化协议仍为 v2，Server 为 v3；它们与 Plugin API 3.5、funcList manifestVersion 3.0.0、specVersion 1.0 是不同版本轴。
+API 3.6 使用 IKnotLinkIntegrationCapability，提供 Commands、Signals 和 ExecuteAsync。KnotLink 参数化协议仍为 v2，Server 为 v3；它们与 Plugin API 3.6、funcList manifestVersion 3.0.0、specVersion 1.0 是不同版本轴。
 
 ## 自定义命令
 

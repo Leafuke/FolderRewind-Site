@@ -2,12 +2,12 @@
 sidebar_position: 1
 title: "插件系统概述"
 description: "FolderRewind 1.9 系列插件系统概述操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 插件系统概述
 
-FolderRewind 1.9 的 Plugin System v3 使用独立 BCL-only SDK、静态包声明和能力注册。当前源码 API 为3.5。宿主管理配置、任务编排、历史、保留、云同步、完整性和目标修改。
+FolderRewind 1.9 的 Plugin System v3 使用独立 BCL-only SDK、静态包声明和能力注册。当前源码 API 为3.6。宿主管理配置、任务编排、历史、保留、云同步、完整性和目标修改。
 
 ## 能力与分工
 
@@ -17,7 +17,7 @@ FolderRewind 1.9 的 Plugin System v3 使用独立 BCL-only SDK、静态包声�
 
 ## MineRewind
 
-当前捆绑候选 MineRewind 1.9.3 请求 API3.5，提供实例发现、批量草稿、区域范围、一致性、元数据、还原协调、玩家保留、命令和目标选择。请核对正式 Host／SDK／插件版本，不能把旧1.8插件 ZIP 装入 v3。
+FolderRewind 1.9.3 内置 MineRewind 1.9.5，请求 API3.6，提供实例发现、批量草稿、区域范围、一致性、元数据、还原协调、玩家保留、命令和目标选择。请核对正式 Host／SDK／插件版本，不能把旧1.8插件 ZIP 装入 v3。
 
 ## 安装与信任
 

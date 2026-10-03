@@ -2,12 +2,12 @@
 sidebar_position: 1
 title: "Plugin system overview"
 description: "FolderRewind 1.9 plugin system overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Plugin system overview
 
-FolderRewind1.9 Plugin System v3 uses a standalone BCL-only SDK, static declarations and capability registration; the current source API is3.5. The Host owns configuration, orchestration, history, retention, cloud ordering, integrity and target writes.
+FolderRewind1.9 Plugin System v3 uses a standalone BCL-only SDK, static declarations and capability registration; the current source API is3.6. The Host owns configuration, orchestration, history, retention, cloud ordering, integrity and target writes.
 
 ## Responsibilities
 
@@ -17,7 +17,7 @@ Plugins never save Host configuration directly, rewrite old archives in after-ho
 
 ## MineRewind
 
-Bundled candidate1.9.3 requires API3.5 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
+FolderRewind 1.9.3 bundles MineRewind 1.9.5 requiring API3.6 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
 
 ## Install and trust
 

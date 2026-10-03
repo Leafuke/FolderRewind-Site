@@ -2,12 +2,12 @@
 sidebar_position: 20
 title: "能力、配置与备份还原契约"
 description: "FolderRewind 1.9 系列能力、配置与备份还原契约操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 能力、配置与备份还原契约
 
-本页解释 API 3.5 的操作边界；签名以 SDK 和 [API 总览](/docs/plugins/developing/plugin-api)为准。
+本页解释 API 3.6 的操作边界；签名以 SDK 和 [API 总览](/docs/plugins/developing/plugin-api)为准。
 
 ## Discovery 与 Reconciliation
 
@@ -35,4 +35,7 @@ IRestoreStagingPreparationCapability 仅用于普通 Restore。输入 Current／
 
 玩家保留 override 为 null／true／false。SupportsPlayerDataOverride 默认为 false；不支持显式 override 时拒绝，不可悄悄沿用旧方法。变更后的普通还原 baseline 为 Derived。Checkout／Merge 不启用该保留流程。
 
+## 单次强保留服务选项
+
+`RestoreRequestOptions.RestorePreservePaths` 为普通 Restore／Quick Restore 提供相对路径选择器，当前字节与删除状态优先。Host 校验范围并在暂存中应用；插件不能直接写当前来源。它与 `RestoreWhitelist` 的归档优先规则不同，Checkout／Merge 不使用。具体限制见[过滤指南](/docs/guides/filters#单次文件与目录强保留)。
 

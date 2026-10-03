@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Service orchestration and core responsibilities"
 description: "FolderRewind 1.9 service orchestration and core responsibilities: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Service orchestration and core responsibilities

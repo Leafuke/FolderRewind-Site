@@ -2,12 +2,12 @@
 sidebar_position: 20
 title: "Capabilities, configuration and operation contracts"
 description: "FolderRewind 1.9 capabilities, configuration and operation contracts: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Capabilities, configuration and operation contracts
 
-These are API 3.5 ownership and operation boundaries; use the SDK and [API overview](/docs/plugins/developing/plugin-api) for signatures.
+These are API 3.6 ownership and operation boundaries; use the SDK and [API overview](/docs/plugins/developing/plugin-api) for signatures.
 
 ## Discovery and reconciliation
 
@@ -35,4 +35,7 @@ IRestoreStagingPreparationCapability runs only for ordinary Restore. Current/Tar
 
 Player preservation override is null/true/false. SupportsPlayerDataOverride defaults false; unsupported explicit overrides must be rejected rather than silently delegated to old methods. Modified ordinary restores create a Derived baseline. Checkout/Merge do not enable this preservation flow.
 
+## One-shot preservation service options
+
+`RestoreRequestOptions.RestorePreservePaths` provides relative selectors for ordinary Restore/Quick Restore, with current bytes and deletions taking precedence. The Host validates scope and applies staging; plugins cannot write live sources directly. Unlike `RestoreWhitelist`, archive content does not win at the same path. Checkout/Merge do not use this option. See [filter limits](/docs/guides/filters#one-shot-file-and-directory-preservation).
 

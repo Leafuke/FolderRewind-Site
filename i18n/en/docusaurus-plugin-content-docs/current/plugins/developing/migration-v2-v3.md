@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Migrating v2 plugins to v3 and recovering failures"
 description: "FolderRewind 1.9 migrating v2 plugins to v3 and recovering failures: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Migrating v2 plugins to v3 and recovering failures

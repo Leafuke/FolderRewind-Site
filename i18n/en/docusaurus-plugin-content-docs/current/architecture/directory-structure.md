@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: "Repository directories and build boundaries"
 description: "FolderRewind 1.9 repository directories and build boundaries: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Repository directories and build boundaries

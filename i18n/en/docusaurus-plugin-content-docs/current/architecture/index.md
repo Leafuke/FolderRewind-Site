@@ -2,7 +2,7 @@
 sidebar_position: 0
 title: "Architecture overview"
 description: "FolderRewind 1.9 architecture overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Architecture overview
@@ -15,7 +15,7 @@ flowchart TD
   H --> C[User-owned configuration]
   H --> N[Native History runtime]
   H --> P[Plugin Runtime]
-  P --> A[Public Abstractions API 3.5]
+  P --> A[Public Abstractions API 3.6]
   N --> R[Representations / Replicas]
   R --> Z[7-Zip / cloud transport]
   H --> D[Discovery / reviewed drafts]

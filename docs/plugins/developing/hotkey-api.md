@@ -2,12 +2,12 @@
 sidebar_position: 4
 title: "命令与快捷键 API"
 description: "FolderRewind 1.9 系列命令与快捷键 API操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 命令与快捷键 API
 
-API 3.5 使用 IPluginCommandCapability。命令描述 PluginCommandDescriptor 包含 Id、DisplayName、ArgumentSchema，并可设置 DefaultHotkey 与 IsGlobalHotkey。快捷键绑定是 Host 的配置和调度职责。
+API 3.6 使用 IPluginCommandCapability。命令描述 PluginCommandDescriptor 包含 Id、DisplayName、ArgumentSchema，并可设置 DefaultHotkey 与 IsGlobalHotkey。快捷键绑定是 Host 的配置和调度职责。
 
 ## 描述与执行
 

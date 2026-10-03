@@ -2,12 +2,12 @@
 sidebar_position: 4
 title: "KnotLink command reference"
 description: "FolderRewind 1.9 knotlink command reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink command reference
 
-Baseline: API3.5 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
+Baseline: API3.6 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
 
 ## Queries and shared targets
 
@@ -50,6 +50,7 @@ cmd=BACKUP;config_id=demo;folder=World;backup_mode=smart;from=panel;request_id=b
 | file | Optional; omission uses active Workspace's unique local branch tip |
 | mode | clean/overwrite; default clean |
 | restore_whitelist | Append local rules; Clean retains current matches unless archive supplies the same path |
+| restore_preserve_paths | One-shot relative files/directories; comma-separated, trailing / for directories; current content/deletions win within the source boundary |
 | preserve_player_data | Minecraft null/true/false: omit to inherit; explicit value overrides this operation |
 
 Partial captures always Overwrite, including Exact representations. Quick Restore blocks divergence/unavailable targets/precondition failures. An already-exact target produces NoChanges, not an older archive selection.
@@ -57,6 +58,7 @@ Partial captures always Overwrite, including Exact representations. Quick Restor
 ```text
 cmd=RESTORE;config_id=demo;folder=World;from=panel;request_id=restore-001
 cmd=RESTORE;current_save=true;preserve_player_data=false;from=panel;request_id=restore-002
+cmd=RESTORE;config_id=demo;folder=World;restore_preserve_paths=data/local.dat,datapacks/;from=panel;request_id=restore-003
 ```
 
 Preservation covers selected NBT fields for all UUIDs, retaining complete current NBT for players absent from the backup. Stats/advancements still restore. Cross-26.1-layout preservation is rejected. Checkout/Merge do not preserve player state.

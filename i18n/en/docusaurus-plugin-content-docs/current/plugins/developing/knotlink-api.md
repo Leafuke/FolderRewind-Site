@@ -2,12 +2,12 @@
 sidebar_position: 5
 title: "KnotLink integration and target resolution API"
 description: "FolderRewind 1.9 knotlink integration and target resolution api: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink integration and target resolution API
 
-API 3.5 uses IKnotLinkIntegrationCapability with Commands, Signals and ExecuteAsync. Wire protocol v2, Server v3, Plugin API3.5, funcList manifestVersion3.0.0 and specVersion1.0 are separate version axes.
+API 3.6 uses IKnotLinkIntegrationCapability with Commands, Signals and ExecuteAsync. Wire protocol v2, Server v3, Plugin API3.6, funcList manifestVersion3.0.0 and specVersion1.0 are separate version axes.
 
 ## Custom commands
 

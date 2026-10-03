@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: "Configuration and immutable history models"
 description: "FolderRewind 1.9 configuration and immutable history models: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Configuration and immutable history models

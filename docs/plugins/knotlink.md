@@ -2,12 +2,12 @@
 sidebar_position: 3
 title: "KnotLink 协议与联动"
 description: "FolderRewind 1.9 系列KnotLink 协议与联动操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink 协议与联动
 
-FolderRewind 1.9 系列继续使用 KnotLink Server v3 和参数化协议 v2。当前能力清单 manifestVersion=3.0.0、specVersion=1.0；Plugin API 为3.5。更新能力清单不改变 wire 协议版本。
+FolderRewind 1.9 系列继续使用 KnotLink Server v3 和参数化协议 v2。当前能力清单 manifestVersion=3.0.0、specVersion=1.0；Plugin API 为3.6。更新能力清单不改变 wire 协议版本。
 
 ## 格式与编码
 
@@ -28,7 +28,7 @@ status=ok 表示查询完成或请求已接受，不一定是备份已经完成�
 
 ## 插件联动
 
-API 3.5 integration 声明命令／信号，目标解析器只确定稳定目标并复用 Host 操作。MineRewind 为6个 folder 命令提供 current_save 选择器。当前世界需要活动实例且目标无歧义；先核对运行时清单。
+API 3.6 integration 声明命令／信号，目标解析器只确定稳定目标并复用 Host 操作。MineRewind 为6个 folder 命令提供 current_save 选择器。当前世界需要活动实例且目标无歧义；先核对运行时清单。
 
 阅读[命令参考](/docs/plugins/knotlink-commands)、[开发 API](/docs/plugins/developing/knotlink-api)和[Minecraft 联动](/docs/guides/minecraft/knotlink-mod)。
 

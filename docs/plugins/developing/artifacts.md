@@ -2,12 +2,12 @@
 sidebar_position: 20
 title: "制品转换、物化与版本元数据"
 description: "FolderRewind 1.9 系列制品转换、物化与版本元数据操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 制品转换、物化与版本元数据
 
-API 3.5 中 Artifact 是 Host 管理的不可变载荷节点，与 Source Version、Representation 和 Replica 不同。格式由 owner-qualified ArtifactFormatRef 与格式版本标识；扩展名或插件产品版本不决定格式。
+API 3.6 中 Artifact 是 Host 管理的不可变载荷节点，与 Source Version、Representation 和 Replica 不同。格式由 owner-qualified ArtifactFormatRef 与格式版本标识；扩展名或插件产品版本不决定格式。
 
 ## 转换事务
 

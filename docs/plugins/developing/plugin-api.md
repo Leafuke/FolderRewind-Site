@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
-title: "Plugin API 3.5 参考"
-description: "FolderRewind 1.9 系列Plugin API 3.5 参考操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+title: "Plugin API 3.6 参考"
+description: "FolderRewind 1.9 系列Plugin API 3.6 参考操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
+reviewed_baseline: "1.9-api3.6"
 ---
 
-# Plugin API 3.5 参考
+# Plugin API 3.6 参考
 
-公开契约在 `FolderRewind.Plugin.Abstractions`，目标 `net10.0`。SDK 包3.5.0对应 API 3.5；程序集身份保持3.0.0.0。兼容条件是 major 相同且 Host minor 不低于插件请求；不要用应用版本比较替代此规则。
+公开契约在 `FolderRewind.Plugin.Abstractions`，目标 `net10.0`。SDK 包3.6.0对应 API 3.6；程序集身份保持3.0.0.0。兼容条件是 major 相同且 Host minor 不低于插件请求；不要用应用版本比较替代此规则。
 
 ## 生命周期与注册
 
@@ -60,6 +60,17 @@ reviewed_baseline: "1.9-api3.5"
 Host 先撤销路由、取消生命周期并排空操作，再调用 DeactivateAsync。超过有界宽限期会逻辑隔离并报告 RequiresRestart，物理装载上下文可保留到重启。Enabled Intent 不等于 Active，Safe Mode 不改写用户启用意图。
 
 继续阅读[实战教程](/docs/plugins/developing/tutorial)、[设置模式](/docs/plugins/developing/settings-schema)和[命令扩展](/docs/plugins/developing/knotlink-api)。
+
+## API 3.6 的发现范围
+
+`DiscoveryRequest(UserRoots)` 的原位置构造器保留，新增 init 属性 `IncludeKnownLocations`，默认 false。Host 的机器／预设自动发现可显式设为 true；用户指定根目录或向现有配置添加来源时保持 false。插件只在允许时加入已知机器位置，不把选定根扫描扩大为全机搜索。
+
+```csharp
+var scoped = new DiscoveryRequest(userRoots);
+var automatic = new DiscoveryRequest(userRoots) { IncludeKnownLocations = true };
+```
+
+这是现有 Discovery 契约的可选属性，不新增能力声明。使用此属性的插件声明 API 3.6；3.x 程序集身份仍是 3.0.0.0。`RestoreRequestOptions.RestorePreservePaths` 提供单次普通还原强保留；不支持带选项服务的默认实现返回 Blocked，不静默丢弃选项。
 
 <span id="核心接口与生命周期" />
 <span id="manifest-与目标框架" />

@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: "Namespaces and contract entrypoints"
 description: "FolderRewind 1.9 namespaces and contract entrypoints: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Namespaces and contract entrypoints

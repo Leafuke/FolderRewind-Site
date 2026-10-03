@@ -2,14 +2,14 @@
 sidebar_position: 6
 title: "Plugin System v3 architecture"
 description: "FolderRewind 1.9 plugin system v3 architecture: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Plugin System v3 architecture
 
 ## Static packages and sessions
 
-SDK3.5.0 keeps assembly3.0.0.0. manifestVersion3 declares API/Kinds/services/capabilities/settings/artifact semantics. Installation validates canonical paths/bounds/PE/declarations without execution; versioned installs keep journals.
+SDK3.6.0 keeps assembly3.0.0.0. manifestVersion3 declares API/Kinds/services/capabilities/settings/artifact semantics. Installation validates canonical paths/bounds/PE/declarations without execution; versioned installs keep journals.
 
 Explicit Enable→snapshot activation/registration→Host validation/atomic state commit→callable Active session. One implementation per contract; intent/state/RequiresRestart differ.
 

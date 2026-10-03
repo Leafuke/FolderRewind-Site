@@ -2,12 +2,12 @@
 sidebar_position: 4
 title: "KnotLink 命令参考"
 description: "FolderRewind 1.9 系列KnotLink 命令参考操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink 命令参考
 
-本页以 API 3.5 的 KnotLinkCoreCommands 和当前 funcList 为基线。运行时先请求 GET_CAPABILITIES；清单 manifestVersion=3.0.0，specVersion=1.0，wire 协议v2。
+本页以 API 3.6 的 KnotLinkCoreCommands 和当前 funcList 为基线。运行时先请求 GET_CAPABILITIES；清单 manifestVersion=3.0.0，specVersion=1.0，wire 协议v2。
 
 ## 查询与公共目标
 
@@ -50,6 +50,7 @@ cmd=BACKUP;config_id=demo;folder=World;backup_mode=smart;from=panel;request_id=b
 | file | 可选；省略使用活动 Workspace 唯一本地分支尖端 |
 | mode | clean／overwrite，省略默认 clean |
 | restore_whitelist | 与本地规则追加；Clean 保留匹配的当前路径，归档同路径内容优先 |
+| restore_preserve_paths | 本次普通还原的相对文件／目录强保留；逗号分隔，目录以 / 结尾；当前内容与删除优先，不能扩大来源边界 |
 | preserve_player_data | Minecraft null／true／false：省略继承本地值，显式覆盖仅本次有效 |
 
 部分捕获始终 Overwrite，即使表示可 Exact 物化。Quick Restore 遇到分叉、不可恢复目标或前置条件缺失时阻断；已精确处于目标版本时 NoChanges，不自动选更早备份。
@@ -57,6 +58,7 @@ cmd=BACKUP;config_id=demo;folder=World;backup_mode=smart;from=panel;request_id=b
 ```text
 cmd=RESTORE;config_id=demo;folder=World;from=panel;request_id=restore-001
 cmd=RESTORE;current_save=true;preserve_player_data=false;from=panel;request_id=restore-002
+cmd=RESTORE;config_id=demo;folder=World;restore_preserve_paths=data/local.dat,datapacks/;from=panel;request_id=restore-003
 ```
 
 玩家保留针对全部 UUID 的选定 NBT 字段；备份中没有该玩家时保留其当前完整 NBT，stats／advancements 仍随备份恢复。跨26.1布局的保留拒绝；Checkout／Merge不启用保留。

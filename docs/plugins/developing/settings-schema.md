@@ -2,12 +2,12 @@
 sidebar_position: 6
 title: "静态设置模式与类型化读取"
 description: "FolderRewind 1.9 系列静态设置模式与类型化读取操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 静态设置模式与类型化读取
 
-API 3.5 的设置是安装包静态数据。manifest 的 settingsSchema 指向 JSON 文件；安装校验无需执行插件。Host 渲染界面、验证候选并事务化重激活，不让无效设置覆盖已知良好配置。
+API 3.6 的设置是安装包静态数据。manifest 的 settingsSchema 指向 JSON 文件；安装校验无需执行插件。Host 渲染界面、验证候选并事务化重激活，不让无效设置覆盖已知良好配置。
 
 ## 模式格式
 

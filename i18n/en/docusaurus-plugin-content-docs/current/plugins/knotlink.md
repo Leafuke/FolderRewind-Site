@@ -2,12 +2,12 @@
 sidebar_position: 3
 title: "KnotLink protocol and integration"
 description: "FolderRewind 1.9 knotlink protocol and integration: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink protocol and integration
 
-FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API3.5 evolve independently.
+FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API3.6 evolve independently.
 
 ## Format and encoding
 
@@ -28,7 +28,7 @@ status=ok may mean accepted, not completed. Correlate later signals using reques
 
 ## Plugins
 
-API3.5 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for six folder commands; an active, unambiguous world is required.
+API3.6 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for six folder commands; an active, unambiguous world is required.
 
 See the [command reference](/docs/plugins/knotlink-commands), [developer API](/docs/plugins/developing/knotlink-api) and [Minecraft integration](/docs/guides/minecraft/knotlink-mod).
 

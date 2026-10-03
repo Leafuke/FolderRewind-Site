@@ -2,26 +2,26 @@
 sidebar_position: 1
 title: "插件开发快速上手"
 description: "FolderRewind 1.9 系列插件开发快速上手操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 插件开发快速上手
 
-本页适用于 FolderRewind 1.9 系列、Plugin API 3.5。应用版本、插件产品版本、SDK 包版本和程序集版本独立演进。
+本页适用于 FolderRewind 1.9 系列、Plugin API 3.6。应用版本、插件产品版本、SDK 包版本和程序集版本独立演进。
 
 ## 准备环境
 
-安装 .NET 10 SDK、Node.js 24 和 Python 3.10+；使用能支持 .NET 10 的编辑器。安装支持 API 3.5 的 FolderRewind。示例项目从[网站源码仓库](https://github.com/Leafuke/FolderRewind-Site/tree/codex/docs-1.9-refresh/examples/plugins)获取。
+安装 .NET 10 SDK、Node.js 24 和 Python 3.10+；使用能支持 .NET 10 的编辑器。安装支持 API 3.6 的 FolderRewind。示例项目从[网站源码仓库](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins)获取。
 
-:::info[发布候选基线]
-本教程使用 Abstractions 3.5.0。正式上线前必须确认 NuGet.org 已列出该版本。若公开恢复提示找不到版本，请核对发布状态，不要改为引用 FolderRewind.dll。网站发布分支的本地包验证不代表 SDK 已公开发布。
+:::info[公开 SDK 基线]
+本教程使用已公开的 Abstractions 3.6.0，对应 FolderRewind 1.9.3／Plugin API 3.6。使用 NuGet.org 恢复；网络或版本恢复失败时检查源和诊断，不要改为引用 FolderRewind.dll。程序集身份仍为 3.0.0.0。
 :::
 
 ## 创建独立类库
 
 ```powershell
 dotnet new classlib -n MyFirstPlugin -f net10.0
-dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.5.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.6.0
 ```
 
 仅引用 `FolderRewind.Plugin.Abstractions`。不要引用应用、WinUI、Models 或 Runtime 项目。设置 SDK 引用的 `Private="false"`，不将 Abstractions DLL 放入发布包。
@@ -45,7 +45,7 @@ import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/s
 <CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
 <CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
 
-`manifestVersion` 为3，`pluginApi` 请求3.5。字段使用精确的 camelCase；入口类型必须与类的完全限定名一致。无设置仍需合法的空设置模式。
+`manifestVersion` 为3，`pluginApi` 请求3.6。字段使用精确的 camelCase；入口类型必须与类的完全限定名一致。无设置仍需合法的空设置模式。
 
 ## 构建、打包与安装
 

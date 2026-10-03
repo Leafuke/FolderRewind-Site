@@ -2,14 +2,14 @@
 sidebar_position: 6
 title: "Plugin System v3 架构"
 description: "FolderRewind 1.9 系列Plugin System v3 架构操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Plugin System v3 架构
 
 ## 静态包与运行会话
 
-SDK3.5.0保持程序集3.0.0.0。manifestVersion3声明API、Kind、服务、能力、设置和Artifact语义。安装器规范路径、限额、PE元数据和声明，无代码执行；版本化安装保存恢复日志。
+SDK3.6.0保持程序集3.0.0.0。manifestVersion3声明API、Kind、服务、能力、设置和Artifact语义。安装器规范路径、限额、PE元数据和声明，无代码执行；版本化安装保存恢复日志。
 
 显式Enable→激活快照／能力注册→Host校验与原子状态提交→Active可调用。每契约一个实现；Enabled Intent、运行状态和RequiresRestart不同。
 

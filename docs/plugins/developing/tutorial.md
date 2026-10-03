@@ -2,12 +2,12 @@
 sidebar_position: 2
 title: "实战教程：GameRewind v3 插件"
 description: "FolderRewind 1.9 系列实战教程：GameRewind v3 插件操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 实战教程：GameRewind v3 插件
 
-GameRewind 是可独立构建的 API 3.5 示例：识别用户提供且包含 `save.dat` 的根目录，提出配置草稿、排除缓存，并通过 Host 发起备份或执行无副作用的 ECHO。
+GameRewind 是可独立构建的 API 3.6 示例：识别用户提供且包含 `save.dat` 的根目录，提出配置草稿、排除缓存，并通过 Host 发起备份或执行无副作用的 ECHO。
 
 ## 完整源码
 
@@ -43,6 +43,10 @@ node scripts/pack-plugin.mjs GameRewind
 建立测试目录并放置 save.dat。安装包、检查声明、启用、执行发现并审阅草稿，再备份与还原测试内容。测试失败和取消时检查诊断及资源释放。首次用于真实游戏前停止所有写入者。
 
 参阅[能力与操作契约](/docs/plugins/developing/capabilities)、[API 参考](/docs/plugins/developing/plugin-api)。
+
+## 已知位置与手选范围
+
+GameRewind 示例仅检查 `UserRoots` 中含 `save.dat` 的目录，不自行提供已知位置列表。真实发现提供器可在 `IncludeKnownLocations=true` 时合并只读机器线索；false 时保持手选范围。不要扫描全盘、写启动器配置或把候选直接保存为配置。
 
 <span id="0-项目初始化" />
 <span id="创建项目" />

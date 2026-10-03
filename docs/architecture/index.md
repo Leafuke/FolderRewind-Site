@@ -2,7 +2,7 @@
 sidebar_position: 0
 title: "架构总览"
 description: "FolderRewind 1.9 系列架构总览操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 架构总览
@@ -15,7 +15,7 @@ flowchart TD
   H --> C[User-owned configuration]
   H --> N[Native History runtime]
   H --> P[Plugin Runtime]
-  P --> A[Public Abstractions API 3.5]
+  P --> A[Public Abstractions API 3.6]
   N --> R[Representations / Replicas]
   R --> Z[7-Zip / cloud transport]
   H --> D[Discovery / reviewed drafts]

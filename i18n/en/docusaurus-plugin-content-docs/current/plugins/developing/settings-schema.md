@@ -2,12 +2,12 @@
 sidebar_position: 5
 title: "Static settings schema and typed values"
 description: "FolderRewind 1.9 static settings schema and typed values: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Static settings schema and typed values
 
-API 3.5 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
+API 3.6 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
 
 ## Schema format
 

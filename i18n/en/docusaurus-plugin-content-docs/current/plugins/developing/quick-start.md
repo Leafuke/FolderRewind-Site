@@ -2,26 +2,26 @@
 sidebar_position: 1
 title: "Plugin development quick start"
 description: "FolderRewind 1.9 plugin development quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Plugin development quick start
 
-This guide targets FolderRewind 1.9 and Plugin API 3.5. App, plugin product, package and assembly versions are independent.
+This guide targets FolderRewind 1.9 and Plugin API 3.6. App, plugin product, package and assembly versions are independent.
 
 ## Prerequisites
 
-Install .NET 10 SDK, Node.js 24 and Python 3.10+, an editor supporting .NET 10, and a Host supporting API 3.5. Get the projects from the [website source repository](https://github.com/Leafuke/FolderRewind-Site/tree/codex/docs-1.9-refresh/examples/plugins).
+Install .NET 10 SDK, Node.js 24 and Python 3.10+, an editor supporting .NET 10, and a Host supporting API 3.6. Get the projects from the [website source repository](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins).
 
-:::info[Release candidate baseline]
-The examples require Abstractions 3.5.0. Confirm it is listed on NuGet.org before following the public restore path. A missing version means the release is unavailable; do not replace the reference with FolderRewind.dll. Local package validation on the release branch does not establish public availability.
+:::info[Public SDK baseline]
+The examples use public Abstractions 3.6.0 for FolderRewind 1.9.3 / Plugin API 3.6. Restore from NuGet.org. If network or version resolution fails, inspect sources and diagnostics rather than referencing FolderRewind.dll. Assembly identity remains 3.0.0.0.
 :::
 
 ## Create an independent library
 
 ```powershell
 dotnet new classlib -n MyFirstPlugin -f net10.0
-dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.5.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.6.0
 ```
 
 Reference only `FolderRewind.Plugin.Abstractions`. Set `Private="false"` on that package reference. Do not reference the application, WinUI, Models or Runtime, or bundle the Abstractions DLL.
@@ -45,7 +45,7 @@ import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/s
 <CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
 <CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
 
-Use `manifestVersion` 3, `pluginApi` 3.5 and exact camelCase fields. The entry type is fully qualified. Even a plugin without settings needs a valid empty settings schema.
+Use `manifestVersion` 3, `pluginApi` 3.6 and exact camelCase fields. The entry type is fully qualified. Even a plugin without settings needs a valid empty settings schema.
 
 ## Build, package and install
 
