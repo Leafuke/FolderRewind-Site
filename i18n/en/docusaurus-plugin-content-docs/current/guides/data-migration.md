@@ -29,6 +29,10 @@ Exit old clients→back up data/archives→install matching channel/version→im
 
 Cloud union does not transfer Workspace or pick device-time winners. Use pre-upgrade copies for rollback;1.8 must not rewrite1.9 packs.
 
+## Taking over 1.8.2 history
+
+After upgrading, open the legacy takeover report in History and check source assignment, archive locations and verification. Migrated versions may still have unknown deletion boundaries: recover to a new directory or use non-deleting Overwrite. A new Full backup establishes a known boundary for advanced history. See the [report workflow](/docs/getting-started/v1-9-upgrade#193-legacy-takeover-report). Old cloud settings are not carried forward automatically; retain remote archives and Smart dependencies before configuring a new connection.
+
 <span id="entry" />
 <span id="config-migration" />
 <span id="export-config" />

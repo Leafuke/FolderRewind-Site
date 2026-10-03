@@ -25,6 +25,10 @@ When Restore/Checkout needs a missing source, confirm a path and reinstate its o
 
 Check paths/scopes/automation, old materializability and new lineage; verify old/new cloud copies. Rediscovery must preserve manual edits through review.
 
+## Failed saves
+
+Interactive configuration changes in 1.9.3 save asynchronously and roll back on failure. Wait for the result, inspect diagnostics and reloaded paths, scopes and identities; UI input alone does not establish persisted configuration. Retain error logs, resolve permissions or disk issues and save again.
+
 <span id="where-to-rename" />
 <span id="name-and-conflict-validation" />
 <span id="what-the-transaction-migrates" />

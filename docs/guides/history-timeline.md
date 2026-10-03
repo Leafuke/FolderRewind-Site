@@ -29,6 +29,12 @@ Quick Restore 使用当前 Workspace 活动分支的唯一尖端对应来源版�
 
 重建可重建索引，不靠旧归档命名猜分支。Pin 等保护根会保留依赖；不应手动删压缩包断链。阅读[分支与合并](/docs/guides/history-branches)、[安全恢复点](/docs/guides/safety-snapshots)。
 
+## 单次强保留与旧版本限制
+
+普通 Restore 及其 Quick Restore 入口可通过 KnotLink 的 `restore_preserve_paths` 指定本次保留的相对文件或目录。当前状态优先于归档，包括当前已删除的文件；这是强保留，不是“归档同路径优先”的还原白名单。产生派生状态后，Workspace 不应被理解为精确等于原版本。Checkout 和 Merge 不启用普通还原的强保留或玩家保留。
+
+旧接管版本的删除边界可能未知，即使验证通过也不能执行 Clean 或当作精确分支基线。查看迁移报告，先使用不删除的 Overwrite／恢复到新目录，再建立新的 Full 版本。
+
 <span id="进入方式" />
 <span id="页面布局" />
 <span id="你可以做什么" />

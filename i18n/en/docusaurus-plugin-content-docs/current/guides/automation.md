@@ -27,6 +27,10 @@ Cloud transfer is separate from local success. Distinguish NoChanges/SuccessWith
 
 Test startup/interval/scheduled boundaries, target choice, unlock transitions, no-change stop, cancellation and busy operations before unattended use.
 
+## Cancellation and results
+
+Completed local backup and subsequent cloud transfer are recorded separately. Canceling upload does not invalidate an already completed local backup. Review per-source outcomes and terminal task state before choosing what to retry. Backups started by the setup wizard run as global tasks; leaving the page does not cancel a started backup. Cancel through the task entrypoint.
+
 <span id="before-you-begin" />
 <span id="where-to-configure" />
 <span id="automation-modes" />

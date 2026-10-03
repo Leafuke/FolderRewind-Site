@@ -29,4 +29,11 @@ Check identities/scopes, settings, history, Full/Smart/Rolling, test restores, a
 
 Do not hand1.9-written data to1.8. Roll back using independent pre-upgrade config/history/archive copies. See [migration](/docs/guides/data-migration) and the [historical1.8 language recovery guide](/docs/getting-started/v1-8-upgrade).
 
+## 1.9.3 legacy takeover report
+
+Select the affected configuration in History and open the legacy takeover report from its notice or More actions. Review each record, source and candidate archive path. Assign an unassigned record to the correct source, enter the actual retained archive path when needed, save and recheck, then verify. Smart records also need their dependency archives and metadata, not only the final ZIP.
+
+`RestrictedReady` means verified with restricted recovery: historical deletion boundaries are unknown, so export to a new directory or use non-deleting Overwrite. File/directory type conflicts block recovery. Clean, branches, Checkout and Merge require known boundaries; create a new Full backup first. Resolve `Locate`, `Unassigned`, `Verify` and `Blocked` through the report diagnostics. Importing records does not supply missing payloads.
+
+Dismissing the notice saves only a device-local preference. It neither deletes the report nor certifies migration; More actions remains available and new problems may notify again. 1.9 does not automatically migrate old cloud configuration or archives. Remote data remains intact; create a new connection and separately prepare old Smart dependencies.
 

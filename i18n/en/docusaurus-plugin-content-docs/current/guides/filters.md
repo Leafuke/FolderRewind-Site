@@ -27,6 +27,12 @@ Ordinary preservation may produce Derived baselines. Checkout/Merge have Exact t
 
 Test managed/unmanaged, matches/nonmatches, same-path conflicts and new files; inspect archives and compare Clean/Overwrite byte results. Review scope/upstream changes before save, not only matching counts.
 
+## One-shot file and directory preservation
+
+KnotLink `restore_preserve_paths` / SDK `RestoreRequestOptions.RestorePreservePaths` affects only this ordinary Restore, without changing persistent filters. Use relative file paths and a trailing `/` for a directory. Separate entries with commas; globs, absolute paths and `..` are invalid. Current bytes win, missing current target files remain absent, and additions/deletions within selected directories preserve current state.
+
+At most 16 selectors are allowed, with staging limited to 4096 file operations and 64 MiB of current bytes. Selectors must stay inside the effective managed boundary. Minecraft paths are relative to the unique managed world root; ambiguous roots are rejected. Invalid scope or limits fail the operation rather than silently dropping preservation. Checkout/Merge do not use this override.
+
 <span id="where-to-configure" />
 <span id="three-filter-lists" />
 <span id="backup-filter-mode" />

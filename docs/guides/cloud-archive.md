@@ -50,6 +50,10 @@ OneDrive 在 rclone config 按选项名称进行授权；WebDAV 填服务器／�
 
 连接材料见 [rclone 文档](https://rclone.org/docs/) 与 [OpenList 文档](https://doc.oplist.org.cn/)。产品恢复语义见[历史指南](/docs/guides/history-timeline)。
 
+## 1.9.3 升级与取消
+
+旧版云配置和云存档不自动迁移到新历史；原远端保持不变，重新建立连接，并保留旧 Smart 的依赖归档与元数据。取消传输后检查副本和历史阶段的结果，确认有效闭包再重试；本地备份成功与云传输成功分别判断。
+
 <span id="一下载-rclone-并添加到-folderrewind-的环境中" />
 <span id="二配置-rclone-连接你的云存储服务" />
 <span id="三配置-folderrewind-使用某个-rclone-的配置" />

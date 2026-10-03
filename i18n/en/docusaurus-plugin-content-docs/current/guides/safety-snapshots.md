@@ -23,4 +23,7 @@ Explicitly release only when no longer needed. Release is not immediate deletion
 
 For RecoveryRequired/CommittedRecoveryRequired, locks or missing bytes, inspect diagnostics instead of repeating destructive writes. Test points remain inspectable/restorable/releasable across restart.
 
+## Restricted legacy history
+
+Verifying legacy payloads does not establish historical deletion boundaries. Restricted recovery and safety recovery points are separate concepts: permission to export or use non-deleting Overwrite does not grant Clean, Checkout or Merge. Establish a reliable baseline with a new Full backup after upgrading.
 

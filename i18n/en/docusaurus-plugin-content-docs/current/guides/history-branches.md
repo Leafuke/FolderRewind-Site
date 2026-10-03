@@ -29,4 +29,7 @@ The Host applies/commits under the config operation gate. Pre-commit failures di
 
 Test branches, multiple tips, uncommitted protection, bindings, conflicts, cancellation, restart recovery and byte equality. Check active branch, Workspace, refreshed history and next-backup lineage.
 
+## Difference from ordinary Restore
+
+Checkout/Merge do not apply ordinary-Restore player preservation, restore whitelists or one-shot preservation. For legacy records with unknown deletion boundaries, recover to a new directory or through non-deleting Overwrite, then create a new Full version. Restricted legacy versions are not complete branch checkpoints.
 

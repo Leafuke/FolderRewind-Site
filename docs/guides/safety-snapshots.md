@@ -23,4 +23,7 @@ Checkout／Merge／受控还原的确认界面检查未提交工作与保护选�
 
 RecoveryRequired／CommittedRecoveryRequired、源目录占用或载荷缺失时先看诊断，禁止重复破坏性写入。测试重启后仍可查看、准备、恢复和释放快照，再用于重要项目。
 
+## 受限旧历史
+
+旧接管版本的载荷验证不能证明历史删除边界。受限恢复和安全恢复点是不同概念：报告允许新目录恢复或不删除的 Overwrite，并不自动授予 Clean、Checkout 或 Merge 权限。升级后用新的 Full 备份建立可靠基线。
 

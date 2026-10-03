@@ -50,6 +50,10 @@ Validate local backup/restore, connection, upload/download and new-directory rec
 
 See [rclone](https://rclone.org/docs/), [OpenList](https://doc.oplist.org.cn/) and [history](/docs/guides/history-timeline).
 
+## 1.9.3 upgrades and cancellation
+
+Old cloud settings and archives do not automatically migrate into native history. Existing remote data remains intact; create a new connection and retain dependency archives/metadata for old Smart backups. After cancellation, inspect replica and history-stage outcomes and verify a valid closure before retrying. Local backup success and cloud transfer success are separate results.
+
 <span id="1-core-model" />
 <span id="2-remote-data-layout" />
 <span id="3-rclone-initial-setup-onedrive-example" />

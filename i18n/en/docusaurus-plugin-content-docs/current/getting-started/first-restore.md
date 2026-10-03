@@ -31,6 +31,10 @@ Quick Restore resolves the active branch tip, not the previous timestamp. See [a
 
 Check trusted cloud copies before purging missing-local history. Validate copies before production.
 
+## Preservation and legacy checks
+
+To retain current files instead of their archived versions, use the one-shot ordinary-Restore preservation options described in [filters and preservation](/docs/guides/filters#one-shot-file-and-directory-preservation). They also retain current deletions, unlike the restore whitelist. If a migrated version has an unknown deletion boundary, use non-deleting Overwrite or recover to a new directory. Create a new Full backup before Clean or advanced history.
+
 <span id="before-you-start" />
 <span id="step-1-enter-the-history-page" />
 <span id="step-2-understand-the-history-timeline" />

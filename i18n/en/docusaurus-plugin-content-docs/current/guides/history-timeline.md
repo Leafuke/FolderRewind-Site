@@ -29,6 +29,12 @@ Prepare required cloud replicas/closure before Restore. Missing local bytes do n
 
 Rebuild indexes from packs rather than guessing branches from old filenames. Protection roots retain dependencies. See [branches/merge](/docs/guides/history-branches) and [safety snapshots](/docs/guides/safety-snapshots).
 
+## One-shot preservation and legacy limits
+
+Ordinary Restore, including its Quick Restore entrypoint, accepts relative files or directories through KnotLink `restore_preserve_paths`. Current state wins over the archive, including current deletions. This differs from the restore whitelist, where archive content at the same path wins. Derived content means the Workspace need not exactly match the original version. Checkout and Merge do not enable ordinary-Restore path or player preservation.
+
+Legacy takeover versions may have unknown deletion boundaries even after verification. They cannot use Clean or serve as exact branch baselines. Review the migration report, recover through non-deleting Overwrite or a new directory, then create a new Full version.
+
 <span id="how-to-open" />
 <span id="page-layout" />
 <span id="what-you-can-do" />
