@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Encrypted backups and recovery materials"
 description: "FolderRewind 1.9 encrypted backups and recovery materials: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Encrypted backups and recovery materials

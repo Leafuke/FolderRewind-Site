@@ -36,12 +36,19 @@ load and activate the independent examples. It tests real candidate declarations
 drafts, ECHO values, Host requests, Disable, incompatible API/capabilities,
 wrong settings types, undeclared services and invalid package roots.
 
-The local package feed proves source compatibility only. Public3.5.0 restore,
-public plugin bytes, Catalog bindings and final Host metadata remain independent
-checks in `npm run check:release`.
+The previous local feed established source compatibility only. Current examples
+use public SDK 3.6.0. SDK restore, public plugin bytes, Catalog binding and Host
+metadata are checked independently by `npm run check:release`.
 
 ## 发布与回退
 
-补齐真实验收结果和最终截图后，将正式tag/日期填入acceptance.json；运行发布检查、
-双语言全部检查与公告准备脚本。未满足时不合入main、不部署、不创建假的正式公告。
+公开发布与实机验收已拆分：正式 tag/日期按实际 Release 记录，公开制品通过
+`npm run check:release` 后可生成和提交真实公告。八组场景及最终截图通过独立的
+`npm run check:acceptance` 检查；未完成仍为 pending，不由公开发布或构建通过代替。
 网站问题回退网站提交，不覆盖已发布产品或移除用户备份。
+
+## 2026-10-03 跟进边界
+
+本轮仅完成文档、公开 SDK 示例与公开制品核验，不恢复 GUI 自动化，不补拍正式版截图，
+不操作真实世界或云账户。八组实机场景保持 pending。此前五张候选图作为历史记录保留；
+发现页布局已更新，当前教程移除其旧图。

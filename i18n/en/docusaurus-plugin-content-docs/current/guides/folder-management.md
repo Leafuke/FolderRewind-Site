@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: "Source management, renaming and historical bindings"
 description: "FolderRewind 1.9 source management, renaming and historical bindings: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Source management, renaming and historical bindings

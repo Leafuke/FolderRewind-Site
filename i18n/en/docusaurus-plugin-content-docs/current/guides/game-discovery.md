@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Automatic game-save discovery Beta"
 description: "FolderRewind 1.9 automatic game-save discovery beta: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Automatic game-save discovery Beta

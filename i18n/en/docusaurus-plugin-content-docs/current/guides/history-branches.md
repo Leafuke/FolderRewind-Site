@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Branch checkout and file-level merge"
 description: "FolderRewind 1.9 branch checkout and file-level merge: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Branch checkout and file-level merge

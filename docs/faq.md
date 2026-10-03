@@ -2,7 +2,7 @@
 sidebar_position: 99
 title: "常见问题"
 description: "FolderRewind 1.9 系列常见问题操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 常见问题

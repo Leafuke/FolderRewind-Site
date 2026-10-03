@@ -1,18 +1,19 @@
 {
-  "date": "2026-10-02",
-  "hostRef": "32cb9b4dfa98e0a7b5bc99229a5e93673ed278fc",
-  "siteRef": "27f3d7f402df3ca15ad044e7536ebcb97ca600ce",
-  "hostProjectVersion": "1.9.1.0",
-  "api": "3.5",
-  "sdk": "3.5.0",
+  "date": "2026-10-03",
+  "hostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+  "siteRef": "38b5733f39774f60ab7960477394d8ce458e10a2",
+  "hostProjectVersion": "1.9.3.0",
+  "api": "3.6",
+  "sdk": "3.6.0",
   "assemblyVersion": "3.0.0.0",
-  "plugin": "1.9.3",
-  "pluginSha256": "9cf45bc4be235ec2c95beb4b4dcbf7d14184d66b2cd6c8e6d55206ae5fc35de5",
+  "plugin": "1.9.5",
+  "pluginSha256": "3b571fd7f09d1b88375832a4c072e979d911a1f59400c144144dc924c7a5e1d9",
   "nugetListed": [
-    "3.0.0"
+    "3.0.0",
+    "3.6.0"
   ],
-  "latestHostRelease": "v1.8.2",
-  "latestPluginRelease": "v1.8.2",
+  "latestHostRelease": "v1.9.3",
+  "latestPluginRelease": "v1.9.5",
   "anchors": {
     "zh/architecture/data-models": [
       "appconfig-层级结构",
@@ -1735,5 +1736,21 @@
       "plugin-installed-but-feature-is-missing",
       "related-links"
     ]
+  },
+  "previousPreparationBaseline": {
+    "date": "2026-10-02",
+    "hostRef": "32cb9b4dfa98e0a7b5bc99229a5e93673ed278fc",
+    "siteRef": "27f3d7f402df3ca15ad044e7536ebcb97ca600ce",
+    "hostProjectVersion": "1.9.1.0",
+    "api": "3.5",
+    "sdk": "3.5.0",
+    "assemblyVersion": "3.0.0.0",
+    "plugin": "1.9.3",
+    "pluginSha256": "9cf45bc4be235ec2c95beb4b4dcbf7d14184d66b2cd6c8e6d55206ae5fc35de5",
+    "nugetListed": [
+      "3.0.0"
+    ],
+    "latestHostRelease": "v1.8.2",
+    "latestPluginRelease": "v1.8.2"
   }
 }

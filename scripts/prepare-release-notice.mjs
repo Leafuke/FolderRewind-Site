@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 
-// Publication is conditional on verified artifacts and recorded real acceptance.
+// Publication uses verified public artifacts; desktop/game acceptance is tracked separately.
 const gate=spawnSync(process.execPath,['scripts/check-release-readiness.mjs'],{stdio:'inherit'});
 if(gate.status!==0)process.exit(gate.status??1);
 const evidence=JSON.parse(fs.readFileSync('audit/acceptance.json','utf8'));

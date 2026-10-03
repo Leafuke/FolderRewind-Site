@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Safety snapshots and recovery points"
 description: "FolderRewind 1.9 safety snapshots and recovery points: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Safety snapshots and recovery points

@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Minecraft quick start"
 description: "FolderRewind 1.9 minecraft quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Minecraft quick start

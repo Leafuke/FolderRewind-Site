@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test public release and acceptance policies
+        run: npm run test:release
+
       - name: Check i18n parity
         run: npm run check:i18n
 
@@ -71,14 +74,12 @@ jobs:
           repository: Leafuke/FolderRewind
           ref: ${{ steps.baseline.outputs.ref }}
           path: artifacts/host
-      - name: Pack pinned candidate SDK (does not establish public availability)
-        run: dotnet pack artifacts/host/FolderRewind.Plugin.Abstractions -c Release -o artifacts/feed
       - name: Build, pack and validate independent examples
         env:
-          NUGET_PACKAGES: ${{ runner.temp }}/fr-candidate-packages
+          NUGET_PACKAGES: ${{ runner.temp }}/fr-public-packages
         run: |
-          dotnet restore examples/plugins/MinimalPlugin --source artifacts/feed
-          dotnet restore examples/plugins/GameRewind --source artifacts/feed
+          dotnet restore examples/plugins/MinimalPlugin --source https://api.nuget.org/v3/index.json --no-http-cache
+          dotnet restore examples/plugins/GameRewind --source https://api.nuget.org/v3/index.json --no-http-cache
           node scripts/pack-plugin.mjs MinimalPlugin
           node scripts/pack-plugin.mjs GameRewind
           dotnet run --project tools/ExampleValidation -p:HostRoot="$GITHUB_WORKSPACE/artifacts/host" -- artifacts/examples
@@ -102,5 +103,5 @@ jobs:
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
-      - name: Reject premature release publication
+      - name: Verify public release artifacts
         run: node scripts/check-release-readiness.mjs

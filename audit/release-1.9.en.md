@@ -3,7 +3,7 @@ slug: v{{VERSION}}-release
 title: FolderRewind v{{VERSION}} released
 authors: [leafuke]
 tags: [release]
-description: FolderRewind 1.9 introduces immutable native history, branches and safety points, reviewed game discovery, cloud replica recovery and standalone Plugin API 3.5 with migration guidance.
+description: FolderRewind 1.9 introduces immutable native history, branches and safety points, reviewed game discovery, cloud replica recovery and standalone Plugin API 3.6 with migration guidance.
 ---
 
 Find official metadata and assets for FolderRewind {{VERSION}} in the [Release]({{RELEASE_URL}}).
@@ -16,8 +16,8 @@ Find official metadata and assets for FolderRewind {{VERSION}} in the [Release](
 - Native history, configuration Checkpoints, branches, file-level merge and safety points.
 - Reviewed discovery Beta and source scopes for user-owned configurations.
 - Cloud history union, trusted replica preparation and recovery into new directories.
-- Plugin System v3, independent Abstractions3.5.0, static.frplugin, typed settings and Catalog.
-- MineRewind ordinary-Restore all-UUID preservation, block-coordinate scopes and config-level coordination.
+- Plugin System v3, independent Abstractions3.6.0, static.frplugin, typed settings and Catalog.
+- Bundled MineRewind 1.9.5: launcher/Bedrock discovery and Java ordinary-Restore all-UUID preservation, block-coordinate scopes and config-level coordination.
 
 ## Upgrade and use
 

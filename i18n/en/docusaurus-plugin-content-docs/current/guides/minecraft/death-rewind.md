@@ -1,7 +1,7 @@
 ---
 title: Death Rewind
 description: Rewind to the latest MineBackup archive from the death screen in Fabric singleplayer worlds
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Death Rewind

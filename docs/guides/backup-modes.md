@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Full、Smart 与 Rolling 备份"
 description: "FolderRewind 1.9 系列Full、Smart 与 Rolling 备份操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Full、Smart 与 Rolling 备份

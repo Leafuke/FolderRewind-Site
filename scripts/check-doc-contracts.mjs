@@ -14,7 +14,7 @@ for (const item of inventory.pages.filter(p => p.product !== 'MineBackup')) {
   if (item.path.includes('migration-v2-v3')) continue; // Explicitly labeled responsibility mapping.
   for (const [file, text] of [[item.path, zh], [item.english, en]]) {
     const {data, content} = matter(text);
-    if (data.reviewed_baseline !== '1.9-api3.5') errors.push(`Missing reviewed baseline: ${file}`);
+    if (data.reviewed_baseline !== `1.9-api${baseline.api}`) errors.push(`Missing reviewed baseline: ${file}`);
     for (const match of content.matchAll(/```csharp\n([\s\S]*?)```/g)) {
       if (deprecated.test(match[1])) errors.push(`Legacy plugin C# contract: ${file}`);
     }
@@ -26,7 +26,7 @@ for (const name of ['MinimalPlugin', 'GameRewind']) {
   const root = path.join('examples/plugins', name);
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
   const project = fs.readFileSync(path.join(root, `${name}.csproj`), 'utf8');
-  if (manifest.manifestVersion !== 3 || manifest.pluginApi.major !== 3 || manifest.pluginApi.minor !== 5)
+  if (manifest.manifestVersion !== 3 || `${manifest.pluginApi.major}.${manifest.pluginApi.minor}` !== baseline.api)
     errors.push(`Example API drift: ${name}`);
   if (!project.includes(`Version="${baseline.sdk}"`) || /ProjectReference|HintPath|Microsoft.UI.Xaml/.test(project))
     errors.push(`Example SDK boundary drift: ${name}`);

@@ -57,58 +57,62 @@ GIT_USER=<Your GitHub username> npm run deploy
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
 
-## 1.9 maintenance and release branch
+## 1.9 released documentation baseline
 
-Work stays on `codex/docs-1.9-refresh` until the public-release gate is satisfied.
-Every changed current document has a Chinese and English counterpart and a
-source audit entry. Keep existing routes and compatibility anchors. Independent
-MineBackup files are hash-protected; historical posts retain their dated facts.
+Current documentation targets FolderRewind 1.9.3, MineRewind 1.9.5 and Plugin
+API 3.6 / public SDK 3.6.0. Assembly identity remains 3.0.0.0. Maintain the
+Chinese and English pages together, retain existing routes/anchors, and update
+`audit/pages.json` when reviewing content. Independent MineBackup tutorials and
+historical release facts keep their own baselines.
 
 ```powershell
 npm ci
 npm run check:all
 ```
 
-`check:all` checks translations, TypeScript, current API contracts, images,
-metadata, both locale builds, both sitemaps and original routes/anchors.
-C# tutorial blocks import the actual example source via the raw source loader.
+This runs release-policy tests, translation/TypeScript/contract/image/SEO checks,
+both locale builds and built-page/route/anchor validation. Tutorial blocks load
+actual example sources rather than duplicated C# snippets.
 
-### Candidate examples (SDK 3.5.0 is not yet public)
+### Public SDK examples
 
-.NET10 and Python3.10+ are required. QA alone may pack the pinned Host SDK into
-an isolated candidate feed. Plugins still have only a public PackageReference,
-never a Host/Runtime ProjectReference. For a local sibling checkout:
+.NET 10, Node 24 and Python 3.10+ are required. Use a fresh package cache and the
+public NuGet feed; neither plugin references Host/Runtime implementation code.
+Runtime is referenced only by the QA harness. For the sibling Host checkout:
 
 ```powershell
-dotnet pack ../FolderRewind.Plugin.Abstractions -c Release -o artifacts/feed
-$env:NUGET_PACKAGES = (Join-Path (Get-Location) 'artifacts/candidate-packages')
-dotnet restore examples/plugins/MinimalPlugin --source artifacts/feed
-dotnet restore examples/plugins/GameRewind --source artifacts/feed
+$env:NUGET_PACKAGES = (Join-Path (Get-Location) 'artifacts/public-sdk-packages')
+dotnet restore examples/plugins/MinimalPlugin --source https://api.nuget.org/v3/index.json --no-http-cache
+dotnet restore examples/plugins/GameRewind --source https://api.nuget.org/v3/index.json --no-http-cache
 node scripts/pack-plugin.mjs MinimalPlugin
 node scripts/pack-plugin.mjs GameRewind
 dotnet run --project tools/ExampleValidation -p:HostRoot=.. -- artifacts/examples
 ```
 
-The validator references Runtime only as a QA harness; normal plugin users do
-not need Host source. See `audit/MANUAL_ACCEPTANCE.md` for the eight desktop/game
-scenarios. Compile/runtime tests do not certify those scenarios.
+CI checks out the immutable Host ref from `audit/baseline.json` for Runtime
+validation. Compilation and Runtime checks do not certify real game loading.
 
-### Publication gate
+### Separate publication and desktop acceptance checks
 
 ```powershell
 npm run check:release
+npm run check:acceptance
 ```
 
-It must reject absent public SDK, nonpublic Host/plugin assets, incorrect
-Catalog binding, incomplete actual acceptance or final-version screenshots.
-The deploy command has the same predeploy hook, and main CI includes the gate.
-Candidate screenshots explicitly identify1.9.2.0/API3.5 and Chinese UI.
-Do not fabricate a1.9 publication date/tag while preparing docs. NuGet only
-listed3.0.0 and official latest releases were1.8.2 at the initial audit.
+`check:release` verifies a clean public SDK restore, stable Host metadata, exactly
+four x64/ARM64 Setup/checksum assets, downloaded bytes and the immutable plugin
+Catalog binding. It is used by main CI, predeploy and `prepare:release`.
+Network errors and mismatches fail the gate. It writes local evidence under
+`artifacts/release-readiness.json`.
 
-When the public gate passes, set the verified official tag in acceptance.json and
-run `npm run prepare:release`. It writes both notices using actual GitHub metadata
-and the Asia/Shanghai date; it refuses to overwrite existing posts. Check/review
-before committing. The templates in audit are not published blog content.
-`audit/catalog-proposal.json` validates local bundled bytes only; apply it to
-the Catalog source and regenerate its index only after public asset verification.
+`check:acceptance` separately reports the eight desktop/game scenarios and final
+screenshots, returning nonzero while they remain pending. A public release may
+be documented without claiming those scenarios passed. This task does not
+resume GUI automation or deploy. Remaining candidate screenshots retain their
+actual 1.9.2.0/API3.5 labels; the obsolete discovery image is no longer shown.
+
+`prepare:release` uses actual GitHub metadata and the Asia/Shanghai publication
+date to generate bilingual notices from reviewed templates. It refuses to
+overwrite existing posts. The 1.9.3 notices already exist and were reviewed
+against the official release body. `audit/catalog-proposal.json` is a retained
+historical candidate proposal, not an instruction to edit the public Catalog.

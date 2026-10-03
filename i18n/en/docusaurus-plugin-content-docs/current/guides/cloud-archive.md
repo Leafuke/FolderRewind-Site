@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Cloud archives: connections, history and replica recovery"
 description: "FolderRewind 1.9 cloud archives: connections, history and replica recovery: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Cloud archives: connections, history and replica recovery

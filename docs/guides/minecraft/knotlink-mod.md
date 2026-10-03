@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: "KnotLink 与 Minecraft 联动组件"
 description: "FolderRewind 1.9 系列KnotLink 与 Minecraft 联动组件操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # KnotLink 与 Minecraft 联动组件

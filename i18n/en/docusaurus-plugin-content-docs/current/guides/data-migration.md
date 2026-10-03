@@ -2,7 +2,7 @@
 sidebar_position: 8
 title: "Migrating configuration, history and payloads"
 description: "FolderRewind 1.9 migrating configuration, history and payloads: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Migrating configuration, history and payloads

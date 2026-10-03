@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: MineBackup-Mod（模组化服务端联动）
 description: 当前 MineBackup-Mod 的安装、命令、热备份、热还原与专用服务端 Sidecar 说明
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # MineBackup-Mod（模组化服务端联动）

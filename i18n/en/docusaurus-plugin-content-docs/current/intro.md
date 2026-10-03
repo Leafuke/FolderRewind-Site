@@ -2,7 +2,7 @@
 sidebar_position: 0
 title: "Quick start"
 description: "FolderRewind 1.9 quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Quick start
@@ -12,7 +12,7 @@ reviewed_baseline: "1.9-api3.5"
 *Empty-config home; isolated FolderRewind1.9.2.0/API3.5 candidate, Chinese UI.*
 
 
-FolderRewind is a WinUI3 Windows backup manager.1.9 adds native immutable history, Full/Smart/Rolling, cloud replicas, game discovery and Plugin System v3. These docs use an API3.5 candidate baseline; verify actual availability at download entrypoints.
+FolderRewind is a WinUI3 Windows backup manager.1.9 adds native immutable history, Full/Smart/Rolling, cloud replicas, game discovery and Plugin System v3. These docs use released FolderRewind 1.9.3, MineRewind 1.9.5 and API3.6.
 
 ## Verify in three steps
 

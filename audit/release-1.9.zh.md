@@ -3,7 +3,7 @@ slug: v{{VERSION}}-release
 title: FolderRewind v{{VERSION}} 发布
 authors: [leafuke]
 tags: [release]
-description: FolderRewind 1.9 系列正式发布，新增原生不可变历史、分支与安全恢复点、游戏发现、云副本恢复和独立 Plugin API 3.5，附升级迁移及兼容说明
+description: FolderRewind 1.9 系列正式发布，新增原生不可变历史、分支与安全恢复点、游戏发现、云副本恢复和独立 Plugin API 3.6，附升级迁移及兼容说明
 ---
 
 FolderRewind {{VERSION}} 的正式信息与下载附件见[官方 Release]({{RELEASE_URL}})。
@@ -16,8 +16,8 @@ FolderRewind {{VERSION}} 的正式信息与下载附件见[官方 Release]({{REL
 - 原生历史、配置Checkpoint、分支、文件级合并、安全快照与恢复点。
 - 游戏发现Beta及来源范围审阅，配置归用户拥有。
 - 云历史并集、可信副本准备及恢复到新目录。
-- Plugin System v3与独立Abstractions3.5.0、静态.frplugin、typed settings及官方目录。
-- MineRewind普通Restore全UUID玩家保留、方块坐标范围和配置级环境协调。
+- Plugin System v3与独立Abstractions3.6.0、静态.frplugin、typed settings及官方目录。
+- 内置 MineRewind 1.9.5，多启动器与基岩版发现；Java 普通Restore全UUID玩家保留、方块坐标范围和配置级环境协调。
 
 ## 升级和使用
 

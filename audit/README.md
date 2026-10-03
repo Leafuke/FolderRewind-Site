@@ -1,5 +1,9 @@
 # 1.9 文档核验 / Documentation acceptance
 
+当前基线：FolderRewind 1.9.3、MineRewind 1.9.5、API 3.6／SDK 3.6.0。
+公开发布检查与实机验收已拆分；前者通过不代表后者完成。
+以下 2026-10-02 的观察是历史记录；当前核验见 FINAL_VERIFICATION.md 的新增章节。
+
 源基线与旧锚点见 baseline.json；全部页面、双语言镜像、图片和状态见 pages.json。
 
 - `source-checked`：已按源码修正；不代表实机验收通过。

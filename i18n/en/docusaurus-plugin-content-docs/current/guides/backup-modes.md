@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Full, Smart and Rolling backups"
 description: "FolderRewind 1.9 full, smart and rolling backups: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Full, Smart and Rolling backups

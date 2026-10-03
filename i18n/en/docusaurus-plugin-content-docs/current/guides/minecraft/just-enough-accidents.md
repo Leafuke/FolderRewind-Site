@@ -1,7 +1,7 @@
 ---
 title: Just Enough Accidents
 description: Detect high-risk Minecraft states and create MineBackup incident snapshots
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Just Enough Accidents

@@ -1,7 +1,7 @@
 {
-  "officialHostTag": null,
-  "officialHostPublishedAt": null,
-  "catalogVerified": false,
+  "officialHostTag": "v1.9.3",
+  "officialHostPublishedAt": "2026-10-03T09:19:17Z",
+  "catalogVerified": true,
   "finalScreenshotsVerified": false,
   "desktopCandidate": {
     "displayedVersion": "1.9.2.0",
@@ -52,13 +52,8 @@
       "status": "pending"
     }
   ],
-  "automatedExampleValidation": "passed against pinned source Runtime and locally packed SDK; not public NuGet restoration",
-  "publicationBlockers": [
-    "NuGet.org3.5.0 missing",
-    "Official Host and MineRewind latest are still v1.8.2",
-    "Catalog1.9.3 public binding pending",
-    "Final isolated desktop/game acceptance and remaining screenshots pending"
-  ],
+  "automatedExampleValidation": "passed: public NuGet SDK 3.6.0 restore in fresh cache, independent build/pack, pinned source Runtime validation (8 groups)",
+  "publicationBlockers": [],
   "finalPreparationValidation": {
     "date": "2026-10-02",
     "siteContentCommit": "3bf8548",
@@ -78,5 +73,60 @@
     "publicReleaseGate": "closed as expected",
     "officialNoticePreparation": "rejected without writing announcements",
     "guiAutomation": "stopped by user; not resumed"
+  },
+  "previousPreparationPublicationBlockers": [
+    "NuGet.org3.5.0 missing",
+    "Official Host and MineRewind latest are still v1.8.2",
+    "Catalog1.9.3 public binding pending",
+    "Final isolated desktop/game acceptance and remaining screenshots pending"
+  ],
+  "previousAutomatedExampleValidation": "passed against pinned source Runtime and locally packed SDK; not public NuGet restoration",
+  "publicReleaseVerification": {
+    "ready": true,
+    "failures": [],
+    "downloads": [
+      {
+        "name": "FolderRewind_1.9.3.0_Setup_x64.exe",
+        "sha256": "e4ba61f81157d098c61bdb2aa2423576d5de5a6e51f72480e4f200823996585f",
+        "expectedSha256": "e4ba61f81157d098c61bdb2aa2423576d5de5a6e51f72480e4f200823996585f"
+      },
+      {
+        "name": "FolderRewind_1.9.3.0_Setup_arm64.exe",
+        "sha256": "93b92026d101a6e47340c0f9198aac5908ca270aff86f3d27f4be17d707258e9",
+        "expectedSha256": "93b92026d101a6e47340c0f9198aac5908ca270aff86f3d27f4be17d707258e9"
+      },
+      {
+        "name": "MineRewind-1.9.5.frplugin",
+        "sha256": "3b571fd7f09d1b88375832a4c072e979d911a1f59400c144144dc924c7a5e1d9",
+        "expectedSha256": "3b571fd7f09d1b88375832a4c072e979d911a1f59400c144144dc924c7a5e1d9"
+      }
+    ],
+    "sdk": "3.6.0",
+    "hostTag": "v1.9.3",
+    "pluginTag": "v1.9.5",
+    "manualAcceptance": {
+      "ready": false,
+      "failures": [
+        "Final released-version screenshots are incomplete.",
+        "Eight isolated desktop/game acceptance scenarios are incomplete."
+      ]
+    },
+    "checkedAt": "2026-10-03T10:55:04.733Z",
+    "manifestReview": "Pinned bundled package has the same SHA-256 as public bytes. All Catalog identity/API/architecture/services/artifact declarations match manifest; no Abstractions DLL."
+  },
+  "releasedDocumentationVerification": {
+    "date": "2026-10-03",
+    "siteChecks": "npm run check:all: passed",
+    "releasePolicyTests": 16,
+    "documentsPerLocale": 86,
+    "postsPerLocale": 14,
+    "builtPages": 208,
+    "preservedOriginalDocumentRoutes": 158,
+    "exampleValidationGroups": 8,
+    "publicSdk": "3.6.0 restored from NuGet.org in fresh package cache",
+    "publicReleaseGate": "passed with real streamed downloads",
+    "manualAcceptanceGate": "expected nonzero: 8 pending scenarios and final screenshots",
+    "guiAutomation": "not resumed",
+    "deployment": "not performed"
   }
 }

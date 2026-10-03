@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Sharing, importing and official presets"
 description: "FolderRewind 1.9 sharing, importing and official presets: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Sharing, importing and official presets

@@ -10,7 +10,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/directory-structure.md",
@@ -22,7 +25,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/index.md",
@@ -34,7 +40,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/namespaces.md",
@@ -46,7 +55,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/patterns.md",
@@ -58,7 +70,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/plugin-system.md",
@@ -70,7 +85,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/services.md",
@@ -82,7 +100,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad"
+      "responsibleCommit": "63ec6ad",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/architecture/views.md",
@@ -94,7 +115,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9"
+      "responsibleCommit": "fa0c1d9",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/faq.md",
@@ -106,7 +130,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/getting-started/first-backup.md",
@@ -118,7 +145,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9"
+      "responsibleCommit": "fa0c1d9",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/getting-started/first-restore.md",
@@ -130,7 +160,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/getting-started/installation.md",
@@ -142,7 +175,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "917933c"
+      "responsibleCommit": "917933c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/getting-started/v1-8-upgrade.md",
@@ -166,7 +202,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/backup-file-spec.md",
@@ -178,7 +217,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "9b605a5"
+      "responsibleCommit": "9b605a5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/backup-modes.md",
@@ -190,7 +232,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "9b605a5"
+      "responsibleCommit": "9b605a5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/cloud-archive.md",
@@ -202,7 +247,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9"
+      "responsibleCommit": "fa0c1d9",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/data-migration.md",
@@ -214,7 +262,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/encryption.md",
@@ -226,7 +277,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/filters.md",
@@ -238,7 +292,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/folder-management.md",
@@ -250,7 +307,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/history-timeline.md",
@@ -262,7 +322,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4"
+      "responsibleCommit": "8f023d4",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minebackup-v1/automation.md",
@@ -634,7 +697,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "responsibleCommit": "19973f5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/hot-backup.md",
@@ -646,7 +712,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/hot-restore.md",
@@ -658,7 +727,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/just-enough-accidents.md",
@@ -670,7 +742,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "responsibleCommit": "19973f5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/knotlink-mod.md",
@@ -682,7 +757,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/minebackup-mod.md",
@@ -694,7 +772,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "responsibleCommit": "19973f5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/minebackup-plugin.md",
@@ -706,7 +787,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "responsibleCommit": "19973f5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/overview.md",
@@ -718,7 +802,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/quick-start.md",
@@ -730,7 +817,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/selected-region-backup.md",
@@ -742,7 +832,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/minecraft/troubleshooting.md",
@@ -754,7 +847,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e"
+      "responsibleCommit": "6b6341e",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/mini-window.md",
@@ -766,7 +862,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c"
+      "responsibleCommit": "5f74a5c",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/template-sharing.md",
@@ -778,7 +877,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "81d7224"
+      "responsibleCommit": "81d7224",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/templates.md",
@@ -790,7 +892,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "81d7224"
+      "responsibleCommit": "81d7224",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/intro.md",
@@ -802,7 +907,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9"
+      "responsibleCommit": "fa0c1d9",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/auto-update.md",
@@ -814,7 +922,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f"
+      "responsibleCommit": "7f0ab4f",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/hotkey-api.md",
@@ -826,7 +937,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152"
+      "responsibleCommit": "8bb3152",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/knotlink-api.md",
@@ -838,7 +952,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152"
+      "responsibleCommit": "8bb3152",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/packaging.md",
@@ -850,7 +967,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f"
+      "responsibleCommit": "7f0ab4f",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/plugin-api.md",
@@ -862,7 +982,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "responsibleCommit": "19973f5",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/quick-start.md",
@@ -874,7 +997,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8ef6014"
+      "responsibleCommit": "8ef6014",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/settings-schema.md",
@@ -886,7 +1012,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "d209ddc"
+      "responsibleCommit": "d209ddc",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/tutorial.md",
@@ -898,7 +1027,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8ef6014"
+      "responsibleCommit": "8ef6014",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/knotlink-commands.md",
@@ -910,7 +1042,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152"
+      "responsibleCommit": "8bb3152",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/knotlink.md",
@@ -922,7 +1057,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152"
+      "responsibleCommit": "8bb3152",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/overview.md",
@@ -934,7 +1072,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f"
+      "responsibleCommit": "7f0ab4f",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/using-plugins.md",
@@ -946,7 +1087,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f"
+      "responsibleCommit": "7f0ab4f",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/capabilities.md",
@@ -958,7 +1102,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fd2e000"
+      "responsibleCommit": "fd2e000",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/artifacts.md",
@@ -970,7 +1117,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "2c65ecd"
+      "responsibleCommit": "2c65ecd",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/plugins/developing/migration-v2-v3.md",
@@ -982,7 +1132,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "136d6fc"
+      "responsibleCommit": "136d6fc",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/getting-started/v1-9-upgrade.md",
@@ -994,7 +1147,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8d32669"
+      "responsibleCommit": "8d32669",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/history-branches.md",
@@ -1006,7 +1162,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4"
+      "responsibleCommit": "8f023d4",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/safety-snapshots.md",
@@ -1018,7 +1177,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4"
+      "responsibleCommit": "8f023d4",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     },
     {
       "path": "docs/guides/game-discovery.md",
@@ -1030,7 +1192,10 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9"
+      "responsibleCommit": "fa0c1d9",
+      "reviewedBaseline": "1.9-api3.6",
+      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+      "reviewedAt": "2026-10-03"
     }
   ],
   "blogs": [
@@ -1242,7 +1407,8 @@
       "path": "static/img/docs/v1-9/discovery-candidate.png",
       "status": "captured-isolated-candidate",
       "version": "1.9.2.0/API3.5",
-      "description": "游戏发现Beta初始页，1.9.2.0／API3.5 中文候选版；未联网扫描"
+      "description": "游戏发现Beta初始页，1.9.2.0／API3.5 中文候选版；未联网扫描",
+      "currentUsage": "retired: discovery layout changed; retained as historical capture"
     },
     {
       "path": "static/img/docs/v1-9/cloud-candidate.png",
@@ -1261,5 +1427,8 @@
     "src/pages/index.tsx",
     "src/pages/download.tsx"
   ],
-  "releaseReady": false
+  "releaseReady": false,
+  "date": "2026-10-03",
+  "publicReleaseVerified": true,
+  "releaseReadyMeaning": "Historical complete desktop acceptance flag; public publication is checked separately."
 }

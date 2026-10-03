@@ -2,7 +2,7 @@
 sidebar_position: 4
 title: "Minecraft hot restore and player preservation"
 description: "FolderRewind 1.9 minecraft hot restore and player preservation: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # Minecraft hot restore and player preservation

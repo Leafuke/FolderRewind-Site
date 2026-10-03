@@ -2,7 +2,7 @@
 sidebar_position: 0
 title: "快速开始"
 description: "FolderRewind 1.9 系列快速开始操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.5"
+reviewed_baseline: "1.9-api3.6"
 ---
 
 # 快速开始
@@ -12,7 +12,7 @@ reviewed_baseline: "1.9-api3.5"
 *空配置首页，FolderRewind 1.9.2.0／API3.5 隔离候选版，中文界面.*
 
 
-FolderRewind 是基于 WinUI3 的 Windows 备份管理工具。1.9系列提供原生不可变历史、Full／Smart／Rolling、云副本、游戏发现和 Plugin System v3；当前文档使用 API3.5候选基线，正式可用版本以下载入口为准。
+FolderRewind 是基于 WinUI3 的 Windows 备份管理工具。1.9系列提供原生不可变历史、Full／Smart／Rolling、云副本、游戏发现和 Plugin System v3；当前文档使用 FolderRewind 1.9.3、MineRewind 1.9.5 与 API3.6 正式基线。
 
 ## 三步验证
 
