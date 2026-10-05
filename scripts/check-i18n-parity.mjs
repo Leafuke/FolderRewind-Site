@@ -1,6 +1,7 @@
 import {readdir, readFile} from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import {extractTranslationIds, missingTranslationIds} from './translation-ids.mjs';
 
 const root = process.cwd();
 const docsRoot = path.join(root, 'docs');
@@ -65,12 +66,11 @@ async function collectTranslateIds() {
     (name) => name.endsWith('.tsx') || name.endsWith('.ts'),
   );
   const ids = new Set();
-  const idPattern = /\bid\s*[:=]\s*['"]([^'"]+)['"]/g;
 
   for (const relativePath of sourceFiles) {
     const content = await readFile(path.join(sourceRoot, relativePath), 'utf8');
-    for (const match of content.matchAll(idPattern)) {
-      ids.add(match[1]);
+    for (const id of extractTranslationIds(content, relativePath)) {
+      ids.add(id);
     }
   }
 
@@ -95,9 +95,7 @@ errors.push(...compareSets('Documentation', docs, englishDocs));
 errors.push(...compareSets('Blog', blogPosts, englishBlogPosts));
 
 const englishCode = JSON.parse(await readFile(englishCodePath, 'utf8'));
-const missingTranslateIds = translateIds.filter(
-  (id) => !Object.hasOwn(englishCode, id),
-);
+const missingTranslateIds = missingTranslationIds(translateIds, englishCode);
 if (missingTranslateIds.length > 0) {
   errors.push(
     `Missing English code translations: ${missingTranslateIds.join(', ')}`,

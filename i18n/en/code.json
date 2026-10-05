@@ -410,266 +410,8 @@
   "download.plugin.docsBtn": {
     "message": "View Docs"
   },
-  "homepage.hero.title": {
-    "message": "FolderRewind"
-  },
-  "homepage.hero.tagline": {
-    "message": "The time machine for your saves"
-  },
-  "homepage.hero.mock.folderName": {
-    "message": "Minecraft world"
-  },
-  "homepage.hero.mock.folderMeta": {
-    "message": "2.4 GB · Auto backup"
-  },
-  "homepage.hero.mock.entry1.label": {
-    "message": "Incremental backup · 84 MB"
-  },
-  "homepage.hero.mock.entry1.time": {
-    "message": "Just now"
-  },
-  "homepage.hero.mock.entry2.label": {
-    "message": "Incremental backup · 96 MB"
-  },
-  "homepage.hero.mock.entry2.time": {
-    "message": "Yesterday 21:17"
-  },
-  "homepage.hero.mock.entry3.label": {
-    "message": "Incremental backup · 91 MB"
-  },
-  "homepage.hero.mock.entry3.time": {
-    "message": "Aug 20"
-  },
-  "homepage.hero.mock.entry4.label": {
-    "message": "Full backup · 860 MB"
-  },
-  "homepage.hero.mock.entry4.time": {
-    "message": "Aug 13"
-  },
-  "homepage.hero.mock.progress": {
-    "message": "Backing up · 68%"
-  },
-  "homepage.hero.mock.badgeCloud": {
-    "message": "Cloud archive"
-  },
-  "homepage.hero.mock.badgeIncremental": {
-    "message": "Incremental"
-  },
-  "homepage.hero.subtitle.line1": {
-    "message": "Safe backups for important files, project data, and game saves"
-  },
-  "homepage.hero.subtitle.line2": {
-    "message": "1.9.3 adds game discovery, history branches, safety recovery points and cloud replicas"
-  },
-  "homepage.hero.storeBtn": {
-    "message": "Get from Microsoft Store"
-  },
-  "homepage.hero.quickStartBtn": {
-    "message": "Quick Start"
-  },
-  "homepage.hero.trust.openSource": {
-    "message": "Free & Open Source"
-  },
-  "homepage.segment.gamer.title": {
-    "message": "Gamers"
-  },
-  "homepage.segment.gamer.desc": {
-    "message": "Verifiable backup and restore for Minecraft saves"
-  },
-  "homepage.segment.gamer.bullet1": {
-    "message": "Selected-region backup and safe partial restore"
-  },
-  "homepage.segment.gamer.bullet2": {
-    "message": "Hot backup / hot restore and save discovery"
-  },
-  "homepage.segment.gamer.bullet3": {
-    "message": "MineRewind and KnotLink Server v3"
-  },
-  "homepage.segment.gamer.link": {
-    "message": "MC Guide"
-  },
-  "homepage.segment.files.title": {
-    "message": "File Managers"
-  },
-  "homepage.segment.files.desc": {
-    "message": "Clear versioning, migration, and rollback paths for important files"
-  },
-  "homepage.segment.files.bullet1": {
-    "message": "Full / Smart / immutable Rolling policies"
-  },
-  "homepage.segment.files.bullet2": {
-    "message": "Rename sources while preserving stable history identity"
-  },
-  "homepage.segment.files.bullet3": {
-    "message": "Cloud sync and safe restore"
-  },
-  "homepage.segment.files.link": {
-    "message": "Learn More"
-  },
-  "homepage.segment.dev.title": {
-    "message": "Plugin Developers"
-  },
-  "homepage.segment.dev.desc": {
-    "message": "Integrate apps, games and automation using standalone Plugin API3.6"
-  },
-  "homepage.segment.dev.bullet1": {
-    "message": "Standalone Plugin API3.6"
-  },
-  "homepage.segment.dev.bullet2": {
-    "message": "KnotLink protocol v2 / Server v3"
-  },
-  "homepage.segment.dev.bullet3": {
-    "message": "Capabilities, backup scope and restore coordination"
-  },
-  "homepage.segment.dev.link": {
-    "message": "Dev Docs"
-  },
-  "homepage.segments.heading": {
-    "message": "Who is it for?"
-  },
-  "homepage.segments.subheading": {
-    "message": "Whether you're a gamer, everyday backup user, or developer — FolderRewind has you covered"
-  },
-  "homepage.steps.1.title": {
-    "message": "Install"
-  },
-  "homepage.steps.1.desc": {
-    "message": "Use Microsoft Store first to avoid running two install channels side by side"
-  },
-  "homepage.steps.2.title": {
-    "message": "Add Folders"
-  },
-  "homepage.steps.2.desc": {
-    "message": "Create a config and add folders to protect"
-  },
-  "homepage.steps.3.title": {
-    "message": "Validate"
-  },
-  "homepage.steps.3.desc": {
-    "message": "Run at least one backup-and-restore test before enabling automation"
-  },
-  "homepage.quickdemo.heading": {
-    "message": "Get started in 3 steps"
-  },
-  "homepage.quickdemo.subheading": {
-    "message": "From installation to your first backup in just minutes"
-  },
-  "homepage.quickdemo.tutorialBtn": {
-    "message": "5-minute tutorial"
-  },
-  "homepage.cta.title": {
-    "message": "Ready to protect your files?"
-  },
-  "homepage.cta.desc": {
-    "message": "Free download — start protecting your files with FolderRewind"
-  },
-  "homepage.cta.downloadBtn": {
-    "message": "Download Now"
-  },
-  "homepage.cta.allDownloadsBtn": {
-    "message": "View all download options"
-  },
   "homepage.layout.title": {
     "message": "Home"
-  },
-  "homepage.layout.description": {
-    "message": "FolderRewind is a modern Windows backup tool providing secure version control, cloud sync, and automated protection for important files, project data, and game saves including Minecraft world backups with hot backup and restoration features"
-  },
-  "features.7zip.title": {
-    "message": "7-Zip Compression Engine"
-  },
-  "features.7zip.desc": {
-    "message": "High-performance compression in 7z format — save disk space with faster backups."
-  },
-  "features.7zip.link": {
-    "message": "Explore backup modes"
-  },
-  "features.modes.title": {
-    "message": "Full, Smart and Rolling"
-  },
-  "features.modes.desc": {
-    "message": "Choose complete captures, change captures or immutable Rolling archives, with reviewed retention."
-  },
-  "features.modes.link": {
-    "message": "Learn backup modes"
-  },
-  "features.automation.title": {
-    "message": "Automation and remote commands"
-  },
-  "features.automation.desc": {
-    "message": "Use interval, scheduled, or condition-based tasks and trigger remote operations through KnotLink's parameterized protocol."
-  },
-  "features.automation.link": {
-    "message": "Read automation guide"
-  },
-  "features.encryption.title": {
-    "message": "Encrypted Backups"
-  },
-  "features.encryption.desc": {
-    "message": "AES-256 encryption keeps your sensitive data secure."
-  },
-  "features.encryption.link": {
-    "message": "Read encryption guide"
-  },
-  "features.timeline.title": {
-    "message": "History, branches and recovery points"
-  },
-  "features.timeline.desc": {
-    "message": "Inspect versions, runs and cloud replicas; manage branches and protected restore dependencies."
-  },
-  "features.timeline.link": {
-    "message": "Read history guide"
-  },
-  "features.plugins.title": {
-    "message": "Plugin System"
-  },
-  "features.plugins.desc": {
-    "message": "Register discovery, scope, consistency, commands and controlled restore through the independent SDK."
-  },
-  "features.plugins.link": {
-    "message": "Read plugin docs"
-  },
-  "features.miniwindow.title": {
-    "message": "Mini Window"
-  },
-  "features.miniwindow.desc": {
-    "message": "Monitor and instantly backup via the mini floating window while gaming or working."
-  },
-  "features.miniwindow.link": {
-    "message": "Read mini-window guide"
-  },
-  "features.knotlink.title": {
-    "message": "Cloud sync and external tools"
-  },
-  "features.knotlink.desc": {
-    "message": "Invoke rclone or other third-party tools to sync backups to cloud or external storage."
-  },
-  "features.knotlink.link": {
-    "message": "Read cloud archive guide"
-  },
-  "features.i18n.title": {
-    "message": "Safe restore"
-  },
-  "features.i18n.desc": {
-    "message": "Review targets, managed boundaries and protection options; partial captures force Overwrite."
-  },
-  "features.i18n.link": {
-    "message": "Read restore guide"
-  },
-  "features.heading": {
-    "message": "Core Features"
-  },
-  "features.group.core": {
-    "message": "Core Backup"
-  },
-  "features.group.safety": {
-    "message": "Automation & Safety"
-  },
-  "features.group.eco": {
-    "message": "Ecosystem & Extensions"
-  },
-  "features.subheading": {
-    "message": "From backup and sync to rollback, FolderRewind covers the whole safety chain"
   },
   "minecraft.ecosystem.heading": {
     "message": "Minecraft integration ecosystem"
@@ -748,5 +490,194 @@
   },
   "notFound.discussions": {
     "message": "Join GitHub Discussions"
+  },
+  "homepage.v2.tagline": {
+    "message": "A little peace of mind."
+  },
+  "homepage.v2.heroCopy": {
+    "message": "Keep a history of your important files, and a way back from accidental edits and deletions."
+  },
+  "homepage.v2.store": {
+    "message": "Get it from Microsoft Store"
+  },
+  "homepage.v2.quick": {
+    "message": "Get started"
+  },
+  "homepage.v2.other": {
+    "message": "Other ways to download"
+  },
+  "homepage.v2.free": {
+    "message": "Free · Open source"
+  },
+  "homepage.v2.startLabel": {
+    "message": "GET STARTED"
+  },
+  "homepage.v2.startTitle": {
+    "message": "Start with one folder."
+  },
+  "homepage.v2.startCopy": {
+    "message": "Make your first backup, test a restore, then set up a routine that works for you."
+  },
+  "homepage.v2.install": {
+    "message": "Install the app"
+  },
+  "homepage.v2.installCopy": {
+    "message": "Choose an installation method and a separate location for your backups."
+  },
+  "homepage.v2.backup": {
+    "message": "Make your first backup"
+  },
+  "homepage.v2.backupCopy": {
+    "message": "Add your documents, design projects or personal files. Save a starting point."
+  },
+  "homepage.v2.verify": {
+    "message": "Test your first restore"
+  },
+  "homepage.v2.verifyCopy": {
+    "message": "Check the restored files in a test copy before enabling automatic backups."
+  },
+  "homepage.v2.previewLabel": {
+    "message": "IN THE APP"
+  },
+  "homepage.v2.previewTitle": {
+    "message": "See where your files have been."
+  },
+  "homepage.v2.previewCopy": {
+    "message": "Organize projects, browse their history and review a restore in a familiar Windows interface."
+  },
+  "homepage.v2.homeTab": {
+    "message": "Manage folders"
+  },
+  "homepage.v2.historyTab": {
+    "message": "Browse history"
+  },
+  "homepage.v2.restoreTab": {
+    "message": "Review a restore"
+  },
+  "homepage.v2.homeCaption": {
+    "message": "Organize your folders by project, with everyday documents and game saves in one place."
+  },
+  "homepage.v2.historyCaption": {
+    "message": "Review versions, notes and restore status to find the point you want to return to."
+  },
+  "homepage.v2.restoreCaption": {
+    "message": "Before restoring, check the version, destination and restore mode, including whether backup before restore is enabled."
+  },
+  "homepage.v2.homeAlt": {
+    "message": "FolderRewind home with documents, design, personal files and game backup projects"
+  },
+  "homepage.v2.historyAlt": {
+    "message": "FolderRewind advanced history with versions, notes, branches and restore status"
+  },
+  "homepage.v2.restoreAlt": {
+    "message": "FolderRewind restore confirmation showing destination, scope and the backup-before-restore warning"
+  },
+  "homepage.v2.viewOriginal": {
+    "message": "View full-size image"
+  },
+  "homepage.v2.close": {
+    "message": "Close preview"
+  },
+  "homepage.v2.imageVersion": {
+    "message": "Interface captures: 1.9.4"
+  },
+  "homepage.v2.readGuide": {
+    "message": "Read the guide"
+  },
+  "homepage.v2.featuresLabel": {
+    "message": "THE ESSENTIALS"
+  },
+  "homepage.v2.featuresTitle": {
+    "message": "A plan for backups. A path to recovery."
+  },
+  "homepage.v2.featuresCopy": {
+    "message": "Make protecting your files part of your everyday workflow."
+  },
+  "homepage.v2.featureBackup": {
+    "message": "Back up your way"
+  },
+  "homepage.v2.featureBackupCopy": {
+    "message": "Save a full copy or capture changes. Choose Full, Smart or Rolling and a retention policy that fits your files."
+  },
+  "homepage.v2.featureHistory": {
+    "message": "History and recovery"
+  },
+  "homepage.v2.featureHistoryCopy": {
+    "message": "Organize history with versions, branches and recovery points. Check destinations and protection options before restoring."
+  },
+  "homepage.v2.featureAuto": {
+    "message": "Automation and cloud copies"
+  },
+  "homepage.v2.featureAutoCopy": {
+    "message": "Schedule backups or set conditions, and use tools such as rclone to keep cloud copies in your own storage."
+  },
+  "homepage.v2.modesLink": {
+    "message": "Explore backup modes"
+  },
+  "homepage.v2.historyLink": {
+    "message": "Explore history and recovery"
+  },
+  "homepage.v2.autoLink": {
+    "message": "Set up automation"
+  },
+  "homepage.v2.cloudLink": {
+    "message": "Explore cloud archives"
+  },
+  "homepage.v2.ecoLabel": {
+    "message": "GO FURTHER"
+  },
+  "homepage.v2.ecoTitle": {
+    "message": "For the files that make life yours."
+  },
+  "homepage.v2.game": {
+    "message": "Keep your progress"
+  },
+  "homepage.v2.gameCopy": {
+    "message": "Keep a history of your worlds. Minecraft hot backup and restore require the corresponding plugins or mods."
+  },
+  "homepage.v2.gameLink": {
+    "message": "Explore Minecraft"
+  },
+  "homepage.v2.plugins": {
+    "message": "Extend your workflow"
+  },
+  "homepage.v2.pluginsCopy": {
+    "message": "Connect apps, games and automation through the independent plugin SDK and KnotLink."
+  },
+  "homepage.v2.pluginsLink": {
+    "message": "Read the developer docs"
+  },
+  "homepage.v2.downloadLabel": {
+    "message": "MAKE A START"
+  },
+  "homepage.v2.downloadTitle": {
+    "message": "Give your important files a way back."
+  },
+  "homepage.v2.downloadCopy": {
+    "message": "Start with your first backup today."
+  },
+  "homepage.v2.installation": {
+    "message": "Installation guide"
+  },
+  "homepage.v2.system": {
+    "message": "Windows 10 1809+ / Windows 11"
+  },
+  "homepage.v2.architecture": {
+    "message": "Available for x64 / ARM64"
+  },
+  "homepage.v2.pause": {
+    "message": "Pause particles"
+  },
+  "homepage.v2.play": {
+    "message": "Play particles"
+  },
+  "homepage.v2.motion": {
+    "message": "Particle motion"
+  },
+  "homepage.v2.navPreview": {
+    "message": "Explore the app"
+  },
+  "homepage.v2.seo": {
+    "message": "FolderRewind is an open-source Windows backup tool for documents, projects and game saves, with version history, automation, recovery points and cloud copies."
   }
 }

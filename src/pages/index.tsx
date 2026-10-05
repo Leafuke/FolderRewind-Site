@@ -1,344 +1,46 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
-import Translate, {translate} from '@docusaurus/Translate';
+import {useRef} from 'react';
+import useScrollReveal from '../components/Homepage/useScrollReveal';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
-import {
-  FaDownload,
-  FaArrowRight,
-  FaGamepad,
-  FaFolderOpen,
-  FaPuzzlePiece,
-  FaCircleCheck,
-  FaWindows,
-  FaCloudArrowUp,
-  FaBolt,
-} from 'react-icons/fa6';
-
-import styles from './index.module.css';
-
-const STORE_URL = 'https://apps.microsoft.com/detail/9nwsdgxdqws4';
-
-/* ── Hero ──────────────────────────────────────────── */
-/* 备份时间轴模拟窗口：以风格化方式呈现产品核心场景，纯 CSS 绘制、随主题切换 */
-function HeroVisual() {
-  return (
-    <div className={styles.heroVisual} aria-hidden="true">
-      <div className={styles.mockWindow}>
-        <div className={styles.mockTitlebar}>
-          <span className={styles.mockDot} />
-          <span className={styles.mockDot} />
-          <span className={styles.mockDot} />
-          <span className={styles.mockAppTitle}>FolderRewind</span>
-        </div>
-        <div className={styles.mockBody}>
-          <div className={styles.mockFolderRow}>
-            <span className={styles.mockFolderIcon}>
-              <FaFolderOpen />
-            </span>
-            <span className={styles.mockFolderText}>
-              <span className={styles.mockFolderName}>
-                <Translate id="homepage.hero.mock.folderName">Minecraft 世界</Translate>
-              </span>
-              <span className={styles.mockFolderMeta}>
-                <Translate id="homepage.hero.mock.folderMeta">2.4 GB · 自动备份</Translate>
-              </span>
-            </span>
-          </div>
-          <ul className={styles.mockTimeline}>
-            <li className={styles.mockEntryActive}>
-              <span className={styles.mockEntryLabel}>
-                <Translate id="homepage.hero.mock.entry1.label">增量备份 · 84 MB</Translate>
-              </span>
-              <span className={styles.mockEntryTime}>
-                <Translate id="homepage.hero.mock.entry1.time">刚刚</Translate>
-              </span>
-            </li>
-            <li>
-              <span className={styles.mockEntryLabel}>
-                <Translate id="homepage.hero.mock.entry2.label">增量备份 · 96 MB</Translate>
-              </span>
-              <span className={styles.mockEntryTime}>
-                <Translate id="homepage.hero.mock.entry2.time">昨天 21:17</Translate>
-              </span>
-            </li>
-            <li>
-              <span className={styles.mockEntryLabel}>
-                <Translate id="homepage.hero.mock.entry3.label">增量备份 · 91 MB</Translate>
-              </span>
-              <span className={styles.mockEntryTime}>
-                <Translate id="homepage.hero.mock.entry3.time">8 月 20 日</Translate>
-              </span>
-            </li>
-            <li>
-              <span className={styles.mockEntryLabel}>
-                <Translate id="homepage.hero.mock.entry4.label">全量备份 · 860 MB</Translate>
-              </span>
-              <span className={styles.mockEntryTime}>
-                <Translate id="homepage.hero.mock.entry4.time">8 月 13 日</Translate>
-              </span>
-            </li>
-          </ul>
-          <div className={styles.mockProgress}>
-            <div className={styles.mockProgressBar} />
-            <span className={styles.mockProgressLabel}>
-              <Translate id="homepage.hero.mock.progress">正在备份 · 68%</Translate>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className={clsx(styles.floatBadge, styles.floatBadgeA)}>
-        <FaCloudArrowUp className={styles.floatBadgeIcon} />
-        <Translate id="homepage.hero.mock.badgeCloud">云存档</Translate>
-      </div>
-      <div className={clsx(styles.floatBadge, styles.floatBadgeB)}>
-        <FaBolt className={styles.floatBadgeIcon} />
-        <Translate id="homepage.hero.mock.badgeIncremental">增量备份</Translate>
-      </div>
-    </div>
-  );
-}
-
-function HomepageHero() {
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <div className={styles.heroInner}>
-          <div className={styles.heroText}>
-            <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-              <Translate id="homepage.hero.title">FolderRewind</Translate>
-            </Heading>
-            <p className={styles.heroTagline}>
-              <Translate id="homepage.hero.tagline">存档时光机</Translate>
-            </p>
-            <p className={styles.heroSubtitle}>
-              <Translate id="homepage.hero.subtitle.line1">为重要文件、项目资料与游戏存档提供安全备份</Translate>
-              <br />
-              <Translate id="homepage.hero.subtitle.line2">1.9.3 支持游戏发现、历史分支、安全恢复点与云副本</Translate>
-            </p>
-
-            <div className={styles.buttons}>
-              <Link className={clsx('button button--lg', styles.btnPrimary)} href={STORE_URL}>
-                <FaWindows style={{marginRight: '0.5rem', verticalAlign: '-2px'}} />
-                <Translate id="homepage.hero.storeBtn">从 Microsoft Store 获取</Translate>
-              </Link>
-              <Link
-                className={clsx('button button--lg', styles.btnSecondary)}
-                to="/docs/intro">
-                <Translate id="homepage.hero.quickStartBtn">快速上手</Translate>
-                <FaArrowRight style={{marginLeft: '0.5rem', fontSize: '0.85em'}} />
-              </Link>
-            </div>
-
-            <div className={styles.heroTrust}>
-              <span><FaCircleCheck style={{marginRight: '0.35rem', verticalAlign: '-1px'}} /> <Translate id="homepage.hero.trust.openSource">开源免费</Translate></span>
-              <span className={styles.trustDot}>·</span>
-              <span>Windows 10 / 11</span>
-              <span className={styles.trustDot}>·</span>
-              <span>WinUI 3</span>
-            </div>
-          </div>
-          <HeroVisual />
-        </div>
-      </div>
-    </header>
-  );
-}
-
-/* ── 用户分层 ──────────────────────────────────────── */
-type Segment = {
-  icon: ReactNode;
-  iconClass: string;
-  title: string;
-  desc: string;
-  bullets: string[];
-  link: string;
-  linkText: string;
-};
-
-function useSegments(): Segment[] {
-  return [
-    {
-      icon: <FaGamepad />,
-      iconClass: 'segment-icon-wrap--gamer',
-      title: translate({id: 'homepage.segment.gamer.title', message: '游戏玩家'}),
-      desc: translate({id: 'homepage.segment.gamer.desc', message: '为 Minecraft 存档提供可验证的安全备份与还原'}),
-      bullets: [
-        translate({id: 'homepage.segment.gamer.bullet1', message: '区域范围备份与安全部分还原'}),
-        translate({id: 'homepage.segment.gamer.bullet2', message: '热备份 / 热还原与存档自动发现'}),
-        translate({id: 'homepage.segment.gamer.bullet3', message: 'MineRewind 与 KnotLink Server v3'}),
-      ],
-      link: '/docs/guides/minecraft/overview',
-      linkText: translate({id: 'homepage.segment.gamer.link', message: 'MC 专题'}),
-    },
-    {
-      icon: <FaFolderOpen />,
-      iconClass: 'segment-icon-wrap--files',
-      title: translate({id: 'homepage.segment.files.title', message: '文件管理者'}),
-      desc: translate({id: 'homepage.segment.files.desc', message: '让重要文件拥有清晰的版本、迁移和回滚路径'}),
-      bullets: [
-        translate({id: 'homepage.segment.files.bullet1', message: 'Full / Smart / Rolling 策略'}),
-        translate({id: 'homepage.segment.files.bullet2', message: '来源重命名与稳定历史身份'}),
-        translate({id: 'homepage.segment.files.bullet3', message: '云同步与安全还原'}),
-      ],
-      link: '/docs/intro',
-      linkText: translate({id: 'homepage.segment.files.link', message: '了解更多'}),
-    },
-    {
-      icon: <FaPuzzlePiece />,
-      iconClass: 'segment-icon-wrap--dev',
-      title: translate({id: 'homepage.segment.dev.title', message: '插件开发者'}),
-      desc: translate({id: 'homepage.segment.dev.desc', message: '用独立 Plugin API 3.6 接入应用、游戏与自动化'}),
-      bullets: [
-        translate({id: 'homepage.segment.dev.bullet1', message: '独立 Plugin API 3.6'}),
-        translate({id: 'homepage.segment.dev.bullet2', message: 'KnotLink 协议 v2 / Server v3'}),
-        translate({id: 'homepage.segment.dev.bullet3', message: '能力注册、备份范围与还原协调'}),
-      ],
-      link: '/docs/plugins/developing/quick-start',
-      linkText: translate({id: 'homepage.segment.dev.link', message: '开发文档'}),
-    },
-  ];
-}
-
-function HomepageSegments() {
-  const segments = useSegments();
-  return (
-    <section className={styles.segmentSection}>
-      <div className="container">
-        <Heading as="h2" className={clsx('text--center', styles.sectionTitle)}>
-          <Translate id="homepage.segments.heading">为谁而建？</Translate>
-        </Heading>
-        <p className={clsx('text--center', styles.sectionDesc)}>
-          <Translate id="homepage.segments.subheading">无论你是游戏爱好者、日常备份用户还是开发者——FolderRewind 都为你准备好了</Translate>
-        </p>
-        <div className="row">
-          {segments.map((s, i) => (
-            <div className="col col--4" key={i} style={{marginBottom: '1.5rem'}}>
-              <div className="segment-card">
-                <div className={clsx('segment-icon-wrap', s.iconClass)}>
-                  {s.icon}
-                </div>
-                <Heading as="h3">{s.title}</Heading>
-                <p className={styles.segmentDesc}>{s.desc}</p>
-                <ul className={styles.segmentList}>
-                  {s.bullets.map((b, j) => (
-                    <li key={j}>
-                      <FaCircleCheck className={styles.checkIcon} />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <Link className="button button--outline button--primary button--sm" to={s.link}>
-                  {s.linkText} <FaArrowRight style={{marginLeft: '0.3rem', fontSize: '0.75em'}} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── 3 步快速上手 ──────────────────────────────────── */
-function HomepageQuickDemo() {
-  const steps = [
-    {num: 1, title: translate({id: 'homepage.steps.1.title', message: '安装'}), desc: translate({id: 'homepage.steps.1.desc', message: '优先使用 Microsoft Store，避免双版本混装'})},
-    {num: 2, title: translate({id: 'homepage.steps.2.title', message: '添加文件夹'}), desc: translate({id: 'homepage.steps.2.desc', message: '创建配置，添加需要保护的文件夹'})},
-    {num: 3, title: translate({id: 'homepage.steps.3.title', message: '验证'}), desc: translate({id: 'homepage.steps.3.desc', message: '先跑一轮测试备份与还原，再开启自动化'})},
-  ];
-  return (
-    <section className={styles.quickDemo}>
-      <div className="container">
-        <Heading as="h2" className={clsx('text--center', styles.sectionTitle)}>
-          <Translate id="homepage.quickdemo.heading">3 步开始使用</Translate>
-        </Heading>
-        <p className={clsx('text--center', styles.sectionDesc)}>
-          <Translate id="homepage.quickdemo.subheading">从安装到第一次备份完成，只需几分钟</Translate>
-        </p>
-        <div className={styles.stepsRow}>
-          {steps.map((s) => (
-            <div className={styles.stepCard} key={s.num}>
-              <span className="step-number">{s.num}</span>
-              <Heading as="h3" className={styles.stepTitle}>{s.title}</Heading>
-              <p className={styles.stepDesc}>{s.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="text--center margin-top--lg">
-          <Link className="button button--primary button--lg" to="/docs/intro">
-            <Translate id="homepage.quickdemo.tutorialBtn">5 分钟上手教程</Translate> <FaArrowRight style={{marginLeft: '0.4rem', fontSize: '0.85em'}} />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── CTA 横幅 ──────────────────────────────────────── */
-function CtaBanner() {
-  return (
-    <section className={styles.ctaBanner}>
-      <div className="container text--center">
-        <Heading as="h2" className={styles.ctaTitle}>
-          <Translate id="homepage.cta.title">准备好保护你的文件了吗？</Translate>
-        </Heading>
-        <p className={styles.ctaDesc}>
-          <Translate id="homepage.cta.desc">免费下载，即刻开始使用存档时光机</Translate>
-        </p>
-        <div className={styles.ctaButtons}>
-          <Link className={clsx('button button--lg', styles.btnPrimary)} href={STORE_URL}>
-            <FaDownload style={{marginRight: '0.5rem', verticalAlign: '-1px'}} />
-            <Translate id="homepage.cta.downloadBtn">立即下载</Translate>
-          </Link>
-          <Link
-            className={clsx('button button--lg', styles.btnSecondary)}
-            to="/download">
-            <Translate id="homepage.cta.allDownloadsBtn">查看所有下载方式</Translate>
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── 首页组合 ──────────────────────────────────────── */
-export default function Home(): ReactNode {
-  const softwareApplicationSchema = {
+import {translate} from '@docusaurus/Translate';
+import {Hero, Start, Ecosystem, Download, STORE_URL} from '../components/Homepage';
+import Preview from '../components/Homepage/Preview';
+import HomepageFeatures from '../components/HomepageFeatures';
+import {useHomepageCopy} from '../components/Homepage/copy';
+import styles from '../components/Homepage/styles.module.css';
+export default function Home() {
+  const main = useRef<HTMLElement>(null);
+  useScrollReveal(main);
+  const copy = useHomepageCopy();
+  const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'FolderRewind',
     alternateName: '存档时光机',
     applicationCategory: 'BackupApplication',
     operatingSystem: 'Windows 10, Windows 11',
-    description: translate({
-      id: 'homepage.layout.description',
-      message: 'FolderRewind 是一款面向 Windows 的现代备份工具，为重要文件、项目资料与游戏存档（包括 Minecraft 世界）提供版本管理、云同步、自动备份与热备份热还原等安全保护功能',
-    }),
+    description: copy.seo,
     url: 'https://folderrewind.top/',
     image: 'https://folderrewind.top/img/ori.webp',
-    downloadUrl: 'https://apps.microsoft.com/detail/9nwsdgxdqws4',
+    downloadUrl: STORE_URL,
     sameAs: ['https://github.com/Leafuke/FolderRewind'],
   };
-
   return (
     <Layout
+      wrapperClassName={styles.homepage}
       title={translate({id: 'homepage.layout.title', message: '首页'})}
-      description={translate({id: 'homepage.layout.description', message: 'FolderRewind 是一款面向 Windows 的现代备份工具，为重要文件、项目资料与游戏存档（包括 Minecraft 世界）提供版本管理、云同步、自动备份与热备份热还原等安全保护功能'})}>
+      description={copy.seo}
+    >
       <Head>
-        <script type="application/ld+json">
-          {JSON.stringify(softwareApplicationSchema)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>
-      <HomepageHero />
-      <main>
-        <HomepageSegments />
+      <main ref={main} className={styles.home}>
+        <Hero />
+        <Start />
+        <Preview />
         <HomepageFeatures />
-        <HomepageQuickDemo />
-        <CtaBanner />
+        <Ecosystem />
+        <Download />
       </main>
     </Layout>
   );

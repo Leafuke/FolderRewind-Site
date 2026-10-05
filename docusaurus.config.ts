@@ -6,6 +6,7 @@ const config: Config = {
   title: 'FolderRewind - 存档时光机',
   tagline: '面向重要文件、项目资料与游戏存档的现代备份工具',
   favicon: 'img/favicon.ico',
+  clientModules: ['./src/routeMotion.ts'],
 
   future: {
     v4: true,

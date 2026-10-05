@@ -1,0 +1,230 @@
+{
+  "capturedOn": "2026-10-05",
+  "providedBy": "user",
+  "applicationVersion": "1.9.4",
+  "versionVerification": "Confirmed by the user on 2026-10-05; not a claim about the current public release.",
+  "notes": [
+    "Original PNG captures preserved unchanged.",
+    "Restore captures show backup before restore disabled.",
+    "Chinese and English captures use different example histories.",
+    "Presentation derivatives crop two pixels from each edge to remove captured window borders; full-size derivatives are lossless. Original PNG files remain unchanged."
+  ],
+  "screenshots": [
+    {
+      "name": "home-zh-light",
+      "source": "屏幕截图 2026-10-05 202500.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "769bbb22d03585d0bea655eaab474e5e85025ad7142f1284e7e01bb6fd9b2852",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "home-zh-dark",
+      "source": "屏幕截图 2026-10-05 202444.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "7c06ee06fc31e4139f8f3b929501eae45f08f82ac7bd9ea223da881f92173eaf",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "home-en-light",
+      "source": "屏幕截图 2026-10-05 203843.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "d034e36598c597e136497904bf3424bd398a972154e2f8b611d960c455ff5cee",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "home-en-dark",
+      "source": "屏幕截图 2026-10-05 203759.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "cb2afd527f569b080e06913e1549b11f8703395bd2b895d53df1d1380e0e7df2",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "history-zh-light",
+      "source": "屏幕截图 2026-10-05 203121.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "d43fd79cc25b801b90f6431d882dcf28f5815b16a5a64a7e93ad474bb086619f",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "history-zh-dark",
+      "source": "屏幕截图 2026-10-05 203313.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "c680fedab544bcb9ba7e1689ecb12fda021a60bfd98eba3326ddff2731d49dc0",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "history-en-light",
+      "source": "屏幕截图 2026-10-05 203852.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "a1e2cbf21dd2376b561efa275e0763c206bbfffd086fa69d504dda53dea0afc2",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "history-en-dark",
+      "source": "屏幕截图 2026-10-05 203812.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "1383033bda676a35d6ddaacfb616d79d73a7e168eff2c839201facef1872acd8",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "restore-zh-light",
+      "source": "屏幕截图 2026-10-05 203245.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "b90978758458b887157249204d3da36041e7d92cdf63fedd73cb6a7f40202c23",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "restore-zh-dark",
+      "source": "屏幕截图 2026-10-05 203330.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "89c94d71fdcdd01e87a69eb9a1bde480829e359eb86c17ae4bd69fded11665f4",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "restore-en-light",
+      "source": "屏幕截图 2026-10-05 203905.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "1bca3f741b4b426a20a5f3954ca5d57f34ea969a38aed1580af0e96b350e32f4",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    },
+    {
+      "name": "restore-en-dark",
+      "source": "屏幕截图 2026-10-05 203832.png",
+      "width": 1608,
+      "height": 1117,
+      "sha256": "49df511462cd7b30c2a0be17bf99c62cb2e91ffb319a8748a8f00c7757ac8084",
+      "presentation": {
+        "crop": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "width": 1604,
+        "height": 1113,
+        "fullSizeFormat": "lossless WebP"
+      }
+    }
+  ]
+}
