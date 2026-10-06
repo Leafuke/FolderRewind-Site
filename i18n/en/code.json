@@ -330,19 +330,19 @@
     "message": "Download"
   },
   "download.description": {
-    "message": "Download FolderRewind for Windows via Microsoft Store or matching x64/ARM64 Setup EXE; verify the actual release version and checksums."
+    "message": "Download FolderRewind for Windows from Microsoft Store or x64/ARM64 Setup EXE. Review installation channels, system requirements and bundled MineRewind."
   },
   "download.heading": {
     "message": "Download FolderRewind"
   },
   "download.subheading": {
-    "message": "Use Microsoft Store first, then run a test before production"
+    "message": "Choose an installer for your device and start with one backup"
   },
   "download.notice.title": {
     "message": "Installation and upgrade notice"
   },
   "download.notice.desc": {
-    "message": "Version upgrades may adjust backup and restore behavior details. If you are upgrading from an older version, validate the result in a test folder, test project, or test save before using it in production."
+    "message": "Keep your configuration and archives before upgrading. When changing installation channels, export configuration and history, import them in the new installation, and check source paths."
   },
   "download.notice.point1": {
     "message": "Microsoft Store is recommended first for smoother upgrades."
@@ -366,10 +366,10 @@
     "message": "Open Microsoft Store"
   },
   "download.badge.msi": {
-    "message": "Check release version"
+    "message": "GitHub stable release"
   },
   "download.msi.desc": {
-    "message": "FolderRewind 1.9.3 is available: choose x64 or ARM64 Setup EXE and verify the matching .sha256."
+    "message": "The current GitHub stable release is 1.9.6. Choose x64 or ARM64 Setup EXE and verify its matching .sha256 file."
   },
   "download.msi.btn": {
     "message": "View Setup EXE releases"
@@ -402,10 +402,10 @@
     "message": "Official Plugins"
   },
   "download.plugin.minerewind.desc": {
-    "message": "Bundled MineRewind 1.9.5: Java/Bedrock discovery, region backups and player preservation; requires Plugin API 3.6."
+    "message": "Version 1.9.6 bundles MineRewind 1.9.8 with Java map preview, save discovery and region backup. The separate public package is still 1.9.5 (API 3.6) without map preview; the Host supports API 3.9."
   },
   "download.plugin.downloadBtn": {
-    "message": "Download"
+    "message": "View separate plugin release"
   },
   "download.plugin.docsBtn": {
     "message": "View Docs"
@@ -679,5 +679,47 @@
   },
   "homepage.v2.seo": {
     "message": "FolderRewind is an open-source Windows backup tool for documents, projects and game saves, with version history, automation, recovery points and cloud copies."
+  },
+  "homepage.v2.mergeTab": {
+    "message": "Merge approaches"
+  },
+  "homepage.v2.mapTab": {
+    "message": "Explore the map"
+  },
+  "homepage.v2.mergeCaption": {
+    "message": "Compare text side by side, resolve file conflicts and review the result before applying."
+  },
+  "homepage.v2.mapCaption": {
+    "message": "Explore Java terrain in a read-only map, switch dimensions, navigate coordinates and inspect chunks."
+  },
+  "homepage.v2.mergeAlt": {
+    "message": "FolderRewind 1.9.6 merge workspace with text differences, file conflicts and result review"
+  },
+  "homepage.v2.mapAlt": {
+    "message": "Read-only Minecraft Java terrain map in FolderRewind 1.9.6"
+  },
+  "docScreenshot.open": {
+    "message": "Enlarge screenshot"
+  },
+  "docScreenshot.close": {
+    "message": "Close screenshot"
+  },
+  "homepage.v2.newImageVersion": {
+    "message": "Screenshots: 1.9.6"
+  },
+  "changelog.eyebrow": {
+    "message": "RELEASE NOTES"
+  },
+  "changelog.description": {
+    "message": "Explore recent improvements and see what each release brings."
+  },
+  "changelog.download": {
+    "message": "Get the latest version"
+  },
+  "changelog.guide": {
+    "message": "Read the guide"
+  },
+  "changelog.read": {
+    "message": "Read release notes"
   }
 }

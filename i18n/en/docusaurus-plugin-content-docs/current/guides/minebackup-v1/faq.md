@@ -6,6 +6,8 @@ description: Product boundaries, backup, restore, migration, and integration ans
 
 # MineBackup 1.16.2 FAQ
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 ## How does MineBackup relate to FolderRewind?
 
 MineBackup is the first-generation archive time machine in the FolderRewind ecosystem. It keeps its own profile, Smart chain, KnotLink integration, and cross-platform boundaries. The general FolderRewind documentation is not a MineBackup capability reference; this section and [First-generation overview](/en/docs/guides/minebackup-v1/overview) follow MineBackup 1.16.2 source behavior.
@@ -89,3 +91,25 @@ Create one when the world or archive path has changed, a Smart chain cannot be m
 ## Where is the English documentation?
 
 This section has a synchronized English mirror. Links and version boundaries should remain aligned; when a translation appears to disagree with the implementation, MineBackup 1.16.2 source behavior is authoritative and should be reported.
+
+<span id="are-hot-backup-and-hot-restore-guaranteed" />
+<span id="can-ai-generate-a-manifest-for-me" />
+<span id="can-i-still-install-or-start-service-mode" />
+<span id="can-minebackup-run-without-starting-the-gui-at-all" />
+<span id="do-the-cli-and-gui-share-backup-history" />
+<span id="how-can-i-start-over-safely" />
+<span id="how-does-minebackup-relate-to-folderrewind" />
+<span id="is-rclone-bundled-and-are-credentials-synchronized" />
+<span id="is-serve-the-old-windows-service-mode" />
+<span id="what-if-the-full-baseline-for-smart-was-deleted" />
+<span id="when-should-i-create-a-new-configuration" />
+<span id="where-are-configuration-and-history-stored" />
+<span id="where-is-the-english-documentation" />
+<span id="which-knotlink-versions-are-required" />
+<span id="which-mode-should-i-use-for-the-first-backup" />
+<span id="which-platforms-does-1162-support" />
+<span id="which-restore-method-should-i-choose" />
+<span id="why-cant-i-back-up-immediately-after-importing-from-the-cloud" />
+<span id="why-cant-i-find-files-such-as-auto_logtxt" />
+<span id="why-does-a-job-have-no-timer-setting" />
+<span id="will-migration-delete-my-old-data" />

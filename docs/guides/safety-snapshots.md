@@ -1,11 +1,13 @@
 ---
 sidebar_position: 20
 title: "安全快照与恢复点"
-description: "FolderRewind 1.9 系列安全快照与恢复点操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "在切换与合并前保护当前状态，查看、恢复和释放独立于活动分支的安全恢复点。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 安全快照与恢复点
+
+在切换与合并前保护当前状态，查看、恢复和释放独立于活动分支的安全恢复点。
 
 安全快照是破坏性历史操作前的精确、分支独立恢复点，不推进活动分支；不能与临时 staging 或普通自动备份混为一谈。
 
@@ -26,4 +28,3 @@ RecoveryRequired／CommittedRecoveryRequired、源目录占用或载荷缺失时
 ## 受限旧历史
 
 旧接管版本的载荷验证不能证明历史删除边界。受限恢复和安全恢复点是不同概念：报告允许新目录恢复或不删除的 Overwrite，并不自动授予 Clean、Checkout 或 Merge 权限。升级后用新的 Full 备份建立可靠基线。
-

@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 Desktop GUI 的游戏会话触发、间隔、计�
 
 # 自动化任务
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 自动化适合“重复执行同一套已验证流程”。请先用普通配置手动完成一次备份和还原，再启用长期任务。
 
 :::note[CLI 与本页不同]
@@ -68,3 +70,9 @@ MineBackup 1.16 的统一任务模型包含：
 如果任务没有触发，先检查启用状态、时间字段、目标索引和程序日志；不要一开始就增加更多并行任务。
 
 下一步可阅读 [Special Config](/docs/guides/minebackup-v1/special-mode) 了解桌面 GUI 的“启动后自动执行并可自动退出”流程；服务器用户应改读 [CLI Job 工作流](/docs/guides/minebackup-v1/cli/jobs)。
+
+<span id="上线前检查" />
+<span id="普通配置的自动触发" />
+<span id="统一任务系统" />
+<span id="触发方式" />
+<span id="顺序与并行" />

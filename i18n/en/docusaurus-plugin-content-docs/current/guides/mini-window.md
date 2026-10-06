@@ -1,32 +1,34 @@
 ---
 sidebar_position: 7
-title: "Mini floating window"
-description: "FolderRewind 1.9 mini floating window: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Mini window"
+description: "Open a source mini window to monitor changes, add comments and run backups without keeping the main window open."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Mini floating window
+# Mini window
 
-## Open and operate
+Keep a small window beside your work or game to monitor folder changes, add comments and run backups without keeping the main window open.
 
-Open Mini from a source menu; an existing window is reactivated. It binds a stable source for monitoring/backup/comments through the Host. Closing stops that window's monitoring without deleting history.
+## Open and back up
 
-The current UI includes compact/expanded states, Acrylic, task feedback, multi-monitor bounds and DPI handling. Verify actual-version visuals and use state text, not color alone.
+Choose Mini window from a source's action menu in management. An existing window is brought forward. Each window remains bound to its source; switch between compact and expanded views to inspect feedback and trigger a backup.
 
-## Hotkey
+Closing it stops that window's monitoring without deleting history. The app still performs the actual task; inspect results in Tasks and History.
 
-Ctrl+Alt+A targets the most recently active Mini source and is configurable. Check window/source/focus/system collisions. It differs from MineRewind Alt+Ctrl+S/Z active-world commands.
+## Use a hotkey
 
-## Verify
+The default `Ctrl+Alt+A` operates on the most recently activated Mini source. Change it in hotkey settings. With several windows open, activate the intended one first. MineRewind's current-world `Alt+Ctrl+S` and `Alt+Ctrl+Z` are separate shortcuts.
 
-Test multiple windows, no-change, progress/cancellation/comments, displays/DPI and reopen. Smart/Rolling need independent restore checks; animation does not certify data consistency.
+## Check results
 
-<span id="how-to-open" />
+Review the source, comment and final task status. Smart or Rolling still needs a restore test. If the hotkey does nothing, check the last active window, key conflicts and source readiness. After moving between monitors, confirm the window remains visible.
+
 <span id="core-capabilities" />
-<span id="global-hotkey" />
-<span id="recommended-usage" />
-<span id="notes" />
-<span id="faq" />
-<span id="hotkey-does-not-trigger-backup" />
 <span id="failed-to-open-mini-window" />
+<span id="faq" />
+<span id="global-hotkey" />
+<span id="hotkey-does-not-trigger-backup" />
+<span id="how-to-open" />
+<span id="notes" />
+<span id="recommended-usage" />
 <span id="related-links" />

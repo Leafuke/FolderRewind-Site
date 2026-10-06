@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 桌面 GUI 与无界面 CLI 的安装步骤、平
 
 # 安装与运行前准备
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 这页的目标不是只把程序打开，而是让第一次备份在正确的路径、工具和权限下完成。先完成普通备份—还原闭环，再启用热备份、云归档或自动化。
 
 ## 选择你的安装方式
@@ -86,3 +88,13 @@ MineBackup 把 7-Zip 作为备份引擎使用。当前版本通常会按以下�
 5. 在测试目录或测试世界中执行一次还原。
 
 Windows Service Mode 不属于安装步骤：1.16 不能安装或启动它，只能检查和清理由旧版本遗留且通过安全验证的服务。
+
+<span id="a-desktop-gui" />
+<span id="b-headless-cli--server" />
+<span id="gui-下载与运行" />
+<span id="压缩工具" />
+<span id="安装前的目录规划" />
+<span id="安装后最小自检" />
+<span id="选择你的安装方式" />
+<span id="首次启动会做什么" />
+<span id="首次运行检查清单" />

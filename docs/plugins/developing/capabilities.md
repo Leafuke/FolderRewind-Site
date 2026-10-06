@@ -1,13 +1,15 @@
 ---
 sidebar_position: 20
 title: "能力、配置与备份还原契约"
-description: "FolderRewind 1.9 系列能力、配置与备份还原契约操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "设计发现、范围、一致性与还原能力，遵守快照、租约、取消和一次性继续执行契约。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 能力、配置与备份还原契约
 
-本页解释 API 3.6 的操作边界；签名以 SDK 和 [API 总览](/docs/plugins/developing/plugin-api)为准。
+设计发现、范围、一致性与还原能力，遵守快照、租约、取消和一次性继续执行契约。
+
+本页解释 API 3.9 的操作边界；签名以 SDK 和 [API 总览](/docs/plugins/developing/plugin-api)为准。
 
 ## Discovery 与 Reconciliation
 
@@ -31,11 +33,10 @@ Merge 的解包、冲突选择、压缩与校验在协调外完成；协调范�
 
 ## 普通还原暂存
 
-IRestoreStagingPreparationCapability 仅用于普通 Restore。输入 Current／Target 是锁定只读来源；可通过 IRestoreSourceView 枚举受管相对路径。返回 RestoreStagedFileProposal，Host 批量验证后写 staging。限制为4096文件／64 MiB，错误诊断阻断。
+IRestoreStagingPreparationCapability 仅用于普通 Restore。输入 Current／Target 是锁定只读来源；可通过 IRestoreSourceView 枚举受管相对路径。返回 RestoreStagedFileProposal，Host 批量验证后写 staging。限制为 4096 文件／64 MiB，错误诊断阻断。
 
 玩家保留 override 为 null／true／false。SupportsPlayerDataOverride 默认为 false；不支持显式 override 时拒绝，不可悄悄沿用旧方法。变更后的普通还原 baseline 为 Derived。Checkout／Merge 不启用该保留流程。
 
 ## 单次强保留服务选项
 
 `RestoreRequestOptions.RestorePreservePaths` 为普通 Restore／Quick Restore 提供相对路径选择器，当前字节与删除状态优先。Host 校验范围并在暂存中应用；插件不能直接写当前来源。它与 `RestoreWhitelist` 的归档优先规则不同，Checkout／Merge 不使用。具体限制见[过滤指南](/docs/guides/filters#单次文件与目录强保留)。
-

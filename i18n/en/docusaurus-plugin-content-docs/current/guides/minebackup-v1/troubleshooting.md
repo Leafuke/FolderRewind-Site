@@ -6,6 +6,8 @@ description: Diagnose MineBackup 1.16.2 by profile, backup chain, restore, autom
 
 # Troubleshooting
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Identify the layer where the failure occurs and change one variable at a time. Preserve the profile, archives, and logs while investigating; do not delete an active directory just to “reset” the application. For CLI/headless command failures, `profile_busy`, JSON output, exit codes, serve IPC, and system scheduling, start with [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting). This page keeps the GUI, migration, cloud-archive, and legacy-runtime boundaries.
 
 ## The shortest diagnostic path
@@ -112,3 +114,16 @@ MineBackup 1.16.2 cannot install or start Service Mode. Use [Legacy Windows Serv
 ## Before sending diagnostics
 
 Temporarily enable Debug, reproduce once, and use **Export Diagnostics**. Open the file and confirm that redaction is adequate, then provide the MineBackup version, platform, profile mode, affected configuration/world, operation time, smallest reproduction, and `request_id`. Do not upload credentials, remote authentication data, or unchecked local rotating logs.
+
+<span id="1-minebackup-opened-the-wrong-profile" />
+<span id="10-legacy-windows-service-problems" />
+<span id="2-7-zip-is-missing-or-the-backup-fails-immediately" />
+<span id="3-a-backup-fails-while-the-game-is-running" />
+<span id="4-smart-cannot-be-created-or-reports-a-broken-chain" />
+<span id="5-the-restored-world-is-not-what-was-expected" />
+<span id="6-an-automation-task-or-special-config-does-not-run" />
+<span id="7-knotlink-integration-fails" />
+<span id="8-cloud-archive-or-rclone-fails" />
+<span id="9-115-migration-reports-pending-degraded-or-failed" />
+<span id="before-sending-diagnostics" />
+<span id="the-shortest-diagnostic-path" />

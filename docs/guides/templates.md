@@ -1,13 +1,15 @@
 ---
 sidebar_position: 3
 title: "模板与 Backup Preset"
-description: "FolderRewind 1.9 系列模板与 Backup Preset操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "将已验证的备份策略保存为模板，结合发现结果创建项目，并检查插件和环境依赖。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 模板与 Backup Preset
 
-Backup Preset 是可复用备份策略，不是安装游戏证据，也不是已保存的配置。1.9使用 Backup Preset V2，并保留旧版模板导入路径；不要把1.8 Envelope 限制套到所有新预设。
+将已验证的备份策略保存为模板，结合发现结果创建项目，并检查插件和环境依赖。
+
+Backup Preset 是可复用备份策略，不是安装游戏证据，也不是已保存的配置。1.9 使用 Backup Preset V2，并保留旧版模板导入路径；不要把 1.8 Envelope 限制套到所有新预设。
 
 ## 保存与创建
 
@@ -15,7 +17,7 @@ Backup Preset 是可复用备份策略，不是安装游戏证据，也不是已
 
 ## 发现定向
 
-V2可指向 provider 的 DefinitionId，选择相应发现集合。Definition 与 Backup Set 不同；预设只提供策略，不重新决定安装、发现身份或运行所有者。没有 DefinitionCatalog 的旧 API3.0 discovery 仍可发现，但不能参加定向定义流程。
+V2 可指向 provider 的 DefinitionId，选择相应发现集合。Definition 与 Backup Set 不同；预设只提供策略，不重新决定安装、发现身份或运行所有者。没有 DefinitionCatalog 的旧 API3.0 discovery 仍可发现，但不能参加定向定义流程。
 
 ## 插件依赖与维护
 
@@ -23,14 +25,19 @@ V2可指向 provider 的 DefinitionId，选择相应发现集合。Definition �
 
 设置中的模板管理可查看、编辑、复制、删除和预览路径规则。公开分享前删除个人路径、凭据及不可移植状态，见[分享指南](/docs/guides/template-sharing)。
 
-<span id="模板适合什么场景" />
-<span id="如何把当前配置保存为模板" />
-<span id="从模板创建配置" />
-<span id="路径规则是怎么发挥作用的" />
-<span id="模板与插件的关系" />
-<span id="管理本地模板" />
-<span id="推荐做法" />
+
+## Minecraft 增强体验预设
+
+1.9.6 的预设先检查并复用兼容 KnotLink Service；需要安装时，在确认后下载、校验并启动安装程序，再检查服务就绪与连接。安装成功、服务就绪和实际游戏联动是不同步骤。保留步骤诊断，修复失败依赖后再继续。
+
 <span id="为稳定配置创建模板基线" />
+<span id="从模板创建配置" />
 <span id="先模板化再自动化" />
 <span id="升级后重新检查模板" />
+<span id="如何把当前配置保存为模板" />
+<span id="推荐做法" />
+<span id="模板与插件的关系" />
+<span id="模板适合什么场景" />
 <span id="相关链接" />
+<span id="管理本地模板" />
+<span id="路径规则是怎么发挥作用的" />

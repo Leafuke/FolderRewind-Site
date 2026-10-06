@@ -1,78 +1,86 @@
 ---
 sidebar_position: 99
 title: "Frequently asked questions"
-description: "FolderRewind 1.9 frequently asked questions: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Answers to FolderRewind 1.9.6 installation, retention, Quick Restore, incremental deletion, migration, plugins and world-preview questions."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Frequently asked questions
 
-## Which version?
+## Which version do these guides cover?
 
-FolderRewind 1.9.3, bundled MineRewind 1.9.5 and Plugin API 3.6 / SDK 3.6.0. Assembly identity remains 3.0.0.0. MineBackup docs keep their independent baseline.
+Current guides are reviewed against FolderRewind 1.9.6, bundled MineRewind 1.9.8 and Host API 3.9. The separate public plugin is 1.9.5; public examples use SDK 3.6.0. MineBackup guides and older announcements retain their own version context.
 
-## MSI or MSIX?
+## Which installer should I download?
 
-Public1.9 GitHub assets are x64/ARM64 Setup EXE/checksums. Store updates are managed by the Store; old MSI/7z belong to historical releases.
+Prefer Microsoft Store. GitHub provides Setup EXE installers and checksums: x64 for Intel/AMD PCs, ARM64 for Windows on ARM. Current GitHub releases do not offer separate MSI, MSIX or sideload archives. See [installation](/docs/getting-started/installation).
 
-## Where is Overwrite backup?
+## Where is overwrite backup?
 
-It migrates to Rolling, creating immutable new archives rather than updating old ones. Overwrite restore remains a separate file apply mode.
+Legacy Overwrite backup maps to Rolling, which creates new archives and retains older versions. Overwrite on the restore page still means overlay restoration. See [backup modes](/docs/guides/backup-modes).
 
-## Why did Quick Restore not choose the previous row?
+## Why are there more than N retained versions?
 
-It resolves the active branch's unique source tip. Already matched means NoChanges. Explicitly choose older versions; resolve divergence first.
+Retention counts the latest N recoverable versions per source, with protected versions kept in addition. 0 means unlimited. Automatic cleanup requires a net space saving, and incremental reconstruction may need temporary space. Read the manual cleanup report for details.
 
-## Why does exported history contain no saves?
+## Why did Quick Restore not select the previous row?
 
-.frhistory carries per-config Commit Pack facts, not payloads/local Workspace. Transfer config, archives or trusted replicas and encryption materials separately.
+It prefers the active branch's unique tip. Without an active branch, it can select the most recent recoverable legacy backup. Choose a specific version in history to recover an earlier state.
 
-## Enabled plugin unavailable?
+## Can deleting a version break later Smart backups?
 
-Enabled Intent differs from Active. Check API/architecture/schema/declarations/diagnostics. v2 code is incompatible. Safe Mode preserves intent without execution; follow RequiresRestart.
+In-app deletion previews the impact and can rebuild dependencies to keep later versions recoverable. Deleting archive files directly can break the chain. Use [history](/docs/guides/history-timeline) and check the outcome.
 
-## Cloud record cannot restore?
+## Why does a history export contain no archives?
 
-Restoring needs valid representations/full closure/replicas. History sync differs from payload download. Prepare and verify rather than purging logical records blindly.
+`.frhistory` contains history facts, not backup bytes or the local workspace. Moving computers also requires configuration, archives or trusted cloud replicas, and encryption recovery material. See [migration](/docs/guides/data-migration).
 
-## Can selected regions clear the world?
+## Why is an enabled plugin unavailable?
 
-Partial captures force Overwrite; omitted files are not synchronized to the same time. Inputs are block coordinates; all relevant dimension.mcc can be included.
+Enable intent is separate from actual runtime status. Check API, architecture, settings and diagnostics. Safe Mode suspends execution; follow `RequiresRestart` when shown. Legacy v2 plugins cannot load directly.
 
-## Which players are preserved?
+## Why is map preview missing?
 
-Ordinary Restore preserves selected NBT fields for all UUIDs; absent players keep complete current NBT. Stats/advancements restore. Explicit false overrides defaults; Checkout/Merge do not preserve and cross-26.1 preservation blocks.
+It needs FolderRewind 1.9.6, bundled MineRewind 1.9.8 and a valid Java save source. Bedrock, ordinary folders and the separate public plugin 1.9.5 do not offer it. See [world preview](/docs/guides/minecraft/world-preview).
 
-## Recovery required?
+## Why can I see cloud history but not restore it?
 
-Preserve diagnostics/originals and use controlled recovery. CommittedRecoveryRequired means commit happened; do not repeat destructive work or delete config/packs/journals.
+Records and archive bytes synchronize separately. Prepare the selected version and every dependency, then check transfer and verification results. Missing local files alone are not a reason to erase records.
 
-<span id="installation" />
-<span id="what-operating-systems-does-folderrewind-support" />
-<span id="whats-the-difference-between-microsoft-store-msi-and-msix" />
-<span id="what-should-i-watch-out-for-when-upgrading-from-an-older-version" />
-<span id="what-should-i-do-if-the-app-wont-launch-after-installation" />
+## What are the limits of region and player preservation?
+
+Regions use block coordinates and Overwrite restore; uncaptured areas do not return to the same time. Ordinary restore can retain selected player NBT fields for all UUIDs, while statistics and advancements can still revert. Checkout and Merge do not preserve players, and preservation across 26.1 storage layouts is rejected.
+
+## What should I do when recovery is required?
+
+Keep diagnostics and original files, then use controlled recovery. `CommittedRecoveryRequired` means a commit has already happened. Do not repeat destructive operations or delete configuration, history packs or transaction directories.
+
+<span id="anything-special-for-encrypted-configs-across-devices" />
 <span id="backup" />
-<span id="where-are-backup-files-stored" />
-<span id="will-backups-consume-too-much-disk-space" />
+<span id="can-folderrewind-sync-backups-to-the-cloud" />
 <span id="can-i-back-up-game-saves-while-the-game-is-running" />
 <span id="can-i-keep-using-my-pc-during-backup" />
-<span id="can-folderrewind-sync-backups-to-the-cloud" />
-<span id="why-did-auto-backup-stop-unexpectedly" />
-<span id="restore" />
-<span id="will-restore-overwrite-my-current-files" />
-<span id="can-i-restore-only-selected-files" />
-<span id="why-am-i-prompted-for-a-password-before-restore" />
-<span id="why-does-history-show-an-entry-but-view-cant-find-the-backup-file" />
-<span id="why-can-deleting-history-be-slower-now" />
-<span id="data-migration" />
 <span id="can-i-migrate-configs-and-history-to-a-new-pc" />
-<span id="whats-the-difference-between-merge-and-replace-when-importing-history" />
-<span id="anything-special-for-encrypted-configs-across-devices" />
-<span id="plugins" />
-<span id="how-do-i-install-a-plugin" />
-<span id="is-minerewind-free" />
-<span id="how-can-i-develop-my-own-plugin" />
+<span id="can-i-restore-only-selected-files" />
+<span id="data-migration" />
 <span id="feedback-and-community" />
+<span id="how-can-i-develop-my-own-plugin" />
+<span id="how-do-i-install-a-plugin" />
 <span id="how-do-i-report-bugs-or-request-features" />
+<span id="installation" />
+<span id="is-minerewind-free" />
 <span id="is-there-a-chinese-speaking-community" />
+<span id="plugins" />
+<span id="restore" />
+<span id="what-operating-systems-does-folderrewind-support" />
+<span id="what-should-i-do-if-the-app-wont-launch-after-installation" />
+<span id="what-should-i-watch-out-for-when-upgrading-from-an-older-version" />
+<span id="whats-the-difference-between-merge-and-replace-when-importing-history" />
+<span id="whats-the-difference-between-microsoft-store-msi-and-msix" />
+<span id="where-are-backup-files-stored" />
+<span id="why-am-i-prompted-for-a-password-before-restore" />
+<span id="why-can-deleting-history-be-slower-now" />
+<span id="why-did-auto-backup-stop-unexpectedly" />
+<span id="why-does-history-show-an-entry-but-view-cant-find-the-backup-file" />
+<span id="will-backups-consume-too-much-disk-space" />
+<span id="will-restore-overwrite-my-current-files" />

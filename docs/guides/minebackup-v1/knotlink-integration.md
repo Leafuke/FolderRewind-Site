@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 通过 KnotLink v2 参数化协议与 MineBackup-
 
 # KnotLink v2 联动
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 1.16.2 只实现 FolderRewind/KnotLink 的 v2 参数化协议。请求是非空的分号分隔键值表，例如：
 
 ```text
@@ -80,3 +82,11 @@ MineBackup v2 不实现区域范围、备份白名单或 NBT 玩家数据保留�
 6. 确认保存、退出、文件释放、还原和重进的每个阶段。
 
 如果握手失败、模组版本过旧或超时，先回到退出游戏后的普通备份/还原路径。不要在生产世界上连续重试热还原。
+
+<span id="headless-server-推荐入口" />
+<span id="不支持的扩展" />
+<span id="事件关联" />
+<span id="先做能力检查" />
+<span id="当前世界的常用命令" />
+<span id="最小联调顺序" />
+<span id="版本和服务前提" />

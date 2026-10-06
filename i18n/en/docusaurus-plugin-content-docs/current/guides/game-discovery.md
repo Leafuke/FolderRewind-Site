@@ -1,13 +1,13 @@
 ---
 sidebar_position: 20
 title: "Automatic game-save discovery Beta"
-description: "FolderRewind 1.9 automatic game-save discovery beta: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Scan supported game-save locations, review paths and ranges before creating projects, and retain manual edits during rediscovery."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Automatic game-save discovery Beta
 
-
+Scan supported game-save locations, review paths and ranges before creating projects, and retain manual edits during rediscovery.
 
 ## What discovery means
 
@@ -38,4 +38,3 @@ Exercise scan/account selection/create, scope edits, single-source backup, revie
 After scanning, confirm configurations by game/backup set, then review individual sources and resources. Read full paths, edition, provider and scope; a game entry is not a saved configuration. Continue with names, backup destinations and final review. Selection is disabled while scanning; canceled or departed scans cannot update the current page later.
 
 The Minecraft creation entrypoint can automatically discover saves without first selecting a directory or downloading Ludusavi. Automatic discovery includes known launcher locations and remembered roots. Selected-directory scans stay within the chosen scope; switching back to automatic discovery includes known locations again. Java and Bedrock use separate Kinds, matching each draft's edition. Discovery uses directory/`level.dat` evidence, not world-health or game-loading validation.
-

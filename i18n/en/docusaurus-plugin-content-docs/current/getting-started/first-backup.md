@@ -1,45 +1,50 @@
 ---
 sidebar_position: 2
-title: "First backup"
-description: "FolderRewind 1.9 first backup: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Your first backup"
+description: "Create a FolderRewind project with test files, choose a separate archive location, run a full backup and check its history before enabling automation."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# First backup
+# Your first backup
 
-![Three-step folder creation,1.9.2.0/API3.5 Chinese candidate; sources not committed](/img/docs/v1-9/creation-candidate.png)
+Start with a few test files. This walkthrough creates a full version that you can inspect in history and restore.
 
-*Three-step folder creation,1.9.2.0/API3.5 Chinese candidate; sources not committed.*
+![Review sources, name and archive location before creating a project. This is a demonstration summary before submission.](/img/docs/v1-9-6/creation-review-en-light-1604.webp)
 
+*Review sources, name and archive location before creating a project. This is a demonstration summary before submission. Interface version: 1.9.6.*
 
-## Prepare test data
+## 1. Prepare a folder and backup location
 
-Use disposable files and a separate writable destination with enough space. Source/destination overlap blocks; neither should contain the other.
+Create a test folder with two or three documents. Choose a separate backup directory: for example, `D:\Demo\Documents` for the source and `D:\Demo\Backups` for archives. Neither location may contain the other. Leave room for archives and temporary files.
 
-## Create a project
+## 2. Create a backup project
 
-Use Home creation to choose name/Kind/sources/destination and review the summary before transactional save. Templates, Minecraft onboarding, plugin batch/game discovery produce drafts for boundary review.
+Choose New backup project on the home page. Enter a name, project type, source and backup location, then review the summary and create the project. Use the ordinary-folder type for documents. Minecraft and other plugin types require their provider to be active.
 
-Specialized Kinds require compatible Active plugins. Encrypted configs require safely stored passwords. Add directories/subdirectories in management and inspect stable identity, SourceScope and effective-file preview.
+Templates and game discovery also lead into project creation. Discovery returns candidates: check their paths and included files before accepting them. Confirm the folder appears in management. A project can contain several sources.
 
-## Run
+## 3. Save the first version
 
-Start with Full, checking filters/compression. Back up one/all sources with an operation comment; inspect task progress and terminal results. A configuration invocation can contain per-source outcomes—one success is not whole-config success.
+Select **Full** in project settings. Review filters, compression and encryption, then save. Keep the first exercise simple by backing up the complete managed range.
 
-## Verify
+Run the backup with a useful comment such as “Initial version”. Wait for completion and check every source's result; one successful source does not mean the entire project succeeded.
 
-Inspect source-version/Run history, outcomes, Checkpoints and materializability. Add/edit/delete test files and follow [first restore](/docs/getting-started/first-restore). Color/size cannot prove integrity.
+## 4. Check the result
 
-Run core checks in Settings, then separately validate actual scope/encryption/game loading before Smart/Rolling, automation or cloud uploads.
+Open history, choose the project and source, and find “Initial version”. Check its restore status. Change one file, add another, then follow [your first restore](/docs/getting-started/first-restore) to recover the original content.
 
-<span id="before-you-start" />
-<span id="path-a-create-a-config-manually" />
+If the task fails, read its diagnostic. Check that the source exists, the destination is writable, and the archive tool and password are correct. Moving or deleting incremental archives can break dependencies.
+
+After verification, choose a [backup mode and retention limit](/docs/guides/backup-modes), then set up [automation](/docs/guides/automation). Core validation in Settings can also help check the environment.
+
 <span id="1-create-a-new-config" />
 <span id="2-add-folders-to-back-up" />
 <span id="3-run-the-backup" />
-<span id="path-b-create-a-config-from-a-template" />
-<span id="verify-backup-results" />
+<span id="before-you-start" />
+<span id="next-step" />
 <span id="option-a-view-history-records" />
 <span id="option-b-run-automatic-core-validation" />
+<span id="path-a-create-a-config-manually" />
+<span id="path-b-create-a-config-from-a-template" />
 <span id="template-related-next-steps" />
-<span id="next-step" />
+<span id="verify-backup-results" />

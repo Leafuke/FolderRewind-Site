@@ -1,13 +1,15 @@
 ---
 sidebar_position: 3
 title: "KnotLink protocol and integration"
-description: "FolderRewind 1.9 knotlink protocol and integration: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Connect external tools through KnotLink and distinguish parameterized requests, acceptance and final task completion."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # KnotLink protocol and integration
 
-FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API3.6 evolve independently.
+Connect external tools through KnotLink and distinguish parameterized requests, acceptance and final task completion.
+
+FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API 3.9 evolve independently.
 
 ## Format and encoding
 
@@ -28,14 +30,14 @@ status=ok may mean accepted, not completed. Correlate later signals using reques
 
 ## Plugins
 
-API3.6 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for six folder commands; an active, unambiguous world is required.
+API 3.9 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for seven folder commands; an active, unambiguous world is required.
 
 See the [command reference](/docs/plugins/knotlink-commands), [developer API](/docs/plugins/developing/knotlink-api) and [Minecraft integration](/docs/guides/minecraft/knotlink-mod).
 
-<span id="do-not-confuse-the-two-version-numbers" />
-<span id="wire-format" />
 <span id="discover-capabilities-before-sending-commands" />
+<span id="do-not-confuse-the-two-version-numbers" />
 <span id="lifecycle-signals" />
 <span id="plugin-integration" />
-<span id="security-guidance" />
 <span id="related-links" />
+<span id="security-guidance" />
+<span id="wire-format" />

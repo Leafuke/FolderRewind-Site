@@ -6,6 +6,8 @@ description: Understand MineBackup 1.16.2 CLI Jobs, Stages, Steps, and external 
 
 # Job Workflows
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 A Job turns work that has already been verified into a repeatable one-run workflow. It does not provide the time trigger.
 
 > **A Job decides what to do; the system scheduler decides when to do it.**
@@ -107,3 +109,10 @@ When an error occurs:
 - do not delete History or archives as a way to “clean up” a failure.
 
 A structurally valid Job can still fail because a world is missing, permissions are wrong, 7-Zip is unavailable, the Profile is busy, or cloud post-processing failed. Use `doctor` and [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting) next.
+
+<span id="a-safe-deployment-sequence" />
+<span id="failure-cancellation-and-partial-success" />
+<span id="job-shape-in-a-manifest" />
+<span id="jobs-do-not-contain-schedules" />
+<span id="list-inspect-and-run-jobs" />
+<span id="the-job-stage-and-step-model" />

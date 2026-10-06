@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 命令行可选配置档常驻运行时的启动�
 
 # Serve 常驻运行时
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 > **`serve` 是可选的长期 Profile runtime，不是使用 CLI 的前提。**
 
 一次性 `backup`、`verify`、`restore --dry-run`、`doctor` 和 `job run` 都可以不启动 `serve`。只有在需要长期持有 Profile runtime、KnotLink、热还原或频繁 CLI 调用时，才考虑启用它。
@@ -77,3 +79,10 @@ minebackup-cli --data-dir "$PROFILE" --json serve stop
 6. 再把 `serve` 放入 [Linux systemd](/docs/guides/minebackup-v1/cli/linux-systemd) 或 [Windows Task Scheduler](/docs/guides/minebackup-v1/cli/windows-task-scheduler)。
 
 `serve` 不能替代 `doctor`，也不能替代 Verify 或 Restore dry-run。它只是让已经正确的 Profile 以长期 runtime 方式运行。
+
+<span id="serve-与-gui一次性-cli-的关系" />
+<span id="transparent-forwarding-是什么" />
+<span id="什么时候使用-serve" />
+<span id="取消行为" />
+<span id="启动查看和停止" />
+<span id="最小上线顺序" />

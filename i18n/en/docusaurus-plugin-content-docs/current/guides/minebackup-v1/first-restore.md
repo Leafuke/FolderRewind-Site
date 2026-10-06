@@ -6,6 +6,8 @@ description: Safely rehearse history archives, restore methods, and fallback str
 
 # Your First Restore
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Perform the first restore in a test world or copy of the target directory. Restore changes the destination, and a running world may continue writing files. Do not use the only production save for the first drill.
 
 ## Standard flow
@@ -48,3 +50,9 @@ Similarly, an external custom archive for a running world is not automatically a
 - The pre-restore safety backup can be selected again if needed.
 
 If the result is wrong, stop, restore the pre-restore backup, and then choose a more explicit archive or method. Do not repeatedly overwrite the same damaged target with several archives.
+
+<span id="backup-before-restore" />
+<span id="four-restore-methods" />
+<span id="partial-archive-safety" />
+<span id="standard-flow" />
+<span id="success-criteria" />

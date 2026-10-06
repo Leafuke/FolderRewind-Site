@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 命令行使用官方 XML 模板部署 Windows �
 
 # Windows Task Scheduler
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 Windows 服务器使用正式包中的两个 XML 模板：
 
 ```text
@@ -137,3 +139,11 @@ Task Scheduler
 - Job 返回 `partial_success`：检查每个 Stage/Step 的 diagnostics，不要把部分成功当成完整备份。
 
 更多退出码和 JSON envelope 见[命令、JSON 与退出码](/docs/guides/minebackup-v1/cli/reference)。
+
+<span id="1-准备-cliprofile-和-manifest" />
+<span id="2-先手动运行-job" />
+<span id="3-替换官方-xml-模板中的占位符" />
+<span id="4-导入-serve-task" />
+<span id="5-导入-job-task-并手动触发" />
+<span id="任务失败时怎么查" />
+<span id="部署顺序" />

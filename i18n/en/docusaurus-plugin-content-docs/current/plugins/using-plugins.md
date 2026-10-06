@@ -1,11 +1,17 @@
 ---
 sidebar_position: 2
 title: "Installing and managing plugins"
-description: "FolderRewind 1.9 installing and managing plugins: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Install plugins from the official catalog or local packages, check runtime status and settings, then update, roll back or uninstall."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Installing and managing plugins
+
+Install plugins from the official catalog or local packages, check runtime status and settings, then update, roll back or uninstall.
+
+![Plugin management shows bundled MineRewind 1.9.8; check the separate public package independently.](/img/docs/v1-9-6/plugins-en-light-1604.webp)
+
+*Plugin management shows bundled MineRewind 1.9.8; check the separate public package independently. Interface version: 1.9.6.*
 
 ## Official Catalog
 
@@ -33,12 +39,12 @@ Capabilities drain before transactional code/optional private-data quarantine an
 
 Check API major/minor, architecture, entry type, schema/declarations, activation diagnostics, RequiresRestart and Kind availability. Downloaded, Installed, Enabled Intent and Active are separate facts.
 
-<span id="installation-methods" />
 <span id="1-install-from-plugin-marketplace" />
 <span id="2-local-zip-install" />
 <span id="enable-and-disable" />
-<span id="upgrade-and-rollback" />
 <span id="faq" />
 <span id="installation-failed" />
+<span id="installation-methods" />
 <span id="plugin-installed-but-feature-is-missing" />
 <span id="related-links" />
+<span id="upgrade-and-rollback" />

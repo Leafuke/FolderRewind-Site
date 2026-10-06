@@ -1,11 +1,13 @@
 ---
 sidebar_position: 6
 title: "Configuration and immutable history models"
-description: "FolderRewind 1.9 configuration and immutable history models: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Understand how user configuration, source identities and immutable history relate when maintaining persisted data or diagnosing state."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Configuration and immutable history models
+
+Understand how user configuration, source identities and immutable history relate when maintaining persisted data or diagnosing state.
 
 ## User configuration
 
@@ -21,7 +23,7 @@ flowchart LR
   CP --> SV[Source Versions]
   SV --> Rep[Version Representations]
   Rep --> Copy[Storage Replicas]
-  Branch[Branch Updates] --> CP
+  Branch[Source Branch Updates] --> SV
   WS[Local Workspace] --> Branch
 ```
 
@@ -33,12 +35,16 @@ Index/Capture Baseline Cache are rebuildable; Workspace/Local Replica Catalog ar
 
 Public Abstractions record snapshots differ from observable Host models; plugins never retain writable BackupConfig/ManagedFolder references.
 
-<span id="appconfig-hierarchy" />
-<span id="core-model-descriptions" />
 <span id="appconfig" />
+<span id="appconfig-hierarchy" />
 <span id="backupconfig" />
+<span id="core-model-descriptions" />
 <span id="globalsettings" />
-<span id="managedfolder" />
-<span id="incremental-backup-metadata" />
 <span id="history-and-tasks" />
+<span id="incremental-backup-metadata" />
+<span id="managedfolder" />
 <span id="serialization" />
+
+## Source-owned branches
+
+Each source owns its branches and local baseline; two sources in one project can each have `main`. Backing up, checking out or merging one does not switch another's branch. Ordinary restore updates the content baseline while retaining the active branch; Checkout switches it. Configuration checkpoints and backup runs reference participating sources; unrequested sources are not failures.

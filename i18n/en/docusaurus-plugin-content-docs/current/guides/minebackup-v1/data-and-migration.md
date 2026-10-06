@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 profile layout, portable mode, and the 1.15-to-1.
 
 # Profiles and Migration
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 manages application data through a profile. It no longer treats the current working directory or the directory beside the executable as a fixed data location. A profile stores settings, history, migration state, logs, and managed tools; archive files are still written to each configuration’s `backupPath`, so the two locations must not be conflated.
 
 ## Selecting a profile
@@ -139,3 +141,14 @@ After export, translate GUI `backupPath` and related desktop fields into the CLI
 Deleting an EXE-side `config.ini` or one legacy history file does not fully reset a 1.16.2 profile and can disconnect external archives from their history. If you need a clean start, first confirm the active profile root in settings and logs, export or copy anything that must be retained, and only then handle the profile while MineBackup is closed. Do not delete an active profile directory while the application is running.
 
 Related pages: [Installation](/en/docs/guides/minebackup-v1/installation), [First configuration](/en/docs/guides/minebackup-v1/first-config), [CLI Profiles and Manifest](/en/docs/guides/minebackup-v1/cli/profile-manifest), [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive), and [Legacy Windows Service Cleanup](/en/docs/guides/minebackup-v1/service-mode).
+
+<span id="a-safe-upgrade-workflow" />
+<span id="default-locations" />
+<span id="do-not-use-the-old-reset-rule" />
+<span id="explicit-directory---data-dir" />
+<span id="migrate-an-existing-gui-configuration-to-the-headless-cli" />
+<span id="portable-mode" />
+<span id="selecting-a-profile" />
+<span id="startup-migration-from-115" />
+<span id="statuses-and-write-gates" />
+<span id="the-1162-storage-model" />

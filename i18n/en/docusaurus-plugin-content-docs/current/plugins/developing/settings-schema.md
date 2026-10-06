@@ -1,13 +1,15 @@
 ---
 sidebar_position: 5
 title: "Static settings schema and typed values"
-description: "FolderRewind 1.9 static settings schema and typed values: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Define static plugin settings schemas, read typed snapshots and retain the known-good runtime state when updates fail."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Static settings schema and typed values
 
-API 3.6 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
+Define static plugin settings schemas, read typed snapshots and retain the known-good runtime state when updates fail.
+
+API 3.9 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
 
 ## Schema format
 
@@ -45,6 +47,6 @@ Values are not a string dictionary. Do not parse "1"/"true" to bypass boolean va
 An invalid type must preserve previous values. Failed settings activation preserves/recovers known-good state; inspect diagnostics and runtime state. Respect cancellation and RequiresRestart when transitions time out.
 
 <span id="design-principles" />
-<span id="practical-recommendations" />
 <span id="example" />
+<span id="practical-recommendations" />
 <span id="related-links" />

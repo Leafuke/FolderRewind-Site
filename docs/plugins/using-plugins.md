@@ -1,11 +1,17 @@
 ---
 sidebar_position: 2
 title: "插件安装与管理"
-description: "FolderRewind 1.9 系列插件安装与管理操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "从官方目录或本地安装插件，检查运行状态和设置，并安全更新、回滚或卸载扩展。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 插件安装与管理
+
+从官方目录或本地安装插件，检查运行状态和设置，并安全更新、回滚或卸载扩展。
+
+![插件管理显示内置 MineRewind 1.9.8；独立公开包版本另外核对。](/img/docs/v1-9-6/plugins-zh-light-1604.webp)
+
+*插件管理显示内置 MineRewind 1.9.8；独立公开包版本另外核对。 界面版本：1.9.6。*
 
 ## 官方目录安装
 
@@ -21,7 +27,7 @@ Host 按静态模式渲染 typed settings；无效类型拒绝，激活失败检
 
 ## 更新与回滚
 
-自动更新只采用 Official Catalog 绑定的版本、URL、SHA-256和 manifest，不从插件 Repository 自报地址任意下载。Manual 与 Official 来源记录不同，名字和相同 ID 不构成信任证明。
+自动更新只采用 Official Catalog 绑定的版本、URL、SHA-256 和 manifest，不从插件 Repository 自报地址任意下载。Manual 与 Official 来源记录不同，名字和相同 ID 不构成信任证明。
 
 版本化安装维护 current／previous 已知良好载荷和恢复日志。使用界面提供的升级／回滚入口，先停止受影响操作；不要直接覆盖 DLL 目录。更旧包不一定能读当前 Provider State 或已有制品。
 
@@ -33,16 +39,16 @@ Host 按静态模式渲染 typed settings；无效类型拒绝，激活失败检
 
 核对 API major／minor、架构、入口类型、设置模式与能力声明；再看激活诊断、RequiresRestart 和 Kind 提供器状态。下载成功、安装成功、Enabled Intent 和 Active 是不同事实。
 
-<span id="安装方式" />
 <span id="1-从插件商店安装" />
 <span id="2-本地安装-zip" />
-<span id="启用与停用" />
-<span id="插件设置" />
-<span id="插件日志" />
 <span id="升级与回滚" />
-<span id="常见问题" />
-<span id="安装失败" />
+<span id="启用与停用" />
 <span id="安装后看不到功能" />
+<span id="安装失败" />
+<span id="安装方式" />
+<span id="常见问题" />
 <span id="插件冲突" />
+<span id="插件日志" />
+<span id="插件设置" />
 <span id="版本不兼容" />
 <span id="相关链接" />

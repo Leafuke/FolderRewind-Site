@@ -6,6 +6,8 @@ description: 第一代存档时光机 MineBackup 1.16.2 的能力边界、平台
 
 # MineBackup 1.16.2 总览
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 是 FolderRewind 的前身项目，也是“存档时光机”第一代。本文档以 MineBackup **1.16.2** 当前源码、CLI 行为和随附文档为准，面向仍在使用 MineBackup 的用户。
 
 MineBackup 仍然适合已有 Minecraft 备份工作流、需要跨平台运行，或依赖 MineBackup-Mod / KnotLink 联动的用户。1.16.2 还提供正式的 headless CLI 路线，适合服务器、VPS、NAS 和 SSH-only 环境。新项目可以评估 FolderRewind，但不应把两个程序的配置文件、插件模型或服务能力混为一谈。
@@ -100,3 +102,14 @@ MineBackup 的使用可以按三个层次理解：
 5. 服务器用户则按 CLI 路线完成 `Backup → History → Verify → Restore dry-run`，再启用 Job、Serve 或系统调度。
 
 这样可以把“基础备份失败”和“联动、云同步或迁移失败”分开定位。
+
+<span id="cli" />
+<span id="desktop" />
+<span id="gui-与-cli-的关系" />
+<span id="minebackup-能做什么" />
+<span id="与-folderrewind-的关系" />
+<span id="你希望如何使用-minebackup" />
+<span id="先理解三个层次" />
+<span id="推荐阅读顺序" />
+<span id="最短成功路径" />
+<span id="进阶入口" />

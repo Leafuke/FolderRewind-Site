@@ -1,15 +1,17 @@
 ---
 sidebar_position: 6
 title: "KnotLink and Minecraft companion components"
-description: "FolderRewind 1.9 knotlink and minecraft companion components: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Configure KnotLink integration with Minecraft and check protocols, component versions, current-world targets and final results."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # KnotLink and Minecraft companion components
 
+Configure KnotLink integration with Minecraft and check protocols, component versions, current-world targets and final results.
+
 ## Versions
 
-The backend baseline is FolderRewind1.9/MineRewind1.9.5/API3.6. Server v3, wire v2 and capability manifestVersion3.0.0 are separate. Install game components according to their Release loader/game matrices, not plugin API versions.
+The backend baseline is FolderRewind 1.9.6/MineRewind 1.9.8/API 3.9. Server v3, wire v2 and capability manifestVersion3.0.0 are separate. Install game components according to their Release loader/game matrices, not plugin API versions.
 
 ## Minimal integration
 
@@ -31,9 +33,9 @@ Handshake, WORLD_SAVED, exit/release, restore/rejoin signals use correlation IDs
 
 Preserve diagnostics for unknown/recovery-required outcomes rather than blindly retrying. See [commands](/docs/plugins/knotlink-commands) for Clean defaults, append rules and Quick Restore.
 
-<span id="prerequisites" />
 <span id="current-world-commands" />
 <span id="integration-callbacks" />
 <span id="minerewind-signals" />
 <span id="minimal-integration-test" />
+<span id="prerequisites" />
 <span id="related-links" />

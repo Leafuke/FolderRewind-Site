@@ -6,6 +6,8 @@ description: 按症状、命令、错误含义和下一步操作定位 MineBacku
 
 # CLI 故障排查
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 按下面的顺序定位，不要一开始删除 Profile、History 或归档：
 
 ```text
@@ -228,3 +230,18 @@ minebackup-cli --data-dir "$PROFILE" --json --no-network doctor
 重点查看 `coldRestoreReady`、世界占用和归档链。停止服务器并重新执行 Restore dry-run；不要建议绕过世界占用保护或直接使用 `--confirm`。
 
 如果症状不在本页，保留原始 JSON、退出码、stderr、Profile logs 和 `doctor` 输出，再回到[命令、JSON 与退出码](/docs/guides/minebackup-v1/cli/reference)核对契约。
+
+<span id="7-zip-不可用" />
+<span id="backup_failed" />
+<span id="cancelled" />
+<span id="invalid_profile--migration_required" />
+<span id="partial_success" />
+<span id="profile_busy" />
+<span id="restore-被拒绝" />
+<span id="restore_failed" />
+<span id="serve-无法启动" />
+<span id="systemd-timer-没有备份" />
+<span id="target_not_found" />
+<span id="tool_unavailable" />
+<span id="verification_failed" />
+<span id="world-找不到" />

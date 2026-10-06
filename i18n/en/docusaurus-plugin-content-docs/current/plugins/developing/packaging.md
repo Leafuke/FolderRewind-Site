@@ -1,11 +1,13 @@
 ---
 sidebar_position: 6
 title: "Plugin packaging and publishing"
-description: "FolderRewind 1.9 plugin packaging and publishing: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Package .frplugin with a static manifest, validate assemblies, capabilities and settings schemas, and publish verifiable artifacts."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Plugin packaging and publishing
+
+Package .frplugin with a static manifest, validate assemblies, capabilities and settings schemas, and publish verifiable artifacts.
 
 ## Package layout
 
@@ -35,8 +37,8 @@ Build versioned `.frplugin` and matching SHA-256; publish immutable Release asse
 
 Validate disabled-on-install, explicit Enable, settings, cancellation, Disable, update/rollback and interrupted recovery before release. SDK, plugin SemVer and Host versions are independent.
 
-<span id="required-artifacts" />
-<span id="recommended-zip-layout" />
 <span id="pre-release-checklist" />
-<span id="versioning-recommendations" />
+<span id="recommended-zip-layout" />
 <span id="related-links" />
+<span id="required-artifacts" />
+<span id="versioning-recommendations" />

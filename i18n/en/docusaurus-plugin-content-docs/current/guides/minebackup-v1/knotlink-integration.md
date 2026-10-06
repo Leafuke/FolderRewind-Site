@@ -6,6 +6,8 @@ description: Practical integration flows and boundaries for MineBackup 1.16.2, M
 
 # KnotLink v2 Integration
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 implements only the FolderRewind/KnotLink v2 parameterized protocol. A request is a non-empty semicolon-separated key-value map:
 
 ```text
@@ -80,3 +82,11 @@ Removed commands include `SET_CONFIG`, `BACKUP_MODS`, `ADD_TO_WE`, `SEND`, `LIST
 6. Confirm each save, exit, file-release, restore, and rejoin stage.
 
 If handshake, version, or timeout checks fail, return to ordinary backup/restore after closing the game. Do not repeatedly retry hot restore against a production world.
+
+<span id="check-capabilities-first" />
+<span id="common-current-world-commands" />
+<span id="correlate-events" />
+<span id="minimum-integration-drill" />
+<span id="recommended-headless-server-entry-point" />
+<span id="unsupported-extensions" />
+<span id="version-and-service-requirements" />

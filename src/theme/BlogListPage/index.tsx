@@ -14,12 +14,14 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
 } from '@docusaurus/theme-common';
-import BlogLayout from '@theme/BlogLayout';
+import BlogLayout from '@site/src/theme/BlogLayout';
 import BlogListPaginator from '@theme/BlogListPaginator';
 import Heading from '@theme/Heading';
 import SearchMetadata from '@theme/SearchMetadata';
 import type {Props} from '@theme/BlogListPage';
-import BlogPostItems from '@theme/BlogPostItems';
+import Link from '@docusaurus/Link';
+import Translate from '@docusaurus/Translate';
+import styles from './styles.module.css';
 import BlogListPageStructuredData from '@theme/BlogListPage/StructuredData';
 
 function BlogListPageMetadata(props: Props): ReactNode {
@@ -40,13 +42,31 @@ function BlogListPageMetadata(props: Props): ReactNode {
 
 function BlogListPageContent(props: Props): ReactNode {
   const {metadata, items, sidebar} = props;
+  const {i18n} = useDocusaurusContext();
+  const dateFormat = new Intl.DateTimeFormat(i18n.currentLocale === 'en' ? 'en' : 'zh-CN', {year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'});
   return (
-    <BlogLayout sidebar={sidebar}>
-      <header className="margin-bottom--lg">
-        <Heading as="h1">FolderRewind {metadata.blogTitle}</Heading>
-        <p>{metadata.blogDescription}</p>
+    <BlogLayout sidebar={sidebar} hero={
+      <header className={styles.hero}>
+        <p className={styles.eyebrow}>FolderRewind / <Translate id="changelog.eyebrow">版本记录</Translate></p>
+        <Heading as="h1">{metadata.blogTitle}</Heading>
+        <p className={styles.description}><Translate id="changelog.description">看看最近的改进，了解每个版本带来了什么。</Translate></p>
+        <div className={styles.actions}>
+          <Link to="/download"><Translate id="changelog.download">获取最新版本</Translate><span aria-hidden="true">↗</span></Link>
+          <Link to="/docs/intro"><Translate id="changelog.guide">阅读使用指南</Translate><span aria-hidden="true">↗</span></Link>
+        </div>
       </header>
-      <BlogPostItems items={items} />
+    }>
+      <div className={styles.list}>
+        {items.map(({content: Content}) => {
+          const post = Content.metadata;
+          return <Link className={styles.entry} to={post.permalink} key={post.permalink}>
+            <div className={styles.meta}><time dateTime={post.date}>{dateFormat.format(new Date(post.date))}</time></div>
+            <Heading as="h2">{post.title}</Heading>
+            <p>{post.description}</p>
+            <span className={styles.read}><Translate id="changelog.read">阅读更新说明</Translate><span aria-hidden="true">↗</span></span>
+          </Link>;
+        })}
+      </div>
       <BlogListPaginator metadata={metadata} />
     </BlogLayout>
   );

@@ -29,8 +29,16 @@ export async function checkPublicRelease({baseline, evidence, fetchImpl = fetch,
   const failures = [];
   const downloads = [];
   const api = baseline.api.split('.').map(Number);
+  const pluginApi = (baseline.publicPluginApi ?? baseline.api).split('.').map(Number);
+  const exampleApi = (baseline.exampleApi ?? baseline.api).split('.').map(Number);
   if (!/^\d+\.\d+$/.test(baseline.api) || !/^\d+\.\d+\.\d+$/.test(baseline.sdk))
     throw new Error('Invalid reviewed API/SDK version.');
+  for (const [name, required] of [['Public plugin', pluginApi], ['Example SDK', exampleApi]]) {
+    if (required.length !== 2 || required.some(v => !Number.isInteger(v) || v < 0)
+      || required[0] !== api[0] || required[1] > api[1]) failures.push(`${name} API is incompatible with the reviewed Host.`);
+  }
+  if (baseline.sdk.split('.').slice(0, 2).join('.') !== exampleApi.join('.'))
+    failures.push('Public SDK version does not match the example API.');
   async function response(url) {
     const result = await fetchImpl(url, {headers: {'User-Agent': 'FolderRewind-docs-release-check'}, signal: AbortSignal.timeout(300000)});
     if (!result.ok) throw new Error(`${url}: HTTP ${result.status}`);
@@ -91,9 +99,9 @@ export async function checkPublicRelease({baseline, evidence, fetchImpl = fetch,
   const entries = catalog.entries?.filter(p => p.pluginId === 'com.folderrewind.minerewind') ?? [];
   const entry = entries[0];
   if (catalog.schemaVersion !== 1 || entries.length !== 1 || entry.version !== baseline.plugin || entry.channel !== 'stable'
-    || entry.pluginApi?.major !== api[0] || entry.pluginApi?.minor !== api[1]
+    || entry.pluginApi?.major !== pluginApi[0] || entry.pluginApi?.minor !== pluginApi[1]
     || entry.artifact?.sha256 !== baseline.pluginSha256 || entry.artifact?.url !== pluginUrl)
-    failures.push(`Official Catalog does not bind reviewed MineRewind ${baseline.plugin}/API ${baseline.api} artifact.`);
+    failures.push(`Official Catalog does not bind reviewed MineRewind ${baseline.plugin}/API ${pluginApi.join('.')} artifact.`);
   const manualFailures = checkManualAcceptance(evidence);
   return {ready: failures.length === 0, failures, downloads, sdk: baseline.sdk, hostTag, pluginTag,
     manualAcceptance: {ready: manualFailures.length === 0, failures: manualFailures}};

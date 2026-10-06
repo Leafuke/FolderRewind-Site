@@ -1,11 +1,13 @@
 ---
 sidebar_position: 2
 title: "实战教程：GameRewind v3 插件"
-description: "FolderRewind 1.9 系列实战教程：GameRewind v3 插件操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "通过可构建的 GameRewind 示例学习发现、文件策略与命令能力，所有操作通过宿主服务执行。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 实战教程：GameRewind v3 插件
+
+通过可构建的 GameRewind 示例学习发现、文件策略与命令能力，所有操作通过宿主服务执行。
 
 GameRewind 是可独立构建的 API 3.6 示例：识别用户提供且包含 `save.dat` 的根目录，提出配置草稿、排除缓存，并通过 Host 发起备份或执行无副作用的 ECHO。
 
@@ -49,20 +51,21 @@ node scripts/pack-plugin.mjs GameRewind
 GameRewind 示例仅检查 `UserRoots` 中含 `save.dat` 的目录，不自行提供已知位置列表。真实发现提供器可在 `IncludeKnownLocations=true` 时合并只读机器线索；false 时保持手选范围。不要扫描全盘、写启动器配置或把候选直接保存为配置。
 
 <span id="0-项目初始化" />
-<span id="创建项目" />
-<span id="编写-manifestjson" />
-<span id="创建主类骨架" />
 <span id="1-定义配置类型与自动发现" />
-<span id="注册配置类型" />
-<span id="自动发现存档目录" />
-<span id="批量创建配置" />
 <span id="2-备份钩子快照与过滤" />
-<span id="备份前创建快照" />
-<span id="备份后清理快照" />
-<span id="过滤不需要的文件" />
 <span id="3-还原钩子保留用户数据" />
 <span id="4-插件设置" />
 <span id="5-快捷键" />
 <span id="6-knotlink-参数化命令" />
 <span id="7-打包与发布" />
 <span id="下一步" />
+<span id="创建主类骨架" />
+<span id="创建项目" />
+<span id="备份前创建快照" />
+<span id="备份后清理快照" />
+<span id="完整源码" />
+<span id="批量创建配置" />
+<span id="注册配置类型" />
+<span id="编写-manifestjson" />
+<span id="自动发现存档目录" />
+<span id="过滤不需要的文件" />

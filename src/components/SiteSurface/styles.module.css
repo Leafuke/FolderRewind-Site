@@ -1,0 +1,72 @@
+:global(body):has(.surface),
+.surface {
+  --hp-paper: #eef3f7;
+  --hp-panel: #e3ebf2;
+  --hp-surface: #f7fafc;
+  --hp-ink: #0b141c;
+  --hp-muted: #526372;
+  --hp-line: #c8d3de;
+  --hp-accent: #087c92;
+  --ifm-background-color: var(--hp-paper);
+  --ifm-font-color-base: var(--hp-ink);
+  --ifm-color-primary: var(--hp-accent);
+  --ifm-link-color: var(--hp-accent);
+  --ifm-link-hover-color: var(--hp-ink);
+  background: var(--hp-paper);
+  color: var(--hp-ink);
+}
+:global([data-theme='dark'] body):has(.surface),
+:global([data-theme='dark']) .surface {
+  --hp-paper: #070c12;
+  --hp-panel: #101a24;
+  --hp-surface: #0e151d;
+  --hp-ink: #e8f0f6;
+  --hp-muted: #a7bac8;
+  --hp-line: #2a3a48;
+  --hp-accent: #3dcae0;
+}
+:global(body):has(.surface) :global(.navbar) {
+  background: color-mix(in srgb, var(--hp-paper) 90%, transparent);
+  border-bottom: 1px solid var(--hp-line);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+  --ifm-navbar-link-color: var(--hp-ink);
+  --ifm-navbar-link-hover-color: var(--hp-accent);
+}
+:global(body):has(.surface) :global(.navbar__item) { font-size: .9rem; }
+:global(body):has(.surface) :global(.footer) {
+  --ifm-footer-background-color: var(--hp-paper);
+  --ifm-footer-color: var(--hp-muted);
+  --ifm-footer-link-color: var(--hp-muted);
+  --ifm-footer-title-color: var(--hp-ink);
+  border-top: 1px solid var(--hp-line);
+  padding-top: 3rem;
+}
+.surface {
+  flex: 1;
+  font-family: 'Segoe UI Variable', 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+  line-height: 1.65;
+}
+.surface :is(h1, h2, h3) {
+  color: var(--hp-ink);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.surface :is(a, button):focus-visible { outline: 3px solid var(--hp-accent); outline-offset: 5px; }
+.surface :global(.button) {
+  --ifm-button-background-color: var(--hp-ink);
+  --ifm-button-border-color: var(--hp-ink);
+  --ifm-button-color: var(--hp-paper);
+  border-radius: 6px;
+  font-size: .95rem;
+  font-weight: 600;
+  padding: .85rem 1.15rem;
+}
+.surface :global(.button--outline) {
+  --ifm-button-background-color: transparent;
+  --ifm-button-color: var(--hp-ink);
+  --ifm-button-border-color: var(--hp-line);
+}
+.surface :global(.button:hover) { opacity: .85; }

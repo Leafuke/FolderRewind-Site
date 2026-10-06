@@ -1,230 +1,519 @@
 {
-  "capturedOn": "2026-10-05",
-  "providedBy": "user",
-  "applicationVersion": "1.9.4",
-  "versionVerification": "Confirmed by the user on 2026-10-05; not a claim about the current public release.",
+  "capturedOn": "2026-10-06",
+  "applicationVersion": "mixed",
+  "bundledPluginVersion": "1.9.8",
+  "captureTool": "winapp ui 0.7.0, local target",
+  "sourceWindowSize": [
+    1625,
+    1125
+  ],
+  "windowDpi": 120,
   "notes": [
-    "Original PNG captures preserved unchanged.",
-    "Restore captures show backup before restore disabled.",
-    "Chinese and English captures use different example histories.",
-    "Presentation derivatives crop two pixels from each edge to remove captured window borders; full-size derivatives are lossless. Original PNG files remain unchanged."
+    "Actual local FolderRewind 1.9.6.0 window captures; About and bundled MineRewind 1.9.8 verified.",
+    "Map uses the real user-provided Minecraft Java world 26_1极限生存. The application reads its existing terrain without modifying the save.",
+    "Restore captures show backup before restore enabled.",
+    "Cloud form uses example.com/demo-user placeholders, blank password, and has not saved or verified a live account.",
+    "Automation captures show unsaved enabled settings; the draft was discarded after capture.",
+    "Only crop, resampling and WebP encoding were applied; raw captures remain unchanged in local audit artifacts.",
+    "Original 1.9.4 homepage home/history/restore assets remain unchanged; current 1.9.6 document captures are stored separately."
+  ],
+  "applicationVersions": [
+    "1.9.4",
+    "1.9.6"
+  ],
+  "retainedScenes": [
+    "home",
+    "history",
+    "restore"
   ],
   "screenshots": [
     {
       "name": "home-zh-light",
-      "source": "屏幕截图 2026-10-05 202500.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "769bbb22d03585d0bea655eaab474e5e85025ad7142f1284e7e01bb6fd9b2852",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "home",
+      "locale": "zh",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/home-zh-light-1604.webp",
+      "small": "img/homepage/home-zh-light-800.webp",
+      "smallWidth": 800,
+      "source": "home-zh-light.png",
+      "sourceSha256": "769bbb22d03585d0bea655eaab474e5e85025ad7142f1284e7e01bb6fd9b2852",
+      "sha256": "6b8bffd936a979811ae27e0146205989b01512f81bd5c5df56ba1a845c83a837",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 71638,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "home-zh-dark",
-      "source": "屏幕截图 2026-10-05 202444.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "7c06ee06fc31e4139f8f3b929501eae45f08f82ac7bd9ea223da881f92173eaf",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "home",
+      "locale": "zh",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/home-zh-dark-1604.webp",
+      "small": "img/homepage/home-zh-dark-800.webp",
+      "smallWidth": 800,
+      "source": "home-zh-dark.png",
+      "sourceSha256": "7c06ee06fc31e4139f8f3b929501eae45f08f82ac7bd9ea223da881f92173eaf",
+      "sha256": "31f74f1706f2b20851046bab13dc03c2dddeb98d1626c6617bf3700f22b81c80",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 63706,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "home-en-light",
-      "source": "屏幕截图 2026-10-05 203843.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "d034e36598c597e136497904bf3424bd398a972154e2f8b611d960c455ff5cee",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "home",
+      "locale": "en",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/home-en-light-1604.webp",
+      "small": "img/homepage/home-en-light-800.webp",
+      "smallWidth": 800,
+      "source": "home-en-light.png",
+      "sourceSha256": "d034e36598c597e136497904bf3424bd398a972154e2f8b611d960c455ff5cee",
+      "sha256": "3911bd65ce780820f66d7c66e14bb0a02d38f62b02709d856eee5720f1ede02c",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 74060,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "home-en-dark",
-      "source": "屏幕截图 2026-10-05 203759.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "cb2afd527f569b080e06913e1549b11f8703395bd2b895d53df1d1380e0e7df2",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "home",
+      "locale": "en",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/home-en-dark-1604.webp",
+      "small": "img/homepage/home-en-dark-800.webp",
+      "smallWidth": 800,
+      "source": "home-en-dark.png",
+      "sourceSha256": "cb2afd527f569b080e06913e1549b11f8703395bd2b895d53df1d1380e0e7df2",
+      "sha256": "e7487f678f00cfcf09715b90c24efb6e23bb1042b06ba5bd8d49258dcde39d40",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 65940,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "history-zh-light",
-      "source": "屏幕截图 2026-10-05 203121.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "d43fd79cc25b801b90f6431d882dcf28f5815b16a5a64a7e93ad474bb086619f",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "history",
+      "locale": "zh",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/history-zh-light-1604.webp",
+      "small": "img/homepage/history-zh-light-800.webp",
+      "smallWidth": 800,
+      "source": "history-zh-light.png",
+      "sourceSha256": "d43fd79cc25b801b90f6431d882dcf28f5815b16a5a64a7e93ad474bb086619f",
+      "sha256": "2b4d752ac9f66af15978a723933e0c41c687127f84faaa32809250f78567e3d7",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 82562,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "history-zh-dark",
-      "source": "屏幕截图 2026-10-05 203313.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "c680fedab544bcb9ba7e1689ecb12fda021a60bfd98eba3326ddff2731d49dc0",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "history",
+      "locale": "zh",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/history-zh-dark-1604.webp",
+      "small": "img/homepage/history-zh-dark-800.webp",
+      "smallWidth": 800,
+      "source": "history-zh-dark.png",
+      "sourceSha256": "c680fedab544bcb9ba7e1689ecb12fda021a60bfd98eba3326ddff2731d49dc0",
+      "sha256": "ec8a8cf363c5f3e89af469e76b45562980335b0a8b364f2184139f9eff33b8de",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 60660,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "history-en-light",
-      "source": "屏幕截图 2026-10-05 203852.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "a1e2cbf21dd2376b561efa275e0763c206bbfffd086fa69d504dda53dea0afc2",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "history",
+      "locale": "en",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/history-en-light-1604.webp",
+      "small": "img/homepage/history-en-light-800.webp",
+      "smallWidth": 800,
+      "source": "history-en-light.png",
+      "sourceSha256": "a1e2cbf21dd2376b561efa275e0763c206bbfffd086fa69d504dda53dea0afc2",
+      "sha256": "c9a0d006a2611800cc33a89e55b79aae996f5f0d426970c29f8a1fd37600867f",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 82558,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "history-en-dark",
-      "source": "屏幕截图 2026-10-05 203812.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "1383033bda676a35d6ddaacfb616d79d73a7e168eff2c839201facef1872acd8",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "history",
+      "locale": "en",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/history-en-dark-1604.webp",
+      "small": "img/homepage/history-en-dark-800.webp",
+      "smallWidth": 800,
+      "source": "history-en-dark.png",
+      "sourceSha256": "1383033bda676a35d6ddaacfb616d79d73a7e168eff2c839201facef1872acd8",
+      "sha256": "a0819b28291593f0c6bb62912bfbf2bf0dfb11be177e3ee0cf5b5a53db1ca094",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 61360,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "restore-zh-light",
-      "source": "屏幕截图 2026-10-05 203245.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "b90978758458b887157249204d3da36041e7d92cdf63fedd73cb6a7f40202c23",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "restore",
+      "locale": "zh",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/restore-zh-light-1604.webp",
+      "small": "img/homepage/restore-zh-light-800.webp",
+      "smallWidth": 800,
+      "source": "restore-zh-light.png",
+      "sourceSha256": "b90978758458b887157249204d3da36041e7d92cdf63fedd73cb6a7f40202c23",
+      "sha256": "2d4982e6e927d70383c5abb36d1291aa307787a549eff650f4f7a402e78e9ba0",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 58040,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "restore-zh-dark",
-      "source": "屏幕截图 2026-10-05 203330.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "89c94d71fdcdd01e87a69eb9a1bde480829e359eb86c17ae4bd69fded11665f4",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "restore",
+      "locale": "zh",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/restore-zh-dark-1604.webp",
+      "small": "img/homepage/restore-zh-dark-800.webp",
+      "smallWidth": 800,
+      "source": "restore-zh-dark.png",
+      "sourceSha256": "89c94d71fdcdd01e87a69eb9a1bde480829e359eb86c17ae4bd69fded11665f4",
+      "sha256": "5d419da7c0963c3ccb239b86885f8b2774f87cbb9304a01b2efff1f8a6061ca2",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 58606,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "restore-en-light",
-      "source": "屏幕截图 2026-10-05 203905.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "1bca3f741b4b426a20a5f3954ca5d57f34ea969a38aed1580af0e96b350e32f4",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "restore",
+      "locale": "en",
+      "theme": "light",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/restore-en-light-1604.webp",
+      "small": "img/homepage/restore-en-light-800.webp",
+      "smallWidth": 800,
+      "source": "restore-en-light.png",
+      "sourceSha256": "1bca3f741b4b426a20a5f3954ca5d57f34ea969a38aed1580af0e96b350e32f4",
+      "sha256": "41096ce90d4f6d6d295790a201121fbff15f1fb4229cbfa14ce6584a52fbbab2",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 55298,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
     },
     {
       "name": "restore-en-dark",
-      "source": "屏幕截图 2026-10-05 203832.png",
-      "width": 1608,
-      "height": 1117,
-      "sha256": "49df511462cd7b30c2a0be17bf99c62cb2e91ffb319a8748a8f00c7757ac8084",
-      "presentation": {
-        "crop": [
-          2,
-          2,
-          2,
-          2
-        ],
-        "width": 1604,
-        "height": 1113,
-        "fullSizeFormat": "lossless WebP"
-      }
+      "scene": "restore",
+      "locale": "en",
+      "theme": "dark",
+      "applicationVersion": "1.9.4",
+      "width": 1604,
+      "height": 1113,
+      "full": "img/homepage/restore-en-dark-1604.webp",
+      "small": "img/homepage/restore-en-dark-800.webp",
+      "smallWidth": 800,
+      "source": "restore-en-dark.png",
+      "sourceSha256": "49df511462cd7b30c2a0be17bf99c62cb2e91ffb319a8748a8f00c7757ac8084",
+      "sha256": "ba351be8c65a0ff4dec5a7c9959a9bfff6b03515972c04b7cbe275c4dd706d04",
+      "crop": [
+        2,
+        2,
+        1606,
+        1115
+      ],
+      "bytes": 53276,
+      "capturedOn": "2026-10-05",
+      "providedBy": "user"
+    },
+    {
+      "name": "merge-zh-light",
+      "scene": "merge",
+      "locale": "zh",
+      "theme": "light",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/merge-zh-light-1604.webp",
+      "small": "img/homepage/merge-zh-light-800.webp",
+      "smallWidth": 800,
+      "source": "merge-zh-light.png",
+      "sourceSha256": "f42ce54b7b60ec9396165a84b2c7d1877e760285223eb8442e027979132b075e",
+      "sha256": "09ad840e256422cd6c7dd13b5ba3b7ac51bfee6a72ca8a588938b08b215dd635",
+      "smallSha256": "f877ae4229d8baf335f2a3c7e119b2e796025984b3ba566c19f2524dcd0d23a6",
+      "smallHeight": 555,
+      "fullEncoding": "lossless",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 49424
+    },
+    {
+      "name": "merge-zh-dark",
+      "scene": "merge",
+      "locale": "zh",
+      "theme": "dark",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/merge-zh-dark-1604.webp",
+      "small": "img/homepage/merge-zh-dark-800.webp",
+      "smallWidth": 800,
+      "source": "merge-zh-dark.png",
+      "sourceSha256": "88d3d0443c96318c3dbdcefadfa9c506ced5b525f72a52aff2df518157215ca2",
+      "sha256": "be1dbd17d80168cd37f60f6e3f728a29288e19c154b087e4dc72de089e163541",
+      "smallSha256": "efd419821b2f614bd0b1c1eb6904610fc03f5975c106af7f26cf6caffd00ea41",
+      "smallHeight": 555,
+      "fullEncoding": "lossless",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 49260
+    },
+    {
+      "name": "merge-en-light",
+      "scene": "merge",
+      "locale": "en",
+      "theme": "light",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/merge-en-light-1604.webp",
+      "small": "img/homepage/merge-en-light-800.webp",
+      "smallWidth": 800,
+      "source": "merge-en-light.png",
+      "sourceSha256": "b27c3895486e84eedaf82c9d3839f053d320dcc2e2021eaa31f4b8828f61e659",
+      "sha256": "4536ff7f098a0f57672133af65a04a0926f8f9226b30300cd1baf1e7295bab14",
+      "smallSha256": "6e84a1f4a88ad749598dff8e1ec705bfc8093af19225ebd747cbb59bed2a08cf",
+      "smallHeight": 555,
+      "fullEncoding": "lossless",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 45836
+    },
+    {
+      "name": "merge-en-dark",
+      "scene": "merge",
+      "locale": "en",
+      "theme": "dark",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/merge-en-dark-1604.webp",
+      "small": "img/homepage/merge-en-dark-800.webp",
+      "smallWidth": 800,
+      "source": "merge-en-dark.png",
+      "sourceSha256": "43f0201d2eb3a7f46ad56b8c586b850a44e53812c90ecf67a231ece02baf534c",
+      "sha256": "ff7a13dec9ca7e594bb6a60af458d9cec6de0aa63f133dfd24c1e1b0d58d5680",
+      "smallSha256": "52efdebb90b401dcf2be4142c5d92c463c1eaddd63280a207608f46667719190",
+      "smallHeight": 555,
+      "fullEncoding": "lossless",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 49078
+    },
+    {
+      "name": "map-zh-light",
+      "scene": "map",
+      "locale": "zh",
+      "theme": "light",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/map-zh-light-1604.webp",
+      "small": "img/homepage/map-zh-light-800.webp",
+      "smallWidth": 800,
+      "source": "map-real-zh-light.png",
+      "sourceSha256": "e0e7643e489bb1742e976d4a5f864eb0b1592b0d2d776a53cd21a00968502b18",
+      "sha256": "03a35a633eeb33a154f393cb789d367ce00861d44b066a1e7d9cf70e7d2da11b",
+      "smallSha256": "04b1e75d152151a8fa93e0dff2f5680765e875aedaf2d68817edad3615b13b01",
+      "smallHeight": 555,
+      "fullEncoding": "WebP quality 94",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 446668
+    },
+    {
+      "name": "map-zh-dark",
+      "scene": "map",
+      "locale": "zh",
+      "theme": "dark",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/map-zh-dark-1604.webp",
+      "small": "img/homepage/map-zh-dark-800.webp",
+      "smallWidth": 800,
+      "source": "map-real-zh-dark.png",
+      "sourceSha256": "aecd055e2c6b4fdf8cee81f86cbec2d042f540f060a7c393ae6927a00d084bca",
+      "sha256": "5d7cfc3a14a46cc7f427b484fb549c2e0936c6d6449b3cf45f931ee6957b6080",
+      "smallSha256": "ed5e3c99c63982515b9874102bd64e75a5c48013376a5dc29698ec6135355c36",
+      "smallHeight": 555,
+      "fullEncoding": "WebP quality 94",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 448190
+    },
+    {
+      "name": "map-en-light",
+      "scene": "map",
+      "locale": "en",
+      "theme": "light",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/map-en-light-1604.webp",
+      "small": "img/homepage/map-en-light-800.webp",
+      "smallWidth": 800,
+      "source": "map-real-en-light.png",
+      "sourceSha256": "9bac6dd04679715a8b4c7edc1c78d43ca54377f199f8b54562bb520497554393",
+      "sha256": "1502347d0aa123c7010764c6e09f27c6c23eef67a1544550024e7699ec24b236",
+      "smallSha256": "743fe4b131229ad47306da69157c55b0a2c7cbcba08781239ea92842c7572a72",
+      "smallHeight": 555,
+      "fullEncoding": "WebP quality 94",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 446922
+    },
+    {
+      "name": "map-en-dark",
+      "scene": "map",
+      "locale": "en",
+      "theme": "dark",
+      "applicationVersion": "1.9.6",
+      "width": 1604,
+      "height": 1112,
+      "full": "img/homepage/map-en-dark-1604.webp",
+      "small": "img/homepage/map-en-dark-800.webp",
+      "smallWidth": 800,
+      "source": "map-real-en-dark.png",
+      "sourceSha256": "67c7c54346cd8ba035af01c76aace8019651f4cdd35ff406345c7d411eefa4f5",
+      "sha256": "f23cde1f03940af6a1dabd299163df00c2e744f2a270ca852ae7260417a3aebe",
+      "smallSha256": "d17f71fb380b4ef48ac83ce777421d26e051b29e4af28a444a15b7b57ad4d139",
+      "smallHeight": 555,
+      "fullEncoding": "WebP quality 94",
+      "crop": [
+        10,
+        2,
+        1614,
+        1114
+      ],
+      "bytes": 449642
     }
   ]
 }

@@ -1,11 +1,13 @@
 ---
 sidebar_position: 20
 title: "Safety snapshots and recovery points"
-description: "FolderRewind 1.9 safety snapshots and recovery points: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Protect current state before checkout and merging, then inspect, restore or release safety points independent of the active branch."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Safety snapshots and recovery points
+
+Protect current state before checkout and merging, then inspect, restore or release safety points independent of the active branch.
 
 A safety snapshot is an Exact, branch-independent recovery point before destructive history apply. It never advances the active branch and differs from temporary staging or ordinary automatic backup.
 
@@ -26,4 +28,3 @@ For RecoveryRequired/CommittedRecoveryRequired, locks or missing bytes, inspect 
 ## Restricted legacy history
 
 Verifying legacy payloads does not establish historical deletion boundaries. Restricted recovery and safety recovery points are separate concepts: permission to export or use non-deleting Overwrite does not grant Clean, Checkout or Merge. Establish a reliable baseline with a new Full backup after upgrading.
-

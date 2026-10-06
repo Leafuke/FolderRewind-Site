@@ -6,6 +6,8 @@ description: The positioning, platform scope, capability boundaries, and documen
 
 # MineBackup 1.16.2 Overview
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup is the predecessor of FolderRewind and the first generation of the “save time machine”. This section follows the current MineBackup **1.16.2** source, CLI behavior, and accompanying documentation for users who still run MineBackup.
 
 MineBackup remains a good fit for existing Minecraft backup workflows, cross-platform users, and workflows that depend on MineBackup-Mod or KnotLink integration. Starting with 1.16.2 it also provides a formal headless CLI path for servers, VPS hosts, NAS systems, and SSH-only environments. New projects can evaluate FolderRewind, but the two applications should not be treated as sharing the same configuration files, plugin model, or service behavior.
@@ -100,3 +102,14 @@ If you only want a working, testable loop first:
 5. Server users should instead complete `Backup → History → Verify → Restore dry-run` through the CLI before enabling Jobs, Serve, or system scheduling.
 
 This separation keeps a basic backup failure distinct from an integration, cloud, or migration failure.
+
+<span id="advanced-topics" />
+<span id="cli" />
+<span id="desktop" />
+<span id="how-do-you-want-to-use-minebackup" />
+<span id="how-gui-and-cli-fit-together" />
+<span id="recommended-reading-order" />
+<span id="relationship-to-folderrewind" />
+<span id="shortest-path-to-a-verified-workflow" />
+<span id="three-layers-to-understand-first" />
+<span id="what-minebackup-can-do" />

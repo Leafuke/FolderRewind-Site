@@ -10,7 +10,6 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/installation',
         'getting-started/v1-9-upgrade',
-        'getting-started/v1-8-upgrade',
         'getting-started/first-backup',
         'getting-started/first-restore',
       ],
@@ -51,6 +50,7 @@ const sidebars: SidebarsConfig = {
             },
             'guides/minecraft/quick-start',
             'guides/minecraft/selected-region-backup',
+            'guides/minecraft/world-preview',
             'guides/minecraft/hot-backup',
             'guides/minecraft/hot-restore',
             'guides/minecraft/knotlink-mod',

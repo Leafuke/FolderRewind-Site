@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-03",
-  "hostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+  "date": "2026-10-06",
+  "hostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
   "siteRef": "38b5733f39774f60ab7960477394d8ce458e10a2",
-  "hostProjectVersion": "1.9.3.0",
-  "api": "3.6",
+  "hostProjectVersion": "1.9.6.0",
+  "api": "3.9",
   "sdk": "3.6.0",
   "assemblyVersion": "3.0.0.0",
   "plugin": "1.9.5",
@@ -12,7 +12,7 @@
     "3.0.0",
     "3.6.0"
   ],
-  "latestHostRelease": "v1.9.3",
+  "latestHostRelease": "v1.9.6",
   "latestPluginRelease": "v1.9.5",
   "anchors": {
     "zh/architecture/data-models": [
@@ -1752,5 +1752,25 @@
     ],
     "latestHostRelease": "v1.8.2",
     "latestPluginRelease": "v1.8.2"
-  }
+  },
+  "previousContentBaseline": {
+    "date": "2026-10-03",
+    "hostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
+    "siteRef": "38b5733f39774f60ab7960477394d8ce458e10a2",
+    "hostProjectVersion": "1.9.3.0",
+    "api": "3.6",
+    "sdk": "3.6.0",
+    "assemblyVersion": "3.0.0.0",
+    "plugin": "1.9.5",
+    "pluginSha256": "3b571fd7f09d1b88375832a4c072e979d911a1f59400c144144dc924c7a5e1d9",
+    "nugetListed": [
+      "3.0.0",
+      "3.6.0"
+    ],
+    "latestHostRelease": "v1.9.3",
+    "latestPluginRelease": "v1.9.5"
+  },
+  "exampleApi": "3.6",
+  "publicPluginApi": "3.6",
+  "bundledPlugin": "1.9.8"
 }

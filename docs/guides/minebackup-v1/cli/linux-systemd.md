@@ -6,6 +6,8 @@ description: 使用 MineBackup 1.16.2 CLI 和官方 systemd 模板配置 Linux �
 
 # Linux 与 systemd
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 本页把已经验证过的 CLI Profile 放进 Linux 生产运行链：
 
 ```text
@@ -188,3 +190,12 @@ scheduler
 - 权限不足：确认运行 unit 的 Unix 用户，而不是只确认当前 SSH 用户。
 
 完成后继续阅读[命令、JSON 与退出码](/docs/guides/minebackup-v1/cli/reference)和[CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)。
+
+<span id="1-安装-cli" />
+<span id="2-准备-profile存档和备份根" />
+<span id="3-准备并验证-manifest" />
+<span id="4-先手动运行一次-job" />
+<span id="5-配置官方-env" />
+<span id="6-使用仓库提供的-unit-文件" />
+<span id="7-启用-serve再启用-timer" />
+<span id="没有备份时按层定位" />

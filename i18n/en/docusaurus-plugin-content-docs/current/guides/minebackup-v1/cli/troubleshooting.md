@@ -6,6 +6,8 @@ description: Diagnose MineBackup 1.16.2 CLI issues by symptom, command, meaning,
 
 # CLI Troubleshooting
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Diagnose in layers instead of deleting the Profile, History, or archives first:
 
 ```text
@@ -228,3 +230,18 @@ minebackup-cli --data-dir "$PROFILE" --json --no-network doctor
 Focus on `coldRestoreReady`, world occupancy, and the archive chain. Stop the server and repeat the Restore dry-run; do not bypass world-occupancy protection or jump straight to `--confirm`.
 
 If the symptom is not covered here, preserve the raw JSON, exit code, stderr, Profile logs, and `doctor` output, then return to [Commands, JSON, and exit codes](/en/docs/guides/minebackup-v1/cli/reference).
+
+<span id="7-zip-is-unavailable" />
+<span id="a-systemd-timer-does-not-create-a-backup" />
+<span id="backup_failed" />
+<span id="cancelled" />
+<span id="invalid_profile--migration_required" />
+<span id="partial_success" />
+<span id="profile_busy" />
+<span id="restore-is-rejected" />
+<span id="restore_failed" />
+<span id="serve-will-not-start" />
+<span id="target_not_found" />
+<span id="tool_unavailable" />
+<span id="verification_failed" />
+<span id="world-is-missing" />

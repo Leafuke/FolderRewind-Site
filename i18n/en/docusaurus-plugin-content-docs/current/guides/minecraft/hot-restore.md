@@ -1,11 +1,13 @@
 ---
 sidebar_position: 4
 title: "Minecraft hot restore and player preservation"
-description: "FolderRewind 1.9 minecraft hot restore and player preservation: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Prepare game coordination and the target version, review player-preservation options, then run and verify Minecraft hot restore."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft hot restore and player preservation
+
+Prepare game coordination and the target version, review player-preservation options, then run and verify Minecraft hot restore.
 
 ## Host-owned restore
 
@@ -43,16 +45,16 @@ cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;p
 
 These example paths must actually be inside the managed world root; they cannot protect instance directories outside it. Bedrock does not use Java hot coordination or NBT preservation: close the game and use ordinary file restore.
 
-<span id="source-mapping" />
-<span id="trigger-methods" />
-<span id="prerequisites" />
-<span id="state-machine" />
-<span id="execution-flow" />
-<span id="sequence-text" />
-<span id="typical-final-states" />
 <span id="common-failure-points" />
+<span id="execution-flow" />
+<span id="prerequisites" />
+<span id="related-links" />
 <span id="requestresponse-examples" />
 <span id="restore-latest" />
 <span id="restore-specified-backup" />
 <span id="safety-recommendations" />
-<span id="related-links" />
+<span id="sequence-text" />
+<span id="source-mapping" />
+<span id="state-machine" />
+<span id="trigger-methods" />
+<span id="typical-final-states" />

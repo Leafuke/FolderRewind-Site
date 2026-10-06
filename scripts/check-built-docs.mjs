@@ -22,6 +22,15 @@ for (const locale of ['','en']) {
     const pageFile=path.join('build',decodeURIComponent(new URL(url).pathname),'index.html');
     if(!fs.existsSync(pageFile)) continue;
     const root=parse(fs.readFileSync(pageFile,'utf8'));
+    for (const image of root.querySelectorAll('img[src]')) {
+      const src = image.getAttribute('src');
+      if (!/^\/img\/(?:homepage|docs\/v1-9-6)\//.test(src)) continue;
+      if (!image.getAttribute('srcset') || !image.closest('a')) errors.push(`Capture lost responsive preview: ${url} → ${src}`);
+    }
+    for (const image of root.querySelectorAll('article img[src]')) {
+      const src = image.getAttribute('src');
+      if (/\/assets\/images\/(?:map|restore-detail|retention-detail|migration-detail)-(?:zh|en)-light-/.test(src)) errors.push(`Capture remained an unthemed compiled image: ${url} → ${src}`);
+    }
     for(const link of root.querySelectorAll('a[href]')) {
       const href=link.getAttribute('href');
       if(!href.startsWith('/')||!href.includes('#'))continue;

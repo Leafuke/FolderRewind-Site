@@ -6,6 +6,8 @@ description: Use MineBackup 1.16.2 CLI for Backup, History, Verify, Restore dry-
 
 # Backup, History, Verify, and Restore
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 After the Profile has passed `profile apply` and `doctor`, use this task flow to complete the first verifiable loop:
 
 ```text
@@ -122,3 +124,14 @@ Keep these artifacts instead of deleting the Profile, History, or archives:
 - the corresponding time range in the Profile `logs/` directory.
 
 Then use [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting) to work from scheduler → CLI → Job → Config → World → archive.
+
+<span id="1-find-the-config" />
+<span id="2-find-the-world" />
+<span id="3-run-backup" />
+<span id="4-inspect-history" />
+<span id="5-verify-the-latest-archive" />
+<span id="6-restore-dry-run" />
+<span id="7-real-restore-a-separate-high-risk-operation" />
+<span id="clean-and-overwrite" />
+<span id="coldrestoreready-and-serve" />
+<span id="what-to-preserve-when-something-fails" />

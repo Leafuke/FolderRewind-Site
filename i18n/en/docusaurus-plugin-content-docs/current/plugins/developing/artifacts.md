@@ -1,11 +1,13 @@
 ---
 sidebar_position: 20
 title: "Artifact transformation, materialization and version metadata"
-description: "FolderRewind 1.9 artifact transformation, materialization and version metadata: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Implement immutable artifact transformation and isolated restore materialization with explicit formats, dependencies, metadata and commit boundaries."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Artifact transformation, materialization and version metadata
+
+Implement immutable artifact transformation and isolated restore materialization with explicit formats, dependencies, metadata and commit boundaries.
 
 Artifacts are immutable Host-managed payload nodes, distinct from Source Version, Representation and Replica. ArtifactFormatRef owner/format ID and format version identify content, not extensions or plugin product versions.
 
@@ -32,5 +34,3 @@ IFolderMetadataCapability describes the live folder for UI. IVersionMetadataProv
 ## Verification
 
 Exercise failed transforms, stale revisions, missing dependencies, incompatible formats, invalid paths, cancellation, recovery and post-commit failures. Unpacking alone does not certify game loading. Minecraft .mca/NBT data remains conservative file conflicts, without semantic merge promises.
-
-

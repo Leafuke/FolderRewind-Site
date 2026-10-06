@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 的产品边界、备份、还原、迁移与联�
 
 # 常见问题（MineBackup 1.16.2）
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 ## MineBackup 与 FolderRewind 是什么关系？
 
 MineBackup 是 FolderRewind 生态中的第一代存档时光机，保留了独立的配置档、Smart 链、KnotLink 联动和跨平台运行边界。FolderRewind 的通用文档不等于 MineBackup 的能力说明；本文和[一代时光机总览](/docs/guides/minebackup-v1/overview)以 MineBackup 1.16.2 源码为准。
@@ -89,3 +91,25 @@ MineBackup-Mod 至少为 `3.0.0`，KnotLinkService 推荐至少为 `3.2.0.0`。K
 ## 英文文档在哪里？
 
 本栏目已同步提供英文镜像。页面之间的链接和版本边界应保持一致；如果英文页面与中文页面出现事实差异，请以 1.16.2 源码行为为准并提交反馈。
+
+<span id="1162-支持哪些平台" />
+<span id="cli-和-gui-是否共用备份历史" />
+<span id="knotlink-需要哪些版本" />
+<span id="minebackup-与-folderrewind-是什么关系" />
+<span id="minebackup-能否完全不启动-gui" />
+<span id="rclone-会随程序一起安装吗凭据会同步吗" />
+<span id="serve-是不是旧-windows-service-mode" />
+<span id="smart-的-full-基线被删除了怎么办" />
+<span id="为什么-job-没有定时设置" />
+<span id="为什么从云端导入后还不能立即备份" />
+<span id="为什么找不到旧的-auto_logtxt-之类文件" />
+<span id="什么时候应该新建配置" />
+<span id="如何安全地重新开始" />
+<span id="我能继续安装或启动-service-mode-吗" />
+<span id="热备份热还原可靠吗" />
+<span id="第一次备份应该选择哪种模式" />
+<span id="能否让-ai-帮我生成-manifest" />
+<span id="英文文档在哪里" />
+<span id="迁移失败会删除我的旧数据吗" />
+<span id="还原方式怎么选" />
+<span id="配置和历史记录在哪里" />

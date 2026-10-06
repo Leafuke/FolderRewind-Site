@@ -1,5 +1,6 @@
 import {readdir, readFile, stat} from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 
 const root = process.cwd();
 const staticRoot = path.join(root, 'static');
@@ -69,6 +70,43 @@ for (const sourceFile of sourceFiles) {
 }
 
 const errors = [];
+// Gallery and themed MDX paths are constructed at runtime, so check their manifests too.
+const sizes = JSON.parse(await readFile(path.join(staticRoot, 'img/docs/v1-9-6/sizes.json'), 'utf8'));
+let captureCount = 0;
+for (const manifestPath of ['img/homepage/manifest.json', 'img/docs/v1-9-6/manifest.json']) {
+  const manifest = JSON.parse(await readFile(path.join(staticRoot, manifestPath), 'utf8'));
+  const records = manifest.screenshots;
+  const keys = new Set();
+  const homepage = manifestPath.includes('homepage');
+  if (manifest.applicationVersion !== (homepage ? 'mixed' : '1.9.6') || manifest.bundledPluginVersion !== '1.9.8') errors.push(`wrong capture baseline: ${manifestPath}`);
+  for (const record of records) {
+    const key = `${record.scene}-${record.locale}-${record.theme}`;
+    if (keys.has(key)) errors.push(`duplicate capture: ${key}`);
+    keys.add(key);
+    const retained = homepage && ['home', 'history', 'restore'].includes(record.scene);
+    if (record.applicationVersion !== (retained ? '1.9.4' : '1.9.6') || !['zh', 'en'].includes(record.locale) || !['light', 'dark'].includes(record.theme)) errors.push(`invalid capture axes: ${key}`);
+    const metadata = sizes[record.full];
+    if (!metadata || metadata.width !== record.width || metadata.height !== record.height || metadata.small !== record.small || metadata.smallWidth !== record.smallWidth) errors.push(`capture size index mismatch: ${key}`);
+    for (const asset of [record.full, record.small]) {
+      if (!asset.startsWith('img/') || asset.includes('..')) { errors.push(`unsafe capture path: ${asset}`); continue; }
+      try {
+        const bytes = await readFile(path.join(staticRoot, asset));
+        if (bytes.toString('ascii', 0, 4) !== 'RIFF' || bytes.toString('ascii', 8, 12) !== 'WEBP') errors.push(`invalid WebP: ${asset}`);
+        if (asset === record.full && (createHash('sha256').update(bytes).digest('hex') !== record.sha256 || bytes.length !== record.bytes)) errors.push(`capture hash/bytes mismatch: ${asset}`);
+        if (bytes.length > maxRasterBytes) errors.push(`capture exceeds budget: ${asset}`);
+      } catch { errors.push(`missing capture asset: ${asset}`); }
+    }
+    if (!/^[a-f0-9]{64}$/.test(record.sourceSha256)) errors.push(`missing raw capture provenance: ${key}`);
+    captureCount++;
+  }
+  const scenes = manifestPath.includes('homepage') ? ['home', 'history', 'restore', 'merge', 'map'] : [...new Set(records.map(record => record.scene))];
+  for (const scene of scenes) for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
+    if (!keys.has(`${scene}-${locale}-${theme}`)) errors.push(`missing capture variant: ${scene}-${locale}-${theme}`);
+  }
+  if (homepage && records.some(record => record.width !== 1604 || record.height !== (['home', 'history', 'restore'].includes(record.scene) ? 1113 : 1112))) errors.push('homepage capture dimensions disagree with the retained/additional scene');
+  if (homepage && records.some(record => record.scene === 'map' && !record.source.startsWith('map-real-'))) errors.push('map must use the real-world capture series');
+}
+console.log(`checked ${captureCount} manifested captures and responsive pairs`);
 let referencedBytes = 0;
 for (const [relative, locations] of [...references.entries()].sort()) {
   const filePath = path.join(staticRoot, relative);

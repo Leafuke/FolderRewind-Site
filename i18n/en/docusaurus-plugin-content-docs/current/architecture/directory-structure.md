@@ -1,11 +1,13 @@
 ---
 sidebar_position: 1
 title: "Repository directories and build boundaries"
-description: "FolderRewind 1.9 repository directories and build boundaries: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Find the UI, history core, plugin contracts and validation tools, and understand their build boundaries."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Repository directories and build boundaries
+
+Find the UI, history core, plugin contracts and validation tools, and understand their build boundaries.
 
 ```text
 FolderRewind/
@@ -32,6 +34,6 @@ Abstractions has Manifest/Lifecycle/Capabilities/Snapshots/Identifiers/Artifacts
 
 MineRewind, Catalog and website are independent repos. Nearby checkouts do not become Host solution inputs; acceptance pins artifacts. Verify actual project files rather than copying legacy trees.
 
-<span id="repository-root" />
-<span id="main-project-internal-structure" />
 <span id="key-entry-files" />
+<span id="main-project-internal-structure" />
+<span id="repository-root" />

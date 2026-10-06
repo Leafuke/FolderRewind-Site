@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 的 Full、Smart、Overwrite 三种备份模式�
 
 # 备份模式、链完整性与安全删除
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 配置界面的备份模式仍然是 **Full、Smart、Overwrite**。它们决定归档如何生成、历史如何增长，以及还原时需要哪些文件。
 
 不要把配置界面的模式与 KnotLink 一次性请求中的 `backup_mode=full|incremental` 混为一谈。后者只是单次调用覆盖项，不会把配置永久改成另一种模式。
@@ -70,3 +72,10 @@ MineBackup 会在以下情况强制使用 Full：
 - 模式切换：先手动建立一个 Full，再切换并验证后续 2～3 次备份。
 
 第一次使用或发生链异常时，优先回到 Full，不要通过手动复制、重命名或删除文件修补 Smart 链。
+
+<span id="smart-安全删除" />
+<span id="smart-链是如何工作的" />
+<span id="什么时候会重新建立-full" />
+<span id="关键参数" />
+<span id="模式对比" />
+<span id="选择建议" />

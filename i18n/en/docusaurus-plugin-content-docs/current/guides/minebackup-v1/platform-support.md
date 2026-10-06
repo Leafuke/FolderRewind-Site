@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 desktop and CLI support ranges, distribution form
 
 # Platform Support and Installation Boundaries
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 keeps backup, restore, history, and core data contracts consistent across platforms. Desktop integration and the headless CLI are separate distribution and runtime boundaries.
 
 ## Support matrix
@@ -58,3 +60,10 @@ Version 1.16.2 no longer installs or starts the old Windows Service Mode. The Wi
 4. Complete one Full backup.
 5. Restore once in a test directory or test world.
 6. Only then enable hotkeys, tray integration, cloud synchronization, or KnotLink.
+
+<span id="core-capability-is-separate-from-desktop-integration" />
+<span id="first-launch-on-macos" />
+<span id="knotlink-platform-differences" />
+<span id="minimum-post-install-verification" />
+<span id="support-matrix" />
+<span id="windows-service-mode-and-cli-boundary" />

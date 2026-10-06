@@ -1,49 +1,58 @@
 ---
 sidebar_position: 3
-title: "Automated backup tasks"
-description: "FolderRewind 1.9 automated backup tasks: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Automatic backup tasks"
+description: "Schedule interval, calendar or condition-triggered backups and check source targets, results and cancellation."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Automated backup tasks
+# Automatic backup tasks
 
-## Prerequisites
+Automatic backups regularly save a project you have already verified. Choose triggers in the project's Automation settings and check which sources will be backed up.
 
-Verify manual backups/scopes/restores before enabling config automation. Tasks respect config gates, provider readiness and cancellation; avoid another installation/writer acting on the same data.
+![An unsaved demonstration draft with automation expanded; changes were discarded and no recurring task was started.](/img/docs/v1-9-6/automation-en-light-1604.webp)
 
-## Triggers and targets
+*An unsaved demonstration draft with automation expanded; changes were discarded and no recurring task was started. Interface version: 1.9.6.*
 
-Use minute intervals, month/day/hour/minute schedules, startup, selected sources, unlock conditions and repeated-no-change stop. Month/day0 means every month/day. One trigger records source outcomes/Run without necessarily creating a Checkpoint.
+## Choose a trigger
 
-FileUnlocked monitors a relative path's locked→released transition, not repeated unlocked state. Minecraft examples use session.lock; do not assume level.dat is reliably locked. The actual writer must expose a detectable lock.
+| Trigger | Useful for | Check |
+| --- | --- | --- |
+| Interval | Regular saves during work | Minutes between runs and selected sources |
+| Schedule | A fixed time | Month, day, hour and minute; 0 for month or day means every month or day |
+| Startup | One save when the app starts | Task result and source readiness |
+| File unlocked | Saving after a program finishes writing | Source-relative path and a real locked-to-unlocked transition |
 
-## No-change and retention
+File-unlocked conditions respond to a transition, not a file remaining unlocked. Minecraft commonly uses `session.lock`; detection still depends on actual game behavior.
 
-Repeated no-change can disable automation; changes reset the counter. Inspect and explicitly re-enable. KeepCount governs Checkpoints; Pins/branches/Workspace/safety/dependencies may retain more. Smart chain limits/Full baselines do not replace restore testing.
+## Save and observe one run
 
-## Cloud and diagnostics
+Verify manual backup and restore before saving automation settings. Check the sources, trigger time and final result in Tasks. Skipping unchanged data may create no new version.
 
-Cloud transfer is separate from local success. Distinguish NoChanges/SuccessWithWarnings/Blocked/canceled/failed. Unavailable Require consistency blocks; Prefer degradation retains warnings.
+A configured number of unchanged runs can stop automation; changes reset that counter. Confirm the reason before restarting it. Retention counts recent recoverable versions per source, with protected versions kept in addition. See [retention](/docs/guides/backup-modes).
 
-Test startup/interval/scheduled boundaries, target choice, unlock transitions, no-change stop, cancellation and busy operations before unattended use.
+## Cloud upload and cancellation
 
-## Cancellation and results
+Upload after backup is a separate phase. Canceling cloud transfer does not undo a completed local backup. Read each source's outcome and the task status before deciding what to retry.
 
-Completed local backup and subsequent cloud transfer are recorded separately. Canceling upload does not invalidate an already completed local backup. Review per-source outcomes and terminal task state before choosing what to retry. Backups started by the setup wizard run as global tasks; leaving the page does not cancel a started backup. Cancel through the task entrypoint.
+The creation wizard's first backup becomes a global task. Leaving the page does not cancel it; cancel through Tasks. Wait for cancellation to finish before starting another operation on the same project.
 
-<span id="before-you-begin" />
-<span id="where-to-configure" />
+## If a task does not run
+
+Check whether automation is enabled, the correct sources are selected, the schedule matches and plugin consistency requirements are met. `Require` blocks when consistency is unavailable; read warnings when `Prefer` falls back. For file-unlocked triggers, confirm the program actually locks that file in a detectable way.
+
 <span id="automation-modes" />
-<span id="interval-backup" />
-<span id="scheduled-backup" />
-<span id="on-startup-backup" />
-<span id="selected-auto-backup-targets-v170" />
+<span id="before-you-begin" />
 <span id="condition-based-backup-mode-v170" />
-<span id="stop-after-repeated-no-change-runs" />
-<span id="recommended-combinations" />
-<span id="suggested-presets" />
 <span id="general-documents" />
+<span id="interval-backup" />
 <span id="minecraft-saves" />
-<span id="retention-policy-important" />
-<span id="troubleshooting" />
+<span id="on-startup-backup" />
+<span id="recommended-combinations" />
 <span id="related-links" />
+<span id="retention-policy-important" />
+<span id="scheduled-backup" />
+<span id="selected-auto-backup-targets-v170" />
+<span id="stop-after-repeated-no-change-runs" />
+<span id="suggested-presets" />
+<span id="troubleshooting" />
+<span id="where-to-configure" />

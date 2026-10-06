@@ -10,10 +10,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/directory-structure.md",
@@ -25,10 +29,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/index.md",
@@ -40,10 +48,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/namespaces.md",
@@ -55,10 +67,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/patterns.md",
@@ -70,10 +86,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/plugin-system.md",
@@ -85,10 +105,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/services.md",
@@ -100,10 +124,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "63ec6ad",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/architecture/views.md",
@@ -115,10 +143,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/home-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/faq.md",
@@ -130,10 +164,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/getting-started/first-backup.md",
@@ -145,10 +183,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/creation-review-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/getting-started/first-restore.md",
@@ -160,10 +204,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; rendered sample reviewed",
+      "screenshots": [
+        "/img/docs/v1-9-6/restore-detail-zh-light-710.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/getting-started/installation.md",
@@ -175,10 +225,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "917933c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/getting-started/v1-8-upgrade.md",
@@ -189,8 +243,13 @@
         "FolderRewind/History and FolderRewind/Services current implementation"
       ],
       "manualAcceptance": "pending",
-      "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5"
+      "followUp": "use the current installation and 1.9 upgrade guides",
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO",
+      "currentGuideStatus": "retired: old instructions removed; unlisted bookmark compatibility page"
     },
     {
       "path": "docs/guides/automation.md",
@@ -202,10 +261,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/automation-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/backup-file-spec.md",
@@ -217,10 +282,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "9b605a5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/backup-modes.md",
@@ -232,10 +301,17 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "9b605a5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/retention-detail-zh-light-1305.webp",
+        "/img/docs/v1-9-6/cleanup-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/cloud-archive.md",
@@ -247,10 +323,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/cloud-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/data-migration.md",
@@ -262,10 +344,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/migration-detail-zh-light-1310.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/encryption.md",
@@ -277,10 +365,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/filters.md",
@@ -292,10 +384,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/filters-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/folder-management.md",
@@ -307,10 +405,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/manager-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/history-timeline.md",
@@ -322,10 +426,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/history-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/automation.md",
@@ -337,7 +447,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/backup-modes.md",
@@ -349,7 +463,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "70a05e3"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/ai-assisted-config.md",
@@ -361,7 +479,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/backup-restore.md",
@@ -373,7 +495,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/jobs.md",
@@ -385,7 +511,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/linux-systemd.md",
@@ -397,7 +527,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/overview.md",
@@ -409,7 +543,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/profile-manifest.md",
@@ -421,7 +559,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/quick-start.md",
@@ -433,7 +575,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/reference.md",
@@ -445,7 +591,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/serve.md",
@@ -457,7 +607,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/troubleshooting.md",
@@ -469,7 +623,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cli/windows-task-scheduler.md",
@@ -481,7 +639,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/cloud-archive.md",
@@ -493,7 +655,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/data-and-migration.md",
@@ -505,7 +671,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "70a05e3"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/faq.md",
@@ -517,7 +687,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/filters.md",
@@ -529,7 +703,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/first-backup.md",
@@ -541,7 +719,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/first-config.md",
@@ -553,7 +735,15 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/guides/minebackup-v1/where-folder-saves.gif",
+        "/img/docs/guides/minebackup-v1/where-bedrock-saves.jpg",
+        "/img/docs/guides/minebackup-v1/pcl-to-find.gif"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/first-restore.md",
@@ -565,7 +755,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/history-and-restore.md",
@@ -577,7 +771,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/hot-backup.md",
@@ -589,7 +787,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/installation.md",
@@ -601,7 +803,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/knotlink-integration.md",
@@ -613,7 +819,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "70a05e3"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/logging-and-diagnostics.md",
@@ -625,7 +835,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "a62fad0"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/overview.md",
@@ -637,7 +851,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/platform-support.md",
@@ -649,7 +867,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "5eeb4ba"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/service-mode.md",
@@ -661,7 +883,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/special-mode.md",
@@ -673,7 +899,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "ec66000"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minebackup-v1/troubleshooting.md",
@@ -685,7 +915,11 @@
       ],
       "manualAcceptance": "not-applicable",
       "followUp": "preserve independent baseline; cross-product links checked by build",
-      "responsibleCommit": "70a05e3"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/death-rewind.md",
@@ -697,10 +931,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/hot-backup.md",
@@ -712,10 +950,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/hot-restore.md",
@@ -727,10 +969,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/just-enough-accidents.md",
@@ -742,10 +988,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/knotlink-mod.md",
@@ -757,10 +1007,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/minebackup-mod.md",
@@ -772,10 +1026,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/minebackup-plugin.md",
@@ -787,10 +1045,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/overview.md",
@@ -802,10 +1064,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/quick-start.md",
@@ -817,10 +1083,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/plugin-settings-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/selected-region-backup.md",
@@ -832,10 +1104,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/minecraft/troubleshooting.md",
@@ -847,10 +1123,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "6b6341e",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/mini-window.md",
@@ -862,10 +1142,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "5f74a5c",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/template-sharing.md",
@@ -877,10 +1161,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "81d7224",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/templates.md",
@@ -892,10 +1180,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "81d7224",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/intro.md",
@@ -907,10 +1199,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/home-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/auto-update.md",
@@ -922,10 +1220,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/hotkey-api.md",
@@ -937,10 +1239,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/knotlink-api.md",
@@ -952,10 +1258,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/packaging.md",
@@ -967,10 +1277,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/plugin-api.md",
@@ -982,10 +1296,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "19973f5",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/quick-start.md",
@@ -997,10 +1315,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8ef6014",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/settings-schema.md",
@@ -1012,10 +1334,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "d209ddc",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/tutorial.md",
@@ -1027,10 +1353,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8ef6014",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/knotlink-commands.md",
@@ -1042,10 +1372,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/knotlink.md",
@@ -1057,10 +1391,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8bb3152",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/overview.md",
@@ -1072,10 +1410,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/using-plugins.md",
@@ -1087,10 +1429,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "7f0ab4f",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/docs/v1-9-6/plugins-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/capabilities.md",
@@ -1102,10 +1450,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fd2e000",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/artifacts.md",
@@ -1117,10 +1469,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "2c65ecd",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/plugins/developing/migration-v2-v3.md",
@@ -1132,10 +1488,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "136d6fc",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/getting-started/v1-9-upgrade.md",
@@ -1147,10 +1507,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8d32669",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/history-branches.md",
@@ -1162,10 +1526,16 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [
+        "/img/homepage/merge-zh-light-1604.webp"
+      ],
+      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/safety-snapshots.md",
@@ -1177,10 +1547,14 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "8f023d4",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
     },
     {
       "path": "docs/guides/game-discovery.md",
@@ -1192,10 +1566,35 @@
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "fa0c1d9",
-      "reviewedBaseline": "1.9-api3.6",
-      "reviewedHostRef": "50291a46b0b4b52217cf9d6ddc533177808ce11e",
-      "reviewedAt": "2026-10-03"
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "screenshots": [],
+      "screenshotReview": "not applicable; no screenshot",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+    },
+    {
+      "path": "docs/guides/minecraft/world-preview.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/world-preview.md",
+      "product": "FolderRewind/integration",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind.Plugin.Abstractions/SpatialPreview.cs",
+        "docs/plugin-v3/spatial-preview-repair-2026-10-06.md"
+      ],
+      "manualAcceptance": "pending",
+      "reviewedBaseline": "1.9-api3.9",
+      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+      "reviewedAt": "2026-10-06",
+      "screenshots": [
+        "/img/homepage/map-zh-light-1604.webp"
+      ],
+      "screenshotReview": "real user-provided world captured in 4 language/theme variants; rendered homepage preview checked",
+      "languageReview": "bilingual copy revised; parity checked; rendered sample reviewed",
+      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO",
+      "responsibleCommit": "uncommitted site refresh; released host 23c1947"
     }
   ],
   "blogs": [
@@ -1428,7 +1827,7 @@
     "src/pages/download.tsx"
   ],
   "releaseReady": false,
-  "date": "2026-10-03",
+  "date": "2026-10-06",
   "publicReleaseVerified": true,
   "releaseReadyMeaning": "Historical complete desktop acceptance flag; public publication is checked separately."
 }

@@ -6,6 +6,8 @@ description: Configure paths, worlds, compression, and backup policy using the M
 
 # Creating Your First Configuration
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup organizes each backup workflow as an independent normal configuration. A configuration contains its source worlds, backup root, compression settings, backup mode, filters, retention policy, and optional cloud or hot-backup settings.
 
 If you use multiple launchers or instances, keep each configuration tied to one save root so that same-named worlds cannot overwrite one another accidentally.
@@ -95,3 +97,11 @@ A configuration imported from cloud `portable-config.json` may be **Pending Loca
 - The compression tool resolves successfully.
 - The configuration survives an application restart.
 - You can proceed to [Your first backup](/en/docs/guides/minebackup-v1/first-backup).
+
+<span id="completion-criteria" />
+<span id="important-configuration-fields" />
+<span id="multiple-configurations-and-pending-binding" />
+<span id="recommended-first-configuration" />
+<span id="step-1-locate-the-save-root" />
+<span id="step-2-select-a-backup-root" />
+<span id="step-3-configure-compression-and-performance" />

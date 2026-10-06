@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 的配置档布局、便携模式与 1.15 到 1.1
 
 # 配置档与迁移
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 1.16.2 使用“配置档（profile）”管理应用数据，不再把当前工作目录或 EXE 同级目录当作固定数据目录。配置档保存设置、历史、迁移状态、日志和受管理工具；实际备份包仍然写入每个配置的 `backupPath`，不要把两者混为一谈。
 
 ## 选择配置档
@@ -139,3 +141,14 @@ minebackup-cli --data-dir "$PROFILE" --json \
 删除 EXE 旁的 `config.ini` 或某个旧历史文件，并不能完整重置 1.16.2 配置档，也可能让外部备份与历史脱钩。需要重新开始时，先在设置和日志中确认实际 profile root，导出或复制仍需保留的数据，再在 MineBackup 退出后按配置档范围进行备份后处理；不要在运行中直接删除正在使用的目录。
 
 相关页面：[安装](/docs/guides/minebackup-v1/installation)、[首次配置](/docs/guides/minebackup-v1/first-config)、[CLI Profile 与 Manifest](/docs/guides/minebackup-v1/cli/profile-manifest)、[云归档](/docs/guides/minebackup-v1/cloud-archive)、[旧 Windows 服务清理](/docs/guides/minebackup-v1/service-mode)。
+
+<span id="1162-的存储模型" />
+<span id="不要用旧版重置方法判断当前版本" />
+<span id="从-115-启动迁移" />
+<span id="便携模式" />
+<span id="升级前后的安全流程" />
+<span id="已有-gui-配置迁移到-headless-cli" />
+<span id="显式目录--data-dir" />
+<span id="状态与写门禁" />
+<span id="选择配置档" />
+<span id="默认目录" />

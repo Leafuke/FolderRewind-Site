@@ -62,7 +62,7 @@ export default function Screenshot({
         >
           <img
             src={capture.src}
-            srcSet={hero ? undefined : capture.srcSet}
+            srcSet={capture.srcSet}
             sizes={hero ? '(max-width: 996px) 92vw, 60vw' : '(max-width: 996px) 92vw, 1200px'}
             width={asset.width}
             height={asset.height}
@@ -86,7 +86,7 @@ export default function Screenshot({
         aria-label={alt}
       >
         <div className={styles.dialogBar}>
-          <span>{copy.imageVersion}</span>
+          <span>{scene === 'merge' || scene === 'map' ? copy.newImageVersion : copy.imageVersion}</span>
           <button type="button" autoFocus onClick={() => dialog.current?.close()}>
             {copy.close} ×
           </button>

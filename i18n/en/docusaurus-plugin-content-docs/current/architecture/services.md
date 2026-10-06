@@ -1,11 +1,13 @@
 ---
 sidebar_position: 4
 title: "Service orchestration and core responsibilities"
-description: "FolderRewind 1.9 service orchestration and core responsibilities: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Find service entrypoints for configuration, backup, restore, cloud transfer and plugin orchestration."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Service orchestration and core responsibilities
+
+Find service entrypoints for configuration, backup, restore, cloud transfer and plugin orchestration.
 
 | Subsystem | Entrypoints/responsibilities |
 |---|---|
@@ -24,10 +26,10 @@ Old mutable history.json HistoryService is not native authority; old single-file
 
 Restore assesses/materializes/verifies before atomic Host mutation. Coordinators cannot nest Host writes. Config transfer, packs sync and payload transfer differ. Propagate failure stages/cancellation instead of treating queued work as completed.
 
-<span id="core-backup" />
 <span id="automation--scheduling" />
-<span id="plugin--extension" />
-<span id="ui-helpers" />
-<span id="system-integration" />
-<span id="security" />
+<span id="core-backup" />
 <span id="other" />
+<span id="plugin--extension" />
+<span id="security" />
+<span id="system-integration" />
+<span id="ui-helpers" />

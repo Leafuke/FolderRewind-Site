@@ -1,13 +1,15 @@
 ---
 sidebar_position: 4
 title: "KnotLink command reference"
-description: "FolderRewind 1.9 knotlink command reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Look up KnotLink commands, parameters and signals, using the runtime capability manifest to verify backup, restore and protection requests."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # KnotLink command reference
 
-Baseline: API3.6 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
+Look up KnotLink commands, parameters and signals, using the runtime capability manifest to verify backup, restore and protection requests.
+
+Baseline: API 3.9 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
 
 ## Queries and shared targets
 
@@ -19,7 +21,7 @@ Baseline: API3.6 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES a
 | LIST_FOLDERS, GET_CONFIG | config_id, returns data |
 | LIST_BACKUPS | config_id, folder, returns data |
 
-config_id accepts stable ID/name/zero-based index. folder accepts stable ID/name/path/zero-based index. Prefer stable IDs in long-lived scripts. BACKUP, BACKUP_ALL, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP and MARK_IMPORTANT require from/request_id.
+config_id accepts stable ID/name/zero-based index. folder accepts stable ID/name/path/zero-based index. Prefer stable IDs in long-lived scripts. BACKUP, BACKUP_ALL, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP, MARK_IMPORTANT and GET_IMPORTANCE require from/request_id.
 
 ## Backup options
 
@@ -47,7 +49,7 @@ cmd=BACKUP;config_id=demo;folder=World;backup_mode=smart;from=panel;request_id=b
 
 | Field | Meaning |
 |---|---|
-| file | Optional; omission uses active Workspace's unique local branch tip |
+| file | Optional; omission resolves the active branch, or the latest recoverable legacy backup when no branch is active |
 | mode | clean/overwrite; default clean |
 | restore_whitelist | Append local rules; Clean retains current matches unless archive supplies the same path |
 | restore_preserve_paths | One-shot relative files/directories; comma-separated, trailing / for directories; current content/deletions win within the source boundary |
@@ -65,21 +67,33 @@ Preservation covers selected NBT fields for all UUIDs, retaining complete curren
 
 ## Importance and current-world selectors
 
-MARK_IMPORTANT requires file; important defaults true. MineRewind extends current_save=true to BACKUP, LIST_BACKUPS, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP and MARK_IMPORTANT. Discovery names differ but wire commands stay the same; use runtime target information.
+MARK_IMPORTANT requires file; important defaults true. MineRewind extends current_save=true to BACKUP, LIST_BACKUPS, RESTORE, AUTO_BACKUP, STOP_AUTO_BACKUP, MARK_IMPORTANT and GET_IMPORTANCE. Discovery names differ but wire commands stay the same; use runtime target information.
 
 ## Responses and signals
 
 Responses include status=ok/error; conversations echo from/request_id. Dynamic values are percent-encoded. Long-task ok means accepted; correlate lifecycle signals to determine completion. Failed rejoin does not necessarily mean restore failed; never blindly repeat Restore.
 
-<span id="common-format" />
-<span id="connection-and-discovery" />
-<span id="configuration-and-history-queries" />
 <span id="backup" />
-<span id="backup_all" />
-<span id="periodic-backup-control" />
-<span id="mark_important" />
-<span id="response-status" />
-<span id="signals" />
-<span id="command-lifecycle" />
 <span id="backup-and-restore" />
+<span id="backup_all" />
+<span id="command-lifecycle" />
+<span id="common-format" />
+<span id="configuration-and-history-queries" />
+<span id="connection-and-discovery" />
+<span id="mark_important" />
+<span id="periodic-backup-control" />
 <span id="related-links" />
+<span id="response-status" />
+<span id="restore" />
+<span id="signals" />
+
+## Create protected backups and query importance
+
+`BACKUP` accepts `protect=true` to atomically protect a complete, unfiltered single-source version. Unchanged data reuses and protects its existing version. Partial or filtered captures are rejected. `BACKUP_ALL` and `AUTO_BACKUP` do not accept this option.
+
+`GET_IMPORTANCE` requires `file` and returns `file` and `important`. It reports protection, not restore readiness. `MARK_IMPORTANT` defaults `important` to true and returns the operation message and final flag. Both support the current MineRewind `current_save` resolver.
+
+```text
+cmd=BACKUP;config_id=demo;folder=World;protect=true;from=panel;request_id=protected-001
+cmd=GET_IMPORTANCE;config_id=demo;folder=World;file=example.7z;from=panel;request_id=importance-001
+```

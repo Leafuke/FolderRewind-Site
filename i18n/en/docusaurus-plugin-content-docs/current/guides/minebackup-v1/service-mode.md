@@ -6,6 +6,8 @@ description: Inspection and safe cleanup boundaries for the old Windows Service 
 
 # Legacy Windows Service Cleanup
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 **cannot install or start Windows Service Mode**. The current release keeps only a compatibility cleanup flow for inspecting and, when safe, removing a MineBackup Windows service left by an older release.
 
 This is not a new background execution mode, and it does not convert normal configurations or unified tasks into a service.
@@ -63,3 +65,8 @@ This option must be used by itself and performs the same ImagePath, resource, an
 - The service was not found: the recorded name is not installed; MineBackup does not create a replacement service.
 
 After cleanup, read [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting) and [Logging and diagnostics](/en/docs/guides/minebackup-v1/logging-and-diagnostics) to confirm that the application is using the normal GUI/task workflow. In 1.16.2 the boundary is “inspect and clean up a legacy service,” not “continue maintaining Service Mode.”
+
+<span id="if-cleanup-is-refused" />
+<span id="recommended-cleanup-flow" />
+<span id="what-the-current-release-supports" />
+<span id="why-removal-is-guarded" />

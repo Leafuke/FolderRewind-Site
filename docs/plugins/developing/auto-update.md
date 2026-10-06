@@ -1,17 +1,19 @@
 ---
 sidebar_position: 8
 title: "官方目录与插件更新"
-description: "FolderRewind 1.9 系列官方目录与插件更新操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "发布绑定版本、URL 与哈希的官方目录条目，理解可信更新、兼容检查和回滚职责。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 官方目录与插件更新
+
+发布绑定版本、URL 与哈希的官方目录条目，理解可信更新、兼容检查和回滚职责。
 
 ## 更新事实源
 
 FolderRewind 1.9 的更新以独立 Official Catalog 为准。GitHub Releases 托管制品，插件的 repository 字段只提供项目信息，不决定可安装的版本或安全来源。
 
-Host 匹配 PluginId，并使用 SemVer2.0 比较优先级；下载前核对目录项、精确 Release URL、SHA-256、声明/API和实际包。发布者签名和任意自定义目录不是 v3 首发功能。
+Host 匹配 PluginId，并使用 SemVer2.0 比较优先级；下载前核对目录项、精确 Release URL、SHA-256、声明/API 和实际包。发布者签名和任意自定义目录不是 v3 首发功能。
 
 ## 作者发布步骤
 
@@ -25,11 +27,11 @@ Host 匹配 PluginId，并使用 SemVer2.0 比较优先级；下载前核对目�
 
 手动包同样接受静态校验，来源仍记录为 Manual；不因为同 ID／名称就被赋予 Official。向用户说明维护方式和兼容性，使用管理页的本地安装入口，不直接覆盖程序集。
 
-<span id="工作原理" />
-<span id="配置步骤" />
 <span id="1-设置-repository-字段" />
 <span id="2-创建-github-release" />
 <span id="3-上传-zip-资产" />
 <span id="minhostversion" />
-<span id="破坏性变更处理" />
+<span id="工作原理" />
 <span id="相关链接" />
+<span id="破坏性变更处理" />
+<span id="配置步骤" />

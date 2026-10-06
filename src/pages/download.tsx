@@ -6,7 +6,6 @@ import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import {
   FaWindows,
-  FaGithub,
   FaGamepad,
   FaArrowRight,
   FaDesktop,
@@ -18,6 +17,7 @@ import {
 } from 'react-icons/fa6';
 
 import styles from './download.module.css';
+import SiteSurface from '@site/src/components/SiteSurface';
 
 const STORE_URL = 'https://apps.microsoft.com/detail/9nwsdgxdqws4';
 const GITHUB_LATEST_RELEASE_URL = 'https://github.com/Leafuke/FolderRewind/releases/latest';
@@ -26,14 +26,19 @@ const MINEREWIND_LATEST_RELEASE_URL =
 
 export default function Download(): ReactNode {
   return (
-    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: '下载 FolderRewind Windows 版 — 提供 Microsoft Store 与 Setup EXE 两种安装方式，支持 x64 和 ARM64 架构，具备自动更新与云同步功能'})}>
-      <main className="container margin-vert--xl">
-        <Heading as="h1" className="text--center">
+    <Layout title={translate({id: 'download.title', message: '下载'})} description={translate({id: 'download.description', message: "下载 FolderRewind Windows 版：选择 Microsoft Store 或 x64、ARM64 Setup EXE，了解安装渠道、系统要求和内置 MineRewind 插件。"})}>
+      <SiteSurface>
+      <main className={styles.page}>
+        <header className={styles.hero}>
+        <p className={styles.eyebrow}>01 / <Translate id="download.title">下载</Translate></p>
+        <Heading as="h1" className={styles.title}>
           <Translate id="download.heading">下载 FolderRewind</Translate>
         </Heading>
-        <p className="text--center text--lg margin-bottom--lg" style={{color: 'var(--ifm-color-emphasis-700)'}}>
-          <Translate id="download.subheading">优先使用商店版；升级后先做测试再上生产</Translate>
+        <p className={styles.subtitle}>
+          <Translate id="download.subheading">选择适合设备的安装方式，从一次备份开始</Translate>
         </p>
+        <div className={styles.versionLine}><span>FolderRewind 1.9.6</span><span>Windows 10 / 11</span><span>x64 / ARM64</span><span><Translate id="homepage.v2.free">免费 · 开源</Translate></span></div>
+        </header>
 
         <section>
           <div className={styles.channelGrid}>
@@ -60,8 +65,8 @@ export default function Download(): ReactNode {
                   <FaBoxOpen />
                 </div>
                 <Heading as="h2" className={styles.cardTitle}>Setup EXE</Heading>
-                <span className={styles.badgeWarn}><Translate id="download.badge.msi">核对发布版本</Translate></span>
-                <p className={styles.cardDesc}><Translate id="download.msi.desc">FolderRewind 1.9.3 已发布：选择 x64 或 ARM64 Setup EXE，并核对同名 .sha256。</Translate></p>
+                <span className={styles.badgeWarn}><Translate id="download.badge.msi">GitHub 正式版</Translate></span>
+                <p className={styles.cardDesc}><Translate id="download.msi.desc">GitHub 当前正式版为 1.9.6。选择 x64 或 ARM64 Setup EXE，按同名 .sha256 文件校验。</Translate></p>
                 <Link
                   className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
                   href={GITHUB_LATEST_RELEASE_URL}>
@@ -85,7 +90,7 @@ export default function Download(): ReactNode {
               <Translate id="download.notice.title">安装与升级提醒</Translate>
             </Heading>
             <p className={styles.noticeText}>
-              <Translate id="download.notice.desc">版本升级可能会调整备份与还原的细节行为。对于旧版本升级场景，请先在测试目录、测试项目或测试存档中验证结果，再投入生产使用。</Translate>
+              <Translate id="download.notice.desc">升级前保留配置和归档。切换安装渠道时，先导出配置与历史，再在新安装中导入并检查来源路径。</Translate>
             </p>
             <ul className={styles.noticeList}>
               <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
@@ -101,7 +106,8 @@ export default function Download(): ReactNode {
 
         {/* 系统要求 */}
         <section className="margin-top--xl">
-          <Heading as="h2" className="text--center">
+          <p className={styles.eyebrow}>02 / <Translate id="download.sysreq.heading">系统要求</Translate></p>
+          <Heading as="h2" className={styles.sectionTitle}>
             <Translate id="download.sysreq.heading">系统要求</Translate>
           </Heading>
           <div className={styles.sysReqGrid}>
@@ -130,20 +136,21 @@ export default function Download(): ReactNode {
 
         {/* 插件下载 */}
         <section className="margin-top--xl">
-          <Heading as="h2" className="text--center">
+          <p className={styles.eyebrow}>03 / <Translate id="download.plugin.heading">官方插件</Translate></p>
+          <Heading as="h2" className={styles.sectionTitle}>
             <Translate id="download.plugin.heading">官方插件</Translate>
           </Heading>
           <div className="text--center">
             <div className={styles.pluginCard}>
-              <div className="download-icon-wrap download-icon-wrap--store" style={{background: 'rgba(46,204,113,0.1)', color: '#27ae60'}}>
+              <div className="download-icon-wrap download-icon-wrap--store">
                 <FaGamepad />
               </div>
               <Heading as="h3">MineRewind</Heading>
-              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">内置 MineRewind 1.9.5：Java／基岩版存档发现、区域备份与玩家数据保留；需要 Plugin API 3.6。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">1.9.6 内置 MineRewind 1.9.8，支持 Java 地图预览、存档发现与区域备份。独立公开包仍为 1.9.5（API 3.6），不含地图预览；宿主支持 API 3.9。</Translate></p>
               <Link
                 className="button button--outline button--primary"
                 href={MINEREWIND_LATEST_RELEASE_URL}>
-                <Translate id="download.plugin.downloadBtn">前往下载</Translate>
+                <Translate id="download.plugin.downloadBtn">查看独立插件发布</Translate>
               </Link>
               <span style={{margin: '0 0.5rem'}} />
               <Link
@@ -155,6 +162,7 @@ export default function Download(): ReactNode {
           </div>
         </section>
       </main>
+      </SiteSurface>
     </Layout>
   );
 }

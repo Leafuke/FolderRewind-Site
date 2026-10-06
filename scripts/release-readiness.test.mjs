@@ -83,3 +83,21 @@ test('manual acceptance requires all eight scenarios and final screenshots', () 
   evidence.manualScenarios.pop();
   assert.equal(checkManualAcceptance(evidence).length, 1);
 });
+
+test('newer Host API supports older public plugin and SDK without claiming a new public package', async () => {
+  const f = fixture();
+  Object.assign(f.baseline, {api: '3.9', publicPluginApi: '3.6', exampleApi: '3.6', bundledPlugin: '1.9.8'});
+  assert.equal((await checkPublicRelease(f)).ready, true);
+});
+
+for (const [name, change] of [
+  ['newer plugin minor', {publicPluginApi: '3.10'}],
+  ['different plugin major', {publicPluginApi: '4.0'}],
+  ['SDK/example mismatch', {exampleApi: '3.5'}],
+]) {
+  test(name + ' cannot pass compatibility checks', async () => {
+    const f = fixture();
+    Object.assign(f.baseline, {api: '3.9', publicPluginApi: '3.6', exampleApi: '3.6'}, change);
+    assert.equal((await checkPublicRelease(f)).ready, false);
+  });
+}

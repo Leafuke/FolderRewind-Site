@@ -6,6 +6,8 @@ description: Structured logs, session records, and privacy-safe diagnostic expor
 
 # Logging and Diagnostics
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 uses one structured logging path for the GUI, backup and restore work, automation, platform integration, and KnotLink. For troubleshooting, distinguish the **Log panel**, **session log**, **local rotating file**, and **diagnostic export**; they have different retention and privacy behavior.
 
 ## Three logging layers
@@ -79,3 +81,11 @@ Copies left in an installation directory or old profile are neither migrated nor
 6. Export diagnostics, inspect the redaction result, and provide it with the smallest reproducible procedure and relevant time window.
 
 Related pages: [Troubleshooting](/en/docs/guides/minebackup-v1/troubleshooting), [Profiles and migration](/en/docs/guides/minebackup-v1/data-and-migration), [KnotLink v2 integration](/en/docs/guides/minebackup-v1/knotlink-integration), and [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive).
+
+<span id="cli-logs-and-json-output" />
+<span id="diagnostic-export-and-redaction" />
+<span id="legacy-log-files-are-not-the-current-mechanism" />
+<span id="log-levels" />
+<span id="log-locations" />
+<span id="recommended-troubleshooting-order" />
+<span id="three-logging-layers" />

@@ -6,6 +6,8 @@ description: 在 MineBackup 1.16.2 中验证配置、压缩引擎、历史记录
 
 # 首次备份
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 首次备份的目标是验证一条完整链路：来源目录可读、备份根目录可写、压缩程序可执行、历史记录可保存，最后生成的归档可以被还原。
 
 ## 推荐操作
@@ -58,3 +60,9 @@ description: 在 MineBackup 1.16.2 中验证配置、压缩引擎、历史记录
 - 立刻在测试目录执行一次还原，确认“备份成功”不仅代表文件写入成功，也代表恢复链可用。
 
 完成这次验证后，再阅读[备份模式、链完整性与安全删除](/docs/guides/minebackup-v1/backup-modes)和[首次还原](/docs/guides/minebackup-v1/first-restore)。
+
+<span id="备份后的两个动作" />
+<span id="推荐操作" />
+<span id="程序会做什么" />
+<span id="结果检查" />
+<span id="首次失败的处理顺序" />

@@ -1,0 +1,578 @@
+{
+  "img/homepage/home-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/home-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/home-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/home-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/home-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/home-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/home-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/home-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/history-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/history-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/history-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/history-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/history-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/history-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/history-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/history-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/restore-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/restore-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/restore-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/restore-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/restore-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/restore-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/restore-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1113,
+    "small": "img/homepage/restore-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/merge-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/merge-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/merge-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/merge-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/merge-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/merge-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/merge-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/merge-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/map-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/map-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/map-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/map-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/map-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/map-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/homepage/map-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/homepage/map-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/home-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/home-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/home-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/home-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/home-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/home-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/home-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/home-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/history-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/history-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/history-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/history-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/history-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/history-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/history-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/history-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/restore-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/restore-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/restore-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/restore-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/restore-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/restore-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/restore-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/restore-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/manager-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/manager-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/manager-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/manager-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/manager-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/manager-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/manager-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/manager-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/backup-settings-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/backup-settings-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/backup-settings-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/backup-settings-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/backup-settings-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/backup-settings-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/backup-settings-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/backup-settings-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/filters-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/filters-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/filters-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/filters-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/filters-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/filters-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/filters-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/filters-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/automation-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/automation-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/automation-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/automation-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/automation-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/automation-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/automation-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/automation-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/retention-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/retention-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/retention-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/retention-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cleanup-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cleanup-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cleanup-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cleanup-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cleanup-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cleanup-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cleanup-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cleanup-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cloud-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cloud-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cloud-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cloud-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cloud-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cloud-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/cloud-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/cloud-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/migration-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/migration-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/migration-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/migration-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugins-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugins-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugins-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugins-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugins-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugins-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugins-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugins-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugin-settings-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugin-settings-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugin-settings-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugin-settings-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugin-settings-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugin-settings-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/plugin-settings-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/plugin-settings-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-entry-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-entry-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-entry-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-entry-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-entry-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-entry-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-entry-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-entry-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-review-zh-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-review-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-review-zh-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-review-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-review-en-light-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-review-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/creation-review-en-dark-1604.webp": {
+    "width": 1604,
+    "height": 1112,
+    "small": "img/docs/v1-9-6/creation-review-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-detail-zh-light-1305.webp": {
+    "width": 1305,
+    "height": 370,
+    "small": "img/docs/v1-9-6/retention-detail-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-detail-zh-dark-1305.webp": {
+    "width": 1305,
+    "height": 370,
+    "small": "img/docs/v1-9-6/retention-detail-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-detail-en-light-1305.webp": {
+    "width": 1305,
+    "height": 370,
+    "small": "img/docs/v1-9-6/retention-detail-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/retention-detail-en-dark-1305.webp": {
+    "width": 1305,
+    "height": 370,
+    "small": "img/docs/v1-9-6/retention-detail-en-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/restore-detail-zh-light-710.webp": {
+    "width": 710,
+    "height": 750,
+    "small": "img/docs/v1-9-6/restore-detail-zh-light-400.webp",
+    "smallWidth": 400
+  },
+  "img/docs/v1-9-6/restore-detail-zh-dark-710.webp": {
+    "width": 710,
+    "height": 750,
+    "small": "img/docs/v1-9-6/restore-detail-zh-dark-400.webp",
+    "smallWidth": 400
+  },
+  "img/docs/v1-9-6/restore-detail-en-light-710.webp": {
+    "width": 710,
+    "height": 750,
+    "small": "img/docs/v1-9-6/restore-detail-en-light-400.webp",
+    "smallWidth": 400
+  },
+  "img/docs/v1-9-6/restore-detail-en-dark-710.webp": {
+    "width": 710,
+    "height": 750,
+    "small": "img/docs/v1-9-6/restore-detail-en-dark-400.webp",
+    "smallWidth": 400
+  },
+  "img/docs/v1-9-6/migration-detail-zh-light-1310.webp": {
+    "width": 1310,
+    "height": 235,
+    "small": "img/docs/v1-9-6/migration-detail-zh-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-detail-zh-dark-1310.webp": {
+    "width": 1310,
+    "height": 235,
+    "small": "img/docs/v1-9-6/migration-detail-zh-dark-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-detail-en-light-1310.webp": {
+    "width": 1310,
+    "height": 235,
+    "small": "img/docs/v1-9-6/migration-detail-en-light-800.webp",
+    "smallWidth": 800
+  },
+  "img/docs/v1-9-6/migration-detail-en-dark-1310.webp": {
+    "width": 1310,
+    "height": 235,
+    "small": "img/docs/v1-9-6/migration-detail-en-dark-800.webp",
+    "smallWidth": 800
+  }
+}

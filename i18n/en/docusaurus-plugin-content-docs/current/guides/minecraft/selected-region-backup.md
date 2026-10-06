@@ -1,11 +1,13 @@
 ---
 sidebar_position: 3
 title: "Minecraft selected-region backups"
-description: "FolderRewind 1.9 minecraft selected-region backups: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Select Java-world regions using block coordinates, check dimensions and ranges, and understand uncaptured content during overlay restore."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft selected-region backups
+
+Select Java-world regions using block coordinates, check dimensions and ranges, and understand uncaptured content during overlay restore.
 
 MineRewind1.9 selected-regions takes **block-coordinate** rectangles, creating partial captures. Inputs are not .mca region coordinates or chunk coordinates.
 
@@ -51,7 +53,7 @@ selected-regions is a Java-world scope, not a Bedrock LevelDB or ordinary-folder
 <span id="configuration" />
 <span id="dimensions-and-directory-layouts" />
 <span id="input-limits" />
+<span id="related-links" />
 <span id="relationship-with-filters" />
 <span id="safe-restore-rules" />
 <span id="when-a-backup-is-rejected" />
-<span id="related-links" />

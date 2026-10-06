@@ -1,11 +1,13 @@
 ---
 sidebar_position: 0
 title: "Architecture overview"
-description: "FolderRewind 1.9 architecture overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Explore the FolderRewind stack and trace UI orchestration through configuration, history, plugins and archives."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Architecture overview
+
+Explore the FolderRewind stack and trace UI orchestration through configuration, history, plugins and archives.
 
 FolderRewind is .NET10/WinUI3 on Windows, with Windows App SDK2.5.1 in the current project. MVVM and testable command orchestration serve the UI; history/plugin cores use instance services and explicit dependencies, not blanket static-singleton architecture.
 
@@ -15,7 +17,7 @@ flowchart TD
   H --> C[User-owned configuration]
   H --> N[Native History runtime]
   H --> P[Plugin Runtime]
-  P --> A[Public Abstractions API 3.6]
+  P --> A[Public Abstractions API 3.9]
   N --> R[Representations / Replicas]
   R --> Z[7-Zip / cloud transport]
   H --> D[Discovery / reviewed drafts]
@@ -29,6 +31,6 @@ Users own configs; discovery/reconciliation propose candidates/revision changes.
 
 See [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [models](/docs/architecture/data-models), [plugins](/docs/architecture/plugin-system).
 
-<span id="tech-stack" />
 <span id="architecture-birds-eye-view" />
 <span id="documentation-navigation" />
+<span id="tech-stack" />

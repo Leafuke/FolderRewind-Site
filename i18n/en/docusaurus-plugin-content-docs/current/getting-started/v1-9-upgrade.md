@@ -1,39 +1,45 @@
 ---
 sidebar_position: 20
-title: "Upgrading to1.9, migration and recovery"
-description: "FolderRewind 1.9 upgrading to1.9, migration and recovery: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Upgrading to 1.9, migration and recovery"
+description: "Upgrade from FolderRewind 1.8 to 1.9.6, preserve configuration and archives, review legacy Smart verification and test recovery before resuming automation."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Upgrading to1.9, migration and recovery
+# Upgrading to 1.9, migration and recovery
 
-This guide covers1.8.x→1.9. Configuration, native history and Plugin System v3 change together. Validate independent copies before production use.
+An upgrade from 1.8 migrates configuration, legacy backup history and plugin data. Version 1.9.6 improves Smart metadata handling, retained verification results and Quick Restore.
 
 ## Before upgrading
 
-Exit the app/automation and identify the channel. Back up the entire app data directory, destinations and required cloud copies; record versions, passwords and paths. config.json alone contains no archives and does not transfer current-user DPAPI password material.
+Exit the app and automatic tasks. Back up the entire app-data and archive directories, and record the installation channel, source paths, plugin versions and encryption passwords. `config.json` alone does not include archives or transfer Windows DPAPI password material across devices.
 
-## Configuration and plugins
+Keep the original copies and [install the appropriate version](/docs/getting-started/installation). Store and Setup use different data directories; follow [migration](/docs/guides/data-migration) when changing channels.
 
-The Host migrates identities, Provider State, typed settings and Enabled Intent. Flat v2 payloads enter legacy quarantine. Bundled v3 MineRewind can migrate its data offline; other v2 code does not execute. Renaming ZIP is insufficient. Check Kind providers, runtime state and diagnostics before Enable.
+## Check configuration and plugins
 
-## One-time history migration
+Review projects, source ranges and destinations after upgrading. Legacy v2 plugin code is quarantined rather than loaded. Bundled MineRewind can migrate its own data; other plugins need compatible v3 releases. Check actual runtime status before enabling related tasks.
 
-Unbound legacy configurations read old history.json/archive evidence to build and bind per-config immutable history. The old file is no longer writable authority; new history uses packs, indexes and local state. Missing/unreliable evidence limits restorability without inventing complete states.
+Migration interprets legacy Smart and Overwrite values. New Rolling backups create immutable archives without replacing old ones. Do not edit enum values or remove quarantine directories manually.
 
-Rolling preserves old archives and creates new immutable payloads. Migration interprets old Smart/Overwrite numeric values; do not edit enums manually. Preserve originals and use Recovery Center on failure, never delete history/config/quarantine wholesale.
+## Review the legacy takeover report {/* #193-legacy-takeover-report */}
 
-## Validate and roll back
+Select the affected project in history and open the report from the migration notice or More actions:
 
-Check identities/scopes, settings, history, Full/Smart/Rolling, test restores, automation and cloud. Validate forced Overwrite for partial captures, active-branch Quick Restore and safety snapshots before re-enabling tasks.
+1. Check each record's source. Assign unassigned records to the correct source.
+2. Locate retained archives. Smart backups also need their complete dependencies and metadata.
+3. Save changes and verify. Resolve missing dependencies, damaged files or identity issues using the diagnostics.
+4. Restore to a test directory and check additions, changes and deletions.
 
-Do not hand1.9-written data to1.8. Roll back using independent pre-upgrade config/history/archive copies. See [migration](/docs/guides/data-migration) and the [historical1.8 language recovery guide](/docs/getting-started/v1-8-upgrade).
+`RestrictedReady` means verified with limited recovery: unknown deletion boundaries permit only overlay restore or recovery to a new directory. File/directory type conflicts still block. Create a new Full backup before Clean, Checkout or Merge.
 
-## 1.9.3 legacy takeover report
+Version 1.9.6 retains valid verification results, requesting verification again when archives or metadata change. Source or archive-location changes refresh the report and history. Dismissing the notice records a local preference, not completed migration.
 
-Select the affected configuration in History and open the legacy takeover report from its notice or More actions. Review each record, source and candidate archive path. Assign an unassigned record to the correct source, enter the actual retained archive path when needed, save and recheck, then verify. Smart records also need their dependency archives and metadata, not only the final ZIP.
+## Resume regular tasks after verification
 
-`RestrictedReady` means verified with restricted recovery: historical deletion boundaries are unknown, so export to a new directory or use non-deleting Overwrite. File/directory type conflicts block recovery. Clean, branches, Checkout and Merge require known boundaries; create a new Full backup first. Resolve `Locate`, `Unassigned`, `Verify` and `Blocked` through the report diagnostics. Importing records does not supply missing payloads.
+Test Full, Smart or Rolling backups and a restore before enabling automation. A source without an active branch can use its most recent recoverable legacy backup through Quick Restore; an existing branch continues to determine its target.
 
-Dismissing the notice saves only a device-local preference. It neither deletes the report nor certifies migration; More actions remains available and new problems may notify again. 1.9 does not automatically migrate old cloud configuration or archives. Remote data remains intact; create a new connection and separately prepare old Smart dependencies.
+Old cloud configuration and archives are not automatically moved into native history. Keep remote data, create a new connection and prepare legacy Smart dependencies.
 
+## Rolling back
+
+Exit the new version and use independent pre-upgrade copies of configuration, history and archives. Do not let a 1.8 client write to a 1.9 repository. Keep diagnostics and use Recovery Center for startup or migration failures rather than deleting data files and retrying.

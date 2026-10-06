@@ -6,6 +6,8 @@ description: 使用 MineBackup 1.16.2 CLI 完成备份、历史查询、完整�
 
 # 备份、历史、校验与还原
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 当 Profile 已经通过 `profile apply` 和 `doctor` 后，按下面的用户任务完成第一个可验证闭环：
 
 ```text
@@ -122,3 +124,14 @@ minebackup-cli --data-dir "$PROFILE" --json restore \
 - Profile `logs/` 中对应时间段的日志。
 
 随后按[CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)从 scheduler → CLI → Job → Config → World → archive 逐层定位。
+
+<span id="1-查-config" />
+<span id="2-查-world" />
+<span id="3-执行-backup" />
+<span id="4-查看-history" />
+<span id="5-verify-最新归档" />
+<span id="6-restore-dry-run" />
+<span id="7-真实-restore单独的高风险操作" />
+<span id="clean-和-overwrite" />
+<span id="coldrestoreready-与-serve" />
+<span id="出现错误时保留什么" />

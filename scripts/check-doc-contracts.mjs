@@ -26,13 +26,13 @@ for (const name of ['MinimalPlugin', 'GameRewind']) {
   const root = path.join('examples/plugins', name);
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
   const project = fs.readFileSync(path.join(root, `${name}.csproj`), 'utf8');
-  if (manifest.manifestVersion !== 3 || `${manifest.pluginApi.major}.${manifest.pluginApi.minor}` !== baseline.api)
+  if (manifest.manifestVersion !== 3 || `${manifest.pluginApi.major}.${manifest.pluginApi.minor}` !== (baseline.exampleApi ?? baseline.api))
     errors.push(`Example API drift: ${name}`);
   if (!project.includes(`Version="${baseline.sdk}"`) || /ProjectReference|HintPath|Microsoft.UI.Xaml/.test(project))
     errors.push(`Example SDK boundary drift: ${name}`);
 }
 const api = fs.readFileSync('docs/plugins/developing/plugin-api.md', 'utf8');
-const kinds = ['Discovery','ConfigReconciliation','FilePolicy','BackupScope','BackupConsistency','FolderMetadata','RestoreCoordinator','PluginCommand','KnotLinkIntegration','ProviderStateMigration','BackupArtifactTransformer','BackupCompletionObserver','RestoreMaterializer','VersionMetadataProvider','RestoreStagingPreparation'];
+const kinds = ['Discovery','ConfigReconciliation','FilePolicy','BackupScope','BackupConsistency','FolderMetadata','RestoreCoordinator','PluginCommand','KnotLinkIntegration','ProviderStateMigration','BackupArtifactTransformer','BackupCompletionObserver','RestoreMaterializer','VersionMetadataProvider','RestoreStagingPreparation','SpatialPreview'];
 for (const kind of kinds) if (!api.includes('`'+kind+'`')) errors.push(`Undocumented capability: ${kind}`);
 if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
-else console.log(`Contracts OK: ${inventory.pages.length} bilingual pages, 15 capabilities.`);
+else console.log(`Contracts OK: ${inventory.pages.length} bilingual pages, ${kinds.length} capabilities.`);

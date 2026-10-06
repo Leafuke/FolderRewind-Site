@@ -1,11 +1,13 @@
 ---
 sidebar_position: 4
 title: "Sharing, importing and official presets"
-description: "FolderRewind 1.9 sharing, importing and official presets: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Export reusable backup policies, check formats, plugin dependencies and personal paths, then import them for new projects."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Sharing, importing and official presets
+
+Export reusable backup policies, check formats, plugin dependencies and personal paths, then import them for new projects.
 
 ## Local transfer
 
@@ -21,11 +23,11 @@ The app prepares sharing packages and a GitHub PR/code workflow. Inspect private
 
 Test another environment's path matching, plugins, drafts and backup/restore. Presets contain no history repositories/payloads and are not cross-device recovery packages.
 
+<span id="before-sharing-a-template" />
 <span id="export-a-local-template" />
 <span id="import-a-template" />
+<span id="mirror-source-and-online-templates" />
 <span id="official-templates-and-share-codes" />
 <span id="prepare-a-template-sharing-package" />
-<span id="submit-directly-to-github" />
-<span id="mirror-source-and-online-templates" />
-<span id="before-sharing-a-template" />
 <span id="related-links" />
+<span id="submit-directly-to-github" />

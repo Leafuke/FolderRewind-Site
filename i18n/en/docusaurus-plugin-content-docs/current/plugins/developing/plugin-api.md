@@ -1,13 +1,19 @@
 ---
 sidebar_position: 3
-title: "Plugin API 3.6 reference"
-description: "FolderRewind 1.9 plugin api 3.6 reference: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Plugin API 3.9 reference"
+description: "Review Plugin API 3.9 lifecycle, capabilities and Host services, distinguishing Host contracts from the public SDK 3.6.0 development surface."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Plugin API 3.6 reference
+# Plugin API 3.9 reference
 
-Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Package 3.6.0 represents API 3.6; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
+:::info[Public package and Host contract]
+FolderRewind 1.9.6 supports API 3.9, while the public NuGet SDK is currently 3.6.0. Public examples retain API 3.6. New interfaces such as spatial preview require matching contracts built from the release source; SDK 3.9.0 is not available from NuGet. Assembly identity remains 3.0.0.0.
+:::
+
+Review Plugin API 3.9 lifecycle, capabilities and Host services, distinguishing Host contracts from the public SDK 3.6.0 development surface.
+
+Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Public package 3.6.0 represents API 3.6; the Host source contracts support API 3.9; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
 
 ## Lifecycle and registration
 
@@ -34,6 +40,7 @@ Activation reads settings and config/folder snapshots, and registers each instan
 | `IBackupArtifactTransformerCapability` | `BackupArtifactTransformer` | Controlled immutable artifact transformation |
 | `IBackupCompletionObserverCapability` | `BackupCompletionObserver` | Read-only completion observation |
 | `IRestoreMaterializerCapability` | `RestoreMaterializer` | Materialization into an isolated workspace |
+| `ISpatialPreviewCapability` | `SpatialPreview` (`spatialPreview`) | Read-only layers, tiles, navigation and point details |
 
 `IDiscoveryDefinitionCatalog` extends a Discovery implementation; `IKnotLinkTargetResolver` extends KnotLink integration. Neither is registered or declared as a separate capability.
 
@@ -61,7 +68,7 @@ The Host removes routing, cancels lifetime, drains operations and calls Deactiva
 
 See the [tutorial](/docs/plugins/developing/tutorial), [settings schema](/docs/plugins/developing/settings-schema) and [command integration](/docs/plugins/developing/knotlink-api).
 
-## Discovery scope in API 3.6
+## Discovery scope in API 3.9
 
 The positional `DiscoveryRequest(UserRoots)` constructor remains. The new init property `IncludeKnownLocations` defaults to false. Hosts may explicitly enable it for machine/preset discovery; selected roots or adding sources to an existing config remain false. Plugins add known machine locations only when allowed, rather than expanding a selected-root scan into a machine scan.
 
@@ -70,20 +77,28 @@ var scoped = new DiscoveryRequest(userRoots);
 var automatic = new DiscoveryRequest(userRoots) { IncludeKnownLocations = true };
 ```
 
-This is an optional property on Discovery, not a new capability declaration. Plugins using it request API 3.6; 3.x assembly identity remains 3.0.0.0. `RestoreRequestOptions.RestorePreservePaths` supplies one-shot ordinary-Restore preservation. Default option-bearing services return Blocked when unsupported instead of silently dropping options.
+This is an optional property on Discovery, not a new capability declaration. Plugins using it request API 3.9; 3.x assembly identity remains 3.0.0.0. `RestoreRequestOptions.RestorePreservePaths` supplies one-shot ordinary-Restore preservation. Default option-bearing services return Blocked when unsupported instead of silently dropping options.
 
-<span id="core-interface-and-lifecycle" />
-<span id="manifest-and-target-framework" />
+## Spatial preview: API 3.9 {/* #spatial-preview */}
+
+The configuration Kind owner provides `ISpatialPreviewCapability`, statically declared as `spatialPreview`. `DescribeAsync` returns layers, display bounds, coordinates and optional height information. `RenderAsync` returns premultiplied BGRA tiles; `InspectAsync` returns point details. `GetNavigationTargetsAsync` supplies grouped navigation targets, and `CloseAsync` idempotently releases session resources.
+
+`SpatialPreviewTile.IsFinal` defaults to true. When false, the Host keeps current pixels and requests visible unfinished tiles at intervals of at least 100ms. Optional `SpatialPreviewLayer.CoordinateBounds` limits legal coordinate navigation; `Bounds` still describes generated data. The Host freezes and validates provider output. Providers respect cancellation and do not edit saves through preview.
+
+See the [map guide](/docs/guides/minecraft/world-preview).
+
 <span id="backup-filters-and-scopes" />
-<span id="ifolderrewindbackupfilterprovider" />
-<span id="ifolderrewindbackupscopeprovider" />
 <span id="backup-preparation-and-folder-details" />
-<span id="ifolderrewindbackuppreparationprovider" />
-<span id="ifolderrewindfolderdetailsprovider" />
-<span id="restore-interception-and-config-augmentation" />
-<span id="ifolderrewindrestoreinterceptor" />
-<span id="ifolderrewindconfigaugmenter" />
-<span id="knotlink-and-hotkeys" />
-<span id="full-backuprestore-takeover" />
+<span id="core-interface-and-lifecycle" />
 <span id="exceptions-threads-and-compatibility" />
+<span id="full-backuprestore-takeover" />
+<span id="ifolderrewindbackupfilterprovider" />
+<span id="ifolderrewindbackuppreparationprovider" />
+<span id="ifolderrewindbackupscopeprovider" />
+<span id="ifolderrewindconfigaugmenter" />
+<span id="ifolderrewindfolderdetailsprovider" />
+<span id="ifolderrewindrestoreinterceptor" />
+<span id="knotlink-and-hotkeys" />
+<span id="manifest-and-target-framework" />
 <span id="related-links" />
+<span id="restore-interception-and-config-augmentation" />

@@ -1,4 +1,4 @@
-export type ScreenshotScene = 'home' | 'history' | 'restore';
+export type ScreenshotScene = 'home' | 'history' | 'restore' | 'merge' | 'map';
 export type ScreenshotLocale = 'zh' | 'en';
 export type ScreenshotTheme = 'light' | 'dark';
 
@@ -24,7 +24,7 @@ export function screenshotAsset(
     locale,
     theme,
     width: 1604,
-    height: 1113,
+    height: ['merge', 'map'].includes(scene) ? 1112 : 1113,
     src: `${base}-1604.webp`,
     srcSet: `${base}-800.webp 800w, ${base}-1604.webp 1604w`,
     original: `${base}-1604.webp`,

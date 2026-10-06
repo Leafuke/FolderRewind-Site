@@ -1,16 +1,17 @@
 ---
 sidebar_position: 7
 title: "Views, onboarding and navigation"
-description: "FolderRewind 1.9 views, onboarding and navigation: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Understand page responsibilities and navigation through management, history, merging and spatial preview."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Views, onboarding and navigation
 
-![Settings sections,1.9.2.0/API3.5 Chinese candidate; final release acceptance pending](/img/docs/v1-9/settings-candidate.png)
+Understand page responsibilities and navigation through management, history, merging and spatial preview.
 
-*Settings sections,1.9.2.0/API3.5 Chinese candidate; final release acceptance pending.*
+![Project and source entrypoints in FolderRewind 1.9.6.](/img/docs/v1-9-6/home-en-light-1604.webp)
 
+*Project and source entrypoints in FolderRewind 1.9.6. Interface version: 1.9.6.*
 
 ## Pages
 
@@ -30,8 +31,13 @@ Settings controls cover appearance, behavior, diagnostics, plugins/KnotLink, pre
 
 Separate navigation from orchestration. Test narrow layouts/DPI/languages/keyboard/cancellation/recovery/deep notification routing. Building source does not verify UI layout or game exit/rejoin.
 
-<span id="page-listing" />
+
+## Merge and map pages
+
+`MergeWorkspacePage` hosts branch selection, file-conflict comparison, result review and session recovery. `SpatialPreviewPage` uses the Kind owner's read-only spatial provider for dimensions, navigation, zoom and point details; it does not edit saves.
+
 <span id="dialogs" />
-<span id="settings-page-sub-controls" />
 <span id="navigation-flow" />
+<span id="page-listing" />
+<span id="settings-page-sub-controls" />
 <span id="special-windows" />

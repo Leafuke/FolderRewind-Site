@@ -6,6 +6,8 @@ description: Configure the optional MineBackup 1.16.2 Profile runtime, IPC forwa
 
 # The Long-Running Serve Runtime
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 > **`serve` is an optional long-running Profile runtime, not a prerequisite for using the CLI.**
 
 One-shot `backup`, `verify`, `restore --dry-run`, `doctor`, and `job run` work without `serve`. Consider it only when you need a persistent Profile runtime, KnotLink, hot restore, or frequent CLI calls.
@@ -77,3 +79,10 @@ For `profile_busy`, start with `serve status` and check the GUI, another CLI, or
 6. Put `serve` under [Linux systemd](/en/docs/guides/minebackup-v1/cli/linux-systemd) or [Windows Task Scheduler](/en/docs/guides/minebackup-v1/cli/windows-task-scheduler).
 
 `serve` does not replace `doctor`, Verify, or a Restore dry-run. It only keeps an already-correct Profile running as a long-lived runtime.
+
+<span id="a-minimal-rollout-sequence" />
+<span id="cancellation" />
+<span id="serve-the-gui-and-one-shot-cli" />
+<span id="start-inspect-and-stop" />
+<span id="what-is-transparent-forwarding" />
+<span id="when-should-you-use-serve" />

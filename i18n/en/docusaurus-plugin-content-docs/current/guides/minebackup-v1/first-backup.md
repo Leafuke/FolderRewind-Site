@@ -6,6 +6,8 @@ description: Validate the configuration, compression engine, history, and backup
 
 # Your First Backup
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 The first backup should validate a complete path: the source is readable, the backup root is writable, the compression tool runs, history persists, and the resulting archive can be restored.
 
 ## Recommended procedure
@@ -58,3 +60,9 @@ If migration is Degraded or Failed, MineBackup may deliberately force a new Full
 - Restore once in a test directory to verify that “backup succeeded” means more than a file was written: the recovery chain must also be usable.
 
 After this validation, read [Backup modes, chain integrity, and safe deletion](/en/docs/guides/minebackup-v1/backup-modes) and [Your first restore](/en/docs/guides/minebackup-v1/first-restore).
+
+<span id="recommended-procedure" />
+<span id="recovery-order-for-a-first-failure" />
+<span id="two-actions-after-the-backup" />
+<span id="verify-the-result" />
+<span id="what-the-application-does" />

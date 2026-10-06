@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 无界面 CLI 的定位、与 GUI 的关系、服
 
 # CLI 与服务器模式概览
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 如果 MineBackup 要运行在 Minecraft Dedicated Server、VPS、NAS 或 SSH-only Linux 上，`minebackup-cli` 是不启动 GUI 也能完成配置、备份、校验和冷还原演练的正式入口。它从 MineBackup 1.16.2 起作为 headless/server 运行方式提供。
 
 ## CLI 是什么？
@@ -75,3 +77,9 @@ profile apply → doctor → backup → history → verify
         ↓
 restore --dry-run
 ```
+
+<span id="cli-不等于-serve" />
+<span id="cli-与-gui-是什么关系" />
+<span id="cli-是什么" />
+<span id="什么场景应该选-cli" />
+<span id="推荐学习路径" />

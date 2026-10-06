@@ -1,15 +1,17 @@
 ---
 sidebar_position: 3
 title: "Minecraft hot backup and consistency leases"
-description: "FolderRewind 1.9 minecraft hot backup and consistency leases: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Coordinate save writes while the game is running, review consistency modes and warnings, and verify Minecraft hot backups."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft hot backup and consistency leases
 
+Coordinate save writes while the game is running, review consistency modes and warnings, and verify Minecraft hot backups.
+
 ## Active target
 
-MineRewind1.9.5 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
+MineRewind 1.9.8 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
 
 ## Coordination
 
@@ -29,15 +31,15 @@ cmd=BACKUP;current_save=true;backup_mode=smart;from=panel;request_id=hot-001
 
 Query capabilities and correlate final signals. Missing/multiple worlds produce diagnostics; accepted is not finished. Test online coordination, offline warnings, Require blocking, cancellation, cleanup and real archive restores.
 
-<span id="source-mapping" />
-<span id="trigger-entry-points" />
-<span id="trigger-conditions" />
-<span id="execution-flow" />
-<span id="sequence-text" />
-<span id="key-timeout-behavior" />
-<span id="command-example" />
-<span id="request" />
-<span id="typical-response" />
-<span id="difference-vs-regular-backup" />
 <span id="best-practices" />
+<span id="command-example" />
+<span id="difference-vs-regular-backup" />
+<span id="execution-flow" />
+<span id="key-timeout-behavior" />
 <span id="related-links" />
+<span id="request" />
+<span id="sequence-text" />
+<span id="source-mapping" />
+<span id="trigger-conditions" />
+<span id="trigger-entry-points" />
+<span id="typical-response" />

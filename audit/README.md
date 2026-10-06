@@ -1,18 +1,15 @@
-# 1.9 文档核验 / Documentation acceptance
+# 文档与截图核验 / Documentation acceptance
 
-当前基线：FolderRewind 1.9.3、MineRewind 1.9.5、API 3.6／SDK 3.6.0。
-公开发布检查与实机验收已拆分；前者通过不代表后者完成。
-以下 2026-10-02 的观察是历史记录；当前核验见 FINAL_VERIFICATION.md 的新增章节。
+当前基线（2026-10-06）：FolderRewind **1.9.6**、内置 MineRewind **1.9.8**、宿主 API **3.9**。独立公开 MineRewind **1.9.5 / API 3.6**；公开 NuGet SDK 与可恢复示例 **3.6.0**。MineBackup 历史教程保留独立产品 **1.16.2** 基线。
 
-源基线与旧锚点见 baseline.json；全部页面、双语言镜像、图片和状态见 pages.json。
+正式宿主提交：`23c194710527d56f4d9d88e708df4b0d0cfe2ba6`。各版本分别核验。
 
-- `source-checked`：已按源码修正；不代表实机验收通过。
-- `preserve-product-baseline`：MineBackup 独立产品教程，保留原内容并检查跨产品链接。
-- `pending`：尚未完成。
-- 所有产品操作的实机验收、正式截图、公开 SDK/插件/主程序发布和部署均独立记录，不以网站构建代替。
+- [本轮报告](./site-refresh-1.9.6.md)：改进、验证、证据与未完成项。
+- [baseline.json](./baseline.json)：版本组合与原路由、锚点。
+- [pages.json](./pages.json)：87 对双语文档的事实、语言、截图和验收状态。
+- [acceptance.json](./acceptance.json)：当前和历史证据分别保存。
+- [首页清单](../static/img/homepage/manifest.json)、[文档清单](../static/img/docs/v1-9-6/manifest.json)：版本、语言、主题、尺寸、原始来源与 SHA-256。
 
-2026-10-02 公开源：NuGet 仅列出 SDK 3.0.0；主程序与插件 latest 均为 v1.8.2。不合入 main、不部署、不虚构正式发布公告。安装器工作区中原有修改不属于本任务。
+`source-checked` 表示按源码核对，`preserve-product-baseline` 表示保留历史产品基线；均不表示全部实机操作通过。`pending` 保留真实状态。旧 FINAL_VERIFICATION.md 与 previous 字段为历史记录，应结合日期阅读。
 
-Release gates: public SDK restore, immutable plugin + catalog verification, official Host assets, isolated desktop/game acceptance, bilingual site validation.
-
-最终准备阶段检查结果见 [FINAL_VERIFICATION.md](./FINAL_VERIFICATION.md)。自动检查通过与正式发布/实机验收分别记录，不将 pending 提升为 passed。
+公开发布检查、网站检查、浏览器检查与实机验收分别记录。网站构建不能替代游戏加载、两设备云恢复、安装渠道迁移或增量清理。本轮未推送、未部署，未创建自动化。

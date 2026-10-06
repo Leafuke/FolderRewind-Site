@@ -2,14 +2,13 @@
 sidebar_position: 2
 title: MineBackup-Mod (Modded-Server Integration)
 description: Current MineBackup-Mod installation, commands, hot backup, hot restore, and dedicated-server Sidecar guide
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # MineBackup-Mod (Modded-Server Integration)
-:::info[FolderRewind1.9 backend baseline]
-For this site's current workflow use an API3.6 FolderRewind1.9 Host and MineRewind1.9.5. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
+:::info[FolderRewind 1.9.6 backend baseline]
+For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
 :::
-
 
 MineBackup-Mod is the Minecraft-side bridge between MineBackup or FolderRewind and the game runtime. It provides in-game commands, world saves, pre-hot-backup coordination, pre-hot-restore exit, and automatic rejoin after restore.
 
@@ -131,3 +130,13 @@ Unknown outcomes, disconnects, and timeouts keep the server offline rather than 
 - [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod)
 - [Hot Backup Mechanism](/en/docs/guides/minecraft/hot-backup)
 - [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
+
+<span id="common-boundaries" />
+<span id="dedicated-server-sidecar-restore" />
+<span id="hot-backup-flow" />
+<span id="hot-restore-flow" />
+<span id="how-the-components-fit-together" />
+<span id="in-game-commands" />
+<span id="prerequisites-and-installation" />
+<span id="related-documentation" />
+<span id="support-matrix" />

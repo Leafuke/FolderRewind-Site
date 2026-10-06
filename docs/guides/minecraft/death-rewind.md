@@ -1,14 +1,13 @@
 ---
 title: Death Rewind（死亡回溯）
 description: 在 Fabric 单人世界死亡后，从死亡界面一键回溯到 MineBackup 的最新归档，避免灾难性损失重开存档
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Death Rewind（死亡回溯）
 :::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API3.6 的 FolderRewind1.9与MineRewind1.9.5；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
 :::
-
 
 Death Rewind 是 MineBackup 的附属模组。它在游玩期间定时请求 MineBackup 创建检查点，并在单人世界的死亡界面增加“回溯到若干分钟前”入口。
 
@@ -115,3 +114,11 @@ Death Rewind 检查点、JEA 快照和普通 MineBackup/FolderRewind 备份共�
 - [热还原机制详解](/docs/guides/minecraft/hot-restore)
 
 第一次使用时，请先在测试世界演练一次“创建检查点—死亡—回溯—重新进入”的完整流程。
+
+<span id="安装" />
+<span id="定时检查点" />
+<span id="归档保留与实际边界" />
+<span id="支持范围与前置" />
+<span id="死亡界面回溯" />
+<span id="相关文档" />
+<span id="默认配置" />

@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
 title: "安装指南"
-description: "FolderRewind 1.9 系列安装指南操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "选择适合电脑架构的安装程序，核对官方下载和校验文件，了解应用数据目录、系统要求，以及商店版与独立安装版的切换步骤。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 安装指南
 
-FolderRewind 1.9.3 已于 2026-10-03 发布，内置 MineRewind 1.9.5。可从 Microsoft Store 或 GitHub Setup EXE 安装；商店版本按实际页面和应用显示核对。
+FolderRewind 1.9.6 已于 2026-10-06 发布，内置 MineRewind 1.9.8。可从 Microsoft Store 或 GitHub Setup EXE 安装；商店版本按实际页面和应用显示核对。
 
 ## Microsoft Store
 
@@ -34,7 +34,7 @@ Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
 
 ## 系统要求与数据目录
 
-Windows10 1809+／Windows11；发行架构 x64／ARM64；程序携带 .NET10。安装空间以正式附件及安装器显示为准，不沿用旧80MB估计；备份、临时物化和恢复另需空间。
+Windows 10 1809+／Windows 11；发行架构 x64／ARM64；程序携带 .NET 10。安装空间以正式附件及安装器显示为准，不沿用旧 80MB 估计；备份、临时物化和恢复另需空间。
 
 | 渠道 | 数据目录 |
 |---|---|
@@ -45,16 +45,16 @@ Windows10 1809+／Windows11；发行架构 x64／ARM64；程序携带 .NET10。�
 
 ## 旧版包
 
-1.8等历史 Release 可能仍含 MSI／MSIX .7z 和 install.ps1，仅用于对应旧版本。1.9 GitHub 不公开这些附件；开发人员模式／证书脚本不是新 Setup 安装步骤。
+1.8 等历史 Release 可能仍含 MSI／MSIX .7z 和 install.ps1，仅用于对应旧版本。1.9 GitHub 不公开这些附件；开发人员模式／证书脚本不是新 Setup 安装步骤。
 
 安装后用测试来源完成备份和还原，再运行核心自动校验并启用自动任务。[数据迁移](/docs/guides/data-migration)说明配置与载荷的区别。
 
-<span id="先选安装渠道" />
-<span id="方式一microsoft-store" />
-<span id="方式二msi" />
-<span id="方式三msix-侧载包" />
-<span id="数据目录与切换渠道" />
-<span id="从旧版本升级" />
-<span id="安装后立即验证" />
-<span id="系统要求" />
 <span id="下一步" />
+<span id="从旧版本升级" />
+<span id="先选安装渠道" />
+<span id="安装后立即验证" />
+<span id="数据目录与切换渠道" />
+<span id="方式一microsoft-store" />
+<span id="方式三msix-侧载包" />
+<span id="方式二msi" />
+<span id="系统要求" />

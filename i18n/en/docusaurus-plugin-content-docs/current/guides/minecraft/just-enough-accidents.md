@@ -1,14 +1,13 @@
 ---
 title: Just Enough Accidents
 description: Detect high-risk Minecraft states and create MineBackup incident snapshots
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Just Enough Accidents
-:::info[FolderRewind1.9 backend baseline]
-For this site's current workflow use an API3.6 FolderRewind1.9 Host and MineRewind1.9.5. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
+:::info[FolderRewind 1.9.6 backend baseline]
+For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
 :::
-
 
 Just Enough Accidents (JEA) is an accident-detection extension for MineBackup. In singleplayer or LAN worlds, it detects high-risk states and asks MineBackup and FolderRewind to create an incident snapshot.
 
@@ -147,3 +146,11 @@ The TNT detector above is part of the current detector set; the excluded list re
 - [FolderRewind filters and backup modes](/en/docs/guides/filters)
 
 Observe one detector, archive, and manual-restore flow in a test world before tuning thresholds for a modpack.
+
+<span id="cooldown-coalescing-and-retention" />
+<span id="default-configuration" />
+<span id="initial-detectors" />
+<span id="not-included-in-020" />
+<span id="related-documentation" />
+<span id="scoreboard-trigger" />
+<span id="support-and-prerequisites" />

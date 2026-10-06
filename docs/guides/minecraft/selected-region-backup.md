@@ -1,11 +1,13 @@
 ---
 sidebar_position: 3
 title: "Minecraft 指定区域备份"
-description: "FolderRewind 1.9 系列Minecraft 指定区域备份操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "按方块坐标设置 Java 世界备份区域，检查维度与范围，并理解覆盖还原时未捕获内容的保留。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft 指定区域备份
+
+按方块坐标设置 Java 世界备份区域，检查维度与范围，并理解覆盖还原时未捕获内容的保留。
 
 1.9 MineRewind 的 selected-regions 范围按**方块坐标**选择矩形，产生部分捕获。不是输入 .mca 区域坐标或区块坐标。
 
@@ -29,7 +31,7 @@ reviewed_baseline: "1.9-api3.6"
 | UTF-8 areas 文本 | 32 KiB |
 | 有效矩形行 | 128（空行和#注释不计） |
 | 坐标 | 有限值且在世界边界范围内 |
-| 去重区域 | 每维度4096 |
+| 去重区域 | 每维度 4096 |
 | 格式 | 四个逗号分隔数值，不接受额外字段 |
 
 无区域、非法坐标、超限或歧义布局会阻断整个操作，不生成静默残缺结果。早期 regions／selectedRegions 是兼容字段，不是当前 UI 的 areas 语义。
@@ -38,7 +40,7 @@ reviewed_baseline: "1.9-api3.6"
 
 每个选择 region 的 region／entities／poi .mca 按维度纳入，并包含必要世界／玩家／数据规则。当前实现为保证外置大区块数据，纳入对应维度相关目录的**全部 c.*.*.mcc**，不会只解析所选 mca 的引用。实际包可能大于矩形内数据估计。
 
-支持实现识别的 Vanilla、Paper/Spigot及26.1布局；多匹配歧义拒绝。其他 SourceScope／配置过滤仍可收窄，不能依靠插件范围越过来源边界，修改后检查实际包清单。
+支持实现识别的 Vanilla、Paper/Spigot 及 26.1 布局；多匹配歧义拒绝。其他 SourceScope／配置过滤仍可收窄，不能依靠插件范围越过来源边界，修改后检查实际包清单。
 
 ## 还原
 
@@ -48,10 +50,10 @@ reviewed_baseline: "1.9-api3.6"
 
 selected-regions 是 Java 世界范围，不适用于 Bedrock 的 LevelDB 世界或普通文件夹。发现 Bedrock 不会将其转换为 Java 区域布局；请关闭游戏并使用完整普通文件备份。
 
-<span id="配置入口" />
+<span id="与过滤器的关系" />
+<span id="备份被拒绝时" />
+<span id="安全还原规则" />
+<span id="相关链接" />
 <span id="维度与目录布局" />
 <span id="输入限制" />
-<span id="与过滤器的关系" />
-<span id="安全还原规则" />
-<span id="备份被拒绝时" />
-<span id="相关链接" />
+<span id="配置入口" />

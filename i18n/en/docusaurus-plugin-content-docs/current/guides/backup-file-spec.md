@@ -1,11 +1,13 @@
 ---
 sidebar_position: 3
 title: "Backup payloads and native history storage"
-description: "FolderRewind 1.9 backup payloads and native history storage: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Understand archives, history packs and local indexes so you can preserve dependencies and migrate restorable data."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Backup payloads and native history storage
+
+Understand archives, history packs and local indexes so you can preserve dependencies and migrate restorable data.
 
 The1.9 immutable per-config History Repository is logical authority. Archives are physical payloads; filenames no longer fully encode identity, ancestry or restorability.
 
@@ -39,15 +41,15 @@ Transfer config, facts and payloads separately. `.frhistory` contains packs with
 
 Pins, branch tips, Workspace and safety points protect materialization dependencies. Comments or presentation hiding are not equivalent retention guarantees. Logical versions can exist while bytes are missing; assess recovery before cleanup.
 
-<span id="filename-format" />
-<span id="field-definition" />
-<span id="naming-notes" />
-<span id="source-code-parsing-regex" />
-<span id="backup-storage-structure" />
-<span id="metadatajson-version" />
-<span id="default-destination-path" />
-<span id="relationship-to-rebuild-history" />
-<span id="important-flag-and-auto-pruning" />
 <span id="auto-cleanup-and-safe-delete" />
-<span id="remote-command-knotlink" />
+<span id="backup-storage-structure" />
+<span id="default-destination-path" />
+<span id="field-definition" />
+<span id="filename-format" />
+<span id="important-flag-and-auto-pruning" />
+<span id="metadatajson-version" />
+<span id="naming-notes" />
 <span id="related-links" />
+<span id="relationship-to-rebuild-history" />
+<span id="remote-command-knotlink" />
+<span id="source-code-parsing-regex" />

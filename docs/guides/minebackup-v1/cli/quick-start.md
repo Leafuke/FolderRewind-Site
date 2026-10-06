@@ -6,6 +6,8 @@ description: 使用 MineBackup 1.16.2 CLI 按照 Manifest、备份、历史、�
 
 # 5 分钟快速开始：从零完成第一次服务器备份
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 本页只追求一个结果：在不启动 GUI 的情况下完成
 **Profile → doctor → Backup → History → Verify → Restore dry-run**。Job、IPC、rclone 和 KnotLink 请等基础闭环成功后再配置。
 
@@ -153,3 +155,14 @@ minebackup-cli --data-dir "$PROFILE" --json restore \
 ```
 
 如果任意命令返回错误，以 CLI 返回的 JSON、退出码和 `doctor` 输出为准；保留原始输出，不要先凭猜测修改路径或删除 Profile。
+
+<span id="step-1安装-cli" />
+<span id="step-2选择-profile" />
+<span id="step-3生成-manifest" />
+<span id="step-4按顺序验证并应用" />
+<span id="step-5运行-doctor" />
+<span id="step-6查-config-和-world再执行第一次-backup" />
+<span id="step-7确认-history" />
+<span id="step-8verify" />
+<span id="step-9restore-dry-run" />
+<span id="完成标志" />

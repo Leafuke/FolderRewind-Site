@@ -1,13 +1,15 @@
 ---
 sidebar_position: 3
 title: "Command and hotkey API"
-description: "FolderRewind 1.9 command and hotkey api: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Declare plugin commands and default hotkeys, execute typed arguments and handle cancellation, conflicts and persisted overrides."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Command and hotkey API
 
-API 3.6 uses IPluginCommandCapability. PluginCommandDescriptor contains Id, DisplayName and ArgumentSchema, with optional DefaultHotkey/IsGlobalHotkey. The Host owns binding persistence and dispatch.
+Declare plugin commands and default hotkeys, execute typed arguments and handle cancellation, conflicts and persisted overrides.
+
+API 3.9 uses IPluginCommandCapability. PluginCommandDescriptor contains Id, DisplayName and ArgumentSchema, with optional DefaultHotkey/IsGlobalHotkey. The Host owns binding persistence and dispatch.
 
 ## Description and execution
 

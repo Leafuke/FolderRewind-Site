@@ -6,6 +6,8 @@ description: Use MineBackup 1.16.2 CLI to go from a Manifest to Backup, History,
 
 # Five-Minute Quick Start: Complete the First Server Backup
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 This page has one goal: complete
 **Profile → doctor → Backup → History → Verify → Restore dry-run** without starting the GUI. Configure Jobs, IPC, rclone, and KnotLink only after this basic loop works.
 
@@ -153,3 +155,14 @@ Do not perform a real restore or use `--confirm` in the first tutorial. `clean` 
 ```
 
 If any command returns an error, treat the CLI JSON, exit code, and `doctor` output as authoritative. Keep the raw output instead of guessing a path or deleting the Profile.
+
+<span id="completion-checklist" />
+<span id="step-1-install-the-cli" />
+<span id="step-2-choose-a-profile" />
+<span id="step-3-generate-a-manifest" />
+<span id="step-4-validate-and-apply-in-order" />
+<span id="step-5-run-doctor" />
+<span id="step-6-find-the-config-and-world-then-run-the-first-backup" />
+<span id="step-7-confirm-history" />
+<span id="step-8-verify" />
+<span id="step-9-restore-dry-run" />

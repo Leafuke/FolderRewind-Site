@@ -1,46 +1,56 @@
 ---
 sidebar_position: 3
-title: "First restore"
-description: "FolderRewind 1.9 first restore: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Your first restore"
+description: "Choose a FolderRewind version, review the destination, Clean or Overwrite mode and backup-before-restore setting, then verify the recovered files."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# First restore
+# Your first restore
 
-## Select a target
+A restore changes files at its destination. Practise with the test folder from your first backup so you can check the exact result.
 
-Open config history and select a source version or Checkpoint. Practice with copies; check config/source/path/time/scope/outcome. A list record alone is insufficient without recoverable representation/dependencies.
+![Review the restore mode. Backup before restore is enabled in this example.](/img/docs/v1-9-6/restore-detail-en-light-710.webp)
 
-## Prepare and confirm
+*Review the restore mode. Backup before restore is enabled in this example. Interface version: 1.9.6.*
 
-Preview/prepare required cloud closure and size/hash checks. Confirm mappings and stopped writers; Minecraft must coordinate when required. Supply encryption credentials and resolve missing providers/sources/recovery states first.
+## 1. Choose a version
 
-## Modes
+Open history, select the project and source, and find a clearly named version such as “Initial version”. Check its time, scope and restore status. If the archive is only in the cloud, prepare that version and its dependencies first.
 
-- Clean reconstructs within the effective managed boundary, not the entire physical root.
-- Overwrite applies captured content without deleting omitted files, potentially retaining later data.
-- Partial captures always Overwrite, even with Exact fidelity.
+## 2. Review the destination and protection
 
-Restore whitelists retain matching current content unless the archive supplies the same path. Safe Restore/pre-restore backup are separate protection options; check the dialog rather than assuming every successful restore creates a long-lived recovery point.
+Check the target path and close programs writing to it. Encrypted archives require the correct password. Minecraft hot restore also requires the appropriate coordination with the game.
 
-## Verify outcomes
+Check Backup before restore in the confirmation window. This is separate from the restore mode; enabling Safe Restore alone does not mean a long-term backup version has been created.
 
-Wait for terminal results and compare files/application loading. NoChanges means no mutation; inspect SuccessWithWarnings. RecoveryRequired/CommittedRecoveryRequired need diagnostics/controlled recovery, not repeated destructive requests.
+## 3. Choose a restore mode
 
-Quick Restore resolves the active branch tip, not the previous timestamp. See [advanced history](/docs/guides/history-branches). Preservation/whitelist-derived ordinary restores can form Derived baselines.
+| Mode | What happens to files |
+| --- | --- |
+| Clean | Reconstructs the target state inside the managed range, removing content in that range that is absent from the selected version |
+| Overwrite | Restores archived files and retains current content outside the captured range |
+| Partial backup or legacy backup with unknown deletion boundaries | Uses Overwrite to avoid deleting content without backup evidence |
 
-Check trusted cloud copies before purging missing-local history. Validate copies before production.
+The restore whitelist keeps matching current files unless the archive contains the same path. For current state to always take precedence, see [one-shot preservation](/docs/guides/filters).
 
-## Preservation and legacy checks
+## 4. Run and verify
 
-To retain current files instead of their archived versions, use the one-shot ordinary-Restore preservation options described in [filters and preservation](/docs/guides/filters#one-shot-file-and-directory-preservation). They also retain current deletions, unlike the restore whitelist. If a migrated version has an unknown deletion boundary, use non-deleting Overwrite or recover to a new directory. Create a new Full backup before Clean or advanced history.
+Confirm and wait for the final result. Open the files and compare your added, changed and deleted test files. Game saves also need a loading check in the game.
+
+`NoChanges` means no write was needed. Read warnings for `SuccessWithWarnings`. For `RecoveryRequired` or `CommittedRecoveryRequired`, keep the logs and use controlled recovery instead of repeating the restore.
+
+## Quick Restore and branch operations
+
+Quick Restore prefers the active branch's unique tip. A source without an active branch can use its most recent recoverable legacy backup. It does not mean “the previous row”. Once a branch is active, Quick Restore does not automatically search other branches for a legacy version.
+
+To switch approaches or combine files, read [branches and merging](/docs/guides/history-branches). Ordinary restore's player, whitelist and path-preservation options do not apply to Checkout or Merge.
 
 <span id="before-you-start" />
+<span id="next-step" />
+<span id="recommended-safety-settings" />
 <span id="step-1-enter-the-history-page" />
 <span id="step-2-understand-the-history-timeline" />
 <span id="step-3-select-a-restore-point" />
 <span id="step-4-run-the-restore" />
 <span id="step-5-verify-the-restore-result" />
-<span id="recommended-safety-settings" />
 <span id="troubleshooting" />
-<span id="next-step" />

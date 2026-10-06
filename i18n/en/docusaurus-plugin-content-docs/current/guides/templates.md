@@ -1,11 +1,13 @@
 ---
 sidebar_position: 3
 title: "Templates and Backup Presets"
-description: "FolderRewind 1.9 templates and backup presets: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Save a verified backup policy as a preset, create projects from discovery results, and review plugin and environment dependencies."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Templates and Backup Presets
+
+Save a verified backup policy as a preset, create projects from discovery results, and review plugin and environment dependencies.
 
 A Backup Preset is reusable policy, not installed-game evidence or a saved configuration.1.9 uses Backup Preset V2 with legacy import compatibility; do not apply old1.8 Envelope restrictions to every new preset.
 
@@ -23,14 +25,19 @@ Inspect missing/disabled/incompatible plugin diagnostics and explicitly confirm 
 
 Template management supports inspect/edit/copy/delete/path preview. Remove private paths/credentials/nonportable state before [sharing](/docs/guides/template-sharing).
 
-<span id="when-templates-are-useful" />
-<span id="save-the-current-config-as-a-template" />
+
+## Minecraft Enhanced Experience preset
+
+In 1.9.6, the preset checks for and reuses a compatible KnotLink Service. When installation is needed, it downloads, verifies and launches the installer after confirmation, then checks readiness and connection. Installation, service readiness and actual game integration are separate steps. Keep diagnostics and resolve failed dependencies before continuing.
+
+<span id="build-templates-from-proven-configs" />
 <span id="create-a-config-from-a-template" />
 <span id="how-path-rules-help" />
-<span id="templates-and-plugins" />
 <span id="manage-local-templates" />
-<span id="recommended-workflow" />
-<span id="build-templates-from-proven-configs" />
-<span id="template-first-automate-later" />
 <span id="re-check-templates-after-major-upgrades" />
+<span id="recommended-workflow" />
 <span id="related-links" />
+<span id="save-the-current-config-as-a-template" />
+<span id="template-first-automate-later" />
+<span id="templates-and-plugins" />
+<span id="when-templates-are-useful" />

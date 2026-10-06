@@ -1,11 +1,13 @@
 ---
 sidebar_position: 1
 title: "Plugin development quick start"
-description: "FolderRewind 1.9 plugin development quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Build an independent plugin with public SDK 3.6.0, compile and package the example, and check activation in an API 3 Host."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Plugin development quick start
+
+Build an independent plugin with public SDK 3.6.0, compile and package the example, and check activation in an API 3 Host.
 
 This guide targets FolderRewind 1.9 and Plugin API 3.6. App, plugin product, package and assembly versions are independent.
 
@@ -14,7 +16,7 @@ This guide targets FolderRewind 1.9 and Plugin API 3.6. App, plugin product, pac
 Install .NET 10 SDK, Node.js 24 and Python 3.10+, an editor supporting .NET 10, and a Host supporting API 3.6. Get the projects from the [website source repository](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins).
 
 :::info[Public SDK baseline]
-The examples use public Abstractions 3.6.0 for FolderRewind 1.9.3 / Plugin API 3.6. Restore from NuGet.org. If network or version resolution fails, inspect sources and diagnostics rather than referencing FolderRewind.dll. Assembly identity remains 3.0.0.0.
+The examples use public Abstractions 3.6.0 for API 3.6 and newer compatible Hosts, including FolderRewind 1.9.6 / Host API 3.9. Restore from NuGet.org. If network or version resolution fails, inspect sources and diagnostics rather than referencing FolderRewind.dll. Assembly identity remains 3.0.0.0.
 :::
 
 ## Create an independent library
@@ -66,10 +68,10 @@ Check product, version, provenance, requested services and runtime state. For fa
 
 Continue with the [tutorial](/docs/plugins/developing/tutorial), [API reference](/docs/plugins/developing/plugin-api) and [packaging guide](/docs/plugins/developing/packaging).
 
+<span id="add-manifestjson" />
 <span id="choose-interfaces" />
 <span id="create-the-project" />
-<span id="add-manifestjson" />
 <span id="implement-the-core-lifecycle" />
-<span id="package-and-test" />
 <span id="knotlink-and-region-examples" />
 <span id="next-steps" />
+<span id="package-and-test" />

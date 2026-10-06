@@ -6,6 +6,8 @@ description: Understand the MineBackup 1.16.2 CLI Profile, Config, World, Job, a
 
 # Profiles and Manifests
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 If you remember only one distinction, make it this:
 
 > **Config = what to back up and how; Job = what to execute in one run.**
@@ -199,3 +201,16 @@ The GUI and `serve` are strictly mutually exclusive for one Profile. Close the G
 - When a field is unfamiliar, consult the official template, CLI validation, and current engineering docs before removing anything.
 
 After the Manifest is ready, return to the [five-minute quick start](/en/docs/guides/minebackup-v1/cli/quick-start) for doctor, Backup, History, Verify, and Restore dry-run.
+
+<span id="1-generate-a-template" />
+<span id="2-validate-the-format-and-references" />
+<span id="3-review-the-diff" />
+<span id="4-dry-run-then-apply" />
+<span id="5-export-for-audit-or-migration" />
+<span id="manifest-lifecycle" />
+<span id="merge-and-prune-when-does-deletion-happen" />
+<span id="migrate-an-existing-gui-configuration-to-a-server" />
+<span id="safe-manifest-editing-rules" />
+<span id="start-with-the-object-model" />
+<span id="the-minimum-manifest-shape" />
+<span id="the-path-model-keep-four-paths-separate" />

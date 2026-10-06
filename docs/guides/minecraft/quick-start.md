@@ -1,15 +1,21 @@
 ---
 sidebar_position: 2
 title: "Minecraft 快速开始"
-description: "FolderRewind 1.9 系列Minecraft 快速开始操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "启用内置 MineRewind，发现并审阅 Java 或 Bedrock 存档，创建项目并验证首次备份与还原。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft 快速开始
 
+启用内置 MineRewind，发现并审阅 Java 或 Bedrock 存档，创建项目并验证首次备份与还原。
+
+![内置 MineRewind 的发现与玩家保留设置。](/img/docs/v1-9-6/plugin-settings-zh-light-1604.webp)
+
+*内置 MineRewind 的发现与玩家保留设置。 界面版本：1.9.6。*
+
 ## 安装并启用
 
-使用 FolderRewind 1.9.3（API3.6）与 MineRewind 1.9.5，按 Release 核对来源和版本。设置→插件管理从目录或本地 .frplugin 安装，检查声明并显式启用。看到 Enabled Intent 后还需确认 Active；旧1.8 ZIP不能兼容。
+使用 FolderRewind 1.9.6（API 3.9）与 MineRewind 1.9.8，按 Release 核对来源和版本。设置→插件管理从目录或本地 .frplugin 安装，检查声明并显式启用。看到 Enabled Intent 后还需确认 Active；旧 1.8 ZIP 不能兼容。
 
 ## 发现实例
 
@@ -19,7 +25,7 @@ reviewed_baseline: "1.9-api3.6"
 
 用世界副本，先停止游戏写入，执行 Full 备份并在测试目录还原，比较内容。再联调 KnotLink Server v3 与对应游戏组件，确认运行时 GET_CAPABILITIES 暴露当前世界命令。
 
-不要寻找旧 EnableHotBackup 选项；一致性由配置请求 Prefer／Require 和运行时 provider 决定。若启用 PreservePlayerData，另测试全 UUID、false override、stats／advancements及布局兼容。
+不要寻找旧 EnableHotBackup 选项；一致性由配置请求 Prefer／Require 和运行时 provider 决定。若启用 PreservePlayerData，另测试全 UUID、false override、stats／advancements 及布局兼容。
 
 ## 下一步
 
@@ -33,7 +39,8 @@ reviewed_baseline: "1.9-api3.6"
 
 Bedrock 使用独立 Kind 的普通文件流程，先关闭游戏；不支持 Java 的 NBT 玩家保留、selected-regions 或当前世界 KnotLink 协调。Java 热备份能力不能直接套用到基岩版。
 
+<span id="下一步" />
+<span id="推荐设置" />
 <span id="步骤-1安装插件" />
 <span id="步骤-2扫描-minecraft" />
 <span id="步骤-3验证一次备份" />
-<span id="推荐设置" />

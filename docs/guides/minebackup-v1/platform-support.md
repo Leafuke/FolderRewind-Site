@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 的 Windows、Linux、macOS 桌面与命令行支
 
 # 平台支持与安装边界
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 1.16.2 的备份、还原、历史记录和核心数据契约跨平台一致；桌面集成与 headless CLI 是两种分发/运行边界，应分别判断。
 
 ## 支持矩阵
@@ -58,3 +60,10 @@ MineBackup 可以在向导或设置页下载并校验官方服务包，然后交
 4. 完成一次 Full 备份。
 5. 在测试目录或测试世界执行一次还原。
 6. 最后再启用热键、托盘、云同步或联动服务。
+
+<span id="knotlink-的平台差异" />
+<span id="macos-首次启动" />
+<span id="windows-service-mode-与-cli-的边界" />
+<span id="安装后的最小验证" />
+<span id="支持矩阵" />
+<span id="核心能力与桌面能力是两回事" />

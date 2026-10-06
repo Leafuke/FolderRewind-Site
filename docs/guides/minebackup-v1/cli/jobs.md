@@ -6,6 +6,8 @@ description: 说明 MineBackup 1.16.2 CLI Job、Stage、Step 的结构、执行�
 
 # Job 工作流
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 Job 适合把“已经验证过的工作”编排成一次可重复运行的流程。它不负责时间触发。
 
 > **Job 决定“做什么”，系统调度器决定“什么时候做”。**
@@ -107,3 +109,10 @@ Job 可能出现全部成功、全部失败、取消或部分成功。部分成�
 - 不要用删除 History 或归档的方式“清理”失败。
 
 Job 结构正确但运行时仍可能因为世界不存在、权限、7-Zip、Profile 占用或云后处理失败而报错；`doctor` 和[CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)是下一步。
+
+<span id="job-不包含时间调度" />
+<span id="jobstagestep-的心智模型" />
+<span id="manifest-中的-job-形状" />
+<span id="失败取消和部分成功" />
+<span id="安全的部署顺序" />
+<span id="查看和运行-job" />

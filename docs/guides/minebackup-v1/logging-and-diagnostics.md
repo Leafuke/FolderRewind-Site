@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 的结构化日志、会话记录与隐私安全�
 
 # 日志与诊断
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 MineBackup 1.16.2 的 GUI、后台备份、还原、自动任务、平台集成和 KnotLink 共用一条结构化日志路径。排查问题时，要区分 **Log 面板**、**会话日志**、**本地轮转文件** 和 **诊断导出**；它们的保存范围和隐私处理不同。
 
 ## 三个日志层次
@@ -79,3 +81,11 @@ minebackup-diagnostics-YYYYMMDD-HHMMSS.txt
 6. 导出诊断后人工检查脱敏结果，再连同最小复现步骤和相关时间段提供给维护者。
 
 相关页面：[故障排查](/docs/guides/minebackup-v1/troubleshooting)、[配置档与迁移](/docs/guides/minebackup-v1/data-and-migration)、[KnotLink v2 联动](/docs/guides/minebackup-v1/knotlink-integration) 和 [云归档](/docs/guides/minebackup-v1/cloud-archive)。
+
+<span id="cli-日志与-json-输出" />
+<span id="三个日志层次" />
+<span id="推荐排查顺序" />
+<span id="日志位置" />
+<span id="日志级别" />
+<span id="旧日志文件不再是当前机制" />
+<span id="诊断导出与脱敏" />

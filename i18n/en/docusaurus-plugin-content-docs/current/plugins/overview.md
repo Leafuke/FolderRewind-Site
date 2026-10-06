@@ -1,11 +1,13 @@
 ---
 sidebar_position: 1
 title: "Plugin system overview"
-description: "FolderRewind 1.9 plugin system overview: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Explore plugin discovery, backup, restore, map and command capabilities, Host responsibilities, compatibility and trusted installation sources."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Plugin system overview
+
+Explore plugin discovery, backup, restore, map and command capabilities, Host responsibilities, compatibility and trusted installation sources.
 
 FolderRewind1.9 Plugin System v3 uses a standalone BCL-only SDK, static declarations and capability registration; the current source API is3.6. The Host owns configuration, orchestration, history, retention, cloud ordering, integrity and target writes.
 
@@ -17,7 +19,7 @@ Plugins never save Host configuration directly, rewrite old archives in after-ho
 
 ## MineRewind
 
-FolderRewind 1.9.3 bundles MineRewind 1.9.5 requiring API3.6 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
+FolderRewind 1.9.6 bundles MineRewind 1.9.8 requiring API 3.9 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
 
 ## Install and trust
 
@@ -25,8 +27,15 @@ Catalog and manual `.frplugin` packages undergo static validation. New installs 
 
 See [management](/docs/plugins/using-plugins), [development](/docs/plugins/developing/quick-start) and [Minecraft](/docs/guides/minecraft/overview).
 
-<span id="what-plugins-can-do" />
-<span id="official-plugin" />
-<span id="install-plugins" />
+
+
+## Bundled and separate releases
+
+FolderRewind 1.9.6 bundles MineRewind 1.9.8 (API 3.9). The separate plugin Release and official catalog currently provide 1.9.5 (API 3.6), without map preview. Replacing the bundled version with that older package will not add new features. See [read-only preview](/docs/guides/minecraft/world-preview) for the Java map.
+
 <span id="become-a-plugin-developer" />
+<span id="install-plugins" />
+<span id="minerewind" />
+<span id="official-plugin" />
 <span id="related-links" />
+<span id="what-plugins-can-do" />

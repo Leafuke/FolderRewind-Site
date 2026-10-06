@@ -1,16 +1,8 @@
-import React, {type ComponentProps} from 'react';
 import MDXComponents from '@theme-original/MDXComponents';
 import type {MDXComponentsObject} from '@theme/MDXComponents';
-
-const MDXImage = MDXComponents.img;
+import DocScreenshot from '@site/src/components/DocScreenshot';
 
 export default {
   ...MDXComponents,
-  img: (props: ComponentProps<'img'>) => (
-    <MDXImage
-      {...props}
-      loading={props.loading ?? 'lazy'}
-      decoding={props.decoding ?? 'async'}
-    />
-  ),
+  img: DocScreenshot,
 } satisfies MDXComponentsObject;

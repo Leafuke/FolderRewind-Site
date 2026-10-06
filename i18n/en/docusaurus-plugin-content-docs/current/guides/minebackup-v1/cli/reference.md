@@ -6,6 +6,8 @@ description: A lookup table for MineBackup 1.16.2 CLI options, commands, JSON en
 
 # Commands, JSON, and Exit Codes
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 This page is a lookup table. For task-oriented deployment, return to the [five-minute quick start](/en/docs/guides/minebackup-v1/cli/quick-start), [Profiles and Manifests](/en/docs/guides/minebackup-v1/cli/profile-manifest), or [Backup, History, Verify, and Restore](/en/docs/guides/minebackup-v1/cli/backup-restore).
 
 ## Global options
@@ -123,3 +125,12 @@ The user tutorial explains why and what to do next. These main-repository docume
 - [`docs/profile-runtime-ipc.md`](https://github.com/Leafuke/MineBackup/blob/develop/docs/profile-runtime-ipc.md): Profile Runtime IPC v2, cancellation, message limits, and local permission boundaries.
 
 When this site’s tutorial differs from raw CLI output, follow the current CLI output, exit code, and main-repository implementation.
+
+<span id="engineering-references" />
+<span id="execution-commands" />
+<span id="exit-codes" />
+<span id="global-options" />
+<span id="json-envelope" />
+<span id="profile-commands" />
+<span id="profile-runtime-and-diagnostics" />
+<span id="query-commands" />

@@ -6,6 +6,8 @@ description: Running-world coordination, snapshots, hotkeys, and safety boundari
 
 # Hot Backup and Hot Restore
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Hot workflows are for worlds that are still running and may have locked files. They depend on occupancy detection, KnotLink, the companion mod, and bounded waits. They are a best-effort coordination layer, not a guarantee against every lock or communication failure.
 
 ## Default hotkeys
@@ -58,3 +60,9 @@ MineBackup uses a state machine to prevent concurrent hot restores. A second req
 5. Check rejoin status, world state, and logs.
 
 Do not repeatedly trigger a timed-out operation. Return to ordinary backup/restore first, then diagnose the integration.
+
+<span id="default-hotkeys" />
+<span id="first-drill" />
+<span id="hot-backup-flow" />
+<span id="hot-restore-flow" />
+<span id="preconditions-and-limits" />

@@ -6,11 +6,13 @@ import {useHomepageCopy} from './copy';
 import type {ScreenshotScene} from './screenshots';
 import styles from './styles.module.css';
 
-const scenes: ScreenshotScene[] = ['home', 'history', 'restore'];
+const scenes: ScreenshotScene[] = ['home', 'history', 'restore', 'merge', 'map'];
 const guides = {
   home: '/docs/guides/folder-management',
   history: '/docs/guides/history-timeline',
   restore: '/docs/getting-started/first-restore',
+  merge: '/docs/guides/history-branches',
+  map: '/docs/guides/minecraft/world-preview',
 };
 export default function Preview() {
   const copy = useHomepageCopy();
@@ -22,11 +24,11 @@ export default function Preview() {
       event.key === 'Home'
         ? 0
         : event.key === 'End'
-          ? 2
+          ? scenes.length - 1
           : event.key === 'ArrowRight'
-            ? (index + 1) % 3
+            ? (index + 1) % scenes.length
             : event.key === 'ArrowLeft'
-              ? (index + 2) % 3
+              ? (index + scenes.length - 1) % scenes.length
               : -1;
     if (next < 0) return;
     event.preventDefault();
@@ -85,7 +87,7 @@ export default function Preview() {
             )}
           </div>
         ))}
-        <p className={styles.version}>{copy.imageVersion}</p>
+        <p className={styles.version}>{active === 'merge' || active === 'map' ? copy.newImageVersion : copy.imageVersion}</p>
         <noscript>
           <p>
             {scenes.map((scene) => (

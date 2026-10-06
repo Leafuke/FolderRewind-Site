@@ -1,23 +1,8 @@
 {
-  "officialHostTag": "v1.9.3",
-  "officialHostPublishedAt": "2026-10-03T09:19:17Z",
+  "officialHostTag": "v1.9.6",
+  "officialHostPublishedAt": "2026-10-06T05:41:18Z",
   "catalogVerified": true,
-  "finalScreenshotsVerified": false,
-  "desktopCandidate": {
-    "displayedVersion": "1.9.2.0",
-    "sdkFileVersion": "3.5.0.0",
-    "executable": "artifacts/exe-repair-192/publish/x64/FolderRewind.exe",
-    "isolation": "FOLDERREWIND_TEST_DATA_ROOT in website artifacts/desktop-candidate",
-    "date": "2026-10-02",
-    "captures": [
-      "home-candidate.png",
-      "creation-candidate.png",
-      "discovery-candidate.png",
-      "cloud-candidate.png",
-      "settings-candidate.png"
-    ],
-    "scope": "Read-only navigation, empty creation and connection forms. No production data/configuration or cloud credentials were used. Folder picker was not exposed as a targetable automation window; canceled without committing."
-  },
+  "finalScreenshotsVerified": true,
   "manualScenarios": [
     {
       "name": "Setup installation/channel migration",
@@ -81,7 +66,22 @@
     "Final isolated desktop/game acceptance and remaining screenshots pending"
   ],
   "previousAutomatedExampleValidation": "passed against pinned source Runtime and locally packed SDK; not public NuGet restoration",
-  "publicReleaseVerification": {
+  "releasedDocumentationVerification": {
+    "date": "2026-10-03",
+    "siteChecks": "npm run check:all: passed",
+    "releasePolicyTests": 16,
+    "documentsPerLocale": 86,
+    "postsPerLocale": 14,
+    "builtPages": 208,
+    "preservedOriginalDocumentRoutes": 158,
+    "exampleValidationGroups": 8,
+    "publicSdk": "3.6.0 restored from NuGet.org in fresh package cache",
+    "publicReleaseGate": "passed with real streamed downloads",
+    "manualAcceptanceGate": "expected nonzero: 8 pending scenarios and final screenshots",
+    "guiAutomation": "not resumed",
+    "deployment": "not performed"
+  },
+  "previousPublicReleaseVerification": {
     "ready": true,
     "failures": [],
     "downloads": [
@@ -114,19 +114,65 @@
     "checkedAt": "2026-10-03T10:55:04.733Z",
     "manifestReview": "Pinned bundled package has the same SHA-256 as public bytes. All Catalog identity/API/architecture/services/artifact declarations match manifest; no Abstractions DLL."
   },
-  "releasedDocumentationVerification": {
-    "date": "2026-10-03",
-    "siteChecks": "npm run check:all: passed",
-    "releasePolicyTests": 16,
-    "documentsPerLocale": 86,
-    "postsPerLocale": 14,
-    "builtPages": 208,
+  "previousDesktopCandidate": {
+    "displayedVersion": "1.9.2.0",
+    "sdkFileVersion": "3.5.0.0",
+    "executable": "artifacts/exe-repair-192/publish/x64/FolderRewind.exe",
+    "isolation": "FOLDERREWIND_TEST_DATA_ROOT in website artifacts/desktop-candidate",
+    "date": "2026-10-02",
+    "captures": [
+      "home-candidate.png",
+      "creation-candidate.png",
+      "discovery-candidate.png",
+      "cloud-candidate.png",
+      "settings-candidate.png"
+    ],
+    "scope": "Read-only navigation, empty creation and connection forms. No production data/configuration or cloud credentials were used. Folder picker was not exposed as a targetable automation window; canceled without committing."
+  },
+  "desktopCandidate": {
+    "displayedVersion": "1.9.6.0",
+    "bundledPlugin": "1.9.8",
+    "executable": "../artifacts/manual-setup/1.9.6.0-x64-20261006-132217/publish/FolderRewind.exe",
+    "date": "2026-10-06",
+    "configurationSnapshot": "artifacts/refresh-196/config-before",
+    "captureManifests": [
+      "static/img/homepage/manifest.json",
+      "static/img/docs/v1-9-6/manifest.json"
+    ],
+    "scope": "Real existing demo config; test sources only for restore/merge; synthetic persisted terrain; blank cloud password; automation draft discarded."
+  },
+  "siteRefreshValidation": {
+    "date": "2026-10-06",
+    "checkAll": "passed",
+    "documentsPerLocale": 87,
+    "postsPerLocale": 16,
+    "builtPages": 214,
     "preservedOriginalDocumentRoutes": 158,
-    "exampleValidationGroups": 8,
-    "publicSdk": "3.6.0 restored from NuGet.org in fresh package cache",
-    "publicReleaseGate": "passed with real streamed downloads",
-    "manualAcceptanceGate": "expected nonzero: 8 pending scenarios and final screenshots",
-    "guiAutomation": "not resumed",
-    "deployment": "not performed"
+    "captureVariants": 84,
+    "browser": "Chinese/English home, English map/restore and Chinese restore docs, dark/light assets, 1440/1024/768/390/320px; keyboard tabs/dialog Escape/focus; Chinese/English search passed; no console errors observed",
+    "reducedMotion": "source verified; OS preference emulation not exposed by browser tool, live reduced-motion check pending",
+    "fileOperations": "artifacts/refresh-196/desktop-file-results.json",
+    "coreValidation": "passed: repository packs/index/runtime health and 7-Zip path only; not Full/Smart/Rolling restore validation",
+    "cleanup": "passed no-op at keep10; actual deletion/rebuild pending",
+    "legacyMigration": "existing 3 RestrictedReady and 2 pending; verification invoked for Smart3 but final result not captured; no legacy restore performed",
+    "deployment": "not performed",
+    "finalDemoState": "Chinese/light, project draft selected for manager/history, app Home; existing config and new test backups preserved",
+    "manualAcceptanceGate": "expected nonzero: eight broad scenarios still incomplete"
+  },
+  "knownApplicationObservations": [
+    "History import UI says merge/replace; native history imports union/deduplicate. Website documents actual behavior.",
+    "Some English system on/off labels remain Chinese on Chinese Windows.",
+    "Historical entry labels preserve their original language."
+  ],
+  "userFeedbackRevision": {
+    "date": "2026-10-06",
+    "homepage": "Original copy and 24 responsive asset files restored byte-for-byte; only merge/map added, with 1.9.4/1.9.6 per-scene labels",
+    "map": "Real world 26_1极限生存; user-arranged Chinese view and matching English camera; no world writes",
+    "retiredContent": "1.8 migration/startup-repair instructions removed; sidebar entry removed; unlisted bookmark destinations retained",
+    "design": "Homepage gray/teal surface extended to downloads, changelog list, pagination and article detail",
+    "checks": "npm run check:all passed; 212 sitemap pages, 158 original bilingual routes/anchors, 96 capture variants",
+    "preview": "http://127.0.0.1:4173/",
+    "rawEvidence": "artifacts/refinement-196/map-user-arranged.png; artifacts/refresh-196/captures/map-real-*.png",
+    "uncompletedExternalScenarios": "Previously pending cloud/game/install/deletion scenarios unchanged"
   }
 }

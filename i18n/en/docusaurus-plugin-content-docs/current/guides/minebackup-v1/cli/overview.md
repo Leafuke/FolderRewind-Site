@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 headless CLI, its relationship with the GUI, use 
 
 # CLI and Server Overview
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 When MineBackup needs to run on a Minecraft Dedicated Server, VPS, NAS, or SSH-only Linux host, `minebackup-cli` is the official entry point for configuring, backing up, verifying, and rehearsing a cold restore without starting the GUI. It is provided as a headless/server mode starting with MineBackup 1.16.2.
 
 ## What is the CLI?
@@ -75,3 +77,9 @@ profile apply → doctor → backup → history → verify
         ↓
 restore --dry-run
 ```
+
+<span id="cli-is-not-the-same-as-serve" />
+<span id="how-do-cli-and-gui-fit-together" />
+<span id="recommended-learning-path" />
+<span id="what-is-the-cli" />
+<span id="when-should-you-choose-the-cli" />

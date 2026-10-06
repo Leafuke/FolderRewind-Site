@@ -1,14 +1,13 @@
 ---
 title: Death Rewind
 description: Rewind to the latest MineBackup archive from the death screen in Fabric singleplayer worlds
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Death Rewind
-:::info[FolderRewind1.9 backend baseline]
-For this site's current workflow use an API3.6 FolderRewind1.9 Host and MineRewind1.9.5. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
+:::info[FolderRewind 1.9.6 backend baseline]
+For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
 :::
-
 
 Death Rewind is an add-on mod for MineBackup. It periodically asks MineBackup to create checkpoints and adds a “Rewind To A Few Minutes Ago” entry to the death screen in singleplayer worlds.
 
@@ -115,3 +114,11 @@ If the first periodic checkpoint has not completed and FolderRewind has no archi
 - [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
 
 Run a full “create checkpoint → die → rewind → rejoin” drill in a test world before relying on the extension.
+
+<span id="archive-retention-and-boundaries" />
+<span id="default-configuration" />
+<span id="installation" />
+<span id="periodic-checkpoints" />
+<span id="related-documentation" />
+<span id="rewinding-from-the-death-screen" />
+<span id="support-and-prerequisites" />

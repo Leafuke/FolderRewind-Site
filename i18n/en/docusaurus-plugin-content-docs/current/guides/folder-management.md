@@ -1,37 +1,43 @@
 ---
 sidebar_position: 3
-title: "Source management, renaming and historical bindings"
-description: "FolderRewind 1.9 source management, renaming and historical bindings: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Manage folders and historical bindings"
+description: "Add and organize backup sources, edit ranges, rename folders and keep their historical source bindings."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Source management, renaming and historical bindings
+# Manage folders and historical bindings
 
-## Add and scope
+Choose a backup project in management to add sources, inspect status and run backups. Each source has a stable identity linking its current directory to history.
 
-Add directories/subdirectories or reviewed discovery resources. Stable Source IDs differ from paths/display names. Edit All/Include and preview effective files; source/destination overlap blocks.
+![A demonstration source and its actions in management.](/img/docs/v1-9-6/manager-en-light-1604.webp)
 
-## Rename
+*A demonstration source and its actions in management. Interface version: 1.9.6.*
 
-Use the source menu and review source/archive/related local metadata and config/automation references before the transaction. Failure attempts rollback; incomplete rollback requires path/config review before new operations.
+## Add and organize sources
 
-Renaming does not rewrite immutable historical identities or physically rename all cloud objects. Old Version/Source IDs and saved Replica locators remain facts. Inspect repaired local locators instead of batch-renaming archives in Explorer.
+Use Add folder for one directory, subdirectories or plugin discovery results. Check that source and archive locations do not overlap. Add a useful name and description; favorite a source for quick access from home.
 
-## Historical bindings
+When editing its range, choose all content or relative inclusion rules and inspect the effective file preview. Names and paths can change, but another folder with the same name cannot replace source identity.
 
-When Restore/Checkout needs a missing source, confirm a path and reinstate its original stable identity. Exporting to a new directory differs from restoring a historical source binding; matching labels are insufficient.
+## Rename a folder
 
-## Verify
+Choose Rename in the source action menu. Review the proposed changes to source directories, archive locations, metadata and configuration references. Resolve naming conflicts before confirming.
 
-Check paths/scopes/automation, old materializability and new lineage; verify old/new cloud copies. Rediscovery must preserve manual edits through review.
+The app attempts rollback on failure. If rollback also fails, check path and configuration consistency before another backup or restore. Existing cloud objects and immutable history are not all physically renamed with the local label. Avoid bulk archive renaming in File Explorer.
 
-## Failed saves
+## Rebind historical sources
 
-Interactive configuration changes in 1.9.3 save asynchronously and roll back on failure. Wait for the result, inspect diagnostics and reloaded paths, scopes and identities; UI input alone does not establish persisted configuration. Retain error logs, resolve permissions or disk issues and save again.
+When restoring or checking out history, an old source may lack a current path. Confirm its real location and retain the original stable identity when rebinding. Exporting files to another directory is separate from restoring that historical binding.
 
-<span id="where-to-rename" />
-<span id="name-and-conflict-validation" />
-<span id="what-the-transaction-migrates" />
+## Check after saving
+
+Wait for the save result, then check directories, ranges, automation targets and older versions. Failed configuration saves roll back. Fix permissions or disk issues before retrying; unsaved input is not an effective configuration.
+
+Minecraft Java sources can open [map preview](/docs/guides/minecraft/world-preview) from their action menu. Ordinary folders can use the [mini window](/docs/guides/mini-window) for everyday backups.
+
 <span id="cloud-objects-are-not-physically-renamed" />
+<span id="name-and-conflict-validation" />
 <span id="post-rename-checklist" />
 <span id="related-links" />
+<span id="what-the-transaction-migrates" />
+<span id="where-to-rename" />

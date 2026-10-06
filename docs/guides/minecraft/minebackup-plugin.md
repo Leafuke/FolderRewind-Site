@@ -1,14 +1,13 @@
 ---
 title: MineBackupPlugin（Spigot/Paper 联动插件）
 description: 为 Spigot 和 Paper 专用服务器提供 FolderRewind/MineBackup 联动能力，通过 KnotLink 协议请求备份与热还原，并由纯 JDK Sidecar 安全交接文件释放流程
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # MineBackupPlugin（Spigot/Paper 联动插件）
 :::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API3.6 的 FolderRewind1.9与MineRewind1.9.5；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
 :::
-
 
 MineBackupPlugin 是 Minecraft 模组化服务端之外的联动方案，面向 Spigot、Paper 以及兼容 Bukkit/Spigot API 的专用服务器。它不自行存储备份，而是负责保存世界、通过 KnotLink 请求 MineBackup 或 FolderRewind 执行备份，并在还原时把停服后的文件释放流程交给纯 JDK Sidecar。
 
@@ -159,3 +158,12 @@ logging:
 - [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)：协议和热备份/热还原握手细节。
 
 正式世界启用前，请在测试服完整演练一次“备份—还原—启动—手动重连”闭环。
+
+<span id="knotlink-不可用时会怎样" />
+<span id="与其他联动组件的关系" />
+<span id="专用服务器热还原与-sidecar" />
+<span id="前置与安装" />
+<span id="命令参考" />
+<span id="热备份" />
+<span id="适用范围" />
+<span id="默认配置" />

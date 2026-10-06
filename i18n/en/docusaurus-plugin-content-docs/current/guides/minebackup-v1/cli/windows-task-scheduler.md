@@ -6,6 +6,8 @@ description: Deploy the MineBackup 1.16.2 Serve and Job tasks with the official 
 
 # Windows Task Scheduler
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Windows servers use the two XML templates supplied in the official package:
 
 ```text
@@ -137,3 +139,11 @@ Task Scheduler
 - Job returns `partial_success`: inspect every Stage/Step diagnostic; do not treat partial success as a complete backup.
 
 See [Commands, JSON, and exit codes](/en/docs/guides/minebackup-v1/cli/reference) for the response envelope and exit-code table.
+
+<span id="1-prepare-the-cli-profile-and-manifest" />
+<span id="2-run-the-job-manually-first" />
+<span id="3-replace-the-official-xml-placeholders" />
+<span id="4-import-the-serve-task" />
+<span id="5-import-the-job-task-and-trigger-it-manually" />
+<span id="deployment-order" />
+<span id="diagnose-a-failed-task" />

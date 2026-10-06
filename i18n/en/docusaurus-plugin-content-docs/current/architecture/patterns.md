@@ -1,11 +1,13 @@
 ---
 sidebar_position: 2
 title: "Architecture patterns and transaction boundaries"
-description: "FolderRewind 1.9 architecture patterns and transaction boundaries: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Understand MVVM, explicit dependencies and transaction boundaries for cancellable operations and reliable state commits."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Architecture patterns and transaction boundaries
+
+Understand MVVM, explicit dependencies and transaction boundaries for cancellable operations and reliable state commits.
 
 ## MVVM and interactions
 
@@ -25,9 +27,9 @@ Journals, isolated staging/quarantine and idempotent compensation handle interru
 
 Discovery/reconciliation return drafts/patches for Host persistence. Artifact transactions append nodes; materializers write isolated workspaces. Snapshots/proposals/validation/commit replace ordered hooks and writable Host models.
 
-<span id="mvvm-pattern" />
-<span id="static-service-architecture" />
-<span id="shell-navigation-pattern" />
 <span id="configuration-driven-design" />
+<span id="mvvm-pattern" />
 <span id="partial-class-organization" />
 <span id="serialization-strategy" />
+<span id="shell-navigation-pattern" />
+<span id="static-service-architecture" />

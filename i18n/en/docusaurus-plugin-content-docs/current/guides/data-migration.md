@@ -1,45 +1,59 @@
 ---
 sidebar_position: 8
-title: "Migrating configuration, history and payloads"
-description: "FolderRewind 1.9 migrating configuration, history and payloads: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+title: "Move configuration, history and archives"
+description: "Move configuration, history and archives separately when changing computers or installation channels, then verify paths and restore results."
+reviewed_baseline: "1.9-api3.9"
 ---
 
-# Migrating configuration, history and payloads
+# Move configuration, history and archives
 
-Transfer config.json, immutable history facts and physical backup bytes separately. Exporting one does not preserve the others; Workspace/Replica Catalog and DPAPI credentials also have device boundaries.
+When changing computers or installation channels, preserve configuration, history and archive bytes separately. Exporting one does not guarantee restoration on another device.
 
-## Configuration
+![Export configuration and history separately. Native-history import merges and deduplicates packs.](/img/docs/v1-9-6/migration-detail-en-light-1310.webp)
 
-Settings data migration supports local JSON or validated cloud connections. Back up before replacement and review paths. Config import does not migrate local encryption password material. Use Recovery Center for corruption rather than deleting files.
+*Export configuration and history separately. Native-history import merges and deduplicates packs. Interface version: 1.9.6.*
 
-## History transfer
+## Prepare three kinds of data
 
-`.frhistory` ZIP contains manifest/repository.json/packs with IncludesPayloads=false. Current export uses the last selected history config, falling back to the first config. Open the desired config in history before export and verify manifest ConfigId.
+| Data | Contains | Also needs |
+| --- | --- | --- |
+| Configuration export | Projects, sources and settings | New device paths, plugins and encryption passwords |
+| `.frhistory` | Repository information and immutable history packs | Actual archives and all dependencies |
+| Archives or trusted cloud replicas | Recoverable file contents | Matching history, source bindings and decryption material |
 
-Import unions/deduplicates immutable facts, without the old history.json replace-list semantics. Invalid format/hash/identity is rejected. Without a matching runtime config an orphan repository may be imported, not a full source configuration. Repeated Pack import is idempotent.
+Local workspace state, indexes, replica locations and DPAPI password material have device boundaries. A history export does not transfer all of them.
 
-## Bytes and device paths
+## Export and import configuration
 
-Copy archives or prepare trusted cloud replicas/full dependency closure independently. History import does not automatically turn old absolute paths into valid new-device realizations. Confirm bindings/locators; if necessary recover into a new directory and create a new config.
+Stop automatic tasks on the old client and keep a complete data copy. Export through Data migration in Settings, using local JSON or a verified cloud connection.
 
-## Order and acceptance
+Configuration import replaces current settings, so preserve the destination device's original configuration first. Check sources, archive locations, plugins and passwords. Importing `config.json` does not make old paths valid or migrate local password storage.
 
-Exit old clients→back up data/archives→install matching channel/version→import config→per-config facts→prepare payloads/dependencies→check sources/plugins/encryption/runtime→test restores/loading→automation.
+## Export and import history
 
-Cloud union does not transfer Workspace or pick device-time winners. Use pre-upgrade copies for rollback;1.8 must not rewrite1.9 packs.
+Open the intended project in history before exporting `.frhistory`, then check `ConfigId` in its manifest. With no selected project, export uses the first configuration; choose explicitly beforehand.
 
-## Taking over 1.8.2 history
+The transfer contains a manifest, `repository.json` and `packs`, with `IncludesPayloads=false`. Native-history import unions immutable facts and deduplicates packs. Reimporting the same pack does not add it twice. Without a matching project it may create an orphan repository, not a complete source configuration.
 
-After upgrading, open the legacy takeover report in History and check source assignment, archive locations and verification. Migrated versions may still have unknown deletion boundaries: recover to a new directory or use non-deleting Overwrite. A new Full backup establishes a known boundary for advanced history. See the [report workflow](/docs/getting-started/v1-9-upgrade#193-legacy-takeover-report). Old cloud settings are not carried forward automatically; retain remote archives and Smart dependencies before configuring a new connection.
+The UI may still show legacy “merge or replace” wording. Native history uses merge and deduplication, not the old list-replacement behavior of `history.json`.
 
-<span id="entry" />
+## Move archives and verify
+
+Copy archives and incremental dependencies separately, or prepare trusted cloud replicas. Old absolute paths do not automatically become valid locations on the new device. Check bindings and available archives; recover to a new directory first if necessary.
+
+After import, restore a test copy and check files and application loading before enabling automation. Cloud history synchronization does not move the local workspace or overwrite another device's history by timestamp.
+
+## Upgrading from 1.8 or rolling back
+
+Review the [legacy takeover report](/docs/getting-started/v1-9-upgrade#193-legacy-takeover-report) during upgrade. Unknown deletion boundaries permit overlay or new-directory recovery. Roll back with independent pre-upgrade copies; do not let a 1.8 client modify a 1.9 repository.
+
 <span id="config-migration" />
+<span id="entry" />
 <span id="export-config" />
-<span id="import-config" />
-<span id="history-migration" />
 <span id="export-history" />
+<span id="history-migration" />
+<span id="import-config" />
 <span id="import-history" />
-<span id="recommended-order-on-a-new-pc" />
 <span id="notes" />
+<span id="recommended-order-on-a-new-pc" />
 <span id="related-links" />

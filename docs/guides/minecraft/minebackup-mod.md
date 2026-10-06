@@ -2,14 +2,13 @@
 sidebar_position: 2
 title: MineBackup-Mod（模组化服务端联动）
 description: 当前 MineBackup-Mod 的安装、命令、热备份、热还原与专用服务端 Sidecar 说明
-reviewed_baseline: "1.9-api3.6"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # MineBackup-Mod（模组化服务端联动）
 :::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API3.6 的 FolderRewind1.9与MineRewind1.9.5；游戏侧组件的最低版本／加载器矩阵仍按其自身Release。旧1.8最低要求不代表v2插件能在1.9加载。备份参数使用full／smart；未指定file的快速还原由Host按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端Sidecar不等于客户端重连。
+接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
 :::
-
 
 MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRewind 与游戏运行时。它负责游戏内命令、世界保存、热备份前协同、热还原前退出，以及还原后的自动重进。
 
@@ -131,3 +130,13 @@ dedicatedRestore.operationTimeoutSeconds=3600
 - [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
 - [热备份机制详解](/docs/guides/minecraft/hot-backup)
 - [热还原机制详解](/docs/guides/minecraft/hot-restore)
+
+<span id="专用服务端-sidecar-还原" />
+<span id="它和其他组件如何分工" />
+<span id="安装前置" />
+<span id="常见边界" />
+<span id="支持范围" />
+<span id="游戏内命令" />
+<span id="热备份流程" />
+<span id="热还原流程" />
+<span id="相关文档" />

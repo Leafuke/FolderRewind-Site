@@ -1,13 +1,15 @@
 ---
 sidebar_position: 20
 title: "Capabilities, configuration and operation contracts"
-description: "FolderRewind 1.9 capabilities, configuration and operation contracts: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Design discovery, scope, consistency and restore capabilities using snapshots, leases, cancellation and one-shot continuations."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Capabilities, configuration and operation contracts
 
-These are API 3.6 ownership and operation boundaries; use the SDK and [API overview](/docs/plugins/developing/plugin-api) for signatures.
+Design discovery, scope, consistency and restore capabilities using snapshots, leases, cancellation and one-shot continuations.
+
+These are API 3.9 ownership and operation boundaries; use the SDK and [API overview](/docs/plugins/developing/plugin-api) for signatures.
 
 ## Discovery and reconciliation
 
@@ -38,4 +40,3 @@ Player preservation override is null/true/false. SupportsPlayerDataOverride defa
 ## One-shot preservation service options
 
 `RestoreRequestOptions.RestorePreservePaths` provides relative selectors for ordinary Restore/Quick Restore, with current bytes and deletions taking precedence. The Host validates scope and applies staging; plugins cannot write live sources directly. Unlike `RestoreWhitelist`, archive content does not win at the same path. Checkout/Merge do not use this option. See [filter limits](/docs/guides/filters#one-shot-file-and-directory-preservation).
-

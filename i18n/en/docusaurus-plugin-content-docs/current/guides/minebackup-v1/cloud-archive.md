@@ -6,6 +6,8 @@ description: Use rclone to synchronize history, archives, and portable configura
 
 # Cloud Archive
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup uses rclone for cloud transport while MineBackup owns configuration, queueing, history analysis, metadata relationships, and safety prompts. Cloud archive supplements local backups; it does not replace local restore verification.
 
 ## Prerequisites
@@ -80,3 +82,10 @@ A configuration added from the cloud is **Pending Local Binding**. Bind local pa
 - Timeouts or exhausted retries: keep the local archive and inspect the log exit code and remote error.
 
 For the first rollout, rehearse local Full → upload → cloud analysis/download → local restore. Only connect cloud synchronization to automation after this succeeds.
+
+<span id="configure-the-remote" />
+<span id="per-item-history-actions" />
+<span id="portable-configuration-exchange" />
+<span id="prerequisites" />
+<span id="troubleshooting" />
+<span id="two-synchronization-modes" />

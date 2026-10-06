@@ -6,6 +6,8 @@ description: Deploy a Linux server with MineBackup 1.16.2 CLI, the official syst
 
 # Linux and systemd
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 This page puts a verified CLI Profile into a Linux production chain:
 
 ```text
@@ -188,3 +190,12 @@ Common boundaries:
 - Permission denied: check the Unix account used by the unit, not only the SSH account.
 
 Continue with [Commands, JSON, and exit codes](/en/docs/guides/minebackup-v1/cli/reference) and [CLI troubleshooting](/en/docs/guides/minebackup-v1/cli/troubleshooting).
+
+<span id="1-install-the-cli" />
+<span id="2-prepare-the-profile-save-root-and-backup-root" />
+<span id="3-prepare-and-validate-the-manifest" />
+<span id="4-run-one-job-manually" />
+<span id="5-configure-the-official-env" />
+<span id="6-use-the-repository-provided-unit-files" />
+<span id="7-enable-serve-then-enable-the-timer" />
+<span id="layered-diagnosis-when-no-backup-appears" />

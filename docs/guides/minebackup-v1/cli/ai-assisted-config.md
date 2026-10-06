@@ -6,7 +6,9 @@ description: MineBackup 1.16.2 命令行配置中使用人工智能助手的安�
 
 # 使用 AI 生成配置
 
-> **AI 是可选的配置助手，不是 MineBackup 配置验证器。** CLI is source of truth；任何 AI 输出都必须回到 `profile validate`、`profile diff`、`profile apply --dry-run`、`profile apply` 和 `doctor`。
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
+> **AI 是可选的配置助手，不是 MineBackup 配置验证器。** 以 CLI 的验证结果为准；任何 AI 输出都必须回到 `profile validate`、`profile diff`、`profile apply --dry-run`、`profile apply` 和 `doctor`。
 
 :::caution[不要把秘密交给公共 AI]
 
@@ -412,3 +414,9 @@ CLI 命令和原始输出：
 6. 首次流程不使用 prune，不执行确认后的真实 restore。
 
 如果 CLI 输出与 AI 的判断冲突，以 CLI 错误、退出码和 `doctor` 结果为准，并保留原始 JSON 继续排查。
+
+<span id="prompt-1推荐修改官方模板" />
+<span id="prompt-2从零生成-manifest" />
+<span id="prompt-3审计和修复已有-manifest" />
+<span id="三种使用方案" />
+<span id="使用-ai-后的最低检查" />

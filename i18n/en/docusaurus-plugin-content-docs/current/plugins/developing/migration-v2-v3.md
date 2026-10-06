@@ -1,11 +1,13 @@
 ---
 sidebar_position: 20
 title: "Migrating v2 plugins to v3 and recovering failures"
-description: "FolderRewind 1.9 migrating v2 plugins to v3 and recovering failures: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Move legacy v2 plugin responsibilities to independent API 3 contracts and redesign activation, discovery, settings, backup and restore."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Migrating v2 plugins to v3 and recovering failures
+
+Move legacy v2 plugin responsibilities to independent API 3 contracts and redesign activation, discovery, settings, backup and restore.
 
 Plugin System v3 is a clean break: old v2 code is not loaded. One-time user-data migration is not runtime compatibility. Back up config, plugin data and archives; authors reimplement against the independent SDK.
 
@@ -32,5 +34,3 @@ The Host can migrate legacy MineRewind data offline using the bundled v3 package
 Corrupt config enters Recovery Center: preserve diagnostics/original files and use controlled recovery. --safe-mode suppresses code without rewriting Enabled Intent. Let startup journals recover interrupted migration/uninstall; never delete config.json/quarantine/history wholesale.
 
 Verify identities, state, settings, runtime health and restores before restarting automation. RecoveryRequired blocks destructive operations until resolved.
-
-

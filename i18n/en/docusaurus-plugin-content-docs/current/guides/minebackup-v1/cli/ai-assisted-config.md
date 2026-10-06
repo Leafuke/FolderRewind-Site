@@ -6,6 +6,8 @@ description: Safely use ChatGPT, Claude, Gemini, and other AI assistants with Mi
 
 # Use AI to Generate a Configuration
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 > **AI is optional.** It is a configuration assistant, not a MineBackup validator. The **CLI is the source of truth**. Every AI output must still pass `profile validate`, `profile diff`, `profile apply --dry-run`, `profile apply`, and `doctor`.
 
 :::caution Do not share secrets with public AI services
@@ -361,3 +363,9 @@ If the dry run still fails, ask me for the new raw CLI output instead of making 
 6. Do not use prune or perform a confirmed real restore during the initial flow.
 
 When CLI output conflicts with an AI suggestion, follow the CLI error, exit code, and `doctor` result, and preserve the raw JSON for further diagnosis.
+
+<span id="minimum-checks-after-using-ai" />
+<span id="prompt-1--recommended-edit-an-official-template" />
+<span id="prompt-2--generate-a-manifest-from-scratch" />
+<span id="prompt-3--audit-and-repair-an-existing-manifest" />
+<span id="three-ways-to-use-an-ai-assistant" />

@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 CLI 的全局选项、命令语法、JSON envelop
 
 # 命令、JSON 与退出码
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 本页只做查表。需要按任务部署时，回到[5 分钟快速开始](/docs/guides/minebackup-v1/cli/quick-start)、[Profile 与 Manifest](/docs/guides/minebackup-v1/cli/profile-manifest)或[备份、历史、校验与还原](/docs/guides/minebackup-v1/cli/backup-restore)。
 
 ## 全局选项
@@ -123,3 +125,12 @@ restore --config <ConfigId> --world <relative-path> \
 - [`docs/profile-runtime-ipc.md`](https://github.com/Leafuke/MineBackup/blob/develop/docs/profile-runtime-ipc.md)：Serve 的 Profile Runtime IPC v2、取消、消息限制和本机权限边界。
 
 当网站教程与 CLI 原始输出不一致时，以当前 CLI 输出、退出码和主仓库实现为准。
+
+<span id="json-envelope" />
+<span id="profile-runtime-与诊断" />
+<span id="profile-命令" />
+<span id="全局选项" />
+<span id="工程级-reference" />
+<span id="执行命令" />
+<span id="查询命令" />
+<span id="退出码" />

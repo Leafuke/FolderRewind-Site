@@ -1,11 +1,13 @@
 ---
 sidebar_position: 3
 title: "Namespaces and contract entrypoints"
-description: "FolderRewind 1.9 namespaces and contract entrypoints: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Locate implementation entrypoints by namespace and distinguish Host models, public plugin contracts and runtime responsibilities."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Namespaces and contract entrypoints
+
+Locate implementation entrypoints by namespace and distinguish Host models, public plugin contracts and runtime responsibilities.
 
 | Namespace | Responsibility |
 |---|---|
@@ -22,5 +24,3 @@ reviewed_baseline: "1.9-api3.6"
 | FolderRewind.Plugin.Runtime | Host runtime implementation |
 
 Plugin authors import IFolderRewindPlugin/capabilities from Abstractions, not old Host Services.Plugins/Models namespaces. Namespaces/display names are not product identities; manifest API controls compatibility.
-
-

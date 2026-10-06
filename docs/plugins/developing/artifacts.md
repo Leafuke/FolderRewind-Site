@@ -1,13 +1,15 @@
 ---
 sidebar_position: 20
 title: "制品转换、物化与版本元数据"
-description: "FolderRewind 1.9 系列制品转换、物化与版本元数据操作说明：依据当前源码核对配置、执行与失败处理，帮助用户验证备份保护范围、可还原性和版本兼容边界。"
-reviewed_baseline: "1.9-api3.6"
+description: "实现不可变制品转换和隔离还原物化，核对格式身份、依赖、元数据与提交边界。"
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # 制品转换、物化与版本元数据
 
-API 3.6 中 Artifact 是 Host 管理的不可变载荷节点，与 Source Version、Representation 和 Replica 不同。格式由 owner-qualified ArtifactFormatRef 与格式版本标识；扩展名或插件产品版本不决定格式。
+实现不可变制品转换和隔离还原物化，核对格式身份、依赖、元数据与提交边界。
+
+API 3.9 中 Artifact 是 Host 管理的不可变载荷节点，与 Source Version、Representation 和 Replica 不同。格式由 owner-qualified ArtifactFormatRef 与格式版本标识；扩展名或插件产品版本不决定格式。
 
 ## 转换事务
 
@@ -32,5 +34,3 @@ IFolderMetadataCapability 描述当前 live 文件夹用于界面。IVersionMeta
 ## 验证建议
 
 验证失败转换、过期 revision、缺失依赖、格式不兼容、非法相对路径、取消、恢复失败及提交后故障。只证明文件能解压不足以证明游戏能加载；Minecraft 的 .mca／NBT 首发按保守文件冲突处理，不承诺语义合并。
-
-

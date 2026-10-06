@@ -1,11 +1,13 @@
 ---
 sidebar_position: 2
 title: "Tutorial: GameRewind v3 plugin"
-description: "FolderRewind 1.9 tutorial: gamerewind v3 plugin: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Learn discovery, file policies and commands through the buildable GameRewind example, with operations performed through Host services."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Tutorial: GameRewind v3 plugin
+
+Learn discovery, file policies and commands through the buildable GameRewind example, with operations performed through Host services.
 
 GameRewind is a buildable API 3.6 example. It discovers supplied roots containing save.dat, proposes drafts, excludes cache files, and asks the Host to back up a config or run a side-effect-free ECHO.
 
@@ -49,21 +51,21 @@ See [capability contracts](/docs/plugins/developing/capabilities) and the [API r
 The GameRewind example checks only supplied `UserRoots` containing `save.dat`; it defines no known-location catalog. A production provider may merge read-only machine hints when `IncludeKnownLocations=true`; false keeps selected-root scope. Do not scan entire drives, write launcher settings or persist candidates directly as configurations.
 
 <span id="0-project-initialization" />
-<span id="create-the-project" />
-<span id="write-manifestjson" />
-<span id="create-the-main-class-skeleton" />
 <span id="1-config-type-registration--auto-discovery" />
-<span id="register-config-types" />
-<span id="auto-discover-save-directories" />
-<span id="batch-create-configs" />
 <span id="2-backup-hooks-snapshots--filtering" />
-<span id="before-backup-create-a-snapshot" />
-<span id="after-backup-clean-up-the-snapshot" />
-<span id="filter-unwanted-files" />
 <span id="3-restore-hooks-preserving-user-data" />
 <span id="4-plugin-settings" />
 <span id="5-hotkeys" />
 <span id="6-parameterized-knotlink-commands" />
 <span id="7-packaging--publishing" />
+<span id="after-backup-clean-up-the-snapshot" />
+<span id="auto-discover-save-directories" />
+<span id="batch-create-configs" />
+<span id="before-backup-create-a-snapshot" />
 <span id="complete-source-code" />
+<span id="create-the-main-class-skeleton" />
+<span id="create-the-project" />
+<span id="filter-unwanted-files" />
 <span id="next-steps" />
+<span id="register-config-types" />
+<span id="write-manifestjson" />

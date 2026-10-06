@@ -6,6 +6,8 @@ description: Special configurations, command tasks, and unattended execution rul
 
 # Special Config
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Special Config is designed for an unattended flow: start in a special mode, run a task set, and optionally exit. It is not merely an alias for a normal configuration; it has a stable identity and its own task queue.
 
 :::note Server and headless boundary
@@ -63,3 +65,12 @@ Use Sequential for “backup, then command” and Parallel only when targets are
 - Background work does not stop: inspect logs and stop through the UI/task coordinator instead of deleting temporary files.
 
 Once Special Config is stable, combine it with [Profiles, portable mode, and migration](/en/docs/guides/minebackup-v1/data-and-migration) or [Cloud archive](/en/docs/guides/minebackup-v1/cloud-archive) carefully.
+
+<span id="backup" />
+<span id="command" />
+<span id="common-failures" />
+<span id="core-switches" />
+<span id="execution-order" />
+<span id="recommended-setup" />
+<span id="script" />
+<span id="task-types" />

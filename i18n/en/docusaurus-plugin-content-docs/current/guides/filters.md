@@ -1,11 +1,17 @@
 ---
 sidebar_position: 5
 title: "Source scopes, filters and restore whitelists"
-description: "FolderRewind 1.9 source scopes, filters and restore whitelists: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Choose source ranges, backup filters and restore preservation rules, then confirm the protected files in the effective preview."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Source scopes, filters and restore whitelists
+
+Choose source ranges, backup filters and restore preservation rules, then confirm the protected files in the effective preview.
+
+![Review backup filters and restore-preservation rules on the Filters tab.](/img/docs/v1-9-6/filters-en-light-1604.webp)
+
+*Review backup filters and restore-preservation rules on the Filters tab. Interface version: 1.9.6.*
 
 ## Ordering and boundaries
 
@@ -33,17 +39,17 @@ KnotLink `restore_preserve_paths` / SDK `RestoreRequestOptions.RestorePreservePa
 
 At most 16 selectors are allowed, with staging limited to 4096 file operations and 64 MiB of current bytes. Selectors must stay inside the effective managed boundary. Minecraft paths are relative to the unique managed world root; ambiguous roots are rejected. Invalid scope or limits fail the operation rather than silently dropping preservation. Checkout/Merge do not use this override.
 
-<span id="where-to-configure" />
-<span id="three-filter-lists" />
 <span id="backup-filter-mode" />
-<span id="blacklist-backup-stage" />
-<span id="supported-matching-methods" />
-<span id="examples" />
-<span id="whitelist-mode-examples" />
-<span id="restore-whitelist-clean-restore-stage" />
-<span id="typical-use-cases" />
 <span id="best-practices" />
+<span id="blacklist-backup-stage" />
+<span id="examples" />
 <span id="faq" />
-<span id="regex-rule-is-not-working" />
 <span id="old-files-remain-after-restore" />
+<span id="regex-rule-is-not-working" />
 <span id="related-links" />
+<span id="restore-whitelist-clean-restore-stage" />
+<span id="supported-matching-methods" />
+<span id="three-filter-lists" />
+<span id="typical-use-cases" />
+<span id="where-to-configure" />
+<span id="whitelist-mode-examples" />

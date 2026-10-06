@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
 title: "Installation guide"
-description: "FolderRewind 1.9 installation guide: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Install FolderRewind 1.9.6 from Microsoft Store or Setup EXE, choose x64 or ARM64, verify checksums and review data directories and channel migration."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Installation guide
 
-FolderRewind 1.9.3 was released on 2026-10-03 with MineRewind 1.9.5 bundled. Install through Microsoft Store or GitHub Setup EXE; check the actual Store listing and installed app version.
+FolderRewind 1.9.6 was released on 2026-10-06 with MineRewind 1.9.8 bundled. Install through Microsoft Store or GitHub Setup EXE; check the actual Store listing and installed app version.
 
 ## Microsoft Store
 
@@ -50,11 +50,11 @@ Older releases may contain MSI/MSIX .7z/install.ps1 for their own versions. They
 Validate a test backup/restore and core checks before automation. See [migration](/docs/guides/data-migration).
 
 <span id="choose-a-channel" />
+<span id="data-directories-and-channel-switching" />
+<span id="next-steps" />
 <span id="option-1-microsoft-store" />
 <span id="option-2-msi" />
 <span id="option-3-msix-sideload-package" />
-<span id="data-directories-and-channel-switching" />
+<span id="system-requirements" />
 <span id="upgrading-from-an-older-release" />
 <span id="validate-immediately-after-installation" />
-<span id="system-requirements" />
-<span id="next-steps" />

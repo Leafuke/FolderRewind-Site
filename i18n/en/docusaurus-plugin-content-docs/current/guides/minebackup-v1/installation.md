@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 desktop GUI and headless CLI installation, platfo
 
 # Installation and Setup
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 The goal of this page is not merely to open the program. It is to make the first backup run with the correct paths, tools, and permissions. Establish an ordinary backup-and-restore loop before enabling hot backup, cloud archive, or automation.
 
 ## Choose your installation path
@@ -86,3 +88,13 @@ Before creating a configuration, confirm:
 5. Restore once in a test directory or test world.
 
 Windows Service Mode is not an installation step: version 1.16 cannot install or start it. It can only inspect and remove an older service after the safety checks succeed.
+
+<span id="a-desktop-gui" />
+<span id="b-headless-cli--server" />
+<span id="choose-your-installation-path" />
+<span id="compression-tool" />
+<span id="download-and-run-the-gui" />
+<span id="minimum-post-install-test" />
+<span id="plan-the-directories" />
+<span id="preflight-checklist" />
+<span id="what-first-launch-does" />

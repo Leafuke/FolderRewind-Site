@@ -6,6 +6,8 @@ description: 按配置档、备份链、还原、自动化、联动与云归档�
 
 # 故障排查
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 先确定问题发生在哪一层，再一次只改变一个变量。排查过程中优先保留配置档、备份包和日志，不要为了“重置”直接删除正在使用的目录。CLI/headless 的命令失败、`profile_busy`、JSON 输出、退出码、serve IPC 和系统调度问题请先看 [CLI 故障排查](/docs/guides/minebackup-v1/cli/troubleshooting)；本页保留 GUI、迁移、云归档和旧运行模式的排查边界。
 
 ## 最短排查路径
@@ -112,3 +114,16 @@ Smart 依赖 `_metadata/<world>/state.json`、`records/*.json`、Full 基线和�
 ## 提交诊断信息前
 
 临时启用 Debug，复现一次，导出 **Export Diagnostics**，打开文件确认已脱敏，然后提供：MineBackup 版本、平台、profile mode、相关配置/世界、操作时间、最短复现步骤和 `request_id`。不要上传本地轮转日志中的凭据、远端认证信息或未经检查的路径。
+
+<span id="1-启动到了错误的配置档" />
+<span id="10-旧-windows-服务问题" />
+<span id="2-找不到-7-zip-或备份立即失败" />
+<span id="3-游戏运行中备份失败" />
+<span id="4-smart-无法创建或提示链异常" />
+<span id="5-还原后状态不符合预期" />
+<span id="6-自动任务或-special-config-没有执行" />
+<span id="7-knotlink-联动失败" />
+<span id="8-云归档或-rclone-失败" />
+<span id="9-115-迁移显示-pendingdegraded-或-failed" />
+<span id="提交诊断信息前" />
+<span id="最短排查路径" />

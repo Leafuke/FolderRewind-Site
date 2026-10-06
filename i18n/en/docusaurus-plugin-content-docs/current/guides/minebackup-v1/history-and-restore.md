@@ -6,6 +6,8 @@ description: History maintenance, important markers, deletion choices, and recov
 
 # History and Restore Strategy
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 History is the traceability layer of a backup. It is more than an archive list: it combines world, configuration, time, type, comment, local-file status, and cloud-copy status into a recovery entry.
 
 ## What history shows
@@ -67,3 +69,10 @@ If metadata synchronization is partial, the archive may have uploaded successful
 - Create a commented Full archive before major upgrades.
 - Check whether a later Smart archive still depends on an item before deleting it.
 - After enabling cloud archive, rehearse upload → download → local restore once.
+
+<span id="cloud-history" />
+<span id="decide-before-restoring" />
+<span id="deletion-modes" />
+<span id="habits-that-preserve-recovery" />
+<span id="maintenance-actions" />
+<span id="what-history-shows" />

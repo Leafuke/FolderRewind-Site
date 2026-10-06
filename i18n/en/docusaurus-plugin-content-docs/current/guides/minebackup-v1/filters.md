@@ -6,6 +6,8 @@ description: Backup blacklists and Clean-restore deletion whitelists in MineBack
 
 # Filter Rules
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup 1.16.2 primarily uses a **blacklist** for configuration-level backup filtering. Restore has a separate **restore whitelist** for the deletion step of Clean restore. MineBackup does not directly provide FolderRewind’s backup-whitelist mode.
 
 ## Backup blacklist
@@ -49,3 +51,8 @@ Typical uses include:
 4. Apply the rule to production only after two correct test results.
 
 If a rule is too broad, remove or narrow it instead of hiding the ambiguity under more exceptions.
+
+<span id="backup-blacklist" />
+<span id="restore-whitelist" />
+<span id="rule-matching" />
+<span id="safe-validation-workflow" />

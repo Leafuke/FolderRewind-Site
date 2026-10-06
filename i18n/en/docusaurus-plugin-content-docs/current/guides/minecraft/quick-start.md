@@ -1,15 +1,21 @@
 ---
 sidebar_position: 2
 title: "Minecraft quick start"
-description: "FolderRewind 1.9 minecraft quick start: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Enable bundled MineRewind, discover and review Java or Bedrock saves, create a project and verify the first backup and restore."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Minecraft quick start
 
+Enable bundled MineRewind, discover and review Java or Bedrock saves, create a project and verify the first backup and restore.
+
+![Discovery and player-preservation settings in bundled MineRewind.](/img/docs/v1-9-6/plugin-settings-en-light-1604.webp)
+
+*Discovery and player-preservation settings in bundled MineRewind. Interface version: 1.9.6.*
+
 ## Install and enable
 
-Use FolderRewind 1.9.3 (API3.6) and MineRewind 1.9.5; verify their official versions and sources. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
+Use FolderRewind 1.9.6 (API 3.9) and MineRewind 1.9.8; verify their official versions and sources. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
 
 ## Discover instances
 
@@ -33,8 +39,8 @@ Automatic discovery combines known locations and remembered roots; selected-root
 
 Bedrock uses a separate Kind and ordinary file handling: close the game first. Java NBT player preservation, selected-regions and current-world KnotLink coordination do not apply. Java hot-backup capabilities are not Bedrock capabilities.
 
+<span id="next-steps" />
+<span id="recommended-settings" />
 <span id="step-1-install-plugin" />
 <span id="step-2-scan-minecraft" />
 <span id="step-3-verify-one-backup" />
-<span id="recommended-settings" />
-<span id="next-steps" />

@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 命令行配置档、配置、世界、任务与�
 
 # Profile 与 Manifest
 
+> 本页属于 **MineBackup 1.16.2 独立产品教程**。命令、配置与备份模式按本栏目使用；FolderRewind 用户请从[当前指南](/docs/intro)开始。
+
 如果你只记住一个区别，请记住：
 
 > **Config = 备份什么、怎么备份；Job = 一次运行执行什么。**
@@ -199,3 +201,16 @@ GUI 与 `serve` 对同一 Profile 严格互斥。迁移期间关闭 GUI，不要
 - 任何字段“不认识”时先以官方模板、CLI validate 和当前工程文档为准，不要擅自删除。
 
 完成 Manifest 后回到[5 分钟快速开始](/docs/guides/minebackup-v1/cli/quick-start)，继续 doctor、Backup、History、Verify 和 Restore dry-run。
+
+<span id="1-生成模板" />
+<span id="2-验证格式和引用" />
+<span id="3-查看差异" />
+<span id="4-先-dry-run再应用" />
+<span id="5-导出和迁移" />
+<span id="manifest-生命周期" />
+<span id="manifest-的最小结构" />
+<span id="merge-与-prune何时会发生删除" />
+<span id="修改-manifest-的安全规则" />
+<span id="先建立对象模型" />
+<span id="已有-gui-配置迁移到服务器" />
+<span id="路径模型不要把四种路径混在一起" />

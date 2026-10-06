@@ -6,6 +6,8 @@ description: MineBackup 1.16.2 Desktop GUI game-session triggers, interval and s
 
 # Automation Tasks
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 Automation is for repeating a workflow that has already been verified manually. Complete a backup-and-restore drill with a normal configuration before enabling long-running tasks.
 
 :::note The CLI model is different
@@ -68,3 +70,9 @@ Do not let two tasks modify the same world or profile at the same time. MineBack
 If a task does not run, check enabled state, schedule fields, target indices, and logs before adding more parallel tasks.
 
 Read [Special Config](/en/docs/guides/minebackup-v1/special-mode) for Desktop GUI startup execution and unattended exit. Server users should read [CLI Job workflows](/en/docs/guides/minebackup-v1/cli/jobs) instead.
+
+<span id="automatic-triggers-in-a-normal-configuration" />
+<span id="before-enabling-long-running-automation" />
+<span id="sequential-and-parallel-execution" />
+<span id="triggers" />
+<span id="unified-task-system" />

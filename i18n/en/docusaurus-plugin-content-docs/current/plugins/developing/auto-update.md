@@ -1,11 +1,13 @@
 ---
 sidebar_position: 7
 title: "Official Catalog and plugin updates"
-description: "FolderRewind 1.9 official catalog and plugin updates: source-checked steps, contracts, failure handling, compatibility and practical acceptance checks for reliable backup and recovery."
-reviewed_baseline: "1.9-api3.6"
+description: "Publish catalog entries that bind versions, URLs and hashes, and understand trusted updates, compatibility checks and rollback responsibilities."
+reviewed_baseline: "1.9-api3.9"
 ---
 
 # Official Catalog and plugin updates
+
+Publish catalog entries that bind versions, URLs and hashes, and understand trusted updates, compatibility checks and rollback responsibilities.
 
 ## Update authority
 
@@ -25,6 +27,6 @@ Updates preserve Enabled Intent, drain operations and keep current/previous know
 
 Manual packages undergo the same checks and retain Manual provenance. Equal IDs/names cannot confer Official status. Explain maintenance/compatibility and use local install rather than overwriting assemblies.
 
-<span id="recommended-workflow" />
 <span id="notes" />
+<span id="recommended-workflow" />
 <span id="related-links" />

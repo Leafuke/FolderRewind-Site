@@ -6,6 +6,8 @@ description: Full, Smart, and Overwrite modes and Smart-chain maintenance rules 
 
 # Backup Modes, Chain Integrity, and Safe Deletion
 
+> This page covers **MineBackup 1.16.2, a separate product**. Use the commands, configuration and backup modes documented here. FolderRewind users should start with the [current guide](/docs/intro).
+
 MineBackup’s configuration UI still exposes **Full, Smart, and Overwrite** backup modes. They determine how archives are created, how history grows, and which files are required during restore.
 
 Do not confuse these configuration modes with `backup_mode=full|incremental` in a one-shot KnotLink request. The request value is a per-call override; it does not permanently change the configuration.
@@ -70,3 +72,10 @@ If you only want to hide one history item, choose “history only” deletion in
 - Switching modes: create and verify a manual Full, then observe the next two or three backups.
 
 When starting over or recovering from a broken chain, return to Full. Do not repair Smart by manually copying, renaming, or deleting files.
+
+<span id="how-the-smart-chain-works" />
+<span id="important-parameters" />
+<span id="mode-comparison" />
+<span id="recommendations" />
+<span id="smart-safe-deletion" />
+<span id="when-minebackup-creates-a-new-full" />
