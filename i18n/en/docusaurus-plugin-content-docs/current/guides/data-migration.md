@@ -25,23 +25,39 @@ Local workspace state, indexes, replica locations and DPAPI password material ha
 
 ## Export and import configuration
 
+This workflow applies to 1.9.x builds containing the migration transaction fixes. The 1.9.6 screenshot above only locates the Settings entry.
+
 Stop automatic tasks on the old client and keep a complete data copy. Export through Data migration in Settings, using local JSON or a verified cloud connection.
 
-Configuration import replaces current settings, so preserve the destination device's original configuration first. Check sources, archive locations, plugins and passwords. Importing `config.json` does not make old paths valid or migrate local password storage.
+Inspect project names, project IDs, sources and backup paths before confirming import. Confirmation prepares a candidate only; the current configuration remains active. Cancel the pending import or choose Restart and apply configuration. Restart waits for active tasks and preserves the latest original configuration. The new process activates before initializing services; interrupted activation restores the previous configuration.
+
+Imported projects retain their original project/source identities, with automation and cloud uploads disabled. Importing `config.json` does not make old paths valid or transfer local password storage. If a bound history repository has not been migrated, import its history before completing project setup.
 
 ## Export and import history
 
-Open the intended project in history before exporting `.frhistory`, then check `ConfigId` in its manifest. With no selected project, export uses the first configuration; choose explicitly beforehand.
+Choose projects explicitly when exporting; all are selected by default. New v2 `.frhistory` bundles support multiple projects, and the importer also reads v1 single-project bundles. Empty history is reported as zero. A missing or damaged bound repository needs attention rather than being silently omitted.
 
-The transfer contains a manifest, `repository.json` and `packs`, with `IncludesPayloads=false`. Native-history import unions immutable facts and deduplicates packs. Reimporting the same pack does not add it twice. Without a matching project it may create an orphan repository, not a complete source configuration.
+Before import, inspect the source application version, transfer format, project/source IDs, version/branch/Pack counts and same-ID project association. Bundles contain a manifest, repository descriptors and immutable Packs with `IncludesPayloads=false`. Archives, the old device workspace and SQLite indexes are excluded.
 
-The UI may still show legacy “merge or replace” wording. Native history uses merge and deduplication, not the old list-replacement behavior of `history.json`.
+Native history imports merge and deduplicate facts without replacing lists or rewriting Pack identity. Each project commits independently. A batch may partially complete; retry safely according to its report. If a commit decision requires recovery, retain its transaction and staging directories. The application completes the union before reading the repository.
+
+Results separately report metadata commit, project association, local initialization and added/duplicate Pack counts. An unmatched repository waits for the original configuration; import that configuration instead of assigning history to a same-name project with different IDs.
+
+## Complete local setup
+
+Use Complete migration setup to confirm project/source IDs, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths individually. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
+
+Missing workspace state initializes with Unknown baselines; a missing local replica catalog initializes empty. History import preserves valid local state. Source confirmation after configuration import, or an explicit source-path change, resets the corresponding baseline. Corruption requires controlled recovery and cannot be hidden by initialization.
+
+The first backup establishes a self-contained full baseline and a new branch, without inventing old-device branch state or incremental dependencies. Use Checkout to resume an old branch. Setup does not enable automation or uploads; check cloud connections and enable these explicitly when ready.
 
 ## Move archives and verify
 
-Copy archives and incremental dependencies separately, or prepare trusted cloud replicas. Old absolute paths do not automatically become valid locations on the new device. Check bindings and available archives; recover to a new directory first if necessary.
+Valid local state does not mean old versions are restorable. This migration change adds no payload-availability checker; reports explicitly state that backup archives are unverified.
 
-After import, restore a test copy and check files and application loading before enabling automation. Cloud history synchronization does not move the local workspace or overwrite another device's history by timestamp.
+Copy archives and incremental dependencies independently, or prepare trusted cloud replicas. An empty replica catalog does not automatically recognize copied archives, and old absolute paths do not become new-device locations. Restore retains existing replica, dependency and safety checks. Restore a test copy and check files and application loading before enabling automation; retain old-device data until verification succeeds.
+
+Cloud history synchronization merges facts without copying the local workspace or overwriting another device's history by timestamp.
 
 ## Upgrading from 1.8 or rolling back
 
