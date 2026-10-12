@@ -31,11 +31,13 @@ Stop automatic tasks on the old client and keep a complete data copy. Export thr
 
 Inspect project names, project IDs, sources and backup paths before confirming import. Confirmation prepares a candidate only; the current configuration remains active. Cancel the pending import or choose Restart and apply configuration. Restart waits for active tasks and preserves the latest original configuration. The new process activates before initializing services; interrupted activation restores the previous configuration.
 
-Imported projects retain their original project/source identities, with automation and cloud uploads disabled. Importing `config.json` does not make old paths valid or transfer local password storage. If a bound history repository has not been migrated, import its history before completing project setup.
+Imported projects retain their original project/source identities and configured automation/cloud switches. Separate migration permissions pause each capability until the batch check and confirmation. Pending cloud bindings do not block confirmed local backup, and unfinished projects do not block finished projects. Importing `config.json` does not make old paths valid or transfer local password storage. If a bound history repository has not been migrated, import its history before completing project setup.
+
+Choose Restore on this computer or Migrate to another computer in the import preview. A matching target project defaults to local restore; otherwise cross-device migration is selected. Both modes validate actual state.
 
 ## Export and import history
 
-Choose projects explicitly when exporting; all are selected by default. New v2 `.frhistory` bundles support multiple projects, and the importer also reads v1 single-project bundles. Empty history is reported as zero. A missing or damaged bound repository needs attention rather than being silently omitted.
+Export defaults to All projects with a project count. Choose Selected projects to expand the list, select all or clear selection. Project IDs are available in details. New v2 `.frhistory` bundles support multiple projects, and the importer also reads v1 single-project bundles. Empty history is reported as zero. A missing or damaged bound repository needs attention rather than being silently omitted.
 
 Before import, inspect the source application version, transfer format, project/source IDs, version/branch/Pack counts and same-ID project association. Bundles contain a manifest, repository descriptors and immutable Packs with `IncludesPayloads=false`. Archives, the old device workspace and SQLite indexes are excluded.
 
@@ -45,11 +47,13 @@ Results separately report metadata commit, project association, local initializa
 
 ## Complete local setup
 
-Use Complete migration setup to confirm project/source IDs, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths individually. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
+All status, progress and contextual actions belong inside Data migration. Projects are checked automatically; one Review and resume ready projects confirmation resumes selected backup/cloud capabilities. Open path setup only for projects needing corrections, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
 
-Missing workspace state initializes with Unknown baselines; a missing local replica catalog initializes empty. History import preserves valid local state. Source confirmation after configuration import, or an explicit source-path change, resets the corresponding baseline. Corruption requires controlled recovery and cannot be hidden by initialization.
+Missing workspace state initializes with Unknown baselines; a missing local replica catalog initializes empty. History import preserves valid local state. Local restore retains valid branches, baselines and replica state where identities, paths and source semantics match; only changed sources reset. Cross-device migration cannot infer current state from old-device hints. Corruption requires controlled recovery and cannot be hidden by initialization.
 
-The first backup establishes a self-contained full baseline and a new branch, without inventing old-device branch state or incremental dependencies. Use Checkout to resume an old branch. Setup does not enable automation or uploads; check cloud connections and enable these explicitly when ready.
+The first backup from Unknown state establishes a self-contained full baseline and a new branch, without inventing old-device branch state or incremental dependencies. Use Checkout to resume an old branch. Local restore reuses only matching cloud bindings already on the target; cross-device migration requires rebinding. Confirmation does not replay startup backups or upload existing archives in bulk, and switches configured off stay off.
+
+Older builds may already have rewritten switches to off. Read original switches from configuration loads a previous export JSON and restores only automatic backup/cloud switches for matching identities, without replacing paths, rules or credentials. Execution still requires confirmation. Batch failures or cancellation retain completed project decisions; remaining projects can be retried.
 
 ## Move archives and verify
 

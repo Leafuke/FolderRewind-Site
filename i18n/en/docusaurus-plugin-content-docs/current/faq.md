@@ -33,7 +33,7 @@ In-app deletion previews the impact and can rebuild dependencies to keep later v
 
 ## Why does a history export contain no archives?
 
-`.frhistory` contains history facts, not backup bytes or the old device workspace. Builds with the migration transaction fixes apply configuration on restart and require confirming local sources and paths; archives remain unverified. Moving computers also requires archives or trusted cloud replicas and encryption recovery material. See [migration](/docs/guides/data-migration).
+`.frhistory` contains history facts, not backup bytes or the old device workspace. Builds with the migration recovery fixes apply configuration on restart, check projects in a batch and resume ready capabilities with one confirmation. Switches are preserved, backup/cloud restrictions release per project, and local restore retains valid baselines. Archives remain unverified. Moving computers also requires archives or trusted cloud replicas and encryption recovery material. See [migration](/docs/guides/data-migration).
 
 ## Why is an enabled plugin unavailable?
 
