@@ -47,7 +47,7 @@ Results separately report metadata commit, project association, local initializa
 
 ## Complete local setup
 
-All status, progress and contextual actions belong inside Data migration. Projects are checked automatically; one Review and resume ready projects confirmation resumes selected backup/cloud capabilities. Open path setup only for projects needing corrections, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
+All status, progress and contextual actions belong inside Data migration. Projects are checked automatically; one Review and resume ready projects confirmation resumes selected backup/cloud capabilities. Use Relocate project paths in a batch to preview a shared root change and save selected projects together. Other corrections can use individual path setup, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
 
 Missing workspace state initializes with Unknown baselines; a missing local replica catalog initializes empty. History import preserves valid local state. Local restore retains valid branches, baselines and replica state where identities, paths and source semantics match; only changed sources reset. Cross-device migration cannot infer current state from old-device hints. Corruption requires controlled recovery and cannot be hidden by initialization.
 
