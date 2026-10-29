@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: "视图、引导与导航"
 description: "了解页面与引导的职责，区分管理、历史、合并和空间预览的导航流程。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # 视图、引导与导航
+
+> 1.10 开发说明：无 UI 的历史与策略归入 Core，Host 保留配置、平台与界面编排；现有命名空间、数据格式和公开插件契约保持不变。
 
 了解页面与引导的职责，区分管理、历史、合并和空间预览的导航流程。
 

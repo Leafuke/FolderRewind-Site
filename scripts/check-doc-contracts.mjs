@@ -14,7 +14,9 @@ for (const item of inventory.pages.filter(p => p.product !== 'MineBackup')) {
   if (item.path.includes('migration-v2-v3')) continue; // Explicitly labeled responsibility mapping.
   for (const [file, text] of [[item.path, zh], [item.english, en]]) {
     const {data, content} = matter(text);
-    if (data.reviewed_baseline !== `1.9-api${baseline.api}`) errors.push(`Missing reviewed baseline: ${file}`);
+    const expectedBaseline = item.reviewedBaseline ?? `1.9-api${baseline.api}`;
+    if (expectedBaseline.startsWith('development-') && (!item.reviewedHostRef || item.sourceState !== 'working-tree')) errors.push(`Missing development source identity: ${file}`);
+    if (data.reviewed_baseline !== expectedBaseline) errors.push(`Missing reviewed baseline: ${file}`);
     for (const match of content.matchAll(/```csharp\n([\s\S]*?)```/g)) {
       if (deprecated.test(match[1])) errors.push(`Legacy plugin C# contract: ${file}`);
     }

@@ -4,155 +4,187 @@
       "path": "docs/architecture/data-models.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/data-models.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/directory-structure.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/directory-structure.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/index.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/index.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/namespaces.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/namespaces.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/patterns.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/patterns.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/plugin-system.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/plugin-system.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/services.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/services.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/architecture/views.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/views.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked",
+      "status": "source-checked-development",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "src/FolderRewind",
+        "src/FolderRewind.Core",
+        "src/FolderRewind.Plugin.Runtime",
+        "src/FolderRewind.Plugin.Abstractions"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
       "screenshots": [
         "/img/docs/v1-9-6/home-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "sourceState": "working-tree"
     },
     {
       "path": "docs/faq.md",
@@ -1595,6 +1627,38 @@
       "languageReview": "bilingual copy revised; parity checked; rendered sample reviewed",
       "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO",
       "responsibleCommit": "uncommitted site refresh; released host 23c1947"
+    },
+    {
+      "path": "docs/architecture/development.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/development.md",
+      "product": "FolderRewind/integration",
+      "status": "source-checked-development",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "a2208e8407ed2ade343fb601cd7890c710cb4c83",
+      "sourceState": "working-tree",
+      "sources": [
+        "Host source layout and scripts"
+      ],
+      "manualAcceptance": "not applicable",
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29"
+    },
+    {
+      "path": "docs/support.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/support.md",
+      "product": "FolderRewind/integration",
+      "status": "source-checked",
+      "reviewedBaseline": "support-policy",
+      "reviewedHostRef": "a2208e8407ed2ade343fb601cd7890c710cb4c83",
+      "sourceState": "working-tree",
+      "sources": [
+        "Previously published Host sponsor policy"
+      ],
+      "manualAcceptance": "not applicable",
+      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
+      "reviewedAt": "2026-10-29",
+      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29"
     }
   ],
   "blogs": [

@@ -2,10 +2,12 @@
 sidebar_position: 4
 title: "Service orchestration and core responsibilities"
 description: "Find service entrypoints for configuration, backup, restore, cloud transfer and plugin orchestration."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Service orchestration and core responsibilities
+
+> 1.10 development note: headless history and policies move to Core; configuration, platform and UI composition stay in the Host. Existing namespaces, data formats and public plugin contracts are preserved.
 
 Find service entrypoints for configuration, backup, restore, cloud transfer and plugin orchestration.
 

@@ -2,38 +2,36 @@
 sidebar_position: 1
 title: "项目目录与构建边界"
 description: "从仓库目录找到界面、历史核心、插件契约和验证工具，明确各项目的构建边界。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # 项目目录与构建边界
 
-从仓库目录找到界面、历史核心、插件契约和验证工具，明确各项目的构建边界。
+> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
 
 ```text
-FolderRewind/
-  Views/ ViewModels/ Models/ Services/
-  History/
-    Domain/ Storage/ Index/ LocalState/
-    Application/ Representation/ Retention/ Cloud/ Migration/ Merge/
-  Assets/ Strings/ Styles/ Controls/ Converters/
-FolderRewind.Plugin.Abstractions/
-FolderRewind.Plugin.Runtime/
-FolderRewind.Tests/
-FolderRewind.Plugin.Abstractions.Tests/
-FolderRewind.Plugin.Runtime.Tests/
-Installer/ .github/ docs/
+FolderRewind.slnx
+src/
+  FolderRewind/
+  FolderRewind.Core/
+  FolderRewind.Plugin.Abstractions/
+  FolderRewind.Plugin.Runtime/
+tests/
+  FolderRewind.Tests/
+  FolderRewind.Core.Recovery.Tests/
+  FolderRewind.TestSupport/
+  FolderRewind.Plugin.Abstractions.Tests/
+  FolderRewind.Plugin.Runtime.Tests/
+Installer/  tools/  benchmarks/  scripts/  docs/
 ```
+源码放在 src，测试和共享夹具放在 tests。Installer 保存安装器源码；tools 保存独立探针；benchmarks 保存性能运行与分析入口；scripts 按 common、build、test、integration、release、maintenance 分组。输出统一写入被忽略的 artifacts。
 
-## UI 与宿主
+应用保持 MVVM：Views、ViewModels、Models、Services 在各层内部按功能分组，同一个 partial 类型的文件放在一起。Controls、Converters、Styles、Strings、Assets 保留原有职责。目录变化不改变命名空间、配置格式或插件身份。
 
-Views 处理视图和交互绑定，ViewModels 提供状态与异步命令。Models 按配置、范围、过滤、自动化、云、插件持久化与发现拆分；不再依赖旧 1300 行 BackupModels.cs 文件清单。Services 包含 Host 适配、发现及 Plugins/V3 编排。
+Core 包含 History 的领域、存储、索引、捕获、恢复、合并、保留、迁移和副本算法，以及不依赖 UI 的相关策略。应用保留启动、窗口、通知、资源加载和 Host 编排。Core 面向 Windows，不引用 WinUI；Runtime 不反向引用 Core，插件只引用 Abstractions。
 
-## 核心与外部仓库
+MineRewind、Catalog、模板和网站保持独立仓库。Host 的 docs 只留领域术语、有效 ADR 与协议/安全约束；计划、进度和验收结果不长期入库。
 
-Abstractions 包含 Manifest、Lifecycle、Capabilities、Snapshots、Identifiers、Artifacts 和 KnotLinkCoreCommands。Runtime 管理 Activation、Loading、Settings、Packaging、Operations 和 Artifact 事务，不能作为第三方插件的公开引用。
-
-MineRewind、官方 Catalog、网站是独立仓库。工作区旁边存在这些 checkout 不代表 Host 解决方案依赖它们；验收绑定精确制品。目录用实际项目文件验证，不复制旧源码文件树冒充当前事实。
-
-<span id="主项目内部结构" />
 <span id="仓库根目录" />
+<span id="主项目内部结构" />
 <span id="关键入口文件" />

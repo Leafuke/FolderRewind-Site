@@ -2,35 +2,31 @@
 sidebar_position: 0
 title: "Architecture overview"
 description: "Explore the FolderRewind stack and trace UI orchestration through configuration, history, plugins and archives."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Architecture overview
 
-Explore the FolderRewind stack and trace UI orchestration through configuration, history, plugins and archives.
+> This page describes the 1.10 development layout; it does not announce a released version.
 
-FolderRewind is .NET10/WinUI3 on Windows, with Windows App SDK2.5.1 in the current project. MVVM and testable command orchestration serve the UI; history/plugin cores use instance services and explicit dependencies, not blanket static-singleton architecture.
+FolderRewind uses .NET 10 and WinUI 3. The exact SDK and package versions are declared by global.json, project files and central package version configuration in the source checkout.
 
 ```mermaid
 flowchart TD
-  V[Views / ViewModels] --> H[Host application orchestration]
-  H --> C[User-owned configuration]
-  H --> N[Native History runtime]
-  H --> P[Plugin Runtime]
-  P --> A[Public Abstractions API 3.9]
-  N --> R[Representations / Replicas]
-  R --> Z[7-Zip / cloud transport]
-  H --> D[Discovery / reviewed drafts]
+  UI[Views / ViewModels] --> Host[Host application orchestration]
+  Host --> Core[Core: History and headless policies]
+  Host --> Runtime[Plugin Runtime]
+  Core --> Runtime
+  Runtime --> API[Plugin Abstractions]
+  Core --> Storage[Windows file safety / archive and replica interfaces]
 ```
 
-## Boundaries
+The Host owns configuration persistence, scheduling, notifications and platform adapters. Core receives explicit inputs, service instances and cancellation tokens and returns results and diagnostics; it does not resolve application globals. Plugins own domain semantics and cannot bypass Host transactions, integrity checks or target-directory mutation.
 
-Host/SDK/Runtime/MineRewind have independent product/build boundaries. SDK is BCL-only net10.0; Runtime tests need no WinUI; external plugins reference SDK only. Host acceptance consumes fixed-hash .frplugin without plugin application source as build input.
+Production Core and ordinary tests share a compilation boundary. Recovery acceptance uses an isolated build of the same project; shipping artifacts exclude test fault hooks. Core is an internal library, not another public plugin SDK.
 
-Users own configs; discovery/reconciliation propose candidates/revision changes. Native history separates immutable shared facts, disposable indexes and local Workspace. The Host materializes/verifies before gated mutation; plugins cannot bypass it.
+See [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [models](/docs/architecture/data-models) and [plugin boundaries](/docs/architecture/plugin-system).
 
-See [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [models](/docs/architecture/data-models), [plugins](/docs/architecture/plugin-system).
-
+<span id="tech-stack" />
 <span id="architecture-birds-eye-view" />
 <span id="documentation-navigation" />
-<span id="tech-stack" />

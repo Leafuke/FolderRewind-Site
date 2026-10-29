@@ -2,38 +2,36 @@
 sidebar_position: 1
 title: "Repository directories and build boundaries"
 description: "Find the UI, history core, plugin contracts and validation tools, and understand their build boundaries."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Repository directories and build boundaries
 
-Find the UI, history core, plugin contracts and validation tools, and understand their build boundaries.
+> This page describes the 1.10 development layout; it does not announce a released version.
 
 ```text
-FolderRewind/
-  Views/ ViewModels/ Models/ Services/
-  History/
-    Domain/ Storage/ Index/ LocalState/
-    Application/ Representation/ Retention/ Cloud/ Migration/ Merge/
-  Assets/ Strings/ Styles/ Controls/ Converters/
-FolderRewind.Plugin.Abstractions/
-FolderRewind.Plugin.Runtime/
-FolderRewind.Tests/
-FolderRewind.Plugin.Abstractions.Tests/
-FolderRewind.Plugin.Runtime.Tests/
-Installer/ .github/ docs/
+FolderRewind.slnx
+src/
+  FolderRewind/
+  FolderRewind.Core/
+  FolderRewind.Plugin.Abstractions/
+  FolderRewind.Plugin.Runtime/
+tests/
+  FolderRewind.Tests/
+  FolderRewind.Core.Recovery.Tests/
+  FolderRewind.TestSupport/
+  FolderRewind.Plugin.Abstractions.Tests/
+  FolderRewind.Plugin.Runtime.Tests/
+Installer/  tools/  benchmarks/  scripts/  docs/
 ```
+Production projects live in src; tests and shared fixtures live in tests. Installer holds installer sources, tools holds standalone probes, benchmarks holds performance runners and analysis, and scripts separates common, build, test, integration, release and maintenance entry points. Generated evidence belongs in ignored artifacts.
 
-## UI and Host
+The application retains MVVM: Views, ViewModels, Models and Services group files by feature within each layer. Partial types stay together. Controls, Converters, Styles, Strings and Assets retain their roles. Moving files does not rename namespaces or change persisted formats or plugin identities.
 
-Views bind interactions; ViewModels own state/async commands. Models are split by configuration/scopes/filters/automation/cloud/plugins/discovery, rather than the old1300-line BackupModels.cs listing. Services includes Host adapters/discovery/Plugins/V3 orchestration.
+Core owns History domain, storage, indexing, capture, restore, merge, retention, migration and replica algorithms plus related headless policies. Startup, windows, notifications, resources and Host composition remain in the application. Core remains Windows-oriented without WinUI; Runtime never references Core and plugins reference only Abstractions.
 
-## Core and external repos
+MineRewind, Catalog, templates and the website remain separate repositories. Host docs retains terminology, effective ADRs and protocol/safety specifications; plans, progress and run reports are not permanent documentation.
 
-Abstractions has Manifest/Lifecycle/Capabilities/Snapshots/Identifiers/Artifacts/KnotLinkCoreCommands. Runtime owns Activation/Loading/Settings/Packaging/Operations/artifact transactions, not the public plugin reference boundary.
-
-MineRewind, Catalog and website are independent repos. Nearby checkouts do not become Host solution inputs; acceptance pins artifacts. Verify actual project files rather than copying legacy trees.
-
-<span id="key-entry-files" />
-<span id="main-project-internal-structure" />
 <span id="repository-root" />
+<span id="main-project-internal-structure" />
+<span id="key-entry-files" />

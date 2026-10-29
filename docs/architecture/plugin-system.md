@@ -2,10 +2,12 @@
 sidebar_position: 6
 title: "Plugin System v3 架构"
 description: "追踪插件从静态包校验到激活、能力调度和停用的完整生命周期。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Plugin System v3 架构
+
+> 1.10 开发说明：无 UI 的历史与策略归入 Core，Host 保留配置、平台与界面编排；现有命名空间、数据格式和公开插件契约保持不变。
 
 追踪插件从静态包校验到激活、能力调度和停用的完整生命周期。
 

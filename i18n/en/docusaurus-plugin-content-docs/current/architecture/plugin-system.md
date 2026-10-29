@@ -2,10 +2,12 @@
 sidebar_position: 6
 title: "Plugin System v3 architecture"
 description: "Trace plugin lifecycle from static package validation through activation, capability routing and deactivation."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Plugin System v3 architecture
+
+> 1.10 development note: headless history and policies move to Core; configuration, platform and UI composition stay in the Host. Existing namespaces, data formats and public plugin contracts are preserved.
 
 Trace plugin lifecycle from static package validation through activation, capability routing and deactivation.
 

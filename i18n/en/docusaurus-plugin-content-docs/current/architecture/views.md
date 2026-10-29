@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: "Views, onboarding and navigation"
 description: "Understand page responsibilities and navigation through management, history, merging and spatial preview."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Views, onboarding and navigation
+
+> 1.10 development note: headless history and policies move to Core; configuration, platform and UI composition stay in the Host. Existing namespaces, data formats and public plugin contracts are preserved.
 
 Understand page responsibilities and navigation through management, history, merging and spatial preview.
 

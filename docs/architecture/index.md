@@ -2,35 +2,31 @@
 sidebar_position: 0
 title: "架构总览"
 description: "了解 FolderRewind 的技术栈与系统边界，从界面编排追踪到配置、历史、插件和归档。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # 架构总览
 
-了解 FolderRewind 的技术栈与系统边界，从界面编排追踪到配置、历史、插件和归档。
+> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
 
-FolderRewind 是.NET10／WinUI3 Windows 应用，当前项目 Windows App SDK2.5.1。UI 使用 MVVM 与可测试命令编排，核心历史和插件运行时通过实例服务与显式依赖组织；不能把所有业务解释成静态单例。
+FolderRewind 使用 .NET 10 与 WinUI 3。准确 SDK 与包版本由源码中的 global.json、项目文件及集中包版本配置声明。
 
 ```mermaid
 flowchart TD
-  V[Views / ViewModels] --> H[Host application orchestration]
-  H --> C[User-owned configuration]
-  H --> N[Native History runtime]
-  H --> P[Plugin Runtime]
-  P --> A[Public Abstractions API 3.9]
-  N --> R[Representations / Replicas]
-  R --> Z[7-Zip / cloud transport]
-  H --> D[Discovery / reviewed drafts]
+  UI[Views / ViewModels] --> Host[Host 应用编排]
+  Host --> Core[Core: History 与无 UI 策略]
+  Host --> Runtime[Plugin Runtime]
+  Core --> Runtime
+  Runtime --> API[Plugin Abstractions]
+  Core --> Storage[Windows 文件安全 / 归档与副本接口]
 ```
 
-## 边界
+Host 负责配置持久化、操作调度、通知与平台适配。Core 通过显式输入、服务实例和取消令牌执行核心操作，返回结果与诊断；不会反向查找应用全局服务。插件仍负责领域语义，不能绕过 Host 的事务、完整性检查与目标目录修改。
 
-Host、SDK、Runtime 与 MineRewind 独立产品／构建边界。SDK 仅 BCL，net10.0；Runtime 可无 WinUI 测试；第三方插件只依赖 SDK。Host 使用固定哈希.frplugin 验收，不以插件应用源码作为构建输入。
+正式 Core 与普通测试共享编译边界。故障恢复验收使用同一项目的隔离构建，正式产物不包含测试故障入口。Core 是内部实现库，不作为新的公开插件 SDK 发布。
 
-配置由用户拥有；发现提出候选，插件对账提出修订提案。Native History 用不可变事实与可重建索引；设备 Workspace 与共享分支区分。还原由 Host 先物化／校验，再在操作门内修改目标；插件不能绕过。
-
-查看[目录](/docs/architecture/directory-structure)、[模式](/docs/architecture/patterns)、[服务](/docs/architecture/services)、[模型](/docs/architecture/data-models)与[插件体系](/docs/architecture/plugin-system)。
+参阅[目录](/docs/architecture/directory-structure)、[模式](/docs/architecture/patterns)、[服务](/docs/architecture/services)、[模型](/docs/architecture/data-models)和[插件边界](/docs/architecture/plugin-system)。
 
 <span id="技术栈" />
-<span id="文档导航" />
 <span id="架构鸟瞰" />
+<span id="文档导航" />

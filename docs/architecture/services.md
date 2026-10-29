@@ -2,10 +2,12 @@
 sidebar_position: 4
 title: "服务编排与核心职责"
 description: "按子系统查找配置、备份、还原、云传输和插件服务的编排入口。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # 服务编排与核心职责
+
+> 1.10 开发说明：无 UI 的历史与策略归入 Core，Host 保留配置、平台与界面编排；现有命名空间、数据格式和公开插件契约保持不变。
 
 按子系统查找配置、备份、还原、云传输和插件服务的编排入口。
 

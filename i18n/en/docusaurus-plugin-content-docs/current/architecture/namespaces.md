@@ -2,25 +2,22 @@
 sidebar_position: 3
 title: "Namespaces and contract entrypoints"
 description: "Locate implementation entrypoints by namespace and distinguish Host models, public plugin contracts and runtime responsibilities."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "development-1.10"
 ---
 
 # Namespaces and contract entrypoints
 
-Locate implementation entrypoints by namespace and distinguish Host models, public plugin contracts and runtime responsibilities.
+> This page describes the 1.10 development layout; it does not announce a released version.
 
-| Namespace | Responsibility |
+Namespaces stay stable while directories and assemblies provide the new organizational boundaries.
+
+| Namespace | Responsibility and ownership |
 |---|---|
-| FolderRewind.Views/ViewModels | Pages/interactions/state/commands |
-| FolderRewind.Models | User config and Host persistence/UI models |
-| FolderRewind.Services | Host orchestration/environment/adapters |
-| FolderRewind.Services.Discovery | Providers/manifests/resources/review/draft transactions |
-| FolderRewind.Services.Plugins.V3 | SDK snapshot/request mapping and Host runtime adapters |
-| FolderRewind.History.Domain | Immutable Version/Checkpoint/Branch/Representation/Replica facts |
-| FolderRewind.History.Application | Runtime/commit/Restore/Checkout/Merge/migration/transfer |
-| FolderRewind.History.Storage/Index/LocalState | Packs/projections/device state |
-| FolderRewind.History.Representation/Retention/Cloud | Materialization/closure protection/shared sync |
-| FolderRewind.Plugin.Abstractions | Public plugin SDK boundary |
-| FolderRewind.Plugin.Runtime | Host runtime implementation |
+| FolderRewind.Views / ViewModels | Application UI and interactions |
+| FolderRewind.Models | Pure models may live in Core; application configuration roots and presentation remain Host-owned |
+| FolderRewind.Services | Headless Core policies and application orchestration/adapters, distinguished by project ownership |
+| FolderRewind.History.* | Core history capabilities; Host binding entry points remain in the application |
+| FolderRewind.Plugin.Abstractions | The only public plugin SDK |
+| FolderRewind.Plugin.Runtime | Loading, activation, capability routing and Artifact transactions |
 
-Plugin authors import IFolderRewindPlugin/capabilities from Abstractions, not old Host Services.Plugins/Models namespaces. Namespaces/display names are not product identities; manifest API controls compatibility.
+Use project references and actual file locations to identify ownership rather than inferring an assembly from a namespace. Assembly identity, configuration identity and manifest identity are not directory names. Plugins must not add Core, Runtime or application references because of this migration.

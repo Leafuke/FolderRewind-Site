@@ -135,6 +135,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'architecture/index',
         'architecture/directory-structure',
+        'architecture/development',
         'architecture/patterns',
         'architecture/namespaces',
         'architecture/services',
@@ -144,6 +145,7 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'faq',
+    'support',
   ],
 };
 
