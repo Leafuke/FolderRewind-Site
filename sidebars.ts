@@ -136,6 +136,7 @@ const sidebars: SidebarsConfig = {
         'architecture/index',
         'architecture/directory-structure',
         'architecture/development',
+        'architecture/releasing',
         'architecture/patterns',
         'architecture/namespaces',
         'architecture/services',

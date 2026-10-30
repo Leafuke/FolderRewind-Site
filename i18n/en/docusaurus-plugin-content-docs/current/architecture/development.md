@@ -43,4 +43,6 @@ Verify results, archive contents and complete samples before interpreting elapse
 
 ## Documentation and contributions
 
+See [releasing plugins, the SDK and FolderRewind](/docs/architecture/releasing) for the cross-repository sequence, version matrix, NuGet/plugin freezing, Setup publication and retry rules.
+
 Host docs retains terminology, effective architectural decisions and long-lived protocol/safety constraints. Tutorials and architecture introductions live on this bilingual website. Plans, progress, screenshots, reviews and acceptance reports are not permanent source documentation; retrieve old records through Git history. Describe the reason, actual validation and remaining limits when proposing changes.

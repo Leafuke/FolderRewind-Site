@@ -1,6 +1,23 @@
 {
   "pages": [
     {
+      "path": "docs/architecture/releasing.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/releasing.md",
+      "product": "FolderRewind/integration",
+      "status": "source-checked-development",
+      "sources": [
+        ".github/workflows/plugin-v3-hardening.yml",
+        ".github/workflows/release-setup.yml",
+        "scripts/release/Export-PublishedPluginContract.ps1",
+        "FolderRewind-Plugin-Minecraft/.github/workflows/release-plugin-v3.yml"
+      ],
+      "manualAcceptance": "not applicable; maintainer release procedure",
+      "reviewedBaseline": "development-1.10",
+      "reviewedHostRef": "16b6c78d4b1766436a7d4825251fe00a2f9db2e7",
+      "reviewedAt": "2026-10-30",
+      "sourceState": "working-tree"
+    },
+    {
       "path": "docs/architecture/data-models.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/data-models.md",
       "product": "FolderRewind/integration",
