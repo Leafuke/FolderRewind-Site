@@ -177,6 +177,24 @@ gh release view "v$ProductVersion" -R Leafuke/FolderRewind --json url,isDraft,is
 
 确认插件公开下载、版本、哈希、API、架构与 manifest 相符后，按独立 Catalog 仓库规范更新 source 项并通过 CI。内置升级与 Catalog 更新是两个动作，见[官方目录与插件更新](/docs/plugins/developing/auto-update)。
 
+### Catalog 日常维护
+
+Catalog 是安装与更新的目录事实源。替换 Host 内置包不会自动更新 Catalog；先发布并重新下载插件 Release 附件，确认字节后再更新目录。
+
+1. 在独立 `FolderRewind-Plugin-Catalog` 仓库修改 `source/<pluginId>.json`，同步产品版本、频道、固定 Release URL、SHA-256、`pluginApi`、`architectures` 与 `requestedHostServices`。
+2. 同步 Artifact 摘要。目录中的 `artifactFormats`、`artifactTransformers`、`restoreStrategies` 是 ID 字符串数组，分别取 manifest 对象的 `formatId`、`transformerId`、`strategyId`，不要直接复制对象数组。API 或声明有变化时，必须完整核对这些字段。
+3. 在 Catalog 根目录生成并验证目录，工具会下载实际插件并核对哈希与 manifest：
+
+   ```powershell
+   dotnet run --project tools/Catalog.Build -- --source source --output public/catalog.v1.json
+   ```
+
+   `public/catalog.v1.json` 由工具生成，不手工维护。提交 PR，检查 CI 后合入 `main`；现有工作流会重新生成并部署 GitHub Pages。最后检查[公开目录](https://leafuke.github.io/FolderRewind-Plugin-Catalog/catalog.v1.json)，并在 Host 中验证发现更新、下载和安装。
+4. 只有声明未变的小版本更新，才适合使用 [`update-plugin.yml`](https://github.com/Leafuke/FolderRewind-Plugin-Catalog/blob/main/.github/workflows/update-plugin.yml)。它接收 `pluginId`、`version`、`artifactUrl`、`sha256` 并创建 PR，只更新版本、stable 频道及制品信息，不更新 API、架构、Host 服务和 Artifact 摘要。例如从 API 3.6 升到 3.17，需先完整更新声明，不能只运行该工作流。
+5. 同时核对 `presets` 中的安装频道与条目一致；正式上架 stable 时，不应继续要求 candidate。当前格式每个 PluginId 只能有一个条目，旧版保留在 Releases。撤下条目或降低目录版本不会自动降级已安装插件；修复已公开版本时应发布更高版本，不覆盖同版本附件。
+
+### 网站与公开资产
+
 网站同步中英文说明、下载入口和真实已发布基准。在 Site 运行：
 
 ```powershell

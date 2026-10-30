@@ -177,6 +177,24 @@ Reports are preserved in `setup-release-report`. `installerExperience: not-run` 
 
 Verify public plugin download, version, hash, API, architecture and manifest before updating source entries under the independent Catalog repository's conventions and passing CI. Bundled upgrades and Catalog updates are separate actions; see [official Catalog and plugin updates](/docs/plugins/developing/auto-update).
 
+### Routine Catalog maintenance
+
+The Catalog is the source of installation and update facts. Replacing a Host bundle does not update it. Publish the plugin Release attachments, download them again and verify their bytes before promoting the Catalog entry.
+
+1. In the independent `FolderRewind-Plugin-Catalog` repository, edit `source/<pluginId>.json`: synchronize product version, channel, immutable Release URL, SHA-256, `pluginApi`, `architectures` and `requestedHostServices`.
+2. Synchronize Artifact summaries. Catalog `artifactFormats`, `artifactTransformers` and `restoreStrategies` contain string IDs taken from the manifest objects' `formatId`, `transformerId` and `strategyId`. Do not copy the object arrays. Check all declarations whenever the API or capabilities change.
+3. From the Catalog root, generate and validate the index. The tool downloads the actual plugin and checks its hash and manifest:
+
+   ```powershell
+   dotnet run --project tools/Catalog.Build -- --source source --output public/catalog.v1.json
+   ```
+
+   Keep `public/catalog.v1.json` generated rather than editing it manually. Open a PR, check CI and merge into `main`; the existing workflow regenerates and deploys GitHub Pages. Check the [public Catalog](https://leafuke.github.io/FolderRewind-Plugin-Catalog/catalog.v1.json), then verify update discovery, download and installation in Host.
+4. Use [`update-plugin.yml`](https://github.com/Leafuke/FolderRewind-Plugin-Catalog/blob/main/.github/workflows/update-plugin.yml) only for updates whose declarations are unchanged. Its `pluginId`, `version`, `artifactUrl` and `sha256` inputs create a PR updating the version, stable channel and artifact facts. It does not update API, architectures, Host services or Artifact summaries. An API 3.6 to 3.17 upgrade therefore needs a complete declaration update first.
+5. Check that installation channels in `presets` match the entry; a stable publication should not still request candidate. The current format permits one entry per PluginId; retain older versions in Releases. Removing an entry or lowering its version does not downgrade installed plugins. Fix a published version with a higher version instead of replacing its attachments.
+
+### Website and public assets
+
 Update both website languages, download links and genuinely published baselines. From Site, run:
 
 ```powershell
