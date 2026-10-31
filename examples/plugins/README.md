@@ -1,25 +1,26 @@
-# API 3.6 examples / 插件示例
+# Plugin API 3.17 examples / 插件示例
 
-Requires .NET 10, Node 24 and Python 3.10+. Both plugins reference only the public
-FolderRewind.Plugin.Abstractions 3.6.0 NuGet package, publicly available on
-NuGet.org. Restore using an empty package cache to verify public availability.
-Assembly identity remains 3.0.0.0; the Host baseline is FolderRewind 1.9.3.
+MinimalPlugin demonstrates activation and deactivation. GameRewind adds discovery,
+file policy and commands. Both reference the public
+`FolderRewind.Plugin.Abstractions 3.17.0` NuGet package and target .NET 10.
+The Host supplies assembly identity `3.0.0.0` at runtime.
 
-中文：使用公开 SDK 3.6.0，仅依赖 Abstractions，不引用宿主实现。
-GameRewind 仅扫描提供的根目录，不定义已知位置；真实提供器应遵守
-DiscoveryRequest.IncludeKnownLocations（默认 false）的范围授权。
+中文：两个示例只引用公开 Abstractions 包。MinimalPlugin 展示生命周期，GameRewind
+展示发现、过滤和命令。文档中的代码块直接读取这些源文件。
+
+From the website repository root, with .NET 10, Node.js 24 and Python 3.10+ installed:
 
 ```powershell
+dotnet restore examples/plugins/MinimalPlugin --source https://api.nuget.org/v3/index.json
+dotnet restore examples/plugins/GameRewind --source https://api.nuget.org/v3/index.json
 node scripts/pack-plugin.mjs MinimalPlugin
 node scripts/pack-plugin.mjs GameRewind
 ```
 
-Outputs: artifacts/examples/*.frplugin and matching .sha256. Install, inspect
-the declarations, and explicitly Enable in a FolderRewind API 3.6 Host using test
-data. GameRewind discovers supplied roots containing save.dat, proposes drafts,
-excludes cache/tmp files and offers a Host backup request and EXAMPLE_ECHO.
-It does not implement live-game coordination, snapshots, or safe player-data
-preservation. Shut down writers before testing a real game's data.
+Packages and checksums are written to `artifacts/examples/`. Install through plugin
+management, review declarations and enable the example in a Host supporting API 3.17.
+Use a small directory containing `save.dat` to exercise GameRewind.
 
-中文：示例展示生命周期、发现草稿、过滤和命令；不会直接保存宿主配置或写还原目标。
-热备份一致性和还原暂存扩展请参考网站能力指南，不能将文件复制视作游戏一致性保证。
+The QA harness references Runtime from the exact Host checkout selected in
+`audit/baseline.json`; the examples retain their independent package references.
+See the bilingual [plugin quick start](https://folderrewind.top/docs/plugins/developing/quick-start).

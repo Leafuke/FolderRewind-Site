@@ -3,11 +3,11 @@
   "pluginId": "com.example.gamerewind",
   "version": "1.0.0",
   "name": "GameRewind",
-  "description": "API 3.6 documentation example; use test data.",
+  "description": "Independent Plugin API 3.17 example: GameRewind.",
   "author": "FolderRewind documentation",
   "pluginApi": {
     "major": 3,
-    "minor": 6
+    "minor": 17
   },
   "entryAssembly": "GameRewind.dll",
   "entryType": "GameRewind.Plugin",

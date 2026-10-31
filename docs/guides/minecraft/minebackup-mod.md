@@ -2,14 +2,10 @@
 sidebar_position: 2
 title: MineBackup-Mod（模组化服务端联动）
 description: 当前 MineBackup-Mod 的安装、命令、热备份、热还原与专用服务端 Sidecar 说明
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # MineBackup-Mod（模组化服务端联动）
-:::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
-:::
-
 MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRewind 与游戏运行时。它负责游戏内命令、世界保存、热备份前协同、热还原前退出，以及还原后的自动重进。
 
 它不能单独运行：必须同时运行一个主程序，并通过 KnotLink 建立通信。
@@ -46,7 +42,7 @@ MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRe
 4. 单人/LAN 场景放入客户端 `mods`；专用模组化服务端场景放入服务端 `mods`，客户端是否安装取决于你要使用的客户端功能。
 5. 同时启动主程序和 Minecraft，再先完成一次测试备份。
 
-如果运行的是 Spigot/Paper，而不是模组化服务端，请改用 [MineBackupPlugin（Spigot/Paper 联动插件）](/docs/guides/minecraft/minebackup-plugin)。
+Spigot/Paper 服务端使用 [MineBackupPlugin（Spigot/Paper 联动插件）](/docs/guides/minecraft/minebackup-plugin)。
 
 ## 游戏内命令
 
@@ -56,7 +52,7 @@ MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRe
 | --- | --- | --- |
 | `/mb save` | 无 | 保存全部玩家和全部已加载世界，效果接近 `/save-all` |
 | `/mb backup` | `[注释]` | 备份当前世界，可附加注释 |
-| `/mb restore` | `[文件名]` | 还原当前世界；省略文件名时使用最新归档 |
+| `/mb restore` | `[文件名]` | 还原当前世界；省略文件名时由所连接后端解析目标 |
 | `/mb confirm` | 无 | 立即确认倒计时中的还原 |
 | `/mb stop` | 无 | 取消尚未提交的还原倒计时 |
 | `/mb list backups` | `[current [页码]]` | 显示当前世界可交互的分页归档列表 |
@@ -82,7 +78,7 @@ MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRe
 5. 让主程序执行备份。
 6. 备份完成后解除冻结。
 
-冻结有超时保护；但它仍是尽力而为的协同层，不代表任何外部程序、权限或通信故障都能自动修复。
+冻结具有超时保护。遇到通信或权限故障时，按任务诊断检查组件与存档，再测试一次备份和还原。
 
 ## 热还原流程
 
@@ -91,7 +87,7 @@ MineBackup-Mod 是 Minecraft 侧的联动模组，连接 MineBackup 或 FolderRe
 1. 握手和最低版本检查。
 2. 保存并退出当前世界/会话。
 3. 等待世界文件释放。
-4. 还原最新归档或指定归档。
+4. 还原后端选择的版本或指定归档。
 5. 接收还原终态。
 6. 自动重进或返回重进结果。
 
@@ -130,13 +126,3 @@ dedicatedRestore.operationTimeoutSeconds=3600
 - [KnotLink 与联动模组](/docs/guides/minecraft/knotlink-mod)
 - [热备份机制详解](/docs/guides/minecraft/hot-backup)
 - [热还原机制详解](/docs/guides/minecraft/hot-restore)
-
-<span id="专用服务端-sidecar-还原" />
-<span id="它和其他组件如何分工" />
-<span id="安装前置" />
-<span id="常见边界" />
-<span id="支持范围" />
-<span id="游戏内命令" />
-<span id="热备份流程" />
-<span id="热还原流程" />
-<span id="相关文档" />

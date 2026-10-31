@@ -1,53 +1,46 @@
 ---
 sidebar_position: 1
 title: "Minecraft 专题总览"
-description: "选择 Minecraft 存档保护方案，了解内置 MineRewind、游戏侧组件、热备份、区域和地图预览的分工。"
-reviewed_baseline: "1.9-api3.9"
+description: "使用内置 MineRewind 发现和保护 Minecraft 存档，选择热备份、玩家保留、区域备份、地图预览与世界合并，并配置游戏侧联动。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft 专题总览
 
-选择 Minecraft 存档保护方案，了解内置 MineRewind、游戏侧组件、热备份、区域和地图预览的分工。
+从一份世界备份开始，你可以逐步加入自动保存、地图浏览和游戏内快捷操作。FolderRewind 内置的 MineRewind 负责识别 Minecraft 世界并提供相关能力。
 
-FolderRewind 1.9 系列的 Minecraft 后端为 MineRewind v3。FolderRewind 1.9.6 内置 MineRewind 1.9.8，支持 API 3.9；游戏侧模组／服务端插件使用自己的版本线，真实游戏加载仍需单独验证。
+## 选择要做的事
 
-## 组件分工
+| 场景 | 从这里开始 |
+| --- | --- |
+| 找到世界并保存第一份备份 | [快速开始](/docs/guides/minecraft/quick-start) |
+| 游戏运行时备份 | [热备份](/docs/guides/minecraft/hot-backup) |
+| 回档并保留玩家位置或背包 | [热还原与玩家保留](/docs/guides/minecraft/hot-restore) |
+| 只保护指定区域 | [区域备份](/docs/guides/minecraft/selected-region-backup) |
+| 查看地形或比较历史版本 | [世界地图](/docs/guides/minecraft/world-preview) |
+| 合并不同分支的建筑与地形 | [世界合并](/docs/guides/minecraft/world-merge) |
 
-FolderRewind 管理配置、历史、归档、云副本与 Safe Restore。MineRewind 负责实例发现、范围、一致性、元数据、环境协调与玩家暂存提案。MineBackup-Mod／MineBackupPlugin 在游戏端保存、冻结写入或退出；Death Rewind／JEA 通过游戏侧 API 请求备份／还原。
+## Java、Bedrock 与普通目录
 
-单人／LAN 房主、模组化专用服务器和 Spigot/Paper 的退出／重进流程不同；服务端 Sidecar 不等于客户端自动重连。查看各组件教程与实际 Release 支持矩阵。
+Java 世界可使用地图、区域、NBT 玩家保留和游戏协调。Bedrock 世界按完整普通文件夹备份，先退出游戏再操作。Minecraft 项目中也可以添加整合包配置等普通目录，它们沿用普通文件流程。
 
-## 入门与发现
+自动发现支持常见启动器位置，也可手选启动器、实例库、saves 或单世界目录。确认草稿中的路径、版别和范围后创建项目。
 
-安装可信 .frplugin 并显式启用。静态设置 AutoDiscoverSaves 默认 true、AutoCreateConfigs 默认 false、PreservePlayerData 默认 false；v3 不再提供旧 EnableHotBackup 开关。按实例发现草稿并核对 worlds、Kind 和保存路径后创建，不用旧插件直接写配置的方法。
+## 游戏侧组件
 
-## 热备份与还原
-
-使用 session.lock 的占用判断活动世界。备份通过一致性租约协调落盘和稳定来源；Prefer 可降级为带警告原始备份，Require 不满足时阻断。还原前必须协调外部写入，缺少必需提供器不能静默绕过。
-
-默认快捷键 Alt+Ctrl+S／Alt+Ctrl+Z 分别备份／Quick Restore；Quick Restore 由 Host 选活动分支唯一本地尖端，不承诺“前一个时间点”。KnotLink 支持 7 个 current_save 选择器，参数复用 Host 命令。
-
-## 玩家与区域
-
-普通 Restore 可以保留全部 UUID 的选定 NBT 字段；stats／advancements 仍恢复，跨 26.1 布局保留拒绝。Checkout／Merge 不保留玩家状态。区域输入是方块坐标，部分捕获强制 Overwrite，详见[区域教程](/docs/guides/minecraft/selected-region-backup)。
-
-从[快速开始](/docs/guides/minecraft/quick-start)进入，继续阅读[热备份](/docs/guides/minecraft/hot-backup)、[热还原](/docs/guides/minecraft/hot-restore)和[故障排查](/docs/guides/minecraft/troubleshooting)。
+FolderRewind 保存归档、历史和云副本，MineRewind 解析世界并协调操作。游戏内命令和保存、退出、重进由对应游戏侧组件提供，KnotLink 负责传递请求与状态。
 
 import MinecraftEcosystem from '@site/src/components/MinecraftEcosystem';
 
 <MinecraftEcosystem />
 
-## Java、Bedrock 与普通目录
+单人、LAN 房主、模组化专用服务器和 Spigot/Paper 使用各自的联动流程。按游戏版本与加载器准备组件，再在测试世界练习一次备份、还原和重新进入。
 
-MineRewind 1.9.8 扩展多启动器与 Bedrock 发现，详见[快速开始](/docs/guides/minecraft/quick-start)。Java、Bedrock 和配置中的普通文件夹应分别理解：Java 世界可使用对应协调、NBT 与区域能力；Bedrock 是独立 Kind 的普通文件流程，需关闭游戏；普通目录不捕获可选世界元数据。发现成功不代表真实游戏加载验收完成。
+## 日常使用
 
-Minecraft Merge 使用 Host 的保守文件级三方合并，没有 region／chunk／NBT 语义合并。
+默认 `Alt+Ctrl+S` 请求备份当前世界，`Alt+Ctrl+Z` 请求快速还原；后者使用活动分支的唯一尖端版本。想找更早内容，可以直接在历史中选择版本。
 
-
-
-## 内置与独立发布版本
-
-FolderRewind 1.9.6 内置 MineRewind 1.9.8（API 3.9）。独立插件 Release 和官方目录当前仍提供 1.9.5（API 3.6），不含地图预览；不要为了获取新功能而将内置新版替换为旧独立包。Java 地图使用见[只读预览](/docs/guides/minecraft/world-preview)。
+普通还原可按设置保留所有玩家的选定状态，统计和进度随备份恢复。分支操作使用分支与合并结果。更多选项见[热还原](/docs/guides/minecraft/hot-restore)，问题处理见[故障排查](/docs/guides/minecraft/troubleshooting)。
 
 <span id="1-存档发现与批量建配置" />
 <span id="2-热备份协同" />
@@ -60,3 +53,10 @@ FolderRewind 1.9.6 内置 MineRewind 1.9.8（API 3.9）。独立插件 Release �
 <span id="使用前置条件" />
 <span id="典型组合" />
 <span id="风险与边界" />
+
+<span id="组件分工" />
+<span id="入门与发现" />
+<span id="热备份与还原" />
+<span id="玩家与区域" />
+
+<span id="内置与独立发布版本" />

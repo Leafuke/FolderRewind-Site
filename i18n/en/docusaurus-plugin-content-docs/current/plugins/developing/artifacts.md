@@ -1,36 +1,45 @@
 ---
-sidebar_position: 20
-title: "Artifact transformation, materialization and version metadata"
-description: "Implement immutable artifact transformation and isolated restore materialization with explicit formats, dependencies, metadata and commit boundaries."
-reviewed_baseline: "1.9-api3.9"
+sidebar_position: 5
+title: "Artifact transformation, incrementals and materialization"
+description: "Implement immutable artifact transforms, incremental input and isolated materialization, with fixed file views for history and Host-managed dependencies."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Artifact transformation, materialization and version metadata
+# Artifact transformation, incrementals and materialization
 
-Implement immutable artifact transformation and isolated restore materialization with explicit formats, dependencies, metadata and commit boundaries.
+An Artifact is an immutable payload node managed by the Host. Plugins identify content through an owner-qualified `ArtifactFormatRef` and format version. The Host manages storage protection, dependencies, integrity and lifecycle.
 
-Artifacts are immutable Host-managed payload nodes, distinct from Source Version, Representation and Replica. ArtifactFormatRef owner/format ID and format version identify content, not extensions or plugin product versions.
+## Declarations and transformation
 
-## Transform transactions
+Declare formats, transformers, restore strategies and services in the manifest. `IBackupArtifactTransformerCapability` receives Primary, parameters and an expected graph revision. Read inputs through ArtifactRead, create relative files in ArtifactTransformStaging and return an `ArtifactGraphPatch`.
 
-Declare ArtifactFormats, ArtifactTransformers, RestoreStrategies and matching capabilities. Transformers declare ArtifactRead/ArtifactTransformStaging services plus compatible Kinds, core modes, completeness and failure behavior.
+The Host validates formats, dependencies, revision, hashes and staging boundaries before committing. `KeepPrimaryWithWarnings` can retain the core result with diagnostics; `RequireTransform` requires successful transformation.
 
-IBackupArtifactTransformerCapability receives completed Primary, candidates, ExpectedGraphRevision and parameters. Allocate new staged artifacts, write relative files, and return an ArtifactGraphPatch with AddedArtifacts, dependencies and result root. The Host validates revision, format, completeness, DAG, hashes and staging boundaries before commit. Never rewrite old archives or commit persistent history yourself.
+## Incremental input
 
-KeepPrimaryWithWarnings preserves the core result with warnings. RequireTransform cannot report success without the required transform. Behavior must match declarations.
+With `supportsIncrementalInput`, receive an `ArtifactIncrementalInput` containing the Host-selected capture ID, input kind, boundary fingerprint, baseline version and representation, and added, modified and deleted paths. `Full` and `ChangesOnly` describe physical capture input.
 
-## Completion observation
+The Host selects a trusted baseline and checkpoint. The plugin builds new reconstruction recipes and dependencies from fixed input while older artifacts remain intact. MineRewind's lossless Full and incremental representations use these capabilities, with world semantic merging declared separately.
 
-IBackupCompletionObserverCapability observes committed Version, Representation, root Artifact, GraphRevision, CoreOutcome and CloudQueueCommitted. Return diagnostics without editing archives. hasBackupCompletionObserver must agree with declarations and registration.
+## Materialization and file views
 
-## Restore materialization
+`IRestoreMaterializerCapability` receives a fixed topologically sorted artifact set. Read through ArtifactRead and write relative paths into RestoreMaterializationWorkspace. The Host verifies and applies destination changes, using Overwrite for partial captures.
 
-IRestoreMaterializerCapability handles topologically sorted artifacts within declared format/version/completeness/mode ranges. Declare ArtifactRead and RestoreMaterializationWorkspace. Write relative paths only into the isolated Workspace; the Host owns preflight, integrity, Safe Restore, progress/cancellation and target mutation. Exact materialization does not permit Clean for a partial capture.
+A materializer can also implement `IArtifactFileViewProvider` to open a read-only `IArtifactFileView` over the fixed dependency closure. File entries contain relative paths, sizes, hashes and recipe references; streams reconstruct through the same decoder. The Host retains read leases until views and streams are disposed, supporting historical comparisons and previews.
 
-## Two metadata contracts
+## Completion observation and metadata
 
-IFolderMetadataCapability describes the live folder for UI. IVersionMetadataProviderCapability reads the same stable capture and returns bounded SchemaId/SchemaVersion/JSON payloads that become immutable version metadata. Do not reread a live world and present its values as historical metadata.
+`IBackupCompletionObserverCapability` receives committed versions, representations, root Artifacts, graph revision and cloud queue state, and returns observer diagnostics.
 
-## Verification
+`IFolderMetadataCapability` describes the live source. `IVersionMetadataProviderCapability` reads the same stable capture and returns bounded JSON with SchemaId and SchemaVersion, stored with the version.
 
-Exercise failed transforms, stale revisions, missing dependencies, incompatible formats, invalid paths, cancellation, recovery and post-commit failures. Unpacking alone does not certify game loading. Minecraft .mca/NBT data remains conservative file conflicts, without semantic merge promises.
+## Validation
+
+Cover Full and ChangesOnly input, deletion lists, missing dependencies, stale revisions, invalid paths, cancellation and recovery after commit. Load domain-format results in the real application as well. See the [domain merge reference](/docs/plugins/developing/plugin-api#semantic-merge).
+
+<span id="artifact-transformation-materialization-and-version-metadata" />
+<span id="transform-transactions" />
+<span id="completion-observation" />
+<span id="restore-materialization" />
+<span id="two-metadata-contracts" />
+<span id="verification" />

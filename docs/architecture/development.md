@@ -1,12 +1,10 @@
 ---
 title: 开发、构建与验证
-description: 了解 1.10 开发分支的源码布局、构建与核心测试入口，以及隔离故障恢复、安装载荷检查和固定样本性能比较的边界。
-reviewed_baseline: "development-1.10"
+description: 了解源码布局、Windows 构建与核心测试入口，准备隔离故障恢复和安装载荷检查，并使用固定样本比较性能。
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 开发、构建与验证
-
-> 本页面向 1.10 开发工作树，不表示新版本或 SDK 已公开发布。
 
 使用 Windows 与 WinUI 开发工具链；SDK 由 global.json 选择，依赖版本由集中包配置及项目覆盖声明。生产项目放在 src，测试放在 tests。普通 Host 构建不需要网站、MineRewind 或 Catalog 源码。
 
@@ -39,7 +37,7 @@ Release Setup 会核对清单与项目版本，读取 `.github/release-notes/v<�
 
 使用 `tools/BackupPerformanceHost` 和 `benchmarks/performance`，为基线与候选冻结完整输出。双方保持相同输入、压缩器、测量代码、参数和测量边界，使用不重叠且尚不存在的隔离输出目录，交替运行以减小缓存和顺序影响。固定合成输入包括 Full/Smart、许多小文件、历史增长及单字节变化；按任务风险选择相关矩阵。
 
-同时核对结果正确性、归档内容和完整样本，再解释耗时、CPU、内存与 I/O。保存二进制哈希和原始记录到 artifacts。服务基准不是 UI、真实云端或真实游戏验收；不把单次工作集下降解释成资源释放证明。
+同时核对结果正确性、归档内容和完整样本，再分析耗时、CPU、内存与 I/O。二进制哈希和原始记录保存到 artifacts。服务性能、UI、真实云端与游戏加载分别设置验证场景，资源释放结合持续采样判断。
 
 ## 文档与贡献
 

@@ -1,43 +1,41 @@
 ---
 sidebar_position: 2
-title: "Installing and managing plugins"
-description: "Install plugins from the official catalog or local packages, check runtime status and settings, then update, roll back or uninstall."
-reviewed_baseline: "1.9-api3.9"
+title: "Install and manage plugins"
+description: "Install plugins from the official catalog or a local package, review services and runtime settings, and manage updates, rollback and removal."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Installing and managing plugins
+# Install and manage plugins
 
-Install plugins from the official catalog or local packages, check runtime status and settings, then update, roll back or uninstall.
+Open plugin management in Settings to review installed plugins, change settings or add extensions. MineRewind comes with the app; install other plugins as needed.
 
-![Plugin management shows bundled MineRewind 1.9.8; check the separate public package independently.](/img/docs/v1-9-6/plugins-en-light-1604.webp)
+## Install from the official catalog
 
-*Plugin management shows bundled MineRewind 1.9.8; check the separate public package independently. Interface version: 1.9.6.*
+Open the plugin store, select a plugin and review its features, author, version, API compatibility and requested services. Install it, enable it and check its runtime state. New installations start disabled; enabling runs the plugin code.
 
-## Official Catalog
+## Install a local package
 
-Open plugin management/store in Settings. Review product, version, API, provenance, requested services and artifact hash, then install. New installs are disabled; explicit Enable runs ActivateAsync. Persisted intent and runtime state are distinct.
+Download a `.frplugin` and matching SHA-256 file from a trusted author, verify the checksum and choose Local install. The app checks package structure, declarations, settings and entry metadata.
 
-## Local install
+Current packages place `manifest.json`, the settings schema and entry DLL at the root. Authors of older v2 plugins provide compatible packages; see [plugin migration](/docs/plugins/developing/migration-v2-v3).
 
-Obtain a trusted `.frplugin` and checksum, verify SHA-256 and use local install. Root manifest.json, declared settingsSchema and entry assembly are required. Old nested ZIPs and bundled Abstractions are rejected. Static checks do not prove code safety.
+## Settings and runtime state
 
-## Settings and transitions
+Select a plugin, edit its settings and save. Check runtime state and diagnostics and prepare required services. Follow `RequiresRestart` when shown. Safe Mode retains the enabled choice while pausing plugin execution.
 
-The Host renders typed settings and rejects invalid types. Check activation diagnostics. Disable removes routing, drains and cleans up; timeouts can require restart, without guaranteeing immediate physical unload. Safe Mode preserves Enabled Intent without running plugins. Corrupt configuration enters Recovery Center.
+Plugin code runs with current-user permissions. Consider its source and service declarations when choosing extensions.
 
-## Updates and rollback
+## Update and roll back
 
-Automatic updates use Catalog-bound version/URL/SHA-256/manifest, not arbitrary downloads from self-reported Repository. Manual/Official provenance remains distinct; equal names/IDs do not prove trust.
+Official updates use fixed versions, download URLs, SHA-256 values and declarations from the Catalog. Finish affected tasks, then update through plugin management. The app keeps current and previous known-good payloads for rollback through the interface.
 
-Versioned installs maintain current/previous known-good payloads and recovery journals. Use UI update/rollback after stopping affected work, never replace DLL directories directly. Older plugins may not read current state/artifacts.
+Manually distributed packages are recorded as Manual. Continue maintaining them through the author's packages and the management interface. Before rolling back, check compatibility with settings and backup formats already in use.
 
 ## Uninstall
 
-Capabilities drain before transactional code/optional private-data quarantine and configuration removal. User backup history is not plugin private data. Review materializer requirements before uninstall. Let startup recovery handle interruptions; do not empty transaction directories manually.
+Review the code, settings and optional private data in the uninstall preview. Backups and history remain in the app. Recovering versions in plugin-specific formats still requires a matching materializer.
 
-## Troubleshooting
-
-Check API major/minor, architecture, entry type, schema/declarations, activation diagnostics, RequiresRestart and Kind availability. Downloaded, Installed, Enabled Intent and Active are separate facts.
+Restart to finish recovery after an interrupted uninstall. If a feature is missing, check runtime state, API, architecture, settings, services and source kind, then read plugin diagnostics and logs.
 
 <span id="1-install-from-plugin-marketplace" />
 <span id="2-local-zip-install" />
@@ -48,3 +46,11 @@ Check API major/minor, architecture, entry type, schema/declarations, activation
 <span id="plugin-installed-but-feature-is-missing" />
 <span id="related-links" />
 <span id="upgrade-and-rollback" />
+
+<span id="installing-and-managing-plugins" />
+<span id="official-catalog" />
+<span id="local-install" />
+<span id="settings-and-transitions" />
+<span id="updates-and-rollback" />
+
+<span id="troubleshooting" />

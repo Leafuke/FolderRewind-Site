@@ -1,12 +1,10 @@
 ---
 title: Development, builds and verification
 description: Build, core-test, isolated recovery and performance entry points for the 1.10 development layout.
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Development, builds and verification
-
-> This page describes the 1.10 development working tree, not a newly published release or SDK.
 
 Use Windows and the WinUI development toolchain. global.json selects the SDK; central package configuration and project overrides declare dependencies. Production projects live in src and tests in tests. Ordinary Host builds do not require website, MineRewind or Catalog sources.
 
@@ -39,7 +37,7 @@ Release Setup checks manifest/project version agreement, reads `.github/release-
 
 Use `tools/BackupPerformanceHost` and `benchmarks/performance`, freezing complete baseline and candidate outputs. Keep inputs, compressor, measurement code, parameters and timing boundaries identical. Use distinct, nonexistent output directories and alternate execution order to reduce cache/order effects. Fixed synthetic cases cover Full/Smart, many small files, history growth and single-byte changes; select relevant matrices according to risk.
 
-Verify results, archive contents and complete samples before interpreting elapsed time, CPU, memory or I/O. Keep binary hashes and raw results in artifacts. Service benchmarks do not replace UI, real-cloud or real-game acceptance, and a single working-set decrease is not evidence of resource lifetime correctness.
+Verify results, archive contents and complete samples before analyzing elapsed time, CPU, memory and I/O. Keep binary hashes and raw data in artifacts. Use separate scenarios for service performance, UI, real-cloud behavior and game loading, with sustained sampling for resource lifetime.
 
 ## Documentation and contributions
 

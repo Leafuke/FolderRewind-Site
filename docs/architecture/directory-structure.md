@@ -1,13 +1,11 @@
 ---
 sidebar_position: 1
 title: "项目目录与构建边界"
-description: "从仓库目录找到界面、历史核心、插件契约和验证工具，明确各项目的构建边界。"
-reviewed_baseline: "development-1.10"
+description: "从仓库目录找到 WinUI 界面、Core 历史、公开插件契约、运行时与验证工具，了解生产项目、测试和独立仓库的构建关系。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 项目目录与构建边界
-
-> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
 
 ```text
 FolderRewind.slnx

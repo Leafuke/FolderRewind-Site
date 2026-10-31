@@ -1,49 +1,47 @@
 ---
 sidebar_position: 3
 title: "Your first restore"
-description: "Choose a FolderRewind version, review the destination, Clean or Overwrite mode and backup-before-restore setting, then verify the recovered files."
-reviewed_baseline: "1.9-api3.9"
+description: "Select a historical version, check its destination, restore mode and protection options, and verify added, modified and deleted test files."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Your first restore
 
-A restore changes files at its destination. Practise with the test folder from your first backup so you can check the exact result.
+Practice on the folder from your first backup to learn how to recover earlier content and see how current files change.
 
-![Review the restore mode. Backup before restore is enabled in this example.](/img/docs/v1-9-6/restore-detail-en-light-710.webp)
+## 1. Select a historical version
 
-*Review the restore mode. Backup before restore is enabled in this example. Interface version: 1.9.6.*
+Open history, select the project and source and find Initial version. Check its date, scope and recovery status, then choose Restore. For a cloud archive, prepare the version and its complete dependencies, or use [cloud recovery to a new folder](/docs/guides/cloud-recovery).
 
-## 1. Choose a version
+## 2. Check the destination and protection
 
-Open history, select the project and source, and find a clearly named version such as “Initial version”. Check its time, scope and restore status. If the archive is only in the cloud, prepare that version and its dependencies first.
+Confirm the path and let programs using the folder finish writing. Encrypted archives require the original password. Minecraft hot restore also coordinates the game state.
 
-## 2. Review the destination and protection
+![Check the restore mode and backup-before-restore option in the confirmation.](/img/docs/v1-9-6/restore-detail-en-light-710.webp)
 
-Check the target path and close programs writing to it. Encrypted archives require the correct password. Minecraft hot restore also requires the appropriate coordination with the game.
-
-Check Backup before restore in the confirmation window. This is separate from the restore mode; enabling Safe Restore alone does not mean a long-term backup version has been created.
+To keep current work, check Backup before restore or create a manual backup first. See [safety snapshots](/docs/guides/safety-snapshots) for protection during branch switches and merges.
 
 ## 3. Choose a restore mode
 
-| Mode | What happens to files |
+| Mode | File changes |
 | --- | --- |
-| Clean | Reconstructs the target state inside the managed range, removing content in that range that is absent from the selected version |
-| Overwrite | Restores archived files and retains current content outside the captured range |
-| Partial backup or legacy backup with unknown deletion boundaries | Uses Overwrite to avoid deleting content without backup evidence |
+| Clean | Restore the target state within the managed boundary and remove extra content there |
+| Overwrite | Write the backed-up files and keep other current content |
+| Partial or restricted legacy backup | Use Overwrite, keeping data outside backup coverage |
 
-The restore whitelist keeps matching current files unless the archive contains the same path. For current state to always take precedence, see [one-shot preservation](/docs/guides/filters).
+A restore whitelist preserves current paths during cleanup, while backup files win at matching paths. For current content to take priority, use [one-time preservation](/docs/guides/filters#restore-preserve-paths).
 
-## 4. Run and verify
+## 4. Run and inspect
 
-Confirm and wait for the final result. Open the files and compare your added, changed and deleted test files. Game saves also need a loading check in the game.
+Confirm and wait for the task to complete. Open the files and inspect the added, modified and deleted examples. You can load a recovered game world in a copied test instance.
 
-`NoChanges` means no write was needed. Read warnings for `SuccessWithWarnings`. For `RecoveryRequired` or `CommittedRecoveryRequired`, keep the logs and use controlled recovery instead of repeating the restore.
+Use the [notification center](/docs/guides/notifications) to review warnings and logs. When recovery is requested, follow the diagnostics before continuing work on the project.
 
-## Quick Restore and branch operations
+## Quick Restore and branches
 
-Quick Restore prefers the active branch's unique tip. A source without an active branch can use its most recent recoverable legacy backup. It does not mean “the previous row”. Once a branch is active, Quick Restore does not automatically search other branches for a legacy version.
+Quick Restore uses the unique tip of the active branch. A source with no active branch can select the most recent recoverable legacy backup. To return to an earlier time, select a specific version in history.
 
-To switch approaches or combine files, read [branches and merging](/docs/guides/history-branches). Ordinary restore's player, whitelist and path-preservation options do not apply to Checkout or Merge.
+To try alternative approaches, [create, switch or merge branches](/docs/guides/history-branches). Player preservation, restore whitelists and one-time preservation belong to the ordinary Restore workflow.
 
 <span id="before-you-start" />
 <span id="next-step" />
@@ -54,3 +52,9 @@ To switch approaches or combine files, read [branches and merging](/docs/guides/
 <span id="step-4-run-the-restore" />
 <span id="step-5-verify-the-restore-result" />
 <span id="troubleshooting" />
+
+<span id="1-choose-a-version" />
+<span id="2-review-the-destination-and-protection" />
+
+<span id="4-run-and-verify" />
+<span id="quick-restore-and-branch-operations" />

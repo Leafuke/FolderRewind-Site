@@ -1,32 +1,32 @@
 ---
 sidebar_position: 4
 title: "服务编排与核心职责"
-description: "按子系统查找配置、备份、还原、云传输和插件服务的编排入口。"
-reviewed_baseline: "development-1.10"
+description: "按子系统查找配置、捕获、历史、合并、云恢复、通知与插件服务，理解输入准备、事务提交和界面结果的协作。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 服务编排与核心职责
 
-> 1.10 开发说明：无 UI 的历史与策略归入 Core，Host 保留配置、平台与界面编排；现有命名空间、数据格式和公开插件契约保持不变。
+| 子系统 | 入口与职责 |
+| --- | --- |
+| 配置 | ConfigService、ConfigWriteCoordinator：快照、串行保存、恢复与迁移激活 |
+| 捕获 | BackupService 与 Core 策略：解析范围、差异、压缩输入与捕获结果 |
+| 历史 | HistoryRuntime、查询与提交服务：不可变事实、来源分支、Workspace 和索引 |
+| 合并 | MergeOperationService、HistoryMerge 服务：计划、决策、结果审阅与受控应用 |
+| 地图 | SpatialWorkspace 与 SpatialPreview：固定历史输入、对比、选区和显示状态 |
+| 云 | CloudSetupCoordinator、CloudSyncService：连接、授权、上传与同步 |
+| 云恢复 | CloudReadOnlyRecoveryService：读取历史、下载依赖并恢复到新位置 |
+| OpenList | OpenListRuntimeService：指定本机实例的运行状态与启动管理 |
+| 插件 | PluginService 与 PluginRuntimeManager：安装、激活、路由、租约和更新 |
+| 发现 | GameDiscoveryService、Review 与 DraftTransaction：候选审阅和项目创建 |
+| 自动化 | AutomationService：调度、条件触发、取消与无变化停止 |
+| 通知 | NotificationCoordinator、NotificationCenterService：结果聚合、提醒策略与跳转 |
 
-按子系统查找配置、备份、还原、云传输和插件服务的编排入口。
+还原先评估、物化和验证，再进入 Host 事务修改目标。插件协调包围实际变更，分析与构建使用暂存输入输出。
 
-| 子系统 | 当前入口／职责 |
-|---|---|
-| 配置 | ConfigService、ConfigWriteCoordinator：快照串行持久化、配置恢复模式 |
-| 备份 | BackupService：来源解析、捕获与 Host 事务终态；7-Zip 后端处理载荷 |
-| 历史 | NativeHistoryCoreGateway、HistoryRuntime、提交／查询／还原服务：原生仓库、索引、Workspace 与门控 |
-| 历史交互 | NativeHistoryApplicationService、NativeHistoryRestoreOrchestrator：UI 请求、来源、插件协调和结果映射 |
-| 云 | CloudSyncService、RcloneNativeHistoryTransport、HistoryMetadataSyncService／HistoryReplicaSyncService：冻结连接、并集和验证副本 |
-| 插件 | PluginService Host 入口与独立 PluginRuntimeManager：静态安装、激活、排空、typed settings 和目录更新 |
-| 发现 | GameDiscoveryService 与 provider／三方 Review／DraftTransaction：候选与受控配置提交 |
-| 引导 | CloudSetup、MinecraftOnboarding 与创建事务：步骤、诊断和一次提交 |
-| 自动化 | AutomationService：可取消调度、条件触发、来源目标与无变更停止 |
-| UI | Navigation、AppDialog、Notification、Theme、MiniWindow 及 Dispatcher 适配 |
+云连接、历史同步和载荷传输分别管理结果。取消与诊断沿操作上下文传至 ViewModel，最终结果进入任务、日志与通知中心。
 
-旧 HistoryService 管理可变 history.json 不再是核心权威，旧 TemplateService／PluginService 单文件清单也不能代表当前模块。优先描述职责与测试边界，具体 partial 文件随实际源码查询。
-
-受控还原先评估／物化／完整性验证，再进入 Host 原子变更；插件协调不能嵌套 Host 写入。云数据操作区分配置导入、packs 同步和 payload 传输。失败诊断与取消传至 UI，不以任务排队成功代替最终成功。
+查找具体实现时，按项目与功能目录查看 partial 文件。整体依赖见[架构总览](/docs/architecture/)。
 
 <span id="ui-辅助" />
 <span id="其他" />

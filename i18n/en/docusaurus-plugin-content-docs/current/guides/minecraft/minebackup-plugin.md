@@ -1,19 +1,13 @@
 ---
 title: MineBackupPlugin (Spigot/Paper Integration)
 description: FolderRewind/MineBackup backup, hot restore, and Sidecar handoff for Spigot and Paper dedicated servers
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # MineBackupPlugin (Spigot/Paper Integration)
-:::info[FolderRewind 1.9.6 backend baseline]
-For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
-:::
+MineBackupPlugin targets Spigot, Paper and Bukkit/Spigot-compatible dedicated servers. It saves worlds, requests Host backups through KnotLink and uses a pure-JDK Sidecar to hand off stopped-server restore operations.
 
-MineBackupPlugin is the integration path for Minecraft servers outside the mod-loader ecosystem. It targets Spigot, Paper, and servers compatible with the Bukkit/Spigot API. The plugin does not store backups itself: it saves worlds, asks MineBackup or FolderRewind to create backups through KnotLink, and hands stopped-server file release over to a pure-JDK Sidecar during restore.
-
-:::warning It is not a standalone backup program
-The host application, the Minecraft-side integration, and a working KnotLink service must still be running. The plugin cannot create or restore archives by itself.
-:::
+Run MineBackup or FolderRewind + MineRewind alongside a working KnotLink service.
 
 ## Support scope
 
@@ -158,12 +152,3 @@ Start troubleshooting with `/mb status` and verify the host, KnotLink, and plugi
 - [KnotLink and Integration Mod](/en/docs/guides/minecraft/knotlink-mod): protocol and hot-flow details.
 
 Run a full “backup → restore → restart → manual reconnect” drill on a test server before relying on this in production.
-
-<span id="command-reference" />
-<span id="dedicated-server-restore-and-sidecar" />
-<span id="default-configuration" />
-<span id="hot-backup" />
-<span id="prerequisites-and-installation" />
-<span id="related-integration-components" />
-<span id="support-scope" />
-<span id="when-knotlink-is-unavailable" />

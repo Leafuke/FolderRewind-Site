@@ -1,19 +1,13 @@
 ---
 title: Just Enough Accidents
 description: Detect high-risk Minecraft states and create MineBackup incident snapshots
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Just Enough Accidents
-:::info[FolderRewind 1.9.6 backend baseline]
-For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
-:::
-
 Just Enough Accidents (JEA) is an accident-detection extension for MineBackup. In singleplayer or LAN worlds, it detects high-risk states and asks MineBackup and FolderRewind to create an incident snapshot.
 
-:::warning A snapshot is not an absolute safe point
-JEA records the world at the moment a detector fires. It does not guarantee a point before the accident. Low-health and totem detectors may already include damage or a consumed totem.
-:::
+JEA saves the incident state at detection time. Low-health or totem snapshots may include damage or a consumed totem. Choose an earlier historical version when you need earlier progress.
 
 ## Support and prerequisites
 
@@ -26,8 +20,7 @@ JEA records the world at the moment a detector fires. It does not guarantee a po
 All scenarios also require:
 
 - MineBackup 3.1.0+.
-- FolderRewind 1.8.0+.
-- MineRewind 1.8.0+.
+- Current FolderRewind with bundled MineRewind enabled.
 - A singleplayer world or LAN-host permission.
 
 JEA 0.2.0 does not support dedicated servers. On a dedicated server it logs one disabled message, then skips scanning and backup requests. Use the [Just Enough Accidents releases](https://github.com/Leafuke/JustEnoughAccidents/releases) as the final download source.
@@ -146,11 +139,3 @@ The TNT detector above is part of the current detector set; the excluded list re
 - [FolderRewind filters and backup modes](/en/docs/guides/filters)
 
 Observe one detector, archive, and manual-restore flow in a test world before tuning thresholds for a modpack.
-
-<span id="cooldown-coalescing-and-retention" />
-<span id="default-configuration" />
-<span id="initial-detectors" />
-<span id="not-included-in-020" />
-<span id="related-documentation" />
-<span id="scoreboard-trigger" />
-<span id="support-and-prerequisites" />

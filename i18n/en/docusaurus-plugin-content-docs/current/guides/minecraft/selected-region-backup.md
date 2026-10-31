@@ -1,54 +1,48 @@
 ---
 sidebar_position: 3
 title: "Minecraft selected-region backups"
-description: "Select Java-world regions using block coordinates, check dimensions and ranges, and understand uncaptured content during overlay restore."
-reviewed_baseline: "1.9-api3.9"
+description: "Select Java world areas on the map or by block coordinates, check dimensions and source scope and restore captured region files with Overwrite."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft selected-region backups
 
-Select Java-world regions using block coordinates, check dimensions and ranges, and understand uncaptured content during overlay restore.
+Use a rectangular scope when you want to protect part of a world, such as the area around a build. MineRewind maps block coordinates to the involved region files and creates a partial backup.
 
-MineRewind1.9 selected-regions takes **block-coordinate** rectangles, creating partial captures. Inputs are not .mca region coordinates or chunk coordinates.
+## Select the area
 
-## Configure coordinates
-
-Select the plugin scope in backup policy, explicitly choose overworld/nether/end and enter x1,z1,x2,z2 per line:
+Select an area in the [map workspace](/docs/guides/minecraft/world-preview), or choose the plugin scope in backup policy, select overworld, nether or end and enter `x1,z1,x2,z2` per line:
 
 ```text
-# Cross boundaries: region -1,0,1
 -512,-512,512,512
-# One nonnegative region
 0,0,511,511
 ```
 
-Finite floating values in[-30000000,30000000] are accepted. region=floor(block/512): -0.5→-1,0→0,511→0,512→1. Corners may be reversed; never truncate negatives toward zero.
+Use block positions. Region indexes are `floor(block/512)`: -0.5 maps to -1, 511 to 0 and 512 to 1. Corners may be reversed. The selection expands to involved region-file boundaries.
 
-## Limits
+## Check the input
 
-| Input | Limit/rule |
-|---|---|
-| UTF-8 areas text |32 KiB |
-| Effective rectangles |128, excluding blanks/# comments |
-| Coordinates | Finite and within world bounds |
-| Deduplicated regions |4096 per dimension |
-| Format | Four comma-separated numbers, no extra fields |
+| Input | Range |
+| --- | --- |
+| areas text | Up to 32 KiB of UTF-8 |
+| Rectangles | Up to 128 effective lines; blanks and `#` comments are skipped |
+| Coordinates | Finite values from -30000000 to 30000000 |
+| Region files | Up to 4096 deduplicated regions per dimension |
+| Line format | Four comma-separated numbers |
 
-Empty/invalid/oversized/ambiguous input blocks the operation rather than producing silently incomplete content. Early regions/selectedRegions compatibility fields are not current areas UI semantics.
+Resolve empty scopes, invalid coordinates or ambiguous dimensions using diagnostics before saving. Source scope and project filters narrow the result further. Confirm the effective file preview.
 
 ## Included files
 
-Selected .mca files in region/entities/poi plus essential world/player/data rules are included. For external large-chunk safety, current code includes **all c.*.*.mcc** in the relevant dimension directories, not just referenced files parsed from selected .mca. Size can exceed a rectangle estimate.
+Selected regions include matching `.mca` files in each dimension's `region`, `entities` and `poi`, plus required world, player and data files. External large chunks include all `c.*.*.mcc` files in relevant dimension directories, so actual size can exceed rectangle estimates.
 
-Supported recognized Vanilla/Paper/Spigot/26.1 layouts are accepted; ambiguity blocks. SourceScope/config filters can narrow further; scope never expands the source boundary. Inspect archive inventory after changes.
+Recognized Vanilla, Paper/Spigot and newer dimension layouts are supported. For sibling Paper/Spigot dimensions, select the server root containing them as the source and check their paths.
 
-## Restore
+## Restore and inspect
 
-Partial captures always Overwrite in ordinary/hot Restore. Clean cannot delete omitted regions; other regions do not return to the same time. Stop writes or complete coordination. Verify dimensions/entities/POI/large chunks and real loading on copies first.
+Region backups use Overwrite, restoring captured content and keeping other current regions. Close the game or finish hot coordination, then inspect dimensions, entities, POI and large chunks in a copy.
 
-## Edition boundary
-
-selected-regions is a Java-world scope, not a Bedrock LevelDB or ordinary-folder scope. Bedrock discovery does not convert its layout into Java regions. Close the game and use a full ordinary file backup.
+Region support is for Java worlds. Close Bedrock and use a complete ordinary file backup. See [world merging](/docs/guides/minecraft/world-merge) to combine branch changes.
 
 <span id="configuration" />
 <span id="dimensions-and-directory-layouts" />
@@ -57,3 +51,9 @@ selected-regions is a Java-world scope, not a Bedrock LevelDB or ordinary-folder
 <span id="relationship-with-filters" />
 <span id="safe-restore-rules" />
 <span id="when-a-backup-is-rejected" />
+
+<span id="configure-coordinates" />
+<span id="limits" />
+
+<span id="restore" />
+<span id="edition-boundary" />

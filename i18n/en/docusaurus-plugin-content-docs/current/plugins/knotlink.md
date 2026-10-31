@@ -2,14 +2,14 @@
 sidebar_position: 3
 title: "KnotLink protocol and integration"
 description: "Connect external tools through KnotLink and distinguish parameterized requests, acceptance and final task completion."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink protocol and integration
 
 Connect external tools through KnotLink and distinguish parameterized requests, acceptance and final task completion.
 
-FolderRewind 1.9 keeps KnotLink Server v3 and parameterized wire protocol v2. Current capability manifestVersion=3.0.0, specVersion=1.0 and Plugin API 3.9 evolve independently.
+FolderRewind uses KnotLink Server v3 and parameterized protocol v2. The runtime capability list uses manifestVersion 3.0.0 and specVersion 1.0, generated from core commands and plugin declarations.
 
 ## Format and encoding
 
@@ -26,11 +26,11 @@ Use cmd=PING, then cmd=GET_CAPABILITIES for percent-encoded JSON func_list. Chec
 
 ## Lifecycle and semantics
 
-status=ok may mean accepted, not completed. Correlate later signals using request_id and avoid duplicate destructive requests. Remote Restore defaults Clean; partial captures force Overwrite. Omitting file invokes active-branch Quick Restore, not the preceding timestamp.
+Queries return their result with status=ok. Long tasks acknowledge acceptance first; correlate their final signals through request_id. Remote Restore defaults to Clean, partial captures use Overwrite and omitting file resolves the active branch Quick Restore target.
 
 ## Plugins
 
-API 3.9 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for seven folder commands; an active, unambiguous world is required.
+API 3.17 integration declares commands/signals. Target resolution selects stable IDs and reuses Host operations. MineRewind offers current_save selectors for seven folder commands; an active, unambiguous world is required.
 
 See the [command reference](/docs/plugins/knotlink-commands), [developer API](/docs/plugins/developing/knotlink-api) and [Minecraft integration](/docs/guides/minecraft/knotlink-mod).
 

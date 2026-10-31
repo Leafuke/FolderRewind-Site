@@ -1,71 +1,71 @@
 ---
 sidebar_position: 8
-title: "Move configuration, history and archives"
-description: "Move configuration, history and archives separately when changing computers or installation channels, then verify paths and restore results."
-reviewed_baseline: "1.9-api3.9"
+title: "Upgrade and migrate configuration and history"
+description: "Prepare configuration, history, archives and passwords when upgrading or moving PCs, confirm project paths and finish legacy backup adoption and recovery tests."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Move configuration, history and archives
+# Upgrade and migrate configuration and history
 
-When changing computers or installation channels, preserve configuration, history and archive bytes separately. Exporting one does not guarantee restoration on another device.
+When upgrading, moving PCs or switching installation channels, keep the original data and migrate configuration, history and archives separately. After a test restore, you can resume everyday backups.
 
-![Export configuration and history separately. Native-history import merges and deduplicates packs.](/img/docs/v1-9-6/migration-detail-en-light-1310.webp)
+## Prepare your files
 
-*Export configuration and history separately. Native-history import merges and deduplicates packs. Interface version: 1.9.6.*
-
-## Prepare three kinds of data
-
-| Data | Contains | Also needs |
+| Material | How to prepare it | Purpose |
 | --- | --- | --- |
-| Configuration export | Projects, sources and settings | New device paths, plugins and encryption passwords |
-| `.frhistory` | Repository information and immutable history packs | Actual archives and all dependencies |
-| Archives or trusted cloud replicas | Recoverable file contents | Matching history, source bindings and decryption material |
+| Configuration | Export JSON in Data migration or use a verified cloud connection | Bring projects, sources and backup policies |
+| History | Export `.frhistory` for all or selected projects | Bring versions, branches and history |
+| Archives | Copy backup storage and complete incremental dependencies, or prepare cloud copies | Supply recoverable file content |
+| Passwords and plugins | Keep encryption passwords separately and prepare required plugins | Decrypt and read backup formats in the new environment |
 
-Local workspace state, indexes, replica locations and DPAPI password material have device boundaries. A history export does not transfer all of them.
+Stop automatic tasks in the original client and keep copies of its full app data and archive directories. See [installation](/docs/getting-started/installation#data-directories-and-channels) for channel-specific paths.
 
-## Export and import configuration
+## Import configuration and restart
 
-This workflow applies to 1.9.x builds containing the migration transaction fixes. The 1.9.6 screenshot above only locates the Settings entry.
+Open Data migration on the destination device, select the configuration file and preview projects, sources and backup paths. Choose Local recovery or Cross-device migration. Local recovery can retain matching valid branches and baselines; cross-device migration checks the new local environment.
 
-Stop automatic tasks on the old client and keep a complete data copy. Export through Data migration in Settings, using local JSON or a verified cloud connection.
+Confirmation prepares a pending configuration. Choose Restart and apply configuration to switch, or cancel the import before restarting. The app waits for active tasks and saves the original configuration before switching.
 
-Inspect project names, project IDs, sources and backup paths before confirming import. Confirmation prepares a candidate only; the current configuration remains active. Cancel the pending import or choose Restart and apply configuration. Restart waits for active tasks and preserves the latest original configuration. The new process activates before initializing services; interrupted activation restores the previous configuration.
+The original automation and cloud switches are retained while migration checks restore permission to run each function. To recover switches turned off by an older build, use Read original switches from configuration with the original exported JSON.
 
-Imported projects retain their original project/source identities and configured automation/cloud switches. Separate migration permissions pause each capability until the batch check and confirmation. Pending cloud bindings do not block confirmed local backup, and unfinished projects do not block finished projects. Importing `config.json` does not make old paths valid or transfer local password storage. If a bound history repository has not been migrated, import its history before completing project setup.
+## Import history
 
-Choose Restore on this computer or Migrate to another computer in the import preview. A matching target project defaults to local restore; otherwise cross-device migration is selected. Both modes validate actual state.
+Import `.frhistory` and check project IDs, sources, versions and branches. Multi-project files are processed per project and existing packs are deduplicated. Each project reports history commit, association and local initialization results. Retry incomplete projects from the report.
 
-## Export and import history
-
-Export defaults to All projects with a project count. Choose Selected projects to expand the list, select all or clear selection. Project IDs are available in details. New v2 `.frhistory` bundles support multiple projects, and the importer also reads v1 single-project bundles. Empty history is reported as zero. A missing or damaged bound repository needs attention rather than being silently omitted.
-
-Before import, inspect the source application version, transfer format, project/source IDs, version/branch/Pack counts and same-ID project association. Bundles contain a manifest, repository descriptors and immutable Packs with `IncludesPayloads=false`. Archives, the old device workspace and SQLite indexes are excluded.
-
-Native history imports merge and deduplicate facts without replacing lists or rewriting Pack identity. Each project commits independently. A batch may partially complete; retry safely according to its report. If a commit decision requires recovery, retain its transaction and staging directories. The application completes the union before reading the repository.
-
-Results separately report metadata commit, project association, local initialization and added/duplicate Pack counts. An unmatched repository waits for the original configuration; import that configuration instead of assigning history to a same-name project with different IDs.
+History packages carry history records; prepare archives from the material checklist separately. If no project with the original ID exists, import its configuration and check the association.
 
 ## Complete local setup
 
-All status, progress and contextual actions belong inside Data migration. Projects are checked automatically; one Review and resume ready projects confirmation resumes selected backup/cloud capabilities. Use Relocate project paths in a batch to preview a shared root change and save selected projects together. Other corrections can use individual path setup, preview a root mapping (for example `D:\Games` → `E:\Games`), or edit source and destination paths. Sources must be accessible; the destination must be writable and must not overlap sources. Prepare required plugins and encryption passwords on the target device.
+The app checks imported projects in a batch. Review paths, plugins, passwords and cloud connections in Data migration, then choose Check and resume ready projects. Local backup and cloud functions are assessed separately, so ready projects can resume first.
 
-Missing workspace state initializes with Unknown baselines; a missing local replica catalog initializes empty. History import preserves valid local state. Local restore retains valid branches, baselines and replica state where identities, paths and source semantics match; only changed sources reset. Cross-device migration cannot infer current state from old-device hints. Corruption requires controlled recovery and cannot be hidden by initialization.
+If several projects moved from `D:\Games` to `E:\Games`, use batch path relocation and review the selected projects before saving. Adjust other sources and destinations individually. Sources must be accessible and backup storage writable, with separate source and destination locations.
 
-The first backup from Unknown state establishes a self-contained full baseline and a new branch, without inventing old-device branch state or incremental dependencies. Use Checkout to resume an old branch. Local restore reuses only matching cloud bindings already on the target; cross-device migration requires rebinding. Confirmation does not replay startup backups or upload existing archives in bulk, and switches configured off stay off.
+The first backup on a new device establishes an independent Full baseline and new branch. Use Checkout from history to continue an original branch. Local recovery reuses matching valid local state and cloud bindings; cross-device migration needs a new cloud binding.
 
-Older builds may already have rewritten switches to off. Read original switches from configuration loads a previous export JSON and restores only automatic backup/cloud switches for matching identities, without replacing paths, rules or credentials. Execution still requires confirmation. Batch failures or cancellation retain completed project decisions; remaining projects can be retried.
+## Prepare archives and test recovery
 
-## Move archives and verify
+Review archive verification status in the migration report. Copied archives still need valid replica locations and complete dependencies. Prepare cloud data with the [cloud recovery guide](/docs/guides/cloud-recovery).
 
-Valid local state does not mean old versions are restorable. This migration change adds no payload-availability checker; reports explicitly state that backup archives are unverified.
+Restore a version into a test folder, check file contents and game loading, then enable automation. Keep original-device copies until these checks finish. Local password material uses Windows user-scoped DPAPI; prepare the encryption password using the [encryption guide](/docs/guides/encryption).
 
-Copy archives and incremental dependencies independently, or prepare trusted cloud replicas. An empty replica catalog does not automatically recognize copied archives, and old absolute paths do not become new-device locations. Restore retains existing replica, dependency and safety checks. Restore a test copy and check files and application loading before enabling automation; retain old-device data until verification succeeds.
+<span id="193-legacy-history-adoption-report" />
 
-Cloud history synchronization merges facts without copying the local workspace or overwriting another device's history by timestamp.
+## Adopt legacy backups {/* #legacy-upgrade */}
 
-## Upgrading from 1.8 or rolling back
+When upgrading from 1.8 with older archives, open the legacy backup adoption report in history:
 
-Review the [legacy takeover report](/docs/getting-started/v1-9-upgrade#193-legacy-takeover-report) during upgrade. Unknown deletion boundaries permit overlay or new-directory recovery. Roll back with independent pre-upgrade copies; do not let a 1.8 client modify a 1.9 repository.
+1. Check source assignments and assign unallocated records.
+2. Locate archives and include Smart metadata and incremental dependencies.
+3. Save and verify, then resolve missing-file or identity diagnostics.
+4. Restore into a test folder and create a new Full backup as the current branch baseline.
+
+Versions with unrecorded deletion coverage receive a restricted recovery status, supporting Overwrite or recovery to a new directory. Once a new complete baseline is ready, continue with Clean, branch switching and merging.
+
+Migration keeps old v2 plugin code in quarantine; use compatible v3 plugins for those features. Prepare cloud connections again and retain the original remote data and incremental dependencies.
+
+## Roll back or finish recovery
+
+To roll back, exit the current app and use the independently saved pre-upgrade configuration, history and archives. If startup or migration is interrupted, keep the logs, open the recovery center and follow its diagnostics.
 
 <span id="config-migration" />
 <span id="entry" />
@@ -73,7 +73,15 @@ Review the [legacy takeover report](/docs/getting-started/v1-9-upgrade#193-legac
 <span id="export-history" />
 <span id="history-migration" />
 <span id="import-config" />
-<span id="import-history" />
+
 <span id="notes" />
 <span id="recommended-order-on-a-new-pc" />
 <span id="related-links" />
+
+<span id="move-configuration-history-and-archives" />
+<span id="prepare-three-kinds-of-data" />
+<span id="export-and-import-configuration" />
+<span id="export-and-import-history" />
+
+<span id="move-archives-and-verify" />
+<span id="upgrading-from-18-or-rolling-back" />

@@ -37,7 +37,7 @@ export default function Download(): ReactNode {
         <p className={styles.subtitle}>
           <Translate id="download.subheading">选择适合设备的安装方式，从一次备份开始</Translate>
         </p>
-        <div className={styles.versionLine}><span>FolderRewind 1.9.6</span><span>Windows 10 / 11</span><span>x64 / ARM64</span><span><Translate id="homepage.v2.free">免费 · 开源</Translate></span></div>
+        <div className={styles.versionLine}><span>FolderRewind 1.10.0</span><span>Windows 10 / 11</span><span>x64 / ARM64</span><span><Translate id="homepage.v2.free">免费 · 开源</Translate></span></div>
         </header>
 
         <section>
@@ -66,7 +66,7 @@ export default function Download(): ReactNode {
                 </div>
                 <Heading as="h2" className={styles.cardTitle}>Setup EXE</Heading>
                 <span className={styles.badgeWarn}><Translate id="download.badge.msi">GitHub 正式版</Translate></span>
-                <p className={styles.cardDesc}><Translate id="download.msi.desc">GitHub 当前正式版为 1.9.6。选择 x64 或 ARM64 Setup EXE，按同名 .sha256 文件校验。</Translate></p>
+                <p className={styles.cardDesc}><Translate id="download.msi.desc">GitHub 正式版为 1.10.0。选择适合设备的 x64 或 ARM64 Setup EXE，并核对同名 .sha256 文件。</Translate></p>
                 <Link
                   className={clsx('button button--outline button--primary button--lg', styles.cardBtn)}
                   href={GITHUB_LATEST_RELEASE_URL}>
@@ -93,12 +93,12 @@ export default function Download(): ReactNode {
               <Translate id="download.notice.desc">升级前保留配置和归档。切换安装渠道时，先导出配置与历史，再在新安装中导入并检查来源路径。</Translate>
             </p>
             <ul className={styles.noticeList}>
-              <li><Translate id="download.notice.point1">建议优先从 Microsoft Store 下载，后续更新更稳定。</Translate></li>
-              <li><Translate id="download.notice.point2">请勿同时安装 Store 与 Setup 版本。</Translate></li>
-              <li><Translate id="download.notice.point3">切换安装渠道不会自动迁移配置或插件，请先备份数据。</Translate></li>
+              <li><Translate id="download.notice.point1">Microsoft Store 管理后续更新，适合日常长期使用。</Translate></li>
+              <li><Translate id="download.notice.point2">日常使用选定一个渠道，升级前退出正在运行的旧版本。</Translate></li>
+              <li><Translate id="download.notice.point3">切换渠道前保留配置、历史与归档，导入后检查实际路径。</Translate></li>
             </ul>
-            <Link className={styles.noticeLink} to="/docs/getting-started/v1-9-upgrade">
-              <Translate id="download.notice.upgradeLink">查看 1.9 升级与恢复指南</Translate>
+            <Link className={styles.noticeLink} to="/docs/guides/data-migration">
+              <Translate id="download.notice.upgradeLink">查看升级与数据迁移指南</Translate>
               <FaArrowRight aria-hidden="true" />
             </Link>
           </div>
@@ -146,7 +146,7 @@ export default function Download(): ReactNode {
                 <FaGamepad />
               </div>
               <Heading as="h3">MineRewind</Heading>
-              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">1.9.6 内置 MineRewind 1.9.8，支持 Java 地图预览、存档发现与区域备份。独立公开包仍为 1.9.5（API 3.6），不含地图预览；宿主支持 API 3.9。</Translate></p>
+              <p className={styles.cardDesc}><Translate id="download.plugin.minerewind.desc">内置 MineRewind 1.10.0，支持存档发现、Java 地图与历史对比、区域备份和世界合并。独立插件也可从官方发布页下载。</Translate></p>
               <Link
                 className="button button--outline button--primary"
                 href={MINEREWIND_LATEST_RELEASE_URL}>

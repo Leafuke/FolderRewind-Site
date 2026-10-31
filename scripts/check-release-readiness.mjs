@@ -40,7 +40,12 @@ export async function checkPublicRelease({baseline, evidence, fetchImpl = fetch,
   if (baseline.sdk.split('.').slice(0, 2).join('.') !== exampleApi.join('.'))
     failures.push('Public SDK version does not match the example API.');
   async function response(url) {
-    const result = await fetchImpl(url, {headers: {'User-Agent': 'FolderRewind-docs-release-check'}, signal: AbortSignal.timeout(300000)});
+    let result;
+    try {
+      result = await fetchImpl(url, {headers: {'User-Agent': 'FolderRewind-docs-release-check'}, signal: AbortSignal.timeout(300000)});
+    } catch (error) {
+      throw new Error(`${url}: ${error.message}${error.cause?.code ? ` (${error.cause.code})` : ''}`, {cause: error});
+    }
     if (!result.ok) throw new Error(`${url}: HTTP ${result.status}`);
     return result;
   }
@@ -67,14 +72,19 @@ export async function checkPublicRelease({baseline, evidence, fetchImpl = fetch,
   if (!sdkVersions.versions.includes(baseline.sdk)) failures.push(`Public SDK ${baseline.sdk} is not listed.`);
   else if (!await restoreSdk(baseline.sdk)) failures.push('Clean public SDK restore failed.');
   const hostTag = evidence.officialHostTag;
-  if (!/^v?1\.9\.\d+(?:\.\d+)?$/.test(hostTag ?? '') || hostTag !== baseline.latestHostRelease) {
-    failures.push('Official Host tag does not match the reviewed 1.9 release.');
+  if (!/^v?\d+\.\d+\.\d+(?:\.\d+)?$/.test(hostTag ?? '') || hostTag !== baseline.latestHostRelease) {
+    failures.push('Official Host tag does not match the reviewed release.');
   } else {
     const host = await release('FolderRewind', hostTag);
     if (host.published_at !== evidence.officialHostPublishedAt)
       failures.push('Recorded Host publication date does not match official metadata.');
     const version = baseline.hostProjectVersion;
-    if (version.replace(/\.0$/, '') !== hostTag.replace(/^v/, '').replace(/\.0$/, ''))
+    const productVersion = value => {
+      const parts = value.replace(/^v/, '').split('.');
+      while (parts.length > 3 && parts.at(-1) === '0') parts.pop();
+      return parts.join('.');
+    };
+    if (productVersion(version) !== productVersion(hostTag))
       failures.push('Host project version does not match tag.');
     const allowed = ['x64', 'arm64'].flatMap(arch => ['.exe', '.exe.sha256'].map(suffix => `FolderRewind_${version}_Setup_${arch}${suffix}`));
     if (host.assets.length !== allowed.length || allowed.some(name => host.assets.filter(a => a.name === name).length !== 1))
@@ -89,7 +99,9 @@ export async function checkPublicRelease({baseline, evidence, fetchImpl = fetch,
       else await verify(exe, match[1].toLowerCase());
     }
   }
-  const pluginTag = `v${baseline.plugin}`;
+  const pluginTag = baseline.latestPluginRelease;
+  if (!/^v?\d+\.\d+\.\d+$/.test(pluginTag ?? '') || pluginTag.replace(/^v/, '') !== baseline.plugin)
+    throw new Error('Official plugin tag does not match the reviewed product version.');
   const pluginUrl = `https://github.com/Leafuke/FolderRewind-Plugin-Minecraft/releases/download/${pluginTag}/MineRewind-${baseline.plugin}.frplugin`;
   const plugin = await release('FolderRewind-Plugin-Minecraft', pluginTag);
   const asset = plugin.assets.find(a => a.name === `MineRewind-${baseline.plugin}.frplugin`);

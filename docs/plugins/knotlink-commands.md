@@ -2,14 +2,14 @@
 sidebar_position: 4
 title: "KnotLink 命令参考"
 description: "查阅 KnotLink 核心命令、参数与信号，用运行时能力清单验证备份、还原和重要标记操作。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink 命令参考
 
 查阅 KnotLink 核心命令、参数与信号，用运行时能力清单验证备份、还原和重要标记操作。
 
-本页以 API 3.9 的 KnotLinkCoreCommands 和当前 funcList 为基线。运行时先请求 GET_CAPABILITIES；清单 manifestVersion=3.0.0，specVersion=1.0，wire 协议 v2。
+本页以 API 3.17 的 KnotLinkCoreCommands 和当前 funcList 为基线。运行时先请求 GET_CAPABILITIES；清单 manifestVersion=3.0.0，specVersion=1.0，wire 协议 v2。
 
 ## 查询与公共目标
 
@@ -76,7 +76,7 @@ MARK_IMPORTANT 需 file，important 省略默认 true。MineRewind 将 current_s
 <span id="backup" />
 <span id="backup_all" />
 <span id="mark_important" />
-<span id="restore" />
+
 <span id="信号" />
 <span id="公共格式" />
 <span id="命令生命周期" />

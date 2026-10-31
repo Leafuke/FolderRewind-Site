@@ -1,91 +1,92 @@
 ---
 sidebar_position: 3
-title: "Plugin API 3.9 reference"
-description: "Review Plugin API 3.9 lifecycle, capabilities and Host services, distinguishing Host contracts from the public SDK 3.6.0 development surface."
-reviewed_baseline: "1.9-api3.9"
+title: "Plugin API reference"
+description: "Reference the public 3.17.0 SDK lifecycle, nineteen capabilities, typed filters, spatial preview and comparison, semantic merging and Host services."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Plugin API 3.9 reference
+# Plugin API reference
 
-:::info[Public package and Host contract]
-FolderRewind 1.9.6 supports API 3.9, while the public NuGet SDK is currently 3.6.0. Public examples retain API 3.6. New interfaces such as spatial preview require matching contracts built from the release source; SDK 3.9.0 is not available from NuGet. Assembly identity remains 3.0.0.0.
-:::
+FolderRewind 1.10.0 supports **Plugin API 3.17**. The public NuGet package is **FolderRewind.Plugin.Abstractions 3.17.0**, targeting `net10.0`. API 3.x retains assembly identity `3.0.0.0`.
 
-Review Plugin API 3.9 lifecycle, capabilities and Host services, distinguishing Host contracts from the public SDK 3.6.0 development surface.
-
-Public BCL-only contracts live in `FolderRewind.Plugin.Abstractions`, targeting `net10.0`. Public package 3.6.0 represents API 3.6; the Host source contracts support API 3.9; assembly identity remains 3.0.0.0. Compatibility requires equal majors and a Host minor at least as high as the requested minor, independently of the app version.
+A plugin is compatible when its API major matches and its requested minor is no newer than the Host's. Application, plugin product and SDK package versions each serve their own release and compatibility purpose.
 
 ## Lifecycle and registration
 
-`IFolderRewindPlugin` exposes `ActivateAsync(IPluginActivationContext, CancellationToken)` and `DeactivateAsync(CancellationToken)`. Product, service and capability facts are static manifest data. The Host validates and commits the state patch in `PluginActivationResult`.
+`IFolderRewindPlugin` provides `ActivateAsync(IPluginActivationContext, CancellationToken)` and `DeactivateAsync(CancellationToken)`. Activation reads settings, configuration and folder snapshots, registers declared capabilities and returns `PluginActivationResult`.
 
-Activation reads settings and config/folder snapshots, and registers each instance once, recognizing all of its capability interfaces, with at most one implementation per contract. Compose internal multiplicity yourself. Registration and manifest sets must match; capabilities are unavailable before commit, and activation cannot use DataStore.
+The Host validates registrations and state patches, commits atomically and then exposes the capabilities. Register one implementation per capability contract; one instance can implement several interfaces. Use DataStore during committed runtime and the supplied snapshots during activation.
 
 ## All capabilities
 
-| Interface | Manifest capability | Responsibility |
-|---|---|---|
-| `IDiscoveryCapability` | `Discovery` | Discovery candidates and config drafts |
-| `IConfigReconciliationCapability` | `ConfigReconciliation` | Revision-bound change proposals |
-| `IFilePolicyCapability` | `FilePolicy` | Required file policy |
-| `IBackupScopeCapability` | `BackupScope` | Parameterized scope and readiness |
-| `IBackupConsistencyCapability` | `BackupConsistency` | Disposable consistency source lease |
-| `IFolderMetadataCapability` | `FolderMetadata` | Live folder details |
-| `IVersionMetadataProviderCapability` | `VersionMetadataProvider` | Metadata from the same stable capture |
-| `IRestoreCoordinatorCapability` | `RestoreCoordinator` | Config-level coordination and once-only continuation |
-| `IRestoreStagingPreparationCapability` | `RestoreStagingPreparation` | Bounded ordinary-Restore staging proposals |
-| `IPluginCommandCapability` | `PluginCommand` | Commands and default hotkeys |
-| `IKnotLinkIntegrationCapability` | `KnotLinkIntegration` | Commands, arguments, signals and execution |
-| `IProviderStateMigrationCapability` | `ProviderStateMigration` | Versioned opaque provider-state migration |
-| `IBackupArtifactTransformerCapability` | `BackupArtifactTransformer` | Controlled immutable artifact transformation |
-| `IBackupCompletionObserverCapability` | `BackupCompletionObserver` | Read-only completion observation |
-| `IRestoreMaterializerCapability` | `RestoreMaterializer` | Materialization into an isolated workspace |
-| `ISpatialPreviewCapability` | `SpatialPreview` (`spatialPreview`) | Read-only layers, tiles, navigation and point details |
+| Interface | Capability name | Responsibility |
+| --- | --- | --- |
+| `IDiscoveryCapability` | `Discovery` | Candidates and configuration drafts |
+| `IConfigReconciliationCapability` | `ConfigReconciliation` | Revision-bound configuration proposals |
+| `IFilePolicyCapability` | `FilePolicy` | Required inclusion and exclusion rules |
+| `IBackupScopeCapability` | `BackupScope` | Parameterized backup scopes |
+| `IBackupConsistencyCapability` | `BackupConsistency` | Consistency coordination and source leases |
+| `IFolderMetadataCapability` | `FolderMetadata` | Current-source details |
+| `IVersionMetadataProviderCapability` | `VersionMetadataProvider` | Capture-time version metadata |
+| `IRestoreCoordinatorCapability` | `RestoreCoordinator` | External environment coordination |
+| `IRestoreStagingPreparationCapability` | `RestoreStagingPreparation` | Ordinary restore staging proposals |
+| `IPluginCommandCapability` | `PluginCommand` | Commands and default shortcuts |
+| `IKnotLinkIntegrationCapability` | `KnotLinkIntegration` | Remote commands and signals |
+| `IProviderStateMigrationCapability` | `ProviderStateMigration` | Versioned provider-state migration |
+| `IBackupArtifactTransformerCapability` | `BackupArtifactTransformer` | Immutable artifact transformation |
+| `IBackupCompletionObserverCapability` | `BackupCompletionObserver` | Observation after commit |
+| `IRestoreMaterializerCapability` | `RestoreMaterializer` | Isolated workspace materialization |
+| `ISpatialPreviewCapability` | `SpatialPreview` | Read-only maps, tiles and point details |
+| `ISpatialComparisonCapability` | `SpatialComparison` | Spatial changes between fixed inputs |
+| `ISpatialScopeSelectionCapability` | `SpatialScopeSelection` | Map selections to backup scope parameters |
+| `IMergeProviderCapability` | `MergeProvider` | Domain merge analysis and result building |
 
-`IDiscoveryDefinitionCatalog` extends a Discovery implementation; `IKnotLinkTargetResolver` extends KnotLink integration. Neither is registered or declared as a separate capability.
+Manifest capability strings use camelCase, such as `spatialComparison` and `mergeProvider`. `IDiscoveryDefinitionCatalog`, `IKnotLinkTargetResolver` and `IArtifactFileViewProvider` extend their corresponding capability implementations.
 
-## Identities and snapshots
+## Identity and Host services
 
-PluginId identifies the product; ConfigKindRef is OwnerId + KindId; DiscoveryProviderId identifies discovery; StateOwnerId namespaces opaque state. Equal text does not make roles interchangeable. Display names, paths and load order do not establish ownership.
+Use `PluginId` for products, `ConfigKindRef` for domain kinds, `DiscoveryProviderId` for discovery providers and `StateOwnerId` for state owners. Names serve display; stable IDs serve routing and persistence.
 
-ConfigRevision binds proposals. Settings use JsonElement; Provider State includes a location and schema version. Exchange snapshots, drafts, patches, requests, results and descriptors, never writable Host models.
+`IPluginHostServices` exposes Configs, Backups, Restores, History, Notifications, KnotLink, DataStore, TemporaryStorage and Logger. Declare required services in `requestedHostServices`. Operation contexts provide scoped Artifact read and staging services.
 
-## Host services
+Plugins execute in-process with the current user's permissions. Choose trusted code; service declarations describe and gate formal Host API access.
 
-IPluginHostServices provides Configs, Backups, Restores, History, Notifications, KnotLink, DataStore, TemporaryStorage and Logger. requestedHostServices gates the formal façade. Artifact services arrive in operation requests and also require declarations.
+## Typed file rules
 
-Plugins execute in-process with ambient user privileges. Service gating, hashes and AssemblyLoadContext are not an OS/.NET sandbox.
-
-## Cancellation, outcomes and diagnostics
-
-Respect OperationCancellation and PluginLifetime, dispose leases/staging resources, and avoid detached work. Readiness is Ready/Degraded/Blocked. Outcomes are Success, SuccessWithWarnings, NoChanges, Canceled, Failed, Blocked, RecoveryRequired and CommittedRecoveryRequired.
-
-CommittedRecoveryRequired means durable commit happened but subsequent recovery is incomplete. Do not automatically retry destructive work or rejoin a game. PluginDiagnostic carries Code, Severity, Capability, Owner and Arguments; log prose is not a stable interface.
-
-## Disable and settings transitions
-
-The Host removes routing, cancels lifetime, drains operations and calls DeactivateAsync. A bounded timeout isolates the session logically and reports RequiresRestart; physical unloading may wait for restart. Enabled Intent differs from Active, and Safe Mode preserves it.
-
-See the [tutorial](/docs/plugins/developing/tutorial), [settings schema](/docs/plugins/developing/settings-schema) and [command integration](/docs/plugins/developing/knotlink-api).
-
-## Discovery scope in API 3.9
-
-The positional `DiscoveryRequest(UserRoots)` constructor remains. The new init property `IncludeKnownLocations` defaults to false. Hosts may explicitly enable it for machine/preset discovery; selected roots or adding sources to an existing config remain false. Plugins add known machine locations only when allowed, rather than expanding a selected-root scan into a machine scan.
+`PathFilterRule` contains `Pattern`, `Target` and `SemanticsVersion`. Targets are `Any`, `File` and `Directory`. New rules use semantics version 2; legacy strings are read as version 1.
 
 ```csharp
-var scoped = new DiscoveryRequest(userRoots);
-var automatic = new DiscoveryRequest(userRoots) { IncludeKnownLocations = true };
+var caches = new PathFilterRule("cache", PathFilterTarget.Directory);
+var temporaryFiles = new PathFilterRule("*.tmp", PathFilterTarget.File);
 ```
 
-This is an optional property on Discovery, not a new capability declaration. Plugins using it request API 3.9; 3.x assembly identity remains 3.0.0.0. `RestoreRequestOptions.RestorePreservePaths` supplies one-shot ordinary-Restore preservation. Default option-bearing services return Blocked when unsupported instead of silently dropping options.
+`FilePolicyResult.TypedRequiredExclusions` and `TypedRequiredInclusions` carry typed rules. `MergeInputBoundary.TypedFilterRules` participates in historical coverage assessment. Rules operate within source scope. See [filter examples](/docs/guides/filters).
 
-## Spatial preview: API 3.9 {/* #spatial-preview */}
+## Spatial preview, comparison and selection {/* #spatial-preview */}
 
-The configuration Kind owner provides `ISpatialPreviewCapability`, statically declared as `spatialPreview`. `DescribeAsync` returns layers, display bounds, coordinates and optional height information. `RenderAsync` returns premultiplied BGRA tiles; `InspectAsync` returns point details. `GetNavigationTargetsAsync` supplies grouped navigation targets, and `CloseAsync` idempotently releases session resources.
+`DescribeAsync` returns worlds, layers, view modes and height information. `RenderAsync` returns premultiplied BGRA tiles; `InspectAsync` returns point details. Navigation targets can include height, and `SpatialPreviewMode` describes modes such as surface and caves.
 
-`SpatialPreviewTile.IsFinal` defaults to true. When false, the Host keeps current pixels and requests visible unfinished tiles at intervals of at least 100ms. Optional `SpatialPreviewLayer.CoordinateBounds` limits legal coordinate navigation; `Bounds` still describes generated data. The Host freezes and validates provider output. Providers respect cancellation and do not edit saves through preview.
+`SpatialPreviewSource.FixedInput` binds history to Host-prepared fixed content. `IsPartial`, coverage information and tile `ContentState` describe captured coverage and reading state. `CacheBudgetBytes` supplies the Host's cache budget. `IsFinal=false` lets the Host schedule bounded refinement of visible tiles.
 
-See the [map guide](/docs/guides/minecraft/world-preview).
+Comparison uses `DescribeComparisonAsync` and paged `CompareAsync` results for categories and `SpatialChange`, with locations represented by `SpatialSubjectLocation`. `CloseComparisonAsync` and preview's `CloseAsync` release session resources idempotently.
+
+`ResolveSelectionAsync` maps a selection to `BackupScopeId`, parameters, effective bounds and diagnostics. The Host reviews and saves configuration. See the [map guide](/docs/guides/minecraft/world-preview).
+
+## Domain merging {/* #semantic-merge */}
+
+The manifest's `mergeProviders` declares `MergeProviderId`, contract version, compatible kinds and versioned policies. Implement `IMergeProviderCapability`. In `AnalyzeAsync`, read fixed three-way inputs and use `IMergePlanWriter` for output groups, path claims and conflict subjects.
+
+The Host persists analysis and user decisions before calling `BuildAsync`. Read decisions through `IMergeDecisionReader`, then reuse, generate or delete claimed paths through `IMergeOutputWorkspace`. The Host validates results, commits History and writes the destination.
+
+Query coverage with `InspectPathAsync` and `CheckCoverageAsync`, handling unknown or filtered content through explicit diagnostics. Policy versions are independent of product versions; saved sessions bind their policy and fixed inputs.
+
+## Cancellation and results
+
+Observe both `OperationCancellation` and `PluginLifetime` and release leases, streams and temporary resources. Results include Success, SuccessWithWarnings, NoChanges, Canceled, Failed, Blocked, RecoveryRequired and CommittedRecoveryRequired.
+
+`CommittedRecoveryRequired` means history has committed and recovery still has work to finish. Follow the controlled recovery diagnostics. During disable, the Host revokes routes, cancels and drains calls, then invokes Deactivate. `RequiresRestart` identifies resources retained until restart.
+
+Continue with [capability design](/docs/plugins/developing/capabilities), [artifact contracts](/docs/plugins/developing/artifacts) and [the quick start](/docs/plugins/developing/quick-start).
 
 <span id="backup-filters-and-scopes" />
 <span id="backup-preparation-and-folder-details" />
@@ -102,3 +103,11 @@ See the [map guide](/docs/guides/minecraft/world-preview).
 <span id="manifest-and-target-framework" />
 <span id="related-links" />
 <span id="restore-interception-and-config-augmentation" />
+
+<span id="plugin-api-39-reference" />
+
+<span id="identities-and-snapshots" />
+<span id="host-services" />
+<span id="cancellation-outcomes-and-diagnostics" />
+<span id="disable-and-settings-transitions" />
+<span id="discovery-scope-in-api-39" />

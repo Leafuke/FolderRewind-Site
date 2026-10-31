@@ -1,31 +1,31 @@
 ---
 sidebar_position: 0
 title: "架构总览"
-description: "了解 FolderRewind 的技术栈与系统边界，从界面编排追踪到配置、历史、插件和归档。"
-reviewed_baseline: "development-1.10"
+description: "了解 FolderRewind 的 Host、Core、插件运行时和公开契约，追踪从 WinUI 界面到备份、历史、云副本与领域能力的协作。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 架构总览
 
-> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
-
-FolderRewind 使用 .NET 10 与 WinUI 3。准确 SDK 与包版本由源码中的 global.json、项目文件及集中包版本配置声明。
+FolderRewind 使用 .NET 10 与 WinUI 3。项目文件、`global.json` 和集中包版本配置声明实际构建依赖。
 
 ```mermaid
 flowchart TD
   UI[Views / ViewModels] --> Host[Host 应用编排]
-  Host --> Core[Core: History 与无 UI 策略]
+  Host --> Core[Core 历史与文件策略]
   Host --> Runtime[Plugin Runtime]
   Core --> Runtime
   Runtime --> API[Plugin Abstractions]
-  Core --> Storage[Windows 文件安全 / 归档与副本接口]
+  Core --> Storage[Windows 文件安全与归档接口]
 ```
 
-Host 负责配置持久化、操作调度、通知与平台适配。Core 通过显式输入、服务实例和取消令牌执行核心操作，返回结果与诊断；不会反向查找应用全局服务。插件仍负责领域语义，不能绕过 Host 的事务、完整性检查与目标目录修改。
+Host 负责配置、调度、通知、平台与生命周期适配。Core 接收显式输入与依赖，执行捕获、历史、恢复、合并、保留和副本算法，返回结果与诊断。
 
-正式 Core 与普通测试共享编译边界。故障恢复验收使用同一项目的隔离构建，正式产物不包含测试故障入口。Core 是内部实现库，不作为新的公开插件 SDK 发布。
+插件通过独立的 Abstractions 契约提供领域能力。Runtime 管理安装、激活、能力路由、调用租约和受控 Artifact 服务。目标写入、事务、完整性、加密与云操作由 Host 组织。
 
-参阅[目录](/docs/architecture/directory-structure)、[模式](/docs/architecture/patterns)、[服务](/docs/architecture/services)、[模型](/docs/architecture/data-models)和[插件边界](/docs/architecture/plugin-system)。
+Core 面向 Windows 并独立于 WinUI。普通测试引用正式 Core，故障恢复测试使用隔离输出和显式故障注入配置。插件开发入口为公开 Abstractions 包。
+
+继续阅读[目录结构](/docs/architecture/directory-structure)、[模式](/docs/architecture/patterns)、[服务](/docs/architecture/services)、[数据模型](/docs/architecture/data-models)和[插件架构](/docs/architecture/plugin-system)。
 
 <span id="技术栈" />
 <span id="架构鸟瞰" />

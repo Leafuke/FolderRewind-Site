@@ -1,8 +1,8 @@
 ---
 sidebar_position: 7
 title: "插件打包与发布"
-description: "按静态清单打包 .frplugin，检查程序集、能力与设置模式，并发布可校验的插件制品。"
-reviewed_baseline: "1.9-api3.9"
+description: "按静态清单打包 .frplugin，检查根目录结构、程序集、能力、服务与设置模式，发布固定版本和可核对的 SHA-256 制品。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 插件打包与发布

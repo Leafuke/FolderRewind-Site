@@ -1,14 +1,10 @@
 ---
 title: Death Rewind（死亡回溯）
 description: 在 Fabric 单人世界死亡后，从死亡界面一键回溯到 MineBackup 的最新归档，避免灾难性损失重开存档
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Death Rewind（死亡回溯）
-:::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
-:::
-
 Death Rewind 是 MineBackup 的附属模组。它在游玩期间定时请求 MineBackup 创建检查点，并在单人世界的死亡界面增加“回溯到若干分钟前”入口。
 
 从 2.0 开始，Death Rewind 不再直接连接 FolderRewind，也不重复实现保存、自动保存冻结、还原和重连逻辑；这些操作统一由 MineBackup API v2 协调。
@@ -64,7 +60,7 @@ Death Rewind 的定时器与 MineBackup 的 `/mb auto` 是两套独立计划；�
 - MineBackup 当前没有其他备份、目录或恢复操作。
 - Death Rewind 没有已经提交的恢复请求。
 
-点击后会立即请求 MineBackup 恢复当前世界的**由当前后端解析的恢复目标**，不经过 `/mb restore` 的聊天倒计时。这个归档可能由 Death Rewind、JEA、MineBackup 自动备份或管理员手动备份创建，因此不保证一定是 Death Rewind 检查点。
+点击后立即请求当前后端解析的恢复目标。连接 FolderRewind 时，目标为活动分支的唯一尖端版本，可来自 Death Rewind、JEA、自动任务或手动备份。MineBackup API 负责随后保存、退出、还原和重进。
 
 从保存世界、玩家断开、FolderRewind 执行还原到客户端自动重连，整个生命周期都由 MineBackup 负责。请求被拒绝、异常或失败时，Death Rewind 会显示原因并解除 `forceDeathRewind` 对原版按钮的限制。
 
@@ -103,7 +99,7 @@ Death Rewind 的定时器与 MineBackup 的 `/mb auto` 是两套独立计划；�
 
 Death Rewind 检查点、JEA 快照和普通 MineBackup/FolderRewind 备份共用相同的归档保留策略。它没有独立配额、固定槽位或归档保护。
 
-如果第一次定时检查点还没有完成，且 FolderRewind 中没有当前世界的任何归档，死亡回溯会失败。它也不能保证回到“死亡前绝对安全”的时间点，因为最新归档可能已经包含部分伤害或世界变化。
+首次定时检查点前，可以先手动保存一个版本。死亡回溯使用当前后端解析的目标，归档可能已经包含伤害或世界变化；需要更早状态时，在历史中选择合适版本。
 
 ## 相关文档
 
@@ -114,11 +110,3 @@ Death Rewind 检查点、JEA 快照和普通 MineBackup/FolderRewind 备份共�
 - [热还原机制详解](/docs/guides/minecraft/hot-restore)
 
 第一次使用时，请先在测试世界演练一次“创建检查点—死亡—回溯—重新进入”的完整流程。
-
-<span id="安装" />
-<span id="定时检查点" />
-<span id="归档保留与实际边界" />
-<span id="支持范围与前置" />
-<span id="死亡界面回溯" />
-<span id="相关文档" />
-<span id="默认配置" />

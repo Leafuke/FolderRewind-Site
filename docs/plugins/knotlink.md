@@ -1,15 +1,15 @@
 ---
 sidebar_position: 3
 title: "KnotLink 协议与联动"
-description: "通过 KnotLink 连接外部工具，理解参数化协议、请求接受与任务完成之间的区别。"
-reviewed_baseline: "1.9-api3.9"
+description: "通过 KnotLink 连接外部工具，先查询运行时能力，再发送备份与还原请求，使用关联信号查看任务最终结果。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink 协议与联动
 
 通过 KnotLink 连接外部工具，理解参数化协议、请求接受与任务完成之间的区别。
 
-FolderRewind 1.9 系列继续使用 KnotLink Server v3 和参数化协议 v2。当前能力清单 manifestVersion=3.0.0、specVersion=1.0；Plugin API 为 3.9。更新能力清单不改变 wire 协议版本。
+FolderRewind 使用 KnotLink Server v3 和参数化协议 v2。运行时能力清单采用 manifestVersion 3.0.0、specVersion 1.0，由核心命令与插件声明共同生成。
 
 ## 格式与编码
 
@@ -26,11 +26,11 @@ status=ok;from=panel;request_id=backup-001;message=Queued
 
 ## 生命周期与语义
 
-status=ok 表示查询完成或请求已接受，不一定是备份已经完成。用 request_id 关联后续执行信号，避免重复触发破坏性恢复。远程 Restore 默认 Clean；部分捕获强制 Overwrite。file 省略时为活动分支 Quick Restore，不是上一时间点。
+查询通过 status=ok 返回结果，长任务通过它确认请求已接受，再用 request_id 关联最终信号。远程 Restore 默认 Clean，部分捕获使用 Overwrite；省略 file 时解析活动分支的快速还原目标。
 
 ## 插件联动
 
-API 3.9 integration 声明命令／信号，目标解析器只确定稳定目标并复用 Host 操作。MineRewind 为 7 个 folder 命令提供 current_save 选择器。当前世界需要活动实例且目标无歧义；先核对运行时清单。
+API 3.17 integration 声明命令／信号，目标解析器只确定稳定目标并复用 Host 操作。MineRewind 为 7 个 folder 命令提供 current_save 选择器。当前世界需要活动实例且目标无歧义；先核对运行时清单。
 
 阅读[命令参考](/docs/plugins/knotlink-commands)、[开发 API](/docs/plugins/developing/knotlink-api)和[Minecraft 联动](/docs/guides/minecraft/knotlink-mod)。
 

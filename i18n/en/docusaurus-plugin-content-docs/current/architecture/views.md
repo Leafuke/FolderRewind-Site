@@ -1,45 +1,49 @@
 ---
 sidebar_position: 7
-title: "Views, onboarding and navigation"
-description: "Understand page responsibilities and navigation through management, history, merging and spatial preview."
-reviewed_baseline: "development-1.10"
+title: "Views, wizards and navigation"
+description: "Understand manager, history, merge, spatial, cloud connection and recovery pages, lazy settings, notification navigation, themes and keyboard behavior."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Views, onboarding and navigation
+# Views, wizards and navigation
 
-> 1.10 development note: headless history and policies move to Core; configuration, platform and UI composition stay in the Host. Existing namespaces, data formats and public plugin contracts are preserved.
+## Page responsibilities
 
-Understand page responsibilities and navigation through management, history, merging and spatial preview.
+The manager organizes sources and operations; Tasks shows progress; history presents versions by source and backup run. Creation combines manual selection, discovery, presets and summary review.
 
-![Project and source entrypoints in FolderRewind 1.9.6.](/img/docs/v1-9-6/home-en-light-1604.webp)
+| Page | Responsibility |
+| --- | --- |
+| MergePage | File conflicts, text comparison, manual results, apply review and saved sessions |
+| SpatialPreviewPage | Map modes, dimensions, navigation, zoom and point details |
+| SpatialWorkspacePage | Fixed version inputs, map comparison, selection and spatial merge locations |
+| CloudConnectionsPage | Shared and project-specific connections |
+| CloudSetupPage | Connection, authorization, directory and access verification, first upload |
+| CloudRecoveryPage | Cloud project discovery, history and new-folder recovery |
+| SettingsPage | Appearance, core, plugins, runtime environment and data migration |
 
-*Project and source entrypoints in FolderRewind 1.9.6. Interface version: 1.9.6.*
+ViewModels retain presentation state and asynchronous commands; page code bridges events. Services perform business orchestration.
 
-## Pages
+## Secondary windows and notifications
 
-Home creates/templates/batches; FolderManager manages sources; BackupTasks observes jobs; History has normal/advanced and source/Run views; GameDiscovery reviews Beta candidates; CloudSetup configures/tests connections; Log shows diagnostics; Settings groups tools/plugins/templates/transfer.
+AppDialog handles configuration, templates and confirmations, with creation, display and results on the UI thread. MiniWindow binds a stable source; RecoveryCenter handles recovery workflows.
 
-Current ViewModels include HomePageViewModel, FolderManagerPageViewModel, HistoryPageViewModel, PluginStorePageViewModel, GameDiscoveryPageViewModel and CloudSetupViewModel. Verify actual files rather than legacy HistoryViewModel/PluginStoreViewModel names.
+The bell opens the notification center. Results link to tasks, logs or history. Closing a flyout or navigating restores keyboard focus for the destination context.
 
-## Dialogs and windows
+## Settings and display
 
-Config/cloud/template/merge interactions use views and AppDialog services on the UI thread. MiniWindow binds stable sources; RecoveryCenter handles corrupted configuration with ordinary writes blocked.
+Settings sections load on demand and release resources during navigation. Appearance supports base font size and light, dark or system themes. Window materials and accent options follow licensing and current settings.
 
-## Settings and theme
-
-Settings controls cover appearance, behavior, diagnostics, plugins/KnotLink, presets/templates, data and environment. OpenList controls/connection diagnostics expose real readiness. Semantic resources adapt light/dark/system/high-contrast; state also includes text/automation labels.
-
-## Acceptance
-
-Separate navigation from orchestration. Test narrow layouts/DPI/languages/keyboard/cancellation/recovery/deep notification routing. Building source does not verify UI layout or game exit/rejoin.
-
-
-## Merge and map pages
-
-`MergeWorkspacePage` hosts branch selection, file-conflict comparison, result review and session recovery. `SpatialPreviewPage` uses the Kind owner's read-only spatial provider for dimensions, navigation, zoom and point details; it does not edit saves.
+Review English and Chinese, narrow windows, high DPI, keyboard focus, flyouts, cancellation and deep notification navigation. Include loading, empty, diagnostic and resumed-session states for map and merge pages.
 
 <span id="dialogs" />
 <span id="navigation-flow" />
 <span id="page-listing" />
 <span id="settings-page-sub-controls" />
 <span id="special-windows" />
+
+<span id="views-onboarding-and-navigation" />
+<span id="pages" />
+<span id="dialogs-and-windows" />
+<span id="settings-and-theme" />
+<span id="acceptance" />
+<span id="merge-and-map-pages" />

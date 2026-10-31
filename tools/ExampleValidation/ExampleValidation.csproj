@@ -8,7 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- QA uses the pinned Host Runtime. Neither example references this project. -->
-    <ProjectReference Include="$(HostRoot)/FolderRewind.Plugin.Runtime/FolderRewind.Plugin.Runtime.csproj" />
+    <ProjectReference Include="$(HostRoot)/src/FolderRewind.Plugin.Runtime/FolderRewind.Plugin.Runtime.csproj" />
   </ItemGroup>
   <Target Name="RequireHost" BeforeTargets="Restore;Build" Condition="'$(HostRoot)' == ''">
     <Error Text="Pass -p:HostRoot=absolute-path-to-pinned-Host-checkout" />

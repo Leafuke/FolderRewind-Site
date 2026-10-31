@@ -1,41 +1,43 @@
 ---
 sidebar_position: 6
 title: "Configuration and immutable history models"
-description: "Understand how user configuration, source identities and immutable history relate when maintaining persisted data or diagnosing state."
-reviewed_baseline: "development-1.10"
+description: "Understand configuration, source identities, checkpoints and branches, shared history, local workspaces and representations for reliable persistence and recovery."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Configuration and immutable history models
 
-> 1.10 development note: headless history and policies move to Core; configuration, platform and UI composition stay in the Host. Existing namespaces, data formats and public plugin contracts are preserved.
-
-Understand how user configuration, source identities and immutable history relate when maintaining persisted data or diagnosing state.
-
 ## User configuration
 
-AppConfig holds GlobalSettings, BackupConfigs and templates/presets. BackupConfig includes stableId, ConfigRevision, Kind, HostOrigin, ProviderStates, SourceFolders, Archive, Automation, Filters, BackupScope, Cloud, encryption and HistoryRepositoryBinding.
+`AppConfig` organizes global settings, projects and presets. `BackupConfig` stores stable identity, revision, Kind, sources, archive, filters, automation, cloud and encryption settings. `ManagedFolder` retains source ID, path, display name, SourceScope and Provider State.
 
-ManagedFolder has stableId/Path/DisplayName/SourceScope/state. Kind is OwnerId+KindId; history binding stores format rather than sharing machine repository paths. Settings/state and discovery/user ownership differ.
+A Kind is OwnerId + KindId. Provider state is addressed by StateOwnerId, project and optional source. Display names can change while identities continue linking history.
 
-## History facts
+## Shared history facts
 
 ```mermaid
 flowchart LR
-  Run[Backup Run] --> CP[Configuration Checkpoint]
-  CP --> SV[Source Versions]
-  SV --> Rep[Version Representations]
-  Rep --> Copy[Storage Replicas]
-  Branch[Source Branch Updates] --> SV
-  WS[Local Workspace] --> Branch
+  Run[Backup Run] --> CP[Source Checkpoint]
+  CP --> SV[Source Version]
+  SV --> Rep[Version Representation]
+  Rep --> Copy[Storage Replica]
+  BU[Source Branch Update] --> CP
+  WS[Local Workspace] --> BU
 ```
 
-A Commit Pack publishes related Run/Version/Representation/Checkpoint/BranchUpdate facts. Representations carry physical dependencies/fidelity; Versions are logical state. Replica lifecycle differs from local observations. Annotations update comments/Pins/presentation without rewriting Versions.
+A Backup Run records an invocation and its participating source outcomes. A Source Checkpoint represents one source's history position and Version. Checkpoint parents express history continuation; Version parents express content ancestry.
+
+Each source owns its Branches, so two sources in one project can each use `main`. Immutable Branch Updates advance branches. Ordinary restore updates the content baseline; Checkout changes the active branch.
+
+A Representation describes materialization, dependencies and fidelity. A Replica records a physical copy's lifecycle. Commit Packs atomically publish shared facts, and Annotations update comments, Pins and presentation.
 
 ## Local state and caches
 
-Index/Capture Baseline Cache are rebuildable; Workspace/Local Replica Catalog are local durable state, not shared history. Safety points protect Checkpoint closure without branch advancement. Config/history migration are separate; the legacy HistoryItem list is not the new model.
+Workspace durably tracks active branches, continuation anchors and content baselines. Local Replica Catalog tracks local payload locations. Both are managed per device. History Index and Capture Baseline Cache can be rebuilt from facts or new capture.
 
-Public Abstractions record snapshots differ from observable Host models; plugins never retain writable BackupConfig/ManagedFolder references.
+Safety Snapshots protect source checkpoints and dependencies independently of active branches. Move configuration, history and archives through their respective [migration workflows](/docs/guides/data-migration).
+
+Public plugin snapshots use Abstractions records. The app and Core manage internal Host models.
 
 <span id="appconfig" />
 <span id="appconfig-hierarchy" />
@@ -47,6 +49,6 @@ Public Abstractions record snapshots differ from observable Host models; plugins
 <span id="managedfolder" />
 <span id="serialization" />
 
-## Source-owned branches
+<span id="history-facts" />
 
-Each source owns its branches and local baseline; two sources in one project can each have `main`. Backing up, checking out or merging one does not switch another's branch. Ordinary restore updates the content baseline while retaining the active branch; Checkout switches it. Configuration checkpoints and backup runs reference participating sources; unrequested sources are not failures.
+<span id="source-owned-branches" />

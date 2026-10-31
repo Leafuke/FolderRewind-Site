@@ -1,19 +1,20 @@
 {
-  "date": "2026-10-06",
-  "hostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
+  "date": "2026-10-31",
+  "hostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
   "siteRef": "38b5733f39774f60ab7960477394d8ce458e10a2",
-  "hostProjectVersion": "1.9.6.0",
-  "api": "3.9",
-  "sdk": "3.6.0",
+  "hostProjectVersion": "1.10.0.0",
+  "api": "3.17",
+  "sdk": "3.17.0",
   "assemblyVersion": "3.0.0.0",
-  "plugin": "1.9.5",
-  "pluginSha256": "3b571fd7f09d1b88375832a4c072e979d911a1f59400c144144dc924c7a5e1d9",
+  "plugin": "1.10.0",
+  "pluginSha256": "57795c25ea71a460f686419983d91a2f5f45eb7a48e31eab40261a8198d6df0d",
   "nugetListed": [
     "3.0.0",
-    "3.6.0"
+    "3.6.0",
+    "3.17.0"
   ],
-  "latestHostRelease": "v1.9.6",
-  "latestPluginRelease": "v1.9.5",
+  "latestHostRelease": "v1.10.0",
+  "latestPluginRelease": "1.10.0",
   "anchors": {
     "zh/architecture/data-models": [
       "appconfig-层级结构",
@@ -1770,7 +1771,8 @@
     "latestHostRelease": "v1.9.3",
     "latestPluginRelease": "v1.9.5"
   },
-  "exampleApi": "3.6",
-  "publicPluginApi": "3.6",
-  "bundledPlugin": "1.9.8"
+  "exampleApi": "3.17",
+  "publicPluginApi": "3.17",
+  "bundledPlugin": "1.10.0",
+  "bundledPluginSha256": "acf63fba0e58b6cf03a91e9c637e488de879fa414dde6b7aa2f531a5cf0d701f"
 }

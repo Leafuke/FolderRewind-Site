@@ -1,35 +1,40 @@
 ---
 sidebar_position: 3
-title: "Minecraft 热备份与一致性租约"
-description: "在游戏运行时协调存档落盘，检查一致性模式与任务警告，建立可验证的 Minecraft 热备份。"
-reviewed_baseline: "1.9-api3.9"
+title: "Minecraft 热备份"
+description: "准备 KnotLink 与游戏侧组件，在 Java 世界运行时协调保存与文件读取，选择一致性要求，并检查实际备份结果和警告。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Minecraft 热备份与一致性租约
+# Minecraft 热备份
 
-在游戏运行时协调存档落盘，检查一致性模式与任务警告，建立可验证的 Minecraft 热备份。
+热备份让你在游戏中保存进度。MineRewind 识别活动世界，并与游戏侧组件协调世界保存和读取时机。
 
-## 目标与活动检测
+## 准备游戏联动
 
-MineRewind 1.9.8 通过有效世界路径及 session.lock 判断活动世界，不以 level.dat 锁定作为唯一依据。手动备份、快捷键或 current_save 选择器都进入同一 Host 流程，v3 没有旧 EnableHotBackup 开关。
+先完成一次关闭游戏后的备份与还原，再准备 [KnotLink](/docs/guides/minecraft/knotlink-mod)和适合加载器的[游戏侧组件](/docs/guides/minecraft/minebackup-mod)。通过运行时能力查询检查连接和当前世界命令。
 
-## 协调
+活动世界结合有效路径与 `session.lock` 状态识别。手动备份、默认 `Alt+Ctrl+S` 和远程命令进入同一任务流程。
 
-Host 按 Kind 与配置一致性意图解析就绪性，调用 IBackupConsistencyCapability。活动世界需要 KnotLink／模组握手和 WORLD_SAVED；插件创建本次操作可用的快照来源，返回可释放租约，让枚举／归档读取同一来源。
+## 选择一致性要求
 
-成功结束、取消或异常都应释放临时数据。插件不从 OnBeforeBackupFolder 返回替代路径，也不在备份后改既有归档。
+| 设置 | 处理方式 |
+| --- | --- |
+| Prefer | 优先协调保存；允许的降级路径会保留备份并记录警告 |
+| Require | 满足握手、保存及稳定读取条件后开始捕获，条件不足时显示阻断原因 |
 
-## Prefer 与 Require
+开始后，游戏侧组件保存世界并回传状态，应用在受控来源上完成枚举与归档。结束、取消或失败后释放本次协调与临时资源。
 
-Prefer 在允许 rawWithWarnings 的配置上可降级，记录 SuccessWithWarnings 和具体协调／快照诊断；不等于证明游戏一致性。Require 在握手、落盘或稳定来源不可用时阻断。指定范围提供器缺失／参数非法不得把部分保护悄悄扩大成全量。
+## 发起备份并检查结果
 
-## 请求与验证
+可以从应用操作，也可以发送：
 
 ```text
 cmd=BACKUP;current_save=true;backup_mode=smart;from=panel;request_id=hot-001
 ```
 
-先查询能力，再检查 status=ok 和后续同 request_id 的结果。无活跃世界或多目标时读取诊断；不能把请求接受当完成。分别演练在线协调、离线警告、Require 阻断、取消、临时目录清理及真实归档恢复。
+先查询能力，再使用 `request_id` 关联任务终态。到[通知中心](/docs/guides/notifications)查看实际备份结果；有警告时展开详情，确认本次采用的捕获方式。
+
+第一次用于整合包时，试一次在线备份、取消和历史还原，在世界副本中检查建筑、实体和玩家状态。
 
 <span id="与普通备份的差异" />
 <span id="关键超时与行为" />
@@ -43,3 +48,9 @@ cmd=BACKUP;current_save=true;backup_mode=smart;from=panel;request_id=hot-001
 <span id="触发入口" />
 <span id="触发条件" />
 <span id="请求" />
+
+<span id="minecraft-热备份与一致性租约" />
+<span id="目标与活动检测" />
+<span id="协调" />
+<span id="prefer-与-require" />
+<span id="请求与验证" />

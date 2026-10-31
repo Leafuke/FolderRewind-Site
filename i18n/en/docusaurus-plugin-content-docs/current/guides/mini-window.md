@@ -2,7 +2,7 @@
 sidebar_position: 7
 title: "Mini window"
 description: "Open a source mini window to monitor changes, add comments and run backups without keeping the main window open."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Mini window

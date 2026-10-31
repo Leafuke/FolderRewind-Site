@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: "Manage folders and historical bindings"
 description: "Add and organize backup sources, edit ranges, rename folders and keep their historical source bindings."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Manage folders and historical bindings
@@ -11,7 +11,7 @@ Choose a backup project in management to add sources, inspect status and run bac
 
 ![A demonstration source and its actions in management.](/img/docs/v1-9-6/manager-en-light-1604.webp)
 
-*A demonstration source and its actions in management. Interface version: 1.9.6.*
+*A demonstration source and its actions in management.*
 
 ## Add and organize sources
 
@@ -31,7 +31,7 @@ When restoring or checking out history, an old source may lack a current path. C
 
 ## Check after saving
 
-Wait for the save result, then check directories, ranges, automation targets and older versions. Failed configuration saves roll back. Fix permissions or disk issues before retrying; unsaved input is not an effective configuration.
+After saving, check directories, scope, automation targets and recovery of older versions. Follow permission or disk diagnostics and retry if saving fails.
 
 Minecraft Java sources can open [map preview](/docs/guides/minecraft/world-preview) from their action menu. Ordinary folders can use the [mini window](/docs/guides/mini-window) for everyday backups.
 

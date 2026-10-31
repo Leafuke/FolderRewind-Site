@@ -1,27 +1,29 @@
 ---
 sidebar_position: 4
-title: "Sharing, importing and official presets"
-description: "Export reusable backup policies, check formats, plugin dependencies and personal paths, then import them for new projects."
-reviewed_baseline: "1.9-api3.9"
+title: "Share templates and use official presets"
+description: "Export reusable backup policies, import local templates, browse official presets or use a share code, and review paths and plugins in the new environment."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Sharing, importing and official presets
+# Share templates and use official presets
 
-Export reusable backup policies, check formats, plugin dependencies and personal paths, then import them for new projects.
+Share a template to reuse compression, filtering and automation with someone else. Check how it behaves with another set of directories before sharing.
 
-## Local transfer
+## Export and import locally
 
-Export a selected template from Settings template data. Import validates format/schema before replace/keep-both conflict handling.1.9 supports V2 and legacy formats; do not strip envelope/version fields to bypass checks.
+Choose a template in the settings data area and export its share file. Import validates the format and offers overwrite or keep-both choices for conflicts. Keep the generated format and version fields for later validation.
 
-## Official index and share codes
+## Official presets and share codes
 
-Browse official templates or enter a code, reviewing source, content, plugin dependencies and game applicability. The merged dual-track index preserves compatible presets; the chosen provider still resolves definitions. Mirrors affect downloads, not Kind/trust ownership.
+Browse official templates or enter a share code. Review the description, author, game, path rules and plugin requirements. Combine the downloaded policy with discovery results or selected folders to create a project.
 
-## Submit
+## Prepare a public share
 
-The app prepares sharing packages and a GitHub PR/code workflow. Inspect private paths, Provider State, passwords/tokens and boundaries first. Authentication/submission are separate from preview; preview is not publication.
+The app can prepare a package and use a GitHub workflow to create a PR and share code. Preview paths, credentials and Provider State, then submit and check the published result.
 
-Test another environment's path matching, plugins, drafts and backup/restore. Presets contain no history repositories/payloads and are not cross-device recovery packages.
+Test path matching, draft creation, backup and restore in independent directories. Share files supply policy; to recover existing versions on another PC, follow [data migration](/docs/guides/data-migration) for configuration, history and archives.
+
+See [template management](/docs/guides/templates) for related operations.
 
 <span id="before-sharing-a-template" />
 <span id="export-a-local-template" />
@@ -31,3 +33,8 @@ Test another environment's path matching, plugins, drafts and backup/restore. Pr
 <span id="prepare-a-template-sharing-package" />
 <span id="related-links" />
 <span id="submit-directly-to-github" />
+
+<span id="sharing-importing-and-official-presets" />
+<span id="local-transfer" />
+<span id="official-index-and-share-codes" />
+<span id="submit" />

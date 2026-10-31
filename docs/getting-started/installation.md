@@ -1,53 +1,44 @@
 ---
 sidebar_position: 1
 title: "安装指南"
-description: "选择适合电脑架构的安装程序，核对官方下载和校验文件，了解应用数据目录、系统要求，以及商店版与独立安装版的切换步骤。"
-reviewed_baseline: "1.9-api3.9"
+description: "从 Microsoft Store 或 GitHub 安装 FolderRewind，选择 x64 或 ARM64，核对安装包，并了解应用数据目录与安装渠道切换。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 安装指南
 
-FolderRewind 1.9.6 已于 2026-10-06 发布，内置 MineRewind 1.9.8。可从 Microsoft Store 或 GitHub Setup EXE 安装；商店版本按实际页面和应用显示核对。
+FolderRewind 支持 Windows 10 1809 及以上版本和 Windows 11。可以通过 Microsoft Store 安装，也可以下载 GitHub 的 Setup 安装包。
 
 ## Microsoft Store
 
-从 [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4) 安装，更新由商店管理。核对应用版本；商店审核与 GitHub 发布可能不同步。
+打开 [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4)，选择安装。后续更新由商店管理。商店与 GitHub 各自发布更新，已安装版本可在应用“关于”中查看。
 
-## Setup EXE
+## GitHub Setup 安装包
 
-正式 [GitHub Release](https://github.com/Leafuke/FolderRewind/releases) 每版只公开以下附件：
-
-```text
-FolderRewind_<version>_Setup_x64.exe
-FolderRewind_<version>_Setup_x64.exe.sha256
-FolderRewind_<version>_Setup_arm64.exe
-FolderRewind_<version>_Setup_arm64.exe.sha256
-```
-
-Intel／AMD 电脑选择 x64，Windows on ARM 选择 arm64。先下载对应包及校验文件：
+1. 打开 [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases)。
+2. Intel／AMD 电脑下载 x64；Windows on ARM 设备下载 ARM64。
+3. 同时下载同名 `.sha256` 文件，在 PowerShell 中核对 SHA-256：
 
 ```powershell
-Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
+Get-FileHash .\FolderRewind_1.10.0.0_Setup_x64.exe -Algorithm SHA256
 ```
 
-把输出与同名 .sha256 核对后运行中英文安装向导，选择当前用户或所有用户安装范围；所有用户安装需要相应权限。卸载默认保留设置，可显式清理当前用户设置，备份仍保留。旧客户端无法识别 Setup 更新时，从 Release 页面手动下载。Setup 内含安装引擎，不要求用户另找 MSI。没有架构匹配 EXE 时打开 Release 页面，不回退推荐旧 MSI。
+4. 运行安装包，按中英文向导选择安装路径和范围。默认安装到当前用户的 `%LOCALAPPDATA%\Programs\FolderRewind`；所有用户安装需要管理员权限。
 
-## 系统要求与数据目录
+Setup 包含 .NET 和 Windows App SDK 运行环境。安装包尚未进行生产代码签名，Windows 可能显示“未知发布者”或 SmartScreen 提示；请从项目官方 Release 下载并核对校验值。旧客户端的更新检查尚未找到 Setup 时，可以直接下载升级。
 
-Windows 10 1809+／Windows 11；发行架构 x64／ARM64；程序携带 .NET 10。安装空间以正式附件及安装器显示为准，不沿用旧 80MB 估计；备份、临时物化和恢复另需空间。
+## 数据目录与安装渠道
 
-| 渠道 | 数据目录 |
-|---|---|
-| Store／旧 MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
-| Setup 未打包版 | `%LOCALAPPDATA%\FolderRewind` |
+| 渠道 | 应用数据目录 |
+| --- | --- |
+| Microsoft Store／旧 MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| Setup | `%LOCALAPPDATA%\FolderRewind` |
 
-配置、plugins、按配置的 history 仓库、日志和本机状态在数据目录下；归档还保存在每个配置的目标目录。切换渠道不会自动迁移两套数据。完全退出、备份完整数据目录和归档、卸载旧渠道，再按迁移指南验证新环境；不要同时运行两种渠道保护相同来源。
+项目配置、插件、历史仓库、日志和本机状态存放在应用数据目录。实际备份文件使用各项目设置的备份位置，磁盘还需为备份与还原暂存留出空间。
 
-## 旧版包
+切换渠道时，先退出原应用，保留数据目录和归档，再在新安装中迁移配置、历史和来源路径。日常使用选定一个渠道维护相同来源，具体步骤见[数据迁移](/docs/guides/data-migration)。卸载默认保留设置，安装器也提供清理当前用户设置的选项。
 
-1.8 等历史 Release 可能仍含 MSI／MSIX .7z 和 install.ps1，仅用于对应旧版本。1.9 GitHub 不公开这些附件；开发人员模式／证书脚本不是新 Setup 安装步骤。
-
-安装后用测试来源完成备份和还原，再运行核心自动校验并启用自动任务。[数据迁移](/docs/guides/data-migration)说明配置与载荷的区别。
+安装完成后，继续[首次备份](/docs/getting-started/first-backup)。
 
 <span id="下一步" />
 <span id="从旧版本升级" />
@@ -58,3 +49,7 @@ Windows 10 1809+／Windows 11；发行架构 x64／ARM64；程序携带 .NET 10�
 <span id="方式三msix-侧载包" />
 <span id="方式二msi" />
 <span id="系统要求" />
+
+<span id="setup-exe" />
+<span id="系统要求与数据目录" />
+<span id="旧版包" />

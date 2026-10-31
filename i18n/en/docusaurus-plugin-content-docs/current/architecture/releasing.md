@@ -1,7 +1,7 @@
 ---
 title: Releasing plugins, the SDK and FolderRewind
 description: A repeatable cross-repository release sequence covering candidate verification, NuGet publication, frozen plugins, bundled Host payloads and public Setup assets.
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Releasing plugins, the SDK and FolderRewind
@@ -28,7 +28,7 @@ A product-only update can reuse an unchanged, published SDK. Do not rename the A
 
 ## 1. Prepare repositories and commit sources
 
-Check Host, MineRewind and Site independently, and Catalog when needed. Nested directories are not Host submodules. Never add plugin sources to the Host solution.
+Check Host, MineRewind and Site independently, and Catalog when needed. Nested projects retain independent repositories and builds, integrating through Abstractions packages and exact plugin artifacts.
 
 ```powershell
 $HostRoot = 'D:\Programs\FolderRewind'
@@ -74,7 +74,7 @@ gh run list -R Leafuke/FolderRewind --workflow plugin-v3-hardening.yml --event w
 gh run watch $ApiRunId -R Leafuke/FolderRewind --exit-status
 ```
 
-`publish_api=true` actually publishes and is allowed only on the default branch; omitting it only verifies. Success on an older default branch is not publication evidence for the current development branch. For CI publication, download this run's `plugin-api-candidate`; subsequent `$ApiCandidate` must refer to those tested bytes.
+`publish_api=true` publishes on the default branch; omitting it runs validation. Check publication against this branch, SHA, run results and NuGet indexing. Download this run's `plugin-api-candidate` and use those tested bytes for `$ApiCandidate`.
 
 ### Authorized manual publication
 
@@ -206,6 +206,6 @@ npm run build
 npm run check:built-docs
 ```
 
-Existing website `check:release` / `prepare:release` still include reviewed 1.9 baselines and version restrictions. Before using them for 1.10, update baselines, restrictions and evidence from actual public assets; success for an older version does not validate the new one. Blog dates use official publication time in Asia/Shanghai.
+Website `check:release` and `prepare:release` read the reviewed publication baseline. Record Host and plugin tags separately, with the public SDK, exact artifact hashes and Catalog binding. Blog dates use official publication time in Asia/Shanghai. Record website checks, screenshots and real-game scenarios with their actual results.
 
 Finally check empty-cache NuGet restore, matching public/bundled plugin hashes, Host tag at the frozen SHA, exactly four public application attachments with valid checksums, and matching Catalog/website versions. Preserve failed candidates and run evidence, fix and reverify, without mixing files from other commits or runs.

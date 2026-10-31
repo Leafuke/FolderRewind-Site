@@ -1,36 +1,45 @@
 ---
-sidebar_position: 20
-title: "制品转换、物化与版本元数据"
-description: "实现不可变制品转换和隔离还原物化，核对格式身份、依赖、元数据与提交边界。"
-reviewed_baseline: "1.9-api3.9"
+sidebar_position: 5
+title: "制品转换、增量与物化"
+description: "实现不可变 Artifact 转换、增量输入和隔离物化，使用固定文件视图服务历史预览，并由宿主管理格式、依赖与提交。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# 制品转换、物化与版本元数据
+# 制品转换、增量与物化
 
-实现不可变制品转换和隔离还原物化，核对格式身份、依赖、元数据与提交边界。
+Artifact 是 Host 管理的不可变载荷节点。插件用 owner-qualified `ArtifactFormatRef` 和格式版本描述内容，Host 管理存储保护、依赖、完整性与生命周期。
 
-API 3.9 中 Artifact 是 Host 管理的不可变载荷节点，与 Source Version、Representation 和 Replica 不同。格式由 owner-qualified ArtifactFormatRef 与格式版本标识；扩展名或插件产品版本不决定格式。
+## 声明与转换
 
-## 转换事务
+在 manifest 中声明格式、transformer、restore strategy 和所需服务。`IBackupArtifactTransformerCapability` 接收 Primary、参数与预期图修订，通过 ArtifactRead 读取输入，通过 ArtifactTransformStaging 创建相对文件，返回 `ArtifactGraphPatch`。
 
-声明 ArtifactFormats、ArtifactTransformers、RestoreStrategies 及对应能力。Transformer 必须声明 ArtifactRead／ArtifactTransformStaging 服务、支持的配置 Kind、核心模式、完整性和失败策略。
+Host 核对格式、依赖图、修订、哈希与暂存边界后提交。`KeepPrimaryWithWarnings` 可以保留核心结果并记录警告，`RequireTransform` 要求转换完成。
 
-IBackupArtifactTransformerCapability 接收已完成的 Primary、候选、ExpectedGraphRevision 和参数。用 Staging 创建新 Artifact 并写相对文件，返回 AddedArtifacts、依赖及结果根组成的 ArtifactGraphPatch。Host 验证 revision、格式、完整性、依赖图、哈希和 staging 边界后提交。不能改写旧归档或自行分配持久历史事实。
+## 增量输入
 
-KeepPrimaryWithWarnings 保留核心结果并记录警告；RequireTransform 未完成转换时不能当作成功。选择必须与声明一致。
+声明 `supportsIncrementalInput` 后，通过 `ArtifactIncrementalInput` 接收 Host 选定的捕获 ID、输入类型、范围指纹、基线版本与表示，以及新增、修改、删除列表。`Full` 和 `ChangesOnly` 描述本次物理输入。
 
-## 完成观察
+Host 选择可信基线和检查点，插件根据固定输入建立新的重建配方与依赖，旧制品继续保留。MineRewind 的无损 Full／增量表示使用这类能力；它与世界语义合并分别声明。
 
-IBackupCompletionObserverCapability 接收已提交结果，包括 Version、Representation、Artifact 根、GraphRevision、CoreOutcome 和 CloudQueueCommitted。只返回诊断，不在观察器里修改既有归档。hasBackupCompletionObserver 与声明及注册一致。
+## 还原物化与文件视图
 
-## 还原物化
+`IRestoreMaterializerCapability` 接收按拓扑排序的固定 Artifact 集合，通过 ArtifactRead 读取数据，向 RestoreMaterializationWorkspace 写入相对路径。Host 验证结果并执行目标变更，部分捕获按 Overwrite 应用。
 
-IRestoreMaterializerCapability 按声明格式／版本／完整性／模式处理按拓扑排序的 Artifact。声明 ArtifactRead 与 RestoreMaterializationWorkspace。输出只能写隔离 Workspace 内的相对路径；Host 完成预检、完整性、Safe Restore、进度／取消及实际目标变更。部分捕获不因为物化 Exact 就允许 Clean。
+物化器还可以实现 `IArtifactFileViewProvider`，提供固定依赖闭包上的只读 `IArtifactFileView`。文件条目包含相对路径、长度、哈希和配方引用，流由同一解码路径重建。Host 持有读取租约直到视图与流释放，可用于历史比较与预览。
 
-## 两种元数据
+## 完成观察与元数据
 
-IFolderMetadataCapability 描述当前 live 文件夹用于界面。IVersionMetadataProviderCapability 读取本次稳定捕获的只读 Source，返回 SchemaId、SchemaVersion 和有界 JSON payload；数据成为不可变版本元数据，不能在历史显示时重新读取 live 世界冒充旧版本。
+`IBackupCompletionObserverCapability` 在历史提交后接收版本、表示、根 Artifact、图修订与云排队状态，返回观察诊断。
 
-## 验证建议
+`IFolderMetadataCapability` 描述当前来源；`IVersionMetadataProviderCapability` 读取同次稳定捕获并返回带 SchemaId／SchemaVersion 的有界 JSON，随版本保存。
 
-验证失败转换、过期 revision、缺失依赖、格式不兼容、非法相对路径、取消、恢复失败及提交后故障。只证明文件能解压不足以证明游戏能加载；Minecraft 的 .mca／NBT 首发按保守文件冲突处理，不承诺语义合并。
+## 验证
+
+覆盖完整与增量输入、删除列表、缺失依赖、过期修订、非法路径、取消和提交后的恢复。领域格式还需用真实应用加载测试结果。合并协议见[领域合并参考](/docs/plugins/developing/plugin-api#semantic-merge)。
+
+<span id="制品转换物化与版本元数据" />
+<span id="转换事务" />
+<span id="完成观察" />
+<span id="还原物化" />
+<span id="两种元数据" />
+<span id="验证建议" />

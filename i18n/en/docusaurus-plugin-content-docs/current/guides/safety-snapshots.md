@@ -1,30 +1,31 @@
 ---
 sidebar_position: 20
 title: "Safety snapshots and recovery points"
-description: "Protect current state before checkout and merging, then inspect, restore or release safety points independent of the active branch."
-reviewed_baseline: "1.9-api3.9"
+description: "Protect current content before checkout or merge, inspect independent recovery points, prepare dependencies, restore and release snapshots when finished."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Safety snapshots and recovery points
 
-Protect current state before checkout and merging, then inspect, restore or release safety points independent of the active branch.
+Before checkout or merging, a safety snapshot can retain an exact recovery point for current work. It is stored independently of the active branch, ready to recover the pre-operation state.
 
-A safety snapshot is an Exact, branch-independent recovery point before destructive history apply. It never advances the active branch and differs from temporary staging or ordinary automatic backup.
+## Protect before applying
 
-## Use
-
-Review uncommitted work/protection during Checkout/Merge/controlled Restore. Failed protection must stop the operation. Inspect completed points and source/config scope through advanced history.
+Review current work and protection options in the Checkout, Merge or applicable controlled-restore confirmation. Wait for protection capture before continuing writes. Open recovery points in advanced history to inspect the affected sources and checkpoints.
 
 ## Restore and release
 
-Choose a point, confirm Checkpoint/bindings, prepare full dependencies and restore through the Host. Do not copy staging directories. Retained points protect materialization closure and can exceed KeepCount.
+Select a point, check source paths, prepare archives and all dependencies and restore through the app. Retaining a snapshot retains materialization dependencies, so counts can exceed everyday retention.
 
-Explicitly release only when no longer needed. Release is not immediate deletion of every logical fact/shared payload; the Host evaluates other protection roots.
+Once later versions and backups are secure, explicitly release the recovery point. The app evaluates other protection and dependencies when calculating physical cleanup.
 
-## Failures
+## Handle issues
 
-For RecoveryRequired/CommittedRecoveryRequired, locks or missing bytes, inspect diagnostics instead of repeating destructive writes. Test points remain inspectable/restorable/releasable across restart.
+For missing archives, occupied files or recovery requests, read diagnostics and finish the indicated steps. Try creation, viewing after restart, recovery and release on a small project first.
 
-## Restricted legacy history
+For restricted adopted backups, recover into a new folder and create a Full baseline before branch operations. See [legacy adoption](/docs/guides/data-migration#legacy-upgrade).
 
-Verifying legacy payloads does not establish historical deletion boundaries. Restricted recovery and safety recovery points are separate concepts: permission to export or use non-deleting Overwrite does not grant Clean, Checkout or Merge. Establish a reliable baseline with a new Full backup after upgrading.
+<span id="use" />
+
+<span id="failures" />
+<span id="restricted-legacy-history" />

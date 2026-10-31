@@ -2,12 +2,10 @@
 sidebar_position: 1
 title: "Repository directories and build boundaries"
 description: "Find the UI, history core, plugin contracts and validation tools, and understand their build boundaries."
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Repository directories and build boundaries
-
-> This page describes the 1.10 development layout; it does not announce a released version.
 
 ```text
 FolderRewind.slnx

@@ -1,49 +1,45 @@
 ---
 sidebar_position: 4
 title: "Minecraft hot restore and player preservation"
-description: "Prepare game coordination and the target version, review player-preservation options, then run and verify Minecraft hot restore."
-reviewed_baseline: "1.9-api3.9"
+description: "Coordinate Java world saving, exit and restore, choose a target and player preservation, and inspect recovery and re-entry results in a test world."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft hot restore and player preservation
 
-Prepare game coordination and the target version, review player-preservation options, then run and verify Minecraft hot restore.
+Hot restore coordinates saving and game exit, waits for world files to be released and lets FolderRewind restore the selected content. Prepare the game components and practice once in a test world.
 
-## Host-owned restore
+## Choose a target and mode
 
-The config-level RestoreCoordinator receives all affected sources, OperationId and Restore/Checkout/Merge kind. It coordinates save/exit/session.lock release. Multiple active worlds, failed handshakes or occupied sources block rather than bypass checks.
+Select a specific version in history or use `Alt+Ctrl+Z` for Quick Restore to the active branch's unique tip. An already exact match returns `NoChanges`.
 
-Call the Host continuation once after preparation. The Host owns writes/Safe Restore/recovery. Plugins cannot keep writing live worlds afterward. Checkout/Merge coordinate environments without ordinary player preservation; zero-mutation merges skip exit.
-
-## Target and apply mode
-
-Alt+Ctrl+Z or RESTORE without file uses the active branch's unique tip. Already exact returns NoChanges, not a previous archive. Remote default Clean; partial captures force Overwrite. Specified file targets validate history/dependencies.
+Remote RESTORE defaults to Clean; partial captures such as region backups use Overwrite. With `file`, the app prepares the selected historical target and its complete dependencies.
 
 ```text
 cmd=RESTORE;current_save=true;preserve_player_data=true;from=panel;request_id=restore-001
 ```
 
-## Player preservation
+## Preserve player state
 
-Local PreservePlayerData defaults false. Omission inherits; explicit true/false overrides this operation. Ordinary Restore generates relative proposals from locked Current/Target views for whole-batch Host staging, never post-restore live level.dat writes.
+Enable `PreservePlayerData` in plugin settings to keep selected NBT fields for every player during ordinary restore: position, orientation, dimension, inventory, ender chest, experience and related state. Players absent from the backup retain their complete current NBT. Statistics and advancements restore from the backup.
 
-Selected position/inventory/experience NBT fields are preserved for all UUIDs; players absent from backup keep full current NBT. Stats/advancements still restore. Embedded single-player Player and server playerdata/players follow implementation layouts. Cross-26.1 preservation/unsupported explicit override blocks. Modified baseline is Derived.
+Omitting remote `preserve_player_data` inherits the local setting; true or false controls this operation explicitly. Player layouts must be compatible. Follow diagnostics when moving between older layouts and the 26.1 layout.
 
-## Completion and recovery
+The app combines target and preserved data in staging before applying. Checkout and Merge use branch results; player preservation here belongs to ordinary Restore.
 
-Archive apply and automatic rejoin success differ; failed rejoin may yield SuccessWithWarnings. RecoveryRequired/CommittedRecoveryRequired prohibit rejoin. Inspect recovery before repeating Restore.
+## Preserve a current file or directory
 
-Test all players, explicit false, missing players, layout errors, cancellation, partial captures and real rejoin on copies. NBT fixtures do not certify game loading.
-
-## One-shot path preservation
-
-Ordinary Java Restore accepts `restore_preserve_paths`, relative to the unique managed world root. A relative file or directory ending in `/` preserves exact current state, including deletions. This differs from player-field preservation and cannot expand SourceScope. Checkout/Merge do not apply it. See [filter limits](/docs/guides/filters#one-shot-file-and-directory-preservation) for boundaries, ambiguity and staging limits.
+`restore_preserve_paths` takes relative paths beneath the unique managed world root. A directory ends with `/`. Selected content and current deletions take priority. See [one-time preservation](/docs/guides/filters#restore-preserve-paths) for scope and limits.
 
 ```text
 cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;preserve_player_data=false;from=panel;request_id=restore-preserve-001
 ```
 
-These example paths must actually be inside the managed world root; they cannot protect instance directories outside it. Bedrock does not use Java hot coordination or NBT preservation: close the game and use ordinary file restore.
+## Check restore and re-entry
+
+Review file recovery and game re-entry separately in the [notification center](/docs/guides/notifications). If re-entry fails, check the game environment; file recovery remains recorded in the details. Complete requested recovery steps before entering the world.
+
+Test multiple players, explicit preservation disable, missing players, cancellation and re-entry on a copy. Bedrock uses ordinary file restore with the game closed.
 
 <span id="common-failure-points" />
 <span id="execution-flow" />
@@ -58,3 +54,9 @@ These example paths must actually be inside the managed world root; they cannot 
 <span id="state-machine" />
 <span id="trigger-methods" />
 <span id="typical-final-states" />
+
+<span id="host-owned-restore" />
+<span id="target-and-apply-mode" />
+<span id="player-preservation" />
+<span id="completion-and-recovery" />
+<span id="one-shot-path-preservation" />

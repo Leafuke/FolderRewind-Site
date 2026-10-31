@@ -2,14 +2,14 @@
 sidebar_position: 5
 title: "KnotLink integration and target resolution API"
 description: "Declare KnotLink commands, arguments, signals and target resolution, routing remote requests through the same Host operations."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink integration and target resolution API
 
 Declare KnotLink commands, arguments, signals and target resolution, routing remote requests through the same Host operations.
 
-API 3.9 uses IKnotLinkIntegrationCapability with Commands, Signals and ExecuteAsync. Wire protocol v2, Server v3, Plugin API 3.9, funcList manifestVersion3.0.0 and specVersion1.0 are separate version axes.
+API 3.17 uses IKnotLinkIntegrationCapability with Commands, Signals and ExecuteAsync. Wire protocol v2, Server v3, Plugin API 3.17, funcList manifestVersion3.0.0 and specVersion1.0 are separate version axes.
 
 ## Custom commands
 
@@ -25,7 +25,7 @@ MineRewind matches current_save=true for seven variants: BACKUP, LIST_BACKUPS, R
 
 ## Services and verification
 
-Declare KnotLink for events and BackupRequest/RestoreRequest independently for operations. Preserve explicit player-preservation false; unsupported new restore options must return Blocked rather than falling back silently.
+Declare KnotLink for events and BackupRequest or RestoreRequest for operations. Preserve an explicit player-preservation false value. Return Blocked with diagnostics when a service lacks the requested restore option.
 
 Query GET_CAPABILITIES first. status=ok may mean a long task was accepted; completion requires correlated signals. Runtime capabilities are authoritative for available commands, arguments and signals.
 

@@ -2,12 +2,10 @@
 sidebar_position: 2
 title: "Architecture patterns and transaction boundaries"
 description: "Understand MVVM, explicit dependencies and transaction boundaries for cancellable operations and reliable state commits."
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Architecture patterns and transaction boundaries
-
-> This page describes the 1.10 development layout; it does not announce a released version.
 
 The UI retains MVVM. ViewModels own presentation state and asynchronous commands; view code bridges UI events. I/O, transactions and recovery belong to their services.
 

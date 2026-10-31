@@ -1,45 +1,37 @@
 ---
 sidebar_position: 1
 title: "插件开发快速上手"
-description: "使用公开 SDK 3.6.0 创建独立插件，编译和打包示例，并在支持 API 3 的宿主中检查激活结果。"
-reviewed_baseline: "1.9-api3.9"
+description: "使用公开 SDK 3.17.0 创建独立插件类库，了解生命周期和静态清单，构建 .frplugin，并在应用中安装、启用和检查结果。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 插件开发快速上手
 
-使用公开 SDK 3.6.0 创建独立插件，编译和打包示例，并在支持 API 3 的宿主中检查激活结果。
+从一个只实现生命周期的最小插件开始，先走通构建、打包和安装，再添加需要的能力。
 
-本页适用于 FolderRewind 1.9 系列、Plugin API 3.6。应用版本、插件产品版本、SDK 包版本和程序集版本独立演进。
+## 准备环境与项目
 
-## 准备环境
-
-安装 .NET 10 SDK、Node.js 24 和 Python 3.10+；使用能支持 .NET 10 的编辑器。安装支持 API 3.6 的 FolderRewind。示例项目从[网站源码仓库](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins)获取。
-
-:::info[公开 SDK 基线]
-本教程使用已公开的 Abstractions 3.6.0，适用于支持 API 3.6 的宿主，包括支持 API 3.9 的 FolderRewind 1.9.6。使用 NuGet.org 恢复；网络或版本恢复失败时检查源和诊断，不要改为引用 FolderRewind.dll。程序集身份仍为 3.0.0.0。
-:::
-
-## 创建独立类库
+安装 .NET 10 SDK、Node.js 24 和 Python 3.10+，获取[网站源码中的示例](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins)。公开 NuGet 包 `FolderRewind.Plugin.Abstractions 3.17.0` 对应 API 3.17。
 
 ```powershell
 dotnet new classlib -n MyFirstPlugin -f net10.0
-dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.6.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.17.0
 ```
 
-仅引用 `FolderRewind.Plugin.Abstractions`。不要引用应用、WinUI、Models 或 Runtime 项目。设置 SDK 引用的 `Private="false"`，不将 Abstractions DLL 放入发布包。
+插件只引用 Abstractions。项目中设置该引用 `Private="false"`，发布包由宿主提供共享契约程序集。
 
 ## 实现生命周期
 
-下面直接展示可构建的 MinimalPlugin 源文件：
+下面的代码直接来自可构建示例：
 
 import CodeBlock from '@theme/CodeBlock';
 import MinimalSource from '!!raw-loader!@site/examples/plugins/MinimalPlugin/Plugin.cs';
 
 <CodeBlock language="csharp" title="MinimalPlugin/Plugin.cs">{MinimalSource}</CodeBlock>
 
-激活阶段只读取设置／配置快照并注册能力。Host 校验并原子提交后才公开能力。无能力插件只展示生命周期；它不会自动增加备份按钮。
+激活时读取快照并注册能力，Host 验证后开放调用。这个最小示例用于检查激活和停用流程；下一步可以加入发现、命令等能力。
 
-## 静态清单与设置
+## 清单与设置
 
 import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json?raw';
 import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json?raw';
@@ -47,9 +39,9 @@ import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/s
 <CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
 <CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
 
-`manifestVersion` 为 3，`pluginApi` 请求 3.6。字段使用精确的 camelCase；入口类型必须与类的完全限定名一致。无设置仍需合法的空设置模式。
+清单使用 `manifestVersion=3`、API major／minor 和稳定插件 ID。入口类型写完全限定名，设置模式即使没有项目也提供合法空数组。
 
-## 构建、打包与安装
+## 构建与安装
 
 在网站仓库根目录运行：
 
@@ -58,15 +50,11 @@ node scripts/pack-plugin.mjs MinimalPlugin
 Get-FileHash .\artifacts\examples\MinimalPlugin-1.0.0.frplugin -Algorithm SHA256
 ```
 
-`.frplugin` 使用 ZIP 容器，根目录直接放置 `manifest.json`、`settings.schema.json` 和入口 DLL。包不携带 Abstractions。不要增加旧教程要求的顶层插件目录。
+包根目录包含清单、设置和插件 DLL，私有依赖随包提供。打开应用的插件管理，使用本地安装，检查声明后启用。
 
-打开设置中的插件管理，选择本地安装并检查静态声明。新安装默认停用；明确启用后才执行代码。正常安装／启停可热切换；只有界面提示 RequiresRestart 时重启。
+查看实际运行状态和激活诊断。遇到加载问题时，依次核对 API、入口类型、设置与能力注册；界面要求重启时完成重启。
 
-## 验证与排错
-
-确认名称、版本、来源、请求服务和运行状态。若加载失败，依次检查 API 兼容、入口类型、静态设置类型、声明与能力注册一致性。不要仅依据启用开关判断激活成功。
-
-下一步：[实战教程](/docs/plugins/developing/tutorial)、[API 参考](/docs/plugins/developing/plugin-api)、[打包与发布](/docs/plugins/developing/packaging)。
+继续阅读[GameRewind 实战](/docs/plugins/developing/tutorial)、[API 参考](/docs/plugins/developing/plugin-api)和[打包说明](/docs/plugins/developing/packaging)。
 
 <span id="下一步" />
 <span id="常见错误排查" />
@@ -78,3 +66,10 @@ Get-FileHash .\artifacts\examples\MinimalPlugin-1.0.0.frplugin -Algorithm SHA256
 <span id="第五步安装与测试" />
 <span id="第四步打包为-zip" />
 <span id="验证加载成功" />
+
+<span id="准备环境" />
+<span id="创建独立类库" />
+
+<span id="静态清单与设置" />
+<span id="构建打包与安装" />
+<span id="验证与排错" />

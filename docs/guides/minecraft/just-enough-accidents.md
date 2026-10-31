@@ -1,19 +1,13 @@
 ---
 title: Just Enough Accidents（险兆备份）
 description: 检测 Minecraft 高风险状态并自动创建事故现场快照，在死亡、爆炸等意外发生前保留可回溯的存档点
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Just Enough Accidents（险兆备份）
-:::info[FolderRewind 1.9 后端基线]
-接入本网站当前教程时使用支持 API 3.9 的 FolderRewind 1.9.6 与 MineRewind 1.9.8；游戏侧组件的最低版本／加载器矩阵仍按其自身 Release。旧 1.8 最低要求不代表 v2 插件能在 1.9 加载。备份参数使用 full／smart；未指定 file 的快速还原由 Host 按活动分支解析，不能笼统保证“全局最新归档”。正式组合还需测试真实游戏加载与退出／重进，服务端 Sidecar 不等于客户端重连。
-:::
-
 Just Enough Accidents（JEA）是 MineBackup 的事故检测扩展。它在单人世界或 LAN 世界中发现高风险状态后，请求 MineBackup 与 FolderRewind 创建一次事故现场快照。
 
-:::warning[快照不是绝对安全点]
-JEA 记录的是检测触发时的事故现场，不保证是事故发生前的安全点。低生命值和不死图腾检测尤其可能已经包含伤害或图腾消耗。
-:::
+JEA 保存检测触发时的事故现场。低生命值或图腾触发的快照可能已经包含伤害与图腾消耗；需要较早进度时，可以在历史中选择之前的版本。
 
 ## 支持范围与前置
 
@@ -26,8 +20,7 @@ JEA 记录的是检测触发时的事故现场，不保证是事故发生前的�
 所有场景还需要：
 
 - MineBackup 3.1.0+。
-- FolderRewind 1.8.0+。
-- MineRewind 1.8.0+。
+- 当前 FolderRewind 与启用的内置 MineRewind。
 - 单人世界或 LAN 世界房主权限。
 
 JEA 0.2.0 不支持专用服务器。专用服务器加载时只记录一次禁用日志，不扫描玩家，也不发起备份。实际下载版本以 [Just Enough Accidents Releases](https://github.com/Leafuke/JustEnoughAccidents/releases) 为准。
@@ -144,11 +137,3 @@ JEA 0.2.0 当前不包含：
 - [FolderRewind 过滤器与备份策略](/docs/guides/filters)
 
 启用前请先在测试世界观察一次触发、归档和手动还原流程，确认检测阈值符合你的整合包玩法。
-
-<span id="冷却合并与归档保留" />
-<span id="当前不包含" />
-<span id="支持范围与前置" />
-<span id="相关文档" />
-<span id="计分板触发" />
-<span id="首发检测器" />
-<span id="默认配置" />

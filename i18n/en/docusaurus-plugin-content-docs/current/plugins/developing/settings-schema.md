@@ -2,14 +2,14 @@
 sidebar_position: 5
 title: "Static settings schema and typed values"
 description: "Define static plugin settings schemas, read typed snapshots and retain the known-good runtime state when updates fail."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Static settings schema and typed values
 
 Define static plugin settings schemas, read typed snapshots and retain the known-good runtime state when updates fail.
 
-API 3.9 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
+API 3.17 settings are static package data referenced by manifest settingsSchema. Installation validates them without executing code. The Host renders controls, validates candidates and transactionally reactivates; invalid settings must not replace known-good values.
 
 ## Schema format
 
@@ -40,7 +40,7 @@ bool enabled = settings.TryGetValue("EnabledFeature", out var value)
     && value.GetBoolean();
 ```
 
-Values are not a string dictionary. Do not parse "1"/"true" to bypass boolean validation. Unknown keys are retained with a warning. Missing values use valid defaults; missing required values without defaults fail. Settings and Provider State are distinct.
+Read JsonElement values according to their declared types. Unknown keys remain with a warning, missing values use valid defaults and required values without defaults produce diagnostics. Manage settings and Provider State separately.
 
 ## Acceptance
 

@@ -2,7 +2,7 @@
 sidebar_position: 7
 title: "Official Catalog and plugin updates"
 description: "Publish catalog entries that bind versions, URLs and hashes, and understand trusted updates, compatibility checks and rollback responsibilities."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Official Catalog and plugin updates
@@ -11,9 +11,9 @@ Publish catalog entries that bind versions, URLs and hashes, and understand trus
 
 ## Update authority
 
-FolderRewind1.9 uses the independent Official Catalog. GitHub Releases hosts assets; repository is project metadata, not authority for accepted versions or trust.
+The independent official Catalog supplies fixed versions and artifact declarations. GitHub Releases hosts those assets, and the repository field links to the project.
 
-The Host matches PluginId, compares SemVer2.0 precedence, and validates the exact Catalog item, Release URL, SHA-256, API/declarations and downloaded package. Publisher signatures and arbitrary custom catalogs are outside v3's initial scope.
+The Host matches PluginId and compares SemVer 2.0 precedence. Download and installation verify exact URLs, SHA-256, API, architectures and declarations. Follow the publication steps below.
 
 ## Author workflow
 

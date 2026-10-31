@@ -71,20 +71,25 @@ for (const sourceFile of sourceFiles) {
 
 const errors = [];
 // Gallery and themed MDX paths are constructed at runtime, so check their manifests too.
-const sizes = JSON.parse(await readFile(path.join(staticRoot, 'img/docs/v1-9-6/sizes.json'), 'utf8'));
+const sizes = {...JSON.parse(await readFile(path.join(staticRoot, 'img/docs/v1-9-6/sizes.json'), 'utf8')),
+  ...JSON.parse(await readFile(path.join(staticRoot, 'img/docs/v1-10-0/sizes.json'), 'utf8'))};
+const baseline = JSON.parse(await readFile(path.join(root, 'audit/baseline.json'), 'utf8'));
 let captureCount = 0;
-for (const manifestPath of ['img/homepage/manifest.json', 'img/docs/v1-9-6/manifest.json']) {
+for (const manifestPath of ['img/homepage/manifest.json', 'img/docs/v1-9-6/manifest.json', 'img/docs/v1-10-0/manifest.json']) {
   const manifest = JSON.parse(await readFile(path.join(staticRoot, manifestPath), 'utf8'));
   const records = manifest.screenshots;
   const keys = new Set();
   const homepage = manifestPath.includes('homepage');
-  if (manifest.applicationVersion !== (homepage ? 'mixed' : '1.9.6') || manifest.bundledPluginVersion !== '1.9.8') errors.push(`wrong capture baseline: ${manifestPath}`);
+  const current = manifestPath.includes('v1-10-0');
+  const expectedVersion = current ? baseline.hostProjectVersion.split('.').slice(0, 3).join('.') : '1.9.6';
+  if (manifest.applicationVersion !== (homepage ? 'mixed' : expectedVersion) || manifest.bundledPluginVersion !== (current ? baseline.bundledPlugin : '1.9.8')) errors.push(`wrong capture baseline: ${manifestPath}`);
+  if (current && (manifest.hostRef !== baseline.hostRef || manifest.bundledPluginSha256 !== baseline.bundledPluginSha256)) errors.push(`wrong released binary identity: ${manifestPath}`);
   for (const record of records) {
     const key = `${record.scene}-${record.locale}-${record.theme}`;
     if (keys.has(key)) errors.push(`duplicate capture: ${key}`);
     keys.add(key);
     const retained = homepage && ['home', 'history', 'restore'].includes(record.scene);
-    if (record.applicationVersion !== (retained ? '1.9.4' : '1.9.6') || !['zh', 'en'].includes(record.locale) || !['light', 'dark'].includes(record.theme)) errors.push(`invalid capture axes: ${key}`);
+    if (record.applicationVersion !== (retained ? '1.9.4' : expectedVersion) || !['zh', 'en'].includes(record.locale) || !['light', 'dark'].includes(record.theme)) errors.push(`invalid capture axes: ${key}`);
     const metadata = sizes[record.full];
     if (!metadata || metadata.width !== record.width || metadata.height !== record.height || metadata.small !== record.small || metadata.smallWidth !== record.smallWidth) errors.push(`capture size index mismatch: ${key}`);
     for (const asset of [record.full, record.small]) {
@@ -99,7 +104,7 @@ for (const manifestPath of ['img/homepage/manifest.json', 'img/docs/v1-9-6/manif
     if (!/^[a-f0-9]{64}$/.test(record.sourceSha256)) errors.push(`missing raw capture provenance: ${key}`);
     captureCount++;
   }
-  const scenes = manifestPath.includes('homepage') ? ['home', 'history', 'restore', 'merge', 'map'] : [...new Set(records.map(record => record.scene))];
+  const scenes = homepage ? ['home', 'history', 'restore', 'merge', 'map'] : current ? ['merge', 'map-compare', 'cloud-recovery', 'notifications', 'filters'] : [...new Set(records.map(record => record.scene))];
   for (const scene of scenes) for (const locale of ['zh', 'en']) for (const theme of ['light', 'dark']) {
     if (!keys.has(`${scene}-${locale}-${theme}`)) errors.push(`missing capture variant: ${scene}-${locale}-${theme}`);
   }

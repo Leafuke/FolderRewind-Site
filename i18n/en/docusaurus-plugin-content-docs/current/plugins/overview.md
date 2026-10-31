@@ -1,37 +1,34 @@
 ---
 sidebar_position: 1
-title: "Plugin system overview"
-description: "Explore plugin discovery, backup, restore, map and command capabilities, Host responsibilities, compatibility and trusted installation sources."
-reviewed_baseline: "1.9-api3.9"
+title: "Plugins and MineRewind"
+description: "Explore domain capabilities provided by plugins, protect Minecraft worlds with bundled MineRewind and install extensions from the catalog or local packages."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Plugin system overview
+# Plugins and MineRewind
 
-Explore plugin discovery, backup, restore, map and command capabilities, Host responsibilities, compatibility and trusted installation sources.
+Plugins help FolderRewind understand more kinds of data and game saves. The app manages projects, tasks, history, cloud copies and file operations; plugins supply discovery, scope, coordination, previews and domain merging.
 
-FolderRewind1.9 Plugin System v3 uses a standalone BCL-only SDK, static declarations and capability registration; the current source API is3.6. The Host owns configuration, orchestration, history, retention, cloud ordering, integrity and target writes.
+## Bundled MineRewind
 
-## Responsibilities
+FolderRewind includes MineRewind for discovering Minecraft saves and creating projects. Java worlds support coordinated hot backups, region scopes, player-state preservation, maps, historical comparisons and semantic merging. Bedrock worlds use complete ordinary file backups; exit the game before operating on them.
 
-Plugins propose discovery/config changes, resolve file policies/scopes, provide consistent sources and folder/version metadata, coordinate restore environments, contribute commands/hotkeys/KnotLink, transform immutable artifacts and materialize them. See all15 contracts in the [API reference](/docs/plugins/developing/plugin-api).
+| What you want to do | Guide |
+| --- | --- |
+| Find saves and create a project | [Minecraft quick start](/docs/guides/minecraft/quick-start) |
+| Browse terrain and historical changes | [World maps](/docs/guides/minecraft/world-preview) |
+| Combine work from branches | [World merging](/docs/guides/minecraft/world-merge) |
+| Request operations from the game | [Hot backup](/docs/guides/minecraft/hot-backup), [hot restore](/docs/guides/minecraft/hot-restore) |
 
-Plugins never save Host configuration directly, rewrite old archives in after-hooks or bypass Safe Restore. Discovery, Kind ownership and state namespaces are separate identities.
+## Install and maintain plugins
 
-## MineRewind
+Open the official catalog in plugin management or install a `.frplugin` from a trusted author. Review its source, version, requested services and description, then enable it and check its runtime state.
 
-FolderRewind 1.9.6 bundles MineRewind 1.9.8 requiring API 3.9 and contributes instance discovery, drafts, scope, consistency, metadata, restore coordination, preservation and commands/selectors. Verify actual released Host/SDK/plugin versions; old1.8 ZIP plugins are incompatible with v3.
+Plugins offer different capability combinations. Use the plugin's documentation and runtime state to check feature dependencies. See [plugin management](/docs/plugins/using-plugins) for updating, rolling back and uninstalling, and [Downloads](/download) for bundled and independent release versions.
 
-## Install and trust
+## Develop an extension
 
-Catalog and manual `.frplugin` packages undergo static validation. New installs are disabled and first execute after explicit Enable. AssemblyLoadContext isolates dependencies, but plugins execute with ambient user privileges. Curation, hashes and service gating are not a sandbox.
-
-See [management](/docs/plugins/using-plugins), [development](/docs/plugins/developing/quick-start) and [Minecraft](/docs/guides/minecraft/overview).
-
-
-
-## Bundled and separate releases
-
-FolderRewind 1.9.6 bundles MineRewind 1.9.8 (API 3.9). The separate plugin Release and official catalog currently provide 1.9.5 (API 3.6), without map preview. Replacing the bundled version with that older package will not add new features. See [read-only preview](/docs/guides/minecraft/world-preview) for the Java map.
+Use the independent public BCL-only SDK. Start with the minimal lifecycle example and add discovery, commands, maps or domain merging. See the [quick start](/docs/plugins/developing/quick-start) and [API reference](/docs/plugins/developing/plugin-api).
 
 <span id="become-a-plugin-developer" />
 <span id="install-plugins" />
@@ -39,3 +36,8 @@ FolderRewind 1.9.6 bundles MineRewind 1.9.8 (API 3.9). The separate plugin Relea
 <span id="official-plugin" />
 <span id="related-links" />
 <span id="what-plugins-can-do" />
+
+<span id="plugin-system-overview" />
+<span id="responsibilities" />
+<span id="install-and-trust" />
+<span id="bundled-and-separate-releases" />

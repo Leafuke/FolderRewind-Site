@@ -1,8 +1,8 @@
 ---
 sidebar_position: 7
 title: "Mini 悬浮窗"
-description: "从来源操作菜单打开悬浮窗，查看变更、填写备注并执行备份，无需一直展开主窗口。"
-reviewed_baseline: "1.9-api3.9"
+description: "从来源菜单打开悬浮窗，在工作或游戏旁边查看文件变化、填写备注与执行备份，并使用快捷键和任务结果管理日常保存。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Mini 悬浮窗

@@ -1,46 +1,46 @@
 ---
 sidebar_position: 2
 title: "Minecraft quick start"
-description: "Enable bundled MineRewind, discover and review Java or Bedrock saves, create a project and verify the first backup and restore."
-reviewed_baseline: "1.9-api3.9"
+description: "Enable bundled MineRewind, discover or select Java and Bedrock worlds, check paths and complete your first backup, restore and map preview."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft quick start
 
-Enable bundled MineRewind, discover and review Java or Bedrock saves, create a project and verify the first backup and restore.
+## 1. Enable MineRewind
 
-![Discovery and player-preservation settings in bundled MineRewind.](/img/docs/v1-9-6/plugin-settings-en-light-1604.webp)
+Open plugin management in Settings, enable bundled MineRewind and check its runtime state. Independent updates are available through the official catalog or trusted `.frplugin` packages. See [plugin management](/docs/plugins/using-plugins).
 
-*Discovery and player-preservation settings in bundled MineRewind. Interface version: 1.9.6.*
+## 2. Find your worlds
 
-## Install and enable
+Open New backup project → Minecraft from Home. Discover saves automatically or select a directory to scan.
 
-Use FolderRewind 1.9.6 (API 3.9) and MineRewind 1.9.8; verify their official versions and sources. Install Catalog/local .frplugin in Settings, review declarations and explicitly enable. Enabled Intent still needs Active runtime confirmation;1.8 ZIPs are incompatible.
+- Automatic discovery combines known locations and remembered roots.
+- Select a launcher directory, game root, instance library, `saves`, `minecraftWorlds` or one world.
+- Common locations cover official Java, HMCL, PCL2, PCLCE, Prism Launcher, Modrinth App, NetEase and Bedrock. Add portable or custom locations manually.
 
-## Discover instances
+Choose worlds and review Java/Bedrock kinds, full paths and scope. Enter a name and separate backup destination, then confirm the summary. Different instances can become separate projects.
 
-Use Home Minecraft creation, plugin batch discovery or game discovery Beta with .minecraft/versions/instance saves roots. Review sets/world drafts, Kind, destinations/scopes; the Host persists after summary confirmation. AutoCreateConfigs defaults false; AutoDiscoverSaves true. Instances can have independent configs.
+## 3. Back up and restore
 
-## Validate
+Use a world copy for the first exercise. Exit the game and create a Full backup, find it in history and restore into a test folder. Inspect files and load the world in a test instance.
 
-Stop writers on a copied world, make Full backup and test restore/content comparison. Then integrate KnotLink Server v3 and the appropriate game component, checking runtime current-world capabilities.
+For Java, open [map preview](/docs/guides/minecraft/world-preview) to browse dimensions and player positions. Keep the game closed for Bedrock operations and use ordinary file backup and restore.
 
-The old EnableHotBackup setting is absent. Config Prefer/Require intent and providers resolve consistency. Test PreservePlayerData with all UUIDs, explicit false, stats/advancements and layout compatibility.
+## 4. Add everyday settings
 
-## Next
+After confirming the workflow, configure [automation](/docs/guides/automation), [retention](/docs/guides/backup-modes) and [cloud copies](/docs/guides/cloud-archive). For in-game operations, prepare KnotLink and game components using [hot backup](/docs/guides/minecraft/hot-backup).
 
-Read [regions](/docs/guides/minecraft/selected-region-backup), [hot backup](/docs/guides/minecraft/hot-backup), [hot restore](/docs/guides/minecraft/hot-restore). File tests do not replace actual game-loading acceptance.
-
-## Launchers and Bedrock
-
-Home → New backup project → Minecraft can discover automatically. Alternatively select a launcher directory, game root, instance library, saves, minecraftWorlds or a single world. Common locations cover official Java, HMCL, PCL2, PCLCE, Prism Launcher, Modrinth App, NetEase and Bedrock. Select custom/portable locations manually when needed; this is not a whole-drive search.
-
-Automatic discovery combines known locations and remembered roots; selected-root discovery stays scoped. Selected drafts return to setup for names, destinations and review instead of creating projects during scanning. Minecraft configurations may include ordinary folders, which use ordinary file backup rather than being treated as worlds.
-
-Bedrock uses a separate Kind and ordinary file handling: close the game first. Java NBT player preservation, selected-regions and current-world KnotLink coordination do not apply. Java hot-backup capabilities are not Bedrock capabilities.
+`AutoDiscoverSaves` defaults to enabled; `AutoCreateConfigs` and `PreservePlayerData` default to disabled. Change these in plugin settings as needed. See [hot restore](/docs/guides/minecraft/hot-restore) for player preservation.
 
 <span id="next-steps" />
 <span id="recommended-settings" />
 <span id="step-1-install-plugin" />
 <span id="step-2-scan-minecraft" />
 <span id="step-3-verify-one-backup" />
+
+<span id="install-and-enable" />
+<span id="discover-instances" />
+<span id="validate" />
+<span id="next" />
+<span id="launchers-and-bedrock" />

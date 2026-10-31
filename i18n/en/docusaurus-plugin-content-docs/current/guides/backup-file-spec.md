@@ -1,45 +1,43 @@
 ---
 sidebar_position: 3
-title: "Backup payloads and native history storage"
-description: "Understand archives, history packs and local indexes so you can preserve dependencies and migrate restorable data."
-reviewed_baseline: "1.9-api3.9"
+title: "Backup files and history storage"
+description: "Understand archives, immutable history packs, local indexes and workspaces, prepare version dependencies and migrate backup data correctly."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Backup payloads and native history storage
+# Backup files and history storage
 
-Understand archives, history packs and local indexes so you can preserve dependencies and migrate restorable data.
-
-The1.9 immutable per-config History Repository is logical authority. Archives are physical payloads; filenames no longer fully encode identity, ancestry or restorability.
+A recoverable version combines history records with file content. History stores sources, branches and version relationships; archives or plugin Artifacts provide recoverable bytes.
 
 ## Local repository
 
 ```text
-<app-data>/history/<encoded ConfigId>/
+<app data>/history/<encoded ConfigId>/
 ├─ repository.json
-├─ packs/<first-two>/<PackId>.frpack
+├─ packs/<first two characters>/<PackId>.frpack
 ├─ index/
 ├─ local-state/
 ├─ transactions/
 └─ quarantine/
 ```
 
-GUID ConfigIds use normalized separator-free encoding; other IDs use stable hashes. packs hold shared facts; index is disposable projection; local-state holds device Workspace/Replica Catalog and is not shared history.
+`packs` contains immutable shared facts, `index` supports queries and `local-state` holds device workspaces and replica locations. Representation/Replica locators point to archives, usually in project backup storage or controlled storage.
 
-Representation/Replica locators identify payloads in config destinations/controlled storage; migrated archives may retain old locations. Folder labels, renaming archives and old `[Full/Smart/Overwrite]` regexes do not establish native identity.
+## From a run to a version
 
-## Model
+A Backup Run records participating source outcomes. Each Source Checkpoint refers to a source version and records history continuation. A Version Representation describes materialization and dependencies; a Storage Replica describes one copy.
 
-Backup Run describes one invocation/results; Source Version is logical source state; Checkpoint is a config-wide state vector. Representation defines materialization and Replica a physical copy. Commit Packs publish shared facts atomically. Annotation updates comments/Pins/presentation without rewriting facts.
+A Commit Pack atomically publishes related facts. Annotations update comments, Pins and presentation. Use the app's source and version entries to locate backups.
 
-## Maintenance and transfer
+## Move and maintain data
 
-Index rebuild reads packs and cannot recreate lost bytes. Archive filenames cannot reconstruct missing branch facts. Old1.8 history is read only during migration; metadata.json is not native authority.
+Prepare configuration, `.frhistory` and archives separately during migration. History packages carry Packs, with archives and incremental dependencies copied separately. See [data migration](/docs/guides/data-migration).
 
-Transfer config, facts and payloads separately. `.frhistory` contains packs without backup bytes; see [migration](/docs/guides/data-migration). Never edit packs or empty transactions manually.
+Rebuilding the index rereads Packs. For missing files or dependencies, prepare reliable local or cloud copies and reassess recovery status. Locate and verify older backups through the adoption report.
 
-## Protection
+## Retain dependencies
 
-Pins, branch tips, Workspace and safety points protect materialization dependencies. Comments or presentation hiding are not equivalent retention guarantees. Logical versions can exist while bytes are missing; assess recovery before cleanup.
+Protection, branch tips, workspaces and safety points participate in dependency retention. Read impact and space reports before cleanup and manage local and cloud copies through the app to keep archive state and version relationships consistent.
 
 <span id="auto-cleanup-and-safe-delete" />
 <span id="backup-storage-structure" />
@@ -53,3 +51,9 @@ Pins, branch tips, Workspace and safety points protect materialization dependenc
 <span id="relationship-to-rebuild-history" />
 <span id="remote-command-knotlink" />
 <span id="source-code-parsing-regex" />
+
+<span id="backup-payloads-and-native-history-storage" />
+
+<span id="model" />
+<span id="maintenance-and-transfer" />
+<span id="protection" />

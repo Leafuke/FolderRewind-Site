@@ -1,15 +1,15 @@
 ---
 sidebar_position: 5
 title: "KnotLink 集成与目标解析 API"
-description: "声明 KnotLink 命令、参数、信号与目标解析，将远程请求交给同一套宿主核心操作。"
-reviewed_baseline: "1.9-api3.9"
+description: "声明 KnotLink 命令、参数、信号与稳定目标解析，复用宿主备份还原服务，并通过运行时清单和关联信号验证远程操作。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink 集成与目标解析 API
 
 声明 KnotLink 命令、参数、信号与目标解析，将远程请求交给同一套宿主核心操作。
 
-API 3.9 使用 IKnotLinkIntegrationCapability，提供 Commands、Signals 和 ExecuteAsync。KnotLink 参数化协议仍为 v2，Server 为 v3；它们与 Plugin API 3.9、funcList manifestVersion 3.0.0、specVersion 1.0 是不同版本轴。
+API 3.17 使用 IKnotLinkIntegrationCapability，提供 Commands、Signals 和 ExecuteAsync。KnotLink 参数化协议仍为 v2，Server 为 v3；它们与 Plugin API 3.17、funcList manifestVersion 3.0.0、specVersion 1.0 是不同版本轴。
 
 ## 自定义命令
 
@@ -25,7 +25,7 @@ MineRewind 用 RequiredArguments 的 current_save=true 匹配 7 个变体：BACK
 
 ## 服务与安全
 
-发送事件需声明 KnotLink 服务。备份／还原请求各自声明服务；不是有 KnotLink 就获得所有 Host 权限。远程显式玩家保留 false 必须保留，不能折叠为缺省。旧服务不支持新的显式还原选项时返回 Blocked。
+发送事件时声明 KnotLink，备份和还原分别声明对应 Host 服务。保留显式玩家保留 false 的含义；服务缺少所请求的还原选项时返回 Blocked 和诊断。
 
 首次联调先查询 GET_CAPABILITIES。status=ok 可表示长任务已接受，最终完成由同一 request_id 的信号判断。命令、参数和信号以运行时能力清单为准。
 

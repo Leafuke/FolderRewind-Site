@@ -1,53 +1,46 @@
 ---
 sidebar_position: 1
 title: "Minecraft overview"
-description: "Choose Minecraft save protection and understand bundled MineRewind, game-side components, hot backup, regions and map preview."
-reviewed_baseline: "1.9-api3.9"
+description: "Protect Minecraft saves with bundled MineRewind, including discovery, hot backup, player preservation, regions, maps, world merging and game integration."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft overview
 
-Choose Minecraft save protection and understand bundled MineRewind, game-side components, hot backup, regions and map preview.
+Start with one world backup and add automatic saves, maps and in-game shortcuts as you need them. Bundled MineRewind recognizes Minecraft worlds and supplies their domain features.
 
-FolderRewind 1.9.6 uses MineRewind v3. FolderRewind 1.9.6 bundles released MineRewind 1.9.8, requiring API 3.9; game-side mods/server plugins have independent versions. Actual game loading still needs separate validation.
+## Choose your task
 
-## Components
+| Task | Start here |
+| --- | --- |
+| Find worlds and save the first backup | [Quick start](/docs/guides/minecraft/quick-start) |
+| Back up while playing | [Hot backup](/docs/guides/minecraft/hot-backup) |
+| Restore while retaining player position or inventory | [Hot restore and preservation](/docs/guides/minecraft/hot-restore) |
+| Protect a selected area | [Region backups](/docs/guides/minecraft/selected-region-backup) |
+| Browse terrain or compare historical versions | [World maps](/docs/guides/minecraft/world-preview) |
+| Combine builds and terrain from branches | [World merging](/docs/guides/minecraft/world-merge) |
 
-FolderRewind owns configuration/history/archives/cloud/Safe Restore. MineRewind supplies instance discovery, scopes, consistency, metadata, coordination and staging proposals. MineBackup-Mod/MineBackupPlugin saves/freezes/exits game worlds; Death Rewind/JEA request operations through game-side APIs.
+## Java, Bedrock and ordinary folders
 
-Single-player/LAN owner, modded dedicated servers and Spigot/Paper have different exit/rejoin semantics. Server Sidecar does not reconnect clients automatically. Consult component release matrices.
+Java worlds can use maps, regions, player NBT preservation and game coordination. Bedrock worlds use complete ordinary folder backups; exit the game before operating. A Minecraft project can also contain ordinary folders such as modpack settings, handled through the standard file workflow.
 
-## Setup and discovery
+Discovery supports common launcher locations and user-selected launchers, instance libraries, saves roots or individual worlds. Check each draft's paths, edition and scope before creating a project.
 
-Install a trusted .frplugin and explicitly enable it. Static defaults: AutoDiscoverSaves=true, AutoCreateConfigs=false, PreservePlayerData=false. The old EnableHotBackup switch is absent in v3. Review per-instance drafts/Kind/paths before creation; plugins do not save Host configs directly.
+## Game-side components
 
-## Live operations
-
-Active worlds use held session.lock. Backup consistency leases coordinate saves/stable sources: Prefer may degrade with warnings; Require blocks unavailable consistency. Restore coordinates writers and cannot silently bypass required providers.
-
-Alt+Ctrl+S/Alt+Ctrl+Z request backup/Quick Restore. The Host resolves the active branch's unique local tip, not a guaranteed previous time. KnotLink supports seven current_save selectors inheriting core arguments.
-
-## Players and regions
-
-Ordinary Restore can preserve selected NBT fields for all UUIDs; stats/advancements still restore, cross-26.1 preservation blocks, and Checkout/Merge do not preserve players. Region areas use block coordinates and partial captures force Overwrite; see [regions](/docs/guides/minecraft/selected-region-backup).
-
-Start with [setup](/docs/guides/minecraft/quick-start), [hot backup](/docs/guides/minecraft/hot-backup), [hot restore](/docs/guides/minecraft/hot-restore) and [troubleshooting](/docs/guides/minecraft/troubleshooting).
+FolderRewind stores archives, history and cloud copies. MineRewind reads worlds and coordinates operations. Game-side components provide commands, save/exit and re-entry, while KnotLink carries requests and status.
 
 import MinecraftEcosystem from '@site/src/components/MinecraftEcosystem';
 
 <MinecraftEcosystem />
 
-## Java, Bedrock and ordinary directories
+Single-player, LAN hosts, modded dedicated servers and Spigot/Paper each have their integration workflow. Prepare components matching the game version and loader, then practice backup, restore and re-entry in a test world.
 
-MineRewind 1.9.8 extends launcher and Bedrock discovery; see [quick start](/docs/guides/minecraft/quick-start). Java worlds, Bedrock worlds and ordinary configuration folders differ: Java may use its coordination, NBT and region capabilities; Bedrock uses a separate Kind with ordinary file handling and requires the game to close; ordinary directories skip optional world metadata capture. Successful discovery does not certify actual game loading.
+## Everyday use
 
-Minecraft Merge uses the Host's conservative file-level three-way merge, without region/chunk/NBT semantic merging.
+The default `Alt+Ctrl+S` requests a backup of the current world; `Alt+Ctrl+Z` requests Quick Restore to the active branch's unique tip. Select a particular version in history when you want earlier content.
 
-
-
-## Bundled and separate releases
-
-FolderRewind 1.9.6 bundles MineRewind 1.9.8 (API 3.9). The separate plugin Release and official catalog currently provide 1.9.5 (API 3.6), without map preview. Replacing the bundled version with that older package will not add new features. See [read-only preview](/docs/guides/minecraft/world-preview) for the Java map.
+Ordinary restore can preserve selected state for every player, with statistics and advancements restored from the backup. Branch operations use branch targets and merge results. See [hot restore](/docs/guides/minecraft/hot-restore) for options and [troubleshooting](/docs/guides/minecraft/troubleshooting) for diagnostics.
 
 <span id="1-save-discovery-and-batch-configuration" />
 <span id="2-hot-backup-coordination" />
@@ -60,3 +53,10 @@ FolderRewind 1.9.6 bundles MineRewind 1.9.8 (API 3.9). The separate plugin Relea
 <span id="prerequisites" />
 <span id="risks-and-boundaries" />
 <span id="typical-combinations" />
+
+<span id="components" />
+<span id="setup-and-discovery" />
+<span id="live-operations" />
+<span id="players-and-regions" />
+<span id="java-bedrock-and-ordinary-directories" />
+<span id="bundled-and-separate-releases" />

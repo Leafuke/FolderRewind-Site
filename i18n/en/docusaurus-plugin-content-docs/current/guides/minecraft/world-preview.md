@@ -1,37 +1,49 @@
 ---
 sidebar_position: 15
-title: "Read-only world map preview"
-description: "Use FolderRewind 1.9.6 and bundled MineRewind to preview Java terrain, switch dimensions, navigate coordinates and inspect chunk details without editing saves."
-reviewed_baseline: "1.9-api3.9"
+title: "World maps, history previews and comparisons"
+description: "Browse current and historical Minecraft Java worlds, compare versions on the map and use cave views, height slices, player navigation and region selection."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Read-only world map preview
+# World maps, history previews and comparisons
 
-MineRewind 1.9.8, bundled with FolderRewind 1.9.6, previews Minecraft Java terrain. Inspect generated chunks, dimensions and location details without launching the game.
+Open MineRewind's world map to locate an old build, compare changes between backups or choose an area to protect.
 
-![FolderRewind reads the real Java world “26_1极限生存” and displays its generated terrain.](/img/homepage/map-en-light-1604.webp)
+![Compare world versions in the map workspace and inspect chunk changes.](/img/docs/v1-10-0/map-compare-110-en-light-1604.webp)
 
-*FolderRewind reads the real Java world “26_1极限生存” and displays its generated terrain. Interface version: 1.9.6.*
+## Open a current world or historical backup
 
-## Open the map
+Enable MineRewind and add a valid Java world source. Open map preview from the source menu in the manager. Select a locally preparable version in history to open a historical map or version comparison.
 
-Enable the bundled MineRewind and add a valid Minecraft Java save source. Open that source's action menu in management and choose map preview. Bedrock and ordinary folders do not offer this Java map capability. The separate MineRewind 1.9.5 release does not include it.
+Historical preview first prepares the backup and dependencies in a temporary folder, then reads the world. Encrypted versions require a password; plugin representations require their materializer. Map browsing is read-only.
 
 ## Browse and navigate
 
-- Select a dimension, drag the map and zoom to explore colored terrain.
-- Use navigation targets or coordinates; coordinate input is bounded by the dimension's legal range.
-- Open display settings to adjust the grid, view height or fit the data range.
-- Select a location for provider-supplied chunk and world details. Refresh rereads changed data.
+- Switch world and dimension, pan and zoom to inspect generated terrain.
+- Choose a player or saved position from navigation targets, or enter coordinates.
+- Use surface, cave or height-slice views and adjust height for the dimension.
+- Select a chunk for details and use the status legend to distinguish loaded, pending, ungenerated and unsupported areas.
 
-The visible area is refined progressively. At distant zoom levels, every terrain cell may not have been decoded in detail. Unknown or ungenerated areas do not prove the world is empty.
+Visible areas load progressively, with an overview at distant zoom levels. Zoom into a location and let reading finish for more detail. Refresh after the current world changes.
 
-## Backups and region selection
+## Compare two versions
 
-The map is a read-only view of the current source. It does not generate chunks, modify the save or verify a backup. The visible area does not automatically become the backup range; configure [selected-region backup](/docs/guides/minecraft/selected-region-backup) separately.
+Choose the left and right versions and check their world, dimension and dates. Filter added, deleted or modified chunks by category, then locate them on the map or in the change list.
 
-## If the map does not load
+A partial backup's visible content follows its captured coverage. Read status and coverage messages when interpreting a change. To combine work from two branches, use [world merging](/docs/guides/minecraft/world-merge).
 
-Check that the source is a Java save, the bundled plugin is active and the files are readable. Try another dimension when one has no generated data. Follow diagnostics for file locks, damage or format limits; editing NBT or deleting region files is not a preview repair procedure.
+## Select a backup region on the map
 
-Plugin developers can read the [API 3.9 spatial-preview contract](/docs/plugins/developing/plugin-api#spatial-preview).
+In a workspace with region selection, draw an area and check its world, dimension and effective scope before using it in backup settings. The selection becomes the plugin's scope parameters, saved by project settings. See [selected-region backups](/docs/guides/minecraft/selected-region-backup).
+
+## If loading needs attention
+
+Check the world path, MineRewind runtime state and the selected version's local dependencies. Try a dimension with generated data and read chunk details for format or access diagnostics. The plugin provides Java maps; Bedrock saves use the ordinary folder backup workflow.
+
+Developers can read the [spatial preview and comparison contracts](/docs/plugins/developing/plugin-api#spatial-preview).
+
+<span id="read-only-world-map-preview" />
+<span id="open-the-map" />
+
+<span id="backups-and-region-selection" />
+<span id="if-the-map-does-not-load" />

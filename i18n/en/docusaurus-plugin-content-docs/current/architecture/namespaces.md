@@ -2,12 +2,10 @@
 sidebar_position: 3
 title: "Namespaces and contract entrypoints"
 description: "Locate implementation entrypoints by namespace and distinguish Host models, public plugin contracts and runtime responsibilities."
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Namespaces and contract entrypoints
-
-> This page describes the 1.10 development layout; it does not announce a released version.
 
 Namespaces stay stable while directories and assemblies provide the new organizational boundaries.
 
@@ -20,4 +18,4 @@ Namespaces stay stable while directories and assemblies provide the new organiza
 | FolderRewind.Plugin.Abstractions | The only public plugin SDK |
 | FolderRewind.Plugin.Runtime | Loading, activation, capability routing and Artifact transactions |
 
-Use project references and actual file locations to identify ownership rather than inferring an assembly from a namespace. Assembly identity, configuration identity and manifest identity are not directory names. Plugins must not add Core, Runtime or application references because of this migration.
+Use project references and actual file locations to identify assembly ownership. Assemblies, configuration and manifests each retain stable identities. Third-party plugins integrate through public Abstractions contracts.

@@ -1,15 +1,15 @@
 ---
 sidebar_position: 6
 title: "静态设置模式与类型化读取"
-description: "定义插件静态设置模式，读取类型化快照，并在更新失败时保留已知良好的运行状态。"
-reviewed_baseline: "1.9-api3.9"
+description: "定义插件静态设置模式，声明字段类型、默认值和本地化文案，读取 JsonElement 快照，并处理设置更新与重新激活。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 静态设置模式与类型化读取
 
 定义插件静态设置模式，读取类型化快照，并在更新失败时保留已知良好的运行状态。
 
-API 3.9 的设置是安装包静态数据。manifest 的 settingsSchema 指向 JSON 文件；安装校验无需执行插件。Host 渲染界面、验证候选并事务化重激活，不让无效设置覆盖已知良好配置。
+API 3.17 的设置是安装包静态数据。manifest 的 settingsSchema 指向 JSON 文件；安装校验无需执行插件。Host 渲染界面、验证候选并事务化重激活，不让无效设置覆盖已知良好配置。
 
 ## 模式格式
 
@@ -40,7 +40,7 @@ bool enabled = settings.TryGetValue("EnabledFeature", out var value)
     && value.GetBoolean();
 ```
 
-不是字符串字典，不要手动接受 "1" 或 "true" 来绕过布尔校验。未知键以警告保留；缺失项使用合法默认值，required 缺失且无默认值时拒绝。设置与 Provider State 是不同的数据模型。
+设置值使用 JsonElement，按声明类型读取。未知键以警告保留，缺失项使用合法默认值；必填项缺失且没有默认值时返回诊断。设置和 Provider State 分别管理。
 
 ## 更新验收
 

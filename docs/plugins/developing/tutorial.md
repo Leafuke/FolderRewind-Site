@@ -1,15 +1,13 @@
 ---
 sidebar_position: 2
-title: "实战教程：GameRewind v3 插件"
-description: "通过可构建的 GameRewind 示例学习发现、文件策略与命令能力，所有操作通过宿主服务执行。"
-reviewed_baseline: "1.9-api3.9"
+title: "实战教程：GameRewind 插件"
+description: "通过可独立构建的 GameRewind 示例实现发现草稿、文件过滤和命令，理解配置身份、宿主服务以及一致性和还原的扩展方式。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# 实战教程：GameRewind v3 插件
+# 实战教程：GameRewind 插件
 
-通过可构建的 GameRewind 示例学习发现、文件策略与命令能力，所有操作通过宿主服务执行。
-
-GameRewind 是可独立构建的 API 3.6 示例：识别用户提供且包含 `save.dat` 的根目录，提出配置草稿、排除缓存，并通过 Host 发起备份或执行无副作用的 ECHO。
+GameRewind 使用公开 API 3.17，识别用户指定且包含 `save.dat` 的目录，提出配置草稿、排除缓存，并通过 Host 发起备份。它也提供一个用于联动测试的 ECHO 命令。
 
 ## 完整源码
 
@@ -18,37 +16,35 @@ import GameSource from '!!raw-loader!@site/examples/plugins/GameRewind/Plugin.cs
 import GameManifest from '!!raw-loader!@site/examples/plugins/GameRewind/manifest.json?raw';
 
 <CodeBlock language="csharp" title="GameRewind/Plugin.cs">{GameSource}</CodeBlock>
-<CodeBlock language="json" title="GameRewind/manifest.json">{GameManifest}</CodeBlock>
+<CodeBlock language="json" title="manifest.json">{GameManifest}</CodeBlock>
 
-## 发现与配置所有权
+## 从目录得到配置草稿
 
-只检查用户明确给出的根，返回 ConfigDraft 和 FolderDraft，不写 config.json。Host 分配受管来源身份并按用户创建策略提交。不存在、不可读或无标记的目录不会被强行加入。示例没有递归扫描磁盘。
+发现入口检查 `UserRoots`，返回 `ConfigDraft` 和 `FolderDraft`。Host 在用户确认后分配来源身份并保存项目。附加的 `IDiscoveryDefinitionCatalog` 提供稳定 DefinitionId、别名和外部 ID，用于游戏发现和定向预设。
 
-DiscoveryDefinitionCatalog 给出稳定游戏 DefinitionId、别名及外部 ID，以参与游戏发现和定向预设。它不是额外 capability。实际插件应使用稳定、可对账的候选身份；不要把显示名称作为身份。
+需要加入机器已知位置时，按 `DiscoveryRequest.IncludeKnownLocations` 决定；用户选择目录扫描时保持指定范围。可用稳定的候选身份支持后续对账。
 
 ## 文件策略与命令
 
-FilePolicy 返回必要排除规则；来源范围和 Host 过滤仍然约束保护边界。备份命令需要明确 configId，并通过 Backups 服务执行，绝不自己调用归档引擎。ECHO 声明自己的命令与参数，不接管 Host BACKUP。
+FilePolicy 返回必要排除规则，Host 在来源范围内组合项目过滤。备份命令读取明确的 configId，通过 Backups 服务发起操作；ECHO 使用自己的命令与参数声明。
 
-## 热备份与还原扩展的边界
+配置发生变化时，可通过 `IConfigReconciliationCapability` 返回绑定修订的提案，由 Host 审阅与提交。
 
-示例没有实现游戏一致性或玩家保留。真实热备份需要 IBackupConsistencyCapability 提供有效租约和稳定来源；直接复制游戏写入中的目录不能证明一致性。真实还原由 IRestoreCoordinatorCapability 协调外部环境、由 Host 执行一次性 mutation。
+## 加入游戏协调
 
-普通 Restore 的额外保留通过 IRestoreStagingPreparationCapability 返回相对文件提案；不能在还原后写 live path。Checkout 和 Merge 不调用玩家保留。配置修改则由 IConfigReconciliationCapability 提交绑定 revision 的提案，过期 revision 必须重新对账。
+为写入中的游戏增加热备份时，实现 `IBackupConsistencyCapability`，在租约期间协调落盘并提供稳定来源。为还原增加外部协调时，实现 `IRestoreCoordinatorCapability`，准备游戏环境后调用一次 Host continuation。
 
-## 构建和测试
+玩家等当前数据的保留通过 `IRestoreStagingPreparationCapability` 返回相对文件提案，Host 验证后写入暂存区。分支切换与合并使用各自的目标语义。地图和领域合并扩展见[API 参考](/docs/plugins/developing/plugin-api)。
+
+## 构建和练习
 
 ```powershell
 node scripts/pack-plugin.mjs GameRewind
 ```
 
-建立测试目录并放置 save.dat。安装包、检查声明、启用、执行发现并审阅草稿，再备份与还原测试内容。测试失败和取消时检查诊断及资源释放。首次用于真实游戏前停止所有写入者。
+建立包含 `save.dat` 的测试目录，安装并启用插件，执行发现并审阅草稿。创建备份、修改文件并还原，再尝试失败与取消，检查诊断和资源释放。
 
-参阅[能力与操作契约](/docs/plugins/developing/capabilities)、[API 参考](/docs/plugins/developing/plugin-api)。
-
-## 已知位置与手选范围
-
-GameRewind 示例仅检查 `UserRoots` 中含 `save.dat` 的目录，不自行提供已知位置列表。真实发现提供器可在 `IncludeKnownLocations=true` 时合并只读机器线索；false 时保持手选范围。不要扫描全盘、写启动器配置或把候选直接保存为配置。
+更多操作约定见[能力设计](/docs/plugins/developing/capabilities)。
 
 <span id="0-项目初始化" />
 <span id="1-定义配置类型与自动发现" />
@@ -63,9 +59,16 @@ GameRewind 示例仅检查 `UserRoots` 中含 `save.dat` 的目录，不自行�
 <span id="创建项目" />
 <span id="备份前创建快照" />
 <span id="备份后清理快照" />
-<span id="完整源码" />
+
 <span id="批量创建配置" />
 <span id="注册配置类型" />
 <span id="编写-manifestjson" />
 <span id="自动发现存档目录" />
 <span id="过滤不需要的文件" />
+
+<span id="实战教程gamerewind-v3-插件" />
+<span id="发现与配置所有权" />
+
+<span id="热备份与还原扩展的边界" />
+<span id="构建和测试" />
+<span id="已知位置与手选范围" />

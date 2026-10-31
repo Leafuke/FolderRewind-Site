@@ -4,33 +4,33 @@ import crypto from 'node:crypto';
 import {checkPublicRelease, checkManualAcceptance} from './check-release-readiness.mjs';
 
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-function fixture() {
+function fixture({api = '3.6', sdk = '3.6.0', hostVersion = '1.9.3.0', hostTag = 'v1.9.3', pluginVersion = '1.9.5', pluginTag = 'v1.9.5'} = {}) {
   const bytes = Buffer.from('reviewed payload');
-  const baseline = {api: '3.6', sdk: '3.6.0', plugin: '1.9.5', pluginSha256: sha(bytes),
-    hostProjectVersion: '1.9.3.0', latestHostRelease: 'v1.9.3'};
-  const evidence = {officialHostTag: 'v1.9.3', officialHostPublishedAt: '2026-10-03T09:19:17Z',
+  const baseline = {api, sdk, plugin: pluginVersion, pluginSha256: sha(bytes),
+    hostProjectVersion: hostVersion, latestHostRelease: hostTag, latestPluginRelease: pluginTag};
+  const evidence = {officialHostTag: hostTag, officialHostPublishedAt: '2026-10-03T09:19:17Z',
     finalScreenshotsVerified: false, manualScenarios: Array.from({length: 8}, (_, i) => ({name: `scenario-${i}`, status: 'pending'}))};
-  const pluginUrl = 'https://github.com/Leafuke/FolderRewind-Plugin-Minecraft/releases/download/v1.9.5/MineRewind-1.9.5.frplugin';
+  const pluginUrl = `https://github.com/Leafuke/FolderRewind-Plugin-Minecraft/releases/download/${pluginTag}/MineRewind-${pluginVersion}.frplugin`;
   const data = new Map();
-  const host = {tag_name: 'v1.9.3', published_at: evidence.officialHostPublishedAt, draft: false, prerelease: false, assets: []};
+  const host = {tag_name: hostTag, published_at: evidence.officialHostPublishedAt, draft: false, prerelease: false, assets: []};
   for (const arch of ['x64', 'arm64']) {
-    const name = `FolderRewind_1.9.3.0_Setup_${arch}.exe`;
+    const name = `FolderRewind_${hostVersion}_Setup_${arch}.exe`;
     const url = `https://example.test/${name}`;
     host.assets.push({name, browser_download_url: url}, {name: `${name}.sha256`, browser_download_url: `${url}.sha256`});
     data.set(url, bytes);
     data.set(`${url}.sha256`, `${sha(bytes)}  ${name}\n`);
   }
-  const plugin = {tag_name: 'v1.9.5', published_at: '2026-10-03T08:36:11Z', draft: false, prerelease: false,
-    assets: [{name: 'MineRewind-1.9.5.frplugin', browser_download_url: pluginUrl}]};
-  const catalog = {schemaVersion: 1, entries: [{pluginId: 'com.folderrewind.minerewind', version: '1.9.5',
-    channel: 'stable', pluginApi: {major: 3, minor: 6}, artifact: {url: pluginUrl, sha256: sha(bytes)}}]};
-  data.set('https://api.nuget.org/v3-flatcontainer/folderrewind.plugin.abstractions/index.json', {versions: ['3.0.0', '3.6.0']});
-  data.set('https://api.github.com/repos/Leafuke/FolderRewind/releases/tags/v1.9.3', host);
-  data.set('https://api.github.com/repos/Leafuke/FolderRewind-Plugin-Minecraft/releases/tags/v1.9.5', plugin);
+  const plugin = {tag_name: pluginTag, published_at: '2026-10-03T08:36:11Z', draft: false, prerelease: false,
+    assets: [{name: `MineRewind-${pluginVersion}.frplugin`, browser_download_url: pluginUrl}]};
+  const catalog = {schemaVersion: 1, entries: [{pluginId: 'com.folderrewind.minerewind', version: pluginVersion,
+    channel: 'stable', pluginApi: {major: Number(api.split('.')[0]), minor: Number(api.split('.')[1])}, artifact: {url: pluginUrl, sha256: sha(bytes)}}]};
+  data.set('https://api.nuget.org/v3-flatcontainer/folderrewind.plugin.abstractions/index.json', {versions: ['3.0.0', sdk]});
+  data.set(`https://api.github.com/repos/Leafuke/FolderRewind/releases/tags/${hostTag}`, host);
+  data.set(`https://api.github.com/repos/Leafuke/FolderRewind-Plugin-Minecraft/releases/tags/${pluginTag}`, plugin);
   data.set('https://leafuke.github.io/FolderRewind-Plugin-Catalog/catalog.v1.json', catalog);
   data.set(pluginUrl, bytes);
   return {baseline, evidence, data, host, plugin, catalog, pluginUrl,
-    restoreSdk: async sdk => { assert.equal(sdk, '3.6.0'); return true; },
+    restoreSdk: async sdk => { assert.equal(sdk, baseline.sdk); return true; },
     fetchImpl: async url => {
       if (!data.has(url)) return new Response('missing', {status: 404});
       const value = data.get(url);
@@ -101,3 +101,24 @@ for (const [name, change] of [
     assert.equal((await checkPublicRelease(f)).ready, false);
   });
 }
+
+
+test('1.10.0 preserves the patch zero and uses the published plugin tag without a v prefix', async () => {
+  const f = fixture({api: '3.17', sdk: '3.17.0', hostVersion: '1.10.0.0', hostTag: 'v1.10.0', pluginVersion: '1.10.0', pluginTag: '1.10.0'});
+  const result = await checkPublicRelease(f);
+  assert.equal(result.ready, true, result.failures.join('\n'));
+  assert.equal(result.pluginTag, '1.10.0');
+  assert.equal(result.hostTag, 'v1.10.0');
+});
+
+test('an explicitly reviewed plugin tag must match its product version', async () => {
+  const f = fixture();
+  f.baseline.latestPluginRelease = '1.10.0';
+  await assert.rejects(checkPublicRelease(f), /plugin tag/);
+});
+
+test('network failure identifies the public endpoint', async () => {
+  const f = fixture();
+  f.fetchImpl = async () => { throw new TypeError('network unavailable'); };
+  await assert.rejects(checkPublicRelease(f), /https:\/\/api\.nuget\.org\/.*network unavailable/);
+});

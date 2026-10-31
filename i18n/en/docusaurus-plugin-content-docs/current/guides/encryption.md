@@ -1,33 +1,29 @@
 ---
 sidebar_position: 4
-title: "Encryption and recovery material"
-description: "Create encrypted backups, keep passwords and recovery material, and check password-protection limits across devices."
-reviewed_baseline: "1.9-api3.9"
+title: "Encrypted backups and passwords"
+description: "Set an encryption password, understand Windows-local password storage, prepare passwords and complete archives for migration and test recovery."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Encryption and recovery material
+# Encrypted backups and passwords
 
-Encryption protects archive contents stored on external drives or in the cloud. Complete an encrypted backup and test restore before using it for important data.
+Encryption suits backups stored on external disks or in the cloud. After creating an encrypted project, make a backup and test a restore before using it for important files.
 
 ## Create an encrypted project
 
-Choose an encrypted project in the creation flow, set a password and review source and archive locations. The password cannot be edited directly after creation. Keep it separately in a reliable place, outside presets, comments and logs.
+Choose encryption during project creation, set a password and review source and backup locations. The project keeps that password after creation, so store it separately in a reliable place.
 
-## Local passwords and another device
+## Local use and migration
 
-The app protects local password material with DPAPI for the current Windows user rather than storing plaintext in configuration JSON. Material usable by the same user on one machine is not automatically decryptable by another device or account.
+The app protects local password material with Windows user-scoped DPAPI. The same user on the same device can use saved material. Prepare the original password separately before moving to another device or account, along with complete archives and incremental dependencies.
 
-A configuration export is not a password-store export. Record the password before migration and test restoration from archive copies on the new device. The app cannot recover a forgotten password.
+Configuration exports carry project settings. Keep encryption passwords in your chosen password manager. Recovering encrypted content requires the original password.
 
-## Restore an encrypted version
+## Restore and check
 
-Enter or confirm the password as prompted. Extraction and verification precede target writes. Incorrect passwords or integrity failures block restoration. Modes such as Smart still need their complete archive dependencies.
+Enter the password when prompted. The app extracts and verifies content before changing the destination. Check a test-folder restore before enabling automation or cloud uploads.
 
-Plugin archive-reading or materialization capabilities may access decrypted content, so enable trusted plugins only. Encryption still requires a correct backup range and reliable copies.
-
-## Troubleshooting
-
-Check the password, archive and dependency chain. On another device, distinguish non-portable password material from missing archives. Repeated configuration import alone will not fix either. Keep the original archive and avoid overwriting its only copy.
+Plugin materializers may read decrypted content, so choose trusted plugins for the task. If recovery fails, check the password, archive locations and dependency chain separately, keep original copies and read the operation log.
 
 <span id="best-for" />
 <span id="create-an-encrypted-config" />
@@ -38,3 +34,9 @@ Check the password, archive and dependency chain. On another device, distinguish
 <span id="storage-and-security-notes" />
 <span id="what-if-i-forget-the-password" />
 <span id="why-does-restore-fail-after-importing-config" />
+
+<span id="encryption-and-recovery-material" />
+
+<span id="local-passwords-and-another-device" />
+<span id="restore-an-encrypted-version" />
+<span id="troubleshooting" />

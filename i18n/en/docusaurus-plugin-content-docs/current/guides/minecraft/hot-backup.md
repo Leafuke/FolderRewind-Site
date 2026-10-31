@@ -1,35 +1,40 @@
 ---
 sidebar_position: 3
-title: "Minecraft hot backup and consistency leases"
-description: "Coordinate save writes while the game is running, review consistency modes and warnings, and verify Minecraft hot backups."
-reviewed_baseline: "1.9-api3.9"
+title: "Minecraft hot backup"
+description: "Prepare KnotLink and game components to coordinate saving and capture of a running Java world, choose consistency requirements and review backup results."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Minecraft hot backup and consistency leases
+# Minecraft hot backup
 
-Coordinate save writes while the game is running, review consistency modes and warnings, and verify Minecraft hot backups.
+Hot backup lets you save progress while playing. MineRewind identifies the active world and coordinates saving and capture with the game component.
 
-## Active target
+## Prepare game integration
 
-MineRewind 1.9.8 resolves a valid world and held session.lock, not only a level.dat lock. Manual backup, hotkeys and current_save selectors enter the same Host workflow. v3 has no old EnableHotBackup switch.
+Complete a backup and restore with the game closed first. Prepare [KnotLink](/docs/guides/minecraft/knotlink-mod) and the [game component](/docs/guides/minecraft/minebackup-mod) for your loader. Query runtime capabilities to check the connection and current-world commands.
 
-## Coordination
+Active-world detection combines a valid path with `session.lock` state. Manual backup, the default `Alt+Ctrl+S` and remote commands use the same task workflow.
 
-The Host resolves Kind/readiness/consistency intent and calls IBackupConsistencyCapability. Active worlds coordinate KnotLink/mod handshake/WORLD_SAVED. A disposable snapshot source feeds the same enumeration/archive capture.
+## Choose consistency requirements
 
-Success, cancellation and failure must release temporary data. v3 does not return replacement paths through OnBeforeBackupFolder or edit archives afterward.
+| Setting | Behavior |
+| --- | --- |
+| Prefer | Prefer coordinated saving; allowed fallback captures retain the backup with warnings |
+| Require | Begin capture after handshake, saving and stable-reading conditions are met; otherwise show the blocking diagnostic |
 
-## Prefer and Require
+The game component saves the world and reports status. The app then enumerates and archives a controlled source, releasing coordination and temporary resources on completion, cancellation or failure.
 
-With permitted rawWithWarnings, Prefer can degrade to SuccessWithWarnings plus specific coordination/snapshot diagnostics; it is not proof of game consistency. Require blocks unavailable handshake/save/stable source. Missing/invalid region providers must not silently broaden protection.
+## Request and review a backup
 
-## Request and acceptance
+Use the app or send:
 
 ```text
 cmd=BACKUP;current_save=true;backup_mode=smart;from=panel;request_id=hot-001
 ```
 
-Query capabilities and correlate final signals. Missing/multiple worlds produce diagnostics; accepted is not finished. Test online coordination, offline warnings, Require blocking, cancellation, cleanup and real archive restores.
+Query capabilities first and correlate the final result through `request_id`. Review the actual outcome in the [notification center](/docs/guides/notifications), expanding warnings to check the capture method used.
+
+For a new modpack, try an online backup, cancellation and historical restore, then inspect builds, entities and players in a world copy.
 
 <span id="best-practices" />
 <span id="command-example" />
@@ -43,3 +48,9 @@ Query capabilities and correlate final signals. Missing/multiple worlds produce 
 <span id="trigger-conditions" />
 <span id="trigger-entry-points" />
 <span id="typical-response" />
+
+<span id="minecraft-hot-backup-and-consistency-leases" />
+<span id="active-target" />
+<span id="coordination" />
+<span id="prefer-and-require" />
+<span id="request-and-acceptance" />

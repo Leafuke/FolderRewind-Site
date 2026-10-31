@@ -1,15 +1,15 @@
 ---
 sidebar_position: 4
 title: "命令与快捷键 API"
-description: "声明插件命令与默认快捷键，通过类型化参数执行操作，并处理取消、冲突和持久化覆盖。"
-reviewed_baseline: "1.9-api3.9"
+description: "声明插件命令和默认快捷键，使用类型化参数请求宿主操作，管理全局与应用内绑定、用户覆盖、按键冲突和调用取消。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 命令与快捷键 API
 
 声明插件命令与默认快捷键，通过类型化参数执行操作，并处理取消、冲突和持久化覆盖。
 
-API 3.9 使用 IPluginCommandCapability。命令描述 PluginCommandDescriptor 包含 Id、DisplayName、ArgumentSchema，并可设置 DefaultHotkey 与 IsGlobalHotkey。快捷键绑定是 Host 的配置和调度职责。
+API 3.17 使用 IPluginCommandCapability。命令描述 PluginCommandDescriptor 包含 Id、DisplayName、ArgumentSchema，并可设置 DefaultHotkey 与 IsGlobalHotkey。快捷键绑定是 Host 的配置和调度职责。
 
 ## 描述与执行
 

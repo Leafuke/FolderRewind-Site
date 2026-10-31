@@ -1,49 +1,45 @@
 ---
 sidebar_position: 4
-title: "Minecraft 热还原与玩家数据保留"
-description: "准备游戏侧协调与目标版本，核对玩家数据保留选项，再执行并验证 Minecraft 热还原。"
-reviewed_baseline: "1.9-api3.9"
+title: "Minecraft 热还原与玩家保留"
+description: "协调 Java 世界保存、退出与还原，选择目标版本和玩家状态保留方式，通过通知与测试世界检查文件恢复和游戏重进结果。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Minecraft 热还原与玩家数据保留
+# Minecraft 热还原与玩家保留
 
-准备游戏侧协调与目标版本，核对玩家数据保留选项，再执行并验证 Minecraft 热还原。
+热还原会先协调游戏保存与退出，等世界文件释放后，由 FolderRewind 恢复目标内容。准备好游戏侧组件，再用测试世界走完一次流程。
 
-## Host 管理的还原
+## 选择目标与方式
 
-MineRewind 用配置级 RestoreCoordinator 接收全部受影响来源、OperationId 和 Restore／Checkout／Merge 类型，协调活动世界保存、退出及 session.lock 释放。多个活动世界、握手失败或来源仍占用时拒绝，不绕过环境检查。
+在历史中选择明确版本，或用 `Alt+Ctrl+Z` 请求活动分支唯一尖端的快速还原。当前内容已经精确匹配时，结果为 `NoChanges`。
 
-准备完成后调用一次 Host continuation；实际写入、Safe Restore 和恢复事务由 Host 管理。插件返回后不能继续写 live 世界。Merge／Checkout 同样协调环境，但不启用普通还原玩家保留；零写入合并无需退出。
-
-## 目标和模式
-
-Alt+Ctrl+Z 或 file 省略的 RESTORE 使用活动分支唯一尖端的 Quick Restore。状态已精确匹配时 NoChanges，不选择上一个时间包。远程默认 Clean，部分捕获强制 Overwrite；指定 file 使用可解析的历史目标并验证依赖。
+远程 RESTORE 默认 Clean；区域备份等部分捕获使用 Overwrite。指定 `file` 时，应用准备相应历史目标和完整依赖。
 
 ```text
 cmd=RESTORE;current_save=true;preserve_player_data=true;from=panel;request_id=restore-001
 ```
 
-## 玩家保留
+## 保留玩家状态
 
-PreservePlayerData 本地默认 false；preserve_player_data 省略继承，true／false 明确覆盖当前操作。普通 Restore 在锁定只读 Current／Target 视图中生成相对文件提案，Host 整批验证并应用到暂存，不在还原后补写 level.dat。
+在插件设置中启用 `PreservePlayerData`，普通还原会保留所有玩家的位置、朝向、维度、背包、末影箱、经验等选定 NBT 字段。备份中没有的玩家保留完整当前 NBT；统计与进度随备份恢复。
 
-对全部 UUID 保留位置、背包、经验等选定 NBT 字段；备份中缺少该玩家时保留当前完整 NBT。统计／进度仍随备份恢复。单人嵌入 Player 与服务器 playerdata／players 布局按实现处理；跨 26.1 布局保留或不支持显式 override 时阻断。修改结果 Workspace baseline 为 Derived。
+远程参数 `preserve_player_data` 省略时继承本地设置，true／false 明确控制本次操作。玩家布局需兼容，跨旧布局与 26.1 布局时按诊断处理。
 
-## 完成与恢复状态
+应用先在暂存区组合目标与保留数据，再执行还原。Checkout 和 Merge 使用分支结果；此处玩家保留用于普通 Restore。
 
-归档写入成功与自动重进成功是不同结果，重进失败可产生 SuccessWithWarnings。RecoveryRequired／CommittedRecoveryRequired 禁止自动重进，应检查恢复诊断再操作。不能对未知提交状态重复点击还原。
+## 保留某个当前文件或目录
 
-先在副本验证多个玩家、显式 false、缺失玩家、布局异常、取消、部分捕获和游戏重进。NBT 夹具通过不证明真实游戏加载成功。
-
-## 单次路径强保留
-
-普通 Java Restore 可使用 `restore_preserve_paths`，路径相对于唯一受管世界根；相对文件或以 `/` 结尾的目录保留当前完整状态，包括当前删除。它不同于玩家字段保留，且不会扩大 SourceScope；Checkout／Merge 不应用此参数。边界、歧义和暂存限制见[过滤指南](/docs/guides/filters#单次文件与目录强保留)。
+`restore_preserve_paths` 使用唯一受管世界根下的相对路径。目录以 `/` 结尾，所选内容及其当前删除状态优先，具体范围和限额见[强保留说明](/docs/guides/filters#restore-preserve-paths)。
 
 ```text
 cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;preserve_player_data=false;from=panel;request_id=restore-preserve-001
 ```
 
-示例路径必须实际位于受管世界根内；不能借此保护世界根外的实例目录。Bedrock 不使用 Java 热协调或 NBT 玩家保留，请关闭游戏后走普通文件还原。
+## 检查还原与重进
+
+从[通知中心](/docs/guides/notifications)分别查看文件恢复和游戏重进结果。重进失败时先检查游戏环境，文件恢复结果保留在详情中。需要恢复处理时，完成应用诊断中的步骤后再进入世界。
+
+先在副本中检查多个玩家、显式关闭保留、缺失玩家、取消和游戏重进。Bedrock 使用关闭游戏后的普通文件还原。
 
 <span id="两种触发方式" />
 <span id="关键状态与结果" />
@@ -58,3 +54,10 @@ cmd=RESTORE;current_save=true;restore_preserve_paths=data/local.dat,datapacks/;p
 <span id="状态机说明" />
 <span id="相关链接" />
 <span id="请求响应示例" />
+
+<span id="minecraft-热还原与玩家数据保留" />
+<span id="host-管理的还原" />
+<span id="目标和模式" />
+<span id="玩家保留" />
+<span id="完成与恢复状态" />
+<span id="单次路径强保留" />

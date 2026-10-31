@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "v2 到 v3 迁移与故障恢复"
 description: "将旧 v2 插件职责迁移到独立 API 3 契约，重新设计激活、发现、设置和备份还原能力。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # v2 到 v3 迁移与故障恢复

@@ -3,11 +3,11 @@
   "pluginId": "com.example.minimal",
   "version": "1.0.0",
   "name": "MinimalPlugin",
-  "description": "API 3.6 documentation example; use test data.",
+  "description": "Independent Plugin API 3.17 example: MinimalPlugin.",
   "author": "FolderRewind documentation",
   "pluginApi": {
     "major": 3,
-    "minor": 6
+    "minor": 17
   },
   "entryAssembly": "MinimalPlugin.dll",
   "entryType": "MinimalPlugin.Plugin",

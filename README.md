@@ -1,118 +1,68 @@
-# Website
+# FolderRewind website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+The bilingual documentation and release log use Docusaurus. Current FolderRewind
+content follows the released **1.10.0** Host, **MineRewind 1.10.0** and public
+**Plugin API 3.17 / SDK 3.17.0**. MineBackup guides retain their independent product
+baseline. Historical announcements retain their release facts.
 
-## Installation
+## Develop and check
 
-```bash
+Use Node.js 24. Plugin examples also require .NET 10 and Python 3.10+.
+
+```powershell
 npm ci
-```
-
-## Local Development
-
-```bash
 npm run start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-To preview the English locale:
-
-```bash
+# English development preview:
 npm run start:en
 ```
 
-## Quality Checks
-
-```bash
-npm run check:i18n
-npm run typecheck
-npm run build
-```
-
-`check:i18n` verifies that the English documentation and blog content stay in sync with the default Chinese locale. The local search index is generated during `npm run build` and includes documentation and blog content for each locale. When adding or changing content, update the corresponding English translation files and run the parity check.
-
-## Build
-
-```bash
-npm run build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-
-## 1.9 released documentation baseline
-
-Current documentation targets FolderRewind 1.9.3, MineRewind 1.9.5 and Plugin
-API 3.6 / public SDK 3.6.0. Assembly identity remains 3.0.0.0. Maintain the
-Chinese and English pages together, retain existing routes/anchors, and update
-`audit/pages.json` when reviewing content. Independent MineBackup tutorials and
-historical release facts keep their own baselines.
+Keep Chinese files in `docs/` and English counterparts in
+`i18n/en/docusaurus-plugin-content-docs/current/` aligned. Preserve existing routes
+and anchors or supply a redirect when consolidating a guide.
 
 ```powershell
-npm ci
 npm run check:all
 ```
 
-This runs release-policy tests, translation/TypeScript/contract/image/SEO checks,
-both locale builds and built-page/route/anchor validation. Tutorial blocks load
-actual example sources rather than duplicated C# snippets.
+This runs translation tests, bilingual parity, types, contracts, images, SEO,
+both production locale builds and built route/anchor checks. `npm run serve`
+previews the result in `build/`.
 
-### Public SDK examples
+## Public SDK examples
 
-.NET 10, Node 24 and Python 3.10+ are required. Use a fresh package cache and the
-public NuGet feed; neither plugin references Host/Runtime implementation code.
-Runtime is referenced only by the QA harness. For the sibling Host checkout:
+Examples reference the public Abstractions package. Tutorial code blocks read
+their actual source files.
 
 ```powershell
-$env:NUGET_PACKAGES = (Join-Path (Get-Location) 'artifacts/public-sdk-packages')
+$env:NUGET_PACKAGES = Join-Path (Get-Location) 'artifacts/public-sdk-packages'
 dotnet restore examples/plugins/MinimalPlugin --source https://api.nuget.org/v3/index.json --no-http-cache
 dotnet restore examples/plugins/GameRewind --source https://api.nuget.org/v3/index.json --no-http-cache
 node scripts/pack-plugin.mjs MinimalPlugin
 node scripts/pack-plugin.mjs GameRewind
-dotnet run --project tools/ExampleValidation -p:HostRoot=.. -- artifacts/examples
+$hostSource = (Resolve-Path ../).Path
+dotnet run --project tools/ExampleValidation "-p:HostRoot=$hostSource" -- artifacts/examples
 ```
 
-CI checks out the immutable Host ref from `audit/baseline.json` for Runtime
-validation. Compilation and Runtime checks do not certify real game loading.
+Use the exact Host commit in `audit/baseline.json` for Runtime validation. CI
+checks out that commit. `HostRoot` points to the checkout containing `src/`.
 
-### Separate publication and desktop acceptance checks
+## Release and screenshots
+
+`audit/baseline.json` stores reviewed Host/API/SDK versions, separate public and
+bundled plugin hashes, exact release tags and original anchors. `audit/pages.json`
+indexes the documentation. Local reports and raw captures go in ignored
+`artifacts/`.
 
 ```powershell
 npm run check:release
-npm run check:acceptance
+python scripts/prepare-screenshots.py --input artifacts/refresh-110/captures
 ```
 
-`check:release` verifies a clean public SDK restore, stable Host metadata, exactly
-four x64/ARM64 Setup/checksum assets, downloaded bytes and the immutable plugin
-Catalog binding. It is used by main CI, predeploy and `prepare:release`.
-Network errors and mismatches fail the gate. It writes local evidence under
-`artifacts/release-readiness.json`.
+The release check verifies public SDK restoration, Setup/checksum assets, plugin
+bytes and Catalog binding. Screenshot preparation writes document-only WebP pairs
+and manifests; homepage resources have their own existing manifest. Capture real
+UI with winapp, review each scene and retain its original PNG and release identity.
 
-`check:acceptance` separately reports the eight desktop/game scenarios and final
-screenshots, returning nonzero while they remain pending. A public release may
-be documented without claiming those scenarios passed. This task does not
-resume GUI automation or deploy. Remaining candidate screenshots retain their
-actual 1.9.2.0/API3.5 labels; the obsolete discovery image is no longer shown.
-
-`prepare:release` uses actual GitHub metadata and the Asia/Shanghai publication
-date to generate bilingual notices from reviewed templates. It refuses to
-overwrite existing posts. The 1.9.3 notices already exist and were reviewed
-against the official release body. `audit/catalog-proposal.json` is a retained
-historical candidate proposal, not an instruction to edit the public Catalog.
+`npm run prepare:release` reads reviewed templates and the official publication
+date in Asia/Shanghai. Existing posts require an explicit edit. Desktop/game
+scenarios are tracked separately with `npm run check:acceptance`.

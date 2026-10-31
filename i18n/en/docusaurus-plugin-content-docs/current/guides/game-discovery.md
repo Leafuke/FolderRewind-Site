@@ -1,40 +1,42 @@
 ---
 sidebar_position: 20
-title: "Automatic game-save discovery Beta"
-description: "Scan supported game-save locations, review paths and ranges before creating projects, and retain manual edits during rediscovery."
-reviewed_baseline: "1.9-api3.9"
+title: "Game save discovery Beta"
+description: "Scan common Windows game save locations, choose resources by game and backup set, review accounts and scope and create a project with a preset."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Automatic game-save discovery Beta
+# Game save discovery Beta
 
-Scan supported game-save locations, review paths and ranges before creating projects, and retain manual edits during rediscovery.
+Game discovery helps you find common save locations and choose what to protect. Open the page, prepare manifests and start a scan.
 
-## What discovery means
+## Prepare and scan
 
-Definitions describe paths, not installation proof. Windows Steam/GOG/Epic supply evidence; Ludusavi primary, manually selected secondary manifests and local overrides describe resources. Registry resources can be unsupported; registry backup/Heroic/Lutris are outside current Windows Beta scope.
+Download or update the Ludusavi manifest, or use a valid saved manifest and local overrides. Windows Beta combines Steam, GOG and Epic installation information with resource rules to locate saves.
 
-Opening the page makes no network request. Explicitly download/update inputs, select roots/stores/accounts and scan. Inspect per-root diagnostics; valid cache can survive network failures, but corrupt inputs must not appear as healthy empty output.
+Choose stores, accounts and scan locations, then review per-root diagnostics. Steam selects the most recent account by default; expand other accounts to inspect them. Registry resources display support status; current backups focus on file resources.
 
 ## Review and create
 
-A game can contain multiple provider Backup Sets. Selecting resources/presets creates drafts for review, not automatic persistent configs. MineRewind instances can become independent configs.
+1. Choose games and backup sets, then inspect each source and resource.
+2. Check accounts, full paths and scope and choose a suitable backup preset.
+3. Enter a project name and backup destination, review the summary and create.
 
-Steam defaults to the most recent account; other accounts/wildcard fallbacks remain visible but unselected. Check paths/resources/scope and broad-root warnings. Source/destination overlap blocks. Single-shot save failure preserves config/review baseline.
+Each source can cover a whole directory or relative Include patterns. Project filters and plugin policy narrow that scope. Use the effective file preview before saving.
 
-## Source scope
+## Discover again
 
-All or validated relative Include globs define directory/file-set boundaries. Config filters/plugin policies can only narrow them. Complete capture within a source boundary does not mean the entire physical root.
+Rescanning compares the last reviewed result, current configuration and new candidates, preserving manual edits by default. Review moved paths, added resources and scope reductions before saving project changes.
 
-## Rediscovery
+## Minecraft and custom locations
 
-Three-way review compares last-reviewed upstream baseline, current user config and new candidates, preserving user changes by default. Identity is provider + DefinitionId + SetId, not display title. Upstream changes, narrowing and conflicts need review.
+Minecraft creation can discover saves directly using known launchers and remembered roots. Select portable or custom locations manually and confirm each draft's Java/Bedrock kind. See [Minecraft quick start](/docs/guides/minecraft/quick-start).
 
-## Acceptance
+After creating a project, complete a backup and test restore before setting up [automation](/docs/guides/automation).
 
-Exercise scan/account selection/create, scope edits, single-source backup, review conflicts/cancellation and attribution. Discovery knowledge does not elect runtime Kind ownership.
+<span id="automatic-game-save-discovery-beta" />
+<span id="what-discovery-means" />
 
-## Staged confirmation in 1.9.3
-
-After scanning, confirm configurations by game/backup set, then review individual sources and resources. Read full paths, edition, provider and scope; a game entry is not a saved configuration. Continue with names, backup destinations and final review. Selection is disabled while scanning; canceled or departed scans cannot update the current page later.
-
-The Minecraft creation entrypoint can automatically discover saves without first selecting a directory or downloading Ludusavi. Automatic discovery includes known launcher locations and remembered roots. Selected-directory scans stay within the chosen scope; switching back to automatic discovery includes known locations again. Java and Bedrock use separate Kinds, matching each draft's edition. Discovery uses directory/`level.dat` evidence, not world-health or game-loading validation.
+<span id="source-scope" />
+<span id="rediscovery" />
+<span id="acceptance" />
+<span id="staged-confirmation-in-193" />

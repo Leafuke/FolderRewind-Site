@@ -1,41 +1,37 @@
 ---
 sidebar_position: 2
 title: "Your first backup"
-description: "Create a FolderRewind project with test files, choose a separate archive location, run a full backup and check its history before enabling automation."
-reviewed_baseline: "1.9-api3.9"
+description: "Add a test folder, create a backup project with separate storage, save the first complete version and check its history and task results."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Your first backup
 
-Start with a few test files. This walkthrough creates a full version that you can inspect in history and restore.
+Start with a few test files. Once the first backup finishes, you will have a complete version you can recover from history.
 
-![Review sources, name and archive location before creating a project. This is a demonstration summary before submission.](/img/docs/v1-9-6/creation-review-en-light-1604.webp)
+## 1. Prepare a folder and backup storage
 
-*Review sources, name and archive location before creating a project. This is a demonstration summary before submission. Interface version: 1.9.6.*
+Create a test folder such as `D:\Demo\Documents` and add a few documents. Choose a separate location such as `D:\Demo\Backups` for backups, with space for archives and temporary files.
 
-## 1. Prepare a folder and backup location
+## 2. Create a project
 
-Create a test folder with two or three documents. Choose a separate backup directory: for example, `D:\Demo\Documents` for the source and `D:\Demo\Backups` for archives. Neither location may contain the other. Leave room for archives and temporary files.
+Open New backup project, enter a name, choose an ordinary folder project and add the source and backup location. For Minecraft, start with [save discovery](/docs/guides/minecraft/quick-start).
 
-## 2. Create a backup project
+![Review the project name, sources and backup destination before creating it.](/img/docs/v1-9-6/creation-review-en-light-1604.webp)
 
-Choose New backup project on the home page. Enter a name, project type, source and backup location, then review the summary and create the project. Use the ordinary-folder type for documents. Minecraft and other plugin types require their provider to be active.
-
-Templates and game discovery also lead into project creation. Discovery returns candidates: check their paths and included files before accepting them. Confirm the folder appears in management. A project can contain several sources.
+You can also create a project using a template or game discovery. Check the actual directories and included scope, then confirm the summary. One project can contain several sources, each with its own versions.
 
 ## 3. Save the first version
 
-Select **Full** in project settings. Review filters, compression and encryption, then save. Keep the first exercise simple by backing up the complete managed range.
+Choose **Full** in backup policy, check filtering, compression and encryption, then save. For the first exercise, use the complete source scope.
 
-Run the backup with a useful comment such as “Initial version”. Wait for completion and check every source's result; one successful source does not mean the entire project succeeded.
+Start a backup with a comment such as Initial version. Wait for completion and check each source's result in Tasks or the [notification center](/docs/guides/notifications).
 
-## 4. Check the result
+## 4. Find the version and try restoring
 
-Open history, choose the project and source, and find “Initial version”. Check its restore status. Change one file, add another, then follow [your first restore](/docs/getting-started/first-restore) to recover the original content.
+Open history, select the project and source, and find Initial version. Check its date, scope and recovery status. Then edit one file, add another and follow [your first restore](/docs/getting-started/first-restore) to recover the original content.
 
-If the task fails, read its diagnostic. Check that the source exists, the destination is writable, and the archive tool and password are correct. Moving or deleting incremental archives can break dependencies.
-
-After verification, choose a [backup mode and retention limit](/docs/guides/backup-modes), then set up [automation](/docs/guides/automation). Core validation in Settings can also help check the environment.
+If the task fails, open its logs and check the source path, backup destination, compression tool and password. After the exercise, choose an [everyday backup mode](/docs/guides/backup-modes) and set up [automation](/docs/guides/automation) or [cloud copies](/docs/guides/cloud-archive).
 
 <span id="1-create-a-new-config" />
 <span id="2-add-folders-to-back-up" />
@@ -48,3 +44,8 @@ After verification, choose a [backup mode and retention limit](/docs/guides/back
 <span id="path-b-create-a-config-from-a-template" />
 <span id="template-related-next-steps" />
 <span id="verify-backup-results" />
+
+<span id="1-prepare-a-folder-and-backup-location" />
+<span id="2-create-a-backup-project" />
+
+<span id="4-check-the-result" />

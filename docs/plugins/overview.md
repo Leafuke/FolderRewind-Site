@@ -1,37 +1,34 @@
 ---
 sidebar_position: 1
-title: "插件系统概述"
-description: "了解插件提供的发现、备份还原、地图与命令能力，以及宿主职责、版本兼容和可信安装来源。"
-reviewed_baseline: "1.9-api3.9"
+title: "插件与 MineRewind"
+description: "了解 FolderRewind 插件能提供的领域能力，使用内置 MineRewind 保护 Minecraft 世界，并选择官方目录或本地安装扩展。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# 插件系统概述
+# 插件与 MineRewind
 
-了解插件提供的发现、备份还原、地图与命令能力，以及宿主职责、版本兼容和可信安装来源。
+插件让 FolderRewind 理解更多类型的资料和游戏存档。应用负责备份项目、任务、历史、云副本和实际文件操作，插件补充发现、范围、协调、预览及合并等领域能力。
 
-FolderRewind 1.9 的 Plugin System v3 使用独立 BCL-only SDK、静态包声明和能力注册。当前源码 API 为 3.9。宿主管理配置、任务编排、历史、保留、云同步、完整性和目标修改。
+## 内置 MineRewind
 
-## 能力与分工
+FolderRewind 随附 MineRewind，帮助你发现 Minecraft 存档并创建项目。Java 世界可以使用热备份协调、区域范围、玩家状态保留、世界地图、历史对比和语义合并。Bedrock 世界使用完整普通文件备份，操作前先退出游戏。
 
-插件可发现候选和提出配置修改、约束文件／备份范围、提供一致性来源、描述文件夹／版本元数据、协调还原环境、贡献命令／热键／KnotLink、转换不可变制品并物化还原。全部 16 种能力见[API 参考](/docs/plugins/developing/plugin-api)。
+| 你想做什么 | 指南 |
+| --- | --- |
+| 找到存档并创建项目 | [Minecraft 快速开始](/docs/guides/minecraft/quick-start) |
+| 浏览地形和历史变化 | [世界地图](/docs/guides/minecraft/world-preview) |
+| 合并不同分支的成果 | [世界合并](/docs/guides/minecraft/world-merge) |
+| 游戏中发起备份或还原 | [热备份](/docs/guides/minecraft/hot-backup)、[热还原](/docs/guides/minecraft/hot-restore) |
 
-插件不直接保存宿主配置，不通过备份后钩子改写旧包，不绕过 Safe Restore。发现身份、配置 Kind 所有者和状态命名空间是不同角色。
+## 安装与维护
 
-## MineRewind
+在插件管理中打开官方目录，或安装来自可信作者的 `.frplugin` 文件。检查来源、版本、请求的服务和说明，启用后查看实际运行状态。
 
-FolderRewind 1.9.6 内置 MineRewind 1.9.8，请求 API 3.9，提供实例发现、批量草稿、区域范围、一致性、元数据、还原协调、玩家保留、命令和目标选择。请核对正式 Host／SDK／插件版本，不能把旧 1.8 插件 ZIP 装入 v3。
+插件可以提供不同的能力组合。需要的功能及其依赖以插件说明和运行状态为准；更新、回滚与卸载步骤见[插件管理](/docs/plugins/using-plugins)。当前内置和独立发布版本见[下载页](/download)。
 
-## 安装与信任
+## 开发扩展
 
-官方目录或手动 `.frplugin` 都通过静态校验。新安装默认停用，显式启用后才运行。AssemblyLoadContext 隔离依赖，但插件在同一进程拥有当前用户权限，目录审核、哈希和服务门控不是安全沙箱。只启用信任的代码。
-
-阅读[安装与管理](/docs/plugins/using-plugins)、[开发入门](/docs/plugins/developing/quick-start)、[Minecraft 专题](/docs/guides/minecraft/overview)。
-
-
-
-## 内置与独立发布版本
-
-FolderRewind 1.9.6 内置 MineRewind 1.9.8（API 3.9）。独立插件 Release 和官方目录当前仍提供 1.9.5（API 3.6），不含地图预览；不要为了获取新功能而将内置新版替换为旧独立包。Java 地图使用见[只读预览](/docs/guides/minecraft/world-preview)。
+插件开发使用独立公开的 BCL-only SDK。你可以从最小生命周期示例开始，再添加发现、命令、地图或领域合并。见[开发入门](/docs/plugins/developing/quick-start)和[API 参考](/docs/plugins/developing/plugin-api)。
 
 <span id="minerewind" />
 <span id="安装插件" />
@@ -40,3 +37,8 @@ FolderRewind 1.9.6 内置 MineRewind 1.9.8（API 3.9）。独立插件 Release �
 <span id="插件能做什么" />
 <span id="插件隔离" />
 <span id="相关链接" />
+
+<span id="插件系统概述" />
+<span id="能力与分工" />
+<span id="安装与信任" />
+<span id="内置与独立发布版本" />

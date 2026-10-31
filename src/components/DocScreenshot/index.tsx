@@ -2,10 +2,12 @@ import {useEffect, useRef, useState, type ComponentProps, type MouseEvent} from 
 import {createPortal} from 'react-dom';
 import {translate} from '@docusaurus/Translate';
 import MDXComponents from '@theme-original/MDXComponents';
-import captureSizes from '@site/static/img/docs/v1-9-6/sizes.json';
+import legacyCaptureSizes from '@site/static/img/docs/v1-9-6/sizes.json';
+import currentCaptureSizes from '@site/static/img/docs/v1-10-0/sizes.json';
 import styles from './styles.module.css';
 
 const Image = MDXComponents.img;
+const captureSizes = {...legacyCaptureSizes, ...currentCaptureSizes};
 
 export default function DocScreenshot(props: ComponentProps<'img'>) {
   const compiledSource = typeof props.src === 'string' ? props.src : '';
@@ -17,7 +19,7 @@ export default function DocScreenshot(props: ComponentProps<'img'>) {
       new RegExp(`/${filename}-[a-f0-9]+\\.webp$`).test(compiledSource);
   });
   const source = capturePath ? `/${capturePath}` : compiledSource;
-  const isCapture = /\/img\/(?:homepage|docs\/v1-9-6)\//.test(source);
+  const isCapture = /\/img\/(?:homepage|docs\/v1-(?:9-6|10-0))\//.test(source);
   const themed = isCapture && source.includes('-light-');
   const metadata = (captureSizes as Record<string, {width: number; height: number; small: string; smallWidth: number}>)[source.replace(/^\//, '')];
   const width = metadata?.width ?? 1604;

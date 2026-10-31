@@ -1,43 +1,53 @@
 ---
 sidebar_position: 5
-title: "Source scopes, filters and restore whitelists"
-description: "Choose source ranges, backup filters and restore preservation rules, then confirm the protected files in the effective preview."
-reviewed_baseline: "1.9-api3.9"
+title: "Source scope, filters and restore preservation"
+description: "Filter files, folders or both, check source scope in the effective file preview, and choose a restore whitelist or one-time preservation."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Source scopes, filters and restore whitelists
+# Source scope, filters and restore preservation
 
-Choose source ranges, backup filters and restore preservation rules, then confirm the protected files in the effective preview.
+Use source scope, backup filters and restore preservation for different tasks: skip caches, capture only documents or keep current files during a restore.
 
-![Review backup filters and restore-preservation rules on the Filters tab.](/img/docs/v1-9-6/filters-en-light-1604.webp)
+![A filter rule can target files, folders or both.](/img/docs/v1-10-0/filters-110-en-light-1604.webp)
 
-*Review backup filters and restore-preservation rules on the Filters tab. Interface version: 1.9.6.*
+## Set the source scope first
 
-## Ordering and boundaries
+Choose all content or relative Include rules in source settings. Project filters and plugin rules further narrow this scope. Review the effective file list before saving.
 
-SourceScope first defines per-source All/relative Include globs. Config filters/provider policies/scopes narrow afterward; whitelists never expand the hard boundary. Preview managed inventory and review discovered/manual scope edits.
+## Choose the rule target
 
-## Backup filters
+Each rule targets files, folders or both. Matching a folder applies the rule to that directory and all its descendants.
 
-Blacklist excludes matches; whitelist includes matches only. Names/relative paths/globs/enabled regexes have distinct rules. Test positive/negative examples before broad filters.
+| Example | Target | Effect in a blacklist |
+| --- | --- | --- |
+| `*.tmp` | Files | Exclude matching temporary filenames at any depth |
+| `cache` | Folders | Exclude directories named cache and all their contents |
+| `./build` | Folders | Exclude the build directory directly under the source root |
+| `logs/**` | Files | Exclude matching files beneath logs |
+| `cache` | Both | Exclude a matching file, or a matching folder and its descendants |
 
-Required provider rules remain effective; region scope cannot expand unmanaged data. Remote backup_blacklist appends/deduplicates; empty does not clear. Nonempty backup_whitelist appends and selects whitelist mode, without removing boundaries.
+Name-only rules match names. Rules containing a path are relative to the source root. `*` matches within one path segment, `**` can cross directories and `?` matches one character. For a regular expression, enable the regular-expression option and use the `regex:` prefix and check the effective file preview.
 
-## Clean and restore whitelist
+Blacklists exclude matches; whitelists include matches. Existing legacy rules keep their original matching behavior. Preview the result again after editing a rule or changing its target.
 
-Clean mutates only managed content. Whitelists retain current matches unless backup supplies the same path, which wins. They do not permanently protect live files from archive overrides. Overwrite retains omitted content; partial captures force it.
+## Restore whitelists
 
-Ordinary preservation may produce Derived baselines. Checkout/Merge have Exact target/coordinator semantics and do not use ordinary player preservation as a branch-switch mechanism.
+A restore whitelist preserves matching current paths during Clean's cleanup stage. When the archive contains the same path, the backup file is written. Overwrite keeps current content outside the archive's coverage; partial captures such as region backups use Overwrite.
 
-## Verify
+## One-time file and directory preservation {/* #restore-preserve-paths */}
 
-Test managed/unmanaged, matches/nonmatches, same-path conflicts and new files; inspect archives and compare Clean/Overwrite byte results. Review scope/upstream changes before save, not only matching counts.
+KnotLink's `restore_preserve_paths` and the SDK's `RestoreRequestOptions.RestorePreservePaths` let you select files or folders whose current state takes priority for one ordinary restore.
 
-## One-shot file and directory preservation
+```text
+notes.txt,config/
+```
 
-KnotLink `restore_preserve_paths` / SDK `RestoreRequestOptions.RestorePreservePaths` affects only this ordinary Restore, without changing persistent filters. Use relative file paths and a trailing `/` for a directory. Separate entries with commas; globs, absolute paths and `..` are invalid. Current bytes win, missing current target files remain absent, and additions/deletions within selected directories preserve current state.
+Use source-relative paths, a trailing `/` for directories and commas between selections. Selected files keep their current bytes; files currently deleted stay deleted. Additions and deletions inside a selected directory also keep their current state.
 
-At most 16 selectors are allowed, with staging limited to 4096 file operations and 64 MiB of current bytes. Selectors must stay inside the effective managed boundary. Minecraft paths are relative to the unique managed world root; ambiguous roots are rejected. Invalid scope or limits fail the operation rather than silently dropping preservation. Checkout/Merge do not use this override.
+An operation accepts up to 16 selectors, with staging limited to 4096 file operations and 64 MiB of current content. Selections stay within the effective managed boundary. Minecraft paths are relative to the unique managed world root. Use explicit file or directory paths here and use backup filters for pattern matching.
+
+These options apply to ordinary Restore and Quick Restore. Checkout and Merge apply the selected branch or merge result. Test the rules with a small set of added, modified and deleted files.
 
 <span id="backup-filter-mode" />
 <span id="best-practices" />
@@ -53,3 +63,10 @@ At most 16 selectors are allowed, with staging limited to 4096 file operations a
 <span id="typical-use-cases" />
 <span id="where-to-configure" />
 <span id="whitelist-mode-examples" />
+
+<span id="source-scopes-filters-and-restore-whitelists" />
+<span id="ordering-and-boundaries" />
+<span id="backup-filters" />
+<span id="clean-and-restore-whitelist" />
+<span id="verify" />
+<span id="one-shot-file-and-directory-preservation" />

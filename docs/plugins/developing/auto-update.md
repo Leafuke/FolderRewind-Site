@@ -1,8 +1,8 @@
 ---
 sidebar_position: 8
 title: "官方目录与插件更新"
-description: "发布绑定版本、URL 与哈希的官方目录条目，理解可信更新、兼容检查和回滚职责。"
-reviewed_baseline: "1.9-api3.9"
+description: "发布绑定版本、下载 URL、API 与哈希的官方目录条目，验证固定插件制品，并维护启用选择、升级事务与回滚载荷。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 官方目录与插件更新
@@ -11,9 +11,9 @@ reviewed_baseline: "1.9-api3.9"
 
 ## 更新事实源
 
-FolderRewind 1.9 的更新以独立 Official Catalog 为准。GitHub Releases 托管制品，插件的 repository 字段只提供项目信息，不决定可安装的版本或安全来源。
+插件官方更新由独立 Catalog 提供固定版本与制品声明，GitHub Releases 托管对应附件。repository 字段用于项目导航。
 
-Host 匹配 PluginId，并使用 SemVer2.0 比较优先级；下载前核对目录项、精确 Release URL、SHA-256、声明/API 和实际包。发布者签名和任意自定义目录不是 v3 首发功能。
+Host 按 PluginId 匹配插件，以 SemVer 2.0 比较版本优先级。下载与安装时核对精确 URL、SHA-256、API、架构及实际声明；作者发布步骤见下文。
 
 ## 作者发布步骤
 

@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: "KnotLink 与 Minecraft 联动组件"
 description: "配置 KnotLink 与 Minecraft 联动，核对协议、组件版本、当前世界目标和最终操作结果。"
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink 与 Minecraft 联动组件
@@ -11,7 +11,7 @@ reviewed_baseline: "1.9-api3.9"
 
 ## 前置与版本
 
-当前文档后端为 FolderRewind 1.9.6、MineRewind 1.9.8、API 3.9；KnotLink Server v3、wire v2 与能力 manifestVersion3.0.0 独立。游戏组件按各自 Release 的加载器／游戏版本安装，不能把插件 API 3.9 当 Server 或游戏模组版本。
+准备 FolderRewind 与启用的 MineRewind，再按游戏版本和加载器安装游戏侧组件。通信使用 KnotLink Server v3 与参数化协议 v2，实际命令由运行时能力清单提供。
 
 ## 最小联调
 
@@ -25,11 +25,11 @@ cmd=BACKUP;current_save=true;from=panel;request_id=mc-001
 cmd=RESTORE;current_save=true;preserve_player_data=false;from=panel;request_id=mc-002
 ```
 
-MineRewind 提供 BACKUP、LIST_BACKUPS、RESTORE、AUTO_BACKUP、STOP_AUTO_BACKUP、MARK_IMPORTANT 共 7 个 current_save 变体。from／request_id 用于有会话的操作，字段按运行时描述校验。
+MineRewind 提供 BACKUP、LIST_BACKUPS、RESTORE、AUTO_BACKUP、STOP_AUTO_BACKUP、MARK_IMPORTANT、GET_IMPORTANCE 共 7 个 current_save 变体。from／request_id 用于有会话的操作，字段按运行时描述校验。
 
 ## 游戏回传与终态
 
-握手、WORLD_SAVED、保存退出、释放、还原终态及重进结果按关联 ID 协调。长任务请求 ok 只表示接受。Server Sidecar 交接和单人客户端重进不同；不能在 Host 事务写入中自行启动服务器。
+握手、WORLD_SAVED、退出与释放、还原与重进信号通过关联 ID 跟踪。检查请求接受后的最终结果。专用服务器使用 Sidecar 的进程交接流程，客户端按重进流程进入世界。
 
 未知／恢复必需终态先保存诊断，不盲目重复操作。[命令参考](/docs/plugins/knotlink-commands)给出默认 Clean、参数追加与 Quick Restore 语义。
 

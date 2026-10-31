@@ -1,37 +1,39 @@
 ---
-sidebar_position: 6
+sidebar_position: 20
 title: "Minecraft 故障排查"
-description: "按插件、存档、游戏协调和归档依赖排查 Minecraft 备份还原问题，并保存有效诊断。"
-reviewed_baseline: "1.9-api3.9"
+description: "检查 MineRewind、存档路径、游戏协调与归档依赖，定位地图、区域备份、玩家保留和世界合并的问题，并收集有效日志。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft 故障排查
 
-按插件、存档、游戏协调和归档依赖排查 Minecraft 备份还原问题，并保存有效诊断。
-
-## 先检查链路
-
-检查 Host 支持 API 3.9、MineRewind 来源与版本、Enabled Intent 和 Active、Kind、世界有效路径、session.lock 状态、KnotLink 和游戏组件，以及可物化的历史目标。旧 EnableHotBackup 开关和 v2 钩子不是当前排错入口。
+先在插件管理确认 MineRewind 的实际运行状态，再检查世界路径、Java／Bedrock 类型和相关任务诊断。
 
 | 现象 | 检查与处理 |
-|---|---|
-| 未发现世界 | 根路径、AutoDiscoverSaves、实例／定义目录、扫描诊断；审阅草稿而非强行写配置 |
-| 备份有警告 | Prefer 降级／握手／快照失败；Require 应阻断；保存日志并测试恢复 |
-| 区域不符预期 | 输入方块坐标、floor/512、维度、SourceScope 与过滤、全部.mcc 规则 |
-| 快速还原无变化 | 已处于活动分支目标；不会自动选择更早版本 |
-| 还原被拒绝 | 分叉、依赖缺失、多个活动世界、协调失败或恢复状态；先准备目标／修复 |
-| 玩家没保留 | 本地设置、显式 false、普通 Restore 限定、全部 UUID、布局兼容及提案错误 |
-| 已恢复但未重进 | 区分 Host 成功与重进警告，人工确认游戏环境再进入 |
+| --- | --- |
+| 找不到世界 | 选择实际启动器、saves 或世界目录，查看扫描诊断和草稿路径 |
+| 热备份有警告 | 展开一致性详情，检查 KnotLink、游戏组件、握手与保存回执 |
+| 区域范围不符 | 核对方块坐标、维度、来源范围和过滤，在有效预览中检查 |
+| 快速还原没有变化 | 当前已匹配活动分支目标；需要更早状态时手选历史版本 |
+| 还原等待或受阻 | 检查依赖、活动世界数量、文件占用和需要恢复的状态 |
+| 玩家数据未按预期保留 | 核对本地设置、单次 true／false、普通 Restore 与布局诊断 |
+| 地图空白或不完整 | 检查维度、生成范围、区块状态和历史依赖，再放大或刷新 |
+| 合并需要整世界选择 | 阅读保守策略的实体与布局诊断，检查所有维度后选择一侧 |
+| 已恢复但游戏尚未重进 | 查看重进警告，确认环境后手动进入 |
 
-## 诊断与恢复
+## 检查游戏联动
 
-用 GET_CAPABILITIES 与 LIST_BACKUPS 取得运行时目标及精确参数；文件名动态值需 percent-encoding。安装、激活、Ready／Degraded／Blocked 与 SuccessWithWarnings 是不同阶段。RecoveryRequired／CommittedRecoveryRequired 时不再次发起破坏性请求，不自动重进。
+使用 `GET_CAPABILITIES` 查询当前支持的命令，再用 `LIST_BACKUPS` 检查目标。动态文件名按 percent-encoding 编码，通过 `request_id` 关联操作结果。
 
-提交问题提供 Host／API／插件／游戏组件版本、时间、request_id、结果和脱敏日志，不上传令牌、私有路径或完整生产存档。真实加载失败需要保留测试副本与游戏错误，不仅提供 NBT 测试通过的结论。
+Java、Bedrock 和普通目录使用相应流程。Bedrock 先关闭游戏，再执行完整文件备份；Java 的地图、玩家 NBT 和热协调由 MineRewind 提供。
 
-## 未找到存档或版别不符
+## 处理恢复与反馈
 
-先确认自动发现与指定根目录扫描的区别；便携／自定义目录手选补足。检查草稿实际 Kind：Java、Bedrock 不能互换。Bedrock 不提供 Java 热协调、NBT 玩家保留或区域范围；普通目录也不要求世界元数据。查看逐来源诊断，不把部分结果或预算超限当成全盘扫描完成。
+出现需要恢复的结果时，保留原始文件和日志，按应用诊断完成恢复。复现问题时记录应用、插件、游戏组件版本、时间、目标路径、操作步骤和实际结果。
+
+地图问题附上维度、坐标与区块状态；合并问题附上所选策略与冲突项。游戏加载失败时同时保存游戏错误日志，便于定位具体数据。
+
+相关指南：[热备份](/docs/guides/minecraft/hot-backup)、[热还原](/docs/guides/minecraft/hot-restore)、[地图](/docs/guides/minecraft/world-preview)、[世界合并](/docs/guides/minecraft/world-merge)。
 
 <span id="仍未解决" />
 <span id="先做-60-秒链路体检" />
@@ -43,3 +45,7 @@ reviewed_baseline: "1.9-api3.9"
 <span id="现象-5还原后玩家状态异常" />
 <span id="现象与源码定位表" />
 <span id="相关链接" />
+
+<span id="先检查链路" />
+<span id="诊断与恢复" />
+<span id="未找到存档或版别不符" />

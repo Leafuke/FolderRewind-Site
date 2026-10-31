@@ -1,34 +1,27 @@
 ---
 sidebar_position: 3
-title: "Templates and Backup Presets"
-description: "Save a verified backup policy as a preset, create projects from discovery results, and review plugin and environment dependencies."
-reviewed_baseline: "1.9-api3.9"
+title: "Templates and backup presets"
+description: "Save tested compression, filtering, automation and retention as a preset, combine it with folders or discovery and check plugin dependencies."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Templates and Backup Presets
+# Templates and backup presets
 
-Save a verified backup policy as a preset, create projects from discovery results, and review plugin and environment dependencies.
+Templates reuse a backup policy that already works well for you. Bring compression, filtering, automation and retention into a new project, then adjust for actual directories.
 
-A Backup Preset is reusable policy, not installed-game evidence or a saved configuration.1.9 uses Backup Preset V2 with legacy import compatibility; do not apply old1.8 Envelope restrictions to every new preset.
+## Save and use a preset
 
-## Save and create
+Save a template from project settings and enter its name, author and description. Select it during creation, add source and backup locations and review scope and policy before saving.
 
-Save a validated config as a template with name/author/description, checking compression, scopes, filters and automation. Inspect inferred paths/Kind on import. Home template creation or discovery plus preset produces drafts for Host-reviewed persistence.
+Backup Preset V2 expresses reusable policy, with import support for existing older formats. Game-targeted presets can reference a discovery provider's DefinitionId to select the relevant backup set.
 
-## Provider targeting
+## Manage and check
 
-V2 can reference a provider DefinitionId to choose discovery sets. Definitions differ from Backup Sets; presets do not redefine installation proof, discovery identity or runtime ownership. API3.0 discovery without DefinitionCatalog remains compatible but lacks targeted-definition participation.
+View, edit, copy, delete and preview path rules in template management. Check source scope, Kind, filters, retention and required plugins before use. Follow creation diagnostics to prepare dependencies.
 
-## Dependencies and maintenance
+The enhanced Minecraft experience preset checks and reuses KnotLink Service, guides confirmed component setup and then checks the connection and integration.
 
-Inspect missing/disabled/incompatible plugin diagnostics and explicitly confirm behavior. Do not assume silent Default fallback retains specialized protection. Preview before batch creation and recheck scope/mode/retention after upgrades.
-
-Template management supports inspect/edit/copy/delete/path preview. Remove private paths/credentials/nonportable state before [sharing](/docs/guides/template-sharing).
-
-
-## Minecraft Enhanced Experience preset
-
-In 1.9.6, the preset checks for and reuses a compatible KnotLink Service. When installation is needed, it downloads, verifies and launches the installer after confirmation, then checks readiness and connection. Installation, service readiness and actual game integration are separate steps. Keep diagnostics and resolve failed dependencies before continuing.
+See [template sharing](/docs/guides/template-sharing) and [game discovery](/docs/guides/game-discovery).
 
 <span id="build-templates-from-proven-configs" />
 <span id="create-a-config-from-a-template" />
@@ -41,3 +34,8 @@ In 1.9.6, the preset checks for and reuses a compatible KnotLink Service. When i
 <span id="template-first-automate-later" />
 <span id="templates-and-plugins" />
 <span id="when-templates-are-useful" />
+
+<span id="save-and-create" />
+<span id="provider-targeting" />
+<span id="dependencies-and-maintenance" />
+<span id="minecraft-enhanced-experience-preset" />

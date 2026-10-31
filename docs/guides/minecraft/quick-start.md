@@ -1,46 +1,45 @@
 ---
 sidebar_position: 2
 title: "Minecraft 快速开始"
-description: "启用内置 MineRewind，发现并审阅 Java 或 Bedrock 存档，创建项目并验证首次备份与还原。"
-reviewed_baseline: "1.9-api3.9"
+description: "启用内置 MineRewind，自动发现或手选 Java 与 Bedrock 世界，检查来源与备份位置，完成第一次备份、还原和地图浏览。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Minecraft 快速开始
 
-启用内置 MineRewind，发现并审阅 Java 或 Bedrock 存档，创建项目并验证首次备份与还原。
+## 1. 启用 MineRewind
 
-![内置 MineRewind 的发现与玩家保留设置。](/img/docs/v1-9-6/plugin-settings-zh-light-1604.webp)
+打开设置的插件管理，查看内置 MineRewind 并启用，确认实际运行状态。独立更新也可使用官方目录或可信 `.frplugin`，见[插件管理](/docs/plugins/using-plugins)。
 
-*内置 MineRewind 的发现与玩家保留设置。 界面版本：1.9.6。*
+## 2. 找到你的世界
 
-## 安装并启用
+从首页“新建备份项目 → Minecraft”进入，可以直接自动发现存档，也可以选择目录扫描。
 
-使用 FolderRewind 1.9.6（API 3.9）与 MineRewind 1.9.8，按 Release 核对来源和版本。设置→插件管理从目录或本地 .frplugin 安装，检查声明并显式启用。看到 Enabled Intent 后还需确认 Active；旧 1.8 ZIP 不能兼容。
+- 自动发现会结合已知位置和记住的根目录。
+- 手选可以使用启动器目录、游戏根、实例库、`saves`、`minecraftWorlds` 或单个世界目录。
+- 常见位置覆盖官方 Java、HMCL、PCL2、PCLCE、Prism Launcher、Modrinth App、网易与 Bedrock；便携或自定义位置可手动补充。
 
-## 发现实例
+勾选需要的世界，检查 Java／Bedrock 类型、完整路径与范围，填写项目名和独立备份位置，再确认摘要。多个实例可以分别创建项目。
 
-从首页的 Minecraft 创建流程、插件批量发现或游戏发现 Beta 自动发现，也可选择 .minecraft／versions／实例 saves 根。检查生成的备份集合／世界草稿、Kind、目标目录和来源范围；摘要确认后由 Host 创建。AutoCreateConfigs 默认 false；AutoDiscoverSaves 默认 true。多实例可分别建配置。
+## 3. 保存与还原
 
-## 首次验证
+第一次练习使用世界副本，先退出游戏，再创建 Full 备份。打开历史找到该版本，恢复到测试目录，检查文件并在测试实例中加载。
 
-用世界副本，先停止游戏写入，执行 Full 备份并在测试目录还原，比较内容。再联调 KnotLink Server v3 与对应游戏组件，确认运行时 GET_CAPABILITIES 暴露当前世界命令。
+Java 世界可以继续打开[地图预览](/docs/guides/minecraft/world-preview)，浏览维度和玩家位置。Bedrock 操作前保持游戏关闭，使用普通文件备份与还原。
 
-不要寻找旧 EnableHotBackup 选项；一致性由配置请求 Prefer／Require 和运行时 provider 决定。若启用 PreservePlayerData，另测试全 UUID、false override、stats／advancements 及布局兼容。
+## 4. 加入日常设置
 
-## 下一步
+确认流程后设置[自动备份](/docs/guides/automation)、[保留数量](/docs/guides/backup-modes)和[云副本](/docs/guides/cloud-archive)。游戏中操作时，按[热备份](/docs/guides/minecraft/hot-backup)准备 KnotLink 与游戏侧组件。
 
-[区域保护](/docs/guides/minecraft/selected-region-backup)、[热备份](/docs/guides/minecraft/hot-backup)、[热还原](/docs/guides/minecraft/hot-restore)。真实游戏加载必须单独验收，文件级测试不替代它。
-
-## 多启动器与基岩版
-
-首页“新建备份项目 → Minecraft”可直接自动发现；也可选择启动器目录、游戏根、实例库、saves、minecraftWorlds 或单世界。支持官方 Java、HMCL、PCL2、PCLCE、Prism Launcher、Modrinth App、网易和常见 Bedrock 位置；自定义或便携目录未找到时手选补足，不做全盘搜索。
-
-自动发现可合并已知位置和记住的根，手选仅检查选定范围。勾选草稿后继续向导设置名称、目标位置并审阅，不在扫描阶段直接创建项目。Minecraft 配置可包含普通文件夹，它们使用普通文件备份，不强行识别为世界。
-
-Bedrock 使用独立 Kind 的普通文件流程，先关闭游戏；不支持 Java 的 NBT 玩家保留、selected-regions 或当前世界 KnotLink 协调。Java 热备份能力不能直接套用到基岩版。
+MineRewind 的 `AutoDiscoverSaves` 默认开启，`AutoCreateConfigs` 和 `PreservePlayerData` 默认关闭。按需要在插件设置中调整；玩家保留见[热还原指南](/docs/guides/minecraft/hot-restore)。
 
 <span id="下一步" />
 <span id="推荐设置" />
 <span id="步骤-1安装插件" />
 <span id="步骤-2扫描-minecraft" />
 <span id="步骤-3验证一次备份" />
+
+<span id="安装并启用" />
+<span id="发现实例" />
+<span id="首次验证" />
+<span id="多启动器与基岩版" />

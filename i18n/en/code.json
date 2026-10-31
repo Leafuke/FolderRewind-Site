@@ -345,16 +345,16 @@
     "message": "Keep your configuration and archives before upgrading. When changing installation channels, export configuration and history, import them in the new installation, and check source paths."
   },
   "download.notice.point1": {
-    "message": "Microsoft Store is recommended first for smoother upgrades."
+    "message": "Microsoft Store manages updates for everyday use."
   },
   "download.notice.point2": {
-    "message": "Do not run the Store and Setup channels concurrently."
+    "message": "Choose one channel for everyday use and exit the old version before upgrading."
   },
   "download.notice.point3": {
-    "message": "Switching installation channels does not migrate configs or plugins automatically; back up your data first."
+    "message": "Keep configuration, history and archives before switching channels, then check paths after importing."
   },
   "download.notice.upgradeLink": {
-    "message": "Read the1.9 upgrade and recovery guide"
+    "message": "Read the upgrade and data migration guide"
   },
   "download.badge.recommended": {
     "message": "Recommended"
@@ -369,7 +369,7 @@
     "message": "GitHub stable release"
   },
   "download.msi.desc": {
-    "message": "The current GitHub stable release is 1.9.6. Choose x64 or ARM64 Setup EXE and verify its matching .sha256 file."
+    "message": "GitHub release 1.10.0 offers x64 and ARM64 Setup EXEs. Choose your architecture and verify the matching .sha256 file."
   },
   "download.msi.btn": {
     "message": "View Setup EXE releases"
@@ -402,7 +402,7 @@
     "message": "Official Plugins"
   },
   "download.plugin.minerewind.desc": {
-    "message": "Version 1.9.6 bundles MineRewind 1.9.8 with Java map preview, save discovery and region backup. The separate public package is still 1.9.5 (API 3.6) without map preview; the Host supports API 3.9."
+    "message": "Bundled MineRewind 1.10.0 provides save discovery, Java maps and historical comparisons, region backups and world merging. The independent plugin is also available from its official releases."
   },
   "download.plugin.downloadBtn": {
     "message": "View separate plugin release"

@@ -1,20 +1,18 @@
 ---
 sidebar_position: 3
-title: "备份载荷与原生历史存储规范"
-description: "理解归档、历史数据包与本机索引的职责，保留完整依赖并正确迁移可恢复数据。"
-reviewed_baseline: "1.9-api3.9"
+title: "备份文件与历史存储"
+description: "了解归档、不可变历史数据包、本机索引与工作区的存放方式，按版本依赖准备备份，并正确迁移和维护历史资料。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# 备份载荷与原生历史存储规范
+# 备份文件与历史存储
 
-理解归档、历史数据包与本机索引的职责，保留完整依赖并正确迁移可恢复数据。
-
-1.9 以配置的不可变 History Repository 为逻辑权威。压缩包是可恢复字节的物理载荷之一，文件名不再代表完整的历史身份、祖先或可还原性。
+一个可还原版本由历史记录和实际文件共同组成。历史保存来源、分支与版本关系，归档或插件 Artifact 保存可恢复内容。
 
 ## 本机仓库
 
 ```text
-<应用数据目录>/history/<编码后的 ConfigId>/
+<应用数据目录>/history/<编码 ConfigId>/
 ├─ repository.json
 ├─ packs/<前两位>/<PackId>.frpack
 ├─ index/
@@ -23,23 +21,23 @@ reviewed_baseline: "1.9-api3.9"
 └─ quarantine/
 ```
 
-ConfigId GUID 使用规范无分隔编码，其他 ID 使用稳定哈希编码；不要按显示名找仓库。packs 保存共享历史事实；index 是可重建查询投影；local-state 保存本机 Workspace／Replica Catalog 等，不作云共享事实。
+`packs` 保存不可变共享事实，`index` 支持查询，`local-state` 保存本机工作区和副本位置。归档通过 Representation／Replica 定位，通常在项目选择的备份位置或受控存储中。
 
-载荷按保存的 Representation／Replica 定位器在配置目标或受控存储中；迁移的旧归档可以保留旧路径。不要把文件夹显示名、压缩包重命名或 `[Full/Smart/Overwrite]` 正则视作新版身份。
+## 从一次备份到一个版本
 
-## 历史模型
+Backup Run 记录本次参与来源的结果。每个 Source Checkpoint 指向一个来源版本，并记录历史延续。Version Representation 描述物化方式和依赖，Storage Replica 描述一份副本。
 
-Backup Run 记录一次操作及逐来源结果，Source Version 表示来源逻辑状态，Checkpoint 是配置状态向量。Representation 说明如何物化版本；Replica 是一份物理副本；一次 Commit Pack 原子公开共享事实。备注／Pin／隐藏通过 Annotation 更新，不改写旧事实。
+一个 Commit Pack 原子公开关联事实。备注、Pin 与展示策略使用 Annotation 更新。寻找备份时，以应用中的来源与版本为入口。
 
-## 维护与迁移
+## 移动与维护
 
-重建索引读取 Commit Packs，不恢复丢失的载荷；丢失 packs 也不能仅靠压缩包文件名补齐分支事实。旧 1.8 历史只在一次性迁移入口读取；旧 metadata.json 不是原生历史权威。
+迁移时分别准备配置、`.frhistory` 和实际归档。历史传输包携带 Pack，归档及增量依赖另外复制，见[数据迁移](/docs/guides/data-migration)。
 
-移动电脑时分别处理配置、历史事实和载荷。`.frhistory` 传输历史 packs，不含备份载荷；参阅[数据迁移](/docs/guides/data-migration)。不要手工编辑 packs 或清空 transactions。
+重建索引会重新读取 Pack。文件或依赖缺失时，优先准备可靠本地副本或云副本，再检查可还原状态。旧版备份通过接管报告定位和验证。
 
-## 保留保护
+## 保留依赖
 
-Pin、分支尖端、Workspace 和安全恢复点保护可完整归档依赖；重要备注或界面隐藏不应被当作相同的保留保证。物理副本缺失与逻辑版本存在可以同时发生，需先评估恢复能力再清理。
+保护标记、分支尖端、工作区与安全恢复点参与依赖保留。清理前查看影响与空间报告，通过应用维护本地和云副本，可保持版本关系和归档状态一致。
 
 <span id="metadatajson-版本说明" />
 <span id="与重建历史记录的关系" />
@@ -53,3 +51,9 @@ Pin、分支尖端、Workspace 和安全恢复点保护可完整归档依赖；�
 <span id="远程命令knotlink补充" />
 <span id="重要标记与自动清理" />
 <span id="默认目标路径规则" />
+
+<span id="备份载荷与原生历史存储规范" />
+
+<span id="历史模型" />
+<span id="维护与迁移" />
+<span id="保留保护" />

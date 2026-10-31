@@ -1,45 +1,37 @@
 ---
 sidebar_position: 1
 title: "Plugin development quick start"
-description: "Build an independent plugin with public SDK 3.6.0, compile and package the example, and check activation in an API 3 Host."
-reviewed_baseline: "1.9-api3.9"
+description: "Create an independent plugin with public SDK 3.17.0, implement its lifecycle and manifest, build a .frplugin and verify installation and activation."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Plugin development quick start
 
-Build an independent plugin with public SDK 3.6.0, compile and package the example, and check activation in an API 3 Host.
+Start with a minimal lifecycle plugin. Build, package and install it first, then add the capabilities you need.
 
-This guide targets FolderRewind 1.9 and Plugin API 3.6. App, plugin product, package and assembly versions are independent.
+## Prepare the environment and project
 
-## Prerequisites
-
-Install .NET 10 SDK, Node.js 24 and Python 3.10+, an editor supporting .NET 10, and a Host supporting API 3.6. Get the projects from the [website source repository](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins).
-
-:::info[Public SDK baseline]
-The examples use public Abstractions 3.6.0 for API 3.6 and newer compatible Hosts, including FolderRewind 1.9.6 / Host API 3.9. Restore from NuGet.org. If network or version resolution fails, inspect sources and diagnostics rather than referencing FolderRewind.dll. Assembly identity remains 3.0.0.0.
-:::
-
-## Create an independent library
+Install .NET 10 SDK, Node.js 24 and Python 3.10+ and get the [website repository examples](https://github.com/Leafuke/FolderRewind-Site/tree/main/examples/plugins). The public `FolderRewind.Plugin.Abstractions 3.17.0` NuGet package supplies API 3.17.
 
 ```powershell
 dotnet new classlib -n MyFirstPlugin -f net10.0
-dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.6.0
+dotnet add MyFirstPlugin package FolderRewind.Plugin.Abstractions --version 3.17.0
 ```
 
-Reference only `FolderRewind.Plugin.Abstractions`. Set `Private="false"` on that package reference. Do not reference the application, WinUI, Models or Runtime, or bundle the Abstractions DLL.
+Reference Abstractions only. Set `Private="false"` on that reference so the Host supplies the shared contract assembly at runtime.
 
 ## Implement the lifecycle
 
-The following is the buildable MinimalPlugin source:
+This code is loaded directly from the buildable example:
 
 import CodeBlock from '@theme/CodeBlock';
 import MinimalSource from '!!raw-loader!@site/examples/plugins/MinimalPlugin/Plugin.cs';
 
 <CodeBlock language="csharp" title="MinimalPlugin/Plugin.cs">{MinimalSource}</CodeBlock>
 
-During activation, read settings/config snapshots and register capabilities. The Host exposes them only after validation and atomic commit. This minimal lifecycle example contributes no backup command.
+Activation reads snapshots and registers capabilities, which the Host validates before exposing. This minimal example exercises activation and deactivation. Add discovery or commands as your next step.
 
-## Static manifest and settings
+## Manifest and settings
 
 import MinimalManifest from '!!raw-loader!@site/examples/plugins/MinimalPlugin/manifest.json?raw';
 import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/settings.schema.json?raw';
@@ -47,26 +39,22 @@ import MinimalSettings from '!!raw-loader!@site/examples/plugins/MinimalPlugin/s
 <CodeBlock language="json" title="manifest.json">{MinimalManifest}</CodeBlock>
 <CodeBlock language="json" title="settings.schema.json">{MinimalSettings}</CodeBlock>
 
-Use `manifestVersion` 3, `pluginApi` 3.6 and exact camelCase fields. The entry type is fully qualified. Even a plugin without settings needs a valid empty settings schema.
+Use `manifestVersion=3`, an API major/minor and a stable plugin ID. The entry type is fully qualified. Supply a valid empty settings array when the plugin has no settings.
 
-## Build, package and install
+## Build and install
 
-From the website repository root:
+Run from the website repository root:
 
 ```powershell
 node scripts/pack-plugin.mjs MinimalPlugin
 Get-FileHash .\artifacts\examples\MinimalPlugin-1.0.0.frplugin -Algorithm SHA256
 ```
 
-The ZIP-based `.frplugin` has `manifest.json`, `settings.schema.json` and the entry DLL directly at its root. No Abstractions DLL or extra top-level plugin directory is allowed.
+The package root contains the manifest, settings and plugin DLL, with private dependencies alongside them. Open plugin management, install the local package, review its declarations and enable it.
 
-Use local install in plugin management and review the declarations. New installs are disabled; code first runs after explicit Enable. Normal transitions are live; restart only when the Host reports RequiresRestart.
+Check runtime state and activation diagnostics. For loading issues, review API compatibility, entry type, settings and capability registration. Complete any restart requested by the interface.
 
-## Verify and troubleshoot
-
-Check product, version, provenance, requested services and runtime state. For failures, check API compatibility, entry type, typed settings and manifest/registration agreement. Enabled intent alone does not prove activation succeeded.
-
-Continue with the [tutorial](/docs/plugins/developing/tutorial), [API reference](/docs/plugins/developing/plugin-api) and [packaging guide](/docs/plugins/developing/packaging).
+Continue with [GameRewind](/docs/plugins/developing/tutorial), the [API reference](/docs/plugins/developing/plugin-api) and [packaging](/docs/plugins/developing/packaging).
 
 <span id="add-manifestjson" />
 <span id="choose-interfaces" />
@@ -75,3 +63,10 @@ Continue with the [tutorial](/docs/plugins/developing/tutorial), [API reference]
 <span id="knotlink-and-region-examples" />
 <span id="next-steps" />
 <span id="package-and-test" />
+
+<span id="prerequisites" />
+<span id="create-an-independent-library" />
+
+<span id="static-manifest-and-settings" />
+<span id="build-package-and-install" />
+<span id="verify-and-troubleshoot" />

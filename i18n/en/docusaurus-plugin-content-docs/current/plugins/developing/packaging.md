@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: "Plugin packaging and publishing"
 description: "Package .frplugin with a static manifest, validate assemblies, capabilities and settings schemas, and publish verifiable artifacts."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Plugin packaging and publishing

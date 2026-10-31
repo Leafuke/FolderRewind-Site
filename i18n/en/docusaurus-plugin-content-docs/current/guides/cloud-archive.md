@@ -1,41 +1,55 @@
 ---
 sidebar_position: 4
-title: "Cloud archives: connections and recovery"
-description: "Prepare rclone and OpenList with FolderRewind cloud setup, connect storage, upload archives, sync history and verify recovery to a new directory."
-reviewed_baseline: "1.9-api3.9"
+title: "Cloud storage: connect, upload and sync"
+description: "Connect WebDAV, OneDrive, S3 or OpenList storage, verify directory access, upload backup versions and synchronize history for recovery elsewhere."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Cloud archives: connections and recovery
+# Cloud storage: connect, upload and sync
 
-A cloud copy gives backups another storage location. Verify local backup and restore first, then connect a service, upload one version and test downloading it for recovery.
+Keep a cloud copy alongside your local backups. Complete a local backup, connect storage, upload one version and try [recovering to a new folder](/docs/guides/cloud-recovery).
 
-![The cloud form uses an example address and a blank password; no connection has been verified or saved.](/img/docs/v1-9-6/cloud-en-light-1604.webp)
+## 1. Prepare rclone and a connection
 
-*The cloud form uses an example address and a blank password; no connection has been verified or saved. Interface version: 1.9.6.*
+Open Connect cloud storage / Complete cloud copy from a project's cloud settings, or open cloud connection management in Settings. Prepare the rclone executable, configuration file and working directory, then choose a service:
 
-## 1. Prepare the tools
+| Service | What to prepare |
+| --- | --- |
+| WebDAV | Service URL, username, password and destination directory |
+| OneDrive | Complete account authorization in the wizard and choose a directory |
+| S3 | Endpoint, region, bucket and access credentials |
+| Existing rclone remote | Select a configuration file, read its remotes and choose one |
+| OpenList | Mount your storage in OpenList, then connect through WebDAV |
 
-Open cloud setup from the project's follow-up actions. Version 1.9.6 reuses verified rclone and OpenList installations where possible. Downloads are checked with SHA-256 and try subsequent sources after a failure. Review dependency status and each failed step.
+A cloud connection can be shared across projects or limited to one project. Updating shared credentials affects projects using that credential store; review the associated projects before reauthorizing.
 
-Tool installation, account authorization and connection testing are separate steps. An installed OpenList does not mean a cloud account is signed in; configure its storage afterward.
+## 2. Select and verify a directory
 
-## 2. Configure a connection
+Browse or enter a cloud directory after selecting the remote. Read the directory first, then enable write verification when preparing to upload. The app uploads a dedicated test object of about 8 KiB, reads it back for verification and cleans up that object.
 
-Choose WebDAV, OneDrive, S3 or an OpenList bridge. Set the rclone executable, working directory, configuration file, remote name and `RemoteBasePath` explicitly.
+Confirm the account, directory and access result, save the connection, then select a local version to upload. Saving a connection and making the first upload are separate steps so you can check each one.
 
-Authorize OneDrive using option names in `rclone config`. For WebDAV, enter the server, path and account. Configure OpenList storage before using its WebDAV. Menu numbers vary by version. Credentials in configuration files should not appear in shared screenshots or complete logs.
+## 3. Upload one version
 
-Test the connection and confirm both browsing and upload permissions. Listing a directory does not prove write access.
+Select an existing recoverable version and confirm the upload. The app uploads its archive and required dependencies and synchronizes the corresponding history. Review the task result, then test recovery into another folder.
 
-## 3. Upload and recover
+History identifies the state to recover; archives and their complete dependencies provide the files. Use the [notification center](/docs/guides/notifications) to check local backup, upload and history sync results individually.
 
-Upload a verified backup. Check archive transfer and history synchronization separately. Before recovery, select a version, prepare it and all dependencies, verify sizes and hashes, then restore to a new test directory.
+## Use OpenList
 
-Read-only cloud recovery does not write remote history, retire replicas or change the current source and workspace. Check the formats supported by the entrypoint; plugin archives also require a compatible materializer.
+For an existing local, NAS or remote OpenList service, configure storage on its management page and use its WebDAV address. Select the actual mounted directory, such as the cloud drive's subdirectory within OpenList.
 
-## History and archive files
+To let FolderRewind start a local instance, specify the OpenList executable, data directory and service address in the runtime environment settings and authorize startup when cloud work needs it. Check the port and instance paths. The management page handles login and storage mounts; FolderRewind accesses the files over WebDAV.
 
-History synchronization unions immutable packs instead of overwriting a shared `history.json`. Work on two devices may create diverging branches that need review. Synchronization alone does not switch the local workspace. A listed record may still lack downloaded archive bytes.
+A started local service continues running. Use Stop this instance in Settings when you want to end it.
+
+## Automatic uploads and recovery
+
+After testing upload and recovery, enable automatic uploads after backups. Successful automatic runs and no-change results stay quiet and remain available in the notification center.
+
+For lost local archives or another PC, use [cloud recovery](/docs/guides/cloud-recovery). You can also prepare cloud copies for a selected version in history. If a transfer fails, read the stage and diagnostics before retrying.
+
+## Cloud directory layout
 
 ```text
 <RemoteBasePath>/_folderrewind/history/<encoded ConfigId>/
@@ -47,13 +61,9 @@ History synchronization unions immutable packs instead of overwriting a shared `
 └─ payload
 ```
 
-Saved object keys determine replica locations. Local indexes and workspace state are not shared history facts. Legacy archives may retain their previous remote locations.
+History sync combines immutable packs from multiple devices. Each device keeps its own active branch and workspace. Choose a version or branch in history when you want to adopt another device's state.
 
-## Automation and troubleshooting
-
-Test upload, download and recovery to a new directory before enabling upload after backup. Distinguish local backup success, transfer failure, history-sync failure, divergence and missing dependencies. After cancellation, check which phase completed before retrying.
-
-Old cloud configuration does not automatically migrate into 1.9. Keep the original remote data and Smart dependencies, then reconnect. See the [rclone](https://rclone.org/docs/) and [OpenList](https://doc.oplist.org.cn/) documentation for connection parameters.
+For service-specific parameters, see [rclone](https://rclone.org/docs/) and [OpenList](https://doc.oplist.org.cn/).
 
 <span id="1-core-model" />
 <span id="2-remote-data-layout" />
@@ -85,3 +95,10 @@ Old cloud configuration does not automatically migrate into 1.9. Keep the origin
 <span id="templates" />
 <span id="timeoutretrylast-run-status" />
 <span id="what-uploaddownload-actually-does" />
+
+<span id="cloud-archives-connections-and-recovery" />
+<span id="1-prepare-the-tools" />
+<span id="2-configure-a-connection" />
+<span id="3-upload-and-recover" />
+<span id="history-and-archive-files" />
+<span id="automation-and-troubleshooting" />

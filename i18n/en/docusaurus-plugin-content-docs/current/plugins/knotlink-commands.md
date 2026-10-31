@@ -2,14 +2,14 @@
 sidebar_position: 4
 title: "KnotLink command reference"
 description: "Look up KnotLink commands, parameters and signals, using the runtime capability manifest to verify backup, restore and protection requests."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # KnotLink command reference
 
 Look up KnotLink commands, parameters and signals, using the runtime capability manifest to verify backup, restore and protection requests.
 
-Baseline: API 3.9 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
+Baseline: API 3.17 KnotLinkCoreCommands/current funcList. Query GET_CAPABILITIES at runtime; manifestVersion=3.0.0, specVersion=1.0, wire protocol v2.
 
 ## Queries and shared targets
 
@@ -84,7 +84,7 @@ Responses include status=ok/error; conversations echo from/request_id. Dynamic v
 <span id="periodic-backup-control" />
 <span id="related-links" />
 <span id="response-status" />
-<span id="restore" />
+
 <span id="signals" />
 
 ## Create protected backups and query importance

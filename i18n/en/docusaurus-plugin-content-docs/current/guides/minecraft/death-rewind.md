@@ -1,14 +1,10 @@
 ---
 title: Death Rewind
-description: Rewind to the latest MineBackup archive from the death screen in Fabric singleplayer worlds
-reviewed_baseline: "1.9-api3.9"
+description: Request the backend-selected world version from the death screen in Fabric singleplayer and LAN-host games
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Death Rewind
-:::info[FolderRewind 1.9.6 backend baseline]
-For this site's current workflow use an API 3.9 FolderRewind 1.9.6 Host and MineRewind 1.9.8. Game-side minimum versions/loader matrices follow their own Releases. Historical1.8 minima do not imply v2 plugins load in1.9. Backup options use full/smart; omitted-file Quick Restore resolves the active branch, without a blanket global-newest archive guarantee. Validate actual loading and exit/rejoin; server Sidecar is not client reconnection.
-:::
-
 Death Rewind is an add-on mod for MineBackup. It periodically asks MineBackup to create checkpoints and adds a “Rewind To A Few Minutes Ago” entry to the death screen in singleplayer worlds.
 
 Since 2.0, Death Rewind no longer connects directly to FolderRewind and no longer duplicates save, auto-save freeze, restore, or rejoin logic. MineBackup API v2 coordinates those operations.
@@ -64,7 +60,7 @@ The death screen adds a “Rewind To A Few Minutes Ago” button below the vanil
 - MineBackup has no other backup, catalog, or restore operation; and
 - Death Rewind has not already submitted a restore request.
 
-Clicking it immediately restores the **global latest archive** for the current world. It does not use the `/mb restore` chat countdown. The latest archive may have been created by Death Rewind, JEA, MineBackup auto-backup, or an administrator, so it is not guaranteed to be a Death Rewind checkpoint.
+Clicking requests the recovery target selected by the connected backend. With FolderRewind, this is the active branch's unique tip, which may come from Death Rewind, JEA, automatic tasks or manual backups. MineBackup API handles saving, exit, restore and re-entry.
 
 MineBackup owns the entire lifecycle from saving the world and disconnecting the player through FolderRewind restore and client rejoin. If the request is rejected or fails, Death Rewind shows the reason and releases the `forceDeathRewind` lock on vanilla buttons.
 
@@ -114,11 +110,3 @@ If the first periodic checkpoint has not completed and FolderRewind has no archi
 - [Hot Restore Mechanism](/en/docs/guides/minecraft/hot-restore)
 
 Run a full “create checkpoint → die → rewind → rejoin” drill in a test world before relying on the extension.
-
-<span id="archive-retention-and-boundaries" />
-<span id="default-configuration" />
-<span id="installation" />
-<span id="periodic-checkpoints" />
-<span id="related-documentation" />
-<span id="rewinding-from-the-death-screen" />
-<span id="support-and-prerequisites" />

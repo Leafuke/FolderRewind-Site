@@ -1,31 +1,31 @@
 ---
 sidebar_position: 0
 title: "Architecture overview"
-description: "Explore the FolderRewind stack and trace UI orchestration through configuration, history, plugins and archives."
-reviewed_baseline: "development-1.10"
+description: "Explore Host, Core, plugin Runtime and public contracts, following WinUI requests through backups, history, cloud replicas and domain capabilities."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Architecture overview
 
-> This page describes the 1.10 development layout; it does not announce a released version.
-
-FolderRewind uses .NET 10 and WinUI 3. The exact SDK and package versions are declared by global.json, project files and central package version configuration in the source checkout.
+FolderRewind uses .NET 10 and WinUI 3. Project files, `global.json` and central package configuration declare the actual build dependencies.
 
 ```mermaid
 flowchart TD
-  UI[Views / ViewModels] --> Host[Host application orchestration]
-  Host --> Core[Core: History and headless policies]
+  UI[Views / ViewModels] --> Host[Host orchestration]
+  Host --> Core[Core history and file policy]
   Host --> Runtime[Plugin Runtime]
   Core --> Runtime
   Runtime --> API[Plugin Abstractions]
-  Core --> Storage[Windows file safety / archive and replica interfaces]
+  Core --> Storage[Windows file safety and archive interfaces]
 ```
 
-The Host owns configuration persistence, scheduling, notifications and platform adapters. Core receives explicit inputs, service instances and cancellation tokens and returns results and diagnostics; it does not resolve application globals. Plugins own domain semantics and cannot bypass Host transactions, integrity checks or target-directory mutation.
+The Host handles configuration, scheduling, notifications, platform and lifecycle adaptation. Core accepts explicit inputs and dependencies, performs capture, history, recovery, merging, retention and replica algorithms, and returns results and diagnostics.
 
-Production Core and ordinary tests share a compilation boundary. Recovery acceptance uses an isolated build of the same project; shipping artifacts exclude test fault hooks. Core is an internal library, not another public plugin SDK.
+Plugins provide domain capabilities through independent Abstractions contracts. Runtime manages installation, activation, routing, invocation leases and scoped Artifact services. The Host orchestrates destination writes, transactions, integrity, encryption and cloud operations.
 
-See [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [models](/docs/architecture/data-models) and [plugin boundaries](/docs/architecture/plugin-system).
+Core targets Windows independently of WinUI. Ordinary tests reference production Core; recovery tests use isolated output and an explicit fault-injection configuration. Public Abstractions is the plugin development entry point.
+
+Continue with [directories](/docs/architecture/directory-structure), [patterns](/docs/architecture/patterns), [services](/docs/architecture/services), [data models](/docs/architecture/data-models) and [plugin architecture](/docs/architecture/plugin-system).
 
 <span id="tech-stack" />
 <span id="architecture-birds-eye-view" />

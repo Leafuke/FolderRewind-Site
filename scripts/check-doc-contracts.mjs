@@ -14,7 +14,7 @@ for (const item of inventory.pages.filter(p => p.product !== 'MineBackup')) {
   if (item.path.includes('migration-v2-v3')) continue; // Explicitly labeled responsibility mapping.
   for (const [file, text] of [[item.path, zh], [item.english, en]]) {
     const {data, content} = matter(text);
-    const expectedBaseline = item.reviewedBaseline ?? `1.9-api${baseline.api}`;
+    const expectedBaseline = item.reviewedBaseline ?? `${baseline.hostProjectVersion.split('.').slice(0, 2).join('.')}-api${baseline.api}`;
     if (expectedBaseline.startsWith('development-') && (!item.reviewedHostRef || item.sourceState !== 'working-tree')) errors.push(`Missing development source identity: ${file}`);
     if (data.reviewed_baseline !== expectedBaseline) errors.push(`Missing reviewed baseline: ${file}`);
     for (const match of content.matchAll(/```csharp\n([\s\S]*?)```/g)) {
@@ -34,7 +34,7 @@ for (const name of ['MinimalPlugin', 'GameRewind']) {
     errors.push(`Example SDK boundary drift: ${name}`);
 }
 const api = fs.readFileSync('docs/plugins/developing/plugin-api.md', 'utf8');
-const kinds = ['Discovery','ConfigReconciliation','FilePolicy','BackupScope','BackupConsistency','FolderMetadata','RestoreCoordinator','PluginCommand','KnotLinkIntegration','ProviderStateMigration','BackupArtifactTransformer','BackupCompletionObserver','RestoreMaterializer','VersionMetadataProvider','RestoreStagingPreparation','SpatialPreview'];
+const kinds = ['Discovery','ConfigReconciliation','FilePolicy','BackupScope','BackupConsistency','FolderMetadata','RestoreCoordinator','PluginCommand','KnotLinkIntegration','ProviderStateMigration','BackupArtifactTransformer','BackupCompletionObserver','RestoreMaterializer','VersionMetadataProvider','RestoreStagingPreparation','SpatialPreview','SpatialComparison','SpatialScopeSelection','MergeProvider'];
 for (const kind of kinds) if (!api.includes('`'+kind+'`')) errors.push(`Undocumented capability: ${kind}`);
 if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
 else console.log(`Contracts OK: ${inventory.pages.length} bilingual pages, ${kinds.length} capabilities.`);

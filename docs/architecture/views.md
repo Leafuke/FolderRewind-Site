@@ -1,45 +1,47 @@
 ---
 sidebar_position: 7
 title: "视图、引导与导航"
-description: "了解页面与引导的职责，区分管理、历史、合并和空间预览的导航流程。"
-reviewed_baseline: "development-1.10"
+description: "了解管理、历史、合并、空间工作区、云连接与恢复页面的职责，维护设置按需加载、通知跳转以及主题和键盘体验。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 视图、引导与导航
 
-> 1.10 开发说明：无 UI 的历史与策略归入 Core，Host 保留配置、平台与界面编排；现有命名空间、数据格式和公开插件契约保持不变。
-
-了解页面与引导的职责，区分管理、历史、合并和空间预览的导航流程。
-
-![FolderRewind 1.9.6 的项目与来源入口。](/img/docs/v1-9-6/home-zh-light-1604.webp)
-
-*FolderRewind 1.9.6 的项目与来源入口。 界面版本：1.9.6。*
-
 ## 页面职责
 
-首页创建／模板／批量发现；FolderManager 管理来源；BackupTasks 观察任务；History 以普通／高级、来源／Run 查看原生历史；GameDiscovery 提供 Beta 候选审阅；CloudSetup 配置和验证连接；Log 提供诊断；Settings 组织全局工具、插件、模板与数据迁移。
+管理页组织来源与操作，任务页显示运行进度，历史页按来源和备份批次查看版本。创建向导组合手选、发现、预设和摘要审阅。
 
-当前 ViewModels 包括 HomePageViewModel、FolderManagerPageViewModel、HistoryPageViewModel、PluginStorePageViewModel、GameDiscoveryPageViewModel 与 CloudSetupViewModel；类名和状态以当前项目文件为准，不引用旧 HistoryViewModel／PluginStoreViewModel 名称。
+| 页面 | 主要职责 |
+| --- | --- |
+| MergePage | 文件冲突、文本比较、手动结果、应用审阅与会话继续 |
+| SpatialPreviewPage | 地图模式、维度、导航、缩放与位置详情 |
+| SpatialWorkspacePage | 固定版本输入、地图对比、选区与合并空间位置 |
+| CloudConnectionsPage | 共享与专用连接管理 |
+| CloudSetupPage | 接入、授权、目录与访问验证、首次上传 |
+| CloudRecoveryPage | 云项目发现、历史读取和新目录恢复 |
+| SettingsPage | 外观、核心、插件、运行环境与数据迁移 |
 
-## 对话框与次级窗口
+ViewModel 保存呈现状态与异步命令，页面代码桥接事件。业务编排通过对应服务执行。
 
-配置设置／云配置／模板／合并交互由视图与 AppDialog 服务协作；对话框创建、显示和结果读取在 UI 线程。MiniWindow 是稳定来源绑定的独立窗口；RecoveryCenter 处理配置损坏，恢复模式禁止普通配置写入。
+## 次级窗口与通知
 
-## 设置与主题
+配置、模板和确认交互使用 AppDialog；创建、显示与结果读取回到 UI 线程。MiniWindow 绑定一个稳定来源，RecoveryCenter 处理恢复流程。
 
-设置子控件负责外观、核心行为、诊断、插件／KnotLink、预设／模板、数据与运行环境。OpenList 环境控制与连接诊断提供实际工具状态。语义资源适配浅／深／系统主题和高对比度，状态同时提供文字与自动化标签。
+铃铛打开通知中心。选择结果可跳转到对应任务、日志或历史位置；关闭弹层和跳转后按上下文恢复键盘焦点。
 
-## 验收
+## 设置与显示
 
-导航与业务编排分离；测试窄窗口、高 DPI、双语言、键盘、任务取消、恢复诊断和深层通知跳转。源码构建通过不能代替真实布局或游戏退出／重进验证。
+设置分区按需加载，切换页面时释放相应资源。外观支持基础字号、浅色、深色与系统主题；窗口材质和强调色等按许可与当前设置呈现。
 
-
-## 合并与地图页面
-
-`MergeWorkspacePage` 承载分支选择、文件冲突比较、结果审阅和会话恢复。`SpatialPreviewPage` 调用 Kind 所有者提供的只读空间预览，管理维度、导航、缩放和位置详情；不承担存档编辑。
+验收时检查中英文、窄窗口、高 DPI、键盘焦点、弹层、任务取消和深层通知跳转。合并与地图页面同时检查加载、空结果、诊断和继续会话状态。
 
 <span id="对话框" />
 <span id="导航流程" />
 <span id="特殊窗口" />
 <span id="设置页子控件" />
 <span id="页面列表" />
+
+<span id="对话框与次级窗口" />
+<span id="设置与主题" />
+<span id="验收" />
+<span id="合并与地图页面" />

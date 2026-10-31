@@ -1,53 +1,44 @@
 ---
 sidebar_position: 1
-title: "Installation guide"
-description: "Install FolderRewind 1.9.6 from Microsoft Store or Setup EXE, choose x64 or ARM64, verify checksums and review data directories and channel migration."
-reviewed_baseline: "1.9-api3.9"
+title: "Installation"
+description: "Install FolderRewind from Microsoft Store or GitHub, choose x64 or ARM64, verify the package and find the data directory for your channel."
+reviewed_baseline: "1.10-api3.17"
 ---
 
-# Installation guide
+# Installation
 
-FolderRewind 1.9.6 was released on 2026-10-06 with MineRewind 1.9.8 bundled. Install through Microsoft Store or GitHub Setup EXE; check the actual Store listing and installed app version.
+FolderRewind supports Windows 10 version 1809 or later and Windows 11. Install through Microsoft Store or download a Setup package from GitHub.
 
 ## Microsoft Store
 
-Install from [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4); the Store manages updates. Verify the app version because Store review and GitHub publication can differ.
+Open [Microsoft Store](https://apps.microsoft.com/detail/9nwsdgxdqws4) and install the app. The Store manages later updates. Store and GitHub releases have their own publication schedules; check About in the app for your installed version.
 
-## Setup EXE
+## GitHub Setup package
 
-The official [GitHub Release](https://github.com/Leafuke/FolderRewind/releases) exposes only:
-
-```text
-FolderRewind_<version>_Setup_x64.exe
-FolderRewind_<version>_Setup_x64.exe.sha256
-FolderRewind_<version>_Setup_arm64.exe
-FolderRewind_<version>_Setup_arm64.exe.sha256
-```
-
-Choose x64 for Intel/AMD and arm64 for Windows on ARM. Download matching checksum and verify:
+1. Open [GitHub Releases](https://github.com/Leafuke/FolderRewind/releases).
+2. Choose x64 for Intel/AMD PCs or ARM64 for Windows on ARM.
+3. Download the matching `.sha256` file and check the SHA-256 value in PowerShell:
 
 ```powershell
-Get-FileHash .\FolderRewind_<version>_Setup_x64.exe -Algorithm SHA256
+Get-FileHash .\FolderRewind_1.10.0.0_Setup_x64.exe -Algorithm SHA256
 ```
 
-Compare against .sha256 before running the bilingual wizard. Choose current-user or all-users installation; all-users installation requires appropriate permissions. Uninstallation preserves settings by default, with optional current-user settings cleanup that preserves backups. Older clients that cannot recognize Setup updates should download manually from the Release page. Setup includes its installation engine; no separate MSI is needed. If the correct EXE is unavailable, open the release page rather than falling back to old MSI.
+4. Run the installer and choose the installation path and scope in the English or Chinese wizard. The default is `%LOCALAPPDATA%\Programs\FolderRewind` for the current user. Installation for all users requires administrator access.
 
-## Requirements and data paths
+Setup includes the .NET and Windows App SDK runtimes. The installer currently has no production code signature, so Windows may show an unknown-publisher or SmartScreen prompt. Download from the official project Release and verify its checksum. You can download an upgrade directly if an older client's updater has yet to find Setup packages.
 
-Windows10 1809+/Windows11; x64/ARM64 distribution; .NET10 included. Use official asset/installer size information, not the old80MB estimate. Archives/staging/recovery need additional space.
+## Data directories and channels
 
-| Channel | Data path |
-|---|---|
-| Store/legacy MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
-| Unpackaged Setup | `%LOCALAPPDATA%\FolderRewind` |
+| Channel | App data directory |
+| --- | --- |
+| Microsoft Store / older MSIX | `%LOCALAPPDATA%\Packages\<PackageFamilyName>\LocalState\FolderRewind` |
+| Setup | `%LOCALAPPDATA%\FolderRewind` |
 
-The data directory contains config, plugins, per-config history, logs and local state; archives also live in each destination. Channel changes do not automatically migrate these stores. Exit, back up data/archives, uninstall the old channel, then validate migration. Do not run two channels on the same sources concurrently.
+Project settings, plugins, history repositories, logs and local state live in the app data directory. Backup files use the storage location selected for each project. Allow additional disk space for backups and restore staging.
 
-## Historical packages
+When switching channels, exit the original app, keep its data directory and archives, then migrate configuration, history and source paths into the new installation. Choose one channel for everyday protection of the same sources. See [data migration](/docs/guides/data-migration). Uninstalling keeps settings by default, with an option to clear current-user settings.
 
-Older releases may contain MSI/MSIX .7z/install.ps1 for their own versions. They are not public1.9 GitHub assets. Developer Mode/certificate scripts are not Setup prerequisites.
-
-Validate a test backup/restore and core checks before automation. See [migration](/docs/guides/data-migration).
+Continue with [your first backup](/docs/getting-started/first-backup).
 
 <span id="choose-a-channel" />
 <span id="data-directories-and-channel-switching" />
@@ -58,3 +49,9 @@ Validate a test backup/restore and core checks before automation. See [migration
 <span id="system-requirements" />
 <span id="upgrading-from-an-older-release" />
 <span id="validate-immediately-after-installation" />
+
+<span id="installation-guide" />
+
+<span id="setup-exe" />
+<span id="requirements-and-data-paths" />
+<span id="historical-packages" />

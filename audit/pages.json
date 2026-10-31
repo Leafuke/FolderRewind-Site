@@ -4,204 +4,179 @@
       "path": "docs/architecture/releasing.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/releasing.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        ".github/workflows/plugin-v3-hardening.yml",
-        ".github/workflows/release-setup.yml",
-        "scripts/release/Export-PublishedPluginContract.ps1",
-        "FolderRewind-Plugin-Minecraft/.github/workflows/release-plugin-v3.yml"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "not applicable; maintainer release procedure",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "16b6c78d4b1766436a7d4825251fe00a2f9db2e7",
-      "reviewedAt": "2026-10-30",
-      "sourceState": "working-tree"
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "sourceState": "released",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "screenshots": []
     },
     {
       "path": "docs/architecture/data-models.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/data-models.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/directory-structure.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/directory-structure.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/index.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/index.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/namespaces.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/namespaces.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/patterns.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/patterns.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/plugin-system.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/plugin-system.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/services.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/services.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/views.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/views.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
+      "status": "source-checked",
       "sources": [
-        "src/FolderRewind",
-        "src/FolderRewind.Core",
-        "src/FolderRewind.Plugin.Runtime",
-        "src/FolderRewind.Plugin.Abstractions"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "1.10 development work based on 70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "70efa1d07734be592579fdd019d7f007a0b0c870",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual copy revised and automated parity checked; individual rendered review pending",
-      "screenshots": [
-        "/img/docs/v1-9-6/home-zh-light-1604.webp"
-      ],
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": [],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "sourceState": "working-tree"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/faq.md",
@@ -209,18 +184,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/getting-started/first-backup.md",
@@ -228,20 +204,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/creation-review-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/getting-started/first-restore.md",
@@ -249,20 +226,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; rendered sample reviewed",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/restore-detail-zh-light-710.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/getting-started/installation.md",
@@ -270,35 +248,40 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/getting-started/v1-8-upgrade.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/getting-started/v1-8-upgrade.md",
       "product": "FolderRewind/integration",
-      "status": "historical-upgrade-guidance-checked",
+      "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "use the current installation and 1.9 upgrade guides",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO",
-      "currentGuideStatus": "retired: old instructions removed; unlisted bookmark compatibility page"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "currentGuideStatus": "retired: old instructions removed; unlisted bookmark compatibility page",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
+      "reviewedAt": "2026-10-31"
     },
     {
       "path": "docs/guides/automation.md",
@@ -306,20 +289,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/automation-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/backup-file-spec.md",
@@ -327,18 +311,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/backup-modes.md",
@@ -346,21 +331,22 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/retention-detail-zh-light-1305.webp",
         "/img/docs/v1-9-6/cleanup-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/cloud-archive.md",
@@ -368,20 +354,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
-      "screenshots": [
-        "/img/docs/v1-9-6/cloud-zh-light-1604.webp"
-      ],
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": [],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/data-migration.md",
@@ -389,20 +374,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
-      "screenshots": [
-        "/img/docs/v1-9-6/migration-detail-zh-light-1310.webp"
-      ],
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": [],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/encryption.md",
@@ -410,18 +394,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/filters.md",
@@ -429,20 +414,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
-        "/img/docs/v1-9-6/filters-zh-light-1604.webp"
+        "/img/docs/v1-10-0/filters-110-zh-light-1604.webp"
       ],
-      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "screenshotReview": "Official build captured with winapp; 20 language/theme variants visually reviewed; source hashes and responsive pairs verified",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/folder-management.md",
@@ -450,20 +436,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/manager-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/history-timeline.md",
@@ -471,20 +458,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/history-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minebackup-v1/automation.md",
@@ -974,20 +962,21 @@
       "path": "docs/guides/minecraft/death-rewind.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/death-rewind.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-backend-boundary",
+      "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/hot-backup.md",
@@ -995,18 +984,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/hot-restore.md",
@@ -1014,37 +1004,39 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/just-enough-accidents.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/just-enough-accidents.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-backend-boundary",
+      "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/knotlink-mod.md",
@@ -1052,56 +1044,59 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/minebackup-mod.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-mod.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-backend-boundary",
+      "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/minebackup-plugin.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/minebackup-plugin.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-backend-boundary",
+      "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4/MineRewind 1.9.3; independent component matrices preserved"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/overview.md",
@@ -1109,18 +1104,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/quick-start.md",
@@ -1128,20 +1124,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
-      "screenshots": [
-        "/img/docs/v1-9-6/plugin-settings-zh-light-1604.webp"
-      ],
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": [],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/selected-region-backup.md",
@@ -1149,18 +1144,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/troubleshooting.md",
@@ -1168,18 +1164,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/mini-window.md",
@@ -1187,18 +1184,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/template-sharing.md",
@@ -1206,18 +1204,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/templates.md",
@@ -1225,18 +1224,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/intro.md",
@@ -1244,20 +1244,21 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind/History and FolderRewind/Services current implementation"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
         "/img/docs/v1-9-6/home-zh-light-1604.webp"
       ],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/auto-update.md",
@@ -1265,18 +1266,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/hotkey-api.md",
@@ -1284,18 +1286,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/knotlink-api.md",
@@ -1303,18 +1306,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/packaging.md",
@@ -1322,18 +1326,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/plugin-api.md",
@@ -1341,18 +1346,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/quick-start.md",
@@ -1360,18 +1366,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/settings-schema.md",
@@ -1379,18 +1386,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/tutorial.md",
@@ -1398,18 +1406,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/knotlink-commands.md",
@@ -1417,18 +1426,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/knotlink.md",
@@ -1436,18 +1446,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/overview.md",
@@ -1455,18 +1466,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/using-plugins.md",
@@ -1474,20 +1486,19 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions and FolderRewind.Plugin.Runtime"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
-      "screenshots": [
-        "/img/docs/v1-9-6/plugins-zh-light-1604.webp"
-      ],
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": [],
       "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/capabilities.md",
@@ -1495,18 +1506,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/artifacts.md",
@@ -1514,18 +1526,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/plugins/developing/migration-v2-v3.md",
@@ -1533,18 +1546,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/getting-started/v1-9-upgrade.md",
@@ -1552,18 +1566,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/history-branches.md",
@@ -1571,20 +1586,21 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [
-        "/img/homepage/merge-zh-light-1604.webp"
+        "/img/docs/v1-10-0/merge-110-zh-light-1604.webp"
       ],
-      "screenshotReview": "contact-sheet reviewed; manifest/hash checked",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "screenshotReview": "Official build captured with winapp; 20 language/theme variants visually reviewed; source hashes and responsive pairs verified",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/safety-snapshots.md",
@@ -1592,18 +1608,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/game-discovery.md",
@@ -1611,18 +1628,19 @@
       "product": "FolderRewind",
       "status": "source-checked",
       "sources": [
-        "FolderRewind 32cb9b4 API 3.5 baseline"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
       "followUp": "manual validation pending",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
-      "languageReview": "bilingual copy revised; parity checked; individual rendered review pending",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
       "screenshots": [],
       "screenshotReview": "not applicable; no screenshot",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/guides/minecraft/world-preview.md",
@@ -1630,36 +1648,38 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "sources": [
-        "FolderRewind.Plugin.Abstractions/SpatialPreview.cs",
-        "docs/plugin-v3/spatial-preview-repair-2026-10-06.md"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "pending",
-      "reviewedBaseline": "1.9-api3.9",
-      "reviewedHostRef": "23c194710527d56f4d9d88e708df4b0d0cfe2ba6",
-      "reviewedAt": "2026-10-06",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "reviewedAt": "2026-10-31",
       "screenshots": [
-        "/img/homepage/map-zh-light-1604.webp"
+        "/img/docs/v1-10-0/map-compare-110-zh-light-1604.webp"
       ],
-      "screenshotReview": "real user-provided world captured in 4 language/theme variants; rendered homepage preview checked",
-      "languageReview": "bilingual copy revised; parity checked; rendered sample reviewed",
-      "siteValidation": "passed: bilingual build, routes/anchors, contracts, images and SEO",
-      "responsibleCommit": "uncommitted site refresh; released host 23c1947"
+      "screenshotReview": "Official build captured with winapp; 20 language/theme variants visually reviewed; source hashes and responsive pairs verified",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "sourceState": "released"
     },
     {
       "path": "docs/architecture/development.md",
       "english": "i18n/en/docusaurus-plugin-content-docs/current/architecture/development.md",
       "product": "FolderRewind/integration",
-      "status": "source-checked-development",
-      "reviewedBaseline": "development-1.10",
-      "reviewedHostRef": "a2208e8407ed2ade343fb601cd7890c710cb4c83",
-      "sourceState": "working-tree",
+      "status": "source-checked",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
       "sources": [
-        "Host source layout and scripts"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "not applicable",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": []
     },
     {
       "path": "docs/support.md",
@@ -1667,15 +1687,77 @@
       "product": "FolderRewind/integration",
       "status": "source-checked",
       "reviewedBaseline": "support-policy",
-      "reviewedHostRef": "a2208e8407ed2ade343fb601cd7890c710cb4c83",
-      "sourceState": "working-tree",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
       "sources": [
-        "Previously published Host sponsor policy"
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
       ],
       "manualAcceptance": "not applicable",
-      "siteValidation": "npm run check:all passed: bilingual parity, types, contracts, images, links, anchors and production build (2026-10-29)",
-      "reviewedAt": "2026-10-29",
-      "languageReview": "Bilingual parity checked; Chinese and English rendered pages visually reviewed by UI acceptance agent on 2026-10-29"
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "reviewedAt": "2026-10-31",
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "screenshots": []
+    },
+    {
+      "path": "docs/guides/cloud-recovery.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/cloud-recovery.md",
+      "product": "FolderRewind",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
+      "reviewedAt": "2026-10-31",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
+      ],
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "screenshots": [
+        "/img/docs/v1-10-0/cloud-recovery-110-zh-light-1604.webp"
+      ],
+      "manualAcceptance": "not applicable",
+      "screenshotReview": "Official build captured with winapp; 20 language/theme variants visually reviewed; source hashes and responsive pairs verified"
+    },
+    {
+      "path": "docs/guides/minecraft/world-merge.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/minecraft/world-merge.md",
+      "product": "FolderRewind",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
+      "reviewedAt": "2026-10-31",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
+      ],
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "screenshots": [],
+      "manualAcceptance": "not applicable"
+    },
+    {
+      "path": "docs/guides/notifications.md",
+      "english": "i18n/en/docusaurus-plugin-content-docs/current/guides/notifications.md",
+      "product": "FolderRewind",
+      "reviewedBaseline": "1.10-api3.17",
+      "reviewedHostRef": "a07b8d29ba03af182119dd5db21972f25ceee597",
+      "sourceState": "released",
+      "reviewedAt": "2026-10-31",
+      "status": "source-checked",
+      "sources": [
+        "FolderRewind v1.10.0: a07b8d29ba03af182119dd5db21972f25ceee597",
+        "Bundled MineRewind 1.10.0 and public Plugin SDK 3.17.0"
+      ],
+      "languageReview": "Bilingual content reviewed; production HTML checked; browser interaction review blocked by desktop automation policy",
+      "siteValidation": "passed: npm run check:all; bilingual build, types, contracts, images, SEO, original routes and anchors (2026-10-31)",
+      "screenshots": [
+        "/img/docs/v1-10-0/notifications-110-zh-light-1604.webp"
+      ],
+      "manualAcceptance": "not applicable",
+      "screenshotReview": "Official build captured with winapp; 20 language/theme variants visually reviewed; source hashes and responsive pairs verified"
     }
   ],
   "blogs": [
@@ -1744,6 +1826,12 @@
       "english": "i18n/en/docusaurus-plugin-content-blog/2026-08-03-v1.8.2-release.md",
       "status": "historical-facts-retained-current-entrypoint-added",
       "source": "GitHub Release v1.8.2 published_at 2026-08-03T05:24:42Z"
+    },
+    {
+      "path": "blog/2026-10-30-v1.10.0-release.md",
+      "english": "i18n/en/docusaurus-plugin-content-blog/2026-10-30-v1.10.0-release.md",
+      "status": "source-checked",
+      "source": "Official v1.10.0 published_at 2026-10-30T08:22:21Z"
     }
   ],
   "images": [
@@ -1908,7 +1996,7 @@
     "src/pages/download.tsx"
   ],
   "releaseReady": false,
-  "date": "2026-10-06",
+  "date": "2026-10-31",
   "publicReleaseVerified": true,
   "releaseReadyMeaning": "Historical complete desktop acceptance flag; public publication is checked separately."
 }

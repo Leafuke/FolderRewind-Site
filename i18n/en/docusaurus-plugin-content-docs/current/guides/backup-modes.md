@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: "Backup modes and retention"
 description: "Compare Full, Smart and Rolling, set per-source retention, understand protected versions and cleanup reports, and choose compression settings."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Backup modes and retention
@@ -11,7 +11,7 @@ Use Full for the first backup. Choose Smart or Rolling for regular saves. All th
 
 ![The Resources tab holds per-source retention, immediate cleanup and reports.](/img/docs/v1-9-6/retention-detail-en-light-1305.webp)
 
-*The Resources tab holds per-source retention, immediate cleanup and reports. Interface version: 1.9.6.*
+*The Resources tab holds per-source retention, immediate cleanup and reports.*
 
 ## Choose a mode
 
@@ -21,7 +21,7 @@ Use Full for the first backup. Choose Smart or Rolling for regular saves. All th
 | Smart | Records additions, changes and deletions relative to a baseline; restore needs the baseline and incremental chain | Large folders with small changes between saves |
 | Rolling | Builds a new archive of the complete state from a trusted baseline, retaining older archives | Reusing baseline processing while keeping versions |
 
-Rolling does not overwrite the previous archive. An unusable baseline can cause fallback to Full. Legacy Incremental maps to Smart; legacy backup Overwrite maps to Rolling. Overwrite on the restore page means something different: overlay restoration.
+Rolling creates a new archive from a trusted baseline and retains the original. An unavailable baseline falls back to Full. Legacy Incremental maps to Smart and backup Overwrite to Rolling; restore Overwrite means overlay restoration.
 
 ## Configure and verify
 
@@ -31,7 +31,7 @@ The default Smart chain limit is 5, after which a new Full baseline is created. 
 
 ## Keep the latest N versions
 
-Since 1.9.4, the retention count applies to **the latest N recoverable versions of each source**. **0** means unlimited retention. Protected versions are kept in addition, so the actual count can be higher.
+The retention count applies to **the latest N recoverable versions of each source**. **0** means unlimited retention. Protected versions are kept in addition, so the actual count can be higher.
 
 Automatic cleanup runs only when it can reclaim space overall. Rebuilding an incremental chain needs temporary disk space; a cleanup that would increase usage is skipped automatically. Deleting Smart dependencies in File Explorer can break later restores.
 
@@ -49,7 +49,7 @@ Retention cleanup affects local archives, retaining logical history and cloud co
 
 0 compression threads selects automatically. Light presets use roughly half the logical processors; the lightest uses at most 2. File-type compression rules disable solid archives. Advanced 7-Zip arguments cannot replace app-controlled output, source, password or progress options.
 
-Partial captures, including selected Minecraft regions, always restore with Overwrite. An exactly readable archive does not justify deleting files outside its captured range.
+Partial captures, including selected Minecraft regions, restore with Overwrite and retain current content outside the capture.
 
 <span id="additional-7-zip-arguments" />
 <span id="choosing-tips" />

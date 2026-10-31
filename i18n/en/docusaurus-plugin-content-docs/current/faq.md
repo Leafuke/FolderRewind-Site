@@ -1,59 +1,71 @@
 ---
 sidebar_position: 99
 title: "Frequently asked questions"
-description: "Answers to FolderRewind 1.9.6 installation, retention, Quick Restore, incremental deletion, migration, plugins and world-preview questions."
-reviewed_baseline: "1.9-api3.9"
+description: "Find answers about installation, automatic task alerts, retention, cloud recovery, Minecraft maps and world merging, with links to practical guides."
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Frequently asked questions
 
-## Which version do these guides cover?
+## Which installer should I choose?
 
-Current guides are reviewed against FolderRewind 1.9.6, bundled MineRewind 1.9.8 and Host API 3.9. The separate public plugin is 1.9.5; public examples use SDK 3.6.0. MineBackup guides and older announcements retain their own version context.
+Microsoft Store is the recommended channel. GitHub provides x64 and ARM64 Setup EXEs with matching checksums. Choose x64 for Intel/AMD PCs and ARM64 for Windows on ARM. See [installation](/docs/getting-started/installation).
 
-## Which installer should I download?
+## Where can I find the current version and changes?
 
-Prefer Microsoft Store. GitHub provides Setup EXE installers and checksums: x64 for Intel/AMD PCs, ARM64 for Windows on ARM. Current GitHub releases do not offer separate MSI, MSIX or sideload archives. See [installation](/docs/getting-started/installation).
+About shows your installed version. [Downloads](/download) describes the current packages, and the [release log](/blog) records each release.
 
-## Where is overwrite backup?
+## Why was there no alert after an automatic backup?
 
-Legacy Overwrite backup maps to Rolling, which creates new archives and retains older versions. Overwrite on the restore page still means overlay restoration. See [backup modes](/docs/guides/backup-modes).
+Successful automatic backups and cloud syncs, including no-change runs, stay quiet. Select the bell for results. Important warnings and errors follow your alert settings. See the [notification center](/docs/guides/notifications).
 
-## Why are there more than N retained versions?
+## Where are earlier results after restarting?
 
-Retention counts the latest N recoverable versions per source, with protected versions kept in addition. 0 means unlimited. Automatic cleanup requires a net space saving, and incremental reconstruction may need temporary space. Read the manual cleanup report for details.
+The center keeps the latest 200 results from the current session. Use log files for earlier operations and history for created versions.
 
-## Why did Quick Restore not select the previous row?
+## How should I choose Full, Smart or Rolling?
 
-It prefers the active branch's unique tip. Without an active branch, it can select the most recent recoverable legacy backup. Choose a specific version in history to recover an earlier state.
+Use Full for the first backup or an important milestone, Smart for frequent small changes, and Rolling to use a trusted baseline while creating a new independent archive. See [backup modes](/docs/guides/backup-modes).
 
-## Can deleting a version break later Smart backups?
+## Why are there more versions than my retention count?
 
-In-app deletion previews the impact and can rebuild dependencies to keep later versions recoverable. Deleting archive files directly can break the chain. Use [history](/docs/guides/history-timeline) and check the outcome.
+The count covers the latest N recoverable versions per source, with protected versions kept additionally. Zero means unlimited. Manual cleanup reports show dependency rebuilding and storage changes.
 
-## Why does a history export contain no archives?
+## Which version does Quick Restore choose?
 
-`.frhistory` contains history facts, not backup bytes or the old device workspace. Builds with the migration recovery fixes apply configuration on restart, check projects in a batch and resume ready capabilities with one confirmation. Switches are preserved, backup/cloud restrictions release per project, and local restore retains valid baselines. Archives remain unverified. Moving computers also requires archives or trusted cloud replicas and encryption recovery material. See [migration](/docs/guides/data-migration).
+It uses the unique tip of the active branch. A source with no active branch can select its latest recoverable legacy backup. Select a specific version in history to recover an earlier state.
 
-## Why is an enabled plugin unavailable?
+## How do I remove old backups while keeping later versions?
 
-Enable intent is separate from actual runtime status. Check API, architecture, settings and diagnostics. Safe Mode suspends execution; follow `RequiresRestart` when shown. Legacy v2 plugins cannot load directly.
+Use history in the app and review the deletion impact first. The app rebuilds incremental dependencies as needed to preserve recovery of later versions.
 
-## Why is map preview missing?
+## What else is needed when cloud history is available?
 
-It needs FolderRewind 1.9.6, bundled MineRewind 1.9.8 and a valid Java save source. Bedrock, ordinary folders and the separate public plugin 1.9.5 do not offer it. See [world preview](/docs/guides/minecraft/world-preview).
+The selected version also needs its archives and complete dependencies. [Cloud recovery](/docs/guides/cloud-recovery) reads history, downloads and verifies data and restores it to a new local directory.
 
-## Why can I see cloud history but not restore it?
+## How do I exclude a whole cache folder?
 
-Records and archive bytes synchronize separately. Prepare the selected version and every dependency, then check transfer and verification results. Missing local files alone are not a reason to erase records.
+Add a folder rule such as `cache`. It applies to the matching folder and all descendants. Check the effective file preview before saving. See [filters](/docs/guides/filters).
 
-## What are the limits of region and player preservation?
+## Can the Minecraft map show older backups?
 
-Regions use block coordinates and Overwrite restore; uncaptured areas do not return to the same time. Ordinary restore can retain selected player NBT fields for all UUIDs, while statistics and advancements can still revert. Checkout and Merge do not preserve players, and preservation across 26.1 storage layouts is rejected.
+Yes. Enable MineRewind and select a locally preparable Java world version to browse its historical map or compare two versions. See [map preview](/docs/guides/minecraft/world-preview).
 
-## What should I do when recovery is required?
+## How can I merge two Minecraft branches?
 
-Keep diagnostics and original files, then use controlled recovery. `CommittedRecoveryRequired` means a commit has already happened. Do not repeat destructive operations or delete configuration, history packs or transaction directories.
+Choose Minecraft semantic merge for the session, select Conservative or Terrain first, resolve chunk conflicts and review the result. See [world merging](/docs/guides/minecraft/world-merge).
+
+## What should I bring to another PC?
+
+Prepare configuration, `.frhistory` history and archives or cloud copies separately, and keep the encryption password. Follow [data migration](/docs/guides/data-migration) to confirm paths and recovery.
+
+## How can I check an enabled plugin's features?
+
+Review its actual runtime state, settings and diagnostics in plugin management. Complete any requested restart, then check the source's project kind. See [plugin management](/docs/plugins/using-plugins).
+
+## What should I do when recovery is requested?
+
+Keep logs and original files, open the app's controlled recovery workflow and follow the remaining diagnostic steps. Continue related backups or restores once recovery is complete.
 
 <span id="anything-special-for-encrypted-configs-across-devices" />
 <span id="backup" />
@@ -84,3 +96,16 @@ Keep diagnostics and original files, then use controlled recovery. `CommittedRec
 <span id="why-does-history-show-an-entry-but-view-cant-find-the-backup-file" />
 <span id="will-backups-consume-too-much-disk-space" />
 <span id="will-restore-overwrite-my-current-files" />
+
+<span id="which-version-do-these-guides-cover" />
+<span id="which-installer-should-i-download" />
+<span id="where-is-overwrite-backup" />
+<span id="why-are-there-more-than-n-retained-versions" />
+<span id="why-did-quick-restore-not-select-the-previous-row" />
+<span id="can-deleting-a-version-break-later-smart-backups" />
+<span id="why-does-a-history-export-contain-no-archives" />
+<span id="why-is-an-enabled-plugin-unavailable" />
+<span id="why-is-map-preview-missing" />
+<span id="why-can-i-see-cloud-history-but-not-restore-it" />
+<span id="what-are-the-limits-of-region-and-player-preservation" />
+<span id="what-should-i-do-when-recovery-is-required" />

@@ -1,7 +1,7 @@
 ---
 title: 插件、SDK 与主程序发布流程
 description: 按候选验证、NuGet 发布、插件冻结与分发、Host 内置载荷及 Setup 发布的顺序，完成可重复的跨仓库发布并核对公开产物。
-reviewed_baseline: "development-1.10"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 插件、SDK 与主程序发布流程
@@ -28,7 +28,7 @@ reviewed_baseline: "development-1.10"
 
 ## 1. 准备各仓库并提交源码
 
-分别检查 Host、MineRewind、Site；需要更新 Catalog 时也单独检查。嵌套目录不是 Host 子模块，不把插件源码加入 Host 解决方案。
+分别检查 Host、MineRewind、Site，需要更新 Catalog 时也单独检查。嵌套项目保持独立仓库与构建，插件通过 Abstractions 包和精确产物集成。
 
 ```powershell
 $HostRoot = 'D:\Programs\FolderRewind'
@@ -74,7 +74,7 @@ gh run list -R Leafuke/FolderRewind --workflow plugin-v3-hardening.yml --event w
 gh run watch $ApiRunId -R Leafuke/FolderRewind --exit-status
 ```
 
-`publish_api=true` 会真正发布，且仅允许默认分支；省略开关只做验证。旧默认分支上的成功运行不能证明当前开发分支已发布。使用 CI 发布时，下载本次 `plugin-api-candidate`，后续 `$ApiCandidate` 必须指向这份已测试候选。
+`publish_api=true` 在默认分支执行正式发布，省略开关执行验证。以本次分支、SHA、运行结果和 NuGet 索引核对发布。下载本次 `plugin-api-candidate`，后续 `$ApiCandidate` 指向这份已测试候选。
 
 ### 已授权的人工发布
 
@@ -156,7 +156,7 @@ dotnet build FolderRewind.slnx -c Debug -p:Platform=x64 -p:GenerateAppxPackageOn
 ./scripts/test/Invoke-SetupCoreTests.ps1
 ```
 
-UI 自动验收默认使用 winapp；安装、旧版本升级、卸载和真实游戏验收分别记录。`Test-Legacy182ReleasePayload.ps1` 检查构建/解包目录的单一插件、manifest 和哈希，不等于运行安装器。
+UI 自动验收默认使用 winapp。安装、旧版本升级、卸载和真实游戏场景分别记录结果；`Test-Legacy182ReleasePayload.ps1` 用于检查构建或解包目录中的插件、manifest 和哈希，安装流程另行执行。
 
 提交并推送最终 Host 分支，记录 `$HostCommit`。只有决定正式公开主程序时执行：
 
@@ -206,6 +206,6 @@ npm run build
 npm run check:built-docs
 ```
 
-网站现有 `check:release` / `prepare:release` 仍包含 1.9 的已审阅基准和版本约束；用于 1.10 前，需根据真实公开资产更新基准、约束和证据，不能把旧版通过解释为新版验收。博客日期使用正式发布时间的 Asia/Shanghai 日期。
+网站的 `check:release` 与 `prepare:release` 读取已核对的发布基准。更新基准时分别填写正式 Host 和插件标签、公开 SDK、精确制品哈希及 Catalog 绑定；博客日期取正式发布时间的 Asia/Shanghai 日期。网站检查、截图与真实游戏场景分别保存实际结果。
 
 最后确认：NuGet 空缓存恢复成功；插件公开包与内置副本哈希一致；Host tag 指向冻结 SHA；主程序公开附件恰好四个且校验匹配；Catalog 和网站指向同一版本。失败时保留同一候选和运行证据，修复后重新验证，不混用其他提交或运行的文件。

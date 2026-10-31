@@ -2,7 +2,7 @@
 sidebar_position: 20
 title: "Migrating v2 plugins to v3 and recovering failures"
 description: "Move legacy v2 plugin responsibilities to independent API 3 contracts and redesign activation, discovery, settings, backup and restore."
-reviewed_baseline: "1.9-api3.9"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # Migrating v2 plugins to v3 and recovering failures

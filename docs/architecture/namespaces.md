@@ -1,13 +1,11 @@
 ---
 sidebar_position: 3
 title: "命名空间与契约入口"
-description: "按命名空间查找实现入口，区分宿主模型、公开插件契约和运行时职责。"
-reviewed_baseline: "development-1.10"
+description: "结合命名空间、项目引用与实际文件位置查找实现，了解 Host 模型、Core、公开插件契约与 Runtime 的程序集职责。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 命名空间与契约入口
-
-> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
 
 命名空间保持稳定，目录和程序集承担新的组织边界。
 
@@ -20,4 +18,4 @@ reviewed_baseline: "development-1.10"
 | FolderRewind.Plugin.Abstractions | 插件唯一公开 SDK |
 | FolderRewind.Plugin.Runtime | 加载、激活、能力路由、Artifact 事务 |
 
-查找代码时先看项目引用和实际文件位置，不依据 namespace 推断程序集。程序集、配置身份和插件 manifest 身份不是目录名。第三方插件不得因迁移而新增对 Core、Runtime 或应用项目的引用。
+查找代码时结合项目引用与实际文件位置确认程序集归属。程序集、配置和 manifest 各自使用稳定身份；第三方插件通过公开 Abstractions 契约接入。

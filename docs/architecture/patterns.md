@@ -1,13 +1,11 @@
 ---
 sidebar_position: 2
 title: "架构模式与事务边界"
-description: "了解 MVVM、显式依赖与事务边界，维护可取消操作和可靠的状态提交。"
-reviewed_baseline: "development-1.10"
+description: "了解 MVVM、显式依赖、串行配置与事务边界，维护后台 I/O、取消和资源释放，并区分正式 Core 与隔离故障测试。"
+reviewed_baseline: "1.10-api3.17"
 ---
 
 # 架构模式与事务边界
-
-> 本页描述 1.10 开发分支的重构布局，尚未表示正式版已发布。
 
 界面继续使用 MVVM。ViewModel 管理呈现状态与异步命令，视图代码桥接界面事件；耗时 I/O、事务和恢复放在对应服务中。
 
